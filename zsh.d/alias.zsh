@@ -6,9 +6,11 @@ alias mv='mv -i'
 alias rr='rm -ri'
 alias rrf='rm -rf'
 
-echo "        <<   alias settings   >> "
+echo
+echo "<< alias settings >> "
 echo "command 'rr' is used as 'rm -ri' "
 echo "command 'rrf' is used as 'rm -rf' "
+echo
 
 alias :q='exit'
 
@@ -17,5 +19,7 @@ alias :q='exit'
 alias twip='zenity --entry | python $HOME/.twit_script.py'
 echo "You can tweet as @nepiadeath "
 echo "if you use 'twip' command. "
+echo
 echo "======================================== "
+echo
 
