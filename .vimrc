@@ -10,20 +10,20 @@
 "========================================
 
 "encoding settings
-source ~/.dotfiles/vim.d/.vimrc.encoding
+source ~/.dotfiles/vim.d/encoding.vim
 
 "calling pathogen.vim
 call pathogen#runtime_append_all_bundles()
 
 "Basic settings
-source ~/.dotfiles/vim.d/.vimrc.basic
+source ~/.dotfiles/vim.d/basic.vim
 
 "Control Settings
-source ~/.dotfiles/vim.d/.vimrc.controls
+source ~/.dotfiles/vim.d/controls.vim
 
 " Statusline settings
-source ~/.dotfiles/vim.d/.vimrc.statusline
+source ~/.dotfiles/vim.d/statusline.vim
 
 "plugin_settings
-source ~/.dotfiles/vim.d/.vimrc.plugin_setting
+source ~/.dotfiles/vim.d/plugin_settings.vim
 
