@@ -6,8 +6,11 @@ alias mv='mv -i'
 alias rr='rm -ri'
 alias rrf='rm -rf'
 
-alias :q='exit'
+echo "        <<   alias settings   >> "
+echo "command 'rr' is used as 'rm -ri' "
+echo "command 'rrf' is used as 'rm -rf' "
 
+alias :q='exit'
 
 #tweet as @nepiadeath via nepia
 #this requires ".twit_script.py" in home
