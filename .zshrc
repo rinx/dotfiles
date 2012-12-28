@@ -11,9 +11,8 @@ case ${UID} in
 	;;
 esac
 
-PROMPT="[${USER}]%/%% "
-PROMPT2="%_%% "
-SPROMPT="%r is correct? [n,y,a,e]: "
+#load prompt settings
+source ~/.dotfiles/zsh.d/prompt.zsh
 
 case "${TERM}" in
 kterm*|xterm)
