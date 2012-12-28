@@ -3,10 +3,10 @@
 #prompt
 PROMPT="%F{cyan}[%n]%f%F{green}[%/]%f%% "
 
-#for, while$B$J$I<B9T;~$N(Bprompt
+#for, whileなど実行時のprompt
 PROMPT2="%_%% " 
 
-#$B4V0c$C$?$H$-$N(Bprompt
+#間違ったときのprompt
 SPROMPT="%r is correct? [n,y,a,e]: "
 
 
