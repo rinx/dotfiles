@@ -3,9 +3,11 @@
 autoload -U compinit
 compinit
 
-bindkey -v #vimlike keybind
+#vimlike keybind
+bindkey -v 
 
 export LANG=ja_JP.UTF-8
+
 case ${UID} in
 0)
     LANG=C

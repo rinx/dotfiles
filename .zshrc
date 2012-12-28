@@ -13,4 +13,3 @@ source ~/.dotfiles/zsh.d/banner.zsh
 #alias settings
 source ~/.dotfiles/zsh.d/alias.zsh
 
-

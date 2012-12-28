@@ -1,9 +1,11 @@
 #alias settings
 
-alias rr = "rm -ri"
-alias rm = "rm -i"
-alias cp = "cp -i"
-alias mv = "mv -i"
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rr='rm -ri'
+
+alias :q='exit'
 
 
 #tweet as @nepiadeath via nepia
