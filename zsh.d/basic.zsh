@@ -12,9 +12,6 @@ case ${UID} in
 	;;
 esac
 
-#load prompt settings
-source ~/.dotfiles/zsh.d/prompt.zsh
-
 case "${TERM}" in
 kterm*|xterm)
     precmd() {
