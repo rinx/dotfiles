@@ -1,0 +1,5 @@
+" Statusline settings
+set statusline=%F%m%r%h%w\%=%{SkkGetModeStr()}\ [FORMAT=%{&ff}]\ [ENC=%{&fileencoding}]\ [TYPE=%Y]\ [POS=%04l,%04v][%03p%%]\ [LOW=%04l/%04L]
+set laststatus=2
+
+
