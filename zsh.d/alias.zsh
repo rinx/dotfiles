@@ -7,7 +7,7 @@ alias rr='rm -ri'
 alias rrf='rm -rf'
 
 echo
-echo "<< alias settings >> "
+echo ">> alias settings"
 echo "command 'rr' is used as 'rm -ri' "
 echo "command 'rrf' is used as 'rm -rf' "
 echo
