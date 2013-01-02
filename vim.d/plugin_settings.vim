@@ -1,10 +1,6 @@
 "Plugin settings
 
 
-"Justify.vimを有効に
-runtime macros/justify.vim
-
-
 "Project.vim用設定
 nmap <silent> <Leader>p <Plug>ToggleProject
 autocmd BufAdd .vimprojects silent! %foldopen!

@@ -4,7 +4,6 @@ if has('vim_starting')
 endif
 
 "github repositories
-"NeoBundle 'Shougo/neobundle.vim/'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
@@ -14,6 +13,7 @@ NeoBundle 'tyru/skk.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'vim-scripts/Smooth-Scroll'
+NeoBundle 'vim-scripts/Align'
 
 "vim-scripts repositories
 NeoBundle 'project.tar.gz'
