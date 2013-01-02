@@ -12,8 +12,8 @@
 "encoding settings
 source ~/.dotfiles/vim.d/encoding.vim
 
-"calling pathogen.vim
-call pathogen#runtime_append_all_bundles()
+"neobundle.vim
+source ~/.dotfiles/vim.d/neobundle-settings.vim
 
 "Basic settings
 source ~/.dotfiles/vim.d/basic.vim

@@ -57,6 +57,7 @@ let skk_cursor_kata_color = "#00ff00"
 let skk_cursor_zenei_color = "#ffcc00"
 let skk_cursor_ascii_color = "#ffffff"
 let skk_cursor_addrev_color = "#0000ff"
+let skk_imdisable_state = 1
 
 
 "Align.vim用設定
