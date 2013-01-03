@@ -9,14 +9,18 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
+
 NeoBundle 'tyru/skk.vim'
 NeoBundle 'thinca/vim-quickrun'
+
 NeoBundle 'scrooloose/syntastic'
+
 NeoBundle 'vim-scripts/Smooth-Scroll'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/eregex.vim'
-NeoBundle 'tmhedberg/matchit'
 
+NeoBundle 'tmhedberg/matchit'
+NeoBundle 'tpope/vim-rails'
 
 "vim-scripts repositories
 NeoBundle 'project.tar.gz'
