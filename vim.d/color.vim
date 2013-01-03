@@ -180,7 +180,7 @@ if &t_Co > 255
    hi SpecialChar     ctermfg=161               cterm=bold
    hi SpecialComment  ctermfg=245               cterm=bold
    "hi Special         ctermfg=81  ctermbg=232
-   hi Special         ctermfg=81  ctermbg=232
+   hi Special         ctermfg=81  ctermbg=none
    hi SpecialKey      ctermfg=245
 
    hi Statement       ctermfg=161               cterm=bold
