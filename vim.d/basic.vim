@@ -25,7 +25,8 @@ set virtualedit=block
 
 set expandtab
 set tabstop=4
-colorscheme molokai
+"colorscheme molokai
+
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")

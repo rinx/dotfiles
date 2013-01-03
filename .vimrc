@@ -18,6 +18,9 @@ source ~/.dotfiles/vim.d/neobundle-settings.vim
 "Basic settings
 source ~/.dotfiles/vim.d/basic.vim
 
+"Color settings
+source ~/.dotfiles/vim.d/color.vim
+
 "Control Settings
 source ~/.dotfiles/vim.d/controls.vim
 
