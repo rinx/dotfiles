@@ -21,7 +21,7 @@ alias :q='exit'
 #this requires ".twit_script.py" in home
 #alias twip='zenity --entry | python $HOME/.twit_script.py'
 alias twip='python $HOME/.twit_script.py'
-echo "You can tweet as @nepiadeath "
+echo "You can tweet"
 echo "if you use 'twip' command. "
 echo
 echo "======================================== "
