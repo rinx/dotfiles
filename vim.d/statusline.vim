@@ -14,8 +14,8 @@ set statusline+=%{SkkGetModeStr()}\  "SKK-status
 set statusline+=[FORMAT=%{&ff}]\  "format
 set statusline+=[ENC=%{&fileencoding}]\  "fileencoding
 set statusline+=[TYPE=%Y]\  "filetype
-set statusline+=[POS=%04l,%04v][%03p%%]\  "position
-set statusline+=[LOW=%04l/%04L] "low
+set statusline+=[POS=%04v]\  "position
+set statusline+=[LOW=%04l/%04L][%03p%%] "low
 
 set laststatus=2
 
