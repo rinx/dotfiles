@@ -11,6 +11,7 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 
 NeoBundle 'tyru/skk.vim'
+"NeoBundle 'tyru/eskk.vim'
 NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'scrooloose/syntastic'
