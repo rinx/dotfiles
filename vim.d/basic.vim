@@ -15,6 +15,7 @@ set ignorecase
 set smartcase
 
 set autoindent
+set smartindent
 
 set confirm
 
@@ -24,7 +25,10 @@ set foldmethod=marker
 set virtualedit=block
 
 set expandtab
+set smarttab
 set tabstop=4
+set shiftwidth=4
+set softtabstop=0
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
