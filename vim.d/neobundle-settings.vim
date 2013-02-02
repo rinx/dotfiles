@@ -21,7 +21,6 @@ NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/eregex.vim'
 
 NeoBundle 'tmhedberg/matchit'
-NeoBundle 'tpope/vim-rails'
 
 "vim-scripts repositories
 NeoBundle 'project.tar.gz'
