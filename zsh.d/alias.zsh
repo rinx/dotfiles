@@ -6,6 +6,9 @@ alias mv='mv -i'
 alias rr='rm -ri'
 alias rrf='rm -rf'
 
+#start vim as vi
+alias vi='vim'
+
 echo
 echo ">> alias settings"
 echo "command 'rr' is used as 'rm -ri' "
