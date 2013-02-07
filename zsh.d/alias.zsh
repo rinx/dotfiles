@@ -1,10 +1,11 @@
 #alias settings
 
 alias rm='rm -i'
-alias cp='cp -i'
 alias mv='mv -i'
 alias rr='rm -ri'
 alias rrf='rm -rf'
+
+alias ls='ls --color -F'
 
 #start vim as vi
 alias vi='vim'
