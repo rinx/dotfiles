@@ -39,7 +39,7 @@ nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 
 "skk.vim用設定
 let skk_jisyo = "~/.skk-jisyo"
-let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.L"
+let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.LL"
 let skk_auto_save_jisyo = 1
 let skk_keep_state = 1
 let skk_egg_like_newline = 1
