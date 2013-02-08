@@ -55,6 +55,11 @@ let skk_cursor_ascii_color = "#ffffff"
 let skk_cursor_addrev_color = "#0000ff"
 let skk_imdisable_state = 1
 
+""eskk.vim
+"let g:eskk#dictionary = "~/.skk-jisyo"
+"let g:eskk#large_dictionary = "/usr/share/skk/SKK-JISYO.LL"
+"let g:eskk#show_annotation = 1
+
 
 "Align.vim用設定
 let g:Align_xstrlen = 3

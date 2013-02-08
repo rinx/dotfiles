@@ -11,6 +11,7 @@ set statusline+=%= "left-right
 
 "rightstatus
 set statusline+=%{SkkGetModeStr()}\  "SKK-status
+"set statusline+=%{eskk#get_mode()}\ 
 set statusline+=[FORMAT=%{&ff}]\  "format
 set statusline+=[ENC=%{&fileencoding}]\  "fileencoding
 set statusline+=[TYPE=%Y]\  "filetype
