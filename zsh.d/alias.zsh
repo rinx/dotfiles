@@ -5,6 +5,10 @@ alias mv='mv -i'
 alias rr='rm -ri'
 alias rrf='rm -rf'
 
+#cd
+alias u='cd ../'
+alias uu='cd ../../'
+
 alias ls='ls --color -F'
 
 #start vim as vi
