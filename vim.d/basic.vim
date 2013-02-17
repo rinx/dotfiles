@@ -20,6 +20,7 @@ set smartindent
 set confirm
 
 set mouse=a
+set ttymouse=xterm2
 
 set foldmethod=marker
 set virtualedit=block
