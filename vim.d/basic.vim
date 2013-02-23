@@ -38,7 +38,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-filetype plugin on
+filetype plugin indent on
 
 if &term=="xterm"
      set t_Co=8
