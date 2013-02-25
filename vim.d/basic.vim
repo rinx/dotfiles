@@ -29,7 +29,7 @@ set expandtab
 "set smarttab
 set tabstop=8
 set shiftwidth=4
-set softtabstop=0
+set softtabstop=4
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
