@@ -2,11 +2,9 @@
 
 * .vimrc
 * .zshrc
-
-these files requires some sources
-sources are in zsh.d or vim.d
-
 * .tmux.conf
+
+.vimrc and .zshrc requires some sources in \*.d directory
 
 ## install
 
@@ -19,4 +17,11 @@ sources are in zsh.d or vim.d
 this script makes symbolic link in home
 
     $ sh setup.sh
+
+---
+
+ftplugin of vim are in the gists
+
+[python](https://gist.github.com/rinx/5018808)
+[ruby](https://gist.github.com/rinx/5018810)
 
