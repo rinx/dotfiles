@@ -20,10 +20,6 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
-"補完メニュー色変更
-highlight Pmenu ctermbg=6
-highlight PmenuSel ctermbg=2
-highlight PmenuSbar ctermbg=5
 
 
 "Unite.vim用キーマッピング
