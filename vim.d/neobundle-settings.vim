@@ -22,6 +22,9 @@ NeoBundle 'vim-scripts/eregex.vim'
 
 NeoBundle 'tmhedberg/matchit'
 
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'ujihisa/neco-ghc'
+
 "vim-scripts repositories
 NeoBundle 'project.tar.gz'
 NeoBundle 'surround.vim'
