@@ -25,6 +25,8 @@ set ttymouse=xterm2
 set foldmethod=marker
 set virtualedit=block
 
+set cursorline
+
 set expandtab
 "set smarttab
 set tabstop=8
