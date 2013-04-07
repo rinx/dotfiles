@@ -1,0 +1,11 @@
+[user]
+	name = rinx
+	email = rintaro.okamura@gmail.com
+[push]
+	default = simple
+[color]
+	ui = auto
+[github]
+	user = rinx
+[core]
+	excludesfile = ~/.gitignore
