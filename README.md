@@ -3,6 +3,8 @@
 * .vimrc
 * .zshrc
 * .tmux.conf
+* .gitconfig
+* .gitignore
 
 .vimrc and .zshrc requires some sources in \*.d directory
 
