@@ -9,3 +9,9 @@
 	user = rinx
 [core]
 	excludesfile = ~/.gitignore
+[alias]
+        this  = !git init && git add . && git commit -m \"first commit\"
+	st    = status
+	l     = log --graph
+        c     = commit
+        cm    = commit -m
