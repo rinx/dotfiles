@@ -15,3 +15,4 @@
 	l     = log --graph
         c     = commit
         cm    = commit -m
+        cam   = commit -am
