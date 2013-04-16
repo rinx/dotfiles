@@ -16,7 +16,6 @@ NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'scrooloose/syntastic'
 
-NeoBundle 'vim-scripts/Smooth-Scroll'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/eregex.vim'
 
