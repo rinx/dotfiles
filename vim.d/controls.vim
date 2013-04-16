@@ -1,6 +1,6 @@
 "Control settings
 
-"方向キーを分割画面切り替えに
+"Use cursor-key to switch between window
 nnoremap <Left> <C-w>h
 nnoremap <Down> <C-w>j
 nnoremap <Up> <C-w>k
