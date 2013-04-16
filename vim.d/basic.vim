@@ -14,6 +14,8 @@ set wildmenu
 set ignorecase
 set smartcase
 
+set incsearch
+
 set autoindent
 set smartindent
 
