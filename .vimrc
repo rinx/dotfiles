@@ -1,32 +1,32 @@
-"========================================
+"============================================
 "               ________________________
 "     .--.     /                        \
-"    |o_o |   | This is @gh_rinx's .vimrc|
+"    |o_o |   |  @gh_rinx's .vimrc      |
 "    |:_/ |   /_________________________/
 "   //   \ \    
 "  (|     | ) 
-" /'|_   _/'\ 
-" \___)=(___/ 
-"========================================
+" /'|_   _/'\ http://github.com/rinx/
+" \___)=(___/ http://twitter.com/gh_rinx
+"============================================
 
-"encoding settings
+"encoding
 source ~/.dotfiles/vim.d/encoding.vim
 
 "neobundle.vim
 source ~/.dotfiles/vim.d/neobundle-settings.vim
 
-"Basic settings
+"Basic
 source ~/.dotfiles/vim.d/basic.vim
 
-"Color settings
+"Color
 source ~/.dotfiles/vim.d/color.vim
 
-"Control Settings
-source ~/.dotfiles/vim.d/controls.vim
+"Key mapping
+source ~/.dotfiles/vim.d/map.vim
 
-" Statusline settings
+" Statusline
 source ~/.dotfiles/vim.d/statusline.vim
 
-"plugin_settings
+"plugin
 source ~/.dotfiles/vim.d/plugin_settings.vim
 
