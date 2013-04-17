@@ -9,6 +9,7 @@
 	user = rinx
 [core]
 	excludesfile = ~/.gitignore
+	editor = vim
 [alias]
         this  = !git init && git add . && git commit -m \"first commit\"
 	st    = status
