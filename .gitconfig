@@ -17,3 +17,4 @@
         c     = commit
         cm    = commit -m
         cam   = commit -am
+        ca    = commit --amend
