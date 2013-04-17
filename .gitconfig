@@ -1,20 +1,38 @@
 [user]
-	name = Rintaro Okamura
-	email = rintaro.okamura@gmail.com
+    name = Rintaro Okamura
+    email = rintaro.okamura@gmail.com
+
 [push]
-	default = simple
+    default = simple
+
 [color]
-	ui = auto
+    ui = auto
+    interactive = auto
+
 [github]
-	user = rinx
+    user = rinx
+
 [core]
-	excludesfile = ~/.gitignore
-	editor = vim
+    excludesfile = ~/.gitignore
+    editor = vim
+
 [alias]
-        this  = !git init && git add . && git commit -m \"first commit\"
-	st    = status
-	l     = log --graph
-        c     = commit
-        cm    = commit -m
-        cam   = commit -am
-        ca    = commit --amend
+    this  = !git init && git add . && git commit -m \"first commit\"
+
+    st    = status
+
+    l     = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+
+    ad    = add
+
+    ci    = commit
+    cm    = commit -m
+    ca    = commit --amend
+
+    co    = checkout
+
+    br    = branch
+    
+    dm    = diff master
+    dw    = diff --color-words
+    dc    = diff --staged
