@@ -40,4 +40,6 @@ setopt nolistbeep
 #autoload predict-on
 #predict-on
 
+setopt prompt_subst
+setopt transient_rprompt
 

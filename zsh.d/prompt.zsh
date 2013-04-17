@@ -11,7 +11,6 @@ SPROMPT="%r is correct? [n,y,a,e]: "
 
 
 #git statuses for Right Prompt
-setopt prompt_subst
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
 function rprompt-git-current-branch {
