@@ -23,6 +23,8 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'ujihisa/neco-ghc'
 
+NeoBundle 'tpope/vim-fugitive'
+
 "vim-scripts repositories
 NeoBundle 'surround.vim'
 NeoBundle 'repeat.vim'
