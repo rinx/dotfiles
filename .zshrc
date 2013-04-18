@@ -1,3 +1,13 @@
+#==============================
+#
+#     this is @gh_rinx's .zshrc
+#ヾ(๑╹◡╹)ﾉ
+#
+#   http://github.com/rinx/
+#   http://twitter.com/gh_rinx/
+#==============================
+
+
 #load basic settings 
 [ -f ~/.dotfiles/zsh.d/basic.zsh ] && source ~/.dotfiles/zsh.d/basic.zsh
 
