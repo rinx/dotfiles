@@ -1,5 +1,8 @@
 "Control settings
 
+"reload .vimrc
+nnoremap <C-r><C-f> :source ~/.vimrc<CR>
+
 "Use cursor-key to switch between window
 nnoremap <Left> <C-w>h
 nnoremap <Down> <C-w>j
