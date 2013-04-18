@@ -10,23 +10,36 @@
 "============================================
 
 "encoding
-source ~/.dotfiles/vim.d/encoding.vim
+if filereadable(expand('~/.dotfiles/vim.d/encoding.vim'))
+    source ~/.dotfiles/vim.d/encoding.vim
+endif
 
 "neobundle.vim
-source ~/.dotfiles/vim.d/neobundle-settings.vim
+if filereadable(expand('~/.dotfiles/vim.d/neobundle-settings.vim'))
+    source ~/.dotfiles/vim.d/neobundle-settings.vim
+endif
 
 "Basic
-source ~/.dotfiles/vim.d/basic.vim
+if filereadable(expand('~/.dotfiles/vim.d/basic.vim'))
+    source ~/.dotfiles/vim.d/basic.vim
+endif
 
 "Color
-source ~/.dotfiles/vim.d/color.vim
+if filereadable(expand('~/.dotfiles/vim.d/color.vim'))
+    source ~/.dotfiles/vim.d/color.vim
+endif
 
 "Key mapping
-source ~/.dotfiles/vim.d/map.vim
+if filereadable(expand('~/.dotfiles/vim.d/map.vim'))
+    source ~/.dotfiles/vim.d/map.vim
+endif
 
 " Statusline
-source ~/.dotfiles/vim.d/statusline.vim
+if filereadable(expand('~/.dotfiles/vim.d/statusline.vim'))
+    source ~/.dotfiles/vim.d/statusline.vim
+endif
 
 "plugin
-source ~/.dotfiles/vim.d/plugin_settings.vim
-
+if filereadable(expand('~/.dotfiles/vim.d/plugin_settings.vim'))
+    source ~/.dotfiles/vim.d/plugin_settings.vim
+endif
