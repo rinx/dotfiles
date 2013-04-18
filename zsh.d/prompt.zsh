@@ -34,7 +34,7 @@ function rprompt-git-current-branch {
   elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
     color=%B%F{red}
   else
-  color=%F{red}
+    color=%F{red}
   fi
   echo "$color$name$action%f%b "
 }
