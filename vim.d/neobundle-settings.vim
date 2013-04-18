@@ -16,7 +16,6 @@ NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'scrooloose/syntastic'
 
-NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/eregex.vim'
 
 NeoBundle 'tmhedberg/matchit'
@@ -25,7 +24,6 @@ NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'ujihisa/neco-ghc'
 
 "vim-scripts repositories
-NeoBundle 'project.tar.gz'
 NeoBundle 'surround.vim'
 NeoBundle 'repeat.vim'
 
