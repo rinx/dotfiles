@@ -1,12 +1,16 @@
 #prompt settings
 
 #prompt
-PROMPT="%F{cyan}[%n]%f%F{green}[%/]%f%% "
 
-#for, whileなど実行時のprompt
+local pbase=$'%F{cyan}[%n]%f%F{green}[%/]%f'
+local lf=$'\n'
+
+PROMPT="%5(~|$pbase$lf|$pbase)%% "
+
+#for, while, etc...
 PROMPT2="%_%% " 
 
-#間違ったときのprompt
+#missing spell
 SPROMPT="%r is correct? [n,y,a,e]: "
 
 
