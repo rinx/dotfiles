@@ -1,19 +1,6 @@
 "Plugin settings
 
-
-"Project.vim用設定
-nmap <silent> <Leader>p <Plug>ToggleProject
-autocmd BufAdd .vimprojects silent! %foldopen!
-if getcwd() != $HOME
-	if filereadable(getcwd(). '/.vimprojects')
-		nmap <silent> <Leader>P :Project .vimprojects<CR>
-	else
-		nmap <silent> <Leader>P :Project<CR>
-	endif
-endif
-
-
-"neocomplcacheの設定
+"neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_auto_completion_start_length = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -22,18 +9,18 @@ imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 
-"Unite.vim用キーマッピング
-"バッファ一覧
+"Unite.vim
+"buffer
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-"ファイル一覧
+"file
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-"レジスタ一覧
+"register
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-"最近使用したファイル一覧
+"recently files
 nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 
 
-"skk.vim用設定
+"skk.vim
 let skk_jisyo = "~/.skk-jisyo"
 let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.LL"
 let skk_auto_save_jisyo = 1
@@ -56,10 +43,5 @@ let skk_imdisable_state = 1
 "let g:eskk#dictionary = "~/.skk-jisyo"
 "let g:eskk#large_dictionary = "/usr/share/skk/SKK-JISYO.LL"
 "let g:eskk#show_annotation = 1
-
-
-"Align.vim用設定
-let g:Align_xstrlen = 3
-let g:DrChipTopLvlMenu = ''
 
 

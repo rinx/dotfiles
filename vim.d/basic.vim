@@ -1,34 +1,50 @@
 "Basic Settings
 
+"not vi compatible
 set nocompatible	
-set bs=indent,eol,start
-set ai
-set viminfo='20,\"50
 
+"history
+set viminfo='20,\"50
 set history=50
+
+set bs=indent,eol,start
+
 set ruler
 set number
+set cursorline
 set cmdheight=2
 set wildmenu
 
+set imdisable
+
+"search
+set incsearch
 set ignorecase
 set smartcase
 
-set incsearch
-
+"indent
+filetype plugin indent on
+set ai
 set autoindent
 set smartindent
 
+"unsaved buffer warning
 set confirm
 
+"clipboard
+set clipboard+=unnamed,autoselect
+
+"mouse
 set mouse=a
 set ttymouse=xterm2
 
+"fold
 set foldmethod=marker
+
+"visual select
 set virtualedit=block
 
-set cursorline
-
+"tab
 set expandtab
 "set smarttab
 set tabstop=8
@@ -42,13 +58,9 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-filetype plugin indent on
-
 if &term=="xterm"
      set t_Co=256
      set t_Sb=[4%dm
      set t_Sf=[3%dm
 endif
-
-set imdisable
 
