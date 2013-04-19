@@ -2,15 +2,17 @@
 
 #this script makes symbolic links of vimrc, zshrc
 
-ln -s ~/.dotfiles/.vimrc ~/.vimrc
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+[ -f ~/.vimrc ] || ln -s ~/.dotfiles/.vimrc ~/.vimrc
+[ -f ~/.zshrc ] || ln -s ~/.dotfiles/.zshrc ~/.zshrc
+[ -f ~/.tmux.conf ] || ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.gitignore ~/.gitignore
+[ -f ~/.gitconfig ] || ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+[ -f ~/.gitignore ] || ln -s ~/.dotfiles/.gitignore ~/.gitignore
 
 
 #for tmux statusline battery-status
-wget https://raw.github.com/richo/battery/master/bin/battery -P ~/.bin
-chmod +x ~/.bin/battery
+if [ ! -f ~/.bin/battery ]; then
+    wget https://raw.github.com/richo/battery/master/bin/battery -P ~/.bin
+    chmod +x ~/.bin/battery
+fi
 
