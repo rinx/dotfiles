@@ -10,3 +10,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.gitignore ~/.gitignore
 
 
+#for tmux statusline battery-status
+wget https://raw.github.com/richo/battery/master/bin/battery -P ~/.bin
+chmod +x ~/.bin/battery
+
