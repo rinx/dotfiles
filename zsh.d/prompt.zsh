@@ -3,9 +3,26 @@
 #prompt
 
 local pbase=$'%F{cyan}[%n]%f%F{green}[%/]%f'
+local pbase_nor='%F{red}[%n]%f%F{green}[%/]%f'
 local lf=$'\n'
 
 PROMPT="%5(~|$pbase$lf|$pbase)%% "
+
+##zsh vi-like keybind mode indicator
+function zle-line-init zle-keymap-select {
+    case $KEYMAP in
+        vicmd)
+            PROMPT="%5(~|$pbase_nor$lf|$pbase_nor)%% "
+        ;;
+        main|viins)
+            PROMPT="%5(~|$pbase$lf|$pbase)%% "
+        ;;
+    esac
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 
 #for, while, etc...
 PROMPT2="%_%% " 
