@@ -10,6 +10,8 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 
+NeoBundle 'honza/vim-snippets'
+
 NeoBundle 'tyru/skk.vim'
 "NeoBundle 'tyru/eskk.vim'
 NeoBundle 'thinca/vim-quickrun'
