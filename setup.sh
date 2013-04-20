@@ -10,6 +10,12 @@
 [ -f ~/.gitignore ] || ln -s ~/.dotfiles/.gitignore ~/.gitignore
 
 
+#for tmux statusline memory-status
+if [ ! -f ~/.bin/used-mem ]; then
+    wget https://raw.github.com/yonchu/used-mem/master/used-mem -P ~/.bin
+    chmod +x ~/.bin/used-mem
+fi
+
 #for tmux statusline battery-status
 if [ ! -f ~/.bin/battery ]; then
     wget https://raw.github.com/richo/battery/master/bin/battery -P ~/.bin
