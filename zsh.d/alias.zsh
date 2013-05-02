@@ -20,6 +20,9 @@ alias tmux='tmux -2'
 
 alias :q='exit'
 
+#hub aliasing (https://github.com/defunkt/hub)
+function git() {hub "$@"}
+
 #extract
 extract () {
     if [ -f $1 ] ; then
