@@ -11,6 +11,9 @@ alias uu='cd ../../'
 alias cdr='cd -'
 
 alias ls='ls --color -F'
+alias lsa='ls --color -F -a'
+alias lsl='ls --color -F -l'
+alias lsal='ls --color -F -a -l'
 
 #start vim as vi
 alias vi='vim'
