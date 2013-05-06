@@ -2,8 +2,8 @@
 
 #this script makes symbolic links of vimrc, zshrc
 
-[ -f ~/.vimrc ] || ln -s ~/.dotfiles/.vimrc ~/.vimrc
-[ -f ~/.zshrc ] || ln -s ~/.dotfiles/.zshrc ~/.zshrc
+[ -f ~/.vimrc     ] || ln -s ~/.dotfiles/.vimrc     ~/.vimrc
+[ -f ~/.zshrc     ] || ln -s ~/.dotfiles/.zshrc     ~/.zshrc
 [ -f ~/.tmux.conf ] || ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
 [ -f ~/.gitconfig ] || ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
