@@ -8,6 +8,8 @@ alias rrf='rm -rf'
 #cd
 alias u='cd ../'
 alias uu='cd ../../'
+alias uuu='cd ../../../'
+alias uuuu='cd ../../../../'
 alias cdr='cd -'
 
 alias ls='ls --color -F'
