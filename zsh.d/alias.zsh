@@ -18,7 +18,9 @@ alias lsl='ls --color -F -l'
 alias lsal='ls --color -F -a -l'
 
 #start vim as vi
-alias vi='vim'
+#alias vi='vim'
+#Macvim
+alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 #tmux execute as 256colors-terminal
 alias tmux='tmux -2'
