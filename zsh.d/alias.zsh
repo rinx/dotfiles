@@ -33,6 +33,9 @@ alias pandoclt='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
 #hub aliasing (https://github.com/defunkt/hub)
 function git() {hub "$@"}
 
+#Adobe Reader
+alias acroread='open -a Adobe\ Reader'
+
 #extract
 extract () {
     if [ -f $1 ] ; then
