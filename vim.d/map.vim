@@ -11,8 +11,8 @@ nnoremap <Right> <C-w>l
 
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
-inoremap <C-n> <Down>
-inoremap <C-p> <Up>
+"inoremap <C-n> <Down>
+"inoremap <C-p> <Up>
 inoremap <C-f> <Right>
 
 "Use Emacs-like keybinds on command-mode
