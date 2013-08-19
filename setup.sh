@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#this script makes symbolic links of vimrc, zshrc
+#this script makes symbolic links of vimrc, zshrc, etc...
 
 [ -f ~/.vimrc     ] || ln -s ~/.dotfiles/.vimrc     ~/.vimrc
 [ -f ~/.zshrc     ] || ln -s ~/.dotfiles/.zshrc     ~/.zshrc
@@ -8,6 +8,8 @@
 
 [ -f ~/.gitconfig ] || ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 [ -f ~/.gitignore ] || ln -s ~/.dotfiles/.gitignore ~/.gitignore
+
+[ -f ~/.xmonad/xmonad.hs ] || ln -s ~/.dotfiles/xmonad.hs ~/.xmonad/xmonad.hs
 
 
 #for tmux statusline memory-status

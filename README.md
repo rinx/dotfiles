@@ -5,6 +5,7 @@
 * .tmux.conf
 * .gitconfig
 * .gitignore
+* .xmonad/xmonad.hs
 
 
 ## install
