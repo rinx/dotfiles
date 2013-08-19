@@ -6,17 +6,16 @@
 * .gitconfig
 * .gitignore
 
-.vimrc and .zshrc requires some sources in \*.d directory
 
 ## install
 
 ### how to install
 
+clone this repository
+
     $ git clone https://github.com/rinx/dotfiles.git ~/.dotfiles
 
-### setup.sh
-
-this script makes symbolic link in home
+setup.sh makes symbolic link in home
 
     $ sh setup.sh
 
