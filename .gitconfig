@@ -37,5 +37,9 @@
     dm    = diff master
     dw    = diff --color-words
     dc    = diff --staged
+
 [url "https://"]
 	insteadOf = git://
+
+[credential]
+	helper = cache --timeout=3600
