@@ -193,6 +193,10 @@ if &t_Co > 255
    hi Title           ctermfg=166
    hi Todo            ctermfg=231 ctermbg=232   cterm=bold
 
+   hi TabLineFill     ctermfg=161 
+   hi TabLine         ctermfg=253 ctermbg=161
+   hi TabLineSel      ctermfg=253 ctermbg=darkcyan
+
    hi Typedef         ctermfg=81
    hi Type            ctermfg=81                cterm=none
    hi Underlined      ctermfg=244               cterm=underline
