@@ -1,6 +1,5 @@
-[user]
-    name = Rintaro Okamura
-    email = rintaro.okamura@gmail.com
+[include]
+    path = ~/.gitconfig.local
 
 [push]
     default = simple
