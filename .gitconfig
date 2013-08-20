@@ -37,6 +37,8 @@
     dw    = diff --color-words
     dc    = diff --staged
 
+    sb    = show-branch
+
 [url "https://"]
 	insteadOf = git://
 
