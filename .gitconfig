@@ -27,6 +27,7 @@
 
     ci    = commit
     cm    = commit -m
+    cv    = commit -v 
     ca    = commit --amend
 
     co    = checkout
