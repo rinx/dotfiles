@@ -1,3 +1,3 @@
 #Banner
 
-archey
+archey -c
