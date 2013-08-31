@@ -27,6 +27,17 @@ alias tmux='tmux -2'
 
 alias :q='exit'
 
+#grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+#global
+alias -g @l='| less'
+alias -g @h='| head'
+alias -g @t='| tail'
+alias -g @g='| grep'
+
 #pandoc with lualatex
 alias pandoclt='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
 
