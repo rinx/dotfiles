@@ -2,8 +2,9 @@
 
 #prompt
 
-local pbase=$'%F{cyan}[%n]%f%F{green}[%/]%f'
-local pbase_nor='%F{red}[%n]%f%F{green}[%/]%f'
+local p='[%n]%f%F{green}[%/]%f'
+local pbase="%F{cyan}$p"
+local pbase_nor="%F{red}$p"
 local lf=$'\n'
 
 PROMPT="%5(~|$pbase$lf|$pbase)%% "
@@ -28,7 +29,7 @@ zle -N zle-keymap-select
 PROMPT2="%_%% " 
 
 #missing spell
-SPROMPT="%r is correct? [n,y,a,e]: "
+SPROMPT="%F{yellow}(っ'ヮ'c)< %r is correct? [n,y,a,e]%f: "
 
 
 #git statuses for Right Prompt
@@ -57,7 +58,7 @@ function rprompt-git-current-branch {
   else
     color=%F{red}
   fi
-  echo "$color$name$action%f%b "
+  echo "${color}(git:${name}${action})%f%b "
 }
 
 RPROMPT='`rprompt-git-current-branch`'
