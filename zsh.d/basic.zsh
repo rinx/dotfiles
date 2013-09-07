@@ -3,6 +3,9 @@
 autoload -U compinit
 compinit
 
+#highlight for completion
+zstyle ':completion:*:default' menu select=2 
+
 #vimlike keybind
 bindkey -v 
 
