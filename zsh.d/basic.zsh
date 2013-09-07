@@ -62,3 +62,11 @@ setopt nolistbeep
 setopt prompt_subst
 setopt transient_rprompt
 
+setopt auto_list
+setopt auto_menu
+
+setopt auto_param_slash
+setopt auto_param_keys
+
+setopt correct
+
