@@ -24,6 +24,7 @@ NeoBundle 'tmhedberg/matchit'
 
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'dag/vim2hs'
 
 NeoBundle 'tpope/vim-fugitive'
 
