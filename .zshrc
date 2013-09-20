@@ -1,10 +1,9 @@
 #==============================
 #
-#     this is @gh_rinx's .zshrc
+#     this is rinx@github's .zshrc
 #ヾ(๑╹◡╹)ﾉ
 #
 #   http://github.com/rinx/
-#   http://twitter.com/gh_rinx/
 #==============================
 
 
