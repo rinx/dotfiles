@@ -69,3 +69,5 @@ endif
 
 "backup file
 set nobackup
+
+set conceallevel=0
