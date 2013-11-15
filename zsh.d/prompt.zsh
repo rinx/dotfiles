@@ -58,7 +58,7 @@ function rprompt-git-current-branch {
   else
     color=%F{red}
   fi
-  echo "${color}(git:${name}${action})%f%b "
+  echo "${color} ${name}${action}%f%b "
 }
 
 RPROMPT='`rprompt-git-current-branch`'
