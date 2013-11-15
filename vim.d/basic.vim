@@ -67,3 +67,4 @@ if &term=="xterm"
      set t_Sf=[3%dm
 endif
 
+set conceallevel=0
