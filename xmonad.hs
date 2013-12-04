@@ -17,7 +17,7 @@ import qualified Data.Map as M
 main = xmonad myConfig
 
 myConfig = desktopConfig 
-            { terminal = "xfce4-terminal"
+            { terminal = "urxvt"
             , modMask = mod4Mask 
             , layoutHook = desktopLayoutModifiers $ myLayout
             , borderWidth = 0
