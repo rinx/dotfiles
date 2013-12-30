@@ -28,6 +28,9 @@ NeoBundle 'dag/vim2hs'
 
 NeoBundle 'tpope/vim-fugitive'
 
+"syntax
+NeoBundle 'pbrisbin/html-template-syntax'
+
 "vim-scripts repositories
 NeoBundle 'surround.vim'
 NeoBundle 'repeat.vim'
