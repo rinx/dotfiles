@@ -2,7 +2,10 @@
 
 #prompt
 
-local p='[%n]%f%F{green}[%/]%f'
+# when connected to remote host
+[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && local hn="@$HOST"
+
+local p='[%n$hn]%f%F{green}[%/]%f'
 local pbase="%F{cyan}$p"
 local pbase_nor="%F{red}$p"
 local lf=$'\n'
