@@ -28,6 +28,9 @@ NeoBundle 'dag/vim2hs'
 
 NeoBundle 'tpope/vim-fugitive'
 
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'moznion/hateblo.vim'
+
 "syntax
 NeoBundle 'pbrisbin/html-template-syntax'
 
