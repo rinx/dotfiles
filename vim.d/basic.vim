@@ -68,3 +68,4 @@ if &term=="xterm"
 endif
 
 set conceallevel=0
+set visualbell
