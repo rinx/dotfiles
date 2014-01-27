@@ -71,3 +71,4 @@ endif
 set nobackup
 
 set conceallevel=0
+set visualbell
