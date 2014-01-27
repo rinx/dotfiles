@@ -41,3 +41,11 @@ if [ ! -x $HOME/.bin/battery ]; then
     echo -e "\033[0;32m✔ \033[1;36mA executable file 'battery' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
 fi
 
+
+# for vim 
+mkdir -p $HOME/.vim/bundle
+git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+
+# vim filetype plugins
+wget -qO- https://gist.github.com/rinx/8645095/raw/1e47048a982824ca12f0a4e6616e8e906e3b2561/vim-ft-setup.sh | sh
+
