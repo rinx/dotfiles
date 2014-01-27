@@ -48,8 +48,10 @@ fi
 
 
 # for vim 
-mkdir -p $HOME/.vim/bundle
-git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+if [ ! -d $HOME/.vim/bundle/neobundle.vim ]; then
+    mkdir -p $HOME/.vim/bundle
+    git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+fi
 
 # vim filetype plugins
 wget -qO- https://gist.github.com/rinx/8645095/raw/1e47048a982824ca12f0a4e6616e8e906e3b2561/vim-ft-setup.sh | sh
