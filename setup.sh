@@ -30,6 +30,7 @@ if [ ! -f $HOME/.tmux.conf ]; then
 fi
 
 if [ ! -f $HOME/.xmonad/xmonad.hs ]; then
+    mkdir -p $HOME/.xmonad
     ln -s $HOME/.dotfiles/xmonad.hs $HOME/.xmonad/xmonad.hs
     echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.xmonad/xmonad.hs created\033[00m" | sed "s/^-e //"
 fi
