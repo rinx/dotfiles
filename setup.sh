@@ -89,5 +89,4 @@ if [ ! -d $HOME/.vim/bundle/neobundle.vim ]; then
 fi
 
 # vim filetype plugins
-wget -qO- https://gist.github.com/rinx/8645095/raw/1e47048a982824ca12f0a4e6616e8e906e3b2561/vim-ft-setup.sh | sh
-
+wget -qO- https://gist.github.com/rinx/8645095/raw/657292120e52514f05efa3684846c8d2808478be/vim-ft-setup.sh | sh
