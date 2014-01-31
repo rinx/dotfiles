@@ -2,51 +2,18 @@
 
 #this script makes symbolic links of vimrc, zshrc
 
-if [ ! -f $HOME/.vimrc ]; then
-    ln -s $HOME/.dotfiles/.vimrc $HOME/.vimrc
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.vimrc created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.vimrc creating failed\033[00m" | sed "s/^-e //"
+for filename in .vimrc .zshrc .tmux.conf .gitconfig .gitignore ; do
+    
+    if [ ! -f $HOME/$filename ]; then
+        ln -s $HOME/.dotfiles/$filename $HOME/$filename
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/$filename created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/$filename creating failed\033[00m" | sed "s/^-e //"
+        fi
     fi
-fi
-
-if [ ! -f $HOME/.zshrc ]; then
-    ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.zshrc created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.zshrc creating failed\033[00m" | sed "s/^-e //"
-    fi
-fi
-
-if [ ! -f $HOME/.tmux.conf ]; then
-    ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.tmux.conf created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.tmux.conf creating failed\033[00m" | sed "s/^-e //"
-    fi
-fi
-
-if [ ! -f $HOME/.gitconfig ]; then
-    ln -s $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.gitconfig created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.gitconfig creating failed\033[00m" | sed "s/^-e //"
-    fi
-fi
-
-if [ ! -f $HOME/.gitignore ]; then
-    ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.gitignore created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.gitignore creating failed\033[00m" | sed "s/^-e //"
-    fi
-
-fi
+    
+done
 
 #for tmux statusline memory-status
 if [ ! -x $HOME/.bin/used-mem ]; then
