@@ -45,3 +45,5 @@
 
 [credential]
 	helper = cache --timeout=3600
+[heroku]
+	account = rintaro
