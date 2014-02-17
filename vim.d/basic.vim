@@ -4,8 +4,8 @@
 set nocompatible	
 
 "history
-set viminfo='20,\"50
-set history=50
+set viminfo='1000,<100,f1,h,s100
+set history=300
 
 set bs=indent,eol,start
 
@@ -69,3 +69,10 @@ endif
 
 set conceallevel=0
 set visualbell
+
+"for session
+set sessionoptions+=tabpages
+
+"showmatch
+set showmatch
+set matchtime=3
