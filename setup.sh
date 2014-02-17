@@ -50,4 +50,4 @@ if [ ! -d $HOME/.vim/bundle/neobundle.vim ]; then
 fi
 
 # vim filetype plugins
-wget -qO- https://gist.github.com/rinx/8645095/raw/657292120e52514f05efa3684846c8d2808478be/vim-ft-setup.sh | sh
+wget -qO- https://gist.github.com/rinx/8645095/raw/8bb6b289b202950f97503995747a2a755c64c7ca/vim-ft-setup.sh | sh
