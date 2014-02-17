@@ -73,4 +73,6 @@ set visualbell
 "for session
 set sessionoptions+=tabpages
 
-
+"showmatch
+set showmatch
+set matchtime=3
