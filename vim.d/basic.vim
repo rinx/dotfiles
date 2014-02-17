@@ -69,3 +69,8 @@ endif
 
 set conceallevel=0
 set visualbell
+
+"for session
+set sessionoptions+=tabpages
+
+
