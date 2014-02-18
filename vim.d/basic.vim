@@ -24,7 +24,6 @@ set smartcase
 
 "indent
 filetype plugin indent on
-set ai
 set autoindent
 set smartindent
 
