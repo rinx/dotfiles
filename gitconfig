@@ -40,6 +40,9 @@
 
     sb    = show-branch
 
+    mg    = merge
+    mgn   = merge --no-commit
+
 [url "https://"]
 	insteadOf = git://
 
