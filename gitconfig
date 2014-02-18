@@ -30,6 +30,9 @@
     cv    = commit -v 
     ca    = commit --amend
 
+    ps    = push
+    psa   = push --all
+
     co    = checkout
 
     br    = branch
