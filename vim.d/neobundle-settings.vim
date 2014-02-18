@@ -10,7 +10,6 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
-
 NeoBundle 'honza/vim-snippets'
 
 NeoBundle 'tyru/skk.vim'
@@ -23,17 +22,35 @@ NeoBundle 'vim-scripts/eregex.vim'
 
 NeoBundle 'tmhedberg/matchit'
 
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'ujihisa/neco-ghc'
-NeoBundle 'dag/vim2hs'
+NeoBundleLazy 'eagletmt/ghcmod-vim',{
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \}
+NeoBundleLazy 'ujihisa/neco-ghc',{
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \}
+NeoBundleLazy 'dag/vim2hs',{
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \}
+NeoBundleLazy 'pbrisbin/html-template-syntax',{
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \}
 
 NeoBundle 'tpope/vim-fugitive'
 
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'moznion/hateblo.vim'
-
-"syntax
-NeoBundle 'pbrisbin/html-template-syntax'
+NeoBundleLazy 'moznion/hateblo.vim',{
+            \ 'autoload' : {
+            \   'commands' : ["HatebloCreate","HatebloCreateDraft","HatebloList","HatebloUpdate","HatebloDelete"]
+            \ }
+            \}
 
 "vim-scripts repositories
 NeoBundle 'surround.vim'
