@@ -9,7 +9,17 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
+
+NeoBundleLazy 'Shougo/unite.vim', {
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Unite',
+            \     'UniteWithBufferDir',
+            \     'UniteWithCurrentDir'
+            \   ]
+            \ }
+            \}
+
 NeoBundle 'honza/vim-snippets'
 
 NeoBundle 'tyru/skk.vim'
