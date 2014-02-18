@@ -58,6 +58,8 @@ NeoBundleLazy 'moznion/hateblo.vim',{
             \ }
             \}
 
+NeoBundle 'osyo-manga/vim-over'
+
 "vim-scripts repositories
 NeoBundle 'surround.vim'
 NeoBundle 'repeat.vim'
