@@ -2,10 +2,10 @@
 
 #this script makes symbolic links of vimrc, zshrc
 
-for filename in .vimrc .zshrc .tmux.conf .gitconfig .gitignore ; do
+for filename in vimrc zshrc tmux.conf gitconfig gitignore ; do
     
     if [ ! -f $HOME/$filename ]; then
-        ln -s $HOME/.dotfiles/$filename $HOME/$filename
+        ln -s $HOME/.dotfiles/$filename $HOME/.$filename
         if [ $? -eq 0 ]; then
             echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/$filename created\033[00m" | sed "s/^-e //"
         else
