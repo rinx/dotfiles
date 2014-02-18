@@ -33,6 +33,8 @@
     ps    = push
     psa   = push --all
 
+    pl    = pull
+
     co    = checkout
 
     br    = branch
