@@ -48,7 +48,13 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'mattn/webapi-vim'
 NeoBundleLazy 'moznion/hateblo.vim',{
             \ 'autoload' : {
-            \   'commands' : ["HatebloCreate","HatebloCreateDraft","HatebloList","HatebloUpdate","HatebloDelete"]
+            \   'commands' : [
+            \     "HatebloCreate",
+            \     "HatebloCreateDraft",
+            \     "HatebloList",
+            \     "HatebloUpdate",
+            \     "HatebloDelete"
+            \   ]
             \ }
             \}
 
