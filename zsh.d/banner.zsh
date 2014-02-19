@@ -1,3 +1,3 @@
 #Banner
 
-python ~/.archey
+[ -f ~/.archey ] && python ~/.archey
