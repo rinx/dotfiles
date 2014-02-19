@@ -1,3 +1,4 @@
 # for vim 
 .*.s[a-w][a-z]
 *~
+Session.vim
