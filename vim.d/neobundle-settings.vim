@@ -20,6 +20,8 @@ NeoBundleLazy 'Shougo/unite.vim', {
             \   ]
             \ }
             \}
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'thinca/vim-unite-history'
 
 NeoBundle 'honza/vim-snippets'
 
