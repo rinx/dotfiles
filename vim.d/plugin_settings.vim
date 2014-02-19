@@ -38,6 +38,8 @@ nnoremap [unite] <Nop>
 nmap ,u [unite]
 "buffer
 nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+"tab
+nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
 "file
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 "register
