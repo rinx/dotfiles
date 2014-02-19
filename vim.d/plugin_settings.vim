@@ -42,6 +42,7 @@ nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
 "file
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]fr :<C-u>Unite file_rec<CR>
 "register
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 "recently files
