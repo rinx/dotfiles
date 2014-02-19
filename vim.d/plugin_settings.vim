@@ -43,7 +43,13 @@ nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 "register
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 "recently files
-nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+nnoremap <silent> [unite]m :<C-u>Unite file_mru:short<CR>
+nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
+"history
+nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
+"thinca/vim-unite-history
+nnoremap <silent> [unite]hc :<C-u>Unite history/command<CR>
+nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
 
 
 "skk.vim
