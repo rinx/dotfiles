@@ -63,7 +63,10 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-  return winwidth('.') > 60 ? lightline#mode() : ''
+  return &ft == 'vimfiler' ? 'VimFiler' : 
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth('.') > 60 ? lightline#mode() : ''
 endfunction
 
 function! MyFilename()
