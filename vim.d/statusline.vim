@@ -5,7 +5,7 @@ set laststatus=2
 "lightline settings
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode' ],
+      \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] 
       \   ],
       \   'right': [ [ 'syntastic', 'lineinfo' ],
