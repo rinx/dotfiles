@@ -25,6 +25,8 @@ NeoBundle 'thinca/vim-unite-history'
 
 NeoBundle 'honza/vim-snippets'
 
+NeoBundle 'itchyny/lightline.vim'
+
 NeoBundle 'tyru/skk.vim'
 "NeoBundle 'tyru/eskk.vim'
 NeoBundle 'thinca/vim-quickrun'

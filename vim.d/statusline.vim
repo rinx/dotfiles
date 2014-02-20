@@ -1,24 +1,76 @@
 " Statusline settings
 
-"leftstatus
-set statusline=%F  "full path
-set statusline+=%m "modified flag
-set statusline+=%r "readonly flag
-set statusline+=%h "help-buffer flag
-set statusline+=%w "preview-window flag
-
-set statusline+=%= "left-right
-
-"rightstatus
-set statusline+=%{SkkGetModeStr()}\        "SKK-status
-"set statusline+=%{eskk#get_mode()}\ 
-set statusline+=%{fugitive#statusline()}\  "git branch
-set statusline+=[FMT=%{&ff}]\              "format
-set statusline+=[ENC=%{&fileencoding}]\    "fileencoding
-set statusline+=[TYP=%Y]\                  "filetype
-set statusline+=[POS=%04v]\                "position
-set statusline+=[LOW=%04l/%04L][%03p%%]    "low
-
 set laststatus=2
 
+"lightline settings
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode' ],
+      \             [ 'fugitive', 'filename' ] 
+      \   ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ],
+      \             [ 'percent' ],
+      \             [ 'skkstatus', 'fileformat', 'fileencoding', 'filetype' ]
+      \   ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'MyModified',
+      \   'readonly': 'MyReadonly',
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'mode': 'MyMode',
+      \   'skkstatus': 'MySkkgetmode'
+      \ }
+      \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &ro ? ' ' : ''
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      let _ = fugitive#head()
+      return strlen(_) ? ' '._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth('.') > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth('.') > 60 ? lightline#mode() : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MySkkgetmode()
+  let _ = SkkGetModeStr()
+  return strlen(_) ? substitute(_, '\[\|\]', '', 'g') : ''
+endfunction
 
