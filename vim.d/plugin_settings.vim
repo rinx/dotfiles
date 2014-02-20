@@ -73,6 +73,11 @@ let skk_cursor_ascii_color = "#ffffff"
 let skk_cursor_addrev_color = "#0000ff"
 let skk_sticky_key = ";"
 let skk_imdisable_state = 1
+let skk_ascii_mode_string =  "aA"
+let skk_hira_mode_string  =  "あ"
+let skk_kata_mode_string  =  "ア"
+let skk_zenei_mode_string =  "Ａ"
+let skk_abbrev_mdoe_string = "aあ"
 
 ""eskk.vim
 "let g:eskk#dictionary = "~/.skk-jisyo"
