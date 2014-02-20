@@ -84,4 +84,13 @@ let skk_abbrev_mdoe_string = "aあ"
 "let g:eskk#large_dictionary = "/usr/share/skk/SKK-JISYO.LL"
 "let g:eskk#show_annotation = 1
 
-
+"syntastic
+let g:syntastic_mode_map = { 'mode': 'passive' }
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
