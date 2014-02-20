@@ -22,6 +22,12 @@ let g:lightline = {
       \   'filetype': 'MyFiletype',
       \   'mode': 'MyMode',
       \   'skkstatus': 'MySkkgetmode'
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag'
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error'
       \ }
       \ }
 
