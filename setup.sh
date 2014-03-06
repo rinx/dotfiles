@@ -7,9 +7,9 @@ for filename in vimrc zshrc tmux.conf gitconfig gitignore ; do
     if [ ! -f $HOME/.$filename ]; then
         ln -s $HOME/.dotfiles/$filename $HOME/.$filename
         if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/$filename created\033[00m" | sed "s/^-e //"
+            echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.$filename created\033[00m" | sed "s/^-e //"
         else
-            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/$filename creating failed\033[00m" | sed "s/^-e //"
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.$filename creating failed\033[00m" | sed "s/^-e //"
         fi
     fi
     
