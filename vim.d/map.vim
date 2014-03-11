@@ -3,6 +3,10 @@
 "reload .vimrc
 nnoremap <C-r><C-f> :source ~/.vimrc<CR>
 
+"For US-keyboard
+nnoremap ; :
+nnoremap : ;
+
 "Use cursor-key to switch between window
 nnoremap <Left> <C-w>h
 nnoremap <Down> <C-w>j
