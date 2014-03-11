@@ -31,9 +31,9 @@ for n in range(1, 9)
     execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-map <silent> [Tag]x :tabclose<CR>
-map <silent> [Tag]n :tabnext<CR>
-map <silent> [Tag]p :tabprevious<CR>
+nnoremap <silent> [Tag]c :<C-u>tablast <bar> tabnew<CR>
+nnoremap <silent> [Tag]x :<C-u>tabclose<CR>
+nnoremap <silent> [Tag]n :<C-u>tabnext<CR>
+nnoremap <silent> [Tag]p :<C-u>tabprevious<CR>
 
 
