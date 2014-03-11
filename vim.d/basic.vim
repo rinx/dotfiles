@@ -76,3 +76,7 @@ set matchtime=3
 if v:version >= 703
     set cryptmethod=blowfish
 endif
+
+"backup
+set backup
+set backupdir=~/.vim/tmp
