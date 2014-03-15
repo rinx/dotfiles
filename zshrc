@@ -1,11 +1,4 @@
-#==============================
-#
-#     this is rinx@github's .zshrc
-#ヾ(๑╹◡╹)ﾉ
-#
-#   http://github.com/rinx/
-#==============================
-
+#ヾ(๑╹◡╹)ﾉ < loading scripts...
 
 #load basic settings 
 [ -f ~/.dotfiles/zsh.d/basic.zsh ] && source ~/.dotfiles/zsh.d/basic.zsh
