@@ -75,6 +75,14 @@ NeoBundleLazy 'moznion/hateblo.vim',{
 
 NeoBundle 'osyo-manga/vim-over'
 
+NeoBundleLazy 'tyru/capture.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     "Capture"
+            \   ]
+            \ }
+            \}
+
 "vim-scripts repositories
 NeoBundle 'surround.vim'
 NeoBundle 'repeat.vim'
