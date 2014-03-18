@@ -35,11 +35,6 @@ if filereadable(expand('~/.dotfiles/vim.d/statusline.vim'))
     source ~/.dotfiles/vim.d/statusline.vim
 endif
 
-"plugin
-if filereadable(expand('~/.dotfiles/vim.d/plugin_settings.vim'))
-    source ~/.dotfiles/vim.d/plugin_settings.vim
-endif
-
 "load settings for each location
 augroup vimrc-local
     autocmd!
