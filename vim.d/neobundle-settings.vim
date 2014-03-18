@@ -83,6 +83,13 @@ NeoBundleLazy 'tyru/capture.vim',{
             \ }
             \}
 
+"textobj
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-underscore'
+NeoBundle 'osyo-manga/vim-textobj-multiblock'
+NeoBundle 'osyo-manga/vim-textobj-multitextobj'
+
 "vim-scripts repositories
 NeoBundle 'surround.vim'
 NeoBundle 'repeat.vim'
