@@ -177,7 +177,13 @@ nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
 
 "skk.vim
 let skk_jisyo = "~/.skk-jisyo"
-let skk_large_jisyo = "/Library/Dictionaries/SKK/SKK-JISYO.LL"
+
+if OSTYPE == "Darwin\n"
+    let skk_large_jisyo = "/Library/Dictionaries/SKK/SKK-JISYO.LL"
+elseif OSTYPE == "Linux\n"
+    let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.LL"
+endif
+
 let skk_auto_save_jisyo = 1
 let skk_keep_state = 1
 let skk_egg_like_newline = 1
