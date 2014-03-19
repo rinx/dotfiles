@@ -1,5 +1,7 @@
 "( っ'ヮ'c) < loading vimrc...
 
+let OSTYPE = system('uname')
+
 "encoding
 if filereadable(expand('~/.dotfiles/vim.d/encoding.vim'))
     source ~/.dotfiles/vim.d/encoding.vim
