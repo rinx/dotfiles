@@ -214,7 +214,7 @@ let skk_abbrev_mdoe_string = "aあ"
 let g:syntastic_mode_map = { 'mode': 'passive' }
 augroup AutoSyntastic
   autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+  autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
 augroup END
 function! s:syntastic()
   SyntasticCheck
