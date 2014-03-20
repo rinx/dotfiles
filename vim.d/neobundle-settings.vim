@@ -98,7 +98,9 @@ NeoBundleLazy 'tyru/capture.vim',{
 "textobj
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-underscore'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'kana/vim-textobj-entire'
+NeoBundle 'mattn/vim-textobj-url'
 NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'osyo-manga/vim-textobj-multitextobj'
 
@@ -222,3 +224,19 @@ omap ib <Plug>(textobj-multiblock-i)
 vmap ab <Plug>(textobj-multiblock-a)
 vmap ib <Plug>(textobj-multiblock-i)
 
+let g:textobj_multitextobj_textobjects_i = [
+    \   "\<Plug>(textobj-url-i)",
+    \   "\<Plug>(textobj-multiblock-i)",
+    \   "\<Plug>(textobj-function-i)",
+    \   "\<Plug>(textobj-entire-i)",
+\]
+let g:textobj_multitextobj_textobjects_a = [
+    \   "\<Plug>(textobj-url-a)",
+    \   "\<Plug>(textobj-multiblock-a)",
+    \   "\<Plug>(textobj-function-a)",
+    \   "\<Plug>(textobj-entire-a)",
+\]
+omap amt <Plug>(textobj-multitextobj-a)
+omap imt <Plug>(textobj-multitextobj-i)
+vmap amt <Plug>(textobj-multitextobj-a)
+vmap imt <Plug>(textobj-multitextobj-i)
