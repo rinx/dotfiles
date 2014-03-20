@@ -95,6 +95,8 @@ NeoBundleLazy 'tyru/capture.vim',{
             \ }
             \}
 
+NeoBundle 'kana/vim-submode'
+
 "textobj
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent'

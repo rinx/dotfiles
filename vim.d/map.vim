@@ -7,11 +7,11 @@ nnoremap <C-r><C-f> :source ~/.vimrc<CR>
 nnoremap ; :
 nnoremap : ;
 
-"Use cursor-key to switch between window
-nnoremap <Left> <C-w>h
-nnoremap <Down> <C-w>j
-nnoremap <Up> <C-w>k
-nnoremap <Right> <C-w>l
+"Disable cursor keys
+nnoremap <Left> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Right> <Nop>
 
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
@@ -36,4 +36,31 @@ nnoremap <silent> [Tag]x :<C-u>tabclose<CR>
 nnoremap <silent> [Tag]n :<C-u>tabnext<CR>
 nnoremap <silent> [Tag]p :<C-u>tabprevious<CR>
 
+"for window
+nnoremap s <Nop>
+nnoremap <silent> sj <C-w>j
+nnoremap <silent> sk <C-w>k
+nnoremap <silent> sl <C-w>l
+nnoremap <silent> sh <C-w>h
+nnoremap <silent> sJ <C-w>J
+nnoremap <silent> sK <C-w>K
+nnoremap <silent> sL <C-w>L
+nnoremap <silent> sH <C-w>H
+nnoremap <silent> sr <C-w>r
+nnoremap <silent> sw <C-w>w
+nnoremap <silent> s_ <C-w>_
+nnoremap <silent> s| <C-w>|
+nnoremap <silent> so <C-w>_<C-w>|
+nnoremap <silent> sO <C-w>=
+nnoremap <silent> s= <C-w>=
+nnoremap <silent> ss :<C-u>sp<CR>
+nnoremap <silent> sv :<C-u>vs<CR>
 
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
