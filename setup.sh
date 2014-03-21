@@ -56,7 +56,7 @@ fi
 if [ ! -d $HOME/.vim/bundle/neobundle.vim ] || [ "$FLG_F" = "TRUE" ]; then
     [ "$FLG_F" = "TRUE" ] && [ -d $HOME/.vim/bundle/neobundle.vim ] && rm -rf $HOME/.vim/bundle/neobundle.vim
     mkdir -p $HOME/.vim/bundle
-    git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "\033[0;32m✔ \033[1;36mneobundle.vim cloned in $HOME/.vim/bundle/neobundle.vim\033[00m" | sed "s/^-e //"
     else
