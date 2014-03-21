@@ -2,11 +2,12 @@
 
 CMDNAME=`basename $0`
 
-while getopts f OPT
+while getopts cf OPT
 do
     case $OPT in
+        "c" ) FLG_C="TRUE" ;;
         "f" ) FLG_F="TRUE" ;;
-          * ) echo "Usage: $CMDNAME [-f]" 1>&2 
+          * ) echo "Usage: $CMDNAME [-c means 'clean'] [-f means 'force']" 1>&2 
               exit 1 ;;
     esac
 done
@@ -23,6 +24,11 @@ for filename in vimrc zshrc tmux.conf gitconfig gitignore ; do
         else
             echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.$filename creating failed\033[00m" | sed "s/^-e //"
         fi
+    elif [ "$FLG_C" = "TRUE" ]; then
+        [ -f $HOME/.$filename ] && rm -f $HOME/.$filename
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.$filename removed\033[00m" | sed "s/^-e //"
+        fi
     else
         echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.$filename file.\033[00m" | sed "s/^-e //"
     fi
@@ -38,6 +44,11 @@ if [ ! -x $HOME/.bin/used-mem ] || [ "$FLG_F" = "TRUE" ]; then
     else
         echo -e "\033[0;31m✗ \033[1;31mA executable file 'used-mem' downloading failed\033[00m" | sed "s/^-e //"       
     fi
+elif [ "$FLG_C" = "TRUE" ]; then
+    [ -f $HOME/.bin/used-mem ] && rm -f $HOME/.bin/used-mem
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;36mA executable file $HOME/.bin/used-mem removed\033[00m" | sed "s/^-e //"
+    fi
 fi
 
 #for tmux statusline battery-status
@@ -48,6 +59,11 @@ if [ ! -x $HOME/.bin/battery ] || [ "$FLG_F" = "TRUE" ]; then
         echo -e "\033[0;32m✔ \033[1;36mA executable file 'battery' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
     else
         echo -e "\033[0;31m✗ \033[1;31mA executable file 'battery' downloading failed\033[00m" | sed "s/^-e //"
+    fi
+elif [ "$FLG_C" = "TRUE" ]; then
+    [ -f $HOME/.bin/battery ] && rm -f $HOME/.bin/battery
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;36mA executable file $HOME/.bin/battery removed\033[00m" | sed "s/^-e //"
     fi
 fi
 
@@ -65,4 +81,4 @@ if [ ! -d $HOME/.vim/bundle/neobundle.vim ] || [ "$FLG_F" = "TRUE" ]; then
 fi
 
 # vim filetype plugins
-wget -qO- https://gist.github.com/raw/8645095/vim-ft-setup.sh | sh
+[ "$FLG_C" = "TRUE" ] || wget -qO- https://gist.github.com/raw/8645095/vim-ft-setup.sh | sh
