@@ -11,6 +11,8 @@ for filename in vimrc zshrc tmux.conf gitconfig gitignore ; do
         else
             echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.$filename creating failed\033[00m" | sed "s/^-e //"
         fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.$filename file.\033[00m" | sed "s/^-e //"
     fi
     
 done
