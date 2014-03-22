@@ -96,6 +96,11 @@ NeoBundleLazy 'tyru/capture.vim',{
             \}
 
 NeoBundle 'kana/vim-submode'
+NeoBundle 'kana/vim-arpeggio'
+
+"operator
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'emonkak/vim-operator-comment'
 
 "textobj
 NeoBundle 'kana/vim-textobj-user'
@@ -224,6 +229,12 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+
+"operator
+call arpeggio#load()
+Arpeggio map oc <Plug>(operator-comment)
+Arpeggio map od <Plug>(operator-uncomment)
 
 
 "textobj
