@@ -71,6 +71,8 @@ NeoBundleLazy 'pbrisbin/html-template-syntax',{
             \}
 
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
 
 NeoBundle 'mattn/webapi-vim'
 NeoBundleLazy 'moznion/hateblo.vim',{
@@ -107,13 +109,10 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'kana/vim-textobj-entire'
+NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'mattn/vim-textobj-url'
 NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'osyo-manga/vim-textobj-multitextobj'
-
-"vim-scripts repositories
-NeoBundle 'surround.vim'
-NeoBundle 'repeat.vim'
 
 
 "Plugin settings
