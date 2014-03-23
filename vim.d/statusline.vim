@@ -6,11 +6,11 @@ set laststatus=2
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] 
+      \             [ 'fugitive', 'filename' ]
       \   ],
       \   'right': [ [ 'syntastic', 'lineinfo' ],
       \             [ 'percent' ],
-      \             [ 'skkstatus', 'fileformat', 'fileencoding', 'filetype' ]
+      \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ]
       \   ]
       \ },
       \ 'component_function': {
@@ -21,7 +21,8 @@ let g:lightline = {
       \   'fileformat': 'MyFileformat',
       \   'filetype': 'MyFiletype',
       \   'mode': 'MyMode',
-      \   'skkstatus': 'MySkkgetmode'
+      \   'skkstatus': 'MySkkgetmode',
+      \   'anzu': 'anzu#search_status'
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag'

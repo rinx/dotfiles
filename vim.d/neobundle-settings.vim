@@ -87,6 +87,7 @@ NeoBundleLazy 'moznion/hateblo.vim',{
             \ }
             \}
 
+NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 
 NeoBundleLazy 'tyru/capture.vim',{
@@ -228,6 +229,17 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+
+"for vim-anzu
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+augroup vim-anzu
+    autocmd!
+    autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
+augroup END
 
 
 "operator
