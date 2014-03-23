@@ -1,7 +1,7 @@
 "Basic Settings
 
 "not vi compatible
-set nocompatible	
+set nocompatible
 
 "history
 set viminfo='1000,<100,f1,h,s100
@@ -80,3 +80,8 @@ endif
 "backup
 set backup
 set backupdir=~/.vim/tmp
+
+"show tab, newline, etc...
+set list
+set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
+
