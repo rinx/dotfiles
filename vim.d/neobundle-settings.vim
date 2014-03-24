@@ -21,6 +21,8 @@ endif
 
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'honza/vim-snippets'
+
 NeoBundle 'Shougo/vimshell'
 
 NeoBundleLazy 'Shougo/unite.vim', {
@@ -35,19 +37,47 @@ NeoBundleLazy 'Shougo/unite.vim', {
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-unite-history'
 
-NeoBundle 'honza/vim-snippets'
-
 NeoBundle 'itchyny/lightline.vim'
 
 NeoBundle 'tyru/skk.vim'
 "NeoBundle 'tyru/eskk.vim'
-NeoBundle 'thinca/vim-quickrun'
 
+NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'vim-scripts/eregex.vim'
 
 NeoBundle 'tmhedberg/matchit'
+
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+
+NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'osyo-manga/vim-over'
+
+NeoBundle 'kana/vim-submode'
+NeoBundle 'kana/vim-arpeggio'
+
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'emonkak/vim-operator-comment'
+
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'kana/vim-textobj-entire'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'mattn/vim-textobj-url'
+NeoBundle 'osyo-manga/vim-textobj-multiblock'
+NeoBundle 'osyo-manga/vim-textobj-multitextobj'
+
+NeoBundleLazy 'tyru/capture.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     "Capture"
+            \   ]
+            \ }
+            \}
 
 NeoBundleLazy 'eagletmt/ghcmod-vim',{
             \ 'autoload' : {
@@ -70,10 +100,6 @@ NeoBundleLazy 'pbrisbin/html-template-syntax',{
             \ }
             \}
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-repeat'
-
 NeoBundleLazy 'mattn/learn-vimscript',{
             \ 'autoload' : {
             \   'commands' : [
@@ -81,6 +107,7 @@ NeoBundleLazy 'mattn/learn-vimscript',{
             \   ]
             \ }
             \}
+
 NeoBundle 'mattn/webapi-vim'
 NeoBundleLazy 'moznion/hateblo.vim',{
             \ 'autoload' : {
@@ -93,34 +120,6 @@ NeoBundleLazy 'moznion/hateblo.vim',{
             \   ]
             \ }
             \}
-
-NeoBundle 'osyo-manga/vim-anzu'
-NeoBundle 'osyo-manga/vim-over'
-
-NeoBundleLazy 'tyru/capture.vim',{
-            \ 'autoload' : {
-            \   'commands' : [
-            \     "Capture"
-            \   ]
-            \ }
-            \}
-
-NeoBundle 'kana/vim-submode'
-NeoBundle 'kana/vim-arpeggio'
-
-"operator
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'emonkak/vim-operator-comment'
-
-"textobj
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'kana/vim-textobj-entire'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'mattn/vim-textobj-url'
-NeoBundle 'osyo-manga/vim-textobj-multiblock'
-NeoBundle 'osyo-manga/vim-textobj-multitextobj'
 
 
 "Plugin settings
