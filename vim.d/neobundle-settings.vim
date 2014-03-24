@@ -258,7 +258,7 @@ let skk_ascii_mode_string =  "aA"
 let skk_hira_mode_string  =  "あ"
 let skk_kata_mode_string  =  "ア"
 let skk_zenei_mode_string =  "Ａ"
-let skk_abbrev_mdoe_string = "aあ"
+let skk_abbrev_mode_string = "aあ"
 
 ""eskk.vim
 "let g:eskk#dictionary = "~/.skk-jisyo"
