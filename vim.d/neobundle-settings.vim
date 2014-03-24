@@ -74,6 +74,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 
+NeoBundle 'mattn/learn-vimscript'
 NeoBundle 'mattn/webapi-vim'
 NeoBundleLazy 'moznion/hateblo.vim',{
             \ 'autoload' : {
