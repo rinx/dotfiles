@@ -131,7 +131,8 @@ NeoBundleLazy 'mattn/learn-vimscript',{
             \ 'autoload' : {
             \   'commands' : [
             \     "help"
-            \   ]
+            \   ],
+            \   'unite_sources' : ['help']
             \ }
             \}
 
