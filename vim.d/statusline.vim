@@ -84,10 +84,5 @@ if neobundle#tap('lightline.vim')
       return strlen(_) ? substitute(_, '\[\|\]', '', 'g') : ''
     endfunction
     
-    "overwrite disable
-    let g:unite_force_overwrite_statusline = 0
-    let g:vimfiler_force_overwrite_statusline = 0
-    let g:vimshell_force_overwrite_statusline = 0
-
     call neobundle#untap()
 endif

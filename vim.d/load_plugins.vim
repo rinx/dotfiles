@@ -168,6 +168,9 @@ if neobundle#tap('vimfiler.vim')
             \   ]
             \ }
             \})
+    function! neobundle#tapped.hooks.on_source(bundle)
+        let g:vimfiler_force_overwrite_statusline = 0
+    endfunction
     call neobundle#untap()
 endif
 
@@ -181,6 +184,9 @@ if neobundle#tap('vimshell.vim')
             \   ]
             \ }
             \})
+    function! neobundle#tapped.hooks.on_source(bundle)
+        let g:vimshell_force_overwrite_statusline = 0
+    endfunction
     call neobundle#untap()
 endif
 
@@ -194,6 +200,13 @@ if neobundle#tap('unite.vim')
             \   ]
             \ }
             \})
+    function! neobundle#tapped.hooks.on_source(bundle)
+        let g:unite_force_overwrite_statusline = 0
+        let g:unite_enable_start_insert = 0
+        let g:unite_source_history_yank_enable = 1
+        let g:unite_source_history_yank_limit = 1000
+        let g:unite_prompt = '❯ '
+    endfunction
 
     nnoremap [unite] <Nop>
     nmap ,u [unite]
