@@ -364,9 +364,17 @@ endif
 
 
 "operator
-call arpeggio#load()
-Arpeggio map oc <Plug>(operator-comment)
-Arpeggio map od <Plug>(operator-uncomment)
+if neobundle#tap('vim-arpeggio')
+    call arpeggio#load()
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-operator-comment')
+    Arpeggio map oc <Plug>(operator-comment)
+    Arpeggio map od <Plug>(operator-uncomment)
+
+    call neobundle#untap()
+endif
 
 
 "textobj
