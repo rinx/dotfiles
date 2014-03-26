@@ -13,8 +13,8 @@ if filereadable(expand('~/.dotfiles/vim.d/functions.vim'))
 endif
 
 "neobundle.vim
-if filereadable(expand('~/.dotfiles/vim.d/neobundle-settings.vim'))
-    source ~/.dotfiles/vim.d/neobundle-settings.vim
+if filereadable(expand('~/.dotfiles/vim.d/load_plugins.vim'))
+    source ~/.dotfiles/vim.d/load_plugins.vim
 endif
 
 "Basic
