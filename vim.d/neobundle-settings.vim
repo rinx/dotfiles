@@ -39,8 +39,30 @@ NeoBundleLazy 'Shougo/unite.vim', {
             \   ]
             \ }
             \}
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'thinca/vim-unite-history'
+NeoBundleLazy 'Shougo/neomru.vim', {
+            \ 'depends' : 'Shougo/unite.vim',
+            \ 'autoload' : {
+            \   'unite_sources' : ['file_mru']
+            \ }
+            \}
+NeoBundleLazy 'thinca/vim-unite-history', {
+            \ 'depends' : 'Shougo/unite.vim',
+            \ 'autoload' : {
+            \   'unite_sources' : ['history/command', 'history/search']
+            \ }
+            \}
+NeoBundleLazy 'Shougo/unite-outline', {
+            \ 'depends' : 'Shougo/unite.vim',
+            \ 'autoload' : {
+            \   'unite_sources' : ['outline']
+            \ }
+            \}
+NeoBundleLazy 'tsukkee/unite-help', {
+            \ 'depends' : 'Shougo/unite.vim',
+            \ 'autoload' : {
+            \   'unite_sources' : ['help']
+            \ }
+            \}
 
 NeoBundle 'itchyny/lightline.vim'
 
@@ -115,6 +137,7 @@ NeoBundleLazy 'mattn/learn-vimscript',{
 
 NeoBundle 'mattn/webapi-vim'
 NeoBundleLazy 'moznion/hateblo.vim',{
+            \ 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'],
             \ 'autoload' : {
             \   'commands' : [
             \     "HatebloCreate",
@@ -233,6 +256,10 @@ nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
 "thinca/vim-unite-history
 nnoremap <silent> [unite]hc :<C-u>Unite history/command<CR>
 nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
+"Shougo/unite-outline
+nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+"tsukkee/unite-help
+nnoremap <silent> [unite]he :<C-u>Unite -start-insert help<CR>
 
 
 "skk.vim

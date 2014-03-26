@@ -37,6 +37,8 @@ if filereadable(expand('~/.dotfiles/vim.d/statusline.vim'))
     source ~/.dotfiles/vim.d/statusline.vim
 endif
 
+NeoBundleCheck
+
 "load settings for each location
 augroup vimrc-local
     autocmd!
