@@ -28,7 +28,24 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
 
-NeoBundle 'Shougo/vimshell'
+NeoBundleLazy 'Shougo/vimfiler.vim', {
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'VimFilerTab',
+            \     'VimFiler',
+            \     'VimFilerExplorer'
+            \   ]
+            \ }
+            \}
+NeoBundleLazy 'Shougo/vimshell.vim', {
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'VimShell',
+            \     'VimShellPop',
+            \     'VimShellInteractive'
+            \   ]
+            \ }
+            \}
 
 NeoBundleLazy 'Shougo/unite.vim', {
             \ 'autoload' : {
