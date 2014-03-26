@@ -6,6 +6,8 @@ nnoremap <C-r><C-f> :source ~/.vimrc<CR>
 "For US-keyboard
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 "Disable cursor keys
 nnoremap <Left> <Nop>

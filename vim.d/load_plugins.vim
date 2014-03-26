@@ -17,69 +17,25 @@ function! s:meet_neocomplete_requirements()
 endfunction
 
 if s:meet_neocomplete_requirements()
-    NeoBundle 'Shougo/neocomplete.vim'
+    NeoBundleLazy 'Shougo/neocomplete.vim'
     NeoBundleFetch 'Shougo/neocomplcache.vim'
 else
     NeoBundleFetch 'Shougo/neocomplete.vim'
-    NeoBundle 'Shougo/neocomplcache.vim'
+    NeoBundleLazy 'Shougo/neocomplcache.vim'
 endif
 
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
 
-NeoBundleLazy 'Shougo/vimfiler.vim', {
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'VimFilerTab',
-            \     'VimFiler',
-            \     'VimFilerExplorer'
-            \   ]
-            \ }
-            \}
-NeoBundleLazy 'Shougo/vimshell.vim', {
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'VimShell',
-            \     'VimShellPop',
-            \     'VimShellInteractive'
-            \   ]
-            \ }
-            \}
+NeoBundleLazy 'Shougo/vimfiler.vim'
+NeoBundleLazy 'Shougo/vimshell.vim'
 
-NeoBundleLazy 'Shougo/unite.vim', {
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'Unite',
-            \     'UniteWithBufferDir',
-            \     'UniteWithCurrentDir'
-            \   ]
-            \ }
-            \}
-NeoBundleLazy 'Shougo/neomru.vim', {
-            \ 'depends' : 'Shougo/unite.vim',
-            \ 'autoload' : {
-            \   'unite_sources' : ['file_mru']
-            \ }
-            \}
-NeoBundleLazy 'thinca/vim-unite-history', {
-            \ 'depends' : 'Shougo/unite.vim',
-            \ 'autoload' : {
-            \   'unite_sources' : ['history/command', 'history/search']
-            \ }
-            \}
-NeoBundleLazy 'Shougo/unite-outline', {
-            \ 'depends' : 'Shougo/unite.vim',
-            \ 'autoload' : {
-            \   'unite_sources' : ['outline']
-            \ }
-            \}
-NeoBundleLazy 'tsukkee/unite-help', {
-            \ 'depends' : 'Shougo/unite.vim',
-            \ 'autoload' : {
-            \   'unite_sources' : ['help']
-            \ }
-            \}
+NeoBundleLazy 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/neomru.vim', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'Shougo/unite-outline', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'itchyny/lightline.vim'
 
@@ -115,93 +71,62 @@ NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
 
-NeoBundleLazy 'tyru/capture.vim',{
-            \ 'autoload' : {
-            \   'commands' : [
-            \     "Capture"
-            \   ]
-            \ }
-            \}
+NeoBundleLazy 'tyru/capture.vim'
 
-NeoBundleLazy 'eagletmt/ghcmod-vim',{
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \}
-NeoBundleLazy 'ujihisa/neco-ghc',{
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \}
-NeoBundleLazy 'dag/vim2hs',{
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \}
-NeoBundleLazy 'pbrisbin/html-template-syntax',{
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \}
+NeoBundleLazy 'eagletmt/ghcmod-vim'
+NeoBundleLazy 'ujihisa/neco-ghc'
+NeoBundleLazy 'dag/vim2hs'
+NeoBundleLazy 'pbrisbin/html-template-syntax'
 
-NeoBundleLazy 'mattn/learn-vimscript',{
-            \ 'autoload' : {
-            \   'commands' : [
-            \     "help"
-            \   ],
-            \   'unite_sources' : ['help']
-            \ }
-            \}
+NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundle 'mattn/webapi-vim'
-NeoBundleLazy 'moznion/hateblo.vim',{
-            \ 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'],
-            \ 'autoload' : {
-            \   'commands' : [
-            \     "HatebloCreate",
-            \     "HatebloCreateDraft",
-            \     "HatebloList",
-            \     "HatebloUpdate",
-            \     "HatebloDelete"
-            \   ]
-            \ }
-            \}
-NeoBundleLazy 'koron/codic-vim', {
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'Codic'
-            \   ],
-            \   'unite_sources' : ['codic']
-            \ }
-            \}
-NeoBundleLazy 'rhysd/unite-codic.vim', {
-            \ 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'],
-            \ 'autoload' : {
-            \   'unite_sources' : ['codic']
-            \ }
-            \}
+NeoBundleLazy 'moznion/hateblo.vim',{ 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
+
+NeoBundleLazy 'koron/codic-vim'
+NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
 
 
 "Plugin settings
 
 if s:meet_neocomplete_requirements()
     "neocomplete
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#auto_completion_start_length = 1
-    let g:neocomplete#enable_smart_case = 1
-    
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-      let g:neocomplete#sources#omni#input_patterns = {}
+    if neobundle#tap('neocomplete.vim')
+        call neobundle#config({
+                    \ 'autoload' : {
+                    \   'insert' : 1,
+                    \ }
+                    \})
+
+        let g:neocomplete#enable_at_startup = 1
+        let g:neocomplete#auto_completion_start_length = 1
+        let g:neocomplete#enable_smart_case = 1
+        
+        if !exists('g:neocomplete#sources#omni#input_patterns')
+          let g:neocomplete#sources#omni#input_patterns = {}
+        endif
+
+        call neobundle#untap()
     endif
 else
     "neocomplcache
-    let g:neocomplcache_enable_at_startup = 1
-    let g:neocomplcache_auto_completion_start_length = 1
-    let g:neocomplcache_enable_smart_case = 1
-    let g:neocomplcache_enable_underbar_completion = 1
-    
-    if !exists('g:neocomplcache_omni_patterns')
-      let g:neocomplcache_omni_patterns = {}
+    if neobundle#tap('neocomplcache.vim')
+        call neobundle#config({
+                \ 'autoload' : {
+                \   'insert' : 1,
+                \ }
+                \})
+
+        let g:neocomplcache_enable_at_startup = 1
+        let g:neocomplcache_auto_completion_start_length = 1
+        let g:neocomplcache_enable_smart_case = 1
+        let g:neocomplcache_enable_underbar_completion = 1
+        
+        if !exists('g:neocomplcache_omni_patterns')
+          let g:neocomplcache_omni_patterns = {}
+        endif
+
+        call neobundle#untap()
     endif
 endif
 
@@ -214,142 +139,228 @@ augroup omnifuncs
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-"neosnippet
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
- " For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-
-"Unite.vim
-nnoremap [unite] <Nop>
-nmap ,u [unite]
-"buffer
-nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-"tab
-nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
-"file
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> [unite]fr :<C-u>Unite file_rec<CR>
-"register
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-"recently files
-nnoremap <silent> [unite]m :<C-u>Unite file_mru:short<CR>
-nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
-"menu
-nnoremap <silent> [unite]me :<C-u>Unite menu:shortcut<CR>
-if !exists("g:unite_source_menu_menus")
-    let g:unite_source_menu_menus = {}
-endif
-let g:unite_source_menu_menus.shortcut = {
-            \ "description" : "shortcut"
-\}
-let g:unite_source_menu_menus.shortcut.candidates = [
-            \ ["vimrc", $MYVIMRC],
-            \ ["map", "Unite output:map"],
-            \ ["neobundle", "Unite neobundle"]
-\]
-function! g:unite_source_menu_menus.shortcut.map(key, value)
-    let [word, value] = a:value
-
-    if isdirectory(value)
-        return {
-\               "word" : "[directory] ".word,
-\               "kind" : "directory",
-\               "action__directory" : value
-\           }
-    elseif !empty(glob(value))
-        return {
-\               "word" : "[file] ".word,
-\               "kind" : "file",
-\               "default_action" : "tabdrop",
-\               "action__path" : value,
-\           }
-    else
-        return {
-\               "word" : "[command] ".word,
-\               "kind" : "command",
-\               "action__command" : value
-\           }
+if neobundle#tap('neosnippet')
+    imap <C-k> <Plug>(neosnippet_expand_or_jump)
+    smap <C-k> <Plug>(neosnippet_expand_or_jump)
+    
+    " Tell Neosnippet about the other snippets
+    let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+    
+    " SuperTab like snippets behavior.
+    imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    
+     " For snippet_complete marker.
+    if has('conceal')
+      set conceallevel=2 concealcursor=i
     endif
-endfunction
-"history
-nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
-"thinca/vim-unite-history
-nnoremap <silent> [unite]hc :<C-u>Unite history/command<CR>
-nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
-"Shougo/unite-outline
-nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
-"tsukkee/unite-help
-nnoremap <silent> [unite]he :<C-u>Unite -start-insert help<CR>
 
-
-"skk.vim
-let skk_jisyo = "~/.skk-jisyo"
-
-if OSTYPE == "Darwin\n"
-    let skk_large_jisyo = "/Library/Dictionaries/SKK/SKK-JISYO.LL"
-elseif OSTYPE == "Linux\n"
-    let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.LL"
+    call neobundle#untap()
 endif
 
-let skk_auto_save_jisyo = 1
-let skk_keep_state = 1
-let skk_egg_like_newline = 1
-let skk_show_annotation = 1
-let skk_use_face = 1
-let skk_marker_white = ">"
-let skk_marker_black = ">>"
-let skk_use_color_cursor = 1
-let skk_cursor_hira_color = "#ff0000"
-let skk_cursor_kata_color = "#00ff00"
-let skk_cursor_zenei_color = "#ffcc00"
-let skk_cursor_ascii_color = "#ffffff"
-let skk_cursor_addrev_color = "#0000ff"
-let skk_sticky_key = ";"
-let skk_imdisable_state = 1
-let skk_ascii_mode_string =  "aA"
-let skk_hira_mode_string  =  "あ"
-let skk_kata_mode_string  =  "ア"
-let skk_zenei_mode_string =  "Ａ"
-let skk_abbrev_mode_string = "aあ"
+if neobundle#tap('vimfiler.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'VimFilerTab',
+            \     'VimFiler',
+            \     'VimFilerExplorer'
+            \   ]
+            \ }
+            \})
+    call neobundle#untap()
+endif
 
-""eskk.vim
-"let g:eskk#dictionary = "~/.skk-jisyo"
-"let g:eskk#large_dictionary = "/usr/share/skk/SKK-JISYO.LL"
-"let g:eskk#show_annotation = 1
+if neobundle#tap('vimshell.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'VimShell',
+            \     'VimShellPop',
+            \     'VimShellInteractive'
+            \   ]
+            \ }
+            \})
+    call neobundle#untap()
+endif
 
-"syntastic
-let g:syntastic_mode_map = { 'mode': 'passive' }
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
+if neobundle#tap('unite.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Unite',
+            \     'UniteWithBufferDir',
+            \     'UniteWithCurrentDir'
+            \   ]
+            \ }
+            \})
+
+    nnoremap [unite] <Nop>
+    nmap ,u [unite]
+    "buffer
+    nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+    "tab
+    nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
+    "file
+    nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> [unite]fr :<C-u>Unite file_rec<CR>
+    "register
+    nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+    "recently files
+    nnoremap <silent> [unite]m :<C-u>Unite file_mru:short<CR>
+    nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
+    "menu
+    nnoremap <silent> [unite]me :<C-u>Unite menu:shortcut<CR>
+    if !exists('g:unite_source_menu_menus')
+        let g:unite_source_menu_menus = {}
+    endif
+    let g:unite_source_menu_menus.shortcut = {
+                \ 'description' : 'shortcut'
+    \}
+    let g:unite_source_menu_menus.shortcut.candidates = [
+                \ ['vimrc', $MYVIMRC],
+                \ ['map', 'Unite output:map'],
+                \ ['neobundle', 'Unite neobundle']
+    \]
+    function! g:unite_source_menu_menus.shortcut.map(key, value)
+        let [word, value] = a:value
+    
+        if isdirectory(value)
+            return {
+    \               'word' : '[directory] '.word,
+    \               'kind' : 'directory',
+    \               'action__directory' : value
+    \           }
+        elseif !empty(glob(value))
+            return {
+    \               'word' : '[file] '.word,
+    \               'kind' : 'file',
+    \               'default_action' : 'tabdrop',
+    \               'action__path' : value,
+    \           }
+        else
+            return {
+    \               'word' : '[command] '.word,
+    \               'kind' : 'command',
+    \               'action__command' : value
+    \           }
+        endif
+    endfunction
+    "history
+    nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
+    "thinca/vim-unite-history
+    nnoremap <silent> [unite]hc :<C-u>Unite history/command<CR>
+    nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
+    "Shougo/unite-outline
+    nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+    "tsukkee/unite-help
+    nnoremap <silent> [unite]he :<C-u>Unite -start-insert help<CR>
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('neomru.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['file_mru']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-unite-history')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['history/command', 'history/search']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-outline')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['outline']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-help')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['help']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('skk.vim')
+    let skk_jisyo = '~/.skk-jisyo'
+    
+    if OSTYPE == 'Darwin\n'
+        let skk_large_jisyo = '/Library/Dictionaries/SKK/SKK-JISYO.LL'
+    elseif OSTYPE == 'Linux\n'
+        let skk_large_jisyo = '/usr/share/skk/SKK-JISYO.LL'
+    endif
+    
+    let skk_auto_save_jisyo = 1
+    let skk_keep_state = 1
+    let skk_egg_like_newline = 1
+    let skk_show_annotation = 1
+    let skk_use_face = 1
+    let skk_marker_white = '>'
+    let skk_marker_black = '>>'
+    let skk_use_color_cursor = 1
+    let skk_cursor_hira_color = '#ff0000'
+    let skk_cursor_kata_color = '#00ff00'
+    let skk_cursor_zenei_color = '#ffcc00'
+    let skk_cursor_ascii_color = '#ffffff'
+    let skk_cursor_addrev_color = '#0000ff'
+    let skk_sticky_key = ';'
+    let skk_imdisable_state = 1
+    let skk_ascii_mode_string =  'aA'
+    let skk_hira_mode_string  =  'あ'
+    let skk_kata_mode_string  =  'ア'
+    let skk_zenei_mode_string =  'Ａ'
+    let skk_abbrev_mode_string = 'aあ'
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('eskk.vim')
+    let g:eskk#dictionary = '~/.skk-jisyo'
+    let g:eskk#large_dictionary = '/usr/share/skk/SKK-JISYO.LL'
+    let g:eskk#show_annotation = 1
+endif
+
+if neobundle#tap('syntastic')
+    let g:syntastic_mode_map = { 'mode': 'passive' }
+    augroup AutoSyntastic
+      autocmd!
+      autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
+    augroup END
+    function! s:syntastic()
+      SyntasticCheck
+      call lightline#update()
+    endfunction
+
+    call neobundle#untap()
+endif
 
 
-"for vim-anzu
-nmap n <Plug>(anzu-n)
-nmap N <Plug>(anzu-N)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
-augroup vim-anzu
-    autocmd!
-    autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
-augroup END
+if neobundle#tap('vim-anzu')
+    nmap n <Plug>(anzu-n)
+    nmap N <Plug>(anzu-N)
+    nmap * <Plug>(anzu-star)
+    nmap # <Plug>(anzu-sharp)
+    augroup vim-anzu
+        autocmd!
+        autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
+    augroup END
+
+    call neobundle#untap()
+endif
 
 
 "operator
@@ -365,18 +376,114 @@ vmap ab <Plug>(textobj-multiblock-a)
 vmap ib <Plug>(textobj-multiblock-i)
 
 let g:textobj_multitextobj_textobjects_i = [
-    \   "\<Plug>(textobj-url-i)",
-    \   "\<Plug>(textobj-multiblock-i)",
-    \   "\<Plug>(textobj-function-i)",
-    \   "\<Plug>(textobj-entire-i)",
+    \   '\<Plug>(textobj-url-i)',
+    \   '\<Plug>(textobj-multiblock-i)',
+    \   '\<Plug>(textobj-function-i)',
+    \   '\<Plug>(textobj-entire-i)',
 \]
 let g:textobj_multitextobj_textobjects_a = [
-    \   "\<Plug>(textobj-url-a)",
-    \   "\<Plug>(textobj-multiblock-a)",
-    \   "\<Plug>(textobj-function-a)",
-    \   "\<Plug>(textobj-entire-a)",
+    \   '\<Plug>(textobj-url-a)',
+    \   '\<Plug>(textobj-multiblock-a)',
+    \   '\<Plug>(textobj-function-a)',
+    \   '\<Plug>(textobj-entire-a)',
 \]
 omap amt <Plug>(textobj-multitextobj-a)
 omap imt <Plug>(textobj-multitextobj-i)
 vmap amt <Plug>(textobj-multitextobj-a)
 vmap imt <Plug>(textobj-multitextobj-i)
+
+if neobundle#tap('capture.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Capture'
+            \   ]
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('ghcmod-vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('neco-ghc')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim2hs')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('html-template-syntax')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'filetypes' : ['haskell']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('learn-vimscript')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'help'
+            \   ],
+            \   'unite_sources' : ['help']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('hateblo.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'HatebloCreate',
+            \     'HatebloCreateDraft',
+            \     'HatebloList',
+            \     'HatebloUpdate',
+            \     'HatebloDelete'
+            \   ]
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('codic-vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Codic'
+            \   ],
+            \   'unite_sources' : ['codic']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-codic.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['codic']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
