@@ -25,7 +25,9 @@ alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #tmux execute as 256colors-terminal
 alias tmux='tmux -2'
 
-alias :q='exit'
+alias be='bundle exec'
+
+alias q='exit'
 
 #grep
 alias grep='grep --color=auto'
