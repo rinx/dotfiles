@@ -149,6 +149,20 @@ NeoBundleLazy 'moznion/hateblo.vim',{
             \   ]
             \ }
             \}
+NeoBundleLazy 'koron/codic-vim', {
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Codic'
+            \   ],
+            \   'unite_sources' : ['codic']
+            \ }
+            \}
+NeoBundleLazy 'rhysd/unite-codic.vim', {
+            \ 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'],
+            \ 'autoload' : {
+            \   'unite_sources' : ['codic']
+            \ }
+            \}
 
 
 "Plugin settings
