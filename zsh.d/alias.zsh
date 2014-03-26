@@ -23,7 +23,9 @@ alias vi='vim'
 #tmux execute as 256colors-terminal
 alias tmux='tmux -2'
 
-alias :q='exit'
+alias be='bundle exec'
+
+alias q='exit'
 
 #grep
 alias grep='grep --color=auto'
