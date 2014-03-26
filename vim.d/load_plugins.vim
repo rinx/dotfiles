@@ -87,16 +87,16 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-arpeggio'
 
 NeoBundle 'kana/vim-operator-user'
-NeoBundle 'emonkak/vim-operator-comment'
+NeoBundle 'emonkak/vim-operator-comment', { 'depends' : 'kana/vim-operator-user' }
 
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'kana/vim-textobj-entire'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'mattn/vim-textobj-url'
-NeoBundle 'osyo-manga/vim-textobj-multiblock'
-NeoBundle 'osyo-manga/vim-textobj-multitextobj'
+NeoBundle 'kana/vim-textobj-indent', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-entire', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-line', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
 
 NeoBundleLazy 'tyru/capture.vim',{
             \ 'autoload' : {
