@@ -370,27 +370,35 @@ Arpeggio map od <Plug>(operator-uncomment)
 
 
 "textobj
-omap ab <Plug>(textobj-multiblock-a)
-omap ib <Plug>(textobj-multiblock-i)
-vmap ab <Plug>(textobj-multiblock-a)
-vmap ib <Plug>(textobj-multiblock-i)
+if neobundle#tap('vim-textobj-multiblock')
+    omap ab <Plug>(textobj-multiblock-a)
+    omap ib <Plug>(textobj-multiblock-i)
+    vmap ab <Plug>(textobj-multiblock-a)
+    vmap ib <Plug>(textobj-multiblock-i)
 
-let g:textobj_multitextobj_textobjects_i = [
-    \   '\<Plug>(textobj-url-i)',
-    \   '\<Plug>(textobj-multiblock-i)',
-    \   '\<Plug>(textobj-function-i)',
-    \   '\<Plug>(textobj-entire-i)',
-\]
-let g:textobj_multitextobj_textobjects_a = [
-    \   '\<Plug>(textobj-url-a)',
-    \   '\<Plug>(textobj-multiblock-a)',
-    \   '\<Plug>(textobj-function-a)',
-    \   '\<Plug>(textobj-entire-a)',
-\]
-omap amt <Plug>(textobj-multitextobj-a)
-omap imt <Plug>(textobj-multitextobj-i)
-vmap amt <Plug>(textobj-multitextobj-a)
-vmap imt <Plug>(textobj-multitextobj-i)
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-textobj-multitextobj')
+    let g:textobj_multitextobj_textobjects_i = [
+        \   '\<Plug>(textobj-url-i)',
+        \   '\<Plug>(textobj-multiblock-i)',
+        \   '\<Plug>(textobj-function-i)',
+        \   '\<Plug>(textobj-entire-i)',
+    \]
+    let g:textobj_multitextobj_textobjects_a = [
+        \   '\<Plug>(textobj-url-a)',
+        \   '\<Plug>(textobj-multiblock-a)',
+        \   '\<Plug>(textobj-function-a)',
+        \   '\<Plug>(textobj-entire-a)',
+    \]
+    omap amt <Plug>(textobj-multitextobj-a)
+    omap imt <Plug>(textobj-multitextobj-i)
+    vmap amt <Plug>(textobj-multitextobj-a)
+    vmap imt <Plug>(textobj-multitextobj-i)
+
+    call neobundle#untap()
+endif
 
 if neobundle#tap('capture.vim')
     call neobundle#config({
