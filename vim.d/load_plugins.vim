@@ -206,6 +206,87 @@ if neobundle#tap('unite.vim')
         let g:unite_source_history_yank_enable = 1
         let g:unite_source_history_yank_limit = 1000
         let g:unite_prompt = '❯ '
+
+        if !exists('g:unite_source_menu_menus')
+            let g:unite_source_menu_menus = {}
+        endif
+        let g:unite_source_menu_menus.shortcut = {
+                    \ 'description' : 'shortcut'
+        \}
+        let g:unite_source_menu_menus.shortcut.candidates = [
+                    \ ['vimrc', $MYVIMRC],
+                    \ ['map', 'Unite output:map'],
+                    \ ['neobundle', 'Unite neobundle']
+        \]
+        function! g:unite_source_menu_menus.shortcut.map(key, value)
+            let [word, value] = a:value
+        
+            if isdirectory(value)
+                return {
+        \               'word' : '[directory] '.word,
+        \               'kind' : 'directory',
+        \               'action__directory' : value
+        \           }
+            elseif !empty(glob(value))
+                return {
+        \               'word' : '[file] '.word,
+        \               'kind' : 'file',
+        \               'default_action' : 'tabdrop',
+        \               'action__path' : value,
+        \           }
+            else
+                return {
+        \               'word' : '[command] '.word,
+        \               'kind' : 'command',
+        \               'action__command' : value
+        \           }
+            endif
+        endfunction
+        let g:unite_source_menu_menus.kaomoji = {
+                    \ 'description' : 'kaomoji dictionary',
+                    \ 'default_action' : {'common' : 'insert'}
+        \}
+        let g:unite_source_menu_menus.kaomoji.candidates= [
+                    \ "\_(⌒(_*'ω'*)_",
+                    \ "\.˚‧º·(´ฅωฅ｀)‧º·˚.",
+                    \ "(☍﹏⁰)",
+                    \ "ヾ(⌒(\_*'ω'*)\_",
+                    \ "｡ﾟ(ﾟ∩´﹏`∩ﾟ)ﾟ｡",
+                    \ "＼＼\\٩( 'ω' )و /／／",
+                    \ "( 'ω').｡oO(…)",
+                    \ "( ˃﹏˂ഃ )",
+                    \ "( っ'ω'c)",
+                    \ "( っ'ヮ'c)",
+                    \ "（*/ω＼*）",
+                    \ "(´,,•ω•,,｀)",
+                    \ "(∩´〰`∩)",
+                    \ "(╯•﹏•╰)",
+                    \ "(๑´ڡ`๑)",
+                    \ "(๑╹﹃╹)",
+                    \ "(๑╹◡╹)o[]o",
+                    \ "(っ´﹏`c)",
+                    \ "(っ`ω´c)",
+                    \ "(っ＞ω＜c)",
+                    \ "°+♡:.(っ>ω<c).:♡+°",
+                    \ "└(՞ةڼ◔)」",
+                    \ "✧*。ヾ(｡>﹏<｡)ﾉﾞ。*✧",
+                    \ "ヽ('ω')ﾉ=͟͟͞͞=͟͟͞͞ヽ('ω')ﾉ",
+                    \ "ヾ(✿╹◡╹)ﾉ\"",
+                    \ "ヾ(๑╹◡╹)ﾉ\"",
+                    \ "٩(*'ω'*)و",
+                    \ "ヾ(〄⌒ー⌒〄)ノ",
+                    \ "\_(⌒(_-ω-)_",
+                    \ "\:;( っ'﹏'c);:",
+                    \ "\:;( っ'ω'c);:",
+                    \ "\:;(∩´﹏`∩);:",
+        \]
+        function! g:unite_source_menu_menus.kaomoji.map(key, value)
+            return {
+                    \ 'word' : a:value,
+                    \ 'kind' : 'word',
+                    \ 'action__command' : a:value
+            \}
+        endfunction
     endfunction
 
     nnoremap [unite] <Nop>
@@ -223,42 +304,8 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]m :<C-u>Unite file_mru:short<CR>
     nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
     "menu
-    nnoremap <silent> [unite]me :<C-u>Unite menu:shortcut<CR>
-    if !exists('g:unite_source_menu_menus')
-        let g:unite_source_menu_menus = {}
-    endif
-    let g:unite_source_menu_menus.shortcut = {
-                \ 'description' : 'shortcut'
-    \}
-    let g:unite_source_menu_menus.shortcut.candidates = [
-                \ ['vimrc', $MYVIMRC],
-                \ ['map', 'Unite output:map'],
-                \ ['neobundle', 'Unite neobundle']
-    \]
-    function! g:unite_source_menu_menus.shortcut.map(key, value)
-        let [word, value] = a:value
-    
-        if isdirectory(value)
-            return {
-    \               'word' : '[directory] '.word,
-    \               'kind' : 'directory',
-    \               'action__directory' : value
-    \           }
-        elseif !empty(glob(value))
-            return {
-    \               'word' : '[file] '.word,
-    \               'kind' : 'file',
-    \               'default_action' : 'tabdrop',
-    \               'action__path' : value,
-    \           }
-        else
-            return {
-    \               'word' : '[command] '.word,
-    \               'kind' : 'command',
-    \               'action__command' : value
-    \           }
-        endif
-    endfunction
+    nnoremap <silent> [unite]ms :<C-u>Unite menu:shortcut<CR>
+    nnoremap <silent> [unite]mk :<C-u>Unite menu:kaomoji<CR>
     "history
     nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
     "thinca/vim-unite-history
