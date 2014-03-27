@@ -244,7 +244,6 @@ if neobundle#tap('unite.vim')
         endfunction
         let g:unite_source_menu_menus.kaomoji = {
                     \ 'description' : 'kaomoji dictionary',
-                    \ 'default_action' : {'common' : 'insert'}
         \}
         let g:unite_source_menu_menus.kaomoji.candidates= [
                     \ "\_(⌒(_*'ω'*)_",
