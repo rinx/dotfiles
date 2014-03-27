@@ -206,6 +206,42 @@ if neobundle#tap('unite.vim')
         let g:unite_source_history_yank_enable = 1
         let g:unite_source_history_yank_limit = 1000
         let g:unite_prompt = '❯ '
+
+        if !exists('g:unite_source_menu_menus')
+            let g:unite_source_menu_menus = {}
+        endif
+        let g:unite_source_menu_menus.shortcut = {
+                    \ 'description' : 'shortcut'
+        \}
+        let g:unite_source_menu_menus.shortcut.candidates = [
+                    \ ['vimrc', $MYVIMRC],
+                    \ ['map', 'Unite output:map'],
+                    \ ['neobundle', 'Unite neobundle']
+        \]
+        function! g:unite_source_menu_menus.shortcut.map(key, value)
+            let [word, value] = a:value
+        
+            if isdirectory(value)
+                return {
+        \               'word' : '[directory] '.word,
+        \               'kind' : 'directory',
+        \               'action__directory' : value
+        \           }
+            elseif !empty(glob(value))
+                return {
+        \               'word' : '[file] '.word,
+        \               'kind' : 'file',
+        \               'default_action' : 'tabdrop',
+        \               'action__path' : value,
+        \           }
+            else
+                return {
+        \               'word' : '[command] '.word,
+        \               'kind' : 'command',
+        \               'action__command' : value
+        \           }
+            endif
+        endfunction
     endfunction
 
     nnoremap [unite] <Nop>
@@ -224,41 +260,6 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
     "menu
     nnoremap <silent> [unite]me :<C-u>Unite menu:shortcut<CR>
-    if !exists('g:unite_source_menu_menus')
-        let g:unite_source_menu_menus = {}
-    endif
-    let g:unite_source_menu_menus.shortcut = {
-                \ 'description' : 'shortcut'
-    \}
-    let g:unite_source_menu_menus.shortcut.candidates = [
-                \ ['vimrc', $MYVIMRC],
-                \ ['map', 'Unite output:map'],
-                \ ['neobundle', 'Unite neobundle']
-    \]
-    function! g:unite_source_menu_menus.shortcut.map(key, value)
-        let [word, value] = a:value
-    
-        if isdirectory(value)
-            return {
-    \               'word' : '[directory] '.word,
-    \               'kind' : 'directory',
-    \               'action__directory' : value
-    \           }
-        elseif !empty(glob(value))
-            return {
-    \               'word' : '[file] '.word,
-    \               'kind' : 'file',
-    \               'default_action' : 'tabdrop',
-    \               'action__path' : value,
-    \           }
-        else
-            return {
-    \               'word' : '[command] '.word,
-    \               'kind' : 'command',
-    \               'action__command' : value
-    \           }
-        endif
-    endfunction
     "history
     nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
     "thinca/vim-unite-history
