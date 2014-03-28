@@ -73,6 +73,8 @@ NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj
 
 NeoBundleLazy 'tyru/capture.vim'
 
+NeoBundleLazy 'basyura/unite-rails'
+
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'ujihisa/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
@@ -473,6 +475,15 @@ if neobundle#tap('capture.vim')
             \   'commands' : [
             \     'Capture'
             \   ]
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-rails')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'filetypes' : ['ruby']
             \ }
             \})
     call neobundle#untap()
