@@ -1,5 +1,8 @@
 "The beginning of initialization
 
+"not vi compatible
+set nocompatible
+
 "encoding
 
 set encoding=utf-8

@@ -42,7 +42,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tyru/skk.vim'
 "NeoBundle 'tyru/eskk.vim'
 
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'vim-scripts/eregex.vim'
@@ -53,7 +53,9 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 
-NeoBundle 'osyo-manga/vim-anzu'
+NeoBundleLazy 'LeafCage/yankround.vim'
+
+NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 
 NeoBundle 'kana/vim-submode'
@@ -103,10 +105,18 @@ if s:meet_neocomplete_requirements()
         let g:neocomplete#enable_at_startup = 1
         let g:neocomplete#auto_completion_start_length = 1
         let g:neocomplete#enable_smart_case = 1
-        
+
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
         if !exists('g:neocomplete#sources#omni#input_patterns')
           let g:neocomplete#sources#omni#input_patterns = {}
         endif
+
+        inoremap <expr><C-g> neocomplete#undo_completion()
+        inoremap <expr><C-l> neocomplete#complete_common_string()
 
         call neobundle#untap()
     endif
@@ -371,6 +381,11 @@ if neobundle#tap('unite-help')
 endif
 
 if neobundle#tap('vim-quickrun')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : ['QuickRun'],
+            \ }
+    \})
     let g:quickrun_config = {
             \ '_' : {
             \   'runner' : 'vimproc',
@@ -434,8 +449,33 @@ if neobundle#tap('syntastic')
     call neobundle#untap()
 endif
 
+if neobundle#tap('yankround.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'mappings' : ['<Plug>(yankround-'],
+            \ }
+    \})
+
+    nmap p <Plug>(yankround-p)
+    nmap P <Plug>(yankround-P)
+    nmap gp <Plug>(yankround-gp)
+    nmap gP <Plug>(yankround-gP)
+    nmap <C-p> <Plug>(yankround-prev)
+    nmap <C-n> <Plug>(yankround-next)
+
+    let g:yankround_max_history = 35
+    let g:yankround_use_region_hl = 1
+
+    call neobundle#untap()
+endif
+
 
 if neobundle#tap('vim-anzu')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'mappings' : ['<Plug>(anzu-'],
+            \ }
+    \})
     nmap n <Plug>(anzu-n)
     nmap N <Plug>(anzu-N)
     nmap * <Plug>(anzu-star)

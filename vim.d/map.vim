@@ -1,5 +1,7 @@
 "Control settings
 
+let mapleader = '\'
+
 "reload .vimrc
 nnoremap <C-r><C-f> :source ~/.vimrc<CR>
 
@@ -71,5 +73,14 @@ if neobundle#tap('vim-submode')
     call neobundle#untap()
 endif
 
-" nohilight by pressing Esc twice
+"nohilight by pressing Esc twice
 nnoremap <Esc><Esc> :nohlsearch<CR>
+
+"toggle paste mode
+nnoremap <Leader>p :setl paste!<CR>
+
+"disable some default mappings
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+nnoremap Q <Nop>
+
