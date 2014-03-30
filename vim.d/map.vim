@@ -1,5 +1,7 @@
 "Control settings
 
+let mapleader = '\'
+
 "reload .vimrc
 nnoremap <C-r><C-f> :source ~/.vimrc<CR>
 
