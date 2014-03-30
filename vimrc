@@ -2,17 +2,12 @@
 
 let OSTYPE = system('uname')
 
-"encoding
-if filereadable(expand('~/.dotfiles/vim.d/encoding.vim'))
-    source ~/.dotfiles/vim.d/encoding.vim
+"The beginning of initialization
+if filereadable(expand('~/.dotfiles/vim.d/init_begin.vim'))
+    source ~/.dotfiles/vim.d/init_begin.vim
 endif
 
-"functions
-if filereadable(expand('~/.dotfiles/vim.d/functions.vim'))
-    source ~/.dotfiles/vim.d/functions.vim
-endif
-
-"neobundle.vim
+"Loading plugins
 if filereadable(expand('~/.dotfiles/vim.d/load_plugins.vim'))
     source ~/.dotfiles/vim.d/load_plugins.vim
 endif
@@ -32,22 +27,13 @@ if filereadable(expand('~/.dotfiles/vim.d/map.vim'))
     source ~/.dotfiles/vim.d/map.vim
 endif
 
-" Statusline
+"Statusline
 if filereadable(expand('~/.dotfiles/vim.d/statusline.vim'))
     source ~/.dotfiles/vim.d/statusline.vim
 endif
 
-NeoBundleCheck
+"The end of initialization
+if filereadable(expand('~/.dotfiles/vim.d/init_end.vim'))
+    source ~/.dotfiles/vim.d/init_end.vim
+endif
 
-"load settings for each location
-augroup vimrc-local
-    autocmd!
-    autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
-augroup END
-
-function! s:vimrc_local(loc)
-    let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
-    for i in reverse(filter(files, 'filereadable(v:val)'))
-        source `=i`
-    endfor
-endfunction
