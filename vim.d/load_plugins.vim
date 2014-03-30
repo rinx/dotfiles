@@ -55,7 +55,7 @@ NeoBundle 'tpope/vim-repeat'
 
 NeoBundleLazy 'LeafCage/yankround.vim'
 
-NeoBundle 'osyo-manga/vim-anzu'
+NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 
 NeoBundle 'kana/vim-submode'
@@ -466,6 +466,11 @@ endif
 
 
 if neobundle#tap('vim-anzu')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'mappings' : ['<Plug>(anzu-'],
+            \ }
+    \})
     nmap n <Plug>(anzu-n)
     nmap N <Plug>(anzu-N)
     nmap * <Plug>(anzu-star)
