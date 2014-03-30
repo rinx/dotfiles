@@ -103,10 +103,18 @@ if s:meet_neocomplete_requirements()
         let g:neocomplete#enable_at_startup = 1
         let g:neocomplete#auto_completion_start_length = 1
         let g:neocomplete#enable_smart_case = 1
-        
+
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
         if !exists('g:neocomplete#sources#omni#input_patterns')
           let g:neocomplete#sources#omni#input_patterns = {}
         endif
+
+        inoremap <expr><C-g> neocomplete#undo_completion()
+        inoremap <expr><C-l> neocomplete#complete_common_string()
 
         call neobundle#untap()
     endif
