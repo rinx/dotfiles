@@ -53,6 +53,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 
+NeoBundleLazy 'LeafCage/yankround.vim'
+
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 
@@ -438,6 +440,26 @@ if neobundle#tap('syntastic')
       SyntasticCheck
       call lightline#update()
     endfunction
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('yankround.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'mappings' : ['<Plug>(yankround-'],
+            \ }
+    \})
+
+    nmap p <Plug>(yankround-p)
+    nmap P <Plug>(yankround-P)
+    nmap gp <Plug>(yankround-gp)
+    nmap gP <Plug>(yankround-gP)
+    nmap <C-p> <Plug>(yankround-prev)
+    nmap <C-n> <Plug>(yankround-next)
+
+    let g:yankround_max_history = 35
+    let g:yankround_use_region_hl = 1
 
     call neobundle#untap()
 endif
