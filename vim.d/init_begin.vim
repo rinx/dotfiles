@@ -1,3 +1,13 @@
+"The beginning of initialization
+
+"encoding
+
+set encoding=utf-8
+scriptencoding utf-8
+
+set fileencodings=ucs-bom,utf-8,cp932,sjis
+
+
 "define functions
 
 " Anywhere SID.
@@ -36,5 +46,4 @@ endfunction
 
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
-
 
