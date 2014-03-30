@@ -76,6 +76,9 @@ endif
 "nohilight by pressing Esc twice
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
+"toggle paste mode
+nnoremap <Leader>p :setl paste!<CR>
+
 "disable some default mappings
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
