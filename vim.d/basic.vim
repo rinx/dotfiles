@@ -64,9 +64,6 @@ if &term=="xterm"
      set t_Sf=[3%dm
 endif
 
-"backup file
-set nobackup
-
 set conceallevel=0
 set visualbell
 
