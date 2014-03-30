@@ -287,7 +287,6 @@ if neobundle#tap('unite.vim')
             return {
                     \ 'word' : a:value,
                     \ 'kind' : 'word',
-                    \ 'action__command' : a:value
             \}
         endfunction
     endfunction
