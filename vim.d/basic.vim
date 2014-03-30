@@ -1,8 +1,5 @@
 "Basic Settings
 
-"not vi compatible
-set nocompatible
-
 "history
 set viminfo='1000,<100,f1,h,s100
 set history=300
