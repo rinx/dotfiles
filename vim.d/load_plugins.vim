@@ -369,6 +369,17 @@ if neobundle#tap('unite-help')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim-quickrun')
+    let g:quickrun_config = {
+            \ '_' : {
+            \   'runner' : 'vimproc',
+            \   'runner/vimproc/updatetime' : 60
+            \ },
+            \}
+    nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+    call neobundle#untap()
+endif
+
 if neobundle#tap('skk.vim')
     let skk_jisyo = '~/.skk-jisyo'
     
