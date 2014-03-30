@@ -42,7 +42,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tyru/skk.vim'
 "NeoBundle 'tyru/eskk.vim'
 
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'vim-scripts/eregex.vim'
@@ -381,6 +381,11 @@ if neobundle#tap('unite-help')
 endif
 
 if neobundle#tap('vim-quickrun')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : ['QuickRun'],
+            \ }
+    \})
     let g:quickrun_config = {
             \ '_' : {
             \   'runner' : 'vimproc',
