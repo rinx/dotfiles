@@ -71,5 +71,11 @@ if neobundle#tap('vim-submode')
     call neobundle#untap()
 endif
 
-" nohilight by pressing Esc twice
+"nohilight by pressing Esc twice
 nnoremap <Esc><Esc> :nohlsearch<CR>
+
+"disable some default mappings
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+nnoremap Q <Nop>
+
