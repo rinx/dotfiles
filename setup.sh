@@ -37,7 +37,7 @@ done
 
 #for tmux statusline memory-status
 if [ ! -x $HOME/.bin/used-mem ] || [ "$FLG_F" = "TRUE" ]; then
-    wget https://raw.github.com/yonchu/used-mem/master/used-mem -P $HOME/.bin > /dev/null 2>&1
+    wget https://raw.github.com/yonchu/used-mem/master/used-mem -O $HOME/.bin/used-mem > /dev/null 2>&1
     chmod +x $HOME/.bin/used-mem
     if [ $? -eq 0 ]; then
         echo -e "\033[0;32m✔ \033[1;36mA executable file 'used-mem' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
@@ -53,7 +53,7 @@ fi
 
 #for tmux statusline battery-status
 if [ ! -x $HOME/.bin/battery ] || [ "$FLG_F" = "TRUE" ]; then
-    wget https://raw.github.com/richo/battery/master/bin/battery -P $HOME/.bin > /dev/null 2>&1
+    wget https://raw.github.com/richo/battery/master/bin/battery -O $HOME/.bin/battery > /dev/null 2>&1
     chmod +x $HOME/.bin/battery
     if [ $? -eq 0 ]; then
         echo -e "\033[0;32m✔ \033[1;36mA executable file 'battery' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
