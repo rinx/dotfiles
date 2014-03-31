@@ -24,9 +24,9 @@ else
     NeoBundleLazy 'Shougo/neocomplcache.vim'
 endif
 
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
+NeoBundleLazy 'Shougo/neosnippet'
+NeoBundleLazy 'Shougo/neosnippet-snippets', { 'depends' : 'Shougo/neosnippet' }
+NeoBundleLazy 'honza/vim-snippets', { 'depends' : 'Shougo/neosnippet' }
 
 NeoBundleLazy 'Shougo/vimfiler.vim'
 NeoBundleLazy 'Shougo/vimshell.vim'
@@ -152,6 +152,12 @@ augroup omnifuncs
 augroup END
 
 if neobundle#tap('neosnippet')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ }
+            \})
+
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
     
@@ -166,6 +172,26 @@ if neobundle#tap('neosnippet')
     if has('conceal')
       set conceallevel=2 concealcursor=i
     endif
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('neosnippet-snippets')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ }
+            \})
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-snippets')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ }
+            \})
 
     call neobundle#untap()
 endif
