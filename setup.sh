@@ -67,6 +67,22 @@ elif [ "$FLG_C" = "TRUE" ]; then
     fi
 fi
 
+#for tmux statusline local-ipaddress
+if [ ! -x $HOME/.bin/battery ] || [ "$FLG_F" = "TRUE" ]; then
+    wget https://gist.github.com/raw/9885825/getipaddr -O $HOME/.bin/getipaddr > /dev/null 2>&1
+    chmod +x $HOME/.bin/getipaddr
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;36mA executable file 'getipaddr' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
+    else
+        echo -e "\033[0;31m✗ \033[1;31mA executable file 'getipaddr' downloading failed\033[00m" | sed "s/^-e //"
+    fi
+elif [ "$FLG_C" = "TRUE" ]; then
+    [ -f $HOME/.bin/getipaddr ] && rm -f $HOME/.bin/getipaddr
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;36mA executable file $HOME/.bin/getipaddr removed\033[00m" | sed "s/^-e //"
+    fi
+fi
+
 
 # for vim 
 if [ ! -d $HOME/.vim/bundle/neobundle.vim ] || [ "$FLG_F" = "TRUE" ]; then
