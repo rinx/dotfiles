@@ -414,6 +414,8 @@ if neobundle#tap('vim-quickrun')
     \})
     let g:quickrun_config = {
             \ '_' : {
+            \   'outputter/buffer/close_on_empty' : 1,
+            \   'outputter/buffer/split' : ':botright',
             \   'runner' : 'vimproc',
             \   'runner/vimproc/updatetime' : 60
             \ },
