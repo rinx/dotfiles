@@ -55,7 +55,7 @@ fi
 
 #for tmux statusline memory-status
 if [ ! -x $HOME/.bin/used-mem ] || [ "$FLG_F" = "TRUE" ]; then
-    wget https://raw.github.com/yonchu/used-mem/master/used-mem -P $HOME/.bin > /dev/null 2>&1
+    wget https://raw.github.com/yonchu/used-mem/master/used-mem -O $HOME/.bin/used-mem > /dev/null 2>&1
     chmod +x $HOME/.bin/used-mem
     if [ $? -eq 0 ]; then
         echo -e "\033[0;32m✔ \033[1;36mA executable file 'used-mem' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
@@ -71,7 +71,7 @@ fi
 
 #for tmux statusline battery-status
 if [ ! -x $HOME/.bin/battery ] || [ "$FLG_F" = "TRUE" ]; then
-    wget https://raw.github.com/richo/battery/master/bin/battery -P $HOME/.bin > /dev/null 2>&1
+    wget https://raw.github.com/richo/battery/master/bin/battery -O $HOME/.bin/battery > /dev/null 2>&1
     chmod +x $HOME/.bin/battery
     if [ $? -eq 0 ]; then
         echo -e "\033[0;32m✔ \033[1;36mA executable file 'battery' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
@@ -82,6 +82,22 @@ elif [ "$FLG_C" = "TRUE" ]; then
     [ -f $HOME/.bin/battery ] && rm -f $HOME/.bin/battery
     if [ $? -eq 0 ]; then
         echo -e "\033[0;32m✔ \033[1;36mA executable file $HOME/.bin/battery removed\033[00m" | sed "s/^-e //"
+    fi
+fi
+
+#for tmux statusline local-ipaddress
+if [ ! -x $HOME/.bin/battery ] || [ "$FLG_F" = "TRUE" ]; then
+    wget https://gist.github.com/raw/9885825/getipaddr -O $HOME/.bin/getipaddr > /dev/null 2>&1
+    chmod +x $HOME/.bin/getipaddr
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;36mA executable file 'getipaddr' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
+    else
+        echo -e "\033[0;31m✗ \033[1;31mA executable file 'getipaddr' downloading failed\033[00m" | sed "s/^-e //"
+    fi
+elif [ "$FLG_C" = "TRUE" ]; then
+    [ -f $HOME/.bin/getipaddr ] && rm -f $HOME/.bin/getipaddr
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;36mA executable file $HOME/.bin/getipaddr removed\033[00m" | sed "s/^-e //"
     fi
 fi
 
