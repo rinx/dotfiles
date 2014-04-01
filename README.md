@@ -15,7 +15,7 @@ clone this repository
 
     $ git clone https://github.com/rinx/dotfiles.git ~/.dotfiles
 
-setup.sh makes symbolic link in home
+setup.sh makes symbolic link in home and gets some scripts, vim plugins
 
-    $ sh setup.sh
+    $ sh setup.sh -af
 
