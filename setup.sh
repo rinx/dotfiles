@@ -1,6 +1,7 @@
 #!/bin/sh
 
 CMDNAME=`basename $0`
+DOTDIR=$(cd $(dirname $0); pwd)
 
 while getopts acfstvx OPT
 do
@@ -23,7 +24,7 @@ if [ "$FLG_A" = "TRUE" ] || [ "$FLG_S" = "TRUE" ]; then
     for filename in vimrc zshrc tmux.conf gitconfig gitignore ; do
         if [ ! -f $HOME/.$filename ] || [ "$FLG_F" = "TRUE" ]; then
             [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.$filename ] && rm -f $HOME/.$filename
-            ln -s $HOME/.dotfiles/$filename $HOME/.$filename
+            ln -s $DOTDIR/$filename $HOME/.$filename
             if [ $? -eq 0 ]; then
                 echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.$filename created\033[00m" | sed "s/^-e //"
             else
@@ -44,7 +45,7 @@ if [ "$FLG_A" = "TRUE" ] || [ "$FLG_X" = "TRUE" ]; then
     if [ ! -f $HOME/.xmonad/xmonad.hs ] || [ "$FLG_F" = "TRUE" ]; then
         [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.xmonad/xmonad.hs ] && rm -f $HOME/.xmonad/xmonad.hs
         mkdir -p $HOME/.xmonad
-        ln -s $HOME/.dotfiles/xmonad.hs $HOME/.xmonad/xmonad.hs
+        ln -s $DOTDIR/xmonad.hs $HOME/.xmonad/xmonad.hs
         if [ $? -eq 0 ]; then
             echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.xmonad/xmonad.hs created\033[00m" | sed "s/^-e //"
         else
