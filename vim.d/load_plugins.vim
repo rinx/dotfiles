@@ -287,8 +287,11 @@ if neobundle#tap('unite.vim')
         \}
         let g:unite_source_menu_menus.kaomoji.candidates= [
                     \["", "( 'ω').｡oO(…)"],
+                    \["", "ヾ(⌒(_•ω•)_"],
+                    \["", "ヾ(⌒(ﾉ•ω•)ﾉ"],
                     \["kyun", "\_(⌒(_*'ω'*)_"],
                     \["kyun", "ヾ(⌒(\_*'ω'*)\_"],
+                    \["kyun", "三ヾ(⌒(\_*'ω'*)\_"],
                     \["kyun", "（*/ω＼*）"],
                     \["kyun", "(っ´ω`c)♡"],
                     \["namida", "\.˚‧º·(´ฅωฅ｀)‧º·˚."],
@@ -298,15 +301,20 @@ if neobundle#tap('unite.vim')
                     \["hawawa", "\:;( っ'﹏'c);:"],
                     \["hawawa", "\:;( っ'ω'c);:"],
                     \["hawawa", "\:;(∩´﹏`∩);:"],
+                    \["dame", "(乂'ω')"],
                     \["hawawa", "(っ´﹏`c)"],
                     \["firstspring", "(╯•﹏•╰)"],
+                    \["fuee", "ヾ(｡>﹏<)ﾉ\""],
                     \["fuee", "✧*。ヾ(｡>﹏<｡)ﾉﾞ。*✧"],
                     \["ja-n", "٩(*'ω'*)و"],
                     \["panpaka", "＼＼\\٩( 'ω' )و /／／"],
                     \["crow", "( っ'ω'c)"],
+                    \["crow", "三( っ'ω'c)"],
                     \["wahhab", "( っ'ヮ'c)"],
+                    \["wahhab", "三( っ'ヮ'c)"],
                     \["poyo", "(´,,•ω•,,｀)"],
                     \["mogumogu", "(∩´〰`∩)"],
+                    \["mogumogu", "ŧ‹\"ŧ‹\"(๑´ㅂ`๑)ŧ‹\"ŧ‹\""],
                     \["pero", "(๑´ڡ`๑)"],
                     \["juru", "(๑╹﹃╹)"],
                     \["makimono", "(๑╹◡╹)o[]o"],
@@ -321,6 +329,8 @@ if neobundle#tap('unite.vim')
                     \["wa-i", "ヾ(＠⌒ー⌒＠)ノ"],
                     \["peta", "\_(⌒(_-ω-)_"],
                     \["osenbe", "〄"],
+                    \["nyanpasu", "ฅ(๑'Δ'๑)"],
+                    \["mikori", "ヾ(⌒(_๑›◡‹ )_"],
         \]
         function! g:unite_source_menu_menus.kaomoji.map(key, value)
             let [word, value] = a:value
