@@ -61,7 +61,6 @@ if &term=="xterm"
      set t_Sf=[3%dm
 endif
 
-set conceallevel=0
 set visualbell
 
 "for session
@@ -73,6 +72,7 @@ set matchtime=3
 
 if v:version >= 703
     set cryptmethod=blowfish
+    set conceallevel=0
 endif
 
 "backup
