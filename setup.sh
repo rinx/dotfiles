@@ -41,6 +41,9 @@ if [ "$FLG_A" = "TRUE" ] || [ "$FLG_S" = "TRUE" ]; then
 fi
 
 if [ "$FLG_A" = "TRUE" ] || [ "$FLG_T" = "TRUE" ]; then
+    if [ ! -d $HOME/.bin ] then
+        mkdir $HOME/.bin
+    fi
     #for tmux statusline memory-status
     if [ ! -x $HOME/.bin/used-mem ] || [ "$FLG_F" = "TRUE" ]; then
         wget https://raw.github.com/yonchu/used-mem/master/used-mem -O $HOME/.bin/used-mem > /dev/null 2>&1
