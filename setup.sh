@@ -41,7 +41,7 @@ if [ "$FLG_A" = "TRUE" ] || [ "$FLG_S" = "TRUE" ]; then
 fi
 
 if [ "$FLG_A" = "TRUE" ] || [ "$FLG_T" = "TRUE" ]; then
-    if [ ! -d $HOME/.bin ] then
+    if [ ! -d $HOME/.bin ]; then
         mkdir $HOME/.bin
     fi
     #for tmux statusline memory-status
