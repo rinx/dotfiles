@@ -10,7 +10,7 @@ let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
     let g:make = 'make'
 endif
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': g:make}}
+NeoBundle 'Shougo/vimproc.vim'
 
 function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
@@ -92,6 +92,17 @@ NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron
 
 
 "Plugin settings
+
+if neobundle#tap('vimproc.vim')
+    call neobundle#config({
+            \ 'build' : {
+            \   'windows' : 'make -f make_mingw32.mak',
+            \   'mac' : 'make -f make_mac.mak',
+            \   'unix' : 'make -f make_unix.mak',
+            \ },
+            \})
+    call neobundle#untap()
+endif
 
 if s:meet_neocomplete_requirements()
     "neocomplete
