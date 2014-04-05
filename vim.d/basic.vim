@@ -77,9 +77,23 @@ endif
 
 "backup
 set backup
-set backupdir=~/.vim/tmp
-if !isdirectory(expand("~/.vim/tmp"))
-    call mkdir(expand("~/.vim/tmp"), "p")
+
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+set backupdir=~/.vim/tmp/backup
+set undodir=~/.vim/tmp/undo
+set directory=~/.vim/tmp/swap
+
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
 endif
 
 "show tab, newline, etc...
