@@ -52,6 +52,7 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-endwise'
 
 NeoBundleLazy 'LeafCage/yankround.vim'
 
