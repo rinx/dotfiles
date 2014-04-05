@@ -78,6 +78,9 @@ endif
 "backup
 set backup
 set backupdir=~/.vim/tmp
+if !isdirectory(expand("~/.vim/tmp"))
+    call mkdir(expand("~/.vim/tmp"), "p")
+endif
 
 "show tab, newline, etc...
 set list
