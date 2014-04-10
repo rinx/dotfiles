@@ -18,9 +18,16 @@ do
     esac
 done
 
+if [ "$FLG_A" = "TRUE" ]; then
+    FLG_S="TRUE"
+    FLG_T="TRUE"
+    FLG_V="TRUE"
+    FLG_X="TRUE"
+fi
+
 #this script makes symbolic links of vimrc, zshrc
 
-if [ "$FLG_A" = "TRUE" ] || [ "$FLG_S" = "TRUE" ]; then
+if [ "$FLG_S" = "TRUE" ]; then
     for filename in vimrc zshrc tmux.conf gitconfig gitignore ; do
         if [ ! -f $HOME/.$filename ] || [ "$FLG_F" = "TRUE" ]; then
             [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.$filename ] && rm -f $HOME/.$filename
@@ -41,7 +48,7 @@ if [ "$FLG_A" = "TRUE" ] || [ "$FLG_S" = "TRUE" ]; then
     done
 fi
 
-if [ "$FLG_A" = "TRUE" ] || [ "$FLG_X" = "TRUE" ]; then
+if [ "$FLG_X" = "TRUE" ]; then
     if [ ! -f $HOME/.xmonad/xmonad.hs ] || [ "$FLG_F" = "TRUE" ]; then
         [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.xmonad/xmonad.hs ] && rm -f $HOME/.xmonad/xmonad.hs
         mkdir -p $HOME/.xmonad
@@ -61,7 +68,7 @@ if [ "$FLG_A" = "TRUE" ] || [ "$FLG_X" = "TRUE" ]; then
     fi
 fi
 
-if [ "$FLG_A" = "TRUE" ] || [ "$FLG_T" = "TRUE" ]; then
+if [ "$FLG_T" = "TRUE" ]; then
     if [ ! -d $HOME/.bin ]; then
         mkdir $HOME/.bin
     fi
@@ -120,7 +127,7 @@ if [ "$FLG_A" = "TRUE" ] || [ "$FLG_T" = "TRUE" ]; then
     fi
 fi
 
-if [ "$FLG_A" = "TRUE" ] || [ "$FLG_V" = "TRUE" ]; then
+if [ "$FLG_V" = "TRUE" ]; then
     # for vim 
     if [ ! -d $HOME/.vim/bundle/neobundle.vim ] || [ "$FLG_F" = "TRUE" ]; then
         [ "$FLG_F" = "TRUE" ] && [ -d $HOME/.vim/bundle/neobundle.vim ] && rm -rf $HOME/.vim/bundle/neobundle.vim
