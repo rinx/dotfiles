@@ -91,6 +91,8 @@ NeoBundleLazy 'moznion/hateblo.vim',{ 'depends' : ['mattn/webapi-vim', 'Shougo/u
 NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
 
+NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : ['Shougo/unite.vim'] }
+
 
 "Plugin settings
 
@@ -686,6 +688,24 @@ if neobundle#tap('unite-codic.vim')
     call neobundle#config({
             \ 'autoload' : {
             \   'unite_sources' : ['codic']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('jazzradio.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['jazzradio'],
+            \   'commands' : [
+            \     'JazzradioUpdateChannels',
+            \     'JazzradioStop',
+            \     {
+            \       'name' : 'JazzradioPlay',
+            \       'complete' : 'customlist,jazzradio#channel_id_complete'
+            \     }
+            \   ],
+            \   'function_prefix' : 'jazzradio'
             \ }
             \})
     call neobundle#untap()
