@@ -86,7 +86,8 @@ NeoBundleLazy 'pbrisbin/html-template-syntax'
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
-NeoBundleLazy 'moznion/hateblo.vim',{ 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
+NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
+NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
 
 NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
@@ -660,6 +661,17 @@ if neobundle#tap('learn-vimscript')
             \     'help'
             \   ],
             \   'unite_sources' : ['help']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('gist-vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Gist'
+            \   ]
             \ }
             \})
     call neobundle#untap()
