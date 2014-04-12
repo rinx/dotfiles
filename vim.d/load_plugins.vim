@@ -86,7 +86,8 @@ NeoBundleLazy 'pbrisbin/html-template-syntax'
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
-NeoBundleLazy 'moznion/hateblo.vim',{ 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
+NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
+NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
 
 NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
@@ -267,10 +268,12 @@ if neobundle#tap('unite.vim')
         \}
         let g:unite_source_menu_menus.shortcut.candidates = [
                     \ ['vimrc', $MYVIMRC],
+                    \ ['quickrun', 'QuickRun'],
                     \ ['map', 'Unite output:map'],
-                    \ ['neobundle', 'Unite neobundle'],
+                    \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle install', 'NeoBundleInstall'],
-                    \ ['neobundle update', 'NeoBundleUpdate']
+                    \ ['neobundle update', 'NeoBundleUpdate'],
+                    \ ['unite-jazzradio', 'Unite jazzradio'],
         \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
@@ -660,6 +663,17 @@ if neobundle#tap('learn-vimscript')
             \     'help'
             \   ],
             \   'unite_sources' : ['help']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('gist-vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Gist'
+            \   ]
             \ }
             \})
     call neobundle#untap()
