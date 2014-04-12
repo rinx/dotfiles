@@ -273,6 +273,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle install', 'NeoBundleInstall'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
+                    \ ['neobundle clean', 'NeoBundleClean'],
                     \ ['unite-jazzradio', 'Unite jazzradio'],
         \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
@@ -451,6 +452,7 @@ if neobundle#tap('vim-quickrun')
             \ '_' : {
             \   'outputter/buffer/close_on_empty' : 1,
             \   'outputter/buffer/split' : ':botright',
+            \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
             \   'runner' : 'vimproc',
             \   'runner/vimproc/updatetime' : 60
             \ },
