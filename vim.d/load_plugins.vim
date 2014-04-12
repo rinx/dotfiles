@@ -452,6 +452,7 @@ if neobundle#tap('vim-quickrun')
             \ '_' : {
             \   'outputter/buffer/close_on_empty' : 1,
             \   'outputter/buffer/split' : ':botright',
+            \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
             \   'runner' : 'vimproc',
             \   'runner/vimproc/updatetime' : 60
             \ },
