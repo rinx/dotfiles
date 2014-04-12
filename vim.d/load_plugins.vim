@@ -317,6 +317,7 @@ if neobundle#tap('unite.vim')
                     \["hawawa", "\:;(∩´﹏`∩);:"],
                     \["dame", "(乂'ω')"],
                     \["hawawa", "(っ´﹏`c)"],
+                    \["hawawa", "(｡>﹏<｡)"],
                     \["firstspring", "(╯•﹏•╰)"],
                     \["fuee", "ヾ(｡>﹏<)ﾉ\""],
                     \["fuee", "✧*。ヾ(｡>﹏<｡)ﾉﾞ。*✧"],
@@ -345,6 +346,13 @@ if neobundle#tap('unite.vim')
                     \["osenbe", "〄"],
                     \["nyanpasu", "ฅ(๑'Δ'๑)"],
                     \["mikori", "ヾ(⌒(_๑›◡‹ )_"],
+                    \["mozomozo", "(๑•﹏•)"],
+                    \["kirakira", "✲ﾟ｡.(✿╹◡╹)ﾉ☆.｡₀:*ﾟ✲ﾟ*:₀｡"],
+                    \["kyafu", "(⋈◍＞◡＜◍)。✧♡"],
+                    \["gu", "╭( ･ㅂ･)و ̑̑ ｸﾞｯ !"],
+                    \["uwaaa", "▂▅▇█▓▒░('ω')░▒▓█▇▅▂"],
+                    \["tanoshii", "✌('ω'✌ )三✌('ω')✌三( ✌'ω')✌"],
+                    \["yatta", "+。:.ﾟ٩(๑＞◡＜๑)۶:.｡+ﾟ"],
         \]
         function! g:unite_source_menu_menus.kaomoji.map(key, value)
             let [word, value] = a:value
