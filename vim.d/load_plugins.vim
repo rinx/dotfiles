@@ -249,7 +249,8 @@ if neobundle#tap('unite.vim')
             \   'commands' : [
             \     'Unite',
             \     'UniteWithBufferDir',
-            \     'UniteWithCurrentDir'
+            \     'UniteWithCurrentDir',
+            \     'UniteResume',
             \   ]
             \ }
             \})
