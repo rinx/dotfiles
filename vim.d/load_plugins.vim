@@ -405,8 +405,10 @@ if neobundle#tap('unite.vim')
     "file
     nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
     nnoremap <silent> [unite]fr :<C-u>Unite file_rec<CR>
+    "resume
+    nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
     "register
-    nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+    nnoremap <silent> [unite]rg :<C-u>Unite -buffer-name=register register<CR>
     "recently files
     nnoremap <silent> [unite]m :<C-u>Unite file_mru:short<CR>
     nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
