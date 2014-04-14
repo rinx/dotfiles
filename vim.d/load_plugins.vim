@@ -270,11 +270,13 @@ if neobundle#tap('unite.vim')
                     \ ['vimrc', $MYVIMRC],
                     \ ['quickrun', 'QuickRun'],
                     \ ['map', 'Unite output:map'],
+                    \ ['toggle-options', 'Unite menu:toggle'],
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle install', 'NeoBundleInstall'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
                     \ ['neobundle clean', 'NeoBundleClean'],
                     \ ['unite-jazzradio', 'Unite jazzradio'],
+                    \ ['hateblo list', 'HatebloList'],
         \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
