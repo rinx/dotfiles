@@ -300,6 +300,24 @@ if neobundle#tap('unite.vim')
         \           }
             endif
         endfunction
+
+        command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
+        let g:unite_source_menu_menus.toggle = {
+                    \ 'description' : 'toggle menus',
+        \}
+        let g:unite_source_menu_menus.toggle.command_candidates = {
+                    \
+        \}
+        let options = "
+                    \ paste rule number relativenumber
+                    \ cursorline cursorcolumn list
+                    \ hlsearch
+        \ "
+        for opt in split(options)
+            let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
+        endfor
+        unlet options opt
+
         let g:unite_source_menu_menus.kaomoji = {
                     \ 'description' : 'kaomoji dictionary',
         \}
