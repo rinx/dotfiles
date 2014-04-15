@@ -6,9 +6,6 @@
 #load prompt settings
 [ -f ~/.dotfiles/zsh.d/prompt.zsh ] && source ~/.dotfiles/zsh.d/prompt.zsh
 
-#env.zsh
-[ -f ~/.dotfiles/zsh.d/env.zsh ] && source ~/.dotfiles/zsh.d/env.zsh
-
 #banner
 [ -f ~/.dotfiles/zsh.d/banner.zsh ] && source ~/.dotfiles/zsh.d/banner.zsh
 
