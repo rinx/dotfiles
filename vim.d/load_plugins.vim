@@ -83,6 +83,8 @@ NeoBundleLazy 'ujihisa/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 NeoBundleLazy 'pbrisbin/html-template-syntax'
 
+NeoBundleLazy 'mattn/emmet-vim'
+
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
@@ -676,6 +678,23 @@ if neobundle#tap('html-template-syntax')
     call neobundle#config({
             \ 'autoload' : {
             \   'filetypes' : ['haskell']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('emmet-vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'html',
+            \     'xhtml',
+            \     'css',
+            \     'sass',
+            \     'scss',
+            \     'xml',
+            \     'markdown',
+            \   ]
             \ }
             \})
     call neobundle#untap()
