@@ -316,7 +316,7 @@ if neobundle#tap('unite.vim')
         let options = "
                     \ paste rule number relativenumber
                     \ cursorline cursorcolumn list
-                    \ hlsearch
+                    \ hlsearch wrap
         \ "
         for opt in split(options)
             let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
