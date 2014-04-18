@@ -13,6 +13,7 @@
 
 [core]
     excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes_global
     editor = vim
 
 [alias]
