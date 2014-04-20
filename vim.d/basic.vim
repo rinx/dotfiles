@@ -100,3 +100,6 @@ endif
 set list
 set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
 
+set autochdir
+set autoread
+
