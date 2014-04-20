@@ -89,6 +89,7 @@ NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
+NeoBundleLazy 'mattn/unite-gist', { 'depends' : ['mattn/gist-vim', 'Shougo/unite.vim'] }
 NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
 
 NeoBundleLazy 'koron/codic-vim'
@@ -719,6 +720,15 @@ if neobundle#tap('gist-vim')
             \     'Gist'
             \   ]
             \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-gist')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['gist']
+            \ },
             \})
     call neobundle#untap()
 endif
