@@ -79,7 +79,7 @@ NeoBundleLazy 'tyru/capture.vim'
 NeoBundleLazy 'basyura/unite-rails'
 
 NeoBundleLazy 'eagletmt/ghcmod-vim'
-NeoBundleLazy 'ujihisa/neco-ghc'
+NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 NeoBundleLazy 'pbrisbin/html-template-syntax'
 
