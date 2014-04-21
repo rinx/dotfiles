@@ -54,6 +54,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
+NeoBundleLazy 'sjl/gundo.vim'
+
 NeoBundleLazy 'LeafCage/yankround.vim'
 
 NeoBundleLazy 'osyo-manga/vim-anzu'
@@ -273,6 +275,7 @@ if neobundle#tap('unite.vim')
         let g:unite_source_menu_menus.shortcut.candidates = [
                     \ ['vimrc', $MYVIMRC],
                     \ ['quickrun', 'QuickRun'],
+                    \ ['Gundo', 'GundoToggle'],
                     \ ['map', 'Unite output:map'],
                     \ ['toggle-options', 'Unite menu:toggle'],
                     \ ['unite-neobundle', 'Unite neobundle'],
@@ -540,6 +543,15 @@ if neobundle#tap('syntastic')
       call lightline#update()
     endfunction
 
+    call neobundle#untap()
+endif
+
+if neobundle#tap('gundo.vim')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : ['GundoToggle']
+            \ }
+            \})
     call neobundle#untap()
 endif
 
