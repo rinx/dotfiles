@@ -552,6 +552,16 @@ if neobundle#tap('gundo.vim')
             \   'commands' : ['GundoToggle']
             \ }
             \})
+    nnoremap <F5> :<C-u>GundoToggle<CR>
+    let g:gundo_width = 45
+    let g:gundo_preview_height = 15
+    let g:gundo_right = 0
+    let g:gundo_help = 1
+    let g:gundo_map_move_older = "j"
+    let g:gundo_map_move_newer = "k"
+    let g:gundo_close_on_revert = 1
+    let g:gundo_auto_preview = 1
+    let g:gundo_playback_delay = 100
     call neobundle#untap()
 endif
 
