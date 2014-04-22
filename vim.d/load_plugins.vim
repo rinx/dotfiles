@@ -36,6 +36,7 @@ NeoBundleLazy 'Shougo/neomru.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'Shougo/unite-outline', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'osyo-manga/unite-filetype', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'itchyny/lightline.vim'
 
@@ -466,6 +467,15 @@ if neobundle#tap('unite-help')
     call neobundle#config({
             \ 'autoload' : {
             \   'unite_sources' : ['help']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-filetype')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['filetype']
             \ }
             \})
     call neobundle#untap()
