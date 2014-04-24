@@ -99,6 +99,7 @@ NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
 
 NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : ['Shougo/unite.vim'] }
+NeoBundleLazy 'pasela/unite-webcolorname', { 'depends' : ['Shougo/unite.vim'] }
 
 
 "Plugin settings
@@ -814,6 +815,15 @@ if neobundle#tap('jazzradio.vim')
             \     }
             \   ],
             \   'function_prefix' : 'jazzradio'
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-webcolorname')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'unite_sources' : ['webcolorname']
             \ }
             \})
     call neobundle#untap()
