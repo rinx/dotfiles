@@ -51,14 +51,14 @@ set softtabstop=4
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
+    syntax on
+    set hlsearch
 endif
 
 if &term=="xterm"
-     set t_Co=256
-     set t_Sb=[4%dm
-     set t_Sf=[3%dm
+    set t_Co=256
+    set t_Sb=[4%dm
+    set t_Sf=[3%dm
 endif
 
 set visualbell
