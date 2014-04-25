@@ -37,6 +37,7 @@ NeoBundleLazy 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'Shougo/unite-outline', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'osyo-manga/unite-filetype', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'kmnk/vim-unite-giti', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'itchyny/lightline.vim'
 
@@ -477,6 +478,38 @@ if neobundle#tap('unite-filetype')
     call neobundle#config({
             \ 'autoload' : {
             \   'unite_sources' : ['filetype']
+            \ }
+            \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-unite-giti')
+    call neobundle#config({
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Giti',
+            \     'GitiWithConfirm',
+            \     'GitiFetch',
+            \     'GitiPush',
+            \     'GitiPushWithSettingUpstream',
+            \     'GitiPushExpressly',
+            \     'GitiPull',
+            \     'GitiPullSquash',
+            \     'GitiPullRebase',
+            \     'GitiPullExpressly',
+            \     'GitiDiff',
+            \     'GitiDiffCached',
+            \     'GitiLog',
+            \     'GitiLogLine',
+            \   ],
+            \   'unite_sources' : [
+            \     'giti',
+            \     'giti/branch',
+            \     'giti/config',
+            \     'giti/log',
+            \     'giti/remote',
+            \     'giti/status',
+            \   ]
             \ }
             \})
     call neobundle#untap()
