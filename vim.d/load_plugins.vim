@@ -565,7 +565,7 @@ if neobundle#tap('skk.vim')
     let g:skk_abbrev_mode_string = 'aあ'
     let g:skk_kutouten_type = "en"
     let g:skk_kutouten_jp = "。、"
-    let g:skk_kutouten_en = ".,"
+    let g:skk_kutouten_en = "．，"
 
     call neobundle#untap()
 endif
