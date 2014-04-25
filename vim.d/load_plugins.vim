@@ -107,12 +107,12 @@ NeoBundleLazy 'pasela/unite-webcolorname', { 'depends' : ['Shougo/unite.vim'] }
 
 if neobundle#tap('vimproc.vim')
     call neobundle#config({
-            \ 'build' : {
-            \   'windows' : 'make -f make_mingw32.mak',
-            \   'mac' : 'make -f make_mac.mak',
-            \   'unix' : 'make -f make_unix.mak',
-            \ },
-            \})
+                \ 'build' : {
+                \   'windows' : 'make -f make_mingw32.mak',
+                \   'mac' : 'make -f make_mac.mak',
+                \   'unix' : 'make -f make_unix.mak',
+                \ },
+                \})
     call neobundle#untap()
 endif
 
@@ -135,7 +135,7 @@ if s:meet_neocomplete_requirements()
         let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
         if !exists('g:neocomplete#sources#omni#input_patterns')
-          let g:neocomplete#sources#omni#input_patterns = {}
+            let g:neocomplete#sources#omni#input_patterns = {}
         endif
 
         inoremap <expr><C-g> neocomplete#undo_completion()
@@ -147,18 +147,18 @@ else
     "neocomplcache
     if neobundle#tap('neocomplcache.vim')
         call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ }
-                \})
+                    \ 'autoload' : {
+                    \   'insert' : 1,
+                    \ }
+                    \})
 
         let g:neocomplcache_enable_at_startup = 1
         let g:neocomplcache_auto_completion_start_length = 1
         let g:neocomplcache_enable_smart_case = 1
         let g:neocomplcache_enable_underbar_completion = 1
-        
+
         if !exists('g:neocomplcache_omni_patterns')
-          let g:neocomplcache_omni_patterns = {}
+            let g:neocomplcache_omni_patterns = {}
         endif
 
         call neobundle#untap()
@@ -176,24 +176,24 @@ augroup END
 
 if neobundle#tap('neosnippet')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'insert' : 1,
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'insert' : 1,
+                \ }
+                \})
 
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
-    
+
     " Tell Neosnippet about the other snippets
     let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-    
+
     " SuperTab like snippets behavior.
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
     smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-    
-     " For snippet_complete marker.
+
+    " For snippet_complete marker.
     if has('conceal')
-      set conceallevel=2 concealcursor=i
+        set conceallevel=2 concealcursor=i
     endif
 
     call neobundle#untap()
@@ -201,34 +201,34 @@ endif
 
 if neobundle#tap('neosnippet-snippets')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'insert' : 1,
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'insert' : 1,
+                \ }
+                \})
 
     call neobundle#untap()
 endif
 
 if neobundle#tap('vim-snippets')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'insert' : 1,
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'insert' : 1,
+                \ }
+                \})
 
     call neobundle#untap()
 endif
 
 if neobundle#tap('vimfiler.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'VimFilerTab',
-            \     'VimFiler',
-            \     'VimFilerExplorer'
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'VimFilerTab',
+                \     'VimFiler',
+                \     'VimFilerExplorer'
+                \   ]
+                \ }
+                \})
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:vimfiler_force_overwrite_statusline = 0
     endfunction
@@ -237,14 +237,14 @@ endif
 
 if neobundle#tap('vimshell.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'VimShell',
-            \     'VimShellPop',
-            \     'VimShellInteractive'
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'VimShell',
+                \     'VimShellPop',
+                \     'VimShellInteractive'
+                \   ]
+                \ }
+                \})
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:vimshell_force_overwrite_statusline = 0
     endfunction
@@ -253,15 +253,15 @@ endif
 
 if neobundle#tap('unite.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'Unite',
-            \     'UniteWithBufferDir',
-            \     'UniteWithCurrentDir',
-            \     'UniteResume',
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Unite',
+                \     'UniteWithBufferDir',
+                \     'UniteWithCurrentDir',
+                \     'UniteResume',
+                \   ]
+                \ }
+                \})
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:unite_force_overwrite_statusline = 0
         let g:unite_enable_start_insert = 0
@@ -274,7 +274,7 @@ if neobundle#tap('unite.vim')
         endif
         let g:unite_source_menu_menus.shortcut = {
                     \ 'description' : 'shortcut'
-        \}
+                    \}
         let g:unite_source_menu_menus.shortcut.candidates = [
                     \ ['vimrc', $MYVIMRC],
                     \ ['quickrun', 'QuickRun'],
@@ -287,44 +287,44 @@ if neobundle#tap('unite.vim')
                     \ ['neobundle clean', 'NeoBundleClean'],
                     \ ['unite-jazzradio', 'Unite jazzradio'],
                     \ ['hateblo list', 'HatebloList'],
-        \]
+                    \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
-        
+
             if isdirectory(value)
                 return {
-        \               'word' : '[directory] '.word,
-        \               'kind' : 'directory',
-        \               'action__directory' : value
-        \           }
+                            \               'word' : '[directory] '.word,
+                            \               'kind' : 'directory',
+                            \               'action__directory' : value
+                            \           }
             elseif !empty(glob(value))
                 return {
-        \               'word' : '[file] '.word,
-        \               'kind' : 'file',
-        \               'default_action' : 'tabdrop',
-        \               'action__path' : value,
-        \           }
+                            \               'word' : '[file] '.word,
+                            \               'kind' : 'file',
+                            \               'default_action' : 'tabdrop',
+                            \               'action__path' : value,
+                            \           }
             else
                 return {
-        \               'word' : '[command] '.word,
-        \               'kind' : 'command',
-        \               'action__command' : value
-        \           }
+                            \               'word' : '[command] '.word,
+                            \               'kind' : 'command',
+                            \               'action__command' : value
+                            \           }
             endif
         endfunction
 
         command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
         let g:unite_source_menu_menus.toggle = {
                     \ 'description' : 'toggle menus',
-        \}
+                    \}
         let g:unite_source_menu_menus.toggle.command_candidates = {
                     \
-        \}
+                    \}
         let options = "
                     \ paste rule number relativenumber
                     \ cursorline cursorcolumn list
                     \ hlsearch wrap
-        \ "
+                    \ "
         for opt in split(options)
             let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
         endfor
@@ -332,7 +332,7 @@ if neobundle#tap('unite.vim')
 
         let g:unite_source_menu_menus.kaomoji = {
                     \ 'description' : 'kaomoji dictionary',
-        \}
+                    \}
         let g:unite_source_menu_menus.kaomoji.candidates= [
                     \["", "( 'ω').｡oO(…)"],
                     \["", "ヾ(⌒(_•ω•)_"],
@@ -387,21 +387,21 @@ if neobundle#tap('unite.vim')
                     \["uwaaa", "▂▅▇█▓▒░('ω')░▒▓█▇▅▂"],
                     \["tanoshii", "✌('ω'✌ )三✌('ω')✌三( ✌'ω')✌"],
                     \["yatta", "+。:.ﾟ٩(๑＞◡＜๑)۶:.｡+ﾟ"],
-        \]
+                    \]
         function! g:unite_source_menu_menus.kaomoji.map(key, value)
             let [word, value] = a:value
             if !empty(word)
                 return {
-                        \ 'word' : '[' .word .'] ' .value,
-                        \ 'kind' : 'word',
-                        \ 'action__text' : value,
-                \}
+                            \ 'word' : '[' .word .'] ' .value,
+                            \ 'kind' : 'word',
+                            \ 'action__text' : value,
+                            \}
             else
                 return {
-                        \ 'word' : '[no pronounce] ' .value,
-                        \ 'kind' : 'word',
-                        \ 'action__text' : value,
-                \}
+                            \ 'word' : '[no pronounce] ' .value,
+                            \ 'kind' : 'word',
+                            \ 'action__text' : value,
+                            \}
             endif
         endfunction
     endfunction
@@ -440,109 +440,109 @@ endif
 
 if neobundle#tap('neomru.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['file_mru']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['file_mru']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('vim-unite-history')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['history/command', 'history/search']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['history/command', 'history/search']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('unite-outline')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['outline']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['outline']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('unite-help')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['help']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['help']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('unite-filetype')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['filetype']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['filetype']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('vim-unite-giti')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'Giti',
-            \     'GitiWithConfirm',
-            \     'GitiFetch',
-            \     'GitiPush',
-            \     'GitiPushWithSettingUpstream',
-            \     'GitiPushExpressly',
-            \     'GitiPull',
-            \     'GitiPullSquash',
-            \     'GitiPullRebase',
-            \     'GitiPullExpressly',
-            \     'GitiDiff',
-            \     'GitiDiffCached',
-            \     'GitiLog',
-            \     'GitiLogLine',
-            \   ],
-            \   'unite_sources' : [
-            \     'giti',
-            \     'giti/branch',
-            \     'giti/config',
-            \     'giti/log',
-            \     'giti/remote',
-            \     'giti/status',
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Giti',
+                \     'GitiWithConfirm',
+                \     'GitiFetch',
+                \     'GitiPush',
+                \     'GitiPushWithSettingUpstream',
+                \     'GitiPushExpressly',
+                \     'GitiPull',
+                \     'GitiPullSquash',
+                \     'GitiPullRebase',
+                \     'GitiPullExpressly',
+                \     'GitiDiff',
+                \     'GitiDiffCached',
+                \     'GitiLog',
+                \     'GitiLogLine',
+                \   ],
+                \   'unite_sources' : [
+                \     'giti',
+                \     'giti/branch',
+                \     'giti/config',
+                \     'giti/log',
+                \     'giti/remote',
+                \     'giti/status',
+                \   ]
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('vim-quickrun')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : ['QuickRun'],
-            \ }
-    \})
+                \ 'autoload' : {
+                \   'commands' : ['QuickRun'],
+                \ }
+                \})
     let g:quickrun_config = {
-            \ '_' : {
-            \   'outputter/buffer/close_on_empty' : 1,
-            \   'outputter/buffer/split' : ':botright',
-            \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
-            \   'runner' : 'vimproc',
-            \   'runner/vimproc/updatetime' : 60
-            \ },
-            \}
+                \ '_' : {
+                \   'outputter/buffer/close_on_empty' : 1,
+                \   'outputter/buffer/split' : ':botright',
+                \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
+                \   'runner' : 'vimproc',
+                \   'runner/vimproc/updatetime' : 60
+                \ },
+                \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
     call neobundle#untap()
 endif
 
 if neobundle#tap('skk.vim')
     let g:skk_jisyo = '~/.skk-jisyo'
-    
+
     if OSTYPE == 'Darwin\n'
         let g:skk_large_jisyo = '/Library/Dictionaries/SKK/SKK-JISYO.LL'
     elseif OSTYPE == 'Linux\n'
         let g:skk_large_jisyo = '/usr/share/skk/SKK-JISYO.LL'
     endif
-    
+
     let g:skk_auto_save_jisyo = 1
     let g:skk_keep_state = 1
     let g:skk_egg_like_newline = 1
@@ -579,12 +579,12 @@ endif
 if neobundle#tap('syntastic')
     let g:syntastic_mode_map = { 'mode': 'passive' }
     augroup AutoSyntastic
-      autocmd!
-      autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
+        autocmd!
+        autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
     augroup END
     function! s:syntastic()
-      SyntasticCheck
-      call lightline#update()
+        SyntasticCheck
+        call lightline#update()
     endfunction
 
     call neobundle#untap()
@@ -592,10 +592,10 @@ endif
 
 if neobundle#tap('gundo.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : ['GundoToggle']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : ['GundoToggle']
+                \ }
+                \})
     nnoremap <F5> :<C-u>GundoToggle<CR>
     let g:gundo_width = 45
     let g:gundo_preview_height = 15
@@ -611,10 +611,10 @@ endif
 
 if neobundle#tap('yankround.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'mappings' : ['<Plug>(yankround-'],
-            \ }
-    \})
+                \ 'autoload' : {
+                \   'mappings' : ['<Plug>(yankround-'],
+                \ }
+                \})
 
     nmap p <Plug>(yankround-p)
     nmap P <Plug>(yankround-P)
@@ -632,10 +632,10 @@ endif
 
 if neobundle#tap('vim-anzu')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'mappings' : ['<Plug>(anzu-'],
-            \ }
-    \})
+                \ 'autoload' : {
+                \   'mappings' : ['<Plug>(anzu-'],
+                \ }
+                \})
     nmap n <Plug>(anzu-n)
     nmap N <Plug>(anzu-N)
     nmap * <Plug>(anzu-star)
@@ -675,17 +675,17 @@ endif
 
 if neobundle#tap('vim-textobj-multitextobj')
     let g:textobj_multitextobj_textobjects_i = [
-        \   '\<Plug>(textobj-url-i)',
-        \   '\<Plug>(textobj-multiblock-i)',
-        \   '\<Plug>(textobj-function-i)',
-        \   '\<Plug>(textobj-entire-i)',
-    \]
+                \   '\<Plug>(textobj-url-i)',
+                \   '\<Plug>(textobj-multiblock-i)',
+                \   '\<Plug>(textobj-function-i)',
+                \   '\<Plug>(textobj-entire-i)',
+                \]
     let g:textobj_multitextobj_textobjects_a = [
-        \   '\<Plug>(textobj-url-a)',
-        \   '\<Plug>(textobj-multiblock-a)',
-        \   '\<Plug>(textobj-function-a)',
-        \   '\<Plug>(textobj-entire-a)',
-    \]
+                \   '\<Plug>(textobj-url-a)',
+                \   '\<Plug>(textobj-multiblock-a)',
+                \   '\<Plug>(textobj-function-a)',
+                \   '\<Plug>(textobj-entire-a)',
+                \]
     omap amt <Plug>(textobj-multitextobj-a)
     omap imt <Plug>(textobj-multitextobj-i)
     vmap amt <Plug>(textobj-multitextobj-a)
@@ -696,169 +696,169 @@ endif
 
 if neobundle#tap('capture.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'Capture'
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Capture'
+                \   ]
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('unite-rails')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'filetypes' : ['ruby']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'filetypes' : ['ruby']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('ghcmod-vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'filetypes' : ['haskell']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('neco-ghc')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'filetypes' : ['haskell']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('vim2hs')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'filetypes' : ['haskell']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('html-template-syntax')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'filetypes' : ['haskell']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'filetypes' : ['haskell']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('emmet-vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'filetypes' : [
-            \     'html',
-            \     'xhtml',
-            \     'css',
-            \     'sass',
-            \     'scss',
-            \     'xml',
-            \     'markdown',
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'html',
+                \     'xhtml',
+                \     'css',
+                \     'sass',
+                \     'scss',
+                \     'xml',
+                \     'markdown',
+                \   ]
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('learn-vimscript')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'help'
-            \   ],
-            \   'unite_sources' : ['help']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'help'
+                \   ],
+                \   'unite_sources' : ['help']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('gist-vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'Gist'
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Gist'
+                \   ]
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('unite-gist')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['gist']
-            \ },
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['gist']
+                \ },
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('hateblo.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'HatebloCreate',
-            \     'HatebloCreateDraft',
-            \     'HatebloList',
-            \     'HatebloUpdate',
-            \     'HatebloDelete'
-            \   ]
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'HatebloCreate',
+                \     'HatebloCreateDraft',
+                \     'HatebloList',
+                \     'HatebloUpdate',
+                \     'HatebloDelete'
+                \   ]
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('codic-vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'commands' : [
-            \     'Codic'
-            \   ],
-            \   'unite_sources' : ['codic']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Codic'
+                \   ],
+                \   'unite_sources' : ['codic']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('unite-codic.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['codic']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['codic']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('jazzradio.vim')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['jazzradio'],
-            \   'commands' : [
-            \     'JazzradioUpdateChannels',
-            \     'JazzradioStop',
-            \     {
-            \       'name' : 'JazzradioPlay',
-            \       'complete' : 'customlist,jazzradio#channel_id_complete'
-            \     }
-            \   ],
-            \   'function_prefix' : 'jazzradio'
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['jazzradio'],
+                \   'commands' : [
+                \     'JazzradioUpdateChannels',
+                \     'JazzradioStop',
+                \     {
+                \       'name' : 'JazzradioPlay',
+                \       'complete' : 'customlist,jazzradio#channel_id_complete'
+                \     }
+                \   ],
+                \   'function_prefix' : 'jazzradio'
+                \ }
+                \})
     call neobundle#untap()
 endif
 
 if neobundle#tap('unite-webcolorname')
     call neobundle#config({
-            \ 'autoload' : {
-            \   'unite_sources' : ['webcolorname']
-            \ }
-            \})
+                \ 'autoload' : {
+                \   'unite_sources' : ['webcolorname']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
