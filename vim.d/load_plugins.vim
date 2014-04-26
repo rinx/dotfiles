@@ -335,7 +335,7 @@ if neobundle#tap('unite.vim')
                     \}
         let g:unite_source_menu_menus.kaomoji.candidates= [
                     \["", "( 'ω').｡oO(…)"],
-                    \["", "ヾ(⌒(_•ω•)_"],
+                    \["", "ヾ(⌒(\_•ω•)\_"],
                     \["", "ヾ(⌒(ﾉ•ω•)ﾉ"],
                     \["kyun", "\_(⌒(_*'ω'*)_"],
                     \["kyun", "ヾ(⌒(\_*'ω'*)\_"],
