@@ -398,7 +398,7 @@ if neobundle#tap('unite.vim')
                             \}
             else
                 return {
-                            \ 'word' : '[no pronounce] ' .value,
+                            \ 'word' : '[no pronounciation] ' .value,
                             \ 'kind' : 'word',
                             \ 'action__text' : value,
                             \}
