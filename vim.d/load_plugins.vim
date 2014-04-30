@@ -293,23 +293,23 @@ if neobundle#tap('unite.vim')
 
             if isdirectory(value)
                 return {
-                            \               'word' : '[directory] '.word,
-                            \               'kind' : 'directory',
-                            \               'action__directory' : value
-                            \           }
+                            \ 'word' : '[directory] '.word,
+                            \ 'kind' : 'directory',
+                            \ 'action__directory' : value
+                            \}
             elseif !empty(glob(value))
                 return {
-                            \               'word' : '[file] '.word,
-                            \               'kind' : 'file',
-                            \               'default_action' : 'tabdrop',
-                            \               'action__path' : value,
-                            \           }
+                            \ 'word' : '[file] '.word,
+                            \ 'kind' : 'file',
+                            \ 'default_action' : 'tabdrop',
+                            \ 'action__path' : value,
+                            \}
             else
                 return {
-                            \               'word' : '[command] '.word,
-                            \               'kind' : 'command',
-                            \               'action__command' : value
-                            \           }
+                            \ 'word' : '[command] '.word,
+                            \ 'kind' : 'command',
+                            \ 'action__command' : value
+                            \}
             endif
         endfunction
 
