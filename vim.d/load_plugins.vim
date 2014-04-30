@@ -276,6 +276,8 @@ if neobundle#tap('unite.vim')
                     \ 'description' : 'shortcut'
                     \}
         let g:unite_source_menu_menus.shortcut.candidates = [
+                    \ ['home', $HOME],
+                    \ ['dotfiles', $HOME . '/.dotfiles'],
                     \ ['vimrc', $MYVIMRC],
                     \ ['quickrun', 'QuickRun'],
                     \ ['Gundo', 'GundoToggle'],
