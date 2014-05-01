@@ -532,6 +532,10 @@ if neobundle#tap('vim-quickrun')
                 \   'runner' : 'vimproc',
                 \   'runner/vimproc/updatetime' : 60
                 \ },
+                \ 'cpp/g++' : {
+                \   'cmdopt' : '-std=c++0x',
+                \   'hook/time/enable' : 1
+                \ },
                 \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
     call neobundle#untap()
