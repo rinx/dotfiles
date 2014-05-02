@@ -80,7 +80,9 @@ NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj
 
 NeoBundleLazy 'tyru/capture.vim'
 
-NeoBundleLazy 'basyura/unite-rails'
+NeoBundleLazy 'tyru/open-browser.vim'
+
+NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
@@ -542,6 +544,10 @@ if neobundle#tap('vim-quickrun')
                 \ 'haskell/runghc' : {
                 \   'hook/time/enable' : 1
                 \ },
+                \ 'markdown' :{
+                \   'type' : 'markdown/pandoc',
+                \   'outputter' : 'browser'
+                \ },
                 \ 'python' : {
                 \   'hook/time/enable' : 1
                 \ },
@@ -721,6 +727,35 @@ if neobundle#tap('capture.vim')
                 \   ]
                 \ }
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('open-browser.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'OpenBrowser',
+                \     'OpenBrowserSearch'
+                \   ],
+                \   'functions' : [
+                \     'OpenBrowser',
+                \   ],
+                \   'filetypes' : ['markdown'],
+                \ }
+                \})
+
+    if OSTYPE == 'Darwin\n'
+        let g:openbrowser_browser_commands = {
+                    \ 'name' : 'open',
+                    \ 'args' : ['{browser}', '{uri}']
+                    \}
+    elseif OSTYPE == 'Linux\n'
+        let g:openbrowser_browser_commands = {
+                    \ 'name' : 'chromium',
+                    \ 'args' : ['{browser}', '{uri}']
+                    \}
+    endif
+
     call neobundle#untap()
 endif
 
