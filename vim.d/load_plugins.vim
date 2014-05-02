@@ -80,7 +80,7 @@ NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj
 
 NeoBundleLazy 'tyru/capture.vim'
 
-NeoBundleLazy 'basyura/unite-rails'
+NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
