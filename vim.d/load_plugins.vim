@@ -533,8 +533,19 @@ if neobundle#tap('vim-quickrun')
                 \   'runner' : 'vimproc',
                 \   'runner/vimproc/updatetime' : 60
                 \ },
+                \ 'cpp/clang++' : {
+                \   'hook/time/enable' : 1
+                \ },
                 \ 'cpp/g++' : {
-                \   'cmdopt' : '-std=c++0x',
+                \   'hook/time/enable' : 1
+                \ },
+                \ 'haskell/runghc' : {
+                \   'hook/time/enable' : 1
+                \ },
+                \ 'python' : {
+                \   'hook/time/enable' : 1
+                \ },
+                \ 'ruby' : {
                 \   'hook/time/enable' : 1
                 \ },
                 \}
