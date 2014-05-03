@@ -1,7 +1,5 @@
 "( っ'ヮ'c) < loading vimrc...
 
-let OSTYPE = system('uname')
-
 "The beginning of initialization
 if filereadable(expand('~/.dotfiles/vim.d/init_begin.vim'))
     source ~/.dotfiles/vim.d/init_begin.vim
