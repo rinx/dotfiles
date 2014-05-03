@@ -292,6 +292,17 @@ if neobundle#tap('unite.vim')
                     \ ['unite-jazzradio', 'Unite jazzradio'],
                     \ ['hateblo list', 'HatebloList'],
                     \]
+        if has('mac')
+            call add(
+                        \ g:unite_source_menu_menus.shortcut.candidates,
+                        \ ['copy buffer into clipboard', 'w !pbcopy']
+                        \)
+        elseif has('unix')
+            call add(
+                        \ g:unite_source_menu_menus.shortcut.candidates,
+                        \ ['copy buffer into clipboard', 'w !xsel --clipboard --input']
+                        \)
+        endif
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
 
