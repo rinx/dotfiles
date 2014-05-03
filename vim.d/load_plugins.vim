@@ -430,6 +430,9 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
     "menu
     nnoremap <silent> [unite]ms :<C-u>Unite menu:shortcut<CR>
+    nnoremap <silent> [unite]msd :<C-u>Unite menu:shortcut -input=[directory]<CR>
+    nnoremap <silent> [unite]msf :<C-u>Unite menu:shortcut -input=[file]<CR>
+    nnoremap <silent> [unite]msc :<C-u>Unite menu:shortcut -input=[command]<CR>
     nnoremap <silent> [unite]mk :<C-u>Unite menu:kaomoji -start-insert<CR>
     "history
     nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
