@@ -565,9 +565,9 @@ endif
 if neobundle#tap('skk.vim')
     let g:skk_jisyo = '~/.skk-jisyo'
 
-    if OSTYPE == 'Darwin\n'
+    if has('mac')
         let g:skk_large_jisyo = '/Library/Dictionaries/SKK/SKK-JISYO.LL'
-    elseif OSTYPE == 'Linux\n'
+    elseif has('unix')
         let g:skk_large_jisyo = '/usr/share/skk/SKK-JISYO.LL'
     endif
 
@@ -747,12 +747,12 @@ if neobundle#tap('open-browser.vim')
                 \ }
                 \})
 
-    if OSTYPE == 'Darwin\n'
+    if has('mac')
         let g:openbrowser_browser_commands = {
                     \ 'name' : 'open',
                     \ 'args' : ['{browser}', '{uri}']
                     \}
-    elseif OSTYPE == 'Linux\n'
+    elseif has('unix')
         let g:openbrowser_browser_commands = {
                     \ 'name' : 'chromium',
                     \ 'args' : ['{browser}', '{uri}']
