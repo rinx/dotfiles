@@ -73,4 +73,30 @@ extract () {
     fi
 }
 
+#for git aliases
+alias gst='git status -s -b && git stash list'
+gsta () {
+    if [ $# -eq 1 ]; then
+        git add `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
+    else
+        echo "invalid arguments"
+    fi
+}
+gstd () {
+    if [ $# -eq 1 ]; then
+        git diff -- `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
+    else
+        echo "invalid arguments"
+    fi
+}
+gstv () {
+    if [ $# -eq 1 ]; then
+        vim `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
+    else
+        echo "invalid arguments"
+    fi
+}
+gcm () {
+    git commit -m "$*"
+}
 
