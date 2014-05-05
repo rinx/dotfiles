@@ -3,11 +3,15 @@
 #prompt
 
 # when connected to remote host
-[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && local hn="@$HOST"
+if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
+    local usrathn="%F{yellow}%n@$HOST%f"
+else
+    local usrathn="%n"
+fi
 
-local p='[%n$hn]%f%(?.%F{green}[%/]%f.%F{red}[%/]%f)'
-local pbase="%F{cyan}$p"
-local pbase_nor="%F{red}$p"
+local plat='%(?.%F{green}[%~]%f.%F{red}[%~]%f)'
+local pbase="%F{cyan}[$usrathn%F{cyan}]%f$plat"
+local pbase_nor="%F{red}[$usrathn%F{red}]%f$plat"
 local lf=$'\n'
 
 PROMPT="%5(~|$pbase$lf|$pbase)%% "
@@ -51,6 +55,14 @@ function rprompt-git-current-branch {
   gitdir=`git rev-parse --git-dir 2> /dev/null`
   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
 
+  #when this script requires long time to run,
+  #please, execute follow command.
+  #    $touch .git/rprompt-nostatus
+  if [[ -e "$gitdir/rprompt-nostatus" ]]; then
+      echo "[ ${name}${action}]"
+      return
+  fi
+
   st=`git status 2> /dev/null`
   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
     color=%F{green}
@@ -61,7 +73,7 @@ function rprompt-git-current-branch {
   else
     color=%F{red}
   fi
-  echo "${color} ${name}${action}%f%b "
+  echo "${color}[ ${name}${action}]%f%b "
 }
 
 RPROMPT='`rprompt-git-current-branch`'
