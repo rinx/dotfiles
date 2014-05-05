@@ -3,11 +3,15 @@
 #prompt
 
 # when connected to remote host
-[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && local hn="@$HOST"
+if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
+    local usrathn="%F{yellow}%n@$HOST%f"
+else
+    local usrathn="%n"
+fi
 
-local p='[%n$hn]%f%(?.%F{green}[%/]%f.%F{red}[%/]%f)'
-local pbase="%F{cyan}$p"
-local pbase_nor="%F{red}$p"
+local plat='%(?.%F{green}[%/]%f.%F{red}[%/]%f)'
+local pbase="%F{cyan}[$usrathn%F{cyan}]%f$plat"
+local pbase_nor="%F{red}[$usrathn%F{red}]%f$plat"
 local lf=$'\n'
 
 PROMPT="%5(~|$pbase$lf|$pbase)%% "
