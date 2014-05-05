@@ -51,6 +51,14 @@ function rprompt-git-current-branch {
   gitdir=`git rev-parse --git-dir 2> /dev/null`
   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
 
+  #when this script requires long time to run,
+  #please, execute follow command.
+  #    $touch .git/rprompt-nostatus
+  if [[ -e "$gitdir/rprompt-nostatus" ]]; then
+      echo "[ ${name}${action}]"
+      return
+  fi
+
   st=`git status 2> /dev/null`
   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
     color=%F{green}
