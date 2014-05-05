@@ -39,12 +39,12 @@ alias -g @t='| tail'
 alias -g @g='| grep'
 
 #pandoc with lualatex
-if which pandoc > /dev/null 2>&1 ; then
+if builtin command -v pandoc > /dev/null 2>&1 ; then
     alias pandoclt='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
 fi
 
 #hub aliasing (https://github.com/defunkt/hub)
-if which hub > /dev/null 2>&1 ; then
+if builtin command -v hub > /dev/null 2>&1 ; then
     function git() {hub "$@"}
 fi
 
