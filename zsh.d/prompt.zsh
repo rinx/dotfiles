@@ -9,7 +9,7 @@ else
     local usrathn="%n"
 fi
 
-local plat='%(?.%F{green}[%/]%f.%F{red}[%/]%f)'
+local plat='%(?.%F{green}[%~]%f.%F{red}[%~]%f)'
 local pbase="%F{cyan}[$usrathn%F{cyan}]%f$plat"
 local pbase_nor="%F{red}[$usrathn%F{red}]%f$plat"
 local lf=$'\n'
