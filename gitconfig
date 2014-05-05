@@ -19,7 +19,7 @@
 [alias]
     this  = !git init && git add . && git commit -m \"first commit\"
 
-    st    = status
+    st    = status -s -b
 
     l     = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
     ll    = log --graph --stat --abbrev-commit
