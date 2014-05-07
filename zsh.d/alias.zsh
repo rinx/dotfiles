@@ -100,3 +100,5 @@ gcm () {
     git commit -m "$*"
 }
 
+alias gtl='git l'
+
