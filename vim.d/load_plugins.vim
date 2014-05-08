@@ -404,6 +404,7 @@ if neobundle#tap('unite.vim')
                     \["uwaaa", "▂▅▇█▓▒░('ω')░▒▓█▇▅▂"],
                     \["tanoshii", "✌('ω'✌ )三✌('ω')✌三( ✌'ω')✌"],
                     \["yatta", "+。:.ﾟ٩(๑＞◡＜๑)۶:.｡+ﾟ"],
+                    \["beer", "Ʊ\"-ʓ"],
                     \]
         function! g:unite_source_menu_menus.kaomoji.map(key, value)
             let [word, value] = a:value
