@@ -87,7 +87,7 @@ NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
-NeoBundleLazy 'pbrisbin/html-template-syntax'
+"NeoBundleLazy 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
 
