@@ -9,7 +9,7 @@ set bs=indent,eol,start
 set ruler
 set number
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 set cmdheight=2
 set wildmenu
 
