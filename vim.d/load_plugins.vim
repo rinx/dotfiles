@@ -87,7 +87,7 @@ NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
-NeoBundleLazy 'pbrisbin/html-template-syntax'
+"NeoBundleLazy 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
 
@@ -404,6 +404,7 @@ if neobundle#tap('unite.vim')
                     \["uwaaa", "▂▅▇█▓▒░('ω')░▒▓█▇▅▂"],
                     \["tanoshii", "✌('ω'✌ )三✌('ω')✌三( ✌'ω')✌"],
                     \["yatta", "+。:.ﾟ٩(๑＞◡＜๑)۶:.｡+ﾟ"],
+                    \["beer", "Ʊ\"-ʓ"],
                     \]
         function! g:unite_source_menu_menus.kaomoji.map(key, value)
             let [word, value] = a:value
