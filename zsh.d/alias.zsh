@@ -99,6 +99,14 @@ gstv () {
 gcm () {
     git commit -m "$*"
 }
-
+gbr () {
+    if [ $# -eq 0 ]; then
+        git branch
+    elif [ $# -eq 1 ]; then
+        git checkout `git branch | sed "s/\*//g" | sed "s/^\ *//g" | awk "NR==$1"`
+    else
+        echo "invalid arguments"
+    fi
+}
 alias gtl='git l'
 
