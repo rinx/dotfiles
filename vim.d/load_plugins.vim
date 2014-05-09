@@ -42,7 +42,7 @@ NeoBundleLazy 'kmnk/vim-unite-giti', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'itchyny/lightline.vim'
 
 NeoBundle 'tyru/skk.vim'
-"NeoBundle 'tyru/eskk.vim'
+NeoBundleFetch 'tyru/eskk.vim'
 
 NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
@@ -88,6 +88,7 @@ NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 "NeoBundleLazy 'pbrisbin/html-template-syntax'
+NeoBundleFetch 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
 
