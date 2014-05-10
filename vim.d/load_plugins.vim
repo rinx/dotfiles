@@ -92,6 +92,8 @@ NeoBundleFetch 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
 
+NeoBundleLazy 'elzr/vim-json'
+
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
@@ -833,6 +835,17 @@ if neobundle#tap('emmet-vim')
                 \     'scss',
                 \     'xml',
                 \     'markdown',
+                \   ]
+                \ }
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-json')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'javascript'
                 \   ]
                 \ }
                 \})
