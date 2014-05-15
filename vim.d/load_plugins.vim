@@ -63,6 +63,8 @@ NeoBundleLazy 'LeafCage/yankround.vim'
 NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 
+NeoBundleLazy 'thinca/vim-qfreplace'
+
 NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-arpeggio'
 
@@ -689,6 +691,16 @@ if neobundle#tap('vim-anzu')
         autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
     augroup END
 
+    call neobundle#untap()
+endif
+
+
+if neobundle#tap('vim-qfreplace')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : ['Qfreplace']
+                \ }
+                \})
     call neobundle#untap()
 endif
 
