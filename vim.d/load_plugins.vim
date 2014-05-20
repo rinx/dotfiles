@@ -462,6 +462,7 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
     "Shougo/unite-outline
     nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+    nnoremap <silent> [unite]oq :<C-u>Unite outline -no-quit<CR>
     "tsukkee/unite-help
     nnoremap <silent> [unite]he :<C-u>Unite -start-insert help<CR>
 
