@@ -65,6 +65,8 @@ NeoBundle 'osyo-manga/vim-over'
 
 NeoBundleLazy 'thinca/vim-qfreplace'
 
+NeoBundleLazy 't9md/vim-quickhl'
+
 NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-arpeggio'
 
@@ -702,6 +704,20 @@ if neobundle#tap('vim-qfreplace')
                 \   'commands' : ['Qfreplace']
                 \ }
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-quickhl')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'mappings' : ['<Plug>(quickhl-'],
+                \ }
+                \})
+    nmap <Space>m <Plug>(quickhl-manual-this)
+    xmap <Space>m <Plug>(quickhl-manual-this)
+    nmap <Space>M <Plug>(quickhl-manual-reset)
+    xmap <Space>M <Plug>(quickhl-manual-reset)
+
     call neobundle#untap()
 endif
 
