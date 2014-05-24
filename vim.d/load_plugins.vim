@@ -38,6 +38,7 @@ NeoBundleLazy 'Shougo/unite-outline', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'osyo-manga/unite-filetype', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'kmnk/vim-unite-giti', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'tacroe/unite-mark', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'itchyny/lightline.vim'
 
@@ -543,6 +544,15 @@ if neobundle#tap('vim-unite-giti')
                 \     'giti/remote',
                 \     'giti/status',
                 \   ]
+                \ }
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-mark')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'unite_sources' : ['mark']
                 \ }
                 \})
     call neobundle#untap()
