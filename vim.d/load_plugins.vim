@@ -72,6 +72,7 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-arpeggio'
 
 NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace', { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'emonkak/vim-operator-comment', { 'depends' : 'kana/vim-operator-user' }
 
 NeoBundle 'kana/vim-textobj-user'
@@ -744,6 +745,12 @@ endif
 if neobundle#tap('vim-operator-comment')
     Arpeggio map oc <Plug>(operator-comment)
     Arpeggio map od <Plug>(operator-uncomment)
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-operator-replace')
+    Arpeggio map or <Plug>(operator-replace)
 
     call neobundle#untap()
 endif
