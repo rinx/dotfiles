@@ -31,6 +31,9 @@ NeoBundleLazy 'honza/vim-snippets', { 'depends' : 'Shougo/neosnippet' }
 NeoBundleLazy 'Shougo/vimfiler.vim'
 NeoBundleLazy 'Shougo/vimshell.vim'
 
+NeoBundle 'kana/vim-submode'
+NeoBundle 'kana/vim-arpeggio'
+
 NeoBundleLazy 'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/neomru.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
@@ -67,9 +70,6 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thinca/vim-qfreplace'
 
 NeoBundleLazy 't9md/vim-quickhl'
-
-NeoBundle 'kana/vim-submode'
-NeoBundle 'kana/vim-arpeggio'
 
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace', { 'depends' : 'kana/vim-operator-user' }
@@ -259,6 +259,11 @@ if neobundle#tap('vimshell.vim')
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:vimshell_force_overwrite_statusline = 0
     endfunction
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-arpeggio')
+    call arpeggio#load()
     call neobundle#untap()
 endif
 
@@ -737,10 +742,6 @@ endif
 
 
 "operator
-if neobundle#tap('vim-arpeggio')
-    call arpeggio#load()
-    call neobundle#untap()
-endif
 
 if neobundle#tap('vim-operator-comment')
     Arpeggio map oc <Plug>(operator-comment)
