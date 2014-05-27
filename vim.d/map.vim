@@ -86,10 +86,10 @@ nnoremap Q <Nop>
 
 if neobundle#tap('unite.vim')
     " for Unite-menu:shortcut
-    Arpeggio nmap msa ,ums
-    Arpeggio nmap msc ,umsc
-    Arpeggio nmap msd ,umsd
-    Arpeggio nmap msf ,umsf
+    Arpeggio nmap msa [unite]ms
+    Arpeggio nmap msc [unite]msc
+    Arpeggio nmap msd [unite]msd
+    Arpeggio nmap msf [unite]msf
     call neobundle#untap()
 endif
 
