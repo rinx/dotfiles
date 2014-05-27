@@ -84,3 +84,9 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
+if neobundle#tap('unite.vim')
+    " for Unite-menu:shortcut
+    Arpeggio nmap ms ,ums
+    call neobundle#untap()
+endif
+
