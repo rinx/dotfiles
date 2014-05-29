@@ -93,3 +93,9 @@ if neobundle#tap('unite.vim')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim-quickrun')
+    nnoremap [quickrun] :<C-u>QuickRun<CR>
+    Arpeggio nmap qr [quickrun]
+    call neobundle#untap()
+endif
+
