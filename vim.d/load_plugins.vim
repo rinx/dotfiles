@@ -466,6 +466,8 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]mk :<C-u>Unite menu:kaomoji -start-insert<CR>
     "history
     nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
+    "source
+    nnoremap <silent> [unite]s :<C-u>Unite source<CR>
     "thinca/vim-unite-history
     nnoremap <silent> [unite]hc :<C-u>Unite history/command<CR>
     nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
