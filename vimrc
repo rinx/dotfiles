@@ -25,6 +25,11 @@ if filereadable(expand('~/.dotfiles/vim.d/map.vim'))
     source ~/.dotfiles/vim.d/map.vim
 endif
 
+"Filetype
+if filereadable(expand('~/.dotfiles/vim.d/filetype.vim'))
+    source ~/.dotfiles/vim.d/filetype.vim
+endif
+
 "Statusline
 if filereadable(expand('~/.dotfiles/vim.d/statusline.vim'))
     source ~/.dotfiles/vim.d/statusline.vim
