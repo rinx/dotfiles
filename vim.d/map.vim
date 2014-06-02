@@ -17,6 +17,18 @@ nnoremap <Down> <Nop>
 nnoremap <Up> <Nop>
 nnoremap <Right> <Nop>
 
+"Remap to act as expected
+nnoremap j gj
+nnoremap k gk
+nnoremap 0 g0
+nnoremap $ g$
+
+"Reverse of above
+nnoremap gj j
+nnoremap gk k
+nnoremap g0 0
+nnoremap g$ $
+
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
 "inoremap <C-n> <Down>
