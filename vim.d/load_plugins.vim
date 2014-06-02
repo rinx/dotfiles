@@ -571,6 +571,7 @@ if neobundle#tap('vim-quickrun')
     call neobundle#config({
                 \ 'autoload' : {
                 \   'commands' : ['QuickRun'],
+                \   'mappings' : '<Plug>(quickrun',
                 \ }
                 \})
     let g:quickrun_config = {
@@ -602,6 +603,7 @@ if neobundle#tap('vim-quickrun')
                 \ },
                 \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+    Arpeggio nmap qr <Plug>(quickrun)
     call neobundle#untap()
 endif
 
