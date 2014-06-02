@@ -444,39 +444,39 @@ if neobundle#tap('unite.vim')
     nnoremap [unite] <Nop>
     nmap ,u [unite]
     "buffer
-    nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+    nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
     "commands
-    nnoremap <silent> [unite]c :<C-u>Unite command<CR>
+    nnoremap <silent> [unite]c   :<C-u>Unite command<CR>
     "tab
-    nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
+    nnoremap <silent> [unite]t   :<C-u>Unite tab<CR>
     "file
-    nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-    nnoremap <silent> [unite]fr :<C-u>Unite file_rec<CR>
+    nnoremap <silent> [unite]f   :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> [unite]fr  :<C-u>Unite file_rec<CR>
     "resume
-    nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
+    nnoremap <silent> [unite]r   :<C-u>UniteResume<CR>
     "register
-    nnoremap <silent> [unite]rg :<C-u>Unite -buffer-name=register register<CR>
+    nnoremap <silent> [unite]rg  :<C-u>Unite -buffer-name=register register<CR>
     "recently files
-    nnoremap <silent> [unite]m :<C-u>Unite file_mru:short<CR>
-    nnoremap <silent> [unite]ml :<C-u>Unite file_mru:long<CR>
+    nnoremap <silent> [unite]m   :<C-u>Unite file_mru:short<CR>
+    nnoremap <silent> [unite]ml  :<C-u>Unite file_mru:long<CR>
     "menu
-    nnoremap <silent> [unite]ms :<C-u>Unite menu:shortcut<CR>
+    nnoremap <silent> [unite]ms  :<C-u>Unite menu:shortcut<CR>
     nnoremap <silent> [unite]msd :<C-u>Unite menu:shortcut -input=[directory]\ <CR>
     nnoremap <silent> [unite]msf :<C-u>Unite menu:shortcut -input=[file]\ <CR>
     nnoremap <silent> [unite]msc :<C-u>Unite menu:shortcut -input=[command]\ <CR>
-    nnoremap <silent> [unite]mk :<C-u>Unite menu:kaomoji -start-insert<CR>
-    "history
-    nnoremap <silent> [unite]hy :<C-u>Unite history/yank<CR>
+    nnoremap <silent> [unite]mk  :<C-u>Unite menu:kaomoji -start-insert<CR>
     "source
-    nnoremap <silent> [unite]s :<C-u>Unite source<CR>
+    nnoremap <silent> [unite]s   :<C-u>Unite source<CR>
+    "history
+    nnoremap <silent> [unite]hy  :<C-u>Unite history/yank<CR>
     "thinca/vim-unite-history
-    nnoremap <silent> [unite]hc :<C-u>Unite history/command<CR>
-    nnoremap <silent> [unite]hs :<C-u>Unite history/search<CR>
+    nnoremap <silent> [unite]hc  :<C-u>Unite history/command<CR>
+    nnoremap <silent> [unite]hs  :<C-u>Unite history/search<CR>
     "Shougo/unite-outline
-    nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
-    nnoremap <silent> [unite]oq :<C-u>Unite -no-quit -buffer-name=outline outline<CR>
+    nnoremap <silent> [unite]o   :<C-u>Unite outline<CR>
+    nnoremap <silent> [unite]oq  :<C-u>Unite -no-quit -buffer-name=outline outline<CR>
     "tsukkee/unite-help
-    nnoremap <silent> [unite]he :<C-u>Unite -start-insert help<CR>
+    nnoremap <silent> [unite]he  :<C-u>Unite -start-insert help<CR>
 
     call neobundle#untap()
 endif
