@@ -391,6 +391,7 @@ if neobundle#tap('unite.vim')
                     \["panpaka", "＼＼\\٩( 'ω' )و /／／"],
                     \["crow", "( っ'ω'c)"],
                     \["crow", "三( っ'ω'c)"],
+                    \["crow", "( っ˘ω˘c)"],
                     \["wahhab", "( っ'ヮ'c)"],
                     \["wahhab", "三( っ'ヮ'c)"],
                     \["poyo", "(´,,•ω•,,｀)"],
