@@ -60,6 +60,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
+NeoBundle 'airblade/vim-gitgutter'
+
 NeoBundleLazy 'sjl/gundo.vim'
 
 NeoBundleLazy 'LeafCage/yankround.vim'
