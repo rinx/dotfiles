@@ -667,6 +667,13 @@ if neobundle#tap('syntastic')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim-gitgutter')
+    let g:gitgutter_map_keys = 0
+    let g:gitgutter_sign_added = '✚'
+    let g:gitgutter_sign_modified = '➜'
+    let g:gitgutter_sign_removed = '✘'
+endif
+
 if neobundle#tap('gundo.vim')
     call neobundle#config({
                 \ 'autoload' : {
