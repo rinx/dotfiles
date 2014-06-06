@@ -306,7 +306,9 @@ if neobundle#tap('unite.vim')
                     \ ['neobundle install', 'NeoBundleInstall'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
                     \ ['neobundle clean', 'NeoBundleClean'],
-                    \ ['unite-jazzradio', 'Unite jazzradio'],
+                    \ ['unite codic', 'Unite codic -start-insert'],
+                    \ ['unite webcolorname', 'Unite webcolorname'],
+                    \ ['unite jazzradio', 'Unite jazzradio'],
                     \ ['hateblo list', 'HatebloList'],
                     \]
         if has('mac')
