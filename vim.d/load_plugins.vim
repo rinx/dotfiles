@@ -102,6 +102,7 @@ NeoBundleLazy 'mattn/emmet-vim'
 
 NeoBundle 'elzr/vim-json'
 
+NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
@@ -909,6 +910,47 @@ if neobundle#tap('emmet-vim')
                 \   ]
                 \ }
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-ref')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Ref',
+                \   ],
+                \   'mappings' : [
+                \     '<Plug>(ref-'
+                \   ],
+                \ }
+                \})
+
+    let g:ref_source_webdict_sites = {
+                \ 'je' : {
+                \   'url' : 'http://dictionary.infoseek.ne.jp/jeword/%s',
+                \ },
+                \ 'ej' : {
+                \   'url' : 'http://dictionary.infoseek.ne.jp/ejword/%s',
+                \ },
+                \ 'wiki' : {
+                \   'url' : 'http://ja.wikipedia.org/wiki/%s',
+                \ },
+                \}
+    let g:ref_source_webdict_sites.default = 'ej'
+    function! g:ref_source_webdict_sites.je.filter(output)
+        return join(split(a:output, "\n")[15 :], "\n")
+    endfunction
+    function! g:ref_source_webdict_sites.ej.filter(output)
+        return join(split(a:output, "\n")[15 :], "\n")
+    endfunction
+    function! g:ref_source_webdict_sites.wiki.filter(output)
+        return join(split(a:output, "\n")[17 :], "\n")
+    endfunction
+
+    augroup refSettings
+        autocmd FileType ref-* nnoremap <buffer><silent>q :<C-u>q<CR>
+    augroup END
+
     call neobundle#untap()
 endif
 
