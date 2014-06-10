@@ -12,6 +12,7 @@ set cursorline
 "set cursorcolumn
 set cmdheight=2
 set wildmenu
+set wildchar=<Tab>
 
 set imdisable
 
