@@ -960,6 +960,12 @@ if neobundle#tap('vim-ref')
         autocmd FileType ref-* nnoremap <buffer><silent>q :<C-u>q<CR>
     augroup END
 
+    nnoremap [ref] <Nop>
+    nmap ,r [ref]
+    nnoremap <silent> [ref]ej :<C-u>Ref webdict ej <C-r><C-w><CR>
+    nnoremap <silent> [ref]je :<C-u>Ref webdict je <C-r><C-w><CR>
+    nnoremap <silent> [ref]wk :<C-u>Ref webdict wiki <C-r><C-w><CR>
+
     call neobundle#untap()
 endif
 
