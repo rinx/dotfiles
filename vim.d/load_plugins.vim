@@ -600,7 +600,13 @@ if neobundle#tap('vim-quickrun')
                 \ 'haskell/runghc' : {
                 \   'hook/time/enable' : 1
                 \ },
-                \ 'markdown' :{
+                \ 'make' : {
+                \   'command' : 'make',
+                \   'exec' : '%c %o',
+                \   'outputter' : 'error:buffer:quickfix',
+                \   'runner' : 'vimproc',
+                \ },
+                \ 'markdown' : {
                 \   'type' : 'markdown/pandoc',
                 \   'outputter' : 'browser'
                 \ },
@@ -609,6 +615,9 @@ if neobundle#tap('vim-quickrun')
                 \ },
                 \ 'ruby' : {
                 \   'hook/time/enable' : 1
+                \ },
+                \ 'tex' : {
+                \   'type' : 'make',
                 \ },
                 \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
