@@ -299,7 +299,7 @@ if neobundle#tap('unite.vim')
                     \ ['dotfiles', $HOME . '/.dotfiles'],
                     \ ['vimrc', $MYVIMRC],
                     \ ['quickrun', 'QuickRun'],
-                    \ ['make', 'make'],
+                    \ ['make(quickrun)', 'QuickRun make'],
                     \ ['Gundo', 'GundoToggle'],
                     \ ['map', 'Unite output:map'],
                     \ ['toggle-options', 'Unite menu:toggle'],
