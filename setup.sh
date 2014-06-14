@@ -143,6 +143,11 @@ if [ "$FLG_V" = "TRUE" ]; then
     fi
 
     # vim filetype plugins
-    [ "$FLG_C" = "TRUE" ] || wget -qO- https://gist.github.com/raw/8645095/vim-ft-setup.sh | sh
+    if [ "$FLG_F" = "TRUE" ]; then
+        sh $DOTDIR/vim-ft-setup.sh -f
+    else
+        sh $DOTDIR/vim-ft-setup.sh
+    fi
+
 fi
 
