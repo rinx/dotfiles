@@ -591,14 +591,23 @@ if neobundle#tap('vim-quickrun')
                 \   'runner' : 'vimproc',
                 \   'runner/vimproc/updatetime' : 60
                 \ },
+                \ 'cpp' : {
+                \   'type' : 'cpp/g++',
+                \ },
                 \ 'cpp/clang++' : {
-                \   'hook/time/enable' : 1
+                \   'hook/time/enable' : 1,
                 \ },
                 \ 'cpp/g++' : {
-                \   'hook/time/enable' : 1
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'fortran' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'haskell' : {
+                \   'type' : 'haskell/runghc',
                 \ },
                 \ 'haskell/runghc' : {
-                \   'hook/time/enable' : 1
+                \   'hook/time/enable' : 1,
                 \ },
                 \ 'make' : {
                 \   'command' : 'make',
@@ -608,13 +617,13 @@ if neobundle#tap('vim-quickrun')
                 \ },
                 \ 'markdown' : {
                 \   'type' : 'markdown/pandoc',
-                \   'outputter' : 'browser'
+                \   'outputter' : 'browser',
                 \ },
                 \ 'python' : {
-                \   'hook/time/enable' : 1
+                \   'hook/time/enable' : 1,
                 \ },
                 \ 'ruby' : {
-                \   'hook/time/enable' : 1
+                \   'hook/time/enable' : 1,
                 \ },
                 \ 'tex' : {
                 \   'type' : 'make',
