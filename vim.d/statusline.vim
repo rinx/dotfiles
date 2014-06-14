@@ -81,6 +81,7 @@ if neobundle#tap('lightline.vim')
 
     function! MySkkgetmode()
         let _ = SkkGetModeStr()
+        "let _ = eskk#get_mode()
         return strlen(_) ? substitute(_, '\[\|\]', '', 'g') : ''
     endfunction
 
