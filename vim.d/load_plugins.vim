@@ -33,6 +33,7 @@ NeoBundleLazy 'Shougo/vimshell.vim'
 
 NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-arpeggio'
+NeoBundle 'kana/vim-altercmd'
 
 NeoBundleLazy 'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/neomru.vim', { 'depends' : 'Shougo/unite.vim' }
@@ -974,6 +975,10 @@ if neobundle#tap('vim-ref')
     nnoremap <silent> [ref]ej :<C-u>Ref webdict ej <C-r><C-w><CR>
     nnoremap <silent> [ref]je :<C-u>Ref webdict je <C-r><C-w><CR>
     nnoremap <silent> [ref]wk :<C-u>Ref webdict wiki <C-r><C-w><CR>
+
+    call altercmd#define('ejdic', 'Ref webdict ej')
+    call altercmd#define('jedic', 'Ref webdict je')
+    call altercmd#define('wiki',  'Ref webdict wiki')
 
     call neobundle#untap()
 endif
