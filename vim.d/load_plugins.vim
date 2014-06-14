@@ -33,6 +33,7 @@ NeoBundleLazy 'Shougo/vimshell.vim'
 
 NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-arpeggio'
+NeoBundle 'kana/vim-altercmd'
 
 NeoBundleLazy 'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/neomru.vim', { 'depends' : 'Shougo/unite.vim' }
@@ -671,9 +672,51 @@ if neobundle#tap('skk.vim')
 endif
 
 if neobundle#tap('eskk.vim')
-    let g:eskk#dictionary = '~/.skk-jisyo'
-    let g:eskk#large_dictionary = '/usr/share/skk/SKK-JISYO.LL'
+    let g:eskk#dictionary = {
+                \ 'path' : '~/.skk-jisyo',
+                \ 'sorted' : 0,
+                \ 'encoding' : 'euc_jp',
+                \}
+    if has('mac')
+        let g:eskk#large_dictionary = {
+                    \ 'path' : '/Library/Dictionaries/SKK/SKK-JISYO.LL',
+                    \ 'sorted' : 0,
+                    \ 'encoding' : 'euc_jp',
+                    \}
+    elseif has('unix')
+        let g:eskk#large_dictionary = {
+                    \ 'path' : '/usr/share/skk/SKK-JISYO.LL',
+                    \ 'sorted' : 0,
+                    \ 'encoding' : 'euc_jp',
+                    \}
+    endif
+    let g:eskk#auto_save_dictionary_at_exit = 1
+    let g:eskk#dictionary_save_count = 10
+    let g:eskk#select_cand_keys = "asdfjkl"
+    let g:eskk#show_candidates_count = 3
+    let g:eskk#kata_convert_to_hira_at_henkan = 1
+    let g:eskk#kata_convert_to_hira_at_completion = 1
     let g:eskk#show_annotation = 1
+    let g:eskk#kakutei_when_unique_candidate = 1
+    let g:eskk#no_default_mappings = 0
+    let g:eskk#dont_map_default_if_already_mapped = 0
+    let g:eskk#statusline_mode_strings = {
+                \ 'hira' : 'あ',
+                \ 'kata' : 'ア',
+                \ 'ascii' : 'aA',
+                \ 'zenei' : 'ａ',
+                \ 'hankata' : 'ｧｱ',
+                \ 'abbrev' : 'aあ',
+                \}
+    let g:eskk#marker_henkan = ">"
+    let g:eskk#marker_okuri = "*"
+    let g:eskk#marker_henkan_select =">>"
+    let g:eskk#marker_jisyo_touroku = "?"
+    let g:eskk#enable_completion = 1
+    let g:eskk#max_candidates = 15
+    let g:eskk#start_completion_length = 2
+    let g:eskk#register_completed_word = 1
+    let g:eskk#use_color_cursor = 0
 endif
 
 if neobundle#tap('syntastic')
@@ -974,6 +1017,10 @@ if neobundle#tap('vim-ref')
     nnoremap <silent> [ref]ej :<C-u>Ref webdict ej <C-r><C-w><CR>
     nnoremap <silent> [ref]je :<C-u>Ref webdict je <C-r><C-w><CR>
     nnoremap <silent> [ref]wk :<C-u>Ref webdict wiki <C-r><C-w><CR>
+
+    call altercmd#define('ejdic', 'Ref webdict ej')
+    call altercmd#define('jedic', 'Ref webdict je')
+    call altercmd#define('wiki',  'Ref webdict wiki')
 
     call neobundle#untap()
 endif
