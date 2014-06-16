@@ -303,6 +303,7 @@ if neobundle#tap('unite.vim')
                     \ ['make(quickrun)', 'QuickRun make'],
                     \ ['Gundo', 'GundoToggle'],
                     \ ['map', 'Unite output:map'],
+                    \ ['reload .vimrc', 'source ~/.vimrc'],
                     \ ['toggle-options', 'Unite menu:toggle'],
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle install', 'NeoBundleInstall'],
