@@ -1021,7 +1021,7 @@ if neobundle#tap('vim-ref')
         return join(split(a:output, "\n")[15 :], "\n")
     endfunction
     function! g:ref_source_webdict_sites.wiki.filter(output)
-        return join(split(a:output, "\n")[17 :], "\n")
+        return join(split(a:output, "\n")[5 :], "\n")
     endfunction
 
     augroup refSettings
