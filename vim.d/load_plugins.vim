@@ -645,13 +645,28 @@ if neobundle#tap('skk.vim')
     endif
 
     let g:skk_auto_save_jisyo = 1
+    let g:skk_manual_save_jisyo_keys = ""
+    let g:skk_external_prog = ""
+    let g:skk_control_j_key = "<C-j>"
     let g:skk_keep_state = 1
     let g:skk_egg_like_newline = 1
-    let g:skk_show_annotation = 1
-    let g:skk_use_face = 1
-    let g:skk_marker_white = '>'
-    let g:skk_marker_black = '>>'
-    let g:skk_use_color_cursor = 1
+    let g:skk_show_annotation = 0
+    let g:skk_use_face = 0
+    let g:skk_initial_mode = "hira"
+    let g:skk_marker_white = ">"
+    let g:skk_marker_black = ">>"
+    let g:skk_marker_okuri = "*"
+    let g:skk_start_henkan_key = " "
+    let g:skk_prev_cand_key = "x"
+    let g:skk_purge_cand_key = "X"
+    let g:skk_show_candidates_count = 3
+    let g:skk_completion_key = "\<Tab>"
+    let g:skk_next_comp_key = "."
+    let g:skk_prev_comp_key = ","
+    let g:skk_special_midasi_keys = "<>?"
+    let g:skk_henkan_point_keys = "ABCDEFGHIJKMNOPRSTUVWYZ"
+    let g:skk_select_cand_keys = "ASDFJKL"
+    let g:skk_use_color_cursor = 0
     let g:skk_cursor_hira_color = '#ff0000'
     let g:skk_cursor_kata_color = '#00ff00'
     let g:skk_cursor_zenei_color = '#ffcc00'
