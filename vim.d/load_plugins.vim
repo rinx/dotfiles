@@ -83,6 +83,7 @@ NeoBundle 'kana/vim-textobj-indent', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-entire', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-jabraces', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
@@ -856,6 +857,36 @@ endif
 
 
 "textobj
+if neobundle#tap('vim-textobj-jabraces')
+    let g:textobj_jabraces_no_default_key_mappings = 1
+
+    omap aj( <Plug>(textobj-jabraces-parens-a)
+    omap aj) <Plug>(textobj-jabraces-parens-a)
+    omap ij( <Plug>(textobj-jabraces-parens-i)
+    omap ij) <Plug>(textobj-jabraces-parens-i)
+    vmap aj( <Plug>(textobj-jabraces-parens-a)
+    vmap aj) <Plug>(textobj-jabraces-parens-a)
+    vmap ij( <Plug>(textobj-jabraces-parens-i)
+    vmap ij) <Plug>(textobj-jabraces-parens-i)
+
+    omap ajk <Plug>(textobj-jabraces-kakko-a)
+    omap ijk <Plug>(textobj-jabraces-kakko-i)
+    vmap ajk <Plug>(textobj-jabraces-kakko-a)
+    vmap ijk <Plug>(textobj-jabraces-kakko-i)
+
+    omap ajK <Plug>(textobj-jabraces-double-kakko-a)
+    omap ijK <Plug>(textobj-jabraces-double-kakko-i)
+    vmap ajK <Plug>(textobj-jabraces-double-kakko-a)
+    vmap ijK <Plug>(textobj-jabraces-double-kakko-i)
+
+    omap ajs <Plug>(textobj-jabraces-sumi-kakko-a)
+    omap ijs <Plug>(textobj-jabraces-sumi-kakko-i)
+    vmap ajs <Plug>(textobj-jabraces-sumi-kakko-a)
+    vmap ijs <Plug>(textobj-jabraces-sumi-kakko-i)
+
+    call neobundle#untap()
+endif
+
 if neobundle#tap('vim-textobj-multiblock')
     omap ab <Plug>(textobj-multiblock-a)
     omap ib <Plug>(textobj-multiblock-i)
