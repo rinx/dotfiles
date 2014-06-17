@@ -939,6 +939,9 @@ if neobundle#tap('open-browser.vim')
                 \     'OpenBrowser',
                 \   ],
                 \   'filetypes' : ['markdown'],
+                \   'mappings' : [
+                \     '<Plug>(openbrowser-',
+                \   ],
                 \ }
                 \})
 
@@ -955,6 +958,8 @@ if neobundle#tap('open-browser.vim')
                     \ 'args' : ['{browser}', '{uri}']
                     \}]
     endif
+
+    nmap ,op <Plug>(openbrowser-smart-search)
 
     call neobundle#untap()
 endif
