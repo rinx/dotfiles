@@ -1,4 +1,4 @@
-"The beginning of initialization
+" --- The beginning of initialization ---
 
 "not vi compatible
 set nocompatible
@@ -49,4 +49,5 @@ endfunction
 
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
+
 
