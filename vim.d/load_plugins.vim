@@ -64,6 +64,7 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundleLazy 'sjl/gundo.vim'
+NeoBundleLazy 'scrooloose/nerdtree'
 
 NeoBundleLazy 'LeafCage/yankround.vim'
 
@@ -303,6 +304,7 @@ if neobundle#tap('unite.vim')
                     \ ['quickrun', 'QuickRun'],
                     \ ['make(quickrun)', 'QuickRun make'],
                     \ ['Gundo', 'GundoToggle'],
+                    \ ['NERDTree', 'NERDTreeToggle'],
                     \ ['map', 'Unite output:map'],
                     \ ['reload .vimrc', 'source ~/.vimrc'],
                     \ ['toggle-options', 'Unite menu:toggle'],
@@ -773,6 +775,20 @@ if neobundle#tap('gundo.vim')
     let g:gundo_close_on_revert = 1
     let g:gundo_auto_preview = 1
     let g:gundo_playback_delay = 100
+    call neobundle#untap()
+endif
+
+if neobundle#tap('nerdtree')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'NERDTree',
+                \     'NERDTreeToggle',
+                \   ]
+                \ }
+                \})
+    nnoremap <F6> :<C-u>NERDTreeToggle<CR>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     call neobundle#untap()
 endif
 
