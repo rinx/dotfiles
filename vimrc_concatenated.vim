@@ -1,3 +1,56 @@
+" --- The beginning of initialization ---
+
+"not vi compatible
+set nocompatible
+
+"encoding
+
+set encoding=utf-8
+scriptencoding utf-8
+
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,sjis
+
+
+"define functions
+
+" Anywhere SID.
+function! s:SID_PREFIX()
+    return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" --- for tabline
+
+" Set tabline.
+function! s:my_tabline()
+    let s = ''
+
+    for i in range(1, tabpagenr('$'))
+        let bufnrs = tabpagebuflist(i)
+        let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+
+        let no = i  " display 0-origin tabpagenr.
+        let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+
+        " Use gettabvar().
+        let title = fnamemodify(bufname(bufnr), ':t')
+
+        let title = '[' . title . ']'
+
+        let s .= '%'.i.'T'
+        let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+        let s .= no . ':' . title
+        let s .= mod
+        let s .= '%#TabLineFill# '
+    endfor
+
+    let s .= '%#TabLineFill#%T%=%#TabLine#'
+    return s
+endfunction
+
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+set showtabline=2
+
+
 " --- load plugin settings ---
 
 if has('vim_starting')
@@ -1189,5 +1242,369 @@ if neobundle#tap('unite-webcolorname')
                 \})
     call neobundle#untap()
 endif
+
+
+" --- Basic Settings ---
+
+"history
+set viminfo='1000,<100,f1,h,s100
+set history=300
+
+set bs=indent,eol,start
+
+set ruler
+set number
+set cursorline
+"set cursorcolumn
+set cmdheight=2
+set wildmenu
+set wildchar=<Tab>
+
+set imdisable
+
+"search
+set incsearch
+set ignorecase
+set smartcase
+
+"indent
+filetype plugin indent on
+set autoindent
+set smartindent
+
+"unsaved buffer warning
+set confirm
+
+"clipboard
+set clipboard+=unnamed,autoselect
+
+"mouse
+set mouse=a
+set ttymouse=xterm2
+
+"fold
+set foldmethod=marker
+
+"visual select
+set virtualedit=block
+
+"tab
+set expandtab
+"set smarttab
+set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+    syntax on
+    set hlsearch
+endif
+
+if &term=="xterm"
+    set t_Co=256
+    set t_Sb=[4%dm
+    set t_Sf=[3%dm
+endif
+
+set visualbell
+
+"for session
+set sessionoptions+=tabpages
+
+"showmatch
+set showmatch
+set matchtime=3
+
+if v:version >= 703
+    set cryptmethod=blowfish
+    set conceallevel=0
+endif
+
+"backup
+set backup
+
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+set backupdir=~/.vim/tmp/backup
+set undodir=~/.vim/tmp/undo
+set directory=~/.vim/tmp/swap
+
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+"show tab, newline, etc...
+set list
+set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
+
+set autochdir
+set autoread
+
+
+" --- Color settings ---
+
+NeoBundle 'tomasr/molokai'
+
+syntax enable
+if !exists('g:colors_name')
+    set background=dark
+    colorscheme molokai 
+endif
+
+hi Normal ctermbg=none
+
+
+" --- Mappings ---
+
+let mapleader = '\'
+
+"reload .vimrc
+nnoremap <C-r><C-f> :source ~/.vimrc<CR>
+
+"For US-keyboard
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
+"Disable cursor keys
+nnoremap <Left> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Right> <Nop>
+
+"Remap to act as expected
+nnoremap j gj
+nnoremap k gk
+nnoremap 0 g0
+nnoremap $ g$
+
+"Reverse of above
+nnoremap gj j
+nnoremap gk k
+nnoremap g0 0
+nnoremap g$ $
+
+"Use Emacs-like keybinds on insert-mode
+inoremap <C-b> <Left>
+"inoremap <C-n> <Down>
+"inoremap <C-p> <Up>
+inoremap <C-f> <Right>
+
+"Use Emacs-like keybinds on command-mode
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+
+"for tabline
+nnoremap [Tag] <Nop>
+nmap t [Tag]
+
+for n in range(1, 9)
+    execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
+endfor
+
+nnoremap <silent> [Tag]c :<C-u>tablast <bar> tabnew<CR>
+nnoremap <silent> [Tag]x :<C-u>tabclose<CR>
+nnoremap <silent> [Tag]n :<C-u>tabnext<CR>
+nnoremap <silent> [Tag]p :<C-u>tabprevious<CR>
+
+"for window
+nnoremap s <Nop>
+nnoremap <silent> sj <C-w>j
+nnoremap <silent> sk <C-w>k
+nnoremap <silent> sl <C-w>l
+nnoremap <silent> sh <C-w>h
+nnoremap <silent> sJ <C-w>J
+nnoremap <silent> sK <C-w>K
+nnoremap <silent> sL <C-w>L
+nnoremap <silent> sH <C-w>H
+nnoremap <silent> sr <C-w>r
+nnoremap <silent> sw <C-w>w
+nnoremap <silent> s_ <C-w>_
+nnoremap <silent> s| <C-w>|
+nnoremap <silent> so <C-w>_<C-w>|
+nnoremap <silent> sO <C-w>=
+nnoremap <silent> s= <C-w>=
+nnoremap <silent> ss :<C-u>sp<CR>
+nnoremap <silent> sv :<C-u>vs<CR>
+
+if neobundle#tap('vim-submode')
+    call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+    call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+    call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+    call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+    call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+    call submode#map('bufmove', 'n', '', '<', '<C-w><')
+    call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+    call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+
+    call neobundle#untap()
+endif
+
+"nohilight by pressing Esc twice
+nnoremap <Esc><Esc> :nohlsearch<CR>
+
+"toggle paste mode
+nnoremap <Leader>p :setl paste!<CR>
+
+"disable some default mappings
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+nnoremap Q <Nop>
+
+if neobundle#tap('unite.vim')
+    " for Unite-menu:shortcut
+    Arpeggio nmap msa [unite]ms
+    Arpeggio nmap msc [unite]msc
+    Arpeggio nmap msd [unite]msd
+    Arpeggio nmap msf [unite]msf
+    call neobundle#untap()
+endif
+
+
+" --- filetype settings ---
+
+"golang
+set rtp^=$GOROOT/misc/vim
+set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
+let g:gofmt_command = 'goimports'
+augroup golang
+    autocmd!
+    autocmd BufWritePre *.go Fmt
+    autocmd BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4
+    autocmd FileType go compiler go
+augroup END
+
+
+" --- Statusline settings ---
+
+set laststatus=2
+
+if neobundle#tap('lightline.vim')
+    let g:lightline = {
+                \ 'active': {
+                \   'left': [ [ 'mode', 'paste' ],
+                \             [ 'fugitive', 'filename' ]
+                \   ],
+                \   'right': [ [ 'syntastic', 'lineinfo' ],
+                \             [ 'percent' ],
+                \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ]
+                \   ]
+                \ },
+                \ 'component_function': {
+                \   'modified': 'MyModified',
+                \   'readonly': 'MyReadonly',
+                \   'fugitive': 'MyFugitive',
+                \   'filename': 'MyFilename',
+                \   'fileformat': 'MyFileformat',
+                \   'filetype': 'MyFiletype',
+                \   'mode': 'MyMode',
+                \   'skkstatus': 'MySkkgetmode',
+                \   'anzu': 'anzu#search_status'
+                \ },
+                \ 'component_expand': {
+                \   'syntastic': 'SyntasticStatuslineFlag'
+                \ },
+                \ 'component_type': {
+                \   'syntastic': 'error'
+                \ }
+                \ }
+
+    function! MyModified()
+        return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    endfunction
+
+    function! MyReadonly()
+        return &ft !~? 'help\|vimfiler\|gundo' && &ro ? ' ' : ''
+    endfunction
+
+    function! MyFugitive()
+        try
+            if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+                let _ = fugitive#head()
+                return strlen(_) ? ' '._ : ''
+            endif
+        catch
+        endtry
+        return ''
+    endfunction
+
+    function! MyFileformat()
+        return winwidth('.') > 70 ? &fileformat : ''
+    endfunction
+
+    function! MyFiletype()
+        return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    endfunction
+
+    function! MyFileencoding()
+        return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    endfunction
+
+    function! MyMode()
+        return &ft == 'vimfiler' ? 'VimFiler' : 
+                    \ &ft == 'unite' ? 'Unite' :
+                    \ &ft == 'vimshell' ? 'VimShell' :
+                    \ winwidth('.') > 60 ? lightline#mode() : ''
+    endfunction
+
+    function! MyFilename()
+        return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                    \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                    \  &ft == 'unite' ? unite#get_status_string() :
+                    \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+                    \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                    \ ('' != MyModified() ? ' ' . MyModified() : '')
+    endfunction
+
+    function! MySkkgetmode()
+        let _ = SkkGetModeStr()
+        "let _ = eskk#get_mode()
+        return strlen(_) ? substitute(_, '\[\|\]', '', 'g') : ''
+    endfunction
+
+    call neobundle#untap()
+endif
+
+
+" --- The end of initialization ---
+
+NeoBundleCheck
+
+"when creating new file, if it does not exist directory,
+"this function will ask you to create new directory.
+augroup vimrc-auto-mkdir
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  function! s:auto_mkdir(dir, force)
+    if !isdirectory(a:dir) && (a:force ||
+          \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction
+augroup END
+
+"load settings for each location
+augroup vimrc-local
+    autocmd!
+    autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+    let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+    for i in reverse(filter(files, 'filereadable(v:val)'))
+        source `=i`
+    endfor
+endfunction
 
 

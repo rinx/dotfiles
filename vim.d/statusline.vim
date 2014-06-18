@@ -1,4 +1,4 @@
-" Statusline settings
+" --- Statusline settings ---
 
 set laststatus=2
 
@@ -87,3 +87,5 @@ if neobundle#tap('lightline.vim')
 
     call neobundle#untap()
 endif
+
+

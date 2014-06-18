@@ -1,4 +1,4 @@
-"Control settings
+" --- Mappings ---
 
 let mapleader = '\'
 
