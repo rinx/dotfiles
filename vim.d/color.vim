@@ -1,3 +1,5 @@
+" --- Color settings ---
+
 NeoBundle 'tomasr/molokai'
 
 syntax enable
@@ -7,3 +9,5 @@ if !exists('g:colors_name')
 endif
 
 hi Normal ctermbg=none
+
+

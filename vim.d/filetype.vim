@@ -1,3 +1,5 @@
+" --- filetype settings ---
+
 "golang
 set rtp^=$GOROOT/misc/vim
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
@@ -8,4 +10,5 @@ augroup golang
     autocmd BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4
     autocmd FileType go compiler go
 augroup END
+
 

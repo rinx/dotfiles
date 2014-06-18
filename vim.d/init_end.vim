@@ -1,4 +1,4 @@
-"The end of initialization
+" --- The end of initialization ---
 
 NeoBundleCheck
 
@@ -27,4 +27,5 @@ function! s:vimrc_local(loc)
         source `=i`
     endfor
 endfunction
+
 

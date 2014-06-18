@@ -1,4 +1,4 @@
-"Basic Settings
+" --- Basic Settings ---
 
 "history
 set viminfo='1000,<100,f1,h,s100
@@ -103,4 +103,5 @@ set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
 
 set autochdir
 set autoread
+
 
