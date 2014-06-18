@@ -916,21 +916,44 @@ endif
 
 if neobundle#tap('vim-textobj-multitextobj')
     let g:textobj_multitextobj_textobjects_i = [
-                \   '\<Plug>(textobj-url-i)',
-                \   '\<Plug>(textobj-multiblock-i)',
-                \   '\<Plug>(textobj-function-i)',
-                \   '\<Plug>(textobj-entire-i)',
+                \   '<Plug>(textobj-url-i)',
+                \   '<Plug>(textobj-multiblock-i)',
+                \   '<Plug>(textobj-function-i)',
+                \   '<Plug>(textobj-entire-i)',
                 \]
     let g:textobj_multitextobj_textobjects_a = [
-                \   '\<Plug>(textobj-url-a)',
-                \   '\<Plug>(textobj-multiblock-a)',
-                \   '\<Plug>(textobj-function-a)',
-                \   '\<Plug>(textobj-entire-a)',
+                \   '<Plug>(textobj-url-a)',
+                \   '<Plug>(textobj-multiblock-a)',
+                \   '<Plug>(textobj-function-a)',
+                \   '<Plug>(textobj-entire-a)',
                 \]
     omap amt <Plug>(textobj-multitextobj-a)
     omap imt <Plug>(textobj-multitextobj-i)
     vmap amt <Plug>(textobj-multitextobj-a)
     vmap imt <Plug>(textobj-multitextobj-i)
+
+    let g:textobj_multitextobj_textobjects_group_i = {
+                \ 'A' : [
+                \   '<Plug>(textobj-jabraces-sumi-kakko-i)',
+                \   '<Plug>(textobj-jabraces-parens-i)',
+                \   '<Plug>(textobj-jabraces-kakko-i)',
+                \   '<Plug>(textobj-jabraces-double-kakko-i)',
+                \ ],
+                \}
+    let g:textobj_multitextobj_textobjects_group_a = {
+                \ 'A' : [
+                \   '<Plug>(textobj-jabraces-sumi-kakko-a)',
+                \   '<Plug>(textobj-jabraces-parens-a)',
+                \   '<Plug>(textobj-jabraces-kakko-a)',
+                \   '<Plug>(textobj-jabraces-double-kakko-a)',
+                \ ],
+                \}
+    map <Plug>(textobj-multitextobj-jabraces-i) <Plug>(textobj-multitextobj-A-i)
+    map <Plug>(textobj-multitextobj-jabraces-a) <Plug>(textobj-multitextobj-A-a)
+    omap ajb <Plug>(textobj-multitextobj-jabraces-a)
+    omap ijb <Plug>(textobj-multitextobj-jabraces-i)
+    vmap ajb <Plug>(textobj-multitextobj-jabraces-a)
+    vmap ijb <Plug>(textobj-multitextobj-jabraces-i)
 
     call neobundle#untap()
 endif
