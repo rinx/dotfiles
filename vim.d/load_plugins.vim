@@ -311,13 +311,13 @@ if neobundle#tap('unite.vim')
                     \ ['reload .vimrc', 'source ~/.vimrc'],
                     \ ['toggle-options', 'Unite menu:toggle'],
                     \ ['unite-neobundle', 'Unite neobundle'],
-                    \ ['neobundle install', 'NeoBundleInstall'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
                     \ ['neobundle clean', 'NeoBundleClean'],
                     \ ['gist-list', 'Gist -l'],
                     \ ['unite codic', 'Unite codic -start-insert'],
                     \ ['unite webcolorname', 'Unite webcolorname'],
-                    \ ['unite jazzradio', 'Unite jazzradio'],
+                    \ ['unite Jazzradio', 'Unite jazzradio'],
+                    \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['hateblo list', 'HatebloList'],
                     \]
         if has('mac')
