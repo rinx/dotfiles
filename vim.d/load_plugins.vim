@@ -791,13 +791,6 @@ if neobundle#tap('nerdtree')
                 \     'NERDTreeClose',
                 \     'NERDTreeFind',
                 \     'NERDTreeCWD',
-                \     'Bookmark',
-                \     'BookmarkToRoot',
-                \     'RevealBookmark',
-                \     'OpenBookmark',
-                \     'ClearBookmarks',
-                \     'ClearAllBookmarks',
-                \     'ReadBookmarks',
                 \   ]
                 \ }
                 \})
