@@ -785,7 +785,19 @@ if neobundle#tap('nerdtree')
                 \ 'autoload' : {
                 \   'commands' : [
                 \     'NERDTree',
+                \     'NERDTreeFromBookmark',
                 \     'NERDTreeToggle',
+                \     'NERDTreeMirror',
+                \     'NERDTreeClose',
+                \     'NERDTreeFind',
+                \     'NERDTreeCWD',
+                \     'Bookmark',
+                \     'BookmarkToRoot',
+                \     'RevealBookmark',
+                \     'OpenBookmark',
+                \     'ClearBookmarks',
+                \     'ClearAllBookmarks',
+                \     'ReadBookmarks',
                 \   ]
                 \ }
                 \})
