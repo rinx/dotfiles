@@ -52,7 +52,18 @@ NeoBundle 'tyru/skk.vim'
 NeoBundleFetch 'tyru/eskk.vim'
 
 NeoBundleLazy 'thinca/vim-quickrun'
-NeoBundle 'scrooloose/syntastic'
+NeoBundleFetch 'scrooloose/syntastic'
+
+NeoBundle 'osyo-manga/shabadou.vim'
+NeoBundle 'osyo-manga/vim-watchdogs', {
+            \ 'depends' : [
+            \   'thinca/vim-quickrun',
+            \   'Shougo/vimproc.vim',
+            \   'osyo-manga/shabadou.vim',
+            \   'jceb/vim-hier',
+            \ ]
+            \}
+NeoBundleLazy 'jceb/vim-hier'
 
 NeoBundle 'vim-scripts/eregex.vim'
 
@@ -102,7 +113,6 @@ NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 NeoBundleLazy 'ujihisa/ref-hoogle'
 NeoBundleLazy 'ujihisa/unite-haskellimport'
-"NeoBundleLazy 'pbrisbin/html-template-syntax'
 NeoBundleFetch 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
@@ -742,17 +752,39 @@ if neobundle#tap('eskk.vim')
     let g:eskk#use_color_cursor = 0
 endif
 
-if neobundle#tap('syntastic')
-    let g:syntastic_mode_map = { 'mode': 'passive' }
-    augroup AutoSyntastic
-        autocmd!
-        autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
-    augroup END
-    function! s:syntastic()
-        SyntasticCheck
-        call lightline#update()
-    endfunction
+" if neobundle#tap('syntastic')
+"     let g:syntastic_mode_map = { 'mode': 'passive' }
+"     augroup AutoSyntastic
+"         autocmd!
+"         autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
+"     augroup END
+"     function! s:syntastic()
+"         SyntasticCheck
+"         call lightline#update()
+"     endfunction
+"
+"     call neobundle#untap()
+" endif
 
+if neobundle#tap('vim-watchdogs')
+    call watchdogs#setup(g:quickrun_config)
+
+    let g:watchdogs_check_BufWritePost_enable = 1
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-hier')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'HierStart',
+                \     'HierStop',
+                \     'HierUpdate',
+                \     'HierClear',
+                \   ],
+                \ },
+                \})
     call neobundle#untap()
 endif
 
