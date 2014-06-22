@@ -317,6 +317,7 @@ if neobundle#tap('unite.vim')
                     \ ['vimrc', $MYVIMRC],
                     \ ['quickrun', 'QuickRun'],
                     \ ['make(quickrun)', 'QuickRun make'],
+                    \ ['watchdogs', 'WatchdogsRun'],
                     \ ['Gundo', 'GundoToggle'],
                     \ ['NERDTree', 'NERDTreeToggle'],
                     \ ['map', 'Unite output:map'],
