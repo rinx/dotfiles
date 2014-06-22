@@ -5,10 +5,12 @@ set laststatus=2
 if neobundle#tap('lightline.vim')
     let g:lightline = {
                 \ 'active': {
-                \   'left': [ [ 'mode', 'paste' ],
+                \   'left': [ 
+                \             [ 'mode', 'paste' ],
                 \             [ 'fugitive', 'filename' ]
                 \   ],
-                \   'right': [ [ 'syntastic', 'lineinfo' ],
+                \   'right': [
+                \             [ 'syntastic', 'lineinfo' ],
                 \             [ 'percent' ],
                 \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ]
                 \   ]
