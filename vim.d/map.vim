@@ -40,6 +40,8 @@ augroup forQuickFix
     autocmd FileType qf nnoremap <buffer> gk gk
     autocmd FileType qf nnoremap <buffer> g0 g0
     autocmd FileType qf nnoremap <buffer> g$ g$
+    " quit QuickFix with q-key
+    autocmd FileType qf nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END
 
 "Use Emacs-like keybinds on insert-mode
