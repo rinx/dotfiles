@@ -100,6 +100,8 @@ NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
+NeoBundleLazy 'ujihisa/ref-hoogle'
+NeoBundleLazy 'ujihisa/unite-haskellimport'
 "NeoBundleLazy 'pbrisbin/html-template-syntax'
 NeoBundleFetch 'pbrisbin/html-template-syntax'
 
@@ -1042,6 +1044,24 @@ if neobundle#tap('vim2hs')
                 \ 'autoload' : {
                 \   'filetypes' : ['haskell']
                 \ }
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('ref-hoogle')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : ['haskell'],
+                \ },
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-haskellimport')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'unite_sources' : ['haskellimport'],
+                \ },
                 \})
     call neobundle#untap()
 endif
