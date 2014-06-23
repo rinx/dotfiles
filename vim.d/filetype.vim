@@ -32,3 +32,10 @@ augroup forQuickFix
     autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif
 augroup END
 
+"Help window
+augroup forHelpWindow
+    autocmd!
+    autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
+augroup END
+
+
