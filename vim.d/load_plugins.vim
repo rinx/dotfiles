@@ -830,7 +830,10 @@ if neobundle#tap('nerdtree')
                 \ }
                 \})
     nnoremap <F6> :<C-u>NERDTreeToggle<CR>
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    augroup nerdtree
+        autocmd!
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    augroup END
     call neobundle#untap()
 endif
 
@@ -1160,6 +1163,7 @@ if neobundle#tap('vim-ref')
     endfunction
 
     augroup refSettings
+        autocmd!
         autocmd FileType ref-* nnoremap <buffer><silent>q :<C-u>q<CR>
     augroup END
 
