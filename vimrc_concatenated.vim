@@ -118,6 +118,9 @@ NeoBundle 'osyo-manga/vim-watchdogs', {
             \}
 NeoBundleLazy 'jceb/vim-hier'
 
+NeoBundle 'ynkdir/vim-vimlparser'
+NeoBundle 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser' }
+
 NeoBundle 'vim-scripts/eregex.vim'
 
 NeoBundle 'tmhedberg/matchit'
@@ -370,6 +373,7 @@ if neobundle#tap('unite.vim')
                     \ ['vimrc', $MYVIMRC],
                     \ ['quickrun', 'QuickRun'],
                     \ ['make(quickrun)', 'QuickRun make'],
+                    \ ['watchdogs', 'WatchdogsRun'],
                     \ ['Gundo', 'GundoToggle'],
                     \ ['NERDTree', 'NERDTreeToggle'],
                     \ ['map', 'Unite output:map'],
@@ -648,64 +652,6 @@ if neobundle#tap('unite-mark')
     call neobundle#untap()
 endif
 
-if neobundle#tap('vim-quickrun')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : ['QuickRun'],
-                \   'mappings' : '<Plug>(quickrun',
-                \ }
-                \})
-    let g:quickrun_config = {
-                \ '_' : {
-                \   'outputter/buffer/close_on_empty' : 1,
-                \   'outputter/buffer/split' : ':botright',
-                \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
-                \   'runner' : 'vimproc',
-                \   'runner/vimproc/updatetime' : 60
-                \ },
-                \ 'cpp' : {
-                \   'type' : 'cpp/g++',
-                \ },
-                \ 'cpp/clang++' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'cpp/g++' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'fortran' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'haskell' : {
-                \   'type' : 'haskell/runghc',
-                \ },
-                \ 'haskell/runghc' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'make' : {
-                \   'command' : 'make',
-                \   'exec' : '%c %o',
-                \   'outputter' : 'error:buffer:quickfix',
-                \   'runner' : 'vimproc',
-                \ },
-                \ 'markdown' : {
-                \   'type' : 'markdown/pandoc',
-                \   'outputter' : 'browser',
-                \ },
-                \ 'python' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'ruby' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'tex' : {
-                \   'type' : 'make',
-                \ },
-                \}
-    nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-    Arpeggio nmap qr <Plug>(quickrun)
-    call neobundle#untap()
-endif
-
 if neobundle#tap('skk.vim')
     let g:skk_jisyo = '~/.skk-jisyo'
 
@@ -805,6 +751,68 @@ if neobundle#tap('eskk.vim')
     let g:eskk#use_color_cursor = 0
 endif
 
+if neobundle#tap('vim-quickrun')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : ['QuickRun'],
+                \   'mappings' : '<Plug>(quickrun',
+                \ }
+                \})
+    let g:quickrun_config = {
+                \ '_' : {
+                \   'outputter/buffer/close_on_empty' : 1,
+                \   'outputter/buffer/split' : ':botright',
+                \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
+                \   'runner' : 'vimproc',
+                \   'runner/vimproc/updatetime' : 60
+                \ },
+                \ 'cpp' : {
+                \   'type' : 'cpp/g++',
+                \ },
+                \ 'cpp/clang++' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'cpp/g++' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'fortran' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'haskell' : {
+                \   'type' : 'haskell/runghc',
+                \ },
+                \ 'haskell/runghc' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'make' : {
+                \   'command' : 'make',
+                \   'exec' : '%c %o',
+                \   'outputter' : 'error:buffer:quickfix',
+                \   'runner' : 'vimproc',
+                \ },
+                \ 'markdown' : {
+                \   'type' : 'markdown/pandoc',
+                \   'outputter' : 'browser',
+                \ },
+                \ 'python' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'ruby' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'tex' : {
+                \   'type' : 'make',
+                \ },
+                \ 'watchdogs_checker/_' : {
+                \   'outputter' : 'quickfix',
+                \   'runner/vimproc/updatetime' : 40,
+                \ },
+                \}
+    nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+    Arpeggio nmap qr <Plug>(quickrun)
+    call neobundle#untap()
+endif
+
 " if neobundle#tap('syntastic')
 "     let g:syntastic_mode_map = { 'mode': 'passive' }
 "     augroup AutoSyntastic
@@ -823,6 +831,11 @@ if neobundle#tap('vim-watchdogs')
     call watchdogs#setup(g:quickrun_config)
 
     let g:watchdogs_check_BufWritePost_enable = 1
+    let g:watchdogs_check_BufWritePost_enables = {
+                \}
+    let g:watchdogs_check_CursorHold_enable = 0
+    let g:watchdogs_check_CursorHold_enables = {
+                \}
 
     call neobundle#untap()
 endif
@@ -882,7 +895,10 @@ if neobundle#tap('nerdtree')
                 \ }
                 \})
     nnoremap <F6> :<C-u>NERDTreeToggle<CR>
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    augroup nerdtree
+        autocmd!
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    augroup END
     call neobundle#untap()
 endif
 
@@ -1212,6 +1228,7 @@ if neobundle#tap('vim-ref')
     endfunction
 
     augroup refSettings
+        autocmd!
         autocmd FileType ref-* nnoremap <buffer><silent>q :<C-u>q<CR>
     augroup END
 
@@ -1475,21 +1492,6 @@ nnoremap gk k
 nnoremap g0 0
 nnoremap g$ $
 
-"In QuickFix, above command disabled
-augroup forQuickFix
-    autocmd!
-    autocmd FileType qf nnoremap <buffer> j j
-    autocmd FileType qf nnoremap <buffer> k k
-    autocmd FileType qf nnoremap <buffer> 0 0
-    autocmd FileType qf nnoremap <buffer> $ $
-    autocmd FileType qf nnoremap <buffer> gj gj
-    autocmd FileType qf nnoremap <buffer> gk gk
-    autocmd FileType qf nnoremap <buffer> g0 g0
-    autocmd FileType qf nnoremap <buffer> g$ g$
-    " quit QuickFix with q-key
-    autocmd FileType qf nnoremap <buffer><silent>q :<C-u>q<CR>
-augroup END
-
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
 "inoremap <C-n> <Down>
@@ -1581,6 +1583,33 @@ augroup golang
 augroup END
 
 
+" --- below this, they are not filetypes but ...
+
+"QuickFix window
+augroup forQuickFix
+    autocmd!
+    " mappings
+    autocmd FileType qf nnoremap <buffer> j j
+    autocmd FileType qf nnoremap <buffer> k k
+    autocmd FileType qf nnoremap <buffer> 0 0
+    autocmd FileType qf nnoremap <buffer> $ $
+    autocmd FileType qf nnoremap <buffer> gj gj
+    autocmd FileType qf nnoremap <buffer> gk gk
+    autocmd FileType qf nnoremap <buffer> g0 g0
+    autocmd FileType qf nnoremap <buffer> g$ g$
+    " quit QuickFix with q-key
+    autocmd FileType qf nnoremap <buffer><silent>q :<C-u>q<CR>
+    " autoclose
+    autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif
+augroup END
+
+"Help window
+augroup forHelpWindow
+    autocmd!
+    autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
+augroup END
+
+
 " --- Statusline settings ---
 
 set laststatus=2
@@ -1618,16 +1647,16 @@ if neobundle#tap('lightline.vim')
                 \ }
 
     function! MyModified()
-        return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+        return &ft =~ 'help\|vimfiler\|gundo\|qf' ? '' : &modified ? '+' : &modifiable ? '' : '-'
     endfunction
 
     function! MyReadonly()
-        return &ft !~? 'help\|vimfiler\|gundo' && &ro ? ' ' : ''
+        return &ft !~? 'help\|vimfiler\|gundo\|qf' && &ro ? ' ' : ''
     endfunction
 
     function! MyFugitive()
         try
-            if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            if &ft !~? 'vimfiler\|gundo\|qf' && exists('*fugitive#head')
                 let _ = fugitive#head()
                 return strlen(_) ? ' '._ : ''
             endif
@@ -1652,6 +1681,7 @@ if neobundle#tap('lightline.vim')
         return &ft == 'vimfiler' ? 'VimFiler' : 
                     \ &ft == 'unite' ? 'Unite' :
                     \ &ft == 'vimshell' ? 'VimShell' :
+                    \ &ft == 'qf' ? 'QuickFix' :
                     \ winwidth('.') > 60 ? lightline#mode() : ''
     endfunction
 
@@ -1660,6 +1690,7 @@ if neobundle#tap('lightline.vim')
                     \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
                     \  &ft == 'unite' ? unite#get_status_string() :
                     \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+                    \  &ft == 'qf' ? '' :
                     \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
                     \ ('' != MyModified() ? ' ' . MyModified() : '')
     endfunction
