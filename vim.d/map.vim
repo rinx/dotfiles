@@ -29,21 +29,6 @@ nnoremap gk k
 nnoremap g0 0
 nnoremap g$ $
 
-"In QuickFix, above command disabled
-augroup forQuickFix
-    autocmd!
-    autocmd FileType qf nnoremap <buffer> j j
-    autocmd FileType qf nnoremap <buffer> k k
-    autocmd FileType qf nnoremap <buffer> 0 0
-    autocmd FileType qf nnoremap <buffer> $ $
-    autocmd FileType qf nnoremap <buffer> gj gj
-    autocmd FileType qf nnoremap <buffer> gk gk
-    autocmd FileType qf nnoremap <buffer> g0 g0
-    autocmd FileType qf nnoremap <buffer> g$ g$
-    " quit QuickFix with q-key
-    autocmd FileType qf nnoremap <buffer><silent>q :<C-u>q<CR>
-augroup END
-
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
 "inoremap <C-n> <Down>
