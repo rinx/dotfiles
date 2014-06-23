@@ -599,64 +599,6 @@ if neobundle#tap('unite-mark')
     call neobundle#untap()
 endif
 
-if neobundle#tap('vim-quickrun')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : ['QuickRun'],
-                \   'mappings' : '<Plug>(quickrun',
-                \ }
-                \})
-    let g:quickrun_config = {
-                \ '_' : {
-                \   'outputter/buffer/close_on_empty' : 1,
-                \   'outputter/buffer/split' : ':botright',
-                \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
-                \   'runner' : 'vimproc',
-                \   'runner/vimproc/updatetime' : 60
-                \ },
-                \ 'cpp' : {
-                \   'type' : 'cpp/g++',
-                \ },
-                \ 'cpp/clang++' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'cpp/g++' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'fortran' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'haskell' : {
-                \   'type' : 'haskell/runghc',
-                \ },
-                \ 'haskell/runghc' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'make' : {
-                \   'command' : 'make',
-                \   'exec' : '%c %o',
-                \   'outputter' : 'error:buffer:quickfix',
-                \   'runner' : 'vimproc',
-                \ },
-                \ 'markdown' : {
-                \   'type' : 'markdown/pandoc',
-                \   'outputter' : 'browser',
-                \ },
-                \ 'python' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'ruby' : {
-                \   'hook/time/enable' : 1,
-                \ },
-                \ 'tex' : {
-                \   'type' : 'make',
-                \ },
-                \}
-    nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-    Arpeggio nmap qr <Plug>(quickrun)
-    call neobundle#untap()
-endif
-
 if neobundle#tap('skk.vim')
     let g:skk_jisyo = '~/.skk-jisyo'
 
@@ -756,6 +698,68 @@ if neobundle#tap('eskk.vim')
     let g:eskk#use_color_cursor = 0
 endif
 
+if neobundle#tap('vim-quickrun')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : ['QuickRun'],
+                \   'mappings' : '<Plug>(quickrun',
+                \ }
+                \})
+    let g:quickrun_config = {
+                \ '_' : {
+                \   'outputter/buffer/close_on_empty' : 1,
+                \   'outputter/buffer/split' : ':botright',
+                \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
+                \   'runner' : 'vimproc',
+                \   'runner/vimproc/updatetime' : 60
+                \ },
+                \ 'cpp' : {
+                \   'type' : 'cpp/g++',
+                \ },
+                \ 'cpp/clang++' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'cpp/g++' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'fortran' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'haskell' : {
+                \   'type' : 'haskell/runghc',
+                \ },
+                \ 'haskell/runghc' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'make' : {
+                \   'command' : 'make',
+                \   'exec' : '%c %o',
+                \   'outputter' : 'error:buffer:quickfix',
+                \   'runner' : 'vimproc',
+                \ },
+                \ 'markdown' : {
+                \   'type' : 'markdown/pandoc',
+                \   'outputter' : 'browser',
+                \ },
+                \ 'python' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'ruby' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'tex' : {
+                \   'type' : 'make',
+                \ },
+                \ 'watchdogs_checker/_' : {
+                \   'outputter' : 'quickfix',
+                \   'runner/vimproc/updatetime' : 40,
+                \ },
+                \}
+    nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+    Arpeggio nmap qr <Plug>(quickrun)
+    call neobundle#untap()
+endif
+
 " if neobundle#tap('syntastic')
 "     let g:syntastic_mode_map = { 'mode': 'passive' }
 "     augroup AutoSyntastic
@@ -774,6 +778,11 @@ if neobundle#tap('vim-watchdogs')
     call watchdogs#setup(g:quickrun_config)
 
     let g:watchdogs_check_BufWritePost_enable = 1
+    let g:watchdogs_check_BufWritePost_enables = {
+                \}
+    let g:watchdogs_check_CursorHold_enable = 0
+    let g:watchdogs_check_CursorHold_enables = {
+                \}
 
     call neobundle#untap()
 endif
