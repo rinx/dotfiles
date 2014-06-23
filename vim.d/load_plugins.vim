@@ -65,6 +65,9 @@ NeoBundle 'osyo-manga/vim-watchdogs', {
             \}
 NeoBundleLazy 'jceb/vim-hier'
 
+NeoBundle 'ynkdir/vim-vimlparser'
+NeoBundle 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser' }
+
 NeoBundle 'vim-scripts/eregex.vim'
 
 NeoBundle 'tmhedberg/matchit'
