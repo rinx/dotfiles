@@ -69,8 +69,8 @@ if neobundle#tap('lightline.vim')
         return &ft == 'vimfiler' ? 'VimFiler' : 
                     \ &ft == 'unite' ? 'Unite' :
                     \ &ft == 'vimshell' ? 'VimShell' :
-                    \ &ft == 'qf' ? 'QuickFix' :
-                    \ &ft == 'quickrun' ? 'QuickRun' :
+                    \ &ft == 'qf' ? '' :
+                    \ &ft == 'quickrun' ? '' :
                     \ winwidth('.') > 60 ? lightline#mode() : ''
     endfunction
 
@@ -79,8 +79,8 @@ if neobundle#tap('lightline.vim')
                     \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
                     \  &ft == 'unite' ? unite#get_status_string() :
                     \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-                    \  &ft == 'qf' ? '' :
-                    \  &ft == 'quickrun' ? '' :
+                    \  &ft == 'qf' ? 'QuickFix' :
+                    \  &ft == 'quickrun' ? 'QuickRun' :
                     \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
                     \ ('' != MyModified() ? ' ' . MyModified() : '')
     endfunction
