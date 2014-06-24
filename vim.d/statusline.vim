@@ -35,16 +35,16 @@ if neobundle#tap('lightline.vim')
                 \ }
 
     function! MyModified()
-        return &ft =~ 'help\|vimfiler\|gundo\|qf' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+        return &ft =~ 'help\|vimfiler\|gundo\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
     endfunction
 
     function! MyReadonly()
-        return &ft !~? 'help\|vimfiler\|gundo\|qf' && &ro ? ' ' : ''
+        return &ft !~? 'help\|vimfiler\|gundo\|qf\|quickrun' && &ro ? ' ' : ''
     endfunction
 
     function! MyFugitive()
         try
-            if &ft !~? 'vimfiler\|gundo\|qf' && exists('*fugitive#head')
+            if &ft !~? 'vimfiler\|gundo\|qf\|quickrun' && exists('*fugitive#head')
                 let _ = fugitive#head()
                 return strlen(_) ? ' '._ : ''
             endif
@@ -70,6 +70,7 @@ if neobundle#tap('lightline.vim')
                     \ &ft == 'unite' ? 'Unite' :
                     \ &ft == 'vimshell' ? 'VimShell' :
                     \ &ft == 'qf' ? 'QuickFix' :
+                    \ &ft == 'quickrun' ? 'QuickRun' :
                     \ winwidth('.') > 60 ? lightline#mode() : ''
     endfunction
 
@@ -79,6 +80,7 @@ if neobundle#tap('lightline.vim')
                     \  &ft == 'unite' ? unite#get_status_string() :
                     \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
                     \  &ft == 'qf' ? '' :
+                    \  &ft == 'quickrun' ? '' :
                     \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
                     \ ('' != MyModified() ? ' ' . MyModified() : '')
     endfunction
