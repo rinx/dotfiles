@@ -728,6 +728,9 @@ if neobundle#tap('vim-quickrun')
                 \ 'haskell' : {
                 \   'type' : 'haskell/runghc',
                 \ },
+                \ 'haskell/ghc' : {
+                \   'hook/time/enable' : 1,
+                \ },
                 \ 'haskell/runghc' : {
                 \   'hook/time/enable' : 1,
                 \ },
