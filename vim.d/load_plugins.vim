@@ -52,6 +52,12 @@ NeoBundle 'tyru/skk.vim'
 NeoBundleFetch 'tyru/eskk.vim'
 
 NeoBundleLazy 'thinca/vim-quickrun'
+NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
+            \ 'depends' : [
+            \   'Shougo/unite.vim',
+            \   'thinca/vim-quickrun',
+            \ ]
+            \}
 NeoBundleFetch 'scrooloose/syntastic'
 
 NeoBundle 'osyo-manga/shabadou.vim'
@@ -765,6 +771,15 @@ if neobundle#tap('vim-quickrun')
                 \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
     Arpeggio nmap qr <Plug>(quickrun)
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-quickrun_config')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'unite_sources' : ['quickrun_config'],
+                \ },
+                \})
     call neobundle#untap()
 endif
 
