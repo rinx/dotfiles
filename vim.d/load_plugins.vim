@@ -771,6 +771,10 @@ if neobundle#tap('vim-quickrun')
                 \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
     Arpeggio nmap qr <Plug>(quickrun)
+    augroup forQuickRun
+        autocmd!
+        autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'quickrun' | q | endif
+    augroup END
     call neobundle#untap()
 endif
 
