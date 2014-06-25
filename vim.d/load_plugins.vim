@@ -707,6 +707,9 @@ if neobundle#tap('vim-quickrun')
                 \})
     let g:quickrun_config = {
                 \ '_' : {
+                \   'outputter' : 'error',
+                \   'outputter/error/success' : 'buffer',
+                \   'outputter/error/error' : 'quickfix',
                 \   'outputter/buffer/close_on_empty' : 1,
                 \   'outputter/buffer/split' : ':botright 8sp',
                 \   'outputter/buffer/running_mark' : "now running...ヾ(⌒(_*'ω'*)_",
@@ -737,7 +740,6 @@ if neobundle#tap('vim-quickrun')
                 \ 'make' : {
                 \   'command' : 'make',
                 \   'exec' : '%c %o',
-                \   'outputter' : 'error:buffer:quickfix',
                 \   'runner' : 'vimproc',
                 \ },
                 \ 'markdown' : {
