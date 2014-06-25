@@ -726,6 +726,9 @@ if neobundle#tap('vim-quickrun')
                 \   'hook/time/enable' : 1,
                 \ },
                 \ 'fortran' : {
+                \   'type' : 'fortran/gfortran',
+                \ },
+                \ 'fortran/gfortran' : {
                 \   'hook/time/enable' : 1,
                 \ },
                 \ 'haskell' : {
