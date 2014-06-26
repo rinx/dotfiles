@@ -737,6 +737,9 @@ if neobundle#tap('vim-quickrun')
                 \ 'fortran/gfortran' : {
                 \   'hook/time/enable' : 1,
                 \ },
+                \ 'go' : {
+                \   'hook/time/enable' : 1,
+                \ },
                 \ 'haskell' : {
                 \   'type' : 'haskell/runghc',
                 \ },
@@ -744,6 +747,9 @@ if neobundle#tap('vim-quickrun')
                 \   'hook/time/enable' : 1,
                 \ },
                 \ 'haskell/runghc' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'lisp' : {
                 \   'hook/time/enable' : 1,
                 \ },
                 \ 'make' : {
