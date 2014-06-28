@@ -122,11 +122,11 @@ NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 NeoBundleLazy 'ujihisa/ref-hoogle'
 NeoBundleLazy 'ujihisa/unite-haskellimport'
-NeoBundleFetch 'pbrisbin/html-template-syntax'
+NeoBundleLazy 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
 
-NeoBundle 'elzr/vim-json'
+NeoBundleLazy 'elzr/vim-json'
 
 NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
@@ -1150,7 +1150,12 @@ endif
 if neobundle#tap('html-template-syntax')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['haskell']
+                \   'filename_patterns' : [
+                \     '\.hamlet$',
+                \     '\.cassius$',
+                \     '\.lucius$',
+                \     '\.julius$',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1169,6 +1174,18 @@ if neobundle#tap('emmet-vim')
                 \     'markdown',
                 \   ]
                 \ }
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-json')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filename_patterns' : [
+                \     '\.json$',
+                \     '\.jsonp$',
+                \   ],
+                \ },
                 \})
     call neobundle#untap()
 endif
