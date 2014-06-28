@@ -122,7 +122,7 @@ NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 NeoBundleLazy 'ujihisa/ref-hoogle'
 NeoBundleLazy 'ujihisa/unite-haskellimport'
-NeoBundleFetch 'pbrisbin/html-template-syntax'
+NeoBundleLazy 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
 
@@ -1150,7 +1150,12 @@ endif
 if neobundle#tap('html-template-syntax')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['haskell']
+                \   'filename_patterns' : [
+                \     '\.hamlet$',
+                \     '\.cassius$',
+                \     '\.lucius$',
+                \     '\.julius$',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
