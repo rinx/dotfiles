@@ -1158,6 +1158,7 @@ if neobundle#tap('html-template-syntax')
                 \   ],
                 \ }
                 \})
+    " You should re-open shakesphere files with :e command
     call neobundle#untap()
 endif
 
@@ -1187,6 +1188,7 @@ if neobundle#tap('vim-json')
                 \   ],
                 \ },
                 \})
+    " You should re-open json files with :e command
     call neobundle#untap()
 endif
 
