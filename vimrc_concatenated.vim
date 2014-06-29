@@ -105,6 +105,12 @@ NeoBundle 'tyru/skk.vim'
 NeoBundleFetch 'tyru/eskk.vim'
 
 NeoBundleLazy 'thinca/vim-quickrun'
+NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
+            \ 'depends' : [
+            \   'Shougo/unite.vim',
+            \   'thinca/vim-quickrun',
+            \ ]
+            \}
 NeoBundleFetch 'scrooloose/syntastic'
 
 NeoBundle 'osyo-manga/shabadou.vim'
@@ -169,11 +175,11 @@ NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 NeoBundleLazy 'ujihisa/ref-hoogle'
 NeoBundleLazy 'ujihisa/unite-haskellimport'
-NeoBundleFetch 'pbrisbin/html-template-syntax'
+NeoBundleLazy 'pbrisbin/html-template-syntax'
 
 NeoBundleLazy 'mattn/emmet-vim'
 
-NeoBundle 'elzr/vim-json'
+NeoBundleLazy 'elzr/vim-json'
 
 NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
@@ -784,6 +790,9 @@ if neobundle#tap('vim-quickrun')
                 \ 'fortran/gfortran' : {
                 \   'hook/time/enable' : 1,
                 \ },
+                \ 'go' : {
+                \   'hook/time/enable' : 1,
+                \ },
                 \ 'haskell' : {
                 \   'type' : 'haskell/runghc',
                 \ },
@@ -791,6 +800,9 @@ if neobundle#tap('vim-quickrun')
                 \   'hook/time/enable' : 1,
                 \ },
                 \ 'haskell/runghc' : {
+                \   'hook/time/enable' : 1,
+                \ },
+                \ 'lisp' : {
                 \   'hook/time/enable' : 1,
                 \ },
                 \ 'make' : {
@@ -818,6 +830,19 @@ if neobundle#tap('vim-quickrun')
                 \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
     Arpeggio nmap qr <Plug>(quickrun)
+    augroup forQuickRun
+        autocmd!
+        autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'quickrun' | q | endif
+    augroup END
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-quickrun_config')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'unite_sources' : ['quickrun_config'],
+                \ },
+                \})
     call neobundle#untap()
 endif
 
@@ -1178,9 +1203,15 @@ endif
 if neobundle#tap('html-template-syntax')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['haskell']
+                \   'filename_patterns' : [
+                \     '\.hamlet$',
+                \     '\.cassius$',
+                \     '\.lucius$',
+                \     '\.julius$',
+                \   ],
                 \ }
                 \})
+    " You should re-open shakesphere files with :e command
     call neobundle#untap()
 endif
 
@@ -1198,6 +1229,19 @@ if neobundle#tap('emmet-vim')
                 \   ]
                 \ }
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-json')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filename_patterns' : [
+                \     '\.json$',
+                \     '\.jsonp$',
+                \   ],
+                \ },
+                \})
+    " You should re-open json files with :e command
     call neobundle#untap()
 endif
 
@@ -1627,13 +1671,13 @@ if neobundle#tap('lightline.vim')
                 \ 'active': {
                 \   'left': [ 
                 \             [ 'mode', 'paste' ],
-                \             [ 'fugitive', 'filename' ]
+                \             [ 'fugitive', 'filename' ],
                 \   ],
                 \   'right': [
                 \             [ 'syntastic', 'lineinfo' ],
                 \             [ 'percent' ],
-                \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ]
-                \   ]
+                \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ],
+                \   ],
                 \ },
                 \ 'component_function': {
                 \   'modified': 'MyModified',
@@ -1644,14 +1688,31 @@ if neobundle#tap('lightline.vim')
                 \   'filetype': 'MyFiletype',
                 \   'mode': 'MyMode',
                 \   'skkstatus': 'MySkkgetmode',
-                \   'anzu': 'anzu#search_status'
+                \   'anzu': 'anzu#search_status',
+                \   'tablineabspath': 'MyAbsPath',
                 \ },
                 \ 'component_expand': {
                 \   'syntastic': 'SyntasticStatuslineFlag'
                 \ },
                 \ 'component_type': {
                 \   'syntastic': 'error'
-                \ }
+                \ },
+                \ 'inactive' : {
+                \   'left' : [
+                \     [ 'filename' ],
+                \   ],
+                \   'right' : [
+                \     [ 'lineinfo' ],
+                \   ],
+                \ },
+                \ 'tabline' : {
+                \   'left' : [
+                \     [ 'tabs' ],
+                \   ],
+                \   'right' : [
+                \     [ 'tablineabspath' ],
+                \   ],
+                \ },
                 \ }
 
     function! MyModified()
@@ -1666,7 +1727,7 @@ if neobundle#tap('lightline.vim')
         try
             if &ft !~? 'vimfiler\|gundo\|qf\|quickrun' && exists('*fugitive#head')
                 let _ = fugitive#head()
-                return strlen(_) ? ' '._ : ''
+                return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
             endif
         catch
         endtry
@@ -1691,7 +1752,7 @@ if neobundle#tap('lightline.vim')
                     \ &ft == 'vimshell' ? 'VimShell' :
                     \ &ft == 'qf' ? '' :
                     \ &ft == 'quickrun' ? '' :
-                    \ winwidth('.') > 60 ? lightline#mode() : ''
+                    \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
     endfunction
 
     function! MyFilename()
@@ -1708,7 +1769,12 @@ if neobundle#tap('lightline.vim')
     function! MySkkgetmode()
         let _ = SkkGetModeStr()
         "let _ = eskk#get_mode()
-        return strlen(_) ? substitute(_, '\[\|\]', '', 'g') : ''
+        return winwidth('.') > 70 ? strlen(_) ? substitute(_, '\[\|\]', '', 'g') : '' : ''
+    endfunction
+
+    function! MyAbsPath()
+        let _ = expand('%:p:h')
+        return tabpagenr('$') < 4 ? _ : ''
     endfunction
 
     call neobundle#untap()
