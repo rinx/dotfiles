@@ -7,13 +7,13 @@ if neobundle#tap('lightline.vim')
                 \ 'active': {
                 \   'left': [ 
                 \             [ 'mode', 'paste' ],
-                \             [ 'fugitive', 'filename' ]
+                \             [ 'fugitive', 'filename' ],
                 \   ],
                 \   'right': [
                 \             [ 'syntastic', 'lineinfo' ],
                 \             [ 'percent' ],
-                \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ]
-                \   ]
+                \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ],
+                \   ],
                 \ },
                 \ 'component_function': {
                 \   'modified': 'MyModified',
@@ -24,14 +24,31 @@ if neobundle#tap('lightline.vim')
                 \   'filetype': 'MyFiletype',
                 \   'mode': 'MyMode',
                 \   'skkstatus': 'MySkkgetmode',
-                \   'anzu': 'anzu#search_status'
+                \   'anzu': 'anzu#search_status',
+                \   'tablineabspath': 'MyAbsPath',
                 \ },
                 \ 'component_expand': {
                 \   'syntastic': 'SyntasticStatuslineFlag'
                 \ },
                 \ 'component_type': {
                 \   'syntastic': 'error'
-                \ }
+                \ },
+                \ 'inactive' : {
+                \   'left' : [
+                \     [ 'filename' ],
+                \   ],
+                \   'right' : [
+                \     [ 'lineinfo' ],
+                \   ],
+                \ },
+                \ 'tabline' : {
+                \   'left' : [
+                \     [ 'tabs' ],
+                \   ],
+                \   'right' : [
+                \     [ 'tablineabspath' ],
+                \   ],
+                \ },
                 \ }
 
     function! MyModified()
@@ -46,7 +63,7 @@ if neobundle#tap('lightline.vim')
         try
             if &ft !~? 'vimfiler\|gundo\|qf\|quickrun' && exists('*fugitive#head')
                 let _ = fugitive#head()
-                return strlen(_) ? ' '._ : ''
+                return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
             endif
         catch
         endtry
@@ -71,7 +88,7 @@ if neobundle#tap('lightline.vim')
                     \ &ft == 'vimshell' ? 'VimShell' :
                     \ &ft == 'qf' ? '' :
                     \ &ft == 'quickrun' ? '' :
-                    \ winwidth('.') > 60 ? lightline#mode() : ''
+                    \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
     endfunction
 
     function! MyFilename()
@@ -88,7 +105,12 @@ if neobundle#tap('lightline.vim')
     function! MySkkgetmode()
         let _ = SkkGetModeStr()
         "let _ = eskk#get_mode()
-        return strlen(_) ? substitute(_, '\[\|\]', '', 'g') : ''
+        return winwidth('.') > 70 ? strlen(_) ? substitute(_, '\[\|\]', '', 'g') : '' : ''
+    endfunction
+
+    function! MyAbsPath()
+        let _ = expand('%:p:h')
+        return tabpagenr('$') < 4 ? _ : ''
     endfunction
 
     call neobundle#untap()
