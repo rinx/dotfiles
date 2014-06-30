@@ -36,7 +36,7 @@ zle -N zle-keymap-select
 PROMPT2="%_%% " 
 
 #missing spell
-SPROMPT="%F{yellow}(っ'ヮ'c)< %r is correct? [n,y,a,e]%f: "
+SPROMPT="%F{yellow}(っ'ヮ'c) < Did you mean %r?[n,y,a,e]:%f "
 
 
 #git statuses for Right Prompt
