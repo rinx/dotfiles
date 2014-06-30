@@ -1150,6 +1150,12 @@ endif
 if neobundle#tap('html-template-syntax')
     call neobundle#config({
                 \ 'autoload' : {
+                \   'filetypes' : [
+                \     'hamlet',
+                \     'cassius',
+                \     'lucius',
+                \     'julius',
+                \   ],
                 \   'filename_patterns' : [
                 \     '\.hamlet$',
                 \     '\.cassius$',
@@ -1182,6 +1188,10 @@ endif
 if neobundle#tap('vim-json')
     call neobundle#config({
                 \ 'autoload' : {
+                \   'filetypes' : [
+                \     'json',
+                \     'jsonp',
+                \   ],
                 \   'filename_patterns' : [
                 \     '\.json$',
                 \     '\.jsonp$',
