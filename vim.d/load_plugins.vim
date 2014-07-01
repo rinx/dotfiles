@@ -92,6 +92,7 @@ NeoBundleLazy 'LeafCage/yankround.vim'
 
 NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
+NeoBundleLazy 'thinca/vim-visualstar'
 
 NeoBundleLazy 'thinca/vim-qfreplace'
 
@@ -921,6 +922,20 @@ if neobundle#tap('vim-anzu')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim-visualstar')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'mappings' : ['<Plug>(visualstar-'],
+                \ }
+                \})
+
+    map * <Plug>(visualstar-*)
+    map # <Plug>(visualstar-#)
+    map g* <Plug>(visualstar-g*)
+    map g# <Plug>(visualstar-g#)
+
+    call neobundle#untap()
+endif
 
 if neobundle#tap('vim-qfreplace')
     call neobundle#config({
