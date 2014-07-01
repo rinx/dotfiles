@@ -1054,6 +1054,13 @@ if neobundle#tap('capture.vim')
                 \   ]
                 \ }
                 \})
+
+    augroup captureSettings
+        autocmd!
+        autocmd FileType capture nnoremap <buffer><silent>q :<C-u>q<CR>
+        autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'capture' | q | endif
+    augroup END
+
     call neobundle#untap()
 endif
 
