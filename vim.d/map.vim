@@ -29,6 +29,9 @@ nnoremap gk k
 nnoremap g0 0
 nnoremap g$ $
 
+"Use Y as y$
+nnoremap Y y$
+
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
 "inoremap <C-n> <Down>
