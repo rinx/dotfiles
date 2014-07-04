@@ -443,7 +443,7 @@ if neobundle#tap('unite.vim')
                     \}
         let options = "
                     \ paste rule number relativenumber
-                    \ cursorline cursorcolumn list
+                    \ list
                     \ hlsearch wrap spell
                     \ "
         for opt in split(options)
@@ -1841,6 +1841,15 @@ endif
 " --- The end of initialization ---
 
 NeoBundleCheck
+
+"auto-toggle of cursorline
+augroup vimrc-auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
+  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorcolumn
+  autocmd CursorHold,CursorHoldI * setlocal cursorline
+  autocmd CursorHold,CursorHoldI * setlocal cursorcolumn
+augroup END
 
 "when creating new file, if it does not exist directory,
 "this function will ask you to create new directory.
