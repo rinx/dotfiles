@@ -390,7 +390,7 @@ if neobundle#tap('unite.vim')
                     \}
         let options = "
                     \ paste rule number relativenumber
-                    \ cursorline cursorcolumn list
+                    \ list
                     \ hlsearch wrap spell
                     \ "
         for opt in split(options)
