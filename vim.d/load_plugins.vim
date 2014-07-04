@@ -133,9 +133,11 @@ NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
-NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
-NeoBundleLazy 'mattn/unite-gist', { 'depends' : ['mattn/gist-vim', 'Shougo/unite.vim'] }
+" NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
+" NeoBundleLazy 'mattn/unite-gist', { 'depends' : ['mattn/gist-vim', 'Shougo/unite.vim'] }
 NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
+
+NeoBundleLazy 'lambdalisue/vim-gista', { 'depends' : ['Shougo/unite.vim'] }
 
 NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
@@ -336,7 +338,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
                     \ ['neobundle clean', 'NeoBundleClean'],
-                    \ ['gist-list', 'Gist -l'],
+                    \ ['unite gista', 'Unite gista'],
                     \ ['unite codic', 'Unite codic -start-insert'],
                     \ ['unite webcolorname', 'Unite webcolorname'],
                     \ ['unite Jazzradio', 'Unite jazzradio'],
@@ -1288,25 +1290,25 @@ if neobundle#tap('learn-vimscript')
     call neobundle#untap()
 endif
 
-if neobundle#tap('gist-vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Gist'
-                \   ]
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-gist')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : ['gist']
-                \ },
-                \})
-    call neobundle#untap()
-endif
+" if neobundle#tap('gist-vim')
+"     call neobundle#config({
+"                 \ 'autoload' : {
+"                 \   'commands' : [
+"                 \     'Gist'
+"                 \   ]
+"                 \ }
+"                 \})
+"     call neobundle#untap()
+" endif
+"
+" if neobundle#tap('unite-gist')
+"     call neobundle#config({
+"                 \ 'autoload' : {
+"                 \   'unite_sources' : ['gist']
+"                 \ },
+"                 \})
+"     call neobundle#untap()
+" endif
 
 if neobundle#tap('hateblo.vim')
     call neobundle#config({
@@ -1320,6 +1322,26 @@ if neobundle#tap('hateblo.vim')
                 \   ]
                 \ }
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-gista')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Gista',
+                \   ],
+                \   'mappings' : [
+                \     '<Plug>(gista-',
+                \   ],
+                \   'unite_sources' : [
+                \     'gista',
+                \   ],
+                \ }
+                \})
+
+    let g:gista#github_user = 'rinx'
+
     call neobundle#untap()
 endif
 

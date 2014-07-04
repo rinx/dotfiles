@@ -145,6 +145,7 @@ NeoBundleLazy 'LeafCage/yankround.vim'
 
 NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
+NeoBundleLazy 'thinca/vim-visualstar'
 
 NeoBundleLazy 'thinca/vim-qfreplace'
 
@@ -185,9 +186,11 @@ NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
-NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
-NeoBundleLazy 'mattn/unite-gist', { 'depends' : ['mattn/gist-vim', 'Shougo/unite.vim'] }
+" NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
+" NeoBundleLazy 'mattn/unite-gist', { 'depends' : ['mattn/gist-vim', 'Shougo/unite.vim'] }
 NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
+
+NeoBundleLazy 'lambdalisue/vim-gista', { 'depends' : ['Shougo/unite.vim'] }
 
 NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
@@ -388,7 +391,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
                     \ ['neobundle clean', 'NeoBundleClean'],
-                    \ ['gist-list', 'Gist -l'],
+                    \ ['unite gista', 'Unite gista'],
                     \ ['unite codic', 'Unite codic -start-insert'],
                     \ ['unite webcolorname', 'Unite webcolorname'],
                     \ ['unite Jazzradio', 'Unite jazzradio'],
@@ -441,7 +444,7 @@ if neobundle#tap('unite.vim')
         let options = "
                     \ paste rule number relativenumber
                     \ cursorline cursorcolumn list
-                    \ hlsearch wrap
+                    \ hlsearch wrap spell
                     \ "
         for opt in split(options)
             let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
@@ -974,6 +977,20 @@ if neobundle#tap('vim-anzu')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim-visualstar')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'mappings' : ['<Plug>(visualstar-'],
+                \ }
+                \})
+
+    map * <Plug>(visualstar-*)
+    map # <Plug>(visualstar-#)
+    map g* <Plug>(visualstar-g*)
+    map g# <Plug>(visualstar-g#)
+
+    call neobundle#untap()
+endif
 
 if neobundle#tap('vim-qfreplace')
     call neobundle#config({
@@ -1107,6 +1124,13 @@ if neobundle#tap('capture.vim')
                 \   ]
                 \ }
                 \})
+
+    augroup captureSettings
+        autocmd!
+        autocmd FileType capture nnoremap <buffer><silent>q :<C-u>q<CR>
+        autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'capture' | q | endif
+    augroup END
+
     call neobundle#untap()
 endif
 
@@ -1203,6 +1227,12 @@ endif
 if neobundle#tap('html-template-syntax')
     call neobundle#config({
                 \ 'autoload' : {
+                \   'filetypes' : [
+                \     'hamlet',
+                \     'cassius',
+                \     'lucius',
+                \     'julius',
+                \   ],
                 \   'filename_patterns' : [
                 \     '\.hamlet$',
                 \     '\.cassius$',
@@ -1235,6 +1265,10 @@ endif
 if neobundle#tap('vim-json')
     call neobundle#config({
                 \ 'autoload' : {
+                \   'filetypes' : [
+                \     'json',
+                \     'jsonp',
+                \   ],
                 \   'filename_patterns' : [
                 \     '\.json$',
                 \     '\.jsonp$',
@@ -1309,25 +1343,25 @@ if neobundle#tap('learn-vimscript')
     call neobundle#untap()
 endif
 
-if neobundle#tap('gist-vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Gist'
-                \   ]
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-gist')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : ['gist']
-                \ },
-                \})
-    call neobundle#untap()
-endif
+" if neobundle#tap('gist-vim')
+"     call neobundle#config({
+"                 \ 'autoload' : {
+"                 \   'commands' : [
+"                 \     'Gist'
+"                 \   ]
+"                 \ }
+"                 \})
+"     call neobundle#untap()
+" endif
+"
+" if neobundle#tap('unite-gist')
+"     call neobundle#config({
+"                 \ 'autoload' : {
+"                 \   'unite_sources' : ['gist']
+"                 \ },
+"                 \})
+"     call neobundle#untap()
+" endif
 
 if neobundle#tap('hateblo.vim')
     call neobundle#config({
@@ -1341,6 +1375,26 @@ if neobundle#tap('hateblo.vim')
                 \   ]
                 \ }
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-gista')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Gista',
+                \   ],
+                \   'mappings' : [
+                \     '<Plug>(gista-',
+                \   ],
+                \   'unite_sources' : [
+                \     'gista',
+                \   ],
+                \ }
+                \})
+
+    let g:gista#github_user = 'rinx'
+
     call neobundle#untap()
 endif
 
@@ -1543,6 +1597,9 @@ nnoremap gj j
 nnoremap gk k
 nnoremap g0 0
 nnoremap g$ $
+
+"Use Y as y$
+nnoremap Y y$
 
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
