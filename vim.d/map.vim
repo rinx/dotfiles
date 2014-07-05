@@ -42,6 +42,10 @@ inoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 
+"Use completion with C-p or C-n on command-mode
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 "for tabline
 nnoremap [Tag] <Nop>
 nmap t [Tag]
