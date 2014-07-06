@@ -98,15 +98,8 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 "toggle paste mode
 nnoremap <Leader>p :setl paste!<CR>
 
-"toggle relative or absolute number
-nnoremap <Leader>r :<C-u>call <SID>rel_ab_number()<CR>
-function! s:rel_ab_number()
-    if &relativenumber
-        setl norelativenumber
-    else
-        setl relativenumber
-    endif
-endfunction
+"toggle relativenumber
+nnoremap <Leader>r :setl relativenumber!<CR>
 
 "disable some default mappings
 nnoremap ZZ <Nop>
