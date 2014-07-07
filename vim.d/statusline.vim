@@ -52,16 +52,16 @@ if neobundle#tap('lightline.vim')
                 \ }
 
     function! MyModified()
-        return &ft =~ 'help\|vimfiler\|gundo\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+        return &ft =~ 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
     endfunction
 
     function! MyReadonly()
-        return &ft !~? 'help\|vimfiler\|gundo\|qf\|quickrun' && &ro ? ' ' : ''
+        return &ft !~? 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
     endfunction
 
     function! MyFugitive()
         try
-            if &ft !~? 'vimfiler\|gundo\|qf\|quickrun' && exists('*fugitive#head')
+            if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
                 let _ = fugitive#head()
                 return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
             endif
