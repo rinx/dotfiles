@@ -1550,7 +1550,7 @@ endif
 set list
 set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
 
-set autochdir
+set noautochdir
 set autoread
 
 
@@ -1611,6 +1611,10 @@ inoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 
+"Use completion with C-p or C-n on command-mode
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 "for tabline
 nnoremap [Tag] <Nop>
 nmap t [Tag]
@@ -1662,6 +1666,44 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "toggle paste mode
 nnoremap <Leader>p :setl paste!<CR>
+
+"toggle relativenumber
+nnoremap <Leader>r :setl relativenumber!<CR>
+
+"close special windows from another window
+nnoremap <Leader>q :<C-u>call <SID>close_special_windows()<CR>
+
+function! s:close_window(winnr)
+    if winbufnr(a:winnr) !=# -1
+        execute a:winnr . 'wincmd w'
+        execute 'wincmd c'
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+function! s:close_special_windows()
+    let target_ft = [
+                \ 'ref',
+                \ 'unite',
+                \ 'vimfiler',
+                \ 'vimshell',
+                \ 'qf',
+                \ 'quickrun',
+                \ 'gundo',
+                \ 'nerdtree',
+                \ 'help',
+                \ ]
+    let i = 1
+    while i <= winnr('$')
+        let bufnr = winbufnr(i)
+        if index(target_ft, getbufvar(bufnr, '&filetype')) >= 0
+            call s:close_window(i)
+        endif
+        let i = i + 1
+    endwhile
+endfunction
 
 "disable some default mappings
 nnoremap ZZ <Nop>
@@ -1773,16 +1815,16 @@ if neobundle#tap('lightline.vim')
                 \ }
 
     function! MyModified()
-        return &ft =~ 'help\|vimfiler\|gundo\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+        return &ft =~ 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
     endfunction
 
     function! MyReadonly()
-        return &ft !~? 'help\|vimfiler\|gundo\|qf\|quickrun' && &ro ? ' ' : ''
+        return &ft !~? 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
     endfunction
 
     function! MyFugitive()
         try
-            if &ft !~? 'vimfiler\|gundo\|qf\|quickrun' && exists('*fugitive#head')
+            if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
                 let _ = fugitive#head()
                 return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
             endif
