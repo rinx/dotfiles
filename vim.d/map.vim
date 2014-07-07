@@ -101,6 +101,41 @@ nnoremap <Leader>p :setl paste!<CR>
 "toggle relativenumber
 nnoremap <Leader>r :setl relativenumber!<CR>
 
+"close special windows from another window
+nnoremap <Leader>q :<C-u>call <SID>close_special_windows()<CR>
+
+function! s:close_window(winnr)
+    if winbufnr(a:winnr) !=# -1
+        execute a:winnr . 'wincmd w'
+        execute 'wincmd c'
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+function! s:close_special_windows()
+    let target_ft = [
+                \ 'ref',
+                \ 'unite',
+                \ 'vimfiler',
+                \ 'vimshell',
+                \ 'qf',
+                \ 'quickrun',
+                \ 'gundo',
+                \ 'nerdtree',
+                \ 'help',
+                \ ]
+    let i = 1
+    while i <= winnr('$')
+        let bufnr = winbufnr(i)
+        if index(target_ft, getbufvar(bufnr, '&filetype')) >= 0
+            call s:close_window(i)
+        endif
+        let i = i + 1
+    endwhile
+endfunction
+
 "disable some default mappings
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
