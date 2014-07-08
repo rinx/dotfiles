@@ -147,6 +147,7 @@ if neobundle#tap('unite.vim')
     Arpeggio nmap msc [unite]msc
     Arpeggio nmap msd [unite]msd
     Arpeggio nmap msf [unite]msf
+    Arpeggio nmap msu [unite]msu
     call neobundle#untap()
 endif
 
