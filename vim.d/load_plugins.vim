@@ -344,6 +344,9 @@ if neobundle#tap('unite.vim')
                     \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['hateblo list', 'HatebloList'],
+                    \ ['lingr', 'http://lingr.com/'],
+                    \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
+                    \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
                     \]
         if has('mac')
             call add(
@@ -363,7 +366,7 @@ if neobundle#tap('unite.vim')
                 return {
                             \ 'word' : '[directory] '.word,
                             \ 'kind' : 'directory',
-                            \ 'action__directory' : value
+                            \ 'action__directory' : value,
                             \}
             elseif !empty(glob(value))
                 return {
@@ -372,11 +375,17 @@ if neobundle#tap('unite.vim')
                             \ 'default_action' : 'tabdrop',
                             \ 'action__path' : value,
                             \}
+            elseif value =~ '^\(http\|https\|ftp\).*'
+                return {
+                            \ 'word' : '[url] '.word,
+                            \ 'kind' : 'command',
+                            \ 'action__command' : 'OpenBrowser '.value,
+                            \}
             else
                 return {
                             \ 'word' : '[command] '.word,
                             \ 'kind' : 'command',
-                            \ 'action__command' : value
+                            \ 'action__command' : value,
                             \}
             endif
         endfunction
@@ -505,6 +514,7 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]msd :<C-u>Unite menu:shortcut -input=[directory]\ <CR>
     nnoremap <silent> [unite]msf :<C-u>Unite menu:shortcut -input=[file]\ <CR>
     nnoremap <silent> [unite]msc :<C-u>Unite menu:shortcut -input=[command]\ <CR>
+    nnoremap <silent> [unite]msu :<C-u>Unite menu:shortcut -input=[url]\ <CR>
     nnoremap <silent> [unite]mk  :<C-u>Unite menu:kaomoji -start-insert<CR>
     "source
     nnoremap <silent> [unite]s   :<C-u>Unite source<CR>
