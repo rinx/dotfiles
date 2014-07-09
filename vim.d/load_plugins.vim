@@ -345,8 +345,12 @@ if neobundle#tap('unite.vim')
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['hateblo list', 'HatebloList'],
                     \ ['lingr', 'http://lingr.com/'],
+                    \ ['vim-jp', 'http://vim-jp.org/'],
                     \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
                     \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
+                    \ ['Aizu Online Judge', 'http://judge.u-aizu.ac.jp/onlinejudge/'],
+                    \ ['ProjectEuler', 'http://projecteuler.net/'],
+                    \ ['stackoverflow', 'http://stackoverflow.com/'],
                     \]
         if has('mac')
             call add(
