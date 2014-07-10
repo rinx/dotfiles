@@ -323,6 +323,11 @@ if neobundle#tap('unite.vim')
         let g:unite_source_menu_menus.shortcut = {
                     \ 'description' : 'shortcut'
                     \}
+        if has('mac')
+            let s:copyToClipboardCommand = 'w !pbcopy'
+        elseif has('unix')
+            let s:copyToClipboardCommand = 'w !xsel --clipboard --input'
+        endif
         let g:unite_source_menu_menus.shortcut.candidates = [
                     \ ['home', $HOME],
                     \ ['dotfiles', $HOME . '/.dotfiles'],
@@ -344,6 +349,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['hateblo list', 'HatebloList'],
+                    \ ['copy buffer into clipboard', s:copyToClipboardCommand],
                     \ ['lingr', 'http://lingr.com/'],
                     \ ['vim-jp', 'http://vim-jp.org/'],
                     \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
@@ -352,17 +358,6 @@ if neobundle#tap('unite.vim')
                     \ ['ProjectEuler', 'http://projecteuler.net/'],
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
                     \]
-        if has('mac')
-            call add(
-                        \ g:unite_source_menu_menus.shortcut.candidates,
-                        \ ['copy buffer into clipboard', 'w !pbcopy']
-                        \)
-        elseif has('unix')
-            call add(
-                        \ g:unite_source_menu_menus.shortcut.candidates,
-                        \ ['copy buffer into clipboard', 'w !xsel --clipboard --input']
-                        \)
-        endif
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
 
