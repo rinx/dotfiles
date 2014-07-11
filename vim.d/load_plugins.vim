@@ -108,6 +108,7 @@ NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-entire', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-jabraces', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'lucapette/vim-textobj-underscore', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
