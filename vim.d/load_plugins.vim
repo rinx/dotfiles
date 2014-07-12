@@ -354,6 +354,8 @@ if neobundle#tap('unite.vim')
                     \ ['lingr', 'http://lingr.com/'],
                     \ ['vim-jp', 'http://vim-jp.org/'],
                     \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
+                    \ ['Github', 'https://github.com/'],
+                    \ ['Github Gist', 'https://gist.github.com/'],
                     \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
                     \ ['Aizu Online Judge', 'http://judge.u-aizu.ac.jp/onlinejudge/'],
                     \ ['ProjectEuler', 'http://projecteuler.net/'],
