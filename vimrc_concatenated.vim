@@ -161,6 +161,7 @@ NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-entire', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-jabraces', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'lucapette/vim-textobj-underscore', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
@@ -376,6 +377,11 @@ if neobundle#tap('unite.vim')
         let g:unite_source_menu_menus.shortcut = {
                     \ 'description' : 'shortcut'
                     \}
+        if has('mac')
+            let s:copyToClipboardCommand = 'w !pbcopy'
+        elseif has('unix')
+            let s:copyToClipboardCommand = 'w !xsel --clipboard --input'
+        endif
         let g:unite_source_menu_menus.shortcut.candidates = [
                     \ ['home', $HOME],
                     \ ['dotfiles', $HOME . '/.dotfiles'],
@@ -397,21 +403,17 @@ if neobundle#tap('unite.vim')
                     \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['hateblo list', 'HatebloList'],
+                    \ ['copy buffer into clipboard', s:copyToClipboardCommand],
                     \ ['lingr', 'http://lingr.com/'],
+                    \ ['vim-jp', 'http://vim-jp.org/'],
                     \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
+                    \ ['Github', 'https://github.com/'],
+                    \ ['Github Gist', 'https://gist.github.com/'],
                     \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
+                    \ ['Aizu Online Judge', 'http://judge.u-aizu.ac.jp/onlinejudge/'],
+                    \ ['ProjectEuler', 'http://projecteuler.net/'],
+                    \ ['stackoverflow', 'http://stackoverflow.com/'],
                     \]
-        if has('mac')
-            call add(
-                        \ g:unite_source_menu_menus.shortcut.candidates,
-                        \ ['copy buffer into clipboard', 'w !pbcopy']
-                        \)
-        elseif has('unix')
-            call add(
-                        \ g:unite_source_menu_menus.shortcut.candidates,
-                        \ ['copy buffer into clipboard', 'w !xsel --clipboard --input']
-                        \)
-        endif
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
 
