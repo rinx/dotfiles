@@ -1,7 +1,9 @@
 " --- The beginning of initialization ---
 
 "not vi compatible
-set nocompatible
+if has('vim_starting')
+    set nocompatible
+endif
 
 "encoding
 
