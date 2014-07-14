@@ -110,7 +110,12 @@ if neobundle#tap('lightline.vim')
 
     function! MyAbsPath()
         let _ = expand('%:p:h')
-        return tabpagenr('$') < 4 ? _ : ''
+        return &ft == 'vimfiler' ? '' : 
+                    \ &ft == 'unite' ? '' :
+                    \ &ft == 'vimshell' ? '' :
+                    \ &ft == 'qf' ? '' :
+                    \ &ft == 'quickrun' ? '' : 
+                    \ tabpagenr('$') < 4 ? _ : ''
     endfunction
 
     call neobundle#untap()
