@@ -26,6 +26,7 @@ if neobundle#tap('lightline.vim')
                 \   'skkstatus': 'MySkkgetmode',
                 \   'anzu': 'anzu#search_status',
                 \   'tablineabspath': 'MyAbsPath',
+                \   'tabfugitive': 'MyFugitiveInv',
                 \ },
                 \ 'component_expand': {
                 \   'syntastic': 'SyntasticStatuslineFlag'
@@ -46,7 +47,7 @@ if neobundle#tap('lightline.vim')
                 \     [ 'tabs' ],
                 \   ],
                 \   'right' : [
-                \     [ 'tablineabspath' ],
+                \     [ 'tablineabspath', 'tabfugitive' ],
                 \   ],
                 \ },
                 \ }
@@ -64,6 +65,17 @@ if neobundle#tap('lightline.vim')
             if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
                 let _ = fugitive#head()
                 return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
+            endif
+        catch
+        endtry
+        return ''
+    endfunction
+
+    function! MyFugitiveInv()
+        try
+            if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+                let _ = fugitive#head()
+                return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
             endif
         catch
         endtry
