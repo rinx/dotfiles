@@ -360,6 +360,8 @@ if neobundle#tap('unite.vim')
                     \ ['Aizu Online Judge', 'http://judge.u-aizu.ac.jp/onlinejudge/'],
                     \ ['ProjectEuler', 'http://projecteuler.net/'],
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
+                    \ ['Grooveshark', 'http://grooveshark.com/'],
+                    \ ['Jazzradio', 'http://www.jazzradio.com/'],
                     \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
