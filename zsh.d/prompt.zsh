@@ -33,7 +33,7 @@ zle -N zle-keymap-select
 
 
 #for, while, etc...
-PROMPT2="%_%% " 
+PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> " 
 
 #missing spell
 SPROMPT="%F{yellow}(っ'ヮ'c) < Did you mean %r?[n,y,a,e]:%f "
