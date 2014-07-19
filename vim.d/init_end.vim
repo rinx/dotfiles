@@ -24,6 +24,21 @@ augroup vimrc-auto-mkdir
   endfunction
 augroup END
 
+"load Session.vim
+augroup session-vim-auto-load
+    autocmd!
+    autocmd BufNewFile,BufReadPost * call s:load_session_vim(expand('<afile>:p:h'))
+augroup END
+
+function! s:load_session_vim(loc)
+    let files = findfile('Session.vim', escape(a:loc, ' ') . ';', -1)
+    for i in reverse(filter(files, 'filereadable(v:val)'))
+        if input(printf('Session.vim exists in "%s". Load it? [y/N]', a:loc)) =~? '^y\%[es]$'
+            source `=i`
+        endif
+    endfor
+endfunction
+
 "load settings for each location
 augroup vimrc-local
     autocmd!
