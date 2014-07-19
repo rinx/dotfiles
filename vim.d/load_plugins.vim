@@ -340,6 +340,7 @@ if neobundle#tap('unite.vim')
                     \ ['NERDTree', 'NERDTreeToggle'],
                     \ ['map', 'Unite output:map'],
                     \ ['reload .vimrc', 'source ~/.vimrc'],
+                    \ ['make Session.vim', 'mks!'],
                     \ ['toggle-options', 'Unite menu:toggle'],
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
