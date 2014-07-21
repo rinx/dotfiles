@@ -927,10 +927,10 @@ if neobundle#tap('vim-anzu')
                 \   'mappings' : ['<Plug>(anzu-'],
                 \ }
                 \})
-    nmap n <Plug>(anzu-n)
-    nmap N <Plug>(anzu-N)
-    nmap * <Plug>(anzu-star)
-    nmap # <Plug>(anzu-sharp)
+    nmap n <Plug>(anzu-n)zz
+    nmap N <Plug>(anzu-N)zz
+    nmap * <Plug>(anzu-star)zz
+    nmap # <Plug>(anzu-sharp)zz
     augroup vim-anzu
         autocmd!
         autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
