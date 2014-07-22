@@ -225,7 +225,12 @@ if s:meet_neocomplete_requirements()
                     \})
 
         let g:neocomplete#enable_at_startup = 1
+
+        let g:neocomplete#min_keyword_length = 1
+        let g:neocomplete#sources#syntax#min_keyword_length = 3
         let g:neocomplete#auto_completion_start_length = 1
+        let g:neocomplete#manual_completion_start_length = 0
+
         let g:neocomplete#enable_smart_case = 1
 
         if !exists('g:neocomplete#keyword_patterns')
@@ -395,6 +400,7 @@ if neobundle#tap('unite.vim')
                     \ ['NERDTree', 'NERDTreeToggle'],
                     \ ['map', 'Unite output:map'],
                     \ ['reload .vimrc', 'source ~/.vimrc'],
+                    \ ['make Session.vim', 'mks!'],
                     \ ['toggle-options', 'Unite menu:toggle'],
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
@@ -415,6 +421,8 @@ if neobundle#tap('unite.vim')
                     \ ['Aizu Online Judge', 'http://judge.u-aizu.ac.jp/onlinejudge/'],
                     \ ['ProjectEuler', 'http://projecteuler.net/'],
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
+                    \ ['Grooveshark', 'http://grooveshark.com/'],
+                    \ ['Jazzradio', 'http://www.jazzradio.com/'],
                     \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
@@ -979,10 +987,10 @@ if neobundle#tap('vim-anzu')
                 \   'mappings' : ['<Plug>(anzu-'],
                 \ }
                 \})
-    nmap n <Plug>(anzu-n)
-    nmap N <Plug>(anzu-N)
-    nmap * <Plug>(anzu-star)
-    nmap # <Plug>(anzu-sharp)
+    nmap n <Plug>(anzu-n)zz
+    nmap N <Plug>(anzu-N)zz
+    nmap * <Plug>(anzu-star)zz
+    nmap # <Plug>(anzu-sharp)zz
     augroup vim-anzu
         autocmd!
         autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
@@ -1804,6 +1812,7 @@ if neobundle#tap('lightline.vim')
                 \   'skkstatus': 'MySkkgetmode',
                 \   'anzu': 'anzu#search_status',
                 \   'tablineabspath': 'MyAbsPath',
+                \   'tabfugitive': 'MyFugitiveInv',
                 \ },
                 \ 'component_expand': {
                 \   'syntastic': 'SyntasticStatuslineFlag'
@@ -1824,7 +1833,7 @@ if neobundle#tap('lightline.vim')
                 \     [ 'tabs' ],
                 \   ],
                 \   'right' : [
-                \     [ 'tablineabspath' ],
+                \     [ 'tablineabspath', 'tabfugitive' ],
                 \   ],
                 \ },
                 \ }
@@ -1842,6 +1851,17 @@ if neobundle#tap('lightline.vim')
             if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
                 let _ = fugitive#head()
                 return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
+            endif
+        catch
+        endtry
+        return ''
+    endfunction
+
+    function! MyFugitiveInv()
+        try
+            if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+                let _ = fugitive#head()
+                return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
             endif
         catch
         endtry
@@ -1925,6 +1945,21 @@ augroup vimrc-auto-mkdir
     endif
   endfunction
 augroup END
+
+"load Session.vim
+augroup session-vim-auto-load
+    autocmd!
+    autocmd BufNewFile,BufReadPost * call s:load_session_vim(expand('<afile>:p:h'))
+augroup END
+
+function! s:load_session_vim(loc)
+    let files = findfile('Session.vim', escape(a:loc, ' ') . ';', -1)
+    for i in reverse(filter(files, 'filereadable(v:val)'))
+        if input(printf('Session.vim exists in "%s". Load it? [y/N]', a:loc)) =~? '^y\%[es]$'
+            source `=i`
+        endif
+    endfor
+endfunction
 
 "load settings for each location
 augroup vimrc-local
