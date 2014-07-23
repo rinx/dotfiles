@@ -182,6 +182,11 @@ if s:meet_neocomplete_requirements()
 
         let g:neocomplete#enable_fuzzy_completion = 1
 
+        let g:neocomplete#enable_auto_select = 1
+        let g:neocomplete#enable_refresh_always = 0
+        let g:neocomplete#enable_cursor_hold_i = 0
+        let g:neocomplete#enable_auto_delimiter = 1
+
         if !exists('g:neocomplete#keyword_patterns')
             let g:neocomplete#keyword_patterns = {}
         endif
