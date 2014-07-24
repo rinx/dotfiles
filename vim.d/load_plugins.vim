@@ -359,6 +359,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
                     \ ['neobundle clean', 'NeoBundleClean'],
+                    \ ['unite neosnippet', 'Unite neosnippet'],
                     \ ['unite gista', 'Unite gista'],
                     \ ['unite codic', 'Unite codic -start-insert'],
                     \ ['unite webcolorname', 'Unite webcolorname'],
