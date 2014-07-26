@@ -187,6 +187,8 @@ if s:meet_neocomplete_requirements()
         let g:neocomplete#enable_cursor_hold_i = 0
         let g:neocomplete#enable_auto_delimiter = 1
 
+        let g:neocomplete#max_list = 80
+
         if !exists('g:neocomplete#keyword_patterns')
             let g:neocomplete#keyword_patterns = {}
         endif
@@ -195,6 +197,8 @@ if s:meet_neocomplete_requirements()
         if !exists('g:neocomplete#sources#omni#input_patterns')
             let g:neocomplete#sources#omni#input_patterns = {}
         endif
+
+        let g:neocomplete#enable_auto_close_preview = 1
 
         inoremap <expr><C-g> neocomplete#undo_completion()
         inoremap <expr><C-l> neocomplete#complete_common_string()
