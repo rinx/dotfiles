@@ -247,7 +247,9 @@ if neobundle#tap('neosnippet')
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
     " Tell Neosnippet about the other snippets
-    let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+    let g:neosnippet#snippets_directory=expand('~/.vim/bundle/vim-snippets/snippets')
+
+    let g:neosnippet#enable_snipmate_compatibility = 1
 
     " SuperTab like snippets behavior.
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
