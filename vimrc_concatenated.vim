@@ -242,6 +242,8 @@ if s:meet_neocomplete_requirements()
         let g:neocomplete#enable_cursor_hold_i = 0
         let g:neocomplete#enable_auto_delimiter = 1
 
+        let g:neocomplete#max_list = 80
+
         if !exists('g:neocomplete#keyword_patterns')
             let g:neocomplete#keyword_patterns = {}
         endif
@@ -250,6 +252,8 @@ if s:meet_neocomplete_requirements()
         if !exists('g:neocomplete#sources#omni#input_patterns')
             let g:neocomplete#sources#omni#input_patterns = {}
         endif
+
+        let g:neocomplete#enable_auto_close_preview = 1
 
         inoremap <expr><C-g> neocomplete#undo_completion()
         inoremap <expr><C-l> neocomplete#complete_common_string()
@@ -298,7 +302,9 @@ if neobundle#tap('neosnippet')
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
     " Tell Neosnippet about the other snippets
-    let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+    let g:neosnippet#snippets_directory=expand('~/.vim/bundle/vim-snippets/snippets')
+
+    let g:neosnippet#enable_snipmate_compatibility = 1
 
     " SuperTab like snippets behavior.
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -414,6 +420,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite-neobundle', 'Unite neobundle'],
                     \ ['neobundle update', 'NeoBundleUpdate'],
                     \ ['neobundle clean', 'NeoBundleClean'],
+                    \ ['unite neosnippet', 'Unite neosnippet'],
                     \ ['unite gista', 'Unite gista'],
                     \ ['unite codic', 'Unite codic -start-insert'],
                     \ ['unite webcolorname', 'Unite webcolorname'],
