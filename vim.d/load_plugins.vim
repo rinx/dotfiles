@@ -1148,7 +1148,21 @@ if neobundle#tap('open-browser.vim')
                     \}]
     endif
 
+    let g:openbrowser_search_engines = extend(
+                \get(g:, 'openbrowser_search_engines', {}),
+                \{
+                \ 'weblio' : 'http://ejje.weblio.jp/content/{query}',
+                \},
+                \)
+
     nmap ,op <Plug>(openbrowser-smart-search)
+    vmap ,op <Plug>(openbrowser-smart-search)
+
+    nnoremap <silent> ,ow :<C-u>OpenBrowserSearch -weblio <C-r><C-w><CR>
+    nnoremap <silent> ,oa :<C-u>OpenBrowserSearch -alc <C-r><C-w><CR>
+
+    call altercmd#define('weblio', 'OpenBrowserSearch -weblio ')
+    call altercmd#define('alc', 'OpenBrowserSearch -alc ')
 
     call neobundle#untap()
 endif
