@@ -117,6 +117,8 @@ NeoBundleLazy 'tyru/capture.vim'
 
 NeoBundleLazy 'tyru/open-browser.vim'
 
+NeoBundleLazy 'kannokanno/previm', { 'depends' : 'tyru/open-browser.vim' }
+
 NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundleLazy 'eagletmt/ghcmod-vim'
@@ -1147,6 +1149,18 @@ if neobundle#tap('open-browser.vim')
     endif
 
     nmap ,op <Plug>(openbrowser-smart-search)
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('previm')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'PrevimOpen',
+                \   ],
+                \ },
+                \})
 
     call neobundle#untap()
 endif
