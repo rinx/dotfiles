@@ -1161,8 +1161,8 @@ if neobundle#tap('open-browser.vim')
     nnoremap <silent> ,ow :<C-u>OpenBrowserSearch -weblio <C-r><C-w><CR>
     nnoremap <silent> ,oa :<C-u>OpenBrowserSearch -alc <C-r><C-w><CR>
 
-    call altercmd#define('weblio', 'OpenBrowserSearch -weblio ')
-    call altercmd#define('alc', 'OpenBrowserSearch -alc ')
+    call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
+    call altercmd#define('alc', 'OpenBrowserSearch -alc')
 
     call neobundle#untap()
 endif
