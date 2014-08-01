@@ -1191,14 +1191,16 @@ if neobundle#tap('open-browser.vim')
                 \ }
                 \})
 
-    if has('unix')
+    if has('mac')
+        let g:openbrowser_browser_commands = [
+                    \{
+                    \ 'name' : 'open',
+                    \ 'args' : ['{browser}', '{uri}']
+                    \}]
+    elseif has('unix')
         let g:openbrowser_browser_commands = [
                     \{
                     \ 'name' : 'chromium',
-                    \ 'args' : ['{browser}', '{uri}']
-                    \},
-                    \{
-                    \ 'name' : 'open',
                     \ 'args' : ['{browser}', '{uri}']
                     \}]
     endif
