@@ -139,6 +139,27 @@ NeoBundleLazy 'mattn/webapi-vim'
 " NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
 " NeoBundleLazy 'mattn/unite-gist', { 'depends' : ['mattn/gist-vim', 'Shougo/unite.vim'] }
 NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
+NeoBundleLazy 'basyura/twibill.vim', { 'depends' : 'tyru/open-browser.vim' }
+NeoBundleLazy 'basyura/TweetVim', {
+            \ 'depends' : [
+            \   'tyru/open-browser.vim',
+            \   'basyura/twibill.vim',
+            \   'basyura/bitly.vim',
+            \   'mattn/webapi-vim',
+            \   'mattn/favstar-vim',
+            \   'Shougo/unite.vim',
+            \   'Shougo/unite-outline',
+            \ ]
+            \}
+NeoBundleLazy 'basyura/bitly.vim'
+NeoBundleLazy 'mattn/favstar-vim'
+NeoBundleLazy 'basyura/J6uil.vim', {
+            \ 'depends' : [
+            \   'tyru/open-browser.vim',
+            \   'Shougo/vimproc.vim',
+            \   'Shougo/unite.vim',
+            \ ]
+            \}
 
 NeoBundleLazy 'lambdalisue/vim-gista', { 'depends' : ['Shougo/unite.vim'] }
 
@@ -373,6 +394,8 @@ if neobundle#tap('unite.vim')
                     \ ['unite webcolorname', 'Unite webcolorname'],
                     \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
+                    \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
+                    \ ['J6uil lingr-client', 'J6uil'],
                     \ ['hateblo list', 'HatebloList'],
                     \ ['copy buffer into clipboard', s:copyToClipboardCommand],
                     \ ['lingr', 'http://lingr.com/'],
@@ -1386,6 +1409,53 @@ if neobundle#tap('hateblo.vim')
                 \   ]
                 \ }
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('TweetVim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'TweetVimVersion',
+                \     'TweetVimAddAccount',
+                \     'TweetVimSwitchAccount',
+                \     'TweetVimHomeTimeline',
+                \     'TweetVimMentions',
+                \     'TweetVimListStatuses',
+                \     'TweetVimUserTimeline',
+                \     'TweetVimSay',
+                \     'TweetVimUserStream',
+                \     'TweetVimCommandSay',
+                \     'TweetVimCurrentLineSay',
+                \     'TweetVimSearch',
+                \   ],
+                \   'unite_sources' : [
+                \     'tweetvim/account',
+                \     'tweetvim',
+                \   ],
+                \ }
+                \})
+    let g:tweetvim_tweet_per_page = 50
+    let g:tweetvim_display_icon = 0
+    call neobundle#untap()
+endif
+
+if neobundle#tap('J6uil.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'J6uil',
+                \     'J6uilReconnect',
+                \     'J6uilDisconnect',
+                \   ],
+                \   'unite_sources' : [
+                \     'J6uil/rooms',
+                \     'J6uil/members',
+                \   ],
+                \ }
+                \})
+    let g:J6uil_user = 'rinx'
+
     call neobundle#untap()
 endif
 
