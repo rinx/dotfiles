@@ -450,6 +450,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
+                    \ ['TweetVim UserStream', 'TweetVimUserStream'],
                     \ ['J6uil lingr-client', 'J6uil'],
                     \ ['hateblo list', 'HatebloList'],
                     \ ['copy buffer into clipboard', s:copyToClipboardCommand],
