@@ -17,6 +17,11 @@ nnoremap <Down> <Nop>
 nnoremap <Up> <Nop>
 nnoremap <Right> <Nop>
 
+inoremap <Left> <Nop>
+inoremap <Down> <Nop>
+inoremap <Up> <Nop>
+inoremap <Right> <Nop>
+
 "Remap to act as expected
 nnoremap j gj
 nnoremap k gk
