@@ -112,6 +112,7 @@ NeoBundle 'lucapette/vim-textobj-underscore', { 'depends' : 'kana/vim-textobj-us
 NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' }
 
 NeoBundleLazy 'tyru/capture.vim'
 
@@ -1121,6 +1122,19 @@ if neobundle#tap('vim-textobj-multitextobj')
     omap ijb <Plug>(textobj-multitextobj-jabraces-i)
     vmap ajb <Plug>(textobj-multitextobj-jabraces-a)
     vmap ijb <Plug>(textobj-multitextobj-jabraces-i)
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-textobj-ruby')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'ruby',
+                \   ],
+                \ },
+                \})
+    let g:textobj_ruby_more_mappings = 1
 
     call neobundle#untap()
 endif
