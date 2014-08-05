@@ -1222,6 +1222,9 @@ endif
 if neobundle#tap('previm')
     call neobundle#config({
                 \ 'autoload' : {
+                \   'filetypes' : [
+                \     'markdown',
+                \   ],
                 \   'commands' : [
                 \     'PrevimOpen',
                 \   ],
