@@ -45,6 +45,7 @@ NeoBundleLazy 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'osyo-manga/unite-filetype', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'kmnk/vim-unite-giti', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'tacroe/unite-mark', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'moznion/unite-git-conflict.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'haya14busa/unite-reading-vimrc', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'itchyny/lightline.vim'
@@ -668,6 +669,17 @@ if neobundle#tap('unite-mark')
                 \ 'autoload' : {
                 \   'unite_sources' : ['mark']
                 \ }
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-git-conflict.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'unite_sources' : [
+                \     'git-conflict',
+                \   ],
+                \ },
                 \})
     call neobundle#untap()
 endif
