@@ -96,6 +96,8 @@ NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thinca/vim-visualstar'
 
+NeoBundle 'rhysd/clever-f.vim'
+
 NeoBundleLazy 'thinca/vim-qfreplace'
 
 NeoBundleLazy 't9md/vim-quickhl'
@@ -1022,6 +1024,29 @@ if neobundle#tap('vim-visualstar')
     map # <Plug>(visualstar-#)
     map g* <Plug>(visualstar-g*)
     map g# <Plug>(visualstar-g#)
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('clever-f.vim')
+    let g:clever_f_not_overwrites_standard_mappings = 1
+    let g:clever_f_across_no_line = 0
+    let g:clever_f_ignore_case = 0
+    let g:clever_f_smart_case = 0
+    let g:clever_f_use_migemo = 0
+    let g:clever_f_fix_key_direction = 0
+    let g:clever_f_show_prompt = 0
+    let g:clever_f_chars_match_any_signs = ''
+    let g:clever_f_mark_cursor = 1
+    let g:clever_f_mark_cursor_color = 'Cursor'
+    let g:clever_f_hide_cursor_on_cmdline = 1
+    let g:clever_f_timeout_ms = 0
+    let g:clever_f_mark_char = 1
+    let g:clever_f_mark_char_color = 'CleverFDefaultLabel'
+    let g:clever_f_repeat_last_char_inputs = ["\<CR>"]
+
+    nmap <Plug>(arpeggio-default:f) <Plug>(clever-f-f)
+    nmap F <Plug>(clever-f-F)
 
     call neobundle#untap()
 endif
