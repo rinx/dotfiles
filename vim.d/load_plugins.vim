@@ -1047,6 +1047,8 @@ if neobundle#tap('clever-f.vim')
 
     nmap <Plug>(arpeggio-default:f) <Plug>(clever-f-f)
     nmap F <Plug>(clever-f-F)
+    nmap t <Plug>(clever-f-t)
+    nmap T <Plug>(clever-f-T)
 
     call neobundle#untap()
 endif
