@@ -102,6 +102,8 @@ NeoBundleLazy 'thinca/vim-qfreplace'
 
 NeoBundleLazy 't9md/vim-quickhl'
 
+NeoBundle 'amdt/vim-niji'
+
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace', { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'emonkak/vim-operator-comment', { 'depends' : 'kana/vim-operator-user' }
@@ -1076,6 +1078,23 @@ if neobundle#tap('vim-quickhl')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim-niji')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'lisp',
+                \     'scheme',
+                \     'clojure',
+                \   ],
+                \ },
+                \})
+    let g:niji_matching_filetypes = [
+                \ 'lisp',
+                \ 'scheme',
+                \ 'clojure',
+                \ ]
+    call neobundle#untap()
+endif
 
 "operator
 
