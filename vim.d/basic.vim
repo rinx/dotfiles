@@ -103,5 +103,6 @@ set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
 
 set noautochdir
 set autoread
+set noautowrite
 
 
