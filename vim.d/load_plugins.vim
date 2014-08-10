@@ -177,6 +177,7 @@ NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
 
 NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'supermomonga/skyfm.vim', { 'depends' : 'Shougo/unite.vim' }
 
 
 
@@ -404,6 +405,8 @@ if neobundle#tap('unite.vim')
                     \ ['unite webcolorname', 'Unite webcolorname'],
                     \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
+                    \ ['unite Sky.fm', 'Unite skyfm'],
+                    \ ['stop Sky.fm', 'SkyfmStop'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
                     \ ['TweetVim UserStream', 'TweetVimUserStream'],
                     \ ['J6uil lingr-client', 'J6uil'],
@@ -420,6 +423,7 @@ if neobundle#tap('unite.vim')
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
                     \ ['Grooveshark', 'http://grooveshark.com/'],
                     \ ['Jazzradio', 'http://www.jazzradio.com/'],
+                    \ ['SKY.FM radio', 'http://www.sky.fm/'],
                     \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
@@ -1688,6 +1692,24 @@ if neobundle#tap('jazzradio.vim')
     call neobundle#untap()
 endif
 
+if neobundle#tap('skyfm.vim')
+  call neobundle#config({
+        \   'autoload' : {
+        \     'unite_sources' : [
+        \       'skyfm',
+        \     ],
+        \     'commands' : [
+        \       'SkyfmUpdateChannels',
+        \       'SkyfmStop',
+        \       {
+        \         'name' : 'SkyfmPlay',
+        \         'complete' : 'customlist,skyfm#channel_key_complete'
+        \       }
+        \     ],
+        \     'function_prefix' : 'skyfm',
+        \   }
+        \ })
+  call neobundle#untap()
 endif
 
 
