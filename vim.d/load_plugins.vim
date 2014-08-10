@@ -92,6 +92,8 @@ NeoBundleLazy 'scrooloose/nerdtree'
 
 NeoBundleLazy 'LeafCage/yankround.vim'
 
+NeoBundleLazy 'haya14busa/incsearch.vim'
+
 NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thinca/vim-visualstar'
@@ -996,6 +998,21 @@ if neobundle#tap('yankround.vim')
     call neobundle#untap()
 endif
 
+
+if neobundle#tap('incsearch.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'mappings' : [
+                \     '<Plug>(incsearch-',
+                \   ],
+                \ },
+                \})
+    map /  <Plug>(incsearch-forward)
+    map ?  <Plug>(incsearch-backward)
+    map g/ <plug>(incsearch-stay)
+
+    call neobundle#untap()
+endif
 
 if neobundle#tap('vim-anzu')
     call neobundle#config({
