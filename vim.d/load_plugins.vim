@@ -47,6 +47,7 @@ NeoBundleLazy 'kmnk/vim-unite-giti', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'tacroe/unite-mark', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'moznion/unite-git-conflict.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'haya14busa/unite-reading-vimrc', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'pasela/unite-webcolorname', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'itchyny/lightline.vim'
 
@@ -170,13 +171,13 @@ NeoBundleLazy 'basyura/J6uil.vim', {
             \ ]
             \}
 
-NeoBundleLazy 'lambdalisue/vim-gista', { 'depends' : ['Shougo/unite.vim'] }
+NeoBundleLazy 'lambdalisue/vim-gista', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
 
-NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : ['Shougo/unite.vim'] }
-NeoBundleLazy 'pasela/unite-webcolorname', { 'depends' : ['Shougo/unite.vim'] }
+NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
+
 
 
 "Plugin settings
@@ -596,7 +597,9 @@ endif
 if neobundle#tap('neomru.vim')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['file_mru']
+                \   'unite_sources' : [
+                \     'file_mru',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -605,7 +608,10 @@ endif
 if neobundle#tap('vim-unite-history')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['history/command', 'history/search']
+                \   'unite_sources' : [
+                \     'history/command',
+                \     'history/search',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -614,7 +620,9 @@ endif
 if neobundle#tap('unite-outline')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['outline']
+                \   'unite_sources' : [
+                \     'outline',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -623,7 +631,9 @@ endif
 if neobundle#tap('unite-help')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['help']
+                \   'unite_sources' : [
+                \     'help',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -632,7 +642,9 @@ endif
 if neobundle#tap('unite-filetype')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['filetype']
+                \   'unite_sources' : [
+                \     'filetype',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -673,7 +685,9 @@ endif
 if neobundle#tap('unite-mark')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['mark']
+                \   'unite_sources' : [
+                \     'mark',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -697,6 +711,17 @@ if neobundle#tap('unite-reading-vimrc')
                 \     'reading-vimrc',
                 \   ],
                 \ },
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('unite-webcolorname')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'unite_sources' : [
+                \     'webcolorname',
+                \   ],
+                \ }
                 \})
     call neobundle#untap()
 endif
@@ -803,8 +828,12 @@ endif
 if neobundle#tap('vim-quickrun')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'commands' : ['QuickRun'],
-                \   'mappings' : '<Plug>(quickrun',
+                \   'commands' : [
+                \     'QuickRun',
+                \   ],
+                \   'mappings' : [
+                \     '<Plug>(quickrun',
+                \   ],
                 \ }
                 \})
     let g:quickrun_config = {
@@ -883,7 +912,9 @@ endif
 if neobundle#tap('unite-quickrun_config')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['quickrun_config'],
+                \   'unite_sources' : [
+                \     'quickrun_config',
+                \   ],
                 \ },
                 \})
     call neobundle#untap()
@@ -940,7 +971,9 @@ endif
 if neobundle#tap('gundo.vim')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'commands' : ['GundoToggle']
+                \   'commands' : [
+                \     'GundoToggle',
+                \   ],
                 \ }
                 \})
     nnoremap <F5> :<C-u>GundoToggle<CR>
@@ -981,7 +1014,9 @@ endif
 if neobundle#tap('yankround.vim')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'mappings' : ['<Plug>(yankround-'],
+                \   'mappings' : [
+                \     '<Plug>(yankround-',
+                \   ],
                 \ }
                 \})
 
@@ -1017,7 +1052,9 @@ endif
 if neobundle#tap('vim-anzu')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'mappings' : ['<Plug>(anzu-'],
+                \   'mappings' : [
+                \     '<Plug>(anzu-',
+                \   ],
                 \ }
                 \})
     nmap n <Plug>(anzu-n)zz
@@ -1035,7 +1072,9 @@ endif
 if neobundle#tap('vim-visualstar')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'mappings' : ['<Plug>(visualstar-'],
+                \   'mappings' : [
+                \     '<Plug>(visualstar-',
+                \   ],
                 \ }
                 \})
 
@@ -1075,7 +1114,9 @@ endif
 if neobundle#tap('vim-qfreplace')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'commands' : ['Qfreplace']
+                \   'commands' : [
+                \     'Qfreplace',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1084,7 +1125,9 @@ endif
 if neobundle#tap('vim-quickhl')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'mappings' : ['<Plug>(quickhl-'],
+                \   'mappings' : [
+                \     '<Plug>(quickhl-',
+                \   ],
                 \ }
                 \})
     nmap <Space>m <Plug>(quickhl-manual-this)
@@ -1230,8 +1273,8 @@ if neobundle#tap('capture.vim')
     call neobundle#config({
                 \ 'autoload' : {
                 \   'commands' : [
-                \     'Capture'
-                \   ]
+                \     'Capture',
+                \   ],
                 \ }
                 \})
 
@@ -1249,12 +1292,14 @@ if neobundle#tap('open-browser.vim')
                 \ 'autoload' : {
                 \   'commands' : [
                 \     'OpenBrowser',
-                \     'OpenBrowserSearch'
+                \     'OpenBrowserSearch',
                 \   ],
                 \   'functions' : [
                 \     'OpenBrowser',
                 \   ],
-                \   'filetypes' : ['markdown'],
+                \   'filetypes' : [
+                \     'markdown',
+                \   ],
                 \   'mappings' : [
                 \     '<Plug>(openbrowser-',
                 \   ],
@@ -1312,7 +1357,9 @@ endif
 if neobundle#tap('unite-rails')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['ruby']
+                \   'filetypes' : [
+                \     'ruby',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1321,7 +1368,9 @@ endif
 if neobundle#tap('ghcmod-vim')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['haskell']
+                \   'filetypes' : [
+                \     'haskell',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1330,7 +1379,9 @@ endif
 if neobundle#tap('neco-ghc')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['haskell']
+                \   'filetypes' : [
+                \     'haskell',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1339,7 +1390,9 @@ endif
 if neobundle#tap('vim2hs')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['haskell']
+                \   'filetypes' : [
+                \     'haskell',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1348,7 +1401,9 @@ endif
 if neobundle#tap('ref-hoogle')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'filetypes' : ['haskell'],
+                \   'filetypes' : [
+                \     'haskell',
+                \   ],
                 \ },
                 \})
     call neobundle#untap()
@@ -1357,7 +1412,9 @@ endif
 if neobundle#tap('unite-haskellimport')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['haskellimport'],
+                \   'unite_sources' : [
+                \     'haskellimport',
+                \   ],
                 \ },
                 \})
     call neobundle#untap()
@@ -1425,7 +1482,7 @@ if neobundle#tap('vim-ref')
                 \     'Ref',
                 \   ],
                 \   'mappings' : [
-                \     '<Plug>(ref-'
+                \     '<Plug>(ref-',
                 \   ],
                 \ }
                 \})
@@ -1474,9 +1531,11 @@ if neobundle#tap('learn-vimscript')
     call neobundle#config({
                 \ 'autoload' : {
                 \   'commands' : [
-                \     'help'
+                \     'help',
                 \   ],
-                \   'unite_sources' : ['help']
+                \   'unite_sources' : [
+                \     'help',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1510,8 +1569,8 @@ if neobundle#tap('hateblo.vim')
                 \     'HatebloCreateDraft',
                 \     'HatebloList',
                 \     'HatebloUpdate',
-                \     'HatebloDelete'
-                \   ]
+                \     'HatebloDelete',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1588,9 +1647,11 @@ if neobundle#tap('codic-vim')
     call neobundle#config({
                 \ 'autoload' : {
                 \   'commands' : [
-                \     'Codic'
+                \     'Codic',
                 \   ],
-                \   'unite_sources' : ['codic']
+                \   'unite_sources' : [
+                \     'codic',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1599,7 +1660,9 @@ endif
 if neobundle#tap('unite-codic.vim')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['codic']
+                \   'unite_sources' : [
+                \     'codic',
+                \   ],
                 \ }
                 \})
     call neobundle#untap()
@@ -1608,7 +1671,9 @@ endif
 if neobundle#tap('jazzradio.vim')
     call neobundle#config({
                 \ 'autoload' : {
-                \   'unite_sources' : ['jazzradio'],
+                \   'unite_sources' : [
+                \     'jazzradio',
+                \   ],
                 \   'commands' : [
                 \     'JazzradioUpdateChannels',
                 \     'JazzradioStop',
@@ -1617,19 +1682,12 @@ if neobundle#tap('jazzradio.vim')
                 \       'complete' : 'customlist,jazzradio#channel_id_complete'
                 \     }
                 \   ],
-                \   'function_prefix' : 'jazzradio'
+                \   'function_prefix' : 'jazzradio',
                 \ }
                 \})
     call neobundle#untap()
 endif
 
-if neobundle#tap('unite-webcolorname')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : ['webcolorname']
-                \ }
-                \})
-    call neobundle#untap()
 endif
 
 
