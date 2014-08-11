@@ -94,6 +94,7 @@ NeoBundleLazy 'scrooloose/nerdtree'
 NeoBundleLazy 'LeafCage/yankround.vim'
 
 NeoBundleLazy 'haya14busa/incsearch.vim'
+NeoBundle 'haya14busa/vim-migemo'
 
 NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
