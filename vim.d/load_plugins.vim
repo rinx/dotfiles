@@ -1096,7 +1096,7 @@ if neobundle#tap('clever-f.vim')
     let g:clever_f_across_no_line = 0
     let g:clever_f_ignore_case = 0
     let g:clever_f_smart_case = 0
-    let g:clever_f_use_migemo = 0
+    let g:clever_f_use_migemo = 1
     let g:clever_f_fix_key_direction = 0
     let g:clever_f_show_prompt = 0
     let g:clever_f_chars_match_any_signs = ''
