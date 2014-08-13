@@ -971,6 +971,7 @@ if neobundle#tap('vim-gitgutter')
     let g:gitgutter_sign_added = '✚'
     let g:gitgutter_sign_modified = '➜'
     let g:gitgutter_sign_removed = '✘'
+    call neobundle#untap()
 endif
 
 if neobundle#tap('gundo.vim')
