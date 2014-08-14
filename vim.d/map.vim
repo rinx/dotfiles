@@ -101,13 +101,13 @@ endif
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "toggle paste mode
-nnoremap <Leader>p :setl paste!<CR>
+nnoremap <silent> <Leader>p :setl paste!<CR>
 
 "toggle relativenumber
-nnoremap <Leader>r :setl relativenumber!<CR>
+nnoremap <silent> <Leader>r :setl relativenumber!<CR>
 
 "close special windows from another window
-nnoremap <Leader>q :<C-u>call <SID>close_special_windows()<CR>
+nnoremap <silent> <Leader>q :<C-u>call <SID>close_special_windows()<CR>
 
 function! s:close_window(winnr)
     if winbufnr(a:winnr) !=# -1
