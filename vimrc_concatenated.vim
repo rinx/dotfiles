@@ -149,6 +149,7 @@ NeoBundleLazy 'scrooloose/nerdtree'
 NeoBundleLazy 'LeafCage/yankround.vim'
 
 NeoBundleLazy 'haya14busa/incsearch.vim'
+NeoBundle 'haya14busa/vim-migemo'
 
 NeoBundleLazy 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
@@ -1025,6 +1026,7 @@ if neobundle#tap('vim-gitgutter')
     let g:gitgutter_sign_added = '✚'
     let g:gitgutter_sign_modified = '➜'
     let g:gitgutter_sign_removed = '✘'
+    call neobundle#untap()
 endif
 
 if neobundle#tap('gundo.vim')
@@ -1150,7 +1152,7 @@ if neobundle#tap('clever-f.vim')
     let g:clever_f_across_no_line = 0
     let g:clever_f_ignore_case = 0
     let g:clever_f_smart_case = 0
-    let g:clever_f_use_migemo = 0
+    let g:clever_f_use_migemo = 1
     let g:clever_f_fix_key_direction = 0
     let g:clever_f_show_prompt = 0
     let g:clever_f_chars_match_any_signs = ''
@@ -1928,6 +1930,12 @@ nnoremap g$ $
 "Use Y as y$
 nnoremap Y y$
 
+"Access to system clipboard
+nnoremap ,p "+p
+nnoremap ,P "+P
+nnoremap ,y "+y
+nnoremap ,d "+d
+
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
 "inoremap <C-n> <Down>
@@ -1943,17 +1951,17 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 "for tabline
-nnoremap [Tag] <Nop>
-nmap ,t [Tag]
+nnoremap [Tab] <Nop>
+nmap ,t [Tab]
 
 for n in range(1, 9)
-    execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
+    execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-nnoremap <silent> [Tag]c :<C-u>tablast <bar> tabnew<CR>
-nnoremap <silent> [Tag]x :<C-u>tabclose<CR>
-nnoremap <silent> [Tag]n :<C-u>tabnext<CR>
-nnoremap <silent> [Tag]p :<C-u>tabprevious<CR>
+nnoremap <silent> [Tab]c :<C-u>tablast <bar> tabnew<CR>
+nnoremap <silent> [Tab]x :<C-u>tabclose<CR>
+nnoremap <silent> [Tab]n :<C-u>tabnext<CR>
+nnoremap <silent> [Tab]p :<C-u>tabprevious<CR>
 
 "for window
 nnoremap s <Nop>
@@ -1992,13 +2000,13 @@ endif
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "toggle paste mode
-nnoremap <Leader>p :setl paste!<CR>
+nnoremap <silent> <Leader>p :setl paste!<CR>
 
 "toggle relativenumber
-nnoremap <Leader>r :setl relativenumber!<CR>
+nnoremap <silent> <Leader>r :setl relativenumber!<CR>
 
 "close special windows from another window
-nnoremap <Leader>q :<C-u>call <SID>close_special_windows()<CR>
+nnoremap <silent> <Leader>q :<C-u>call <SID>close_special_windows()<CR>
 
 function! s:close_window(winnr)
     if winbufnr(a:winnr) !=# -1
