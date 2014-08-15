@@ -43,6 +43,9 @@ nnoremap ,P "+P
 nnoremap ,y "+y
 nnoremap ,d "+d
 
+vnoremap ,y "+y
+vnoremap ,d "+d
+
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
 "inoremap <C-n> <Down>
