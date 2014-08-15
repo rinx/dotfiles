@@ -52,17 +52,17 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 "for tabline
-nnoremap [Tag] <Nop>
-nmap ,t [Tag]
+nnoremap [Tab] <Nop>
+nmap ,t [Tab]
 
 for n in range(1, 9)
-    execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
+    execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-nnoremap <silent> [Tag]c :<C-u>tablast <bar> tabnew<CR>
-nnoremap <silent> [Tag]x :<C-u>tabclose<CR>
-nnoremap <silent> [Tag]n :<C-u>tabnext<CR>
-nnoremap <silent> [Tag]p :<C-u>tabprevious<CR>
+nnoremap <silent> [Tab]c :<C-u>tablast <bar> tabnew<CR>
+nnoremap <silent> [Tab]x :<C-u>tabclose<CR>
+nnoremap <silent> [Tab]n :<C-u>tabnext<CR>
+nnoremap <silent> [Tab]p :<C-u>tabprevious<CR>
 
 "for window
 nnoremap s <Nop>
