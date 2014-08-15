@@ -37,6 +37,12 @@ nnoremap g$ $
 "Use Y as y$
 nnoremap Y y$
 
+"Access to system clipboard
+nnoremap ,p "+p
+nnoremap ,P "+P
+nnoremap ,y "+y
+nnoremap ,d "+d
+
 "Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
 "inoremap <C-n> <Down>
