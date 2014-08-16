@@ -10,7 +10,7 @@ if neobundle#tap('lightline.vim')
                 \             [ 'fugitive', 'filename' ],
                 \   ],
                 \   'right': [
-                \             [ 'syntastic', 'lineinfo' ],
+                \             [ 'lineinfo' ],
                 \             [ 'percent' ],
                 \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ],
                 \   ],
@@ -29,10 +29,8 @@ if neobundle#tap('lightline.vim')
                 \   'tabfugitive': 'MyFugitiveInv',
                 \ },
                 \ 'component_expand': {
-                \   'syntastic': 'SyntasticStatuslineFlag'
                 \ },
                 \ 'component_type': {
-                \   'syntastic': 'error'
                 \ },
                 \ 'inactive' : {
                 \   'left' : [
