@@ -1,0 +1,4 @@
+snippet mdlink
+options word
+	[${2:$1}](${1:`getreg(v:register) =~ '^https\?:\/\/.*$' ? getreg(v:register) : ""`})
+
