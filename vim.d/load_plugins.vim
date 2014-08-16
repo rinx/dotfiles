@@ -82,7 +82,7 @@ NeoBundle 'vim-scripts/eregex.vim'
 NeoBundle 'tmhedberg/matchit'
 
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
+"NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
@@ -111,6 +111,7 @@ NeoBundle 'amdt/vim-niji'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace', { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'emonkak/vim-operator-comment', { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'rhysd/vim-operator-surround', { 'depends' : 'kana/vim-operator-user' }
 
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent', { 'depends' : 'kana/vim-textobj-user' }
@@ -1176,6 +1177,14 @@ endif
 
 if neobundle#tap('vim-operator-replace')
     Arpeggio map or <Plug>(operator-replace)
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-operator-surround')
+    map Sa <Plug>(operator-surround-append)
+    map Sd <Plug>(operator-surround-delete)
+    map Sr <Plug>(operator-surround-replace)
 
     call neobundle#untap()
 endif
