@@ -61,7 +61,6 @@ NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
             \   'thinca/vim-quickrun',
             \ ]
             \}
-NeoBundleFetch 'scrooloose/syntastic'
 
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs', {
@@ -82,7 +81,6 @@ NeoBundle 'vim-scripts/eregex.vim'
 NeoBundle 'tmhedberg/matchit'
 
 NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
@@ -148,8 +146,6 @@ NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
 
 NeoBundleLazy 'mattn/webapi-vim'
-" NeoBundleLazy 'mattn/gist-vim', { 'depends' : ['mattn/webapi-vim'] }
-" NeoBundleLazy 'mattn/unite-gist', { 'depends' : ['mattn/gist-vim', 'Shougo/unite.vim'] }
 NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
 NeoBundleLazy 'basyura/twibill.vim', { 'depends' : 'tyru/open-browser.vim' }
 NeoBundleLazy 'basyura/TweetVim', {
@@ -929,20 +925,6 @@ if neobundle#tap('unite-quickrun_config')
     call neobundle#untap()
 endif
 
-" if neobundle#tap('syntastic')
-"     let g:syntastic_mode_map = { 'mode': 'passive' }
-"     augroup AutoSyntastic
-"         autocmd!
-"         autocmd BufWritePost *.c,*.cpp,*.hs,*.rb,*.py call s:syntastic()
-"     augroup END
-"     function! s:syntastic()
-"         SyntasticCheck
-"         call lightline#update()
-"     endfunction
-"
-"     call neobundle#untap()
-" endif
-
 if neobundle#tap('vim-watchdogs')
     call watchdogs#setup(g:quickrun_config)
 
@@ -1558,26 +1540,6 @@ if neobundle#tap('learn-vimscript')
                 \})
     call neobundle#untap()
 endif
-
-" if neobundle#tap('gist-vim')
-"     call neobundle#config({
-"                 \ 'autoload' : {
-"                 \   'commands' : [
-"                 \     'Gist'
-"                 \   ]
-"                 \ }
-"                 \})
-"     call neobundle#untap()
-" endif
-"
-" if neobundle#tap('unite-gist')
-"     call neobundle#config({
-"                 \ 'autoload' : {
-"                 \   'unite_sources' : ['gist']
-"                 \ },
-"                 \})
-"     call neobundle#untap()
-" endif
 
 if neobundle#tap('hateblo.vim')
     call neobundle#config({
