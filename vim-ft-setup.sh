@@ -88,3 +88,14 @@ else
     echo -e "\033[0;31m✗ \033[1;31mA Vim syntax plugin $HOME/.vim/syntax/tmux.vim downloading failed\033[00m" | sed "s/^-e //"
 fi
 
+
+if [ ! -d $HOME/.vim/my-snippets ] || [ "$FLG_F" = "TRUE" ]; then
+    [ "$FLG_F" = "TRUE" ] && rm -rf $HOME/.vim/my-snippets
+    ln -s $DOTDIR/dotvim/my-snippets $HOME/.vim/my-snippets
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;35mA symbolic link of directory $HOME/.vim/my-snippets created\033[00m" | sed "s/^-e //"
+    else
+        echo -e "\033[0;31m✗ \033[1;31mA symbolic link of directory $HOME/.vim/my-snippets creating failed\033[00m" | sed "s/^-e //"
+    fi
+fi
+
