@@ -15,60 +15,34 @@ done
 
 mkdir -p $HOME/.vim/ftplugin
 
-if [ ! -f $HOME/.vim/ftplugin/fortran/fortran.vim ] || [ "$FLG_F" = "TRUE" ]; then
-    mkdir -p $HOME/.vim/ftplugin/fortran
-    [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftplugin/fortran/fortran.vim
-    ln -s $DOTDIR/dotvim/ftplugin/fortran/fortran.vim $HOME/.vim/ftplugin/fortran/fortran.vim
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/fortran/fortran.vim created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/fortran/fortran.vim creating failed\033[00m" | sed "s/^-e //"
+for scriptname in fortran/fortran.vim python/python.vim ruby/ruby.vim tex/tex.vim
+do
+    if [ ! -f $HOME/.vim/ftplugin/${scriptname} ] || [ "$FLG_F" = "TRUE" ]; then
+        scriptdir=`echo ${scriptname} | sed -e 's/\/.*\.vim//'`
+        mkdir -p $HOME/.vim/ftplugin/${scriptdir}
+        [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftplugin/${scriptname}
+        ln -s $DOTDIR/dotvim/ftplugin/${scriptname} $HOME/.vim/ftplugin/${scriptname}
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;35mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/${scriptname} created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/${scriptname} creating failed\033[00m" | sed "s/^-e //"
+        fi
     fi
-fi
-
-if [ ! -f $HOME/.vim/ftplugin/python/python.vim ] || [ "$FLG_F" = "TRUE" ]; then
-    mkdir -p $HOME/.vim/ftplugin/python
-    [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftplugin/python/python.vim
-    ln -s $DOTDIR/dotvim/ftplugin/python/python.vim $HOME/.vim/ftplugin/python/python.vim
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/python/python.vim created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/python/python.vim creating failed\033[00m" | sed "s/^-e //"
-    fi
-fi
-
-if [ ! -f $HOME/.vim/ftplugin/ruby/ruby.vim ] || [ "$FLG_F" = "TRUE" ]; then
-    mkdir -p $HOME/.vim/ftplugin/ruby
-    [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftplugin/ruby/ruby.vim
-    ln -s $DOTDIR/dotvim/ftplugin/ruby/ruby.vim $HOME/.vim/ftplugin/ruby/ruby.vim
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/ruby/ruby.vim created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/ruby/ruby.vim creating failed\033[00m" | sed "s/^-e //"
-    fi
-fi
-
-if [ ! -f $HOME/.vim/ftplugin/tex/tex.vim ] || [ "$FLG_F" = "TRUE" ]; then
-    mkdir -p $HOME/.vim/ftplugin/tex
-    [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftplugin/tex/tex.vim
-    ln -s $DOTDIR/dotvim/ftplugin/tex/tex.vim $HOME/.vim/ftplugin/tex/tex.vim
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/tex/tex.vim created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link of Vim filetype plugin $HOME/.vim/ftplugin/tex/tex.vim creating failed\033[00m" | sed "s/^-e //"
-    fi
-fi
+done
 
 mkdir -p $HOME/.vim/ftdetect
-if [ ! -f $HOME/.vim/ftdetect/markdown.vim ] || [ "$FLG_F" = "TRUE" ]; then
-    [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftdetect/markdown.vim
-    ln -s $DOTDIR/dotvim/ftdetect/markdown.vim $HOME/.vim/ftdetect/markdown.vim
-    if [ $? -eq 0 ]; then
-        echo -e "\033[0;32m✔ \033[1;35mA symbolic link of Vim filetype plugin $HOME/.vim/ftdetect/markdown.vim created\033[00m" | sed "s/^-e //"
-    else
-        echo -e "\033[0;31m✗ \033[1;31mA symbolic link of Vim filetype plugin $HOME/.vim/ftdetect/markdown.vim creating failed\033[00m" | sed "s/^-e //"
+for scriptname in markdown.vim
+do
+    if [ ! -f $HOME/.vim/ftdetect/${scriptname} ] || [ "$FLG_F" = "TRUE" ]; then
+        [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftdetect/${scriptname}
+        ln -s $DOTDIR/dotvim/ftdetect/${scriptname} $HOME/.vim/ftdetect/${scriptname}
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;35mA symbolic link of Vim filetype plugin $HOME/.vim/ftdetect/${scriptname} created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link of Vim filetype plugin $HOME/.vim/ftdetect/${scriptname} creating failed\033[00m" | sed "s/^-e //"
+        fi
     fi
-fi
+done
 
 if [ ! -f $HOME/.vim/filetype.vim ] || [ "$FLG_F" = "TRUE" ]; then
     [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/filetype.vim
