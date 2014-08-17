@@ -1,0 +1,18 @@
+snippet sec
+	\section{${1}}
+	${0:TARGET}
+
+snippet ssec
+	\subsection{${1}}
+	${0:TARGET}
+
+snippet sssec
+	\subsubsection{${1}}
+	${0:TARGET}
+
+snippet frame
+	\begin{frame}[noframenumbering]
+		\frametitle{\insertsectionnumber.\insertsectionhead \  | {\large \insertsubsectionhead}}
+		${1:TARGET}
+	\end{frame}
+

@@ -16,6 +16,3 @@ if !exists('g:neocomplcache_omni_patterns')
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
-"iabbrev
-iab shb #!/usr/bin/env ruby
-iab enc # -*- coding: utf-8 -*-
