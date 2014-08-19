@@ -2,3 +2,7 @@ snippet mdlink
 options word
 	[${2:$1}](${1:`getreg(v:register) =~ '^https\?:\/\/.*$' ? getreg(v:register) : ""`})
 
+snippet ghlink
+options word
+	[${2:`getreg(v:register) =~ '^https\?:\/\/.*github\.com\/' ? substitute(getreg(v:register), '^https\?:\/\/.*github\.com\/', '', 'g') : ""`}](${1:`getreg(v:register) =~ '^https\?:\/\/.*github\.com\/' ? getreg(v:register) : ""`})
+
