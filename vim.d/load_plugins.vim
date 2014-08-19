@@ -404,7 +404,6 @@ if neobundle#tap('unite.vim')
                     \ ['unite neosnippet', 'Unite neosnippet'],
                     \ ['unite gista', 'Unite gista'],
                     \ ['unite codic', 'Unite codic -start-insert'],
-                    \ ['unite webcolorname', 'Unite webcolorname'],
                     \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['unite Sky.fm', 'Unite skyfm'],
