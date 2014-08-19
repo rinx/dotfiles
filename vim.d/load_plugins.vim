@@ -394,6 +394,7 @@ if neobundle#tap('unite.vim')
                     \ ['Gundo', 'GundoToggle'],
                     \ ['NERDTree', 'NERDTreeToggle'],
                     \ ['map', 'Unite output:map'],
+                    \ ['register', 'Unite output:register'],
                     \ ['reload .vimrc', 'source ~/.vimrc'],
                     \ ['make Session.vim', 'mks!'],
                     \ ['toggle-options', 'Unite menu:toggle'],
