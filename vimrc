@@ -20,6 +20,11 @@ if filereadable(expand('~/.dotfiles/vim.d/color.vim'))
     source ~/.dotfiles/vim.d/color.vim
 endif
 
+"Functions
+if filereadable(expand('~/.dotfiles/vim.d/functions.vim'))
+    source ~/.dotfiles/vim.d/functions.vim
+endif
+
 "Key mapping
 if filereadable(expand('~/.dotfiles/vim.d/map.vim'))
     source ~/.dotfiles/vim.d/map.vim
