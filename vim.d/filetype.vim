@@ -4,7 +4,7 @@
 set rtp^=$GOROOT/misc/vim
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 let g:gofmt_command = 'goimports'
-augroup golang
+augroup vimrc-golang
     autocmd!
     autocmd BufWritePre *.go Fmt
     autocmd BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4
@@ -15,7 +15,7 @@ augroup END
 " --- below this, they are not filetypes but ...
 
 "QuickFix window
-augroup forQuickFix
+augroup vimrc-forQuickFix
     autocmd!
     " mappings
     autocmd FileType qf nnoremap <buffer> j j
@@ -33,7 +33,7 @@ augroup forQuickFix
 augroup END
 
 "Help window
-augroup forHelpWindow
+augroup vimrc-forHelpWindow
     autocmd!
     autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END

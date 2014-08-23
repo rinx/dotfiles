@@ -25,7 +25,7 @@ augroup vimrc-auto-mkdir
 augroup END
 
 "load Session.vim
-augroup session-vim-auto-load
+augroup vimrc-session-vim-auto-load
     autocmd!
     autocmd BufNewFile,BufReadPost * call s:load_session_vim(expand('<afile>:p:h'))
 augroup END
