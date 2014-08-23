@@ -69,11 +69,7 @@ if system('uname -o') =~ '^GNU/'
 endif
 NeoBundle 'Shougo/vimproc.vim'
 
-function! s:meet_neocomplete_requirements()
-    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction
-
-if s:meet_neocomplete_requirements()
+if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
     NeoBundleLazy 'Shougo/neocomplete.vim'
     NeoBundleFetch 'Shougo/neocomplcache.vim'
 else
@@ -247,7 +243,7 @@ if neobundle#tap('vimproc.vim')
     call neobundle#untap()
 endif
 
-if s:meet_neocomplete_requirements()
+if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
     "neocomplete
     if neobundle#tap('neocomplete.vim')
         call neobundle#config({
@@ -315,7 +311,7 @@ else
 endif
 
 "Enable omni function
-augroup omnifuncs
+augroup vimrc-omnifuncs
     autocmd!
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -961,7 +957,7 @@ if neobundle#tap('vim-quickrun')
                 \}
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
     Arpeggio nmap qr <Plug>(quickrun)
-    augroup forQuickRun
+    augroup vimrc-forQuickRun
         autocmd!
         autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'quickrun' | q | endif
     augroup END
@@ -1050,7 +1046,7 @@ if neobundle#tap('nerdtree')
                 \ }
                 \})
     nnoremap <F6> :<C-u>NERDTreeToggle<CR>
-    augroup nerdtree
+    augroup vimrc-nerdtree
         autocmd!
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     augroup END
@@ -1107,7 +1103,7 @@ if neobundle#tap('vim-anzu')
     nmap N <Plug>(anzu-N)zz
     nmap * <Plug>(anzu-star)zz
     nmap # <Plug>(anzu-sharp)zz
-    augroup vim-anzu
+    augroup vimrc-anzu
         autocmd!
         autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
     augroup END
@@ -1332,7 +1328,7 @@ if neobundle#tap('capture.vim')
                 \ }
                 \})
 
-    augroup captureSettings
+    augroup vimrc-capture
         autocmd!
         autocmd FileType capture nnoremap <buffer><silent>q :<C-u>q<CR>
         autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'capture' | q | endif
@@ -1563,7 +1559,7 @@ if neobundle#tap('vim-ref')
         return join(split(a:output, "\n")[5 :], "\n")
     endfunction
 
-    augroup refSettings
+    augroup vimrc-ref
         autocmd!
         autocmd FileType ref-* nnoremap <buffer><silent>q :<C-u>q<CR>
     augroup END
@@ -1866,7 +1862,7 @@ hi Normal ctermbg=none
 
 " --- functions ---
 
-"A function to convert csv to markdown table (should be refuctoring...)
+"A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
     let lines = getline(a:firstline, a:lastline)
     let spacelen = []
@@ -2027,7 +2023,7 @@ endif
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "toggle paste mode
-nnoremap <silent> <Leader>p :setl paste!<CR>
+set pastetoggle=<Leader>p
 
 "toggle relativenumber
 nnoremap <silent> <Leader>r :setl relativenumber!<CR>
@@ -2089,7 +2085,7 @@ endif
 set rtp^=$GOROOT/misc/vim
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 let g:gofmt_command = 'goimports'
-augroup golang
+augroup vimrc-golang
     autocmd!
     autocmd BufWritePre *.go Fmt
     autocmd BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4
@@ -2100,7 +2096,7 @@ augroup END
 " --- below this, they are not filetypes but ...
 
 "QuickFix window
-augroup forQuickFix
+augroup vimrc-forQuickFix
     autocmd!
     " mappings
     autocmd FileType qf nnoremap <buffer> j j
@@ -2118,7 +2114,7 @@ augroup forQuickFix
 augroup END
 
 "Help window
-augroup forHelpWindow
+augroup vimrc-forHelpWindow
     autocmd!
     autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END
@@ -2285,7 +2281,7 @@ augroup vimrc-auto-mkdir
 augroup END
 
 "load Session.vim
-augroup session-vim-auto-load
+augroup vimrc-session-vim-auto-load
     autocmd!
     autocmd BufNewFile,BufReadPost * call s:load_session_vim(expand('<afile>:p:h'))
 augroup END
