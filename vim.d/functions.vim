@@ -1,6 +1,6 @@
 " --- functions ---
 
-"A function to convert csv to markdown table (should be refuctoring...)
+"A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
     let lines = getline(a:firstline, a:lastline)
     let spacelen = []
