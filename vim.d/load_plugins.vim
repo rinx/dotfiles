@@ -188,69 +188,71 @@ if neobundle#tap('vimproc.vim')
     call neobundle#untap()
 endif
 
-"neocomplete
-if neobundle#tap('neocomplete.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ }
-                \})
+if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+    "neocomplete
+    if neobundle#tap('neocomplete.vim')
+        call neobundle#config({
+                    \ 'autoload' : {
+                    \   'insert' : 1,
+                    \ }
+                    \})
 
-    let g:neocomplete#enable_at_startup = 1
+        let g:neocomplete#enable_at_startup = 1
 
-    let g:neocomplete#min_keyword_length = 3
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
+        let g:neocomplete#min_keyword_length = 3
+        let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-    let g:neocomplete#auto_completion_start_length = 2
-    let g:neocomplete#manual_completion_start_length = 0
+        let g:neocomplete#auto_completion_start_length = 2
+        let g:neocomplete#manual_completion_start_length = 0
 
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_camel_case = 1
+        let g:neocomplete#enable_smart_case = 1
+        let g:neocomplete#enable_camel_case = 1
 
-    let g:neocomplete#enable_fuzzy_completion = 1
+        let g:neocomplete#enable_fuzzy_completion = 1
 
-    let g:neocomplete#enable_auto_select = 0
-    let g:neocomplete#enable_refresh_always = 0
-    let g:neocomplete#enable_cursor_hold_i = 0
-    let g:neocomplete#enable_auto_delimiter = 1
+        let g:neocomplete#enable_auto_select = 0
+        let g:neocomplete#enable_refresh_always = 0
+        let g:neocomplete#enable_cursor_hold_i = 0
+        let g:neocomplete#enable_auto_delimiter = 1
 
-    let g:neocomplete#max_list = 80
+        let g:neocomplete#max_list = 80
 
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+        if !exists('g:neocomplete#sources#omni#input_patterns')
+            let g:neocomplete#sources#omni#input_patterns = {}
+        endif
+
+        let g:neocomplete#enable_auto_close_preview = 1
+
+        inoremap <expr><C-g> neocomplete#undo_completion()
+        inoremap <expr><C-l> neocomplete#complete_common_string()
+
+        call neobundle#untap()
     endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+else
+    "neocomplcache
+    if neobundle#tap('neocomplcache.vim')
+        call neobundle#config({
+                    \ 'autoload' : {
+                    \   'insert' : 1,
+                    \ }
+                    \})
 
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
+        let g:neocomplcache_enable_at_startup = 1
+        let g:neocomplcache_auto_completion_start_length = 1
+        let g:neocomplcache_enable_smart_case = 1
+        let g:neocomplcache_enable_underbar_completion = 1
+
+        if !exists('g:neocomplcache_omni_patterns')
+            let g:neocomplcache_omni_patterns = {}
+        endif
+
+        call neobundle#untap()
     endif
-
-    let g:neocomplete#enable_auto_close_preview = 1
-
-    inoremap <expr><C-g> neocomplete#undo_completion()
-    inoremap <expr><C-l> neocomplete#complete_common_string()
-
-    call neobundle#untap()
-endif
-
-"neocomplcache
-if neobundle#tap('neocomplcache.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ }
-                \})
-
-    let g:neocomplcache_enable_at_startup = 1
-    let g:neocomplcache_auto_completion_start_length = 1
-    let g:neocomplcache_enable_smart_case = 1
-    let g:neocomplcache_enable_underbar_completion = 1
-
-    if !exists('g:neocomplcache_omni_patterns')
-        let g:neocomplcache_omni_patterns = {}
-    endif
-
-    call neobundle#untap()
 endif
 
 "Enable omni function
