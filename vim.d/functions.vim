@@ -3,11 +3,12 @@
 "A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
     let lines = getline(a:firstline, a:lastline)
+    let linecount = a:lastline - a:firstline
     let spacelen = []
     let maxrownum = 0
     let maxcollen = []
     let values = []
-    for i in range(0, a:lastline - a:firstline)
+    for i in range(0, linecount)
         let linespacelen = []
         call add(values, split(substitute(lines[i], '\s*\,\s*', ',', 'g'), ','))
         for v in values[i]
@@ -19,20 +20,20 @@ function! s:csv_to_markdown_table () range
         call add(spacelen, linespacelen)
         unlet linespacelen
     endfor
-    for i in range(0, a:lastline - a:firstline)
+    for i in range(0, linecount)
         while len(spacelen[i]) < maxrownum
             call add(spacelen[i], 0)
         endwhile
     endfor
     for i in range(0, maxrownum - 1)
         call add(maxcollen, 0)
-        for j in range(0, a:lastline - a:firstline)
+        for j in range(0, linecount)
             if spacelen[j][i] > maxcollen[i]
                 let maxcollen[i] = spacelen[j][i]
             endif
         endfor
     endfor
-    for i in range(0, a:lastline - a:firstline)
+    for i in range(0, linecount)
         let aftersbst = ""
         for j in range(0, len(values[i]) - 1)
             let aftersbst .= "| " . values[i][j] . repeat(" ", maxcollen[j] - len(values[i][j])) . " "
