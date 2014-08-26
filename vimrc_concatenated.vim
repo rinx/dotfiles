@@ -177,6 +177,7 @@ NeoBundleLazy 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleLazy 'tyru/capture.vim'
 
 NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser-github.vim', { 'depends' : 'tyru/open-browser.vim' }
 
 NeoBundleLazy 'kannokanno/previm', { 'depends' : 'tyru/open-browser.vim' }
 
@@ -1385,6 +1386,20 @@ if neobundle#tap('open-browser.vim')
 
     call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('open-browser-github.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'OpenGithubFile',
+                \     'OpenGithubIssue',
+                \     'OpenGithubPullReq',
+                \   ],
+                \ }
+                \})
 
     call neobundle#untap()
 endif
