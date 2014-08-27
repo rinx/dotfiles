@@ -416,8 +416,6 @@ if neobundle#tap('unite.vim')
                     \ ['Github', 'https://github.com/'],
                     \ ['Github Gist', 'https://gist.github.com/'],
                     \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
-                    \ ['Aizu Online Judge', 'http://judge.u-aizu.ac.jp/onlinejudge/'],
-                    \ ['ProjectEuler', 'http://projecteuler.net/'],
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
                     \ ['Grooveshark', 'http://grooveshark.com/'],
                     \ ['Jazzradio', 'http://www.jazzradio.com/'],
