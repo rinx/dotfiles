@@ -119,6 +119,8 @@ NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-u
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleLazy 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' }
 
+NeoBundleLazy 'terryma/vim-expand-region'
+
 NeoBundleLazy 'tyru/capture.vim'
 
 NeoBundleLazy 'tyru/open-browser.vim'
@@ -1259,6 +1261,20 @@ if neobundle#tap('vim-textobj-ruby')
                 \ },
                 \})
     let g:textobj_ruby_more_mappings = 1
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-expand-region')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'mappings' : [
+                \     '<Plug>(expand_region_',
+                \   ],
+                \ },
+                \})
+    map + <Plug>(expand_region_expand)
+    map _ <Plug>(expand_region_shrink)
 
     call neobundle#untap()
 endif
