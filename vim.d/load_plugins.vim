@@ -95,6 +95,7 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thinca/vim-visualstar'
 
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'osyo-manga/vim-jplus'
 
 NeoBundleLazy 'thinca/vim-qfreplace'
 
@@ -1095,6 +1096,16 @@ if neobundle#tap('clever-f.vim')
     nmap F <Plug>(clever-f-F)
     nmap t <Plug>(clever-f-t)
     nmap T <Plug>(clever-f-T)
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-jplus')
+    nmap J <Plug>(jplus)
+    vmap J <Plug>(jplus)
+
+    nmap <Leader>J <Plug>(jplus-getchar)
+    vmap <Leader>J <Plug>(jplus-getchar)
 
     call neobundle#untap()
 endif
