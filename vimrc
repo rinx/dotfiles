@@ -65,7 +65,8 @@ set showtabline=2
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 "github repositories
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -239,7 +240,9 @@ NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron
 NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'supermomonga/skyfm.vim', { 'depends' : 'Shougo/unite.vim' }
 
+NeoBundle 'tomasr/molokai'
 
+call neobundle#end()
 
 "Plugin settings
 
@@ -1902,8 +1905,6 @@ set noautowrite
 
 
 " --- Color settings ---
-
-NeoBundle 'tomasr/molokai'
 
 syntax enable
 if !exists('g:colors_name')
