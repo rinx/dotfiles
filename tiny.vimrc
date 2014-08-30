@@ -83,14 +83,147 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
-"Color
-if filereadable(expand('~/.dotfiles/vim.d/color.vim'))
-    source ~/.dotfiles/vim.d/color.vim
+" --- Color settings ---
+
+NeoBundle 'tomasr/molokai'
+
+syntax enable
+if !exists('g:colors_name')
+    set background=dark
+    colorscheme molokai 
 endif
 
-"Statusline
-if filereadable(expand('~/.dotfiles/vim.d/statusline.vim'))
-    source ~/.dotfiles/vim.d/statusline.vim
+hi Normal ctermbg=none
+
+set laststatus=2
+
+if neobundle#tap('lightline.vim')
+    let g:lightline = {
+                \ 'active': {
+                \   'left': [ 
+                \             [ 'mode', 'paste' ],
+                \             [ 'fugitive', 'filename' ],
+                \   ],
+                \   'right': [
+                \             [ 'lineinfo' ],
+                \             [ 'percent' ],
+                \             [ 'skkstatus', 'anzu', 'fileformat', 'fileencoding', 'filetype' ],
+                \   ],
+                \ },
+                \ 'component_function': {
+                \   'modified': 'MyModified',
+                \   'readonly': 'MyReadonly',
+                \   'fugitive': 'MyFugitive',
+                \   'filename': 'MyFilename',
+                \   'fileformat': 'MyFileformat',
+                \   'filetype': 'MyFiletype',
+                \   'mode': 'MyMode',
+                \   'skkstatus': 'MySkkgetmode',
+                \   'anzu': 'anzu#search_status',
+                \   'tablineabspath': 'MyAbsPath',
+                \   'tabfugitive': 'MyFugitiveInv',
+                \ },
+                \ 'component_expand': {
+                \ },
+                \ 'component_type': {
+                \ },
+                \ 'inactive' : {
+                \   'left' : [
+                \     [ 'filename' ],
+                \   ],
+                \   'right' : [
+                \     [ 'lineinfo' ],
+                \   ],
+                \ },
+                \ 'tabline' : {
+                \   'left' : [
+                \     [ 'tabs' ],
+                \   ],
+                \   'right' : [
+                \     [ 'tablineabspath', 'tabfugitive' ],
+                \   ],
+                \ },
+                \ }
+
+    function! MyModified()
+        return &ft =~ 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    endfunction
+
+    function! MyReadonly()
+        return &ft !~? 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
+    endfunction
+
+    function! MyFugitive()
+        try
+            if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+                let _ = fugitive#head()
+                return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
+            endif
+        catch
+        endtry
+        return ''
+    endfunction
+
+    function! MyFugitiveInv()
+        try
+            if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+                let _ = fugitive#head()
+                return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
+            endif
+        catch
+        endtry
+        return ''
+    endfunction
+
+    function! MyFileformat()
+        return winwidth('.') > 70 ? &fileformat : ''
+    endfunction
+
+    function! MyFiletype()
+        return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    endfunction
+
+    function! MyFileencoding()
+        return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    endfunction
+
+    function! MyMode()
+        return &ft == 'vimfiler' ? 'VimFiler' : 
+                    \ &ft == 'unite' ? 'Unite' :
+                    \ &ft == 'vimshell' ? 'VimShell' :
+                    \ &ft == 'qf' ? '' :
+                    \ &ft == 'quickrun' ? '' :
+                    \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
+    endfunction
+
+    function! MyFilename()
+        return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                    \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                    \  &ft == 'unite' ? unite#get_status_string() :
+                    \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+                    \  &ft == 'qf' ? 'QuickFix' :
+                    \  &ft == 'quickrun' ? 'QuickRun' :
+                    \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                    \ ('' != MyModified() ? ' ' . MyModified() : '')
+    endfunction
+
+    function! MySkkgetmode()
+        let _ = SkkGetModeStr()
+        "let _ = eskk#get_mode()
+        return winwidth('.') > 70 ? strlen(_) ? substitute(_, '\[\|\]', '', 'g') : '' : ''
+    endfunction
+
+    function! MyAbsPath()
+        let _ = expand('%:p:h')
+        return &ft == 'vimfiler' ? '' : 
+                    \ &ft == 'unite' ? '' :
+                    \ &ft == 'vimshell' ? '' :
+                    \ &ft == 'qf' ? '' :
+                    \ &ft == 'quickrun' ? '' : 
+                    \ tabpagenr('$') < 4 ? _ : ''
+    endfunction
+
+    call neobundle#untap()
 endif
 
 
