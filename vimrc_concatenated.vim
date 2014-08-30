@@ -150,6 +150,7 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thinca/vim-visualstar'
 
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'osyo-manga/vim-jplus'
 
 NeoBundleLazy 'thinca/vim-qfreplace'
 
@@ -173,6 +174,8 @@ NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleLazy 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' }
+
+NeoBundleLazy 'terryma/vim-expand-region'
 
 NeoBundleLazy 'tyru/capture.vim'
 
@@ -471,8 +474,6 @@ if neobundle#tap('unite.vim')
                     \ ['Github', 'https://github.com/'],
                     \ ['Github Gist', 'https://gist.github.com/'],
                     \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
-                    \ ['Aizu Online Judge', 'http://judge.u-aizu.ac.jp/onlinejudge/'],
-                    \ ['ProjectEuler', 'http://projecteuler.net/'],
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
                     \ ['Grooveshark', 'http://grooveshark.com/'],
                     \ ['Jazzradio', 'http://www.jazzradio.com/'],
@@ -1154,6 +1155,16 @@ if neobundle#tap('clever-f.vim')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim-jplus')
+    nmap J <Plug>(jplus)
+    vmap J <Plug>(jplus)
+
+    nmap <Leader>J <Plug>(jplus-getchar)
+    vmap <Leader>J <Plug>(jplus-getchar)
+
+    call neobundle#untap()
+endif
+
 if neobundle#tap('vim-qfreplace')
     call neobundle#config({
                 \ 'autoload' : {
@@ -1316,6 +1327,27 @@ if neobundle#tap('vim-textobj-ruby')
                 \ },
                 \})
     let g:textobj_ruby_more_mappings = 1
+
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-expand-region')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'mappings' : [
+                \     '<Plug>(expand_region_',
+                \   ],
+                \ },
+                \})
+    map + <Plug>(expand_region_expand)
+    map _ <Plug>(expand_region_shrink)
+
+    call expand_region#custom_text_objects({
+                \ 'i_' : 1,
+                \ 'a_' : 1,
+                \ 'a]' : 1,
+                \ 'ab' : 1,
+                \})
 
     call neobundle#untap()
 endif
@@ -1880,11 +1912,12 @@ hi Normal ctermbg=none
 "A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
     let lines = getline(a:firstline, a:lastline)
+    let linecount = a:lastline - a:firstline
     let spacelen = []
     let maxrownum = 0
     let maxcollen = []
     let values = []
-    for i in range(0, a:lastline - a:firstline)
+    for i in range(0, linecount)
         let linespacelen = []
         call add(values, split(substitute(lines[i], '\s*\,\s*', ',', 'g'), ','))
         for v in values[i]
@@ -1896,20 +1929,20 @@ function! s:csv_to_markdown_table () range
         call add(spacelen, linespacelen)
         unlet linespacelen
     endfor
-    for i in range(0, a:lastline - a:firstline)
+    for i in range(0, linecount)
         while len(spacelen[i]) < maxrownum
             call add(spacelen[i], 0)
         endwhile
     endfor
     for i in range(0, maxrownum - 1)
         call add(maxcollen, 0)
-        for j in range(0, a:lastline - a:firstline)
+        for j in range(0, linecount)
             if spacelen[j][i] > maxcollen[i]
                 let maxcollen[i] = spacelen[j][i]
             endif
         endfor
     endfor
-    for i in range(0, a:lastline - a:firstline)
+    for i in range(0, linecount)
         let aftersbst = ""
         for j in range(0, len(values[i]) - 1)
             let aftersbst .= "| " . values[i][j] . repeat(" ", maxcollen[j] - len(values[i][j])) . " "
