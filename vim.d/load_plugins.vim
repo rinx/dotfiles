@@ -1287,6 +1287,13 @@ if neobundle#tap('vim-expand-region')
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
 
+    call expand_region#custom_text_objects({
+                \ 'i_' : 1,
+                \ 'a_' : 1,
+                \ 'a]' : 1,
+                \ 'ab' : 1,
+                \})
+
     call neobundle#untap()
 endif
 
