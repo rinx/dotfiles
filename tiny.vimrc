@@ -23,10 +23,13 @@ set softtabstop=4
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tyru/skk.vim'
+NeoBundle 'tomasr/molokai'
+
+call neobundle#end()
 
 if neobundle#tap('skk.vim')
     let g:skk_jisyo = '~/.skk-jisyo'
@@ -84,8 +87,6 @@ nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
 " --- Color settings ---
-
-NeoBundle 'tomasr/molokai'
 
 syntax enable
 if !exists('g:colors_name')
