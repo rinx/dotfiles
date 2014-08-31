@@ -9,7 +9,6 @@
 * .gitignore
 * .gitattributes\_global
 * tiny.vimrc (for git-commit editor)
-* vimrc\_concatenated.vim (for reading)
 
 ### setup scripts
 
@@ -39,11 +38,11 @@ use `setup.sh` to remove symbolic links
 to specify what type of dotfiles for installing
 
 |opt | description              |
-|:--:|:------------------------:|
+|:--:|:-------------------------|
 | -a | for all type of dotfiles |
 | -s | make symbolic links      |
-| -v | under `$HOME/.vim` files |
-| -t | under `$HOME/.bin` files |
+| -v | link `$HOME/.vim` files  |
+| -t | fetch `$HOME/.bin` files |
 
 if you have some dotfiles and want to overwrite it, `-f` option is useful.
 
