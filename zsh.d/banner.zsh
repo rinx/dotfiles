@@ -1,3 +1,0 @@
-#Banner
-
-archey -c
