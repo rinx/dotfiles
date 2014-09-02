@@ -1177,6 +1177,7 @@ if neobundle#tap('vim-jplus')
                 \   'delimiter' : ';',
                 \   'delimiter_format' : ' %d ',
                 \   'left_matchstr_pattern' : '^.\{-}\%(\ze\s*\\$\|$\)',
+                \   'ignore_pattern' : '^\s*#',
                 \ },
                 \ 'vim' : {
                 \   'ignore_pattern' : '^\s*"',
