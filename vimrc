@@ -1172,6 +1172,26 @@ if neobundle#tap('vim-jplus')
     nmap <Leader>J <Plug>(jplus-getchar)
     vmap <Leader>J <Plug>(jplus-getchar)
 
+    let g:jplus#config = {
+                \ 'sh' : {
+                \   'delimiter' : ';',
+                \   'delimiter_format' : ' %d ',
+                \   'left_matchstr_pattern' : '^.\{-}\%(\ze\s*\\$\|$\)',
+                \ },
+                \ 'vim' : {
+                \   'ignore_pattern' : '^\s*"',
+                \ },
+                \}
+
+    let g:jplus#input_config = {
+                \ '__DEFAULT__' : {
+                \   'delimiter_format' : ' %d ',
+                \ },
+                \ ',' : {
+                \   'delimiter_format' : '%d ',
+                \ },
+                \}
+
     call neobundle#untap()
 endif
 
