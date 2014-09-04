@@ -201,6 +201,9 @@ NeoBundleLazy 'ujihisa/ref-hoogle'
 NeoBundleLazy 'ujihisa/unite-haskellimport'
 NeoBundleLazy 'pbrisbin/html-template-syntax'
 
+NeoBundleLazy 'google/vim-ft-go'
+NeoBundleLazy 'vim-jp/vim-go-extra'
+
 NeoBundleLazy 'mattn/emmet-vim'
 
 NeoBundleLazy 'elzr/vim-json'
@@ -1564,6 +1567,28 @@ if neobundle#tap('html-template-syntax')
                 \ }
                 \})
     " You should re-open shakesphere files with :e command
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-ft-go')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'go',
+                \   ],
+                \ },
+                \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-go-extra')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'go',
+                \   ],
+                \ },
+                \})
     call neobundle#untap()
 endif
 
