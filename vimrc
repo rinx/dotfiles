@@ -2123,7 +2123,7 @@ endif
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "toggle paste mode
-set pastetoggle=<Leader>p
+nnoremap <silent> <Leader>p :setl paste!<CR>
 
 "toggle relativenumber
 nnoremap <silent> <Leader>r :setl relativenumber!<CR>
