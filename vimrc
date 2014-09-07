@@ -297,6 +297,7 @@ if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
         if !exists('g:neocomplete#sources#omni#input_patterns')
             let g:neocomplete#sources#omni#input_patterns = {}
         endif
+        let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
         let g:neocomplete#enable_auto_close_preview = 1
 
