@@ -292,11 +292,22 @@ if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
         if !exists('g:neocomplete#keyword_patterns')
             let g:neocomplete#keyword_patterns = {}
         endif
-        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+        let g:neocomplete#keyword_patterns._ = '\h\w*'
 
         if !exists('g:neocomplete#sources#omni#input_patterns')
             let g:neocomplete#sources#omni#input_patterns = {}
         endif
+        let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+
+        if !exists('g:neocomplete#force_omni_input_patterns')
+            let g:neocomplete#force_omni_input_patterns = {}
+        endif
+
+        if !exists('g:neocomplete#sources#dictionary#dictionaries')
+          let g:neocomplete#sources#dictionary#dictionaries = {}
+        endif
+        let g:neocomplete#sources#dictionary#dictionaries.vimshell = expand('~/.vimshell/command-history')
+        let g:neocomplete#sources#dictionary#dictionaries.tweetvim_say =  expand('~/.tweetvim/screen_name')
 
         let g:neocomplete#enable_auto_close_preview = 1
 
