@@ -299,6 +299,10 @@ if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
         endif
         let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
+        if !exists('g:neocomplete#force_omni_input_patterns')
+            let g:neocomplete#force_omni_input_patterns = {}
+        endif
+
         let g:neocomplete#enable_auto_close_preview = 1
 
         inoremap <expr><C-g> neocomplete#undo_completion()
