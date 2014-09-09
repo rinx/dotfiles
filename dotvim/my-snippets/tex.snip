@@ -48,10 +48,25 @@ snippet tag
 
 # ========== for latex-beamer ==========
 
-snippet frame
-	\begin{frame}[noframenumbering]
-		\frametitle{\insertsectionnumber.\insertsectionhead \  | {\large \insertsubsectionhead}}
-		${1:TARGET}
-	\end{frame}
+snippet block
+	\begin{block}{${1}}
+		${0:TARGET}
+	\end{block}
 
+snippet alertblock
+	\begin{alertblock}{${1}}
+		${0:TARGET}
+	\end{alertblock}
+
+snippet exampleblock
+	\begin{exampleblock}{${1}}
+		${0:TARGET}
+	\end{exampleblock}
+
+# search frametitle from above text
+snippet frame
+	\begin{frame}${1:[noframenumbering]}
+		\frametitle{${2:`search('\\frametitle', 'bn', 1, 500) == 0 ? '' : substitute(substitute(getline(search('\\frametitle', 'bn', 1, 500)), '\(^\s*\\frametitle{\)\|\(}\s*$\)', '', 'g'), '\\', '\\\\', 'g')`}}
+		${0:TARGET}
+	\end{frame}
 
