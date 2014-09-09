@@ -352,6 +352,9 @@ if neobundle#tap('neosnippet')
     call neobundle#config({
                 \ 'autoload' : {
                 \   'insert' : 1,
+                \   'filetypes' : [
+                \     'neosnippet',
+                \   ],
                 \ }
                 \})
 
