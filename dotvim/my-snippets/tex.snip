@@ -48,6 +48,21 @@ snippet tag
 
 # ========== for latex-beamer ==========
 
+snippet block
+	\begin{block}{${1}}
+		${0:TARGET}
+	\end{block}
+
+snippet alertblock
+	\begin{alertblock}{${1}}
+		${0:TARGET}
+	\end{alertblock}
+
+snippet exampleblock
+	\begin{exampleblock}{${1}}
+		${0:TARGET}
+	\end{exampleblock}
+
 # search frametitle from above text
 snippet frame
 	\begin{frame}${1:[noframenumbering]}
