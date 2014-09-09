@@ -24,11 +24,26 @@ snippet fig
 		\label{${4}}
 	\end{figure}
 
+snippet columns
+	\begin{columns}
+		\begin{column}{${1}}
+			${0:TARGET}
+		\end{column}
+	\end{columns}
+
+snippet column
+	\begin{column}{${1}}
+		${0:TARGET}
+	\end{column}
+
 snippet int
 	\int_{${1}}^{${2}}${0:TARGET}
 
 snippet sum
 	\sum_{${1}}^{${2}}${0:TARGET}
+
+snippet tag
+	\tag{${1}}${0:TARGET}
 
 
 # ========== for latex-beamer ==========
