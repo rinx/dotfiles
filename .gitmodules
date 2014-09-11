@@ -1,0 +1,3 @@
+[submodule "dottmux/plugins/tpm"]
+	path = dottmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
