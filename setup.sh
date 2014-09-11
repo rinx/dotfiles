@@ -103,6 +103,23 @@ if [ "$FLG_T" = "TRUE" ]; then
     else
         echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.bin/getipaddr \033[00m" | sed "s/^-e //"
     fi
+
+    #tmux-plugin manager
+    if [ ! -d $HOME/.tmux ] || [ "$FLG_F" = "TRUE" ]; then
+        ln -s $DOTDIR/dottmux $HOME/.tmux
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.tmux created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.tmux creating failed\033[00m" | sed "s/^-e //"
+        fi
+    elif [ "$FLG_C" = "TRUE" ]; then
+        [ -f $HOME/.bin/getipaddr ] && rm -f $HOME/.bin/getipaddr
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.tmux removed\033[00m" | sed "s/^-e //"
+        fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.tmux \033[00m" | sed "s/^-e //"
+    fi
 fi
 
 if [ "$FLG_V" = "TRUE" ]; then
