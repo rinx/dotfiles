@@ -2139,7 +2139,7 @@ if neobundle#tap('vim-submode')
 endif
 
 "nohilight by pressing Esc twice
-nnoremap <Esc><Esc> :nohlsearch<CR>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 
 "toggle paste mode
 nnoremap <silent> <Leader>p :setl paste!<CR>
