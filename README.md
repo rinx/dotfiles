@@ -24,6 +24,10 @@ clone this repository
 
     $ git clone https://github.com/rinx/dotfiles.git ~/.dotfiles
 
+then, clone submodules
+
+    $ git submodule update --init
+
 `setup.sh` makes symbolic link in home and gets some scripts, vim plugins
 
     $ sh setup.sh -af
