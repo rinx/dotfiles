@@ -1,3 +1,9 @@
 [submodule "dottmux/plugins/tpm"]
 	path = dottmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "dottmux/plugins/tmux-battery"]
+	path = dottmux/plugins/tmux-battery
+	url = https://github.com/tmux-plugins/tmux-battery.git
+[submodule "dottmux/plugins/tmux-resurrect"]
+	path = dottmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
