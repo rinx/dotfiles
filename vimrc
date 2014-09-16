@@ -378,6 +378,10 @@ if neobundle#tap('neosnippet')
         set conceallevel=2 concealcursor=i
     endif
 
+    augroup vimrc-neosnippet
+        autocmd FileType neosnippet setlocal noexpandtab
+    augroup END
+
     call neobundle#untap()
 endif
 
