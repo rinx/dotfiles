@@ -1924,6 +1924,7 @@ if &term=="xterm"
 endif
 
 set visualbell
+set lazyredraw
 
 "for session
 set sessionoptions+=tabpages
