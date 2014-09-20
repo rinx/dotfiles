@@ -6,3 +6,13 @@ snippet ghlink
 options word
 	[${2:`getreg(v:register) =~ '^https\?:\/\/.*github\.com\/' ? substitute(getreg(v:register), '^https\?:\/\/.*github\.com\/', '', 'g') : ""`}](${1:`getreg(v:register) =~ '^https\?:\/\/.*github\.com\/' ? getreg(v:register) : ""`})
 
+# ------- for octopress -------
+snippet math
+	{% math %}
+	${1:#:mathexpression}
+	{% endmath %}
+	${0:TARGET}
+
+snippet inm
+	{% m %}${1:#:mathexpression}{% em %}${0:TARGET}
+
