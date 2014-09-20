@@ -16,3 +16,8 @@ snippet math
 snippet inm
 	{% m %}${1:#:mathexpression}{% em %}${0:TARGET}
 
+snippet imglink
+	[![${2:#:tag}][$2]][$2]
+	[$2]: ${1:`getreg(v:register) =~ '.*\..*$' ? getreg(v:register) : ""`}
+	${0:TARGET}
+
