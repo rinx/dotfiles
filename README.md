@@ -11,6 +11,11 @@
 * .gitattributes\_global
 * tiny.vimrc (for git-commit editor)
 
+### directories
+
+* dotvim (will be linked to `$HOME/.vim`)
+* dottmux (will be linked to `$HOME/.tmux`)
+
 ### setup scripts
 
 * setup.sh (make symbolic links in `$HOME`)
@@ -42,13 +47,13 @@ use `setup.sh` to remove symbolic links
 
 to specify what type of dotfiles for installing
 
-|opt | description              |
-|:--:|:-------------------------|
-| -a | for all type of dotfiles |
-| -s | make symbolic links      |
-| -v | link `$HOME/.vim` files  |
-| -t | fetch `$HOME/.bin` files |
-| -x | for xmonad               |
+|opt | description                                         |
+|:--:|:----------------------------------------------------|
+| -a | for all type of dotfiles                            |
+| -s | make symbolic links                                 |
+| -v | link `$HOME/.vim` files                             |
+| -t | fetch `$HOME/.bin` files / link `$HOME/.tmux` files |
+| -x | for xmonad                                          |
 
 if you have some dotfiles and want to overwrite it, `-f` option is useful.
 
