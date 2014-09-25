@@ -110,8 +110,14 @@ NeoBundleLazy 'pasela/unite-webcolorname', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'itchyny/lightline.vim'
 
-NeoBundle 'tyru/skk.vim'
-NeoBundleFetch 'tyru/eskk.vim'
+let s:enable_eskk = 0
+if s:enable_eskk
+    NeoBundleFetch 'tyru/skk.vim'
+    NeoBundle 'tyru/eskk.vim'
+else
+    NeoBundle 'tyru/skk.vim'
+    NeoBundleFetch 'tyru/eskk.vim'
+endif
 
 NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
@@ -912,6 +918,8 @@ if neobundle#tap('eskk.vim')
     let g:eskk#start_completion_length = 2
     let g:eskk#register_completed_word = 1
     let g:eskk#use_color_cursor = 0
+    "Maybe conflict with arpeggio.vim
+    "let g:eskk#keep_state = 1
 endif
 
 if neobundle#tap('vim-quickrun')
@@ -2359,8 +2367,11 @@ if neobundle#tap('lightline.vim')
     endfunction
 
     function! MySkkgetmode()
-        let _ = SkkGetModeStr()
-        "let _ = eskk#get_mode()
+        if s:enable_eskk
+            let _ = eskk#get_mode()
+        else
+            let _ = SkkGetModeStr()
+        endif
         return winwidth('.') > 70 ? strlen(_) ? substitute(_, '\[\|\]', '', 'g') : '' : ''
     endfunction
 
