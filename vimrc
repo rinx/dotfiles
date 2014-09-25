@@ -918,6 +918,8 @@ if neobundle#tap('eskk.vim')
     let g:eskk#start_completion_length = 2
     let g:eskk#register_completed_word = 1
     let g:eskk#use_color_cursor = 0
+    "Maybe conflict with arpeggio.vim
+    "let g:eskk#keep_state = 1
 endif
 
 if neobundle#tap('vim-quickrun')
