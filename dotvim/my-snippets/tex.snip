@@ -59,6 +59,9 @@ snippet tag
 alias   \tag
 	\tag{${1}}${0:TARGET}
 
+snippet item
+alias   \item
+	\item[${1:`search('\\item\[.*\]', 'bn', 1, 500) == 0 ? '' : substitute(substitute(getline(search('\\item\[.*\]', 'bn', 1, 500)), '\(^\s*\\item\[\)\|\(\]\s*.*$\)', '', 'g'), '\\', '\\\\', 'g')`}]
 
 # ========== for latex-beamer ==========
 
