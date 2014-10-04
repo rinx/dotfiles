@@ -2212,6 +2212,35 @@ if neobundle#tap('unite.vim')
     call neobundle#untap()
 endif
 
+" sticky shift
+" http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html
+inoremap <expr> ;  <SID>sticky_func()
+cnoremap <expr> ;  <SID>sticky_func()
+snoremap <expr> ;  <SID>sticky_func()
+
+function! s:sticky_func()
+    let l:sticky_table = {
+                \',' : '<', '.' : '>', '/' : '?',
+                \'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%',
+                \'6' : '^', '7' : '&', '8' : '*', '9' : '(', '0' : ')', '-' : '_', '=' : '+',
+                \';' : ':', '[' : '{', ']' : '}', '`' : '~', "'" : "\"", '\' : '|',
+                \}
+    let l:special_table = {
+                \"\<ESC>" : "\<ESC>", "\<Space>" : ';', "\<CR>" : ";\<CR>"
+                \}
+
+    let l:key = getchar()
+    if nr2char(l:key) =~ '\l'
+        return toupper(nr2char(l:key))
+    elseif has_key(l:sticky_table, nr2char(l:key))
+        return l:sticky_table[nr2char(l:key)]
+    elseif has_key(l:special_table, nr2char(l:key))
+        return l:special_table[nr2char(l:key)]
+    else
+        return ''
+    endif
+endfunction
+
 
 " --- filetype settings ---
 
