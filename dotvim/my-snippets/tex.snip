@@ -63,6 +63,15 @@ snippet item
 alias   \item
 	\item[${1:`search('\\item\[.*\]', 'bn', 1, 500) == 0 ? '' : substitute(substitute(getline(search('\\item\[.*\]', 'bn', 1, 500)), '\(^\s*\\item\[\)\|\(\]\s*.*$\)', '', 'g'), '\\', '\\\\', 'g')`}]
 
+snippet vspace
+alias   vsp
+	\vspace{${1:#length}${2:cm}}${0:TARGET}
+
+snippet hspace
+alias   hsp
+	\hspace{${1:#length}${2:cm}}${0:TARGET}
+
+
 # ========== for latex-beamer ==========
 
 snippet block
