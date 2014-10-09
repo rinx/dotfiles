@@ -2040,6 +2040,23 @@ endfunction
 
 command! -range CsvToMarkdownTable <line1>,<line2>call s:csv_to_markdown_table()
 
+" Make new window for Japanese input via skk.vim
+" !!This should be improved!!
+function! s:make_japanese_input_window()
+    let newbufname = 'input_via_skk'
+    silent! execute 'new' newbufname
+
+    if has('mac')
+        let _ = 'w !pbcopy'
+    elseif has('unix')
+        let _ = 'w !xsel --clipboard --input'
+    endif
+
+    silent! execute 'inoremap <buffer> <CR> <Esc>:' . _ . '<CR>dd'
+    silent! nnoremap <buffer> q :<C-u>q!<CR>
+endfunction
+
+command! MakeJapaneseInputWindow call s:make_japanese_input_window()
 
 " --- Mappings ---
 
