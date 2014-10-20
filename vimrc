@@ -2097,6 +2097,7 @@ function! s:make_japanese_input_window()
     endif
 
     silent! execute 'inoremap <buffer> <CR> <Esc>:' . _ . '<CR>dd'
+    silent! execute 'nnoremap <buffer> <CR> :' . _ . '<CR>dd'
     silent! nnoremap <buffer> q :<C-u>q!<CR>
 endfunction
 
