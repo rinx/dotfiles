@@ -149,7 +149,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
-NeoBundleLazy 'cohama/lexima.vim'
+" NeoBundleLazy 'cohama/lexima.vim'
 
 NeoBundle 'airblade/vim-gitgutter'
 
@@ -215,6 +215,8 @@ NeoBundleLazy 'vim-jp/vim-go-extra'
 NeoBundleLazy 'mattn/emmet-vim'
 
 NeoBundleLazy 'elzr/vim-json'
+
+NeoBundleLazy 'Shougo/vinarise.vim'
 
 NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
@@ -1047,18 +1049,18 @@ if neobundle#tap('vim-hier')
     call neobundle#untap()
 endif
 
-if neobundle#tap('lexima.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ },
-                \})
-
-    let g:lexima_no_default_rules = 0
-    let g:lexima_no_map_to_escape = 0
-
-    call neobundle#untap()
-endif
+" if neobundle#tap('lexima.vim')
+"     call neobundle#config({
+"                 \ 'autoload' : {
+"                 \   'insert' : 1,
+"                 \ },
+"                 \})
+"
+"     let g:lexima_no_default_rules = 0
+"     let g:lexima_no_map_to_escape = 0
+"
+"     call neobundle#untap()
+" endif
 
 if neobundle#tap('vim-gitgutter')
     let g:gitgutter_map_keys = 0
@@ -1667,6 +1669,22 @@ if neobundle#tap('vim-json')
                 \ },
                 \})
     " You should re-open json files with :e command
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vinarise.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Vinarise',
+                \     'VinariseScript2Hex',
+                \     'VinariseHex2Script',
+                \     'VinarisePluginDump',
+                \     'VinarisePluginViewBitmapView',
+                \   ],
+                \ },
+                \})
+
     call neobundle#untap()
 endif
 
