@@ -149,7 +149,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
-NeoBundleLazy 'cohama/lexima.vim'
+" NeoBundleLazy 'cohama/lexima.vim'
 
 NeoBundle 'airblade/vim-gitgutter'
 
@@ -1047,18 +1047,18 @@ if neobundle#tap('vim-hier')
     call neobundle#untap()
 endif
 
-if neobundle#tap('lexima.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ },
-                \})
-
-    let g:lexima_no_default_rules = 0
-    let g:lexima_no_map_to_escape = 0
-
-    call neobundle#untap()
-endif
+" if neobundle#tap('lexima.vim')
+"     call neobundle#config({
+"                 \ 'autoload' : {
+"                 \   'insert' : 1,
+"                 \ },
+"                 \})
+"
+"     let g:lexima_no_default_rules = 0
+"     let g:lexima_no_map_to_escape = 0
+"
+"     call neobundle#untap()
+" endif
 
 if neobundle#tap('vim-gitgutter')
     let g:gitgutter_map_keys = 0
