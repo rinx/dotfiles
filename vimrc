@@ -216,6 +216,8 @@ NeoBundleLazy 'mattn/emmet-vim'
 
 NeoBundleLazy 'elzr/vim-json'
 
+NeoBundleLazy 'Shougo/vinarise.vim'
+
 NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
 
@@ -1667,6 +1669,22 @@ if neobundle#tap('vim-json')
                 \ },
                 \})
     " You should re-open json files with :e command
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vinarise.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'Vinarise',
+                \     'VinariseScript2Hex',
+                \     'VinariseHex2Script',
+                \     'VinarisePluginDump',
+                \     'VinarisePluginViewBitmapView',
+                \   ],
+                \ },
+                \})
+
     call neobundle#untap()
 endif
 
