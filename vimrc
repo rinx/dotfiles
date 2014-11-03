@@ -1968,6 +1968,7 @@ endif
 
 set visualbell
 set lazyredraw
+set ttyfast
 
 "for session
 set sessionoptions+=tabpages
