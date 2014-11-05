@@ -9,8 +9,11 @@ augroup filetypedetect
     autocmd BufRead,BufNewFile *.lucius  setf lucius
     autocmd BufRead,BufNewFile *.julius  setf julius
 
-    autocmd BufNewFile,BufRead *.json set filetype=json
-    autocmd BufNewFile,BufRead *.jsonp set filetype=json
+    autocmd BufNewFile,BufRead *.json setf json
+    autocmd BufNewFile,BufRead *.jsonp setf json
+
+    autocmd BufNewFile,BufRead *.nml setf fortran
+    autocmd BufNewFile,BufRead *.namelist setf fortran
 
 augroup END
 
