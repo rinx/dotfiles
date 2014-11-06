@@ -106,11 +106,12 @@ if [ "$FLG_T" = "TRUE" ]; then
 
     #tmux-plugin manager
     if [ ! -d $HOME/.tmux ] || [ "$FLG_F" = "TRUE" ]; then
-        ln -s $DOTDIR/dottmux $HOME/.tmux
+        mkdir -p $HOME/.tmux
+        ln -s $DOTDIR/dottmux/plugins $HOME/.tmux/plugins
         if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.tmux created\033[00m" | sed "s/^-e //"
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.tmux/plugins created\033[00m" | sed "s/^-e //"
         else
-            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.tmux creating failed\033[00m" | sed "s/^-e //"
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.tmux/plugins creating failed\033[00m" | sed "s/^-e //"
         fi
     elif [ "$FLG_C" = "TRUE" ]; then
         [ -f $HOME/.bin/getipaddr ] && rm -f $HOME/.bin/getipaddr
