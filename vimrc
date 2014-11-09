@@ -519,7 +519,7 @@ if neobundle#tap('unite.vim')
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
                     \ ['Grooveshark', 'http://grooveshark.com/'],
                     \ ['Jazzradio', 'http://www.jazzradio.com/'],
-                    \ ['SKY.FM radio', 'http://www.sky.fm/'],
+                    \ ['RadioTunes', 'http://www.radiotunes.com/'],
                     \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
