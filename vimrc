@@ -508,6 +508,7 @@ if neobundle#tap('unite.vim')
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
                     \ ['TweetVim UserStream', 'TweetVimUserStream'],
                     \ ['J6uil lingr-client', 'J6uil'],
+                    \ ['PreVim open', 'PreVimOpen'],
                     \ ['hateblo list', 'HatebloList'],
                     \ ['copy buffer into clipboard', s:copyToClipboardCommand],
                     \ ['lingr', 'http://lingr.com/'],
