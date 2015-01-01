@@ -194,9 +194,14 @@ alias lsl='ls --color -F -l'
 alias lsal='ls --color -F -a -l'
 
 #start vim as vi
-#alias vi='vim'
+alias vi='vim'
 #Macvim
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+if [ -d /Applications/MacVim.app/ ]; then
+    alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
+    alias vimdiff='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/vimdiff'
+    alias view='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/view'
+    alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim'
+fi
 
 #tmux execute as 256colors-terminal
 alias tmux='tmux -2'
