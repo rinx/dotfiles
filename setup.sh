@@ -28,7 +28,7 @@ fi
 #this script makes symbolic links of vimrc, zshrc
 
 if [ "$FLG_S" = "TRUE" ]; then
-    for filename in vimrc zshrc tmux.conf gitconfig gitignore gitattributes_global ; do
+    for filename in vimrc zshrc tmux.conf gitconfig gitignore gitattributes_global latexmkrc ; do
         if [ ! -f $HOME/.$filename ] || [ "$FLG_F" = "TRUE" ]; then
             [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.$filename ] && rm -f $HOME/.$filename
             ln -s $DOTDIR/$filename $HOME/.$filename
