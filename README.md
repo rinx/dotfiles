@@ -8,6 +8,7 @@
 * .gitconfig
 * .gitignore
 * .gitattributes\_global
+* .latexmkrc
 * tiny.vimrc (for git-commit editor)
 
 ### directories
