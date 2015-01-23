@@ -9,6 +9,7 @@
 * .gitignore
 * .xmonad/xmonad.hs
 * .gitattributes\_global
+* .latexmkrc
 * tiny.vimrc (for git-commit editor)
 
 ### directories
