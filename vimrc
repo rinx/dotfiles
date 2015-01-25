@@ -996,7 +996,8 @@ if neobundle#tap('vim-quickrun')
                 \   'hook/time/enable' : 1,
                 \ },
                 \ 'tex' : {
-                \   'type' : 'make',
+                \   'command' : 'latexmk',
+                \   'exec' : ['%c %o %s'],
                 \ },
                 \ 'watchdogs_checker/_' : {
                 \   'outputter' : 'quickfix',
