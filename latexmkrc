@@ -8,8 +8,8 @@ $postscript_mode = 0;
 $dvi_mode        = 0;
 $pvc_view_file_via_temporary = 0;
 
-$aux_dir = 'aux_files'
-$out_dir = 'outputs'
+$aux_dir = './aux_files';
+$out_dir = './outputs';
 
 $pdf_previewer = "open -ga ~/Applications/Skim.app";
 
