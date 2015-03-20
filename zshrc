@@ -1,7 +1,7 @@
 #ヾ(๑╹◡╹)ﾉ < loading zshrc...
 # ----------------------------------------
-# Author: rinx
-# URL:    http://rinx.tk
+# Author: Rintaro Okamura
+# URL:    http://rinx.biz
 # Source: https://github.com/rinx/dotfiles
 # ----------------------------------------
 

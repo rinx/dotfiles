@@ -1,7 +1,7 @@
 "( っ'ヮ'c) < loading vimrc...
 " ----------------------------------------
-" Author: rinx
-" URL:    http://rinx.tk
+" Author: Rintaro Okamura
+" URL:    http://rinx.biz
 " Source: https://github.com/rinx/dotfiles
 " ----------------------------------------
 
@@ -254,6 +254,8 @@ NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'supermomonga/skyfm.vim', { 'depends' : 'Shougo/unite.vim' }
 
 NeoBundle 'tomasr/molokai'
+
+NeoBundleLazy 'vim-jp/vital.vim'
 
 call neobundle#end()
 
@@ -1884,23 +1886,32 @@ if neobundle#tap('jazzradio.vim')
 endif
 
 if neobundle#tap('skyfm.vim')
-  call neobundle#config({
-        \   'autoload' : {
-        \     'unite_sources' : [
-        \       'skyfm',
-        \     ],
-        \     'commands' : [
-        \       'SkyfmUpdateChannels',
-        \       'SkyfmStop',
-        \       {
-        \         'name' : 'SkyfmPlay',
-        \         'complete' : 'customlist,skyfm#channel_key_complete'
-        \       }
-        \     ],
-        \     'function_prefix' : 'skyfm',
-        \   }
-        \ })
-  call neobundle#untap()
+    call neobundle#config({
+                \   'autoload' : {
+                \     'unite_sources' : [
+                \       'skyfm',
+                \     ],
+                \     'commands' : [
+                \       'SkyfmUpdateChannels',
+                \       'SkyfmStop',
+                \       {
+                \         'name' : 'SkyfmPlay',
+                \         'complete' : 'customlist,skyfm#channel_key_complete'
+                \       }
+                \     ],
+                \     'function_prefix' : 'skyfm',
+                \   }
+                \ })
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vital.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : 'Vitalize',
+                \ }
+                \})
+    call neobundle#untap()
 endif
 
 
