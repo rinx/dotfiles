@@ -253,6 +253,8 @@ NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron
 NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'supermomonga/skyfm.vim', { 'depends' : 'Shougo/unite.vim' }
 
+NeoBundleLazy 'rinx/grooveshark.vim', { 'depends' : 'Shougo/unite.vim' }
+
 NeoBundle 'tomasr/molokai'
 
 NeoBundleLazy 'vim-jp/vital.vim'
@@ -1902,6 +1904,22 @@ if neobundle#tap('skyfm.vim')
                 \     'function_prefix' : 'skyfm',
                 \   }
                 \ })
+    call neobundle#untap()
+endif
+
+if neobundle#tap('grooveshark.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'unite_sources' : [
+                \     'grooveshark',
+                \   ],
+                \   'commands' : [
+                \     'GroovesharkPlay',
+                \     'GroovesharkStop',
+                \   ],
+                \   'function_prefix' : 'grooveshark',
+                \ }
+                \})
     call neobundle#untap()
 endif
 
