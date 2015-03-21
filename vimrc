@@ -509,7 +509,7 @@ if neobundle#tap('unite.vim')
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['unite Sky.fm', 'Unite skyfm'],
                     \ ['stop Sky.fm', 'SkyfmStop'],
-                    \ ['unite grooveshark', 'Unite grooveshark -start-insert'],
+                    \ ['unite grooveshark', 'Unite grooveshark -start-insert -no-quit'],
                     \ ['stop grooveshark', 'GroovesharkStop'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
                     \ ['TweetVim UserStream', 'TweetVimUserStream'],
