@@ -1922,6 +1922,7 @@ if neobundle#tap('grooveshark.vim')
                 \   'function_prefix' : 'grooveshark',
                 \ }
                 \})
+    let g:grooveshark#ruby_cmd_path = expand('$HOME/.rbenv/shims/ruby')
     call neobundle#untap()
 endif
 
