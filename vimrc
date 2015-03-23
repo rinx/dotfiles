@@ -59,6 +59,11 @@ endfunction
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
 
+let g:vimrc_private = {}
+if filereadable(expand('~/.vimrc_private'))
+    execute 'source' expand('~/.vimrc_private')
+endif
+
 
 " --- load plugin settings ---
 
