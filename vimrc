@@ -257,6 +257,11 @@ NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron
 
 NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'supermomonga/skyfm.vim', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'supermomonga/shaberu.vim', 
+            \ { 'depends' : [
+            \   'Shougo/vimproc.vim',
+            \   'Shougo/unite.vim'
+            \ ]}
 
 NeoBundleLazy 'rinx/grooveshark.vim', { 'depends' : 'Shougo/unite.vim' }
 
@@ -1911,6 +1916,27 @@ if neobundle#tap('skyfm.vim')
                 \     'function_prefix' : 'skyfm',
                 \   }
                 \ })
+    call neobundle#untap()
+endif
+
+if neobundle#tap('shaberu.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'commands' : [
+                \     'ShaberuSay',
+                \     'ShaberuSayInteractive',
+                \     'ShaberuSayRecursive',
+                \     'ShaberuMuteOn',
+                \     'ShaberuMuteOff',
+                \     'ShaberuMuteToggle'
+                \   ]
+                \ }
+                \})
+    let g:shaberu_use_voicetext_api = 1
+    if exists('g:vimrc_private["shaberu_voicetext_apikey"]')
+        let g:shaberu_voicetext_apikey = g:vimrc_private['shaberu_voicetext_apikey']
+    endif
+    let g:shaberu_voicetext_speaker = 'hikari'
     call neobundle#untap()
 endif
 
