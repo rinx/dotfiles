@@ -163,6 +163,7 @@ NeoBundleLazy 'scrooloose/nerdtree'
 
 NeoBundleLazy 'LeafCage/yankround.vim'
 
+NeoBundleLazy 'haya14busa/vim-asterisk'
 NeoBundleLazy 'haya14busa/incsearch.vim'
 NeoBundle 'haya14busa/vim-migemo'
 
@@ -1153,6 +1154,25 @@ if neobundle#tap('yankround.vim')
     call neobundle#untap()
 endif
 
+
+if neobundle#tap('vim-asterisk')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'mappings' : [
+                \     '<Plug>(asterisk-',
+                \   ],
+                \ },
+                \})
+    map *   <Plug>(asterisk-*)
+    map #   <Plug>(asterisk-#)
+    map g*  <Plug>(asterisk-g*)
+    map g#  <Plug>(asterisk-g#)
+    map z*  <Plug>(asterisk-z*)
+    map gz* <Plug>(asterisk-gz*)
+    map z#  <Plug>(asterisk-z#)
+    map gz# <Plug>(asterisk-gz#)
+    call neobundle#untap()
+endif
 
 if neobundle#tap('incsearch.vim')
     call neobundle#config({
