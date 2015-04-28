@@ -178,7 +178,7 @@ NeoBundleLazy 'thinca/vim-qfreplace'
 
 NeoBundleLazy 't9md/vim-quickhl'
 
-NeoBundle 'amdt/vim-niji'
+NeoBundle 'spinningarrow/vim-niji'
 
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace', { 'depends' : 'kana/vim-operator-user' }
