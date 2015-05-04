@@ -264,8 +264,6 @@ NeoBundleLazy 'supermomonga/shaberu.vim',
             \   'Shougo/unite.vim'
             \ ]}
 
-NeoBundleLazy 'rinx/grooveshark.vim', { 'depends' : 'Shougo/unite.vim' }
-
 NeoBundle 'tomasr/molokai'
 
 NeoBundleLazy 'vim-jp/vital.vim'
@@ -520,8 +518,6 @@ if neobundle#tap('unite.vim')
                     \ ['stop Jazzradio', 'JazzradioStop'],
                     \ ['unite Sky.fm', 'Unite skyfm -no-quit'],
                     \ ['stop Sky.fm', 'SkyfmStop'],
-                    \ ['unite grooveshark', 'Unite grooveshark -start-insert -no-quit'],
-                    \ ['stop grooveshark', 'GroovesharkStop'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
                     \ ['TweetVim UserStream', 'TweetVimUserStream'],
                     \ ['J6uil lingr-client', 'J6uil'],
@@ -1957,23 +1953,6 @@ if neobundle#tap('shaberu.vim')
         let g:shaberu_voicetext_apikey = g:vimrc_private['shaberu_voicetext_apikey']
     endif
     let g:shaberu_voicetext_speaker = 'hikari'
-    call neobundle#untap()
-endif
-
-if neobundle#tap('grooveshark.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'grooveshark',
-                \   ],
-                \   'commands' : [
-                \     'GroovesharkPlay',
-                \     'GroovesharkStop',
-                \   ],
-                \   'function_prefix' : 'grooveshark',
-                \ }
-                \})
-    let g:grooveshark#ruby_cmd_path = expand('$HOME/.rbenv/shims/ruby')
     call neobundle#untap()
 endif
 
