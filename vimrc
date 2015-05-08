@@ -90,6 +90,8 @@ else
     NeoBundleLazy 'Shougo/neocomplcache.vim'
 endif
 
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : 'Shougo/neocomplete.vim' }
+
 NeoBundleLazy 'Shougo/neosnippet'
 NeoBundleLazy 'Shougo/neosnippet-snippets', { 'depends' : 'Shougo/neosnippet' }
 NeoBundleLazy 'honza/vim-snippets', { 'depends' : 'Shougo/neosnippet' }
@@ -325,6 +327,7 @@ if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
         if !exists('g:neocomplete#force_omni_input_patterns')
             let g:neocomplete#force_omni_input_patterns = {}
         endif
+        let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
         if !exists('g:neocomplete#sources#dictionary#dictionaries')
           let g:neocomplete#sources#dictionary#dictionaries = {}
@@ -370,6 +373,16 @@ augroup vimrc-omnifuncs
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
+
+if neobundle#tap('neocomplete-rsense.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : 'ruby',
+                \ }
+                \})
+    let g:neocomplete#sources#rsense#home_directory = substitute(system('which rsense'), '/rsense', '','g')
+    call neobundle#untap()
+endif
 
 if neobundle#tap('neosnippet')
     call neobundle#config({
