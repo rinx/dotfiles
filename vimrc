@@ -2609,7 +2609,7 @@ augroup END
 "load Session.vim
 augroup vimrc-session-vim-auto-load
     autocmd!
-    autocmd BufNewFile,BufReadPost * call s:load_session_vim(expand('<afile>:p:h'))
+    autocmd VimEnter * nested call s:load_session_vim(expand('<afile>:p:h'))
 augroup END
 
 function! s:load_session_vim(loc)
