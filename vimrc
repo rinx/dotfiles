@@ -2614,11 +2614,13 @@ augroup END
 
 function! s:load_session_vim(loc)
     let files = findfile('Session.vim', escape(a:loc, ' ') . ';', -1)
-    for i in reverse(filter(files, 'filereadable(v:val)'))
-        if input(printf('Session.vim exists in "%s". Load it? [y/N]', a:loc)) =~? '^y\%[es]$'
-            source `=i`
-        endif
-    endfor
+    if !argc()
+        for i in reverse(filter(files, 'filereadable(v:val)'))
+            if input(printf('Session.vim exists in "%s". Load it? [y/N]', i)) =~? '^y\%[es]$'
+                source `=i`
+            endif
+        endfor
+    endif
 endfunction
 
 "load settings for each location
