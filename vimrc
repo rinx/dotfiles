@@ -477,6 +477,8 @@ if neobundle#tap('vimshell.vim')
         \ 'escape(fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
     let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+% '
 
+    let g:vimshell_external_history_path = expand('~/.zsh_history')
+
     call neobundle#untap()
 endif
 
