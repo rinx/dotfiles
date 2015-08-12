@@ -471,8 +471,12 @@ if neobundle#tap('vimshell.vim')
         let g:vimshell_force_overwrite_statusline = 0
     endfunction
 
-    let g:vimshell_user_prompt = 'getcwd()'
-    "let g:vimshell_right_prompt = ''
+    nnoremap <silent> ,v :<C-u>VimShell<CR>
+
+    let g:vimshell_prompt_expr =
+        \ 'escape(fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
+    let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+% '
+
     call neobundle#untap()
 endif
 
@@ -514,6 +518,7 @@ if neobundle#tap('unite.vim')
                     \ ['home', $HOME],
                     \ ['dotfiles', $HOME . '/.dotfiles'],
                     \ ['vimrc', $MYVIMRC],
+                    \ ['vimshell', 'VimShell'],
                     \ ['quickrun', 'QuickRun'],
                     \ ['make(quickrun)', 'QuickRun make'],
                     \ ['watchdogs', 'WatchdogsRun'],
