@@ -470,6 +470,9 @@ if neobundle#tap('vimshell.vim')
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:vimshell_force_overwrite_statusline = 0
     endfunction
+
+    let g:vimshell_user_prompt = 'getcwd()'
+    "let g:vimshell_right_prompt = ''
     call neobundle#untap()
 endif
 
