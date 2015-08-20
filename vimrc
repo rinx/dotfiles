@@ -154,7 +154,9 @@ NeoBundle 'tmhedberg/matchit'
 
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-endwise'
+
+NeoBundle 'kana/vim-smartinput'
+NeoBundleLazy 'cohama/vim-smartinput-endwise'
 
 " NeoBundleLazy 'cohama/lexima.vim'
 
@@ -1084,6 +1086,19 @@ if neobundle#tap('vim-hier')
                 \   ],
                 \ },
                 \})
+    call neobundle#untap()
+endif
+
+if neobundle#tap('vim-smartinput-endwise')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'ruby',
+                \     'sh',
+                \   ],
+                \ },
+                \})
+    call smartinput_endwise#define_default_rules()
     call neobundle#untap()
 endif
 
