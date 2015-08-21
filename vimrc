@@ -1095,6 +1095,7 @@ if neobundle#tap('vim-smartinput-endwise')
                 \   'filetypes' : [
                 \     'ruby',
                 \     'sh',
+                \     'vim',
                 \   ],
                 \ },
                 \})
