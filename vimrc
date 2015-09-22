@@ -126,7 +126,8 @@ else
     NeoBundleFetch 'tyru/eskk.vim'
 endif
 
-NeoBundleLazy 'thinca/vim-quickrun'
+"NeoBundleLazy 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-quickrun'
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
             \ 'depends' : [
             \   'Shougo/unite.vim',
@@ -201,7 +202,7 @@ NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-u
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleLazy 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' }
 
-NeoBundleLazy 'terryma/vim-expand-region'
+" NeoBundleLazy 'terryma/vim-expand-region'
 
 NeoBundleLazy 'tyru/capture.vim'
 
@@ -1472,26 +1473,26 @@ if neobundle#tap('vim-textobj-ruby')
     call neobundle#untap()
 endif
 
-if neobundle#tap('vim-expand-region')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'mappings' : [
-                \     '<Plug>(expand_region_',
-                \   ],
-                \ },
-                \})
-    map + <Plug>(expand_region_expand)
-    map _ <Plug>(expand_region_shrink)
-
-    call expand_region#custom_text_objects({
-                \ 'i_' : 1,
-                \ 'a_' : 1,
-                \ 'a]' : 1,
-                \ 'ab' : 1,
-                \})
-
-    call neobundle#untap()
-endif
+" if neobundle#tap('vim-expand-region')
+"     call neobundle#config({
+"                 \ 'autoload' : {
+"                 \   'mappings' : [
+"                 \     '<Plug>(expand_region_',
+"                 \   ],
+"                 \ },
+"                 \})
+"     map + <Plug>(expand_region_expand)
+"     map _ <Plug>(expand_region_shrink)
+"
+"     call expand_region#custom_text_objects({
+"                 \ 'i_' : 1,
+"                 \ 'a_' : 1,
+"                 \ 'a]' : 1,
+"                 \ 'ab' : 1,
+"                 \})
+"
+"     call neobundle#untap()
+" endif
 
 if neobundle#tap('capture.vim')
     call neobundle#config({
