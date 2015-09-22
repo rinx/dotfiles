@@ -62,3 +62,15 @@ if you have some dotfiles and want to overwrite it, `-f` option is useful.
 if you want to clear dotfiles, use `-c` option.
 
 
+## Dependencies
+
+* Vim
+    - Vim scripts
+        - vimproc `make`
+    - Haskell
+        - ghc-mod `cabal install ghc-mod`
+        - hoogle  `cabal install hoogle`
+* OSX
+    - MacVim
+    - reattach-to-user-namespace
+
