@@ -126,7 +126,8 @@ else
     NeoBundleFetch 'tyru/eskk.vim'
 endif
 
-NeoBundleLazy 'thinca/vim-quickrun'
+"NeoBundleLazy 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-quickrun'
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
             \ 'depends' : [
             \   'Shougo/unite.vim',
