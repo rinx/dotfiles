@@ -11,6 +11,7 @@
 * .gitattributes\_global
 * .latexmkrc
 * tiny.vimrc (for git-commit editor)
+* .vimshrc
 
 ### directories
 
