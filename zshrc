@@ -171,7 +171,9 @@ RPROMPT='`rprompt-git-current-branch`'
 
 #Banner
 
-archey -c
+if builtin command -v archey > /dev/null 2>&1 ; then
+    archey -c
+fi
 
 
 #alias settings
