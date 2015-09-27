@@ -64,6 +64,13 @@ if you want to clear dotfiles, use `-c` option.
 
 ## Dependencies
 
+### Requires for install
+* Git
+* wget
+
+### Requires for using
+* Zsh
+* Tmux
 * Vim
     - Vim scripts
         - vimproc `make`
