@@ -73,3 +73,13 @@ if [ ! -d $HOME/.vim/my-snippets ] || [ "$FLG_F" = "TRUE" ]; then
     fi
 fi
 
+if [ ! -d $HOME/.vim/indent ] || [ "$FLG_F" = "TRUE" ]; then
+    [ "$FLG_F" = "TRUE" ] && rm -rf $HOME/.vim/indent
+    ln -s $DOTDIR/dotvim/indent $HOME/.vim/indent
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;32m✔ \033[1;35mA symbolic link of directory $HOME/.vim/indent created\033[00m" | sed "s/^-e //"
+    else
+        echo -e "\033[0;31m✗ \033[1;31mA symbolic link of directory $HOME/.vim/indent creating failed\033[00m" | sed "s/^-e //"
+    fi
+fi
+
