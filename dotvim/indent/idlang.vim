@@ -39,16 +39,19 @@ function! GetIDLIndent()
     " Indenting of procedure head.
     if getline(pnum) =~ '^\s*pro\s*.*$'
         let curind = curind + &sw
+        return curind
     endif
 
     " Indenting of continued lines.
     if getline(pnum) =~ '\$\s*\(;.*\)\=$'
         if getline(pnum2) !~ '\$\s*\(;.*\)\=$'
             let curind = curind + &sw
+            return curind
         endif
     else
         if getline(pnum2) =~ '\$\s*\(;.*\)\=$'
             let curind = curind - &sw
+            return curind
         endif
     endif
 
@@ -57,12 +60,14 @@ function! GetIDLIndent()
         if getline(pnum) =~? 'begin\>'
         elseif indent(v:lnum) > curind - &sw
             let curind = curind - &sw
+            return curind
         else
             return -1
         endif
     elseif getline(pnum) =~? 'begin\>'
         if indent(v:lnum) < curind + &sw
             let curind = curind + &sw
+            return curind
         else
             return -1
         endif
