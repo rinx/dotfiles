@@ -1,0 +1,26 @@
+snippet pro
+        pro ${1:#:name}
+          ${0:TARGET}
+        end
+
+snippet if
+        if ${1} then begin
+          ${0:TARGET}
+        endif
+
+snippet else
+        else begin
+          ${0:TARGET}
+        endelse
+
+snippet for
+        for ${1:i=0},${2:n} do begin
+          ${0:TARGET}
+        endfor
+
+snippet foreach
+        foreach ${1:element}, ${2:arr} do begin
+          ${0:TARGET}
+        endforeach
+
+
