@@ -56,7 +56,7 @@ function! GetIDLIndent()
     if getline(v:lnum) =~? '^\s*\(end\|endif\|endelse\|endwhile\|endfor\|endforeach\|endrep\)\>'
         if getline(pnum) =~? 'begin\>'
         elseif indent(v:lnum) > curind - &sw
-            let curind = curinda - &sw
+            let curind = curind - &sw
         else
             return -1
         endif
