@@ -91,6 +91,7 @@ else
 endif
 
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : 'Shougo/neocomplete.vim' }
+NeoBundleLazy 'ujihisa/neco-look', { 'depends' : 'Shougo/neocomplete.vim' }
 
 NeoBundleLazy 'Shougo/neosnippet'
 NeoBundleLazy 'Shougo/neosnippet-snippets', { 'depends' : 'Shougo/neosnippet' }
@@ -379,6 +380,17 @@ if neobundle#tap('neocomplete-rsense.vim')
                 \ }
                 \})
     let g:neocomplete#sources#rsense#home_directory = substitute(system('which rsense'), '/rsense', '','g')
+    call neobundle#untap()
+endif
+
+if neobundle#tap('neco-look')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'filetypes' : [
+                \     'markdown',
+                \   ]
+                \ }
+                \})
     call neobundle#untap()
 endif
 
