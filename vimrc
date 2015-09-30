@@ -156,10 +156,7 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'cohama/vim-smartinput-endwise'
-
-" NeoBundleLazy 'cohama/lexima.vim'
+NeoBundle 'cohama/lexima.vim'
 
 NeoBundle 'airblade/vim-gitgutter'
 
@@ -201,8 +198,6 @@ NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleLazy 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' }
-
-" NeoBundleLazy 'terryma/vim-expand-region'
 
 NeoBundleLazy 'tyru/capture.vim'
 
@@ -1090,23 +1085,29 @@ if neobundle#tap('vim-hier')
     call neobundle#untap()
 endif
 
-if neobundle#tap('vim-smartinput-endwise')
-    call smartinput_endwise#define_default_rules()
+if neobundle#tap('lexima.vim')
+    call neobundle#config({
+                \ 'autoload' : {
+                \   'insert' : 1,
+                \ },
+                \})
+
+    let g:lexima_no_default_rules = 0
+    let g:lexima_map_escape = ''
+    call lexima#set_default_rules()
+
+    let g:lexima_enable_basic_rules = 1
+    let g:lexima_enable_newline_rules = 1
+    let g:lexima_enable_space_rules = 1
+    let g:lexima_enable_endwise_rules = 1
+
+    " TeX
+    call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': ['tex','latex','plaintex']})
+    call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': ['tex','latex','plaintex']})
+    call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': ['tex','latex','plaintex']})
+
     call neobundle#untap()
 endif
-
-" if neobundle#tap('lexima.vim')
-"     call neobundle#config({
-"                 \ 'autoload' : {
-"                 \   'insert' : 1,
-"                 \ },
-"                 \})
-"
-"     let g:lexima_no_default_rules = 0
-"     let g:lexima_no_map_to_escape = 0
-"
-"     call neobundle#untap()
-" endif
 
 if neobundle#tap('vim-gitgutter')
     let g:gitgutter_map_keys = 0
@@ -1472,27 +1473,6 @@ if neobundle#tap('vim-textobj-ruby')
 
     call neobundle#untap()
 endif
-
-" if neobundle#tap('vim-expand-region')
-"     call neobundle#config({
-"                 \ 'autoload' : {
-"                 \   'mappings' : [
-"                 \     '<Plug>(expand_region_',
-"                 \   ],
-"                 \ },
-"                 \})
-"     map + <Plug>(expand_region_expand)
-"     map _ <Plug>(expand_region_shrink)
-"
-"     call expand_region#custom_text_objects({
-"                 \ 'i_' : 1,
-"                 \ 'a_' : 1,
-"                 \ 'a]' : 1,
-"                 \ 'ab' : 1,
-"                 \})
-"
-"     call neobundle#untap()
-" endif
 
 if neobundle#tap('capture.vim')
     call neobundle#config({
