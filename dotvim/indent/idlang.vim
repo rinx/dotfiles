@@ -37,7 +37,7 @@ function! GetIDLIndent()
     let curind = indent(pnum)
 
     " Indenting of procedure head.
-    if getline(pnum) =~ '^\s*pro\s*.*$'
+    if getline(pnum) =~ '^\s*\(pro\|function\)\s*.*$'
         let curind = curind + &sw
         return curind
     endif
