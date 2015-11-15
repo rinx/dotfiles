@@ -682,6 +682,7 @@ if neobundle#tap('unite.vim')
                     \["shobon", "(๑´╹‸╹`๑)"],
                     \["beer", "Ʊ\"-ʓ"],
                     \["angry", "💢"],
+                    \["sushi", "🍣"],
                     \]
         function! g:unite_source_menu_menus.kaomoji.map(key, value)
             let [word, value] = a:value
