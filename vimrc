@@ -1127,7 +1127,7 @@ if neobundle#tap('lexima.vim')
     " IDL
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*if\>.*then\s*begin\%#', 'input_after': '<CR>endif', 'filetype': ['idlang']})
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*endif\s*else\s*begin\%#', 'input_after': '<CR>endelse', 'filetype': ['idlang']})
-    call lexima#add_rule({'char': '<CR>', 'at': '^\s*for\s*\>.*do\s*begin\%#', 'input_after': '<CR>end do', 'filetype': ['idlang']})
+    call lexima#add_rule({'char': '<CR>', 'at': '^\s*for\s*\>.*do\s*begin\%#', 'input_after': '<CR>endfor', 'filetype': ['idlang']})
 
     call neobundle#untap()
 endif
