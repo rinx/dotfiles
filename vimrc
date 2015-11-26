@@ -80,7 +80,15 @@ let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
     let g:make = 'make'
 endif
+
 NeoBundle 'Shougo/vimproc.vim'
+call neobundle#config('vimproc.vim', {
+            \ 'build' : {
+            \   'windows' : 'make -f make_mingw32.mak',
+            \   'mac' : 'make -f make_mac.mak',
+            \   'unix' : 'make -f make_unix.mak',
+            \ },
+            \})
 
 if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
     NeoBundleLazy 'Shougo/neocomplete.vim'
@@ -89,6 +97,17 @@ else
     NeoBundleFetch 'Shougo/neocomplete.vim'
     NeoBundleLazy 'Shougo/neocomplcache.vim'
 endif
+call neobundle#config('neocomplete.vim', {
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ }
+            \})
+call neobundle#config('neocomplcache.vim',{
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ }
+            \})
+
 
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : 'Shougo/neocomplete.vim' }
 NeoBundleLazy 'ujihisa/neco-look', { 'depends' : 'Shougo/neocomplete.vim' }
@@ -273,26 +292,9 @@ call neobundle#end()
 
 "Plugin settings
 
-if neobundle#tap('vimproc.vim')
-    call neobundle#config({
-                \ 'build' : {
-                \   'windows' : 'make -f make_mingw32.mak',
-                \   'mac' : 'make -f make_mac.mak',
-                \   'unix' : 'make -f make_unix.mak',
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
 if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
     "neocomplete
     if neobundle#tap('neocomplete.vim')
-        call neobundle#config({
-                    \ 'autoload' : {
-                    \   'insert' : 1,
-                    \ }
-                    \})
-
         let g:neocomplete#enable_at_startup = 1
 
         let g:neocomplete#min_keyword_length = 3
@@ -344,12 +346,6 @@ if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 else
     "neocomplcache
     if neobundle#tap('neocomplcache.vim')
-        call neobundle#config({
-                    \ 'autoload' : {
-                    \   'insert' : 1,
-                    \ }
-                    \})
-
         let g:neocomplcache_enable_at_startup = 1
         let g:neocomplcache_auto_completion_start_length = 1
         let g:neocomplcache_enable_smart_case = 1
