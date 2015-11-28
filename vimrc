@@ -110,11 +110,41 @@ call neobundle#config('neocomplcache.vim',{
 
 
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : 'Shougo/neocomplete.vim' }
+call neobundle#config('neocomplete-rsense.vim',{
+            \ 'autoload' : {
+            \   'filetypes' : 'ruby',
+            \ }
+            \})
 NeoBundleLazy 'ujihisa/neco-look', { 'depends' : 'Shougo/neocomplete.vim' }
+call neobundle#config('neco-look',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'markdown',
+            \   ]
+            \ }
+            \})
 
 NeoBundleLazy 'Shougo/neosnippet'
+call neobundle#config('neosnippet',{
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \   'filetypes' : [
+            \     'neosnippet',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'Shougo/neosnippet-snippets', { 'depends' : 'Shougo/neosnippet' }
+call neobundle#config('neosnippet-snippets',{
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ }
+            \})
 NeoBundleLazy 'honza/vim-snippets', { 'depends' : 'Shougo/neosnippet' }
+call neobundle#config('vim-snippets',{
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ }
+            \})
 
 NeoBundleLazy 'Shougo/vimfiler.vim'
 NeoBundleLazy 'Shougo/vimshell.vim'
@@ -370,36 +400,11 @@ augroup vimrc-omnifuncs
 augroup END
 
 if neobundle#tap('neocomplete-rsense.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : 'ruby',
-                \ }
-                \})
     let g:neocomplete#sources#rsense#home_directory = substitute(system('which rsense'), '/rsense', '','g')
     call neobundle#untap()
 endif
 
-if neobundle#tap('neco-look')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'markdown',
-                \   ]
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
 if neobundle#tap('neosnippet')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \   'filetypes' : [
-                \     'neosnippet',
-                \   ],
-                \ }
-                \})
-
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
@@ -423,26 +428,6 @@ if neobundle#tap('neosnippet')
     augroup vimrc-neosnippet
         autocmd FileType neosnippet setlocal noexpandtab
     augroup END
-
-    call neobundle#untap()
-endif
-
-if neobundle#tap('neosnippet-snippets')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ }
-                \})
-
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vim-snippets')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ }
-                \})
 
     call neobundle#untap()
 endif
