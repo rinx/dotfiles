@@ -147,13 +147,41 @@ call neobundle#config('vim-snippets',{
             \})
 
 NeoBundleLazy 'Shougo/vimfiler.vim'
+call neobundle#config('vimfiler.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'VimFilerTab',
+            \     'VimFiler',
+            \     'VimFilerExplorer'
+            \   ]
+            \ }
+            \})
 NeoBundleLazy 'Shougo/vimshell.vim'
+call neobundle#config('vimshell.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'VimShell',
+            \     'VimShellPop',
+            \     'VimShellInteractive'
+            \   ]
+            \ }
+            \})
 
 NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-arpeggio'
 NeoBundle 'kana/vim-altercmd'
 
 NeoBundleLazy 'Shougo/unite.vim'
+call neobundle#config('unite.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Unite',
+            \     'UniteWithBufferDir',
+            \     'UniteWithCurrentDir',
+            \     'UniteResume',
+            \   ]
+            \ }
+            \})
 NeoBundleLazy 'Shougo/neomru.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'Shougo/unite-outline', { 'depends' : 'Shougo/unite.vim' }
@@ -433,15 +461,6 @@ if neobundle#tap('neosnippet')
 endif
 
 if neobundle#tap('vimfiler.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'VimFilerTab',
-                \     'VimFiler',
-                \     'VimFilerExplorer'
-                \   ]
-                \ }
-                \})
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:vimfiler_force_overwrite_statusline = 0
     endfunction
@@ -449,15 +468,6 @@ if neobundle#tap('vimfiler.vim')
 endif
 
 if neobundle#tap('vimshell.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'VimShell',
-                \     'VimShellPop',
-                \     'VimShellInteractive'
-                \   ]
-                \ }
-                \})
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:vimshell_force_overwrite_statusline = 0
     endfunction
@@ -479,16 +489,6 @@ if neobundle#tap('vim-arpeggio')
 endif
 
 if neobundle#tap('unite.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Unite',
-                \     'UniteWithBufferDir',
-                \     'UniteWithCurrentDir',
-                \     'UniteResume',
-                \   ]
-                \ }
-                \})
     function! neobundle#tapped.hooks.on_source(bundle)
         let g:unite_force_overwrite_statusline = 0
         let g:unite_enable_start_insert = 0
