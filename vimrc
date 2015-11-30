@@ -183,10 +183,46 @@ call neobundle#config('unite.vim',{
             \ }
             \})
 NeoBundleLazy 'Shougo/neomru.vim', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('neomru.vim',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'file_mru',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('vim-unite-history',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'history/command',
+            \     'history/search',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'Shougo/unite-outline', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-outline',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'outline',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-help',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'help',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'osyo-manga/unite-filetype', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-filetype',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'filetype',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'kmnk/vim-unite-giti', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'tacroe/unite-mark', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'moznion/unite-git-conflict.vim', { 'depends' : 'Shougo/unite.vim' }
@@ -721,62 +757,6 @@ if neobundle#tap('unite.vim')
     "tsukkee/unite-help
     nnoremap <silent> [unite]he  :<C-u>Unite -start-insert help<CR>
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('neomru.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'file_mru',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vim-unite-history')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'history/command',
-                \     'history/search',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-outline')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'outline',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-help')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'help',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-filetype')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'filetype',
-                \   ],
-                \ }
-                \})
     call neobundle#untap()
 endif
 
