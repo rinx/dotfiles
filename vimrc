@@ -224,10 +224,66 @@ call neobundle#config('unite-filetype',{
             \ }
             \})
 NeoBundleLazy 'kmnk/vim-unite-giti', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('vim-unite-giti',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Giti',
+            \     'GitiWithConfirm',
+            \     'GitiFetch',
+            \     'GitiPush',
+            \     'GitiPushWithSettingUpstream',
+            \     'GitiPushExpressly',
+            \     'GitiPull',
+            \     'GitiPullSquash',
+            \     'GitiPullRebase',
+            \     'GitiPullExpressly',
+            \     'GitiDiff',
+            \     'GitiDiffCached',
+            \     'GitiLog',
+            \     'GitiLogLine',
+            \   ],
+            \   'unite_sources' : [
+            \     'giti',
+            \     'giti/branch',
+            \     'giti/config',
+            \     'giti/log',
+            \     'giti/remote',
+            \     'giti/status',
+            \   ]
+            \ }
+            \})
 NeoBundleLazy 'tacroe/unite-mark', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-mark',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'mark',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'moznion/unite-git-conflict.vim', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-git-conflict.vim',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'git-conflict',
+            \   ],
+            \ },
+            \})
 NeoBundleLazy 'haya14busa/unite-reading-vimrc', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-reading-vimrc',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'reading-vimrc',
+            \   ],
+            \ },
+            \})
 NeoBundleLazy 'pasela/unite-webcolorname', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-webcolorname',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'webcolorname',
+            \   ],
+            \ }
+            \})
 
 NeoBundle 'itchyny/lightline.vim'
 
@@ -757,82 +813,6 @@ if neobundle#tap('unite.vim')
     "tsukkee/unite-help
     nnoremap <silent> [unite]he  :<C-u>Unite -start-insert help<CR>
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vim-unite-giti')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Giti',
-                \     'GitiWithConfirm',
-                \     'GitiFetch',
-                \     'GitiPush',
-                \     'GitiPushWithSettingUpstream',
-                \     'GitiPushExpressly',
-                \     'GitiPull',
-                \     'GitiPullSquash',
-                \     'GitiPullRebase',
-                \     'GitiPullExpressly',
-                \     'GitiDiff',
-                \     'GitiDiffCached',
-                \     'GitiLog',
-                \     'GitiLogLine',
-                \   ],
-                \   'unite_sources' : [
-                \     'giti',
-                \     'giti/branch',
-                \     'giti/config',
-                \     'giti/log',
-                \     'giti/remote',
-                \     'giti/status',
-                \   ]
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-mark')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'mark',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-git-conflict.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'git-conflict',
-                \   ],
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-reading-vimrc')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'reading-vimrc',
-                \   ],
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-webcolorname')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'webcolorname',
-                \   ],
-                \ }
-                \})
     call neobundle#untap()
 endif
 
