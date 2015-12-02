@@ -296,8 +296,17 @@ else
     NeoBundleFetch 'tyru/eskk.vim'
 endif
 
-"NeoBundleLazy 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun'
+call neobundle#config('vim-quickrun',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'QuickRun',
+            \   ],
+            \   'mappings' : [
+            \     '<Plug>(quickrun',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
             \ 'depends' : [
             \   'Shougo/unite.vim',
@@ -918,16 +927,6 @@ if neobundle#tap('eskk.vim')
 endif
 
 if neobundle#tap('vim-quickrun')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'QuickRun',
-                \   ],
-                \   'mappings' : [
-                \     '<Plug>(quickrun',
-                \   ],
-                \ }
-                \})
     let g:quickrun_config = {
                 \ '_' : {
                 \   'outputter' : 'error',
