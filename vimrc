@@ -313,6 +313,13 @@ NeoBundleLazy 'osyo-manga/unite-quickrun_config', {
             \   'thinca/vim-quickrun',
             \ ]
             \}
+call neobundle#config('unite-quickrun_config',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'quickrun_config',
+            \   ],
+            \ },
+            \})
 
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs', {
@@ -324,6 +331,16 @@ NeoBundle 'osyo-manga/vim-watchdogs', {
             \ ]
             \}
 NeoBundleLazy 'jceb/vim-hier'
+call neobundle#config('vim-hier',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'HierStart',
+            \     'HierStop',
+            \     'HierUpdate',
+            \     'HierClear',
+            \   ],
+            \ },
+            \})
 
 NeoBundle 'ynkdir/vim-vimlparser'
 NeoBundle 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser' }
@@ -336,6 +353,12 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 
 NeoBundle 'cohama/lexima.vim'
+call neobundle#config('lexima.vim',{
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \ },
+            \})
+
 
 NeoBundle 'airblade/vim-gitgutter'
 
@@ -1001,17 +1024,6 @@ if neobundle#tap('vim-quickrun')
     call neobundle#untap()
 endif
 
-if neobundle#tap('unite-quickrun_config')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'quickrun_config',
-                \   ],
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
 if neobundle#tap('vim-watchdogs')
     call watchdogs#setup(g:quickrun_config)
 
@@ -1025,27 +1037,7 @@ if neobundle#tap('vim-watchdogs')
     call neobundle#untap()
 endif
 
-if neobundle#tap('vim-hier')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'HierStart',
-                \     'HierStop',
-                \     'HierUpdate',
-                \     'HierClear',
-                \   ],
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
 if neobundle#tap('lexima.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'insert' : 1,
-                \ },
-                \})
-
     let g:lexima_no_default_rules = 0
     let g:lexima_map_escape = ''
     call lexima#set_default_rules()
