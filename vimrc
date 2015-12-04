@@ -363,7 +363,27 @@ call neobundle#config('lexima.vim',{
 NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundleLazy 'sjl/gundo.vim'
+call neobundle#config('gundo.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'GundoToggle',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'scrooloose/nerdtree'
+call neobundle#config('nerdtree',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'NERDTree',
+            \     'NERDTreeFromBookmark',
+            \     'NERDTreeToggle',
+            \     'NERDTreeMirror',
+            \     'NERDTreeClose',
+            \     'NERDTreeFind',
+            \     'NERDTreeCWD',
+            \   ]
+            \ }
+            \})
 
 NeoBundleLazy 'LeafCage/yankround.vim'
 
@@ -1075,13 +1095,6 @@ if neobundle#tap('vim-gitgutter')
 endif
 
 if neobundle#tap('gundo.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'GundoToggle',
-                \   ],
-                \ }
-                \})
     nnoremap <F5> :<C-u>GundoToggle<CR>
     let g:gundo_width = 45
     let g:gundo_preview_height = 15
@@ -1096,19 +1109,6 @@ if neobundle#tap('gundo.vim')
 endif
 
 if neobundle#tap('nerdtree')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'NERDTree',
-                \     'NERDTreeFromBookmark',
-                \     'NERDTreeToggle',
-                \     'NERDTreeMirror',
-                \     'NERDTreeClose',
-                \     'NERDTreeFind',
-                \     'NERDTreeCWD',
-                \   ]
-                \ }
-                \})
     nnoremap <F6> :<C-u>NERDTreeToggle<CR>
     augroup vimrc-nerdtree
         autocmd!
