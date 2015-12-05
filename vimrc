@@ -386,12 +386,40 @@ call neobundle#config('nerdtree',{
             \})
 
 NeoBundleLazy 'LeafCage/yankround.vim'
+call neobundle#config('yankround.vim',{
+            \ 'autoload' : {
+            \   'mappings' : [
+            \     '<Plug>(yankround-',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'haya14busa/vim-asterisk'
+call neobundle#config('vim-asterisk',{
+            \ 'autoload' : {
+            \   'mappings' : [
+            \     '<Plug>(asterisk-',
+            \   ],
+            \ },
+            \})
 NeoBundleLazy 'haya14busa/incsearch.vim'
+call neobundle#config('incsearch.vim',{
+            \ 'autoload' : {
+            \   'mappings' : [
+            \     '<Plug>(incsearch-',
+            \   ],
+            \ },
+            \})
 NeoBundle 'haya14busa/vim-migemo'
 
 NeoBundleLazy 'osyo-manga/vim-anzu'
+call neobundle#config('vim-anzu',{
+            \ 'autoload' : {
+            \   'mappings' : [
+            \     '<Plug>(anzu-',
+            \   ],
+            \ }
+            \})
 NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thinca/vim-visualstar'
 
@@ -1118,14 +1146,6 @@ if neobundle#tap('nerdtree')
 endif
 
 if neobundle#tap('yankround.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'mappings' : [
-                \     '<Plug>(yankround-',
-                \   ],
-                \ }
-                \})
-
     nmap p <Plug>(yankround-p)
     nmap P <Plug>(yankround-P)
     nmap gp <Plug>(yankround-gp)
@@ -1141,13 +1161,6 @@ endif
 
 
 if neobundle#tap('vim-asterisk')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'mappings' : [
-                \     '<Plug>(asterisk-',
-                \   ],
-                \ },
-                \})
     map *   <Plug>(asterisk-*)
     map #   <Plug>(asterisk-#)
     map g*  <Plug>(asterisk-g*)
@@ -1160,13 +1173,6 @@ if neobundle#tap('vim-asterisk')
 endif
 
 if neobundle#tap('incsearch.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'mappings' : [
-                \     '<Plug>(incsearch-',
-                \   ],
-                \ },
-                \})
     map /  <Plug>(incsearch-forward)
     map ?  <Plug>(incsearch-backward)
     map g/ <plug>(incsearch-stay)
@@ -1175,13 +1181,6 @@ if neobundle#tap('incsearch.vim')
 endif
 
 if neobundle#tap('vim-anzu')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'mappings' : [
-                \     '<Plug>(anzu-',
-                \   ],
-                \ }
-                \})
     nmap n <Plug>(anzu-n)zz
     nmap N <Plug>(anzu-N)zz
     nmap * <Plug>(anzu-star)zz
