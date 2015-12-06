@@ -422,13 +422,34 @@ call neobundle#config('vim-anzu',{
             \})
 NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thinca/vim-visualstar'
+call neobundle#config('vim-visualstar',{
+            \ 'autoload' : {
+            \   'mappings' : [
+            \     '<Plug>(visualstar-',
+            \   ],
+            \ }
+            \})
 
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'osyo-manga/vim-jplus'
 
 NeoBundleLazy 'thinca/vim-qfreplace'
+call neobundle#config('vim-qfreplace',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Qfreplace',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 't9md/vim-quickhl'
+call neobundle#config('vim-quickhl',{
+            \ 'autoload' : {
+            \   'mappings' : [
+            \     '<Plug>(quickhl-',
+            \   ],
+            \ }
+            \})
 
 NeoBundle 'spinningarrow/vim-niji'
 
@@ -1194,14 +1215,6 @@ if neobundle#tap('vim-anzu')
 endif
 
 if neobundle#tap('vim-visualstar')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'mappings' : [
-                \     '<Plug>(visualstar-',
-                \   ],
-                \ }
-                \})
-
     map * <Plug>(visualstar-*)
     map # <Plug>(visualstar-#)
     map g* <Plug>(visualstar-g*)
@@ -1264,25 +1277,7 @@ if neobundle#tap('vim-jplus')
     call neobundle#untap()
 endif
 
-if neobundle#tap('vim-qfreplace')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Qfreplace',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
 if neobundle#tap('vim-quickhl')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'mappings' : [
-                \     '<Plug>(quickhl-',
-                \   ],
-                \ }
-                \})
     nmap <Space>m <Plug>(quickhl-manual-this)
     xmap <Space>m <Plug>(quickhl-manual-this)
     nmap <Space>M <Plug>(quickhl-manual-reset)
