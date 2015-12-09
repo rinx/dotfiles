@@ -452,6 +452,15 @@ call neobundle#config('vim-quickhl',{
             \})
 
 NeoBundle 'spinningarrow/vim-niji'
+call neobundle#config('vim-niji',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'lisp',
+            \     'scheme',
+            \     'clojure',
+            \   ],
+            \ },
+            \})
 
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace', { 'depends' : 'kana/vim-operator-user' }
@@ -1290,15 +1299,6 @@ if neobundle#tap('vim-quickhl')
 endif
 
 if neobundle#tap('vim-niji')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'lisp',
-                \     'scheme',
-                \     'clojure',
-                \   ],
-                \ },
-                \})
     let g:niji_matching_filetypes = [
                 \ 'lisp',
                 \ 'scheme',
