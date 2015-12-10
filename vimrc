@@ -478,8 +478,22 @@ NeoBundle 'mattn/vim-textobj-url', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleLazy 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' }
+call neobundle#config('vim-textobj-ruby',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'ruby',
+            \   ],
+            \ },
+            \})
 
 NeoBundleLazy 'tyru/capture.vim'
+call neobundle#config('capture.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Capture',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'tyru/open-browser.vim'
 NeoBundleLazy 'tyru/open-browser-github.vim', { 'depends' : 'tyru/open-browser.vim' }
@@ -1416,27 +1430,12 @@ if neobundle#tap('vim-textobj-multitextobj')
 endif
 
 if neobundle#tap('vim-textobj-ruby')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'ruby',
-                \   ],
-                \ },
-                \})
     let g:textobj_ruby_more_mappings = 1
 
     call neobundle#untap()
 endif
 
 if neobundle#tap('capture.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Capture',
-                \   ],
-                \ }
-                \})
-
     augroup vimrc-capture
         autocmd!
         autocmd FileType capture nnoremap <buffer><silent>q :<C-u>q<CR>
