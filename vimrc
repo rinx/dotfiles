@@ -496,9 +496,45 @@ call neobundle#config('capture.vim',{
             \})
 
 NeoBundleLazy 'tyru/open-browser.vim'
+call neobundle#config('open-browser.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'OpenBrowser',
+            \     'OpenBrowserSearch',
+            \   ],
+            \   'functions' : [
+            \     'OpenBrowser',
+            \   ],
+            \   'filetypes' : [
+            \     'markdown',
+            \   ],
+            \   'mappings' : [
+            \     '<Plug>(openbrowser-',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'tyru/open-browser-github.vim', { 'depends' : 'tyru/open-browser.vim' }
+call neobundle#config('open-browser-github.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'OpenGithubFile',
+            \     'OpenGithubIssue',
+            \     'OpenGithubPullReq',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'kannokanno/previm', { 'depends' : 'tyru/open-browser.vim' }
+call neobundle#config('previm',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'markdown',
+            \   ],
+            \   'commands' : [
+            \     'PrevimOpen',
+            \   ],
+            \ },
+            \})
 
 NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 
@@ -1446,24 +1482,6 @@ if neobundle#tap('capture.vim')
 endif
 
 if neobundle#tap('open-browser.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'OpenBrowser',
-                \     'OpenBrowserSearch',
-                \   ],
-                \   'functions' : [
-                \     'OpenBrowser',
-                \   ],
-                \   'filetypes' : [
-                \     'markdown',
-                \   ],
-                \   'mappings' : [
-                \     '<Plug>(openbrowser-',
-                \   ],
-                \ }
-                \})
-
     if has('mac')
         let g:openbrowser_browser_commands = [
                     \{
@@ -1494,35 +1512,6 @@ if neobundle#tap('open-browser.vim')
     call altercmd#define('google', 'OpenBrowserSearch -google')
     call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
-
-    call neobundle#untap()
-endif
-
-if neobundle#tap('open-browser-github.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'OpenGithubFile',
-                \     'OpenGithubIssue',
-                \     'OpenGithubPullReq',
-                \   ],
-                \ }
-                \})
-
-    call neobundle#untap()
-endif
-
-if neobundle#tap('previm')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'markdown',
-                \   ],
-                \   'commands' : [
-                \     'PrevimOpen',
-                \   ],
-                \ },
-                \})
 
     call neobundle#untap()
 endif
