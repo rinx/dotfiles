@@ -537,6 +537,13 @@ call neobundle#config('previm',{
             \})
 
 NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('unite-rails',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'ruby',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
@@ -1513,17 +1520,6 @@ if neobundle#tap('open-browser.vim')
     call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-rails')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'ruby',
-                \   ],
-                \ }
-                \})
     call neobundle#untap()
 endif
 
