@@ -546,6 +546,13 @@ call neobundle#config('unite-rails',{
             \})
 
 NeoBundleLazy 'eagletmt/ghcmod-vim'
+call neobundle#config('ghcmod-vim',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'haskell',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'dag/vim2hs'
 NeoBundleLazy 'ujihisa/ref-hoogle'
@@ -1520,17 +1527,6 @@ if neobundle#tap('open-browser.vim')
     call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('ghcmod-vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'haskell',
-                \   ],
-                \ }
-                \})
     call neobundle#untap()
 endif
 
