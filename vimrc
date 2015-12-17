@@ -562,6 +562,13 @@ call neobundle#config('neco-ghc',{
             \ }
             \})
 NeoBundleLazy 'dag/vim2hs'
+call neobundle#config('vim2hs',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'haskell',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'ujihisa/ref-hoogle'
 NeoBundleLazy 'ujihisa/unite-haskellimport'
 NeoBundleLazy 'pbrisbin/html-template-syntax'
@@ -1534,17 +1541,6 @@ if neobundle#tap('open-browser.vim')
     call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vim2hs')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'haskell',
-                \   ],
-                \ }
-                \})
     call neobundle#untap()
 endif
 
