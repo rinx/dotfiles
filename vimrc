@@ -622,6 +622,21 @@ NeoBundleLazy 'supermomonga/shaberu.vim',
             \   'Shougo/unite.vim'
             \ ]}
 
+NeoBundleLazy 'rinx/radiko.vim', { 'depends' : 'Shougo/unite.vim' }
+    call neobundle#config('radiko.vim', {
+                \ 'autoload' : {
+                \   'unite_sources' : [
+                \     'radiko',
+                \   ],
+                \   'commands' : [
+                \     'RadikoPlay',
+                \     'RadikoUpdateChannels',
+                \     'RadikoStop'
+                \   ],
+                \   'function_prefix' : 'radiko',
+                \ }
+                \})
+
 NeoBundle 'tomasr/molokai'
 
 NeoBundleLazy 'vim-jp/vital.vim'
