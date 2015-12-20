@@ -630,7 +630,7 @@ NeoBundleLazy 'rinx/radiko.vim', { 'depends' : 'Shougo/unite.vim' }
                 \   ],
                 \   'commands' : [
                 \     'RadikoPlay',
-                \     'RadikoUpdateChannels',
+                \     'RadikoUpdateStations',
                 \     'RadikoStop'
                 \   ],
                 \   'function_prefix' : 'radiko',
@@ -823,10 +823,12 @@ if neobundle#tap('unite.vim')
                     \ ['unite neosnippet', 'Unite neosnippet'],
                     \ ['unite gista', 'Unite gista'],
                     \ ['unite codic', 'Unite codic -start-insert'],
-                    \ ['unite Jazzradio', 'Unite jazzradio -no-quit'],
+                    \ ['unite Jazzradio', 'Unite jazzradio'],
                     \ ['stop Jazzradio', 'JazzradioStop'],
-                    \ ['unite Sky.fm', 'Unite skyfm -no-quit'],
+                    \ ['unite Sky.fm', 'Unite skyfm'],
                     \ ['stop Sky.fm', 'SkyfmStop'],
+                    \ ['unite radiko', 'Unite radiko'],
+                    \ ['stop radiko', 'RadikoStop'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
                     \ ['TweetVim UserStream', 'TweetVimUserStream'],
                     \ ['J6uil lingr-client', 'J6uil'],
