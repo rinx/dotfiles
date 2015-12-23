@@ -570,11 +570,55 @@ call neobundle#config('vim2hs',{
             \ }
             \})
 NeoBundleLazy 'ujihisa/ref-hoogle'
+call neobundle#config('ref-hoogle',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'haskell',
+            \   ],
+            \ },
+            \})
 NeoBundleLazy 'ujihisa/unite-haskellimport'
+call neobundle#config('unite-haskellimport',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'haskellimport',
+            \   ],
+            \ },
+            \})
 NeoBundleLazy 'pbrisbin/html-template-syntax'
+call neobundle#config('html-template-syntax',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'hamlet',
+            \     'cassius',
+            \     'lucius',
+            \     'julius',
+            \   ],
+            \   'filename_patterns' : [
+            \     '\.hamlet$',
+            \     '\.cassius$',
+            \     '\.lucius$',
+            \     '\.julius$',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'google/vim-ft-go'
+call neobundle#config('vim-ft-go',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'go',
+            \   ],
+            \ },
+            \})
 NeoBundleLazy 'vim-jp/vim-go-extra'
+call neobundle#config('vim-go-extra',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'go',
+            \   ],
+            \ },
+            \})
 
 NeoBundleLazy 'mattn/emmet-vim'
 
@@ -1558,71 +1602,6 @@ if neobundle#tap('open-browser.vim')
     call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('ref-hoogle')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'haskell',
-                \   ],
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-haskellimport')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'haskellimport',
-                \   ],
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('html-template-syntax')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'hamlet',
-                \     'cassius',
-                \     'lucius',
-                \     'julius',
-                \   ],
-                \   'filename_patterns' : [
-                \     '\.hamlet$',
-                \     '\.cassius$',
-                \     '\.lucius$',
-                \     '\.julius$',
-                \   ],
-                \ }
-                \})
-    " You should re-open shakesphere files with :e command
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vim-ft-go')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'go',
-                \   ],
-                \ },
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vim-go-extra')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'go',
-                \   ],
-                \ },
-                \})
     call neobundle#untap()
 endif
 
