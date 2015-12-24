@@ -621,6 +621,19 @@ call neobundle#config('vim-go-extra',{
             \})
 
 NeoBundleLazy 'mattn/emmet-vim'
+call neobundle#config('emmet-vim',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'html',
+            \     'xhtml',
+            \     'css',
+            \     'sass',
+            \     'scss',
+            \     'xml',
+            \     'markdown',
+            \   ]
+            \ }
+            \})
 
 NeoBundleLazy 'elzr/vim-json'
 
@@ -1606,19 +1619,6 @@ if neobundle#tap('open-browser.vim')
 endif
 
 if neobundle#tap('emmet-vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'html',
-                \     'xhtml',
-                \     'css',
-                \     'sass',
-                \     'scss',
-                \     'xml',
-                \     'markdown',
-                \   ]
-                \ }
-                \})
     call neobundle#untap()
 endif
 
