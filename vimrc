@@ -636,8 +636,31 @@ call neobundle#config('emmet-vim',{
             \})
 
 NeoBundleLazy 'elzr/vim-json'
+call neobundle#config('vim-json',{
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'json',
+            \     'jsonp',
+            \   ],
+            \   'filename_patterns' : [
+            \     '\.json$',
+            \     '\.jsonp$',
+            \   ],
+            \ },
+            \})
 
 NeoBundleLazy 'Shougo/vinarise.vim'
+call neobundle#config('vinarise.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Vinarise',
+            \     'VinariseScript2Hex',
+            \     'VinariseHex2Script',
+            \     'VinarisePluginDump',
+            \     'VinarisePluginViewBitmapView',
+            \   ],
+            \ },
+            \})
 
 NeoBundleLazy 'thinca/vim-ref'
 NeoBundleLazy 'mattn/learn-vimscript'
@@ -1619,39 +1642,6 @@ if neobundle#tap('open-browser.vim')
 endif
 
 if neobundle#tap('emmet-vim')
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vim-json')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'filetypes' : [
-                \     'json',
-                \     'jsonp',
-                \   ],
-                \   'filename_patterns' : [
-                \     '\.json$',
-                \     '\.jsonp$',
-                \   ],
-                \ },
-                \})
-    " You should re-open json files with :e command
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vinarise.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Vinarise',
-                \     'VinariseScript2Hex',
-                \     'VinariseHex2Script',
-                \     'VinarisePluginDump',
-                \     'VinarisePluginViewBitmapView',
-                \   ],
-                \ },
-                \})
-
     call neobundle#untap()
 endif
 
