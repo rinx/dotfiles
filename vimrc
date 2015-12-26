@@ -663,10 +663,41 @@ call neobundle#config('vinarise.vim',{
             \})
 
 NeoBundleLazy 'thinca/vim-ref'
+call neobundle#config('vim-ref',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Ref',
+            \   ],
+            \   'mappings' : [
+            \     '<Plug>(ref-',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'mattn/learn-vimscript'
+call neobundle#config('learn-vimscript',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'help',
+            \   ],
+            \   'unite_sources' : [
+            \     'help',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'moznion/hateblo.vim', { 'depends' : ['mattn/webapi-vim', 'Shougo/unite.vim'] }
+call neobundle#config('hateblo.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'HatebloCreate',
+            \     'HatebloCreateDraft',
+            \     'HatebloList',
+            \     'HatebloUpdate',
+            \     'HatebloDelete',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'basyura/twibill.vim', { 'depends' : 'tyru/open-browser.vim' }
 NeoBundleLazy 'basyura/TweetVim', {
             \ 'depends' : [
@@ -1641,22 +1672,7 @@ if neobundle#tap('open-browser.vim')
     call neobundle#untap()
 endif
 
-if neobundle#tap('emmet-vim')
-    call neobundle#untap()
-endif
-
 if neobundle#tap('vim-ref')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Ref',
-                \   ],
-                \   'mappings' : [
-                \     '<Plug>(ref-',
-                \   ],
-                \ }
-                \})
-
     let g:ref_source_webdict_sites = {
                 \ 'je' : {
                 \   'url' : 'http://dictionary.infoseek.ne.jp/jeword/%s',
@@ -1694,35 +1710,6 @@ if neobundle#tap('vim-ref')
     call altercmd#define('jedic', 'Ref webdict je')
     call altercmd#define('wiki',  'Ref webdict wiki')
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('learn-vimscript')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'help',
-                \   ],
-                \   'unite_sources' : [
-                \     'help',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('hateblo.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'HatebloCreate',
-                \     'HatebloCreateDraft',
-                \     'HatebloList',
-                \     'HatebloUpdate',
-                \     'HatebloDelete',
-                \   ],
-                \ }
-                \})
     call neobundle#untap()
 endif
 
