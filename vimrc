@@ -710,6 +710,28 @@ NeoBundleLazy 'basyura/TweetVim', {
             \   'Shougo/unite-outline',
             \ ]
             \}
+call neobundle#config('TweetVim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'TweetVimVersion',
+            \     'TweetVimAddAccount',
+            \     'TweetVimSwitchAccount',
+            \     'TweetVimHomeTimeline',
+            \     'TweetVimMentions',
+            \     'TweetVimListStatuses',
+            \     'TweetVimUserTimeline',
+            \     'TweetVimSay',
+            \     'TweetVimUserStream',
+            \     'TweetVimCommandSay',
+            \     'TweetVimCurrentLineSay',
+            \     'TweetVimSearch',
+            \   ],
+            \   'unite_sources' : [
+            \     'tweetvim/account',
+            \     'tweetvim',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'basyura/bitly.vim'
 NeoBundleLazy 'mattn/favstar-vim'
 NeoBundleLazy 'basyura/J6uil.vim', {
@@ -1714,28 +1736,6 @@ if neobundle#tap('vim-ref')
 endif
 
 if neobundle#tap('TweetVim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'TweetVimVersion',
-                \     'TweetVimAddAccount',
-                \     'TweetVimSwitchAccount',
-                \     'TweetVimHomeTimeline',
-                \     'TweetVimMentions',
-                \     'TweetVimListStatuses',
-                \     'TweetVimUserTimeline',
-                \     'TweetVimSay',
-                \     'TweetVimUserStream',
-                \     'TweetVimCommandSay',
-                \     'TweetVimCurrentLineSay',
-                \     'TweetVimSearch',
-                \   ],
-                \   'unite_sources' : [
-                \     'tweetvim/account',
-                \     'tweetvim',
-                \   ],
-                \ }
-                \})
     let g:tweetvim_tweet_per_page = 50
     let g:tweetvim_display_icon = 0
     call neobundle#untap()
