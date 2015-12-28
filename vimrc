@@ -741,6 +741,19 @@ NeoBundleLazy 'basyura/J6uil.vim', {
             \   'Shougo/unite.vim',
             \ ]
             \}
+call neobundle#config('J6uil.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'J6uil',
+            \     'J6uilReconnect',
+            \     'J6uilDisconnect',
+            \   ],
+            \   'unite_sources' : [
+            \     'J6uil/rooms',
+            \     'J6uil/members',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'lambdalisue/vim-gista', { 'depends' : 'Shougo/unite.vim' }
 
@@ -1742,19 +1755,6 @@ if neobundle#tap('TweetVim')
 endif
 
 if neobundle#tap('J6uil.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'J6uil',
-                \     'J6uilReconnect',
-                \     'J6uilDisconnect',
-                \   ],
-                \   'unite_sources' : [
-                \     'J6uil/rooms',
-                \     'J6uil/members',
-                \   ],
-                \ }
-                \})
     let g:J6uil_user = 'rinx'
 
     call neobundle#untap()
