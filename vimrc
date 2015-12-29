@@ -771,7 +771,24 @@ call neobundle#config('vim-gista',{
             \})
 
 NeoBundleLazy 'koron/codic-vim'
+call neobundle#config('codic-vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Codic',
+            \   ],
+            \   'unite_sources' : [
+            \     'codic',
+            \   ],
+            \ }
+            \})
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
+call neobundle#config('unite-codic.vim',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'codic',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'supermomonga/skyfm.vim', { 'depends' : 'Shougo/unite.vim' }
@@ -1776,31 +1793,6 @@ endif
 if neobundle#tap('vim-gista')
     let g:gista#github_user = 'rinx'
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('codic-vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Codic',
-                \   ],
-                \   'unite_sources' : [
-                \     'codic',
-                \   ],
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('unite-codic.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'codic',
-                \   ],
-                \ }
-                \})
     call neobundle#untap()
 endif
 
