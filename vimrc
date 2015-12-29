@@ -756,6 +756,19 @@ call neobundle#config('J6uil.vim',{
             \})
 
 NeoBundleLazy 'lambdalisue/vim-gista', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('vim-gista',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'Gista',
+            \   ],
+            \   'mappings' : [
+            \     '<Plug>(gista-',
+            \   ],
+            \   'unite_sources' : [
+            \     'gista',
+            \   ],
+            \ }
+            \})
 
 NeoBundleLazy 'koron/codic-vim'
 NeoBundleLazy 'rhysd/unite-codic.vim', { 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'] }
@@ -1761,20 +1774,6 @@ if neobundle#tap('J6uil.vim')
 endif
 
 if neobundle#tap('vim-gista')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'Gista',
-                \   ],
-                \   'mappings' : [
-                \     '<Plug>(gista-',
-                \   ],
-                \   'unite_sources' : [
-                \     'gista',
-                \   ],
-                \ }
-                \})
-
     let g:gista#github_user = 'rinx'
 
     call neobundle#untap()
