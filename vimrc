@@ -791,7 +791,39 @@ call neobundle#config('unite-codic.vim',{
             \})
 
 NeoBundleLazy 'supermomonga/jazzradio.vim', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('jazzradio.vim',{
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'jazzradio',
+            \   ],
+            \   'commands' : [
+            \     'JazzradioUpdateChannels',
+            \     'JazzradioStop',
+            \     {
+            \       'name' : 'JazzradioPlay',
+            \       'complete' : 'customlist,jazzradio#channel_id_complete'
+            \     }
+            \   ],
+            \   'function_prefix' : 'jazzradio',
+            \ }
+            \})
 NeoBundleLazy 'supermomonga/skyfm.vim', { 'depends' : 'Shougo/unite.vim' }
+call neobundle#config('skyfm.vim',{
+            \   'autoload' : {
+            \     'unite_sources' : [
+            \       'skyfm',
+            \     ],
+            \     'commands' : [
+            \       'SkyfmUpdateChannels',
+            \       'SkyfmStop',
+            \       {
+            \         'name' : 'SkyfmPlay',
+            \         'complete' : 'customlist,skyfm#channel_key_complete'
+            \       }
+            \     ],
+            \     'function_prefix' : 'skyfm',
+            \   }
+            \ })
 NeoBundleLazy 'supermomonga/shaberu.vim', 
             \ { 'depends' : [
             \   'Shougo/vimproc.vim',
@@ -1793,46 +1825,6 @@ endif
 if neobundle#tap('vim-gista')
     let g:gista#github_user = 'rinx'
 
-    call neobundle#untap()
-endif
-
-if neobundle#tap('jazzradio.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'jazzradio',
-                \   ],
-                \   'commands' : [
-                \     'JazzradioUpdateChannels',
-                \     'JazzradioStop',
-                \     {
-                \       'name' : 'JazzradioPlay',
-                \       'complete' : 'customlist,jazzradio#channel_id_complete'
-                \     }
-                \   ],
-                \   'function_prefix' : 'jazzradio',
-                \ }
-                \})
-    call neobundle#untap()
-endif
-
-if neobundle#tap('skyfm.vim')
-    call neobundle#config({
-                \   'autoload' : {
-                \     'unite_sources' : [
-                \       'skyfm',
-                \     ],
-                \     'commands' : [
-                \       'SkyfmUpdateChannels',
-                \       'SkyfmStop',
-                \       {
-                \         'name' : 'SkyfmPlay',
-                \         'complete' : 'customlist,skyfm#channel_key_complete'
-                \       }
-                \     ],
-                \     'function_prefix' : 'skyfm',
-                \   }
-                \ })
     call neobundle#untap()
 endif
 
