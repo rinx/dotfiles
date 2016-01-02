@@ -1854,6 +1854,10 @@ if neobundle#tap('shaberu.vim')
     call neobundle#untap()
 endif
 
+if neobundle#tap('radiko.vim')
+    let g:radiko#cache_dir = expand("~/.cache/radiko-vim")
+endif
+
 
 " --- Basic Settings ---
 
