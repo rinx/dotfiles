@@ -1060,16 +1060,12 @@ if neobundle#tap('unite.vim')
                     \ ['PreVim open', 'PreVimOpen'],
                     \ ['hateblo list', 'HatebloList'],
                     \ ['copy buffer into clipboard', s:copyToClipboardCommand],
-                    \ ['lingr', 'http://lingr.com/'],
                     \ ['vim-jp', 'http://vim-jp.org/'],
                     \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
                     \ ['Github', 'https://github.com/'],
                     \ ['Github Gist', 'https://gist.github.com/'],
                     \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
                     \ ['stackoverflow', 'http://stackoverflow.com/'],
-                    \ ['Grooveshark', 'http://grooveshark.com/'],
-                    \ ['Jazzradio', 'http://www.jazzradio.com/'],
-                    \ ['RadioTunes', 'http://www.radiotunes.com/'],
                     \]
         function! g:unite_source_menu_menus.shortcut.map(key, value)
             let [word, value] = a:value
