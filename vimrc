@@ -829,25 +829,42 @@ NeoBundleLazy 'supermomonga/shaberu.vim',
             \   'Shougo/vimproc.vim',
             \   'Shougo/unite.vim'
             \ ]}
+call neobundle#config('shaberu.vim',{
+            \ 'autoload' : {
+            \   'commands' : [
+            \     'ShaberuSay',
+            \     'ShaberuSayInteractive',
+            \     'ShaberuSayRecursive',
+            \     'ShaberuMuteOn',
+            \     'ShaberuMuteOff',
+            \     'ShaberuMuteToggle'
+            \   ]
+            \ }
+            \})
 
 NeoBundleLazy 'rinx/radiko.vim', { 'depends' : 'Shougo/unite.vim' }
-    call neobundle#config('radiko.vim', {
-                \ 'autoload' : {
-                \   'unite_sources' : [
-                \     'radiko',
-                \   ],
-                \   'commands' : [
-                \     'RadikoPlay',
-                \     'RadikoUpdateStations',
-                \     'RadikoStop'
-                \   ],
-                \   'function_prefix' : 'radiko',
-                \ }
-                \})
+call neobundle#config('radiko.vim', {
+            \ 'autoload' : {
+            \   'unite_sources' : [
+            \     'radiko',
+            \   ],
+            \   'commands' : [
+            \     'RadikoPlay',
+            \     'RadikoUpdateStations',
+            \     'RadikoStop'
+            \   ],
+            \   'function_prefix' : 'radiko',
+            \ }
+            \})
 
 NeoBundle 'tomasr/molokai'
 
 NeoBundleLazy 'vim-jp/vital.vim'
+call neobundle#config('vital.vim',{
+            \ 'autoload' : {
+            \   'commands' : 'Vitalize',
+            \ }
+            \})
 
 call neobundle#end()
 
@@ -1829,32 +1846,11 @@ if neobundle#tap('vim-gista')
 endif
 
 if neobundle#tap('shaberu.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : [
-                \     'ShaberuSay',
-                \     'ShaberuSayInteractive',
-                \     'ShaberuSayRecursive',
-                \     'ShaberuMuteOn',
-                \     'ShaberuMuteOff',
-                \     'ShaberuMuteToggle'
-                \   ]
-                \ }
-                \})
     let g:shaberu_use_voicetext_api = 1
     if exists('g:vimrc_private["shaberu_voicetext_apikey"]')
         let g:shaberu_voicetext_apikey = g:vimrc_private['shaberu_voicetext_apikey']
     endif
     let g:shaberu_voicetext_speaker = 'hikari'
-    call neobundle#untap()
-endif
-
-if neobundle#tap('vital.vim')
-    call neobundle#config({
-                \ 'autoload' : {
-                \   'commands' : 'Vitalize',
-                \ }
-                \})
     call neobundle#untap()
 endif
 
