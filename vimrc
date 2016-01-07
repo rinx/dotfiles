@@ -2361,6 +2361,7 @@ if neobundle#tap('lightline.vim')
                 \   'anzu': 'anzu#search_status',
                 \   'tablineabspath': 'MyAbsPath',
                 \   'tabfugitive': 'MyFugitiveInv',
+                \   'tabradikosta': 'MyRadikoSta',
                 \ },
                 \ 'component_expand': {
                 \ },
@@ -2379,7 +2380,7 @@ if neobundle#tap('lightline.vim')
                 \     [ 'tabs' ],
                 \   ],
                 \   'right' : [
-                \     [ 'tablineabspath', 'tabfugitive' ],
+                \     [ 'tablineabspath', 'tabfugitive', 'tabradikosta' ],
                 \   ],
                 \ },
                 \ }
@@ -2457,12 +2458,22 @@ if neobundle#tap('lightline.vim')
 
     function! MyAbsPath()
         let _ = expand('%:p:h')
-        return &ft == 'vimfiler' ? '' : 
+        return &ft == 'vimfiler' ? '' :
                     \ &ft == 'unite' ? '' :
                     \ &ft == 'vimshell' ? '' :
                     \ &ft == 'qf' ? '' :
-                    \ &ft == 'quickrun' ? '' : 
-                    \ tabpagenr('$') < 4 ? _ : ''
+                    \ &ft == 'quickrun' ? '' :
+                    \ tabpagenr('$') > 3 ? '' :
+                    \ strlen(_) < 50 ? _ : ''
+    endfunction
+
+    function! MyRadikoSta()
+        if radiko#is_playing()
+            let _ = radiko#get_playing_station()
+        else
+            let _ = ''
+        endif
+        return winwidth('.') > 70 ? strlen(_) ? '♪' . _ : '' : ''
     endfunction
 
     call neobundle#untap()
