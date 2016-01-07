@@ -2464,7 +2464,7 @@ if neobundle#tap('lightline.vim')
                     \ &ft == 'qf' ? '' :
                     \ &ft == 'quickrun' ? '' :
                     \ tabpagenr('$') > 3 ? '' :
-                    \ strlen(_) < 50 ? _ : ''
+                    \ strlen(_) < winwidth('.') / 2 ? _ : ''
     endfunction
 
     function! MyRadikoSta()
