@@ -2458,12 +2458,13 @@ if neobundle#tap('lightline.vim')
 
     function! MyAbsPath()
         let _ = expand('%:p:h')
-        return &ft == 'vimfiler' ? '' : 
+        return &ft == 'vimfiler' ? '' :
                     \ &ft == 'unite' ? '' :
                     \ &ft == 'vimshell' ? '' :
                     \ &ft == 'qf' ? '' :
-                    \ &ft == 'quickrun' ? '' : 
-                    \ tabpagenr('$') < 4 ? _ : ''
+                    \ &ft == 'quickrun' ? '' :
+                    \ tabpagenr('$') > 3 ? '' :
+                    \ strlen(_) < 50 ? _ : ''
     endfunction
 
     function! MyRadikoSta()
