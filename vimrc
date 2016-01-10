@@ -2469,11 +2469,15 @@ if neobundle#tap('lightline.vim')
 
     function! MyRadikoSta()
         if radiko#is_playing()
-            let _ = radiko#get_playing_station()
+            if winwidth('.') > 70
+                let _ = radiko#get_playing_station()
+            else
+                let _ = radiko#get_playing_station_id()
+            endif
         else
             let _ = ''
         endif
-        return winwidth('.') > 70 ? strlen(_) ? '♪' . _ : '' : ''
+        return winwidth('.') > 30 ? strlen(_) ? '♪' . _ : '' : ''
     endfunction
 
     call neobundle#untap()
