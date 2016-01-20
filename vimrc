@@ -1054,6 +1054,8 @@ if neobundle#tap('unite.vim')
                     \ ['stop Sky.fm', 'SkyfmStop'],
                     \ ['unite radiko', 'Unite radiko'],
                     \ ['stop radiko', 'RadikoStop'],
+                    \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
+                    \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
                     \ ['TweetVim UserStream', 'TweetVimUserStream'],
                     \ ['J6uil lingr-client', 'J6uil'],
