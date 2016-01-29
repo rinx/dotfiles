@@ -1254,6 +1254,19 @@ if neobundle#tap('skk.vim')
     let g:skk_kutouten_jp = "。、"
     let g:skk_kutouten_en = "．，"
 
+    "toggle skk-kutouten-type
+    nnoremap <silent> <Leader>k :<C-u>call <SID>toggle_skk_kutouten_type()<CR>
+
+    function! s:toggle_skk_kutouten_type()
+        if g:skk_kutouten_type == "en"
+            let g:skk_kutouten_type = "jp"
+            echo "g:skk_kutouten_type has been changed as 'jp'"
+        else
+            let g:skk_kutouten_type = "en"
+            echo "g:skk_kutouten_type has been changed as 'en'"
+        endif
+    endfunction
+
     call neobundle#untap()
 endif
 
