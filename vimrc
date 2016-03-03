@@ -2446,10 +2446,14 @@ if neobundle#tap('lightline.vim')
 
     function! MyRadikoSta()
         if radiko#is_playing()
+            let _ = radiko#get_playing_station_id()
             if winwidth('.') > 70
-                let _ = radiko#get_playing_station()
-            else
-                let _ = radiko#get_playing_station_id()
+                if _ == 'RN2'
+                    let m = radiko#get_playing_rn2_music()
+                    let _ = strlen(m[0]) ? m[0] . ' - ' . m[1] : ''
+                else
+                    let _ = radiko#get_playing_station()
+                endif
             endif
         else
             let _ = ''
