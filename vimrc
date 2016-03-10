@@ -1835,7 +1835,7 @@ if neobundle#tap('radiko.vim')
         let playing = radiko#get_playing_rn2_music()
         let nextone = radiko#get_next_rn2_music()
         return '[Now playing]: ' . playing[0] . ' - ' . playing[1]
-                    \ . ' [Next]: ' . nextone[0] . ' - ' . nextone[0]
+                    \ . ' [Next]: ' . nextone[0] . ' - ' . nextone[1]
     endfunction
     command! RadikoRN2Musics echo <SID>radiko_echo_rn2_musics()
 endif
