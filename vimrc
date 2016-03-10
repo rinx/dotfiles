@@ -1830,6 +1830,14 @@ endif
 
 if neobundle#tap('radiko.vim')
     let g:radiko#cache_dir = expand("~/.cache/radiko-vim")
+
+    function! s:radiko_echo_rn2_musics()
+        let playing = radiko#get_playing_rn2_music()
+        let nextone = radiko#get_next_rn2_music()
+        return '[Now playing]: ' . playing[0] . ' - ' . playing[1]
+                    \ . ' [Next]: ' . nextone[0] . ' - ' . nextone[0]
+    endfunction
+    command! RadikoRN2Musics echo <SID>radiko_echo_rn2_musics()
 endif
 
 
