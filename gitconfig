@@ -8,6 +8,18 @@
     ui = auto
     interactive = auto
 
+[diff]
+    tool = /Applications/MacVim.app/Contents/MacOS/vimdiff
+
+[difftool]
+    prompt = false
+
+[merge]
+    tool = /Applications/MacVim.app/Contents/MacOS/vimdiff
+
+[mergetool]
+    prompt = false
+
 [github]
     user = rinx
 
