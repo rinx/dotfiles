@@ -8,6 +8,18 @@
     ui = auto
     interactive = auto
 
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
+[merge]
+    tool = vimdiff
+
+[mergetool]
+    prompt = false
+
 [github]
     user = rinx
 
