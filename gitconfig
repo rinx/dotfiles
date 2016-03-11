@@ -9,13 +9,13 @@
     interactive = auto
 
 [diff]
-    tool = /Applications/MacVim.app/Contents/MacOS/vimdiff
+    tool = vimdiff
 
 [difftool]
     prompt = false
 
 [merge]
-    tool = /Applications/MacVim.app/Contents/MacOS/vimdiff
+    tool = vimdiff
 
 [mergetool]
     prompt = false
