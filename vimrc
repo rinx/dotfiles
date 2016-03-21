@@ -1016,7 +1016,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite codic', 'Unite codic -start-insert'],
                     \ ['unite radiko', 'Unite radiko'],
                     \ ['stop radiko', 'RadikoStop'],
-                    \ ['unite RN2-musics', 'Unite rn2musics'],
+                    \ ['unite RN2-musics', 'Unite rn2musics -no-quit'],
                     \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
                     \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
