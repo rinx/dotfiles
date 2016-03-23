@@ -109,12 +109,12 @@ call neobundle#config('neocomplcache.vim',{
             \})
 
 
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : 'Shougo/neocomplete.vim' }
-call neobundle#config('neocomplete-rsense.vim',{
-            \ 'autoload' : {
-            \   'filetypes' : 'ruby',
-            \ }
-            \})
+" NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : 'Shougo/neocomplete.vim' }
+" call neobundle#config('neocomplete-rsense.vim',{
+"             \ 'autoload' : {
+"             \   'filetypes' : 'ruby',
+"             \ }
+"             \})
 NeoBundleLazy 'ujihisa/neco-look', { 'depends' : 'Shougo/neocomplete.vim' }
 call neobundle#config('neco-look',{
             \ 'autoload' : {
@@ -913,10 +913,10 @@ augroup vimrc-omnifuncs
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-if neobundle#tap('neocomplete-rsense.vim')
-    let g:neocomplete#sources#rsense#home_directory = substitute(system('which rsense'), '/rsense', '','g')
-    call neobundle#untap()
-endif
+" if neobundle#tap('neocomplete-rsense.vim')
+"     let g:neocomplete#sources#rsense#home_directory = substitute(system('which rsense'), '/rsense', '','g')
+"     call neobundle#untap()
+" endif
 
 if neobundle#tap('neosnippet')
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
