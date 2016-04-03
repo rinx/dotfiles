@@ -1204,6 +1204,9 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]oq  :<C-u>Unite -no-quit -buffer-name=outline outline<CR>
     "tsukkee/unite-help
     nnoremap <silent> [unite]he  :<C-u>Unite -start-insert help<CR>
+    "rinx/radiko
+    nnoremap <silent> [unite]rdk :<C-u>Unite radiko -no-quit<CR>
+    nnoremap <silent> [unite]rn2 :<C-u>Unite rn2musics -no-quit<CR>
 
     call neobundle#untap()
 endif
