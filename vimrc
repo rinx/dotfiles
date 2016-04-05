@@ -2463,9 +2463,10 @@ if neobundle#tap('lightline.vim')
             if winwidth('.') > 70
                 if _ == 'RN2'
                     let m = radiko#get_playing_rn2_music()
-                    if winwidth('.') > 140
+                    if winwidth('.') > 120
                         let n = radiko#get_next_rn2_music()
-                        let _ = strlen(m[0]) ? strlen(n[0]) ?
+                        let _ = strlen(m[0]) ?
+                                    \ strlen(n[0]) ?
                                     \ '[Now]' . m[0] . ' - ' . m[1] .
                                     \ ' [Next]' . n[0] . ' - ' . n[1]
                                     \ : m[0] . ' - ' . m[1] : ''
