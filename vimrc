@@ -2468,7 +2468,7 @@ if neobundle#tap('lightline.vim')
                         let _ = strlen(m[0]) ?
                                     \ strlen(n[0]) ?
                                     \ '[Now] ' . m[0] . ' - ' . m[1] .
-                                    \ ' | [Next] ' . n[0] . ' - ' . n[1]
+                                    \ ' [Next] ' . n[0] . ' - ' . n[1]
                                     \ : m[0] . ' - ' . m[1] : ''
                     else
                         let _ = strlen(m[0]) ? m[0] . ' - ' . m[1] : ''
