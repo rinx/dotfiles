@@ -2467,6 +2467,8 @@ if neobundle#tap('lightline.vim')
                         let n = radiko#get_next_rn2_music()
                         let _ = strlen(m[0]) ?
                                     \ strlen(n[0]) ?
+                                    \ strlen(expand('%:p:h')) > 40 ?
+                                    \ m[0] . ' - ' . m[1] :
                                     \ '[Now] ' . m[0] . ' - ' . m[1] .
                                     \ ' [Next] ' . n[0] . ' - ' . n[1]
                                     \ : m[0] . ' - ' . m[1] : ''
