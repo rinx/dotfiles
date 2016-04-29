@@ -1017,7 +1017,7 @@ if neobundle#tap('unite.vim')
                     \ ['unite radiko', 'Unite radiko'],
                     \ ['stop radiko', 'RadikoStop'],
                     \ ['unite RN2-musics', 'Unite rn2musics -no-quit'],
-                    \ ['RN2-click-de-onair', 'http://www.radionikkei.jp/rn2/cdo/']
+                    \ ['RN2-click-de-onair', 'http://www.radionikkei.jp/rn2/cdo/'],
                     \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
                     \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
                     \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
