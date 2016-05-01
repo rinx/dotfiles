@@ -1,0 +1,1 @@
+setl shiftwidth=2
