@@ -1765,6 +1765,13 @@ if neobundle#tap('open-browser.vim')
     call neobundle#untap()
 endif
 
+if neobundle#tap('vim2hs')
+    let g:haskell_conceal = 0
+    let g:haskell_conceal_wide = 0
+    let g:haskell_conceal_enumerations = 0
+    call neobundle#untap()
+endif
+
 if neobundle#tap('vim-ref')
     let g:ref_source_webdict_sites = {
                 \ 'je' : {
