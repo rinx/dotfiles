@@ -2251,11 +2251,11 @@ nnoremap Q <Nop>
 
 if neobundle#tap('unite.vim')
     " for Unite-menu:shortcut
-    Arpeggio nmap msa [unite]ms
-    Arpeggio nmap msc [unite]msc
-    Arpeggio nmap msd [unite]msd
-    Arpeggio nmap msf [unite]msf
-    Arpeggio nmap msu [unite]msu
+    " Arpeggio nmap msa [unite]ms
+    " Arpeggio nmap msc [unite]msc
+    " Arpeggio nmap msd [unite]msd
+    " Arpeggio nmap msf [unite]msf
+    " Arpeggio nmap msu [unite]msu
     call neobundle#untap()
 endif
 
