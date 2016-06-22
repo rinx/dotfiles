@@ -10,6 +10,7 @@
 
 [diff]
     tool = vimdiff
+    compactionHeuristic = true
 
 [difftool]
     prompt = false
@@ -66,4 +67,9 @@
 
 [credential]
 	helper = cache --timeout=3600
+
+[pager]
+    log  = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
 
