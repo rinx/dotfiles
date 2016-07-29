@@ -1153,6 +1153,8 @@ if neobundle#tap('unite.vim')
                     \["yes", "🙆"],
                     \["no", "🙅🏻"],
                     \["heart", "❤"],
+                    \["camera", "📸"],
+                    \["fire", "🔥"],
                     \["stop", "✋🏻"]
                     \]
         function! g:unite_source_menu_menus.kaomoji.map(key, value)
