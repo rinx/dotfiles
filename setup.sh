@@ -147,17 +147,17 @@ fi
 
 if [ "$FLG_V" = "TRUE" ]; then
     # for vim 
-    if [ ! -d $HOME/.vim/bundle/neobundle.vim ] || [ "$FLG_F" = "TRUE" ]; then
-        [ "$FLG_F" = "TRUE" ] && [ -d $HOME/.vim/bundle/neobundle.vim ] && rm -rf $HOME/.vim/bundle/neobundle.vim
-        mkdir -p $HOME/.vim/bundle
-        git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim > /dev/null 2>&1
+    if [ ! -d $HOME/.vim/dein/repos/github.com/Shougo/dein.vim ] || [ "$FLG_F" = "TRUE" ]; then
+        [ "$FLG_F" = "TRUE" ] && [ -d $HOME/.vim/repos/github.com/Shougo/dein/dein.vim ] && rm -rf $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
+        mkdir -p $HOME/.vim/dein/repos/github.com/Shougo
+        git clone https://github.com/Shougo/dein.vim $HOME/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
         if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mneobundle.vim cloned in $HOME/.vim/bundle/neobundle.vim\033[00m" | sed "s/^-e //"
+            echo -e "\033[0;32m✔ \033[1;36dein.vim cloned in $HOME/.vim/deinrepos/github.com/Shougo/dein.vim\033[00m" | sed "s/^-e //"
         else
-            echo -e "\033[0;31m✗ \033[1;31mneobundle.vim cloning failed\033[00m" | sed "s/^-e //"
+            echo -e "\033[0;31m✗ \033[1;31mdein.vim cloning failed\033[00m" | sed "s/^-e //"
         fi
     else
-        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.vim/bundle/neobundle.vim \033[00m" | sed "s/^-e //"
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.vim/dein/repos/github.com/Shougo/dein.vim \033[00m" | sed "s/^-e //"
     fi
 
     # vim filetype plugins
