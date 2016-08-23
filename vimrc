@@ -65,7 +65,7 @@ if filereadable(expand('~/.vimrc_private'))
 endif
 
 " -- Plugin settings
-function! Rinx_init_neocomplete_hook_add() abort
+function! s:init_neocomplete_hook_add() abort
     let g:neocomplete#enable_at_startup = 1
 
     let g:neocomplete#min_keyword_length = 3
@@ -123,7 +123,7 @@ augroup vimrc-omnifuncs
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-function! Rinx_init_neosnippet_hook_add() abort
+function! s:init_neosnippet_hook_add() abort
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
@@ -149,11 +149,11 @@ function! Rinx_init_neosnippet_hook_add() abort
     augroup END
 endfunction
 
-function! Rinx_init_vimfiler_hook_add() abort
+function! s:init_vimfiler_hook_add() abort
     let g:vimfiler_force_overwrite_statusline = 0
 endfunction
 
-function! Rinx_init_vimshell_hook_add() abort
+function! s:init_vimshell_hook_add() abort
     let g:vimshell_force_overwrite_statusline = 0
 
     nnoremap <silent> ,v :<C-u>VimShell<CR>
@@ -165,11 +165,11 @@ function! Rinx_init_vimshell_hook_add() abort
     let g:vimshell_external_history_path = expand('~/.zsh_history')
 endfunction
 
-function! Rinx_init_arpeggio_hook_add() abort
+function! s:init_arpeggio_hook_add() abort
     call arpeggio#load()
 endfunction
 
-function! Rinx_init_unite_hook_add() abort
+function! s:init_unite_hook_add() abort
     let g:unite_force_overwrite_statusline = 0
     let g:unite_enable_start_insert = 0
     let g:unite_source_history_yank_enable = 1
@@ -410,7 +410,7 @@ function! Rinx_init_unite_hook_add() abort
     nnoremap <silent> [unite]rn2 :<C-u>Unite rn2musics -no-quit<CR>
 endfunction
 
-function! Rinx_init_skk_hook_add() abort
+function! s:init_skk_hook_add() abort
     let g:skk_jisyo = '~/.skk-jisyo'
 
     if has('mac')
@@ -472,7 +472,7 @@ function! Rinx_init_skk_hook_add() abort
     endfunction
 endfunction
 
-function! Rinx_init_eskk_hook_add() abort
+function! s:init_eskk_hook_add() abort
     let g:eskk#dictionary = {
                 \ 'path' : '~/.skk-jisyo',
                 \ 'sorted' : 0,
@@ -522,7 +522,7 @@ function! Rinx_init_eskk_hook_add() abort
     "let g:eskk#keep_state = 1
 endfunction
 
-function! Rinx_init_quickrun_hook_add() abort
+function! s:init_quickrun_hook_add() abort
     let g:quickrun_config = {
                 \ '_' : {
                 \   'outputter' : 'error',
@@ -596,7 +596,7 @@ function! Rinx_init_quickrun_hook_add() abort
     augroup END
 endfunction
 
-function! Rinx_init_watchdogs_hook_add() abort
+function! s:init_watchdogs_hook_add() abort
     call watchdogs#setup(g:quickrun_config)
 
     let g:watchdogs_check_BufWritePost_enable = 1
@@ -607,7 +607,7 @@ function! Rinx_init_watchdogs_hook_add() abort
                 \}
 endfunction
 
-function! Rinx_init_lexima_hook_post_source() abort
+function! s:init_lexima_hook_post_source() abort
     let g:lexima_no_default_rules = 0
     let g:lexima_map_escape = ''
     call lexima#set_default_rules()
@@ -637,7 +637,7 @@ function! Rinx_init_lexima_hook_post_source() abort
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*\;\s.*\%#', 'input': '<CR>; ', 'filetype': ['idlang']})
 endfunction
 
-function! Rinx_init_gitgutter_hook_add() abort
+function! s:init_gitgutter_hook_add() abort
     let g:gitgutter_max_signs = 10000
     let g:gitgutter_map_keys = 0
     let g:gitgutter_sign_added = '✚'
@@ -645,7 +645,7 @@ function! Rinx_init_gitgutter_hook_add() abort
     let g:gitgutter_sign_removed = '✘'
 endfunction
 
-function! Rinx_init_gundo_hook_add() abort
+function! s:init_gundo_hook_add() abort
     nnoremap <F5> :<C-u>GundoToggle<CR>
     let g:gundo_width = 45
     let g:gundo_preview_height = 15
@@ -658,7 +658,7 @@ function! Rinx_init_gundo_hook_add() abort
     let g:gundo_playback_delay = 100
 endfunction
 
-function! Rinx_init_nerdtree_hook_add() abort
+function! s:init_nerdtree_hook_add() abort
     nnoremap <F6> :<C-u>NERDTreeToggle<CR>
     augroup vimrc-nerdtree
         autocmd!
@@ -666,7 +666,7 @@ function! Rinx_init_nerdtree_hook_add() abort
     augroup END
 endfunction
 
-function! Rinx_init_yankround_hook_add() abort
+function! s:init_yankround_hook_add() abort
     nmap p <Plug>(yankround-p)
     nmap P <Plug>(yankround-P)
     nmap gp <Plug>(yankround-gp)
@@ -678,7 +678,7 @@ function! Rinx_init_yankround_hook_add() abort
     let g:yankround_use_region_hl = 1
 endfunction
 
-function! Rinx_init_asterisk_hook_add() abort
+function! s:init_asterisk_hook_add() abort
     map *   <Plug>(asterisk-*)
     map #   <Plug>(asterisk-#)
     map g*  <Plug>(asterisk-g*)
@@ -689,13 +689,13 @@ function! Rinx_init_asterisk_hook_add() abort
     map gz# <Plug>(asterisk-gz#)
 endfunction
 
-function! Rinx_init_incsearch_hook_add() abort
+function! s:init_incsearch_hook_add() abort
     map /  <Plug>(incsearch-forward)
     map ?  <Plug>(incsearch-backward)
     map g/ <plug>(incsearch-stay)
 endfunction
 
-function! Rinx_init_anzu_hook_add() abort
+function! s:init_anzu_hook_add() abort
     nmap n <Plug>(anzu-n)zz
     nmap N <Plug>(anzu-N)zz
     nmap * <Plug>(anzu-star)zz
@@ -706,14 +706,14 @@ function! Rinx_init_anzu_hook_add() abort
     augroup END
 endfunction
 
-function! Rinx_init_visualstar_hook_add() abort
+function! s:init_visualstar_hook_add() abort
     map * <Plug>(visualstar-*)
     map # <Plug>(visualstar-#)
     map g* <Plug>(visualstar-g*)
     map g# <Plug>(visualstar-g#)
 endfunction
 
-function! Rinx_init_cleverf_hook_add() abort
+function! s:init_cleverf_hook_add() abort
     let g:clever_f_not_overwrites_standard_mappings = 1
     let g:clever_f_across_no_line = 0
     let g:clever_f_ignore_case = 0
@@ -736,7 +736,7 @@ function! Rinx_init_cleverf_hook_add() abort
     nmap T <Plug>(clever-f-T)
 endfunction
 
-function! Rinx_init_jplus_hook_add() abort
+function! s:init_jplus_hook_add() abort
     nmap J <Plug>(jplus)
     vmap J <Plug>(jplus)
 
@@ -763,14 +763,14 @@ function! Rinx_init_jplus_hook_add() abort
                 \}
 endfunction
 
-function! Rinx_init_quickhl_hook_add() abort
+function! s:init_quickhl_hook_add() abort
     nmap <Space>m <Plug>(quickhl-manual-this)
     xmap <Space>m <Plug>(quickhl-manual-this)
     nmap <Space>M <Plug>(quickhl-manual-reset)
     xmap <Space>M <Plug>(quickhl-manual-reset)
 endfunction
 
-function! Rinx_init_niji_hook_source() abort
+function! s:init_niji_hook_source() abort
     let g:niji_matching_filetypes = [
                 \ 'lisp',
                 \ 'scheme',
@@ -780,16 +780,16 @@ endfunction
 
 "operator
 
-function! Rinx_init_operator_replace_hook_add() abort
+function! s:init_operator_replace_hook_add() abort
     Arpeggio map or <Plug>(operator-replace)
 endfunction
 
-function! Rinx_init_operator_comment_hook_add() abort
+function! s:init_operator_comment_hook_add() abort
     Arpeggio map oc <Plug>(operator-comment)
     Arpeggio map od <Plug>(operator-uncomment)
 endfunction
 
-function! Rinx_init_operator_surround_hook_add() abort
+function! s:init_operator_surround_hook_add() abort
     map Sa <Plug>(operator-surround-append)
     map Sd <Plug>(operator-surround-delete)
     map Sr <Plug>(operator-surround-replace)
@@ -797,7 +797,7 @@ endfunction
 
 
 "textobj
-function! Rinx_init_textobj_jabraces_hook_add() abort
+function! s:init_textobj_jabraces_hook_add() abort
     let g:textobj_jabraces_no_default_key_mappings = 1
 
     omap aj( <Plug>(textobj-jabraces-parens-a)
@@ -825,14 +825,14 @@ function! Rinx_init_textobj_jabraces_hook_add() abort
     vmap ijs <Plug>(textobj-jabraces-sumi-kakko-i)
 endfunction
 
-function! Rinx_init_textobj_multiblock_hook_add() abort
+function! s:init_textobj_multiblock_hook_add() abort
     omap ab <Plug>(textobj-multiblock-a)
     omap ib <Plug>(textobj-multiblock-i)
     vmap ab <Plug>(textobj-multiblock-a)
     vmap ib <Plug>(textobj-multiblock-i)
 endfunction
 
-function! Rinx_init_textobj_multitextobj_hook_add() abort
+function! s:init_textobj_multitextobj_hook_add() abort
     let g:textobj_multitextobj_textobjects_i = [
                 \   '<Plug>(textobj-url-i)',
                 \   '<Plug>(textobj-multiblock-i)',
@@ -874,11 +874,11 @@ function! Rinx_init_textobj_multitextobj_hook_add() abort
     vmap ijb <Plug>(textobj-multitextobj-jabraces-i)
 endfunction
 
-function! Rinx_init_textobj_ruby_hook_source() abort
+function! s:init_textobj_ruby_hook_source() abort
     let g:textobj_ruby_more_mappings = 1
 endfunction
 
-function! Rinx_init_capture_hook_source() abort
+function! s:init_capture_hook_source() abort
     augroup vimrc-capture
         autocmd!
         autocmd FileType capture nnoremap <buffer><silent>q :<C-u>q<CR>
@@ -886,7 +886,7 @@ function! Rinx_init_capture_hook_source() abort
     augroup END
 endfunction
 
-function! Rinx_init_openbrowser_hook_add() abort
+function! s:init_openbrowser_hook_add() abort
     if has('mac')
         let g:openbrowser_browser_commands = [
                     \{
@@ -919,13 +919,13 @@ function! Rinx_init_openbrowser_hook_add() abort
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
 endfunction
 
-function! Rinx_init_vim2hs_hook_source() abort
+function! s:init_vim2hs_hook_source() abort
     let g:haskell_conceal = 0
     let g:haskell_conceal_wide = 0
     let g:haskell_conceal_enumerations = 0
 endfunction
 
-function! Rinx_init_ref_hook_add() abort
+function! s:init_ref_hook_add() abort
     let g:ref_source_webdict_sites = {
                 \ 'je' : {
                 \   'url' : 'http://dictionary.infoseek.ne.jp/jeword/%s',
@@ -964,20 +964,20 @@ function! Rinx_init_ref_hook_add() abort
     call altercmd#define('wiki',  'Ref webdict wiki')
 endfunction
 
-function! Rinx_init_tweetvim_hook_source() abort
+function! s:init_tweetvim_hook_source() abort
     let g:tweetvim_tweet_per_page = 50
     let g:tweetvim_display_icon = 0
 endfunction
 
-function! Rinx_init_j6uil_hook_source() abort
+function! s:init_j6uil_hook_source() abort
     let g:J6uil_user = 'rinx'
 endfunction
 
-function! Rinx_init_gista_hook_source() abort
+function! s:init_gista_hook_source() abort
     let g:gista#github_user = 'rinx'
 endfunction
 
-function! Rinx_init_shaberu_hook_source() abort
+function! s:init_shaberu_hook_source() abort
     let g:shaberu_use_voicetext_api = 1
     if exists('g:vimrc_private["shaberu_voicetext_apikey"]')
         let g:shaberu_voicetext_apikey = g:vimrc_private['shaberu_voicetext_apikey']
@@ -985,7 +985,7 @@ function! Rinx_init_shaberu_hook_source() abort
     let g:shaberu_voicetext_speaker = 'hikari'
 endfunction
 
-function! Rinx_init_radiko_hook_add() abort
+function! s:init_radiko_hook_add() abort
     let g:radiko#cache_dir = expand("~/.cache/radiko-vim")
 
     function! s:radiko_echo_rn2_musics()
@@ -997,7 +997,7 @@ function! Rinx_init_radiko_hook_add() abort
     command! RadikoRN2Musics echo <SID>radiko_echo_rn2_musics()
 endfunction
 
-function! Rinx_init_submode_hook_add() abort
+function! s:init_submode_hook_add() abort
     call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
     call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
     call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
@@ -1031,7 +1031,7 @@ call dein#config('vimproc.vim', {
             \})
 
 call dein#add('Shougo/neocomplete.vim', {
-            \ 'hook_add': 'call Rinx_init_neocomplete_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
             \ })
 call dein#config('neocomplete.vim', {
             \   'lazy': 1,
@@ -1047,7 +1047,7 @@ call dein#config('neco-look', {
             \})
 
 call dein#add('Shougo/neosnippet', {
-            \ 'hook_add': 'call Rinx_init_neosnippet_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neosnippet_hook_add()',
             \})
 call dein#config('neosnippet', {
             \ 'lazy': 1,
@@ -1068,7 +1068,7 @@ call dein#config('vim-snippets', {
             \})
 
 call dein#add('Shougo/vimfiler.vim', {
-            \ 'hook_add': 'call Rinx_init_vimfiler_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimfiler_hook_add()',
             \})
 call dein#config('vimfiler.vim', {
             \ 'lazy': 1,
@@ -1079,7 +1079,7 @@ call dein#config('vimfiler.vim', {
             \ ],
             \})
 call dein#add('Shougo/vimshell.vim', {
-            \ 'hook_add': 'call Rinx_init_vimshell_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimshell_hook_add()',
             \})
 call dein#config('vimshell.vim', {
             \ 'lazy': 1,
@@ -1091,15 +1091,15 @@ call dein#config('vimshell.vim', {
             \})
 
 call dein#add('kana/vim-submode', {
-            \ 'hook_add': 'call Rinx_init_submode_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_submode_hook_add()',
             \})
 call dein#add('kana/vim-arpeggio', {
-            \ 'hook_add': 'call Rinx_init_arpeggio_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_arpeggio_hook_add()',
             \})
 call dein#add('kana/vim-altercmd')
 
 call dein#add('Shougo/unite.vim', {
-            \ 'hook_add': 'call Rinx_init_unite_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_unite_hook_add()',
             \})
 call dein#config('unite.vim', {
             \ 'lazy': 1,
@@ -1202,16 +1202,16 @@ call dein#add('itchyny/lightline.vim')
 let s:enable_eskk = 0
 if s:enable_eskk
     call dein#add('tyru/eskk.vim', {
-                \ 'hook_add': 'call Rinx_init_eskk_hook_add()',
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_eskk_hook_add()',
                 \})
 else
     call dein#add('tyru/skk.vim', {
-                \ 'hook_add': 'call Rinx_init_skk_hook_add()',
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_skk_hook_add()',
                 \})
 endif
 
 call dein#add('thinca/vim-quickrun', {
-            \ 'hook_add': 'call Rinx_init_quickrun_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_quickrun_hook_add()',
             \})
 call dein#config('vim-quickrun', {
             \ 'lazy': 1,
@@ -1232,7 +1232,7 @@ call dein#config('unite-quickrun_config', {
 
 call dein#add('osyo-manga/shabadou.vim')
 call dein#add('osyo-manga/vim-watchdogs', {
-            \ 'hook_add': 'call Rinx_init_watchdogs_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_watchdogs_hook_add()',
             \})
 call dein#add('jceb/vim-hier')
 call dein#config('vim-hier', {
@@ -1259,15 +1259,15 @@ call dein#add('cohama/lexima.vim')
 call dein#config('lexima.vim', {
             \ 'lazy': 1,
             \ 'on_i': 1,
-            \ 'hook_post_source': 'call Rinx_init_lexima_hook_post_source()',
+            \ 'hook_post_source': 'call ' . s:SID_PREFIX() . 'init_lexima_hook_post_source()',
             \})
 
 call dein#add('airblade/vim-gitgutter', {
-            \ 'hook_add': 'call Rinx_init_gitgutter_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gitgutter_hook_add()',
             \})
 
 call dein#add('sjl/gundo.vim', {
-            \ 'hook_add': 'call Rinx_init_gundo_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gundo_hook_add()',
             \})
 call dein#config('gundo.vim', {
             \ 'lazy': 1,
@@ -1276,7 +1276,7 @@ call dein#config('gundo.vim', {
             \ ],
             \})
 call dein#add('scrooloose/nerdtree', {
-            \ 'hook_add': 'call Rinx_init_nerdtree_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_add()',
             \})
 call dein#config('nerdtree', {
             \ 'lazy': 1,
@@ -1292,7 +1292,7 @@ call dein#config('nerdtree', {
             \})
 
 call dein#add('LeafCage/yankround.vim', {
-            \ 'hook_add': 'call Rinx_init_yankround_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_yankround_hook_add()',
             \})
 call dein#config('yankround.vim', {
             \ 'lazy': 1,
@@ -1302,7 +1302,7 @@ call dein#config('yankround.vim', {
             \})
 
 call dein#add('haya14busa/vim-asterisk', {
-            \ 'hook_add': 'call Rinx_init_asterisk_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_asterisk_hook_add()',
             \})
 call dein#config('vim-asterisk', {
             \ 'lazy': 1,
@@ -1311,7 +1311,7 @@ call dein#config('vim-asterisk', {
             \ ],
             \})
 call dein#add('haya14busa/incsearch.vim', {
-            \ 'hook_add': 'call Rinx_init_incsearch_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
             \})
 call dein#config('incsearch.vim', {
             \ 'lazy': 1,
@@ -1322,7 +1322,7 @@ call dein#config('incsearch.vim', {
 call dein#add('haya14busa/vim-migemo')
 
 call dein#add('osyo-manga/vim-anzu', {
-            \ 'hook_add': 'call Rinx_init_anzu_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_anzu_hook_add()',
             \})
 call dein#config('vim-anzu', {
             \ 'lazy': 1,
@@ -1332,7 +1332,7 @@ call dein#config('vim-anzu', {
             \})
 call dein#add('osyo-manga/vim-over')
 call dein#add('thinca/vim-visualstar', {
-            \ 'hook_add': 'call Rinx_init_visualstar_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_visualstar_hook_add()',
             \})
 call dein#config('vim-visualstar', {
             \ 'lazy': 1,
@@ -1342,10 +1342,10 @@ call dein#config('vim-visualstar', {
             \})
 
 call dein#add('rhysd/clever-f.vim', {
-            \ 'hook_add': 'call Rinx_init_cleverf_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_cleverf_hook_add()',
             \})
 call dein#add('osyo-manga/vim-jplus', {
-            \ 'hook_add': 'call Rinx_init_jplus_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_jplus_hook_add()',
             \})
 
 call dein#add('thinca/vim-qfreplace')
@@ -1357,7 +1357,7 @@ call dein#config('vim-qfreplace', {
             \})
 
 call dein#add('t9md/vim-quickhl', {
-            \ 'hook_add': 'call Rinx_init_quickhl_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_quickhl_hook_add()',
             \})
 call dein#config('vim-quickhl', {
             \ 'lazy': 1,
@@ -1374,18 +1374,18 @@ call dein#config('vim-niji', {
             \   'scheme',
             \   'clojure',
             \ ],
-            \ 'hook_source': 'call Rinx_init_niji_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_niji_hook_source()',
             \})
 
 call dein#add('kana/vim-operator-user')
 call dein#add('kana/vim-operator-replace', {
-            \ 'hook_add': 'call Rinx_init_operator_replace_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_replace_hook_add()',
             \})
 call dein#add('emonkak/vim-operator-comment', {
-            \ 'hook_add': 'call Rinx_init_operator_comment_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_comment_hook_add()',
             \})
 call dein#add('rhysd/vim-operator-surround', {
-            \ 'hook_add': 'call Rinx_init_operator_surround_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_surround_hook_add()',
             \})
 
 call dein#add('kana/vim-textobj-user')
@@ -1394,15 +1394,15 @@ call dein#add('kana/vim-textobj-function')
 call dein#add('kana/vim-textobj-entire')
 call dein#add('kana/vim-textobj-line')
 call dein#add('kana/vim-textobj-jabraces', {
-            \ 'hook_add': 'call Rinx_init_textobj_jabraces_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_jabraces_hook_add()',
             \})
 call dein#add('lucapette/vim-textobj-underscore')
 call dein#add('mattn/vim-textobj-url')
 call dein#add('osyo-manga/vim-textobj-multiblock', {
-            \ 'hook_add': 'call Rinx_init_textobj_multiblock_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multiblock_hook_add()',
             \})
 call dein#add('osyo-manga/vim-textobj-multitextobj', {
-            \ 'hook_add': 'call Rinx_init_textobj_multitextobj_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multitextobj_hook_add()',
             \})
 call dein#add('rhysd/vim-textobj-ruby')
 call dein#config('vim-textobj-ruby', {
@@ -1410,7 +1410,7 @@ call dein#config('vim-textobj-ruby', {
             \ 'on_ft': [
             \   'ruby',
             \ ],
-            \ 'hook_source': 'call Rinx_init_textobj_ruby_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_textobj_ruby_hook_source()',
             \})
 
 call dein#add('tyru/capture.vim')
@@ -1419,11 +1419,11 @@ call dein#config('capture.vim', {
             \ 'on_cmd': [
             \   'Capture',
             \ ],
-            \ 'hook_source': 'call Rinx_init_capture_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_capture_hook_source()',
             \})
 
 call dein#add('tyru/open-browser.vim', {
-            \ 'hook_add': 'call Rinx_init_openbrowser_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_openbrowser_hook_add()',
             \})
 call dein#config('open-browser.vim', {
             \ 'lazy': 1,
@@ -1490,7 +1490,7 @@ call dein#config('vim2hs', {
             \ 'on_ft': [
             \   'haskell',
             \ ],
-            \ 'hook_source': 'call Rinx_init_vim2hs_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_vim2hs_hook_source()',
             \})
 call dein#add('ujihisa/ref-hoogle')
 call dein#config('ref-hoogle', {
@@ -1578,7 +1578,7 @@ call dein#config('vinarise.vim', {
             \})
 
 call dein#add('thinca/vim-ref', {
-            \ 'hook_add': 'call Rinx_init_ref_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_ref_hook_add()',
             \})
 call dein#config('vim-ref', {
             \ 'lazy': 1,
@@ -1633,7 +1633,7 @@ call dein#config('TweetVim', {
             \ 'on_source': [
             \   'unite.vim',
             \ ],
-            \ 'hook_source': 'call Rinx_init_tweetvim_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_tweetvim_hook_source()',
             \})
 call dein#add('basyura/bitly.vim')
 call dein#add('mattn/favstar-vim')
@@ -1648,7 +1648,7 @@ call dein#config('J6uil.vim', {
             \ 'on_source': [
             \   'unite.vim',
             \ ],
-            \ 'hook_source': 'call Rinx_init_j6uil_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_j6uil_hook_source()',
             \})
 
 call dein#add('lambdalisue/vim-gista')
@@ -1663,7 +1663,7 @@ call dein#config('vim-gista', {
             \ 'on_source': [
             \   'unite.vim',
             \ ],
-            \ 'hook_source': 'call Rinx_init_gista_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gista_hook_source()',
             \})
 
 call dein#add('koron/codic-vim')
@@ -1695,11 +1695,11 @@ call dein#config('shaberu.vim', {
             \   'ShaberuMuteOff',
             \   'ShaberuMuteToggle',
             \ ],
-            \ 'hook_source': 'call Rinx_init_shaberu_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_shaberu_hook_source()',
             \})
 
 call dein#add('rinx/radiko.vim', {
-            \ 'hook_add': 'call Rinx_init_radiko_hook_add()',
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_add()',
             \})
 call dein#config('radiko.vim', {
             \ 'lazy': 1,
