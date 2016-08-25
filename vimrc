@@ -65,7 +65,7 @@ if filereadable(expand('~/.vimrc_private'))
 endif
 
 " -- Plugin settings
-function! s:init_neocomplete_hook_add() abort
+function! s:init_neocomplete_hook_source() abort
     let g:neocomplete#enable_at_startup = 1
 
     let g:neocomplete#min_keyword_length = 3
@@ -108,7 +108,9 @@ function! s:init_neocomplete_hook_add() abort
     let g:neocomplete#sources#dictionary#dictionaries.tweetvim_say =  expand('~/.tweetvim/screen_name')
 
     let g:neocomplete#enable_auto_close_preview = 1
+endfunction
 
+function! s:init_neocomplete_hook_add() abort
     inoremap <expr><C-g> neocomplete#undo_completion()
     inoremap <expr><C-l> neocomplete#complete_common_string()
 endfunction
@@ -1034,8 +1036,9 @@ call dein#add('Shougo/neocomplete.vim', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
             \ })
 call dein#config('neocomplete.vim', {
-            \   'lazy': 1,
-            \   'on_i': 1,
+            \ 'lazy': 1,
+            \ 'on_i': 1,
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_source()',
             \})
 
 call dein#add('ujihisa/neco-look')
