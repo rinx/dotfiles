@@ -171,7 +171,7 @@ function! s:init_arpeggio_hook_add() abort
     call arpeggio#load()
 endfunction
 
-function! s:init_unite_hook_add() abort
+function! s:init_unite_hook_source() abort
     let g:unite_force_overwrite_statusline = 0
     let g:unite_enable_start_insert = 0
     let g:unite_source_history_yank_enable = 1
@@ -369,7 +369,9 @@ function! s:init_unite_hook_add() abort
                         \}
         endif
     endfunction
+endfunction
 
+function! s:init_unite_hook_add() abort
     nnoremap [unite] <Nop>
     nmap ,u [unite]
     "buffer
@@ -1112,6 +1114,7 @@ call dein#config('unite.vim', {
             \   'UniteWithCurrentDir',
             \   'UniteResume',
             \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_unite_hook_source()',
             \})
 call dein#add('Shougo/neomru.vim')
 call dein#config('neomru.vim', {
