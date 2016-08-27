@@ -21,17 +21,10 @@ set shiftwidth=4
 set softtabstop=4
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+    set runtimepath+=~/.vim/dein/repos/github.com/itchyny/lightline.vim
+    set runtimepath+=~/.vim/dein/repos/github.com/tyru/skk.vim
+    set runtimepath+=~/.vim/dein/repos/github.com/tomasr/molokai
 endif
-
-call dein#begin(expand('~/.vim/dein/'))
-
-call dein#add('Shougo/dein.vim')
-call dein#add('itchyny/lightline.vim')
-call dein#add('tyru/skk.vim')
-call dein#add('tomasr/molokai')
-
-call dein#end()
 
 let g:skk_jisyo = '~/.skk-jisyo'
 
