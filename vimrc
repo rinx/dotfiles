@@ -527,6 +527,7 @@ function! s:init_eskk_hook_add() abort
 endfunction
 
 function! s:init_quickrun_hook_add() abort
+    Arpeggio nmap qr <Plug>(quickrun)
     let g:quickrun_config = {
                 \ '_' : {
                 \   'outputter' : 'error',
@@ -592,8 +593,10 @@ function! s:init_quickrun_hook_add() abort
                 \   'runner/vimproc/updatetime' : 40,
                 \ },
                 \}
+endfunction
+
+function! s:init_quickrun_hook_post_source() abort
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-    Arpeggio nmap qr <Plug>(quickrun)
     augroup vimrc-forQuickRun
         autocmd!
         autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'quickrun' | q | endif
@@ -651,6 +654,9 @@ endfunction
 
 function! s:init_gundo_hook_add() abort
     nnoremap <F5> :<C-u>GundoToggle<CR>
+endfunction
+
+function! s:init_gundo_hook_source() abort
     let g:gundo_width = 45
     let g:gundo_preview_height = 15
     let g:gundo_right = 0
@@ -664,6 +670,9 @@ endfunction
 
 function! s:init_nerdtree_hook_add() abort
     nnoremap <F6> :<C-u>NERDTreeToggle<CR>
+endfunction
+
+function! s:init_nerdtree_hook_source() abort
     augroup vimrc-nerdtree
         autocmd!
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -1227,6 +1236,7 @@ call dein#config('vim-quickrun', {
             \ 'on_map': [
             \   '<Plug>(quickrun',
             \ ],
+            \ 'hook_post_source': 'call ' . s:SID_PREFIX() . 'init_quickrun_hook_post_source()',
             \})
 call dein#add('osyo-manga/unite-quickrun_config')
 call dein#config('unite-quickrun_config', {
@@ -1280,6 +1290,7 @@ call dein#config('gundo.vim', {
             \ 'on_cmd': [
             \   'GundoToggle',
             \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gundo_hook_source()',
             \})
 call dein#add('scrooloose/nerdtree', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_add()',
@@ -1295,6 +1306,7 @@ call dein#config('nerdtree', {
             \   'NERDTreeFind',
             \   'NERDTreeCWD',
             \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_source()',
             \})
 
 call dein#add('LeafCage/yankround.vim', {
