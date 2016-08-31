@@ -1033,6 +1033,14 @@ call dein#begin(expand('~/.vim/dein/'))
 "github repositories
 call dein#add('Shougo/dein.vim')
 
+call dein#add('haya14busa/dein-command.vim')
+call dein#config('dein-command.vim', {
+            \ 'lazy': 1,
+            \ 'on_cmd': [
+            \   'Dein',
+            \ ],
+            \})
+
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
     let g:make = 'make'
