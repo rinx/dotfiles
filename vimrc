@@ -686,7 +686,9 @@ function! s:init_yankround_hook_add() abort
     nmap gP <Plug>(yankround-gP)
     nmap <C-p> <Plug>(yankround-prev)
     nmap <C-n> <Plug>(yankround-next)
+endfunction
 
+function! s:init_yankround_hook_source() abort
     let g:yankround_max_history = 35
     let g:yankround_use_region_hl = 1
 endfunction
@@ -1325,6 +1327,7 @@ call dein#config('yankround.vim', {
             \ 'on_map': [
             \   '<Plug>(yankround-',
             \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yankround_hook_source()',
             \})
 
 call dein#add('haya14busa/vim-asterisk', {
