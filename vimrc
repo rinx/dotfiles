@@ -310,6 +310,7 @@ function! s:init_unite_hook_source() abort
                 \["crow", "( っ˘ω˘c)"],
                 \["wahhab", "( っ'ヮ'c)"],
                 \["wahhab", "三( っ'ヮ'c)"],
+                \["wahhab", "( っ˘ヮ˘c)💤"],
                 \["poyo", "(´,,•ω•,,｀)"],
                 \["poyo", "(｡・﹏・｡)"],
                 \["mogumogu", "(∩´〰`∩)"],
@@ -352,7 +353,11 @@ function! s:init_unite_hook_source() abort
                 \["camera", "📸"],
                 \["fire", "🔥"],
                 \["arm", "💪🏻"],
-                \["stop", "✋🏻"]
+                \["stop", "✋🏻"],
+                \["talk", "( っ'ヮ'c)💬"],
+                \["sleep", "( っ˘ヮ˘c)💤"],
+                \["sunglasses", "( っ🕶c)"],
+                \["no smoking", "(っ'ヮ')っ🚭"]
                 \]
     function! g:unite_source_menu_menus.kaomoji.map(key, value)
         let [word, value] = a:value
