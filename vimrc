@@ -356,6 +356,7 @@ function! s:init_unite_hook_source() abort
                 \["talk", "( っ'ヮ'c)💬"],
                 \["sleep", "( っ˘ヮ˘c)💤"],
                 \["sunglasses", "( っ🕶c)"],
+                \["lambda", "( っ'λ'c)"],
                 \["no smoking", "(っ'ヮ')っ🚭"]
                 \]
     function! g:unite_source_menu_menus.kaomoji.map(key, value)
