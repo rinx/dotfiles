@@ -293,6 +293,7 @@ function! s:init_unite_hook_source() abort
                 \["hawawa", "\:;( っ'﹏'c);:"],
                 \["hawawa", "\:;( っ'ω'c);:"],
                 \["hawawa", "\:;(∩´﹏`∩);:"],
+                \["hawawa", "｡+ﾟ(∩´﹏`∩)ﾟ+｡"],
                 \["dame", "(乂'ω')"],
                 \["hawawa", "(っ´﹏`c)"],
                 \["hawawa", "(｡>﹏<｡)"],
