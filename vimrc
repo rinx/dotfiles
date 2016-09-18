@@ -345,6 +345,7 @@ function! s:init_unite_hook_source() abort
                 \["nikkori", "( っ'◡'c)"],
                 \["beer", "Ʊ\"-ʓ"],
                 \["beer", "🍺"],
+                \["beer", "🍻"],
                 \["angry", "💢"],
                 \["sushi", "🍣"],
                 \["yes", "🙆"],
