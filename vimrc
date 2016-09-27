@@ -356,6 +356,7 @@ function! s:init_unite_hook_source() abort
                 \["arm", "💪🏻"],
                 \["stop", "✋🏻"],
                 \["talk", "( っ'ヮ'c)💬"],
+                \["sing", "( っ'ヮ'c)～♪"],
                 \["sleep", "( っ˘ヮ˘c)💤"],
                 \["sunglasses", "( っ🕶c)"],
                 \["lambda", "( っ'λ'c)"],
