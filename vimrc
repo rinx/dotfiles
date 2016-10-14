@@ -330,8 +330,6 @@ function! s:init_unite_hook_source() abort
                 \["wa-i", "ヾ(๑╹◡╹)ﾉ\""],
                 \["wa-i", "ヾ(＠⌒ー⌒＠)ノ"],
                 \["peta", "\_(⌒(\_-ω-)\_"],
-                \["osenbe", "〄"],
-                \["nyanpasu", "ฅ(๑'Δ'๑)"],
                 \["mikori", "ヾ(⌒(\_๑›◡‹ )\_"],
                 \["mozomozo", "(๑•﹏•)"],
                 \["kirakira", "✲ﾟ｡.(✿╹◡╹)ﾉ☆.｡₀:*ﾟ✲ﾟ*:₀｡"],
