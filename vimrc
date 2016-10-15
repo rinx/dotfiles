@@ -353,7 +353,7 @@ function! s:init_unite_hook_source() abort
                 \["fire", "🔥"],
                 \["arm", "💪🏻"],
                 \["stop", "✋🏻"],
-                \["kirakira", "✨"]
+                \["kirakira", "✨"],
                 \["talk", "( っ'ヮ'c)💬"],
                 \["sing", "( っ'ヮ'c)～♪"],
                 \["sleep", "( っ˘ヮ˘c)💤"],
