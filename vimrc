@@ -278,6 +278,18 @@ function! s:init_unite_hook_source() abort
                 \ 'description' : 'kaomoji dictionary',
                 \}
     let g:unite_source_menu_menus.kaomoji.candidates= [
+                \["wahhab", "( っ'ヮ'c)"],
+                \["wahhab", "三( っ'ヮ'c)"],
+                \["wahhab", "( っ˘ヮ˘c)💤"],
+                \["wahhab", "(っ'ヮ')っ"],
+                \["wahhab", "(((っ'ヮ')っ"],
+                \["wahhab", "( っ'ヮ'c)❤"],
+                \["talk", "( っ'ヮ'c)💬"],
+                \["sing", "( っ'ヮ'c)～♪"],
+                \["sleep", "( っ˘ヮ˘c)💤"],
+                \["sunglasses", "( っ🕶c)"],
+                \["lambda", "( っ'λ'c)"],
+                \["no smoking", "(っ'ヮ')っ🚭"],
                 \["", "( 'ω').｡oO(…)"],
                 \["", "ヾ(⌒(\_•ω•)\_"],
                 \["", "ヾ(⌒(ﾉ•ω•)ﾉ"],
@@ -307,12 +319,6 @@ function! s:init_unite_hook_source() abort
                 \["crow", "( っ'ω'c)"],
                 \["crow", "三( っ'ω'c)"],
                 \["crow", "( っ˘ω˘c)"],
-                \["wahhab", "( っ'ヮ'c)"],
-                \["wahhab", "三( っ'ヮ'c)"],
-                \["wahhab", "( っ˘ヮ˘c)💤"],
-                \["wahhab", "(っ'ヮ')っ"],
-                \["wahhab", "(((っ'ヮ')っ"],
-                \["wahhab", "( っ'ヮ'c)❤"],
                 \["poyo", "(｡・﹏・｡)"],
                 \["mogumogu", "(∩´〰`∩)"],
                 \["mogumogu", "ŧ‹\"ŧ‹\"(๑´ㅂ`๑)ŧ‹\"ŧ‹\""],
@@ -354,13 +360,7 @@ function! s:init_unite_hook_source() abort
                 \["arm", "💪🏻"],
                 \["stop", "✋🏻"],
                 \["kirakira", "✨"],
-                \["coffee", "☕"],
-                \["talk", "( っ'ヮ'c)💬"],
-                \["sing", "( っ'ヮ'c)～♪"],
-                \["sleep", "( っ˘ヮ˘c)💤"],
-                \["sunglasses", "( っ🕶c)"],
-                \["lambda", "( っ'λ'c)"],
-                \["no smoking", "(っ'ヮ')っ🚭"]
+                \["coffee", "☕"]
                 \]
     function! g:unite_source_menu_menus.kaomoji.map(key, value)
         let [word, value] = a:value
