@@ -1412,6 +1412,8 @@ call dein#config('vim-niji', {
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_niji_hook_source()',
             \})
 
+call dein#add('Konfekt/FastFold')
+
 call dein#add('kana/vim-operator-user')
 call dein#add('kana/vim-operator-replace', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_replace_hook_add()',
