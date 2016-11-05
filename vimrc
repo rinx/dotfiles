@@ -1345,15 +1345,15 @@ call dein#config('vim-asterisk', {
             \   '<Plug>(asterisk-',
             \ ],
             \})
-call dein#add('haya14busa/incsearch.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
-            \})
-call dein#config('incsearch.vim', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(incsearch-',
-            \ ],
-            \})
+" call dein#add('haya14busa/incsearch.vim', {
+"             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
+"             \})
+" call dein#config('incsearch.vim', {
+"             \ 'lazy': 1,
+"             \ 'on_map': [
+"             \   '<Plug>(incsearch-',
+"             \ ],
+"             \})
 call dein#add('haya14busa/vim-migemo')
 
 call dein#add('osyo-manga/vim-anzu', {
