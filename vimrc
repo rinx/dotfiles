@@ -1345,15 +1345,15 @@ call dein#config('vim-asterisk', {
             \   '<Plug>(asterisk-',
             \ ],
             \})
-call dein#add('haya14busa/incsearch.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
-            \})
-call dein#config('incsearch.vim', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(incsearch-',
-            \ ],
-            \})
+" call dein#add('haya14busa/incsearch.vim', {
+"             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
+"             \})
+" call dein#config('incsearch.vim', {
+"             \ 'lazy': 1,
+"             \ 'on_map': [
+"             \   '<Plug>(incsearch-',
+"             \ ],
+"             \})
 call dein#add('haya14busa/vim-migemo')
 
 call dein#add('osyo-manga/vim-anzu', {
@@ -1411,6 +1411,8 @@ call dein#config('vim-niji', {
             \ ],
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_niji_hook_source()',
             \})
+
+call dein#add('Konfekt/FastFold')
 
 call dein#add('kana/vim-operator-user')
 call dein#add('kana/vim-operator-replace', {
