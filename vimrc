@@ -8,7 +8,7 @@
 " --- The beginning of initialization ---
 
 "not vi compatible
-if has('vim_starting')
+if &compatible
     set nocompatible
 endif
 
