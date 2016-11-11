@@ -749,7 +749,7 @@ function! s:init_cleverf_hook_add() abort
     let g:clever_f_mark_char_color = 'CleverFDefaultLabel'
     let g:clever_f_repeat_last_char_inputs = ["\<CR>"]
 
-    nmap <Plug>(arpeggio-default:f) <Plug>(clever-f-f)
+    nmap f <Plug>(clever-f-f)
     nmap F <Plug>(clever-f-F)
     nmap t <Plug>(clever-f-t)
     nmap T <Plug>(clever-f-T)
