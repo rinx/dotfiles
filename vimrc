@@ -197,7 +197,7 @@ function! s:init_unite_hook_source() abort
                 \ ['quickrun', 'QuickRun'],
                 \ ['make(quickrun)', 'QuickRun make'],
                 \ ['watchdogs', 'WatchdogsRun'],
-                \ ['Gundo', 'GundoToggle'],
+                \ ['UNDOtree', 'UndotreeToggle'],
                 \ ['NERDTree', 'NERDTreeToggle'],
                 \ ['map', 'Unite output:map'],
                 \ ['register', 'Unite output:register'],
@@ -659,20 +659,17 @@ function! s:init_gitgutter_hook_add() abort
     let g:gitgutter_sign_removed = '✘'
 endfunction
 
-function! s:init_gundo_hook_add() abort
-    nnoremap <F5> :<C-u>GundoToggle<CR>
+function! s:init_undotree_hook_add() abort
+    nnoremap <F5> :<C-u>UndotreeToggle<CR>
 endfunction
 
-function! s:init_gundo_hook_source() abort
-    let g:gundo_width = 45
-    let g:gundo_preview_height = 15
-    let g:gundo_right = 0
-    let g:gundo_help = 1
-    let g:gundo_map_move_older = "j"
-    let g:gundo_map_move_newer = "k"
-    let g:gundo_close_on_revert = 1
-    let g:gundo_auto_preview = 1
-    let g:gundo_playback_delay = 100
+function! s:init_undotree_hook_source() abort
+    let g:undotree_WindowLayout = 1
+    let g:undotree_SplitWidth = 50
+    let g:undotree_DiffpanelHeight = 10
+    let g:undotree_DiffAutoOpen = 1
+    let g:undotree_SetFocusWhenToggle = 0
+    let g:undotree_HighlightChangedText = 1
 endfunction
 
 function! s:init_nerdtree_hook_add() abort
@@ -1299,15 +1296,15 @@ call dein#add('airblade/vim-gitgutter', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gitgutter_hook_add()',
             \})
 
-call dein#add('sjl/gundo.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gundo_hook_add()',
+call dein#add('mbbill/undotree', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_undotree_hook_add()',
             \})
-call dein#config('gundo.vim', {
+call dein#add('mbbill/undotree', {
             \ 'lazy': 1,
             \ 'on_cmd': [
-            \   'GundoToggle',
+            \   'UndotreeToggle',
             \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gundo_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_undotree_hook_source()',
             \})
 call dein#add('scrooloose/nerdtree', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_add()',
@@ -2131,7 +2128,7 @@ function! s:close_special_windows()
                 \ 'vimshell',
                 \ 'qf',
                 \ 'quickrun',
-                \ 'gundo',
+                \ 'undotree',
                 \ 'nerdtree',
                 \ 'help',
                 \ ]
@@ -2274,16 +2271,16 @@ let g:lightline = {
             \ }
 
 function! MyModified()
-    return &ft =~ 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|undotree\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
+    return &ft !~? 'help\|vimfiler\|undotree\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
 endfunction
 
 function! MyFugitive()
     try
-        if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+        if &ft !~? 'vimfiler\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
             let _ = fugitive#head()
             return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
         endif
@@ -2294,7 +2291,7 @@ endfunction
 
 function! MyFugitiveInv()
     try
-        if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+        if &ft !~? 'vimfiler\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
             let _ = fugitive#head()
             return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
         endif
@@ -2319,6 +2316,8 @@ function! MyMode()
     return &ft == 'vimfiler' ? 'VimFiler' : 
                 \ &ft == 'unite' ? 'Unite' :
                 \ &ft == 'vimshell' ? 'VimShell' :
+                \ &ft == 'undotree' ? 'UNDOtree' :
+                \ &ft == 'nerdtree' ? 'NERDtree' :
                 \ &ft == 'qf' ? 'QuickFix' :
                 \ &ft == 'quickrun' ? '' :
                 \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
