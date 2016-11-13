@@ -1791,6 +1791,7 @@ set smartcase
 filetype plugin indent on
 set autoindent
 set smartindent
+set breakindent
 
 "unsaved buffer warning
 set confirm
@@ -1873,6 +1874,8 @@ set noautochdir
 set autoread
 set noautowrite
 
+set noexrc
+set nosecure
 
 " --- Color settings ---
 
