@@ -2027,9 +2027,8 @@ inoremap <Down> <Nop>
 inoremap <Up> <Nop>
 inoremap <Right> <Nop>
 
-if $TERM =~ 'screen'
-    nnoremap <C-t> <Nop>
-endif
+"For TMUX
+nnoremap <C-t> <Nop>
 
 "Remap to act as expected
 nnoremap j gj
