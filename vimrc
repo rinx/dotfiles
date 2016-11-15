@@ -680,6 +680,7 @@ function! s:init_nerdtree_hook_source() abort
     augroup vimrc-nerdtree
         autocmd!
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+        autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&filetype')) == 'nerdtree' | q | endif
     augroup END
 endfunction
 
@@ -2026,9 +2027,8 @@ inoremap <Down> <Nop>
 inoremap <Up> <Nop>
 inoremap <Right> <Nop>
 
-if $TERM =~ 'screen'
-    nnoremap <C-t> <Nop>
-endif
+"For TMUX
+nnoremap <C-t> <Nop>
 
 "Remap to act as expected
 nnoremap j gj
