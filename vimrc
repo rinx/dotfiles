@@ -1989,16 +1989,26 @@ command! -range CsvToTexTable <line1>,<line2>call s:csv_to_tex_table()
 function! s:make_japanese_input_window()
     let newbufname = 'input_via_skk'
     silent! execute 'new' newbufname
+    silent! execute 'setlocal' ('filetype=' . newbufname)
 
+    silent! execute 'inoremap <buffer> <CR> <Esc>:' . _ . '<CR>dd'
+    silent! execute 'nnoremap <buffer> <CR> :' . _ . '<CR>dd'
+    silent! nnoremap <buffer> q :<C-u>q!<CR>
+
+    augroup vimrc-makeJapaneseInputWindow
+        autocmd!
+        autocmd InsertLeave,FileType input_via_skk call <SID>cp_from_japanese_input_window()
+    augroup END
+endfunction
+
+function! s:cp_from_japanese_input_window()
     if has('mac')
         let _ = 'w !pbcopy'
     elseif has('unix')
         let _ = 'w !xsel --clipboard --input'
     endif
-
-    silent! execute 'inoremap <buffer> <CR> <Esc>:' . _ . '<CR>dd'
-    silent! execute 'nnoremap <buffer> <CR> :' . _ . '<CR>dd'
-    silent! nnoremap <buffer> q :<C-u>q!<CR>
+    silent! execute _
+    silent! execute "call setline('.', '')"
 endfunction
 
 command! MakeJapaneseInputWindow call s:make_japanese_input_window()
@@ -2134,6 +2144,7 @@ function! s:close_special_windows()
                 \ 'undotree',
                 \ 'nerdtree',
                 \ 'help',
+                \ 'input_via_skk',
                 \ ]
     let i = 1
     while i <= winnr('$')
