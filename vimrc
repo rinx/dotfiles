@@ -715,6 +715,10 @@ function! s:init_incsearch_hook_add() abort
     map g/ <plug>(incsearch-stay)
 endfunction
 
+function! s:init_auto_programming_hook_add() abort
+    set completefunc=autoprogramming#complete
+endfunction
+
 function! s:init_anzu_hook_add() abort
     nmap n <Plug>(anzu-n)zz
     nmap N <Plug>(anzu-N)zz
@@ -1354,6 +1358,10 @@ call dein#config('vim-asterisk', {
 "             \ ],
 "             \})
 call dein#add('haya14busa/vim-migemo')
+
+call dein#add('haya14busa/vim-auto-programming', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_auto_programming_hook_add()',
+            \})
 
 call dein#add('osyo-manga/vim-anzu', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_anzu_hook_add()',
