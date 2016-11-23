@@ -710,9 +710,23 @@ function! s:init_asterisk_hook_add() abort
 endfunction
 
 function! s:init_incsearch_hook_add() abort
-    map /  <Plug>(incsearch-forward)
-    map ?  <Plug>(incsearch-backward)
-    map g/ <plug>(incsearch-stay)
+    function! s:init_incsearch_hook_add_autocmd() abort
+        let _ = [
+                \ 'markdown',
+                \ 'latex',
+                \ 'tex',
+                \ 'plaintex',
+                \ ]
+        if index(_, &ft) < 0
+            map <buffer>/  <Plug>(incsearch-forward)
+            map <buffer>?  <Plug>(incsearch-backward)
+            map <buffer>g/ <plug>(incsearch-stay)
+        endif
+    endfunction
+    augroup vimrc-incsearch
+        autocmd!
+        autocmd FileType * call s:init_incsearch_hook_add_autocmd()
+    augroup END
 endfunction
 
 function! s:init_auto_programming_hook_add() abort
@@ -1348,15 +1362,15 @@ call dein#config('vim-asterisk', {
             \   '<Plug>(asterisk-',
             \ ],
             \})
-" call dein#add('haya14busa/incsearch.vim', {
-"             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
-"             \})
-" call dein#config('incsearch.vim', {
-"             \ 'lazy': 1,
-"             \ 'on_map': [
-"             \   '<Plug>(incsearch-',
-"             \ ],
-"             \})
+call dein#add('haya14busa/incsearch.vim', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
+            \})
+call dein#config('incsearch.vim', {
+            \ 'lazy': 1,
+            \ 'on_map': [
+            \   '<Plug>(incsearch-',
+            \ ],
+            \})
 call dein#add('haya14busa/vim-migemo')
 
 call dein#add('haya14busa/vim-auto-programming', {
