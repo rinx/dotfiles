@@ -137,16 +137,16 @@ let g:lightline = {
             \ }
 
 function! MyModified()
-    return &ft =~ 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|qf' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
+    return &ft !~? 'help\|qf' && &ro ? ' ' : ''
 endfunction
 
 function! MyFugitive()
     try
-        if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+        if exists('*fugitive#head')
             let _ = fugitive#head()
             return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
         endif
@@ -157,7 +157,7 @@ endfunction
 
 function! MyFugitiveInv()
     try
-        if &ft !~? 'vimfiler\|gundo\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+        if exists('*fugitive#head')
             let _ = fugitive#head()
             return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
         endif
@@ -179,21 +179,13 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-    return &ft == 'vimfiler' ? 'VimFiler' : 
-                \ &ft == 'unite' ? 'Unite' :
-                \ &ft == 'vimshell' ? 'VimShell' :
-                \ &ft == 'qf' ? '' :
-                \ &ft == 'quickrun' ? '' :
+    return &ft == 'qf' ? '' :
                 \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
 endfunction
 
 function! MyFilename()
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \  &ft == 'unite' ? unite#get_status_string() :
-                \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-                \  &ft == 'qf' ? 'QuickFix' :
-                \  &ft == 'quickrun' ? 'QuickRun' :
+                \ (&ft == 'qf' ? 'QuickFix' :
                 \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
                 \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
@@ -206,11 +198,7 @@ endfunction
 
 function! MyAbsPath()
     let _ = expand('%:p:h')
-    return &ft == 'vimfiler' ? '' : 
-                \ &ft == 'unite' ? '' :
-                \ &ft == 'vimshell' ? '' :
-                \ &ft == 'qf' ? '' :
-                \ &ft == 'quickrun' ? '' : 
+    return &ft == 'qf' ? '' :
                 \ tabpagenr('$') < 4 ? _ : ''
 endfunction
 
