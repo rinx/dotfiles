@@ -1385,6 +1385,12 @@ call dein#config('vim-anzu', {
             \ 'on_map': [
             \   '<Plug>(anzu-',
             \ ],
+            \ 'on_func': [
+            \   'anzu',
+            \ ],
+            \ 'on_event': [
+            \   'TabLeave',
+            \ ],
             \})
 call dein#add('osyo-manga/vim-over')
 call dein#add('thinca/vim-visualstar', {
