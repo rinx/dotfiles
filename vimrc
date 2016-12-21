@@ -1623,6 +1623,17 @@ call dein#config('vim-json', {
             \ ],
             \})
 
+call dein#add('tmux-plugins/vim-tmux')
+call dein#config('vim-tmux', {
+            \ 'lazy': 1,
+            \ 'on_ft': [
+            \   'tmux',
+            \ ],
+            \ 'on_path': [
+            \   'tmux.conf',
+            \ ],
+            \})
+
 call dein#add('Shougo/vinarise.vim')
 call dein#config('vinarise.vim', {
             \ 'lazy': 1,
