@@ -55,13 +55,6 @@ if [ ! -f $HOME/.vim/filetype.vim ] || [ "$FLG_F" = "TRUE" ]; then
 fi
 
 mkdir -p $HOME/.vim/syntax
-wget -N 'https://raw.githubusercontent.com/tmux/tmux/master/examples/tmux.vim' -O $HOME/.vim/syntax/tmux.vim > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo -e "\033[0;32m✔ \033[1;35mA Vim syntax plugin $HOME/.vim/syntax/tmux.vim downloaded\033[00m" | sed "s/^-e //"
-else
-    echo -e "\033[0;31m✗ \033[1;31mA Vim syntax plugin $HOME/.vim/syntax/tmux.vim downloading failed\033[00m" | sed "s/^-e //"
-fi
-
 
 if [ ! -d $HOME/.vim/my-snippets ] || [ "$FLG_F" = "TRUE" ]; then
     [ "$FLG_F" = "TRUE" ] && rm -rf $HOME/.vim/my-snippets
