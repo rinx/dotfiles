@@ -957,6 +957,10 @@ function! s:init_openbrowser_hook_add() abort
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
 endfunction
 
+function! s:init_gfm_syntax_hook_source() abort
+    let g:gfm_syntax_emoji_conceal = 1
+endfunction
+
 function! s:init_vim2hs_hook_source() abort
     let g:haskell_conceal = 0
     let g:haskell_conceal_wide = 0
@@ -1524,6 +1528,15 @@ call dein#config('previm', {
             \ 'on_cmd': [
             \   'PrevimOpen',
             \ ],
+            \})
+
+call dein#add('rhysd/vim-gfm-syntax')
+call dein#config('vim-gfm-syntax', {
+            \ 'lazy': 1,
+            \ 'on_ft': [
+            \   'markdown',
+            \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gfm_syntax_hook_source()',
             \})
 
 call dein#add('basyura/unite-rails')
