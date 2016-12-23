@@ -197,6 +197,8 @@ alias lsal='ls --color -F -a -l'
 
 #start vim as vi
 alias vi='vim'
+alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
+
 #Macvim
 if [ -d /Applications/MacVim.app/ ]; then
     alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
