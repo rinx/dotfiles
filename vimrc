@@ -1,26 +1,22 @@
-"( っ'ヮ'c) < loading vimrc...
+" ( っ'ヮ'c) < loading vimrc...
 " ----------------------------------------
 " Author: Rintaro Okamura
 " URL:    http://rinx.biz
 " Source: https://github.com/rinx/dotfiles
 " ----------------------------------------
 
-" --- The beginning of initialization ---
-
-"not vi compatible
+" not vi compatible
 if &compatible
     set nocompatible
 endif
 
-"encoding
-
+" encoding
 set encoding=utf-8
 scriptencoding utf-8
 
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,sjis
 
-
-"define functions
+" define functions
 
 " Anywhere SID.
 function! s:SID_PREFIX()
@@ -64,7 +60,7 @@ if filereadable(expand('~/.vimrc_private'))
     execute 'source' expand('~/.vimrc_private')
 endif
 
-" -- Plugin settings
+" --- Plugin settings
 function! s:init_neocomplete_hook_source() abort
     let g:neocomplete#enable_at_startup = 1
 
@@ -115,7 +111,7 @@ function! s:init_neocomplete_hook_add() abort
     inoremap <expr><C-l> neocomplete#complete_common_string()
 endfunction
 
-"Enable omni function
+" Enable omni function
 augroup vimrc-omnifuncs
     autocmd!
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -140,11 +136,6 @@ function! s:init_neosnippet_hook_add() abort
     " SuperTab like snippets behavior.
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
     smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-    " For snippet_complete marker.
-"     if has('conceal')
-"         set conceallevel=2 concealcursor=i
-"     endif
 
     augroup vimrc-neosnippet
         autocmd FileType neosnippet setlocal noexpandtab
@@ -381,42 +372,42 @@ endfunction
 function! s:init_unite_hook_add() abort
     nnoremap [unite] <Nop>
     nmap ,u [unite]
-    "buffer
+    " buffer
     nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
-    "commands
+    " commands
     nnoremap <silent> [unite]c   :<C-u>Unite command<CR>
-    "tab
+    " tab
     nnoremap <silent> [unite]t   :<C-u>Unite tab<CR>
-    "file
+    " file
     nnoremap <silent> [unite]f   :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
     nnoremap <silent> [unite]fr  :<C-u>Unite file_rec<CR>
-    "resume
+    " resume
     nnoremap <silent> [unite]r   :<C-u>UniteResume<CR>
-    "register
+    " register
     nnoremap <silent> [unite]rg  :<C-u>Unite -buffer-name=register register<CR>
-    "recently files
+    " recently files
     nnoremap <silent> [unite]m   :<C-u>Unite file_mru:short<CR>
     nnoremap <silent> [unite]ml  :<C-u>Unite file_mru:long<CR>
-    "menu
+    " menu
     nnoremap <silent> [unite]ms  :<C-u>Unite menu:shortcut<CR>
     nnoremap <silent> [unite]msd :<C-u>Unite menu:shortcut -input=[directory]\ <CR>
     nnoremap <silent> [unite]msf :<C-u>Unite menu:shortcut -input=[file]\ <CR>
     nnoremap <silent> [unite]msc :<C-u>Unite menu:shortcut -input=[command]\ <CR>
     nnoremap <silent> [unite]msu :<C-u>Unite menu:shortcut -input=[url]\ <CR>
     nnoremap <silent> [unite]mk  :<C-u>Unite menu:kaomoji -start-insert<CR>
-    "source
+    " source
     nnoremap <silent> [unite]s   :<C-u>Unite source<CR>
-    "history
+    " history
     nnoremap <silent> [unite]hy  :<C-u>Unite history/yank<CR>
-    "thinca/vim-unite-history
+    " thinca/vim-unite-history
     nnoremap <silent> [unite]hc  :<C-u>Unite history/command<CR>
     nnoremap <silent> [unite]hs  :<C-u>Unite history/search<CR>
-    "Shougo/unite-outline
+    " Shougo/unite-outline
     nnoremap <silent> [unite]o   :<C-u>Unite outline<CR>
     nnoremap <silent> [unite]oq  :<C-u>Unite -no-quit -buffer-name=outline outline<CR>
-    "tsukkee/unite-help
+    " tsukkee/unite-help
     nnoremap <silent> [unite]he  :<C-u>Unite -start-insert help<CR>
-    "rinx/radiko
+    " rinx/radiko
     nnoremap <silent> [unite]rdk :<C-u>Unite radiko -no-quit<CR>
     nnoremap <silent> [unite]rn2 :<C-u>Unite rn2musics -no-quit<CR>
 endfunction
@@ -469,7 +460,7 @@ function! s:init_skk_hook_add() abort
     let g:skk_kutouten_jp = "。、"
     let g:skk_kutouten_en = "．，"
 
-    "toggle skk-kutouten-type
+    " toggle skk-kutouten-type
     nnoremap <silent> <Leader>k :<C-u>call <SID>toggle_skk_kutouten_type()<CR>
 
     function! s:toggle_skk_kutouten_type()
@@ -529,8 +520,8 @@ function! s:init_eskk_hook_add() abort
     let g:eskk#start_completion_length = 2
     let g:eskk#register_completed_word = 1
     let g:eskk#use_color_cursor = 0
-    "Maybe conflict with arpeggio.vim
-    "let g:eskk#keep_state = 1
+    " Maybe conflict with arpeggio.vim
+    " let g:eskk#keep_state = 1
 endfunction
 
 function! s:init_quickrun_hook_add() abort
@@ -816,7 +807,7 @@ function! s:init_niji_hook_source() abort
                 \ ]
 endfunction
 
-"operator
+" operator
 
 function! s:init_operator_replace_hook_add() abort
     Arpeggio map or <Plug>(operator-replace)
@@ -834,7 +825,7 @@ function! s:init_operator_surround_hook_add() abort
 endfunction
 
 
-"textobj
+" textobj
 function! s:init_textobj_jabraces_hook_add() abort
     let g:textobj_jabraces_no_default_key_mappings = 1
 
@@ -1051,7 +1042,7 @@ function! s:init_submode_hook_add() abort
 endfunction
 
 
-" --- load plugin settings ---
+" --- plugin loading with dein.vim
 
 if has('vim_starting')
     set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
@@ -1059,7 +1050,6 @@ endif
 
 call dein#begin(expand('~/.vim/dein/'))
 
-"github repositories
 call dein#add('Shougo/dein.vim')
 
 call dein#add('haya14busa/dein-command.vim')
@@ -1817,9 +1807,9 @@ call dein#config('vital.vim', {
 call dein#end()
 
 
-" --- Basic Settings ---
+" --- Basics
 
-"history
+" history
 set viminfo='1000,<100,f1,h,s100
 set history=300
 
@@ -1828,43 +1818,43 @@ set bs=indent,eol,start
 set ruler
 set number
 set cursorline
-"set cursorcolumn
+" set cursorcolumn
 set cmdheight=2
 set wildmenu
 set wildchar=<Tab>
 
 set imdisable
 
-"search
+" search
 set incsearch
 set ignorecase
 set smartcase
 
-"indent
+" indent
 filetype plugin indent on
 set autoindent
 set smartindent
 set breakindent
 
-"unsaved buffer warning
+" unsaved buffer warning
 set confirm
 
-"clipboard
+" clipboard
 set clipboard+=unnamed,autoselect
 
-"mouse
+" mouse
 set mouse=a
 set ttymouse=xterm2
 
-"fold
+" fold
 set foldmethod=marker
 
-"visual select
+" visual select
 set virtualedit=block
 
-"tab
+" tab
 set expandtab
-"set smarttab
+" set smarttab
 set tabstop=8
 set shiftwidth=4
 set softtabstop=4
@@ -1886,10 +1876,10 @@ set visualbell
 set lazyredraw
 set ttyfast
 
-"for session
+" for session
 set sessionoptions+=tabpages
 
-"showmatch
+" showmatch
 set showmatch
 set matchtime=3
 
@@ -1898,7 +1888,7 @@ if v:version >= 703
     set conceallevel=0
 endif
 
-"backup
+" backup
 set backup
 
 set undofile
@@ -1919,7 +1909,7 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 
-"show tab, newline, etc...
+" show tab, newline, etc...
 set list
 set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
 
@@ -1930,7 +1920,7 @@ set noautowrite
 set noexrc
 set nosecure
 
-" --- Color settings ---
+" --- colorscheme
 
 syntax enable
 if !exists('g:colors_name')
@@ -1941,9 +1931,9 @@ endif
 hi Normal ctermbg=none
 
 
-" --- functions ---
+" --- functions
 
-"A function to convert csv to markdown table
+" A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
     let lines = getline(a:firstline, a:lastline)
     let linecount = a:lastline - a:firstline
@@ -1992,7 +1982,7 @@ endfunction
 
 command! -range CsvToMarkdownTable <line1>,<line2>call s:csv_to_markdown_table()
 
-"A function to convert csv to tex table
+" A function to convert csv to tex table
 function! s:csv_to_tex_table() range
     let lines = getline(a:firstline, a:lastline)
     let spacelen = []
@@ -2065,20 +2055,20 @@ endfunction
 
 command! MakeJapaneseInputWindow call s:make_japanese_input_window()
 
-" --- Mappings ---
+" --- mappings
 
 let mapleader = '\'
 
-"reload .vimrc
+" reload .vimrc
 nnoremap <C-r><C-f> :source ~/.vimrc<CR>
 
-"For US-keyboard
+" For US-keyboard
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
-"Disable cursor keys
+" Disable cursor keys
 nnoremap <Left> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Up> <Nop>
@@ -2089,25 +2079,24 @@ inoremap <Down> <Nop>
 inoremap <Up> <Nop>
 inoremap <Right> <Nop>
 
-"For TMUX
+" For TMUX
 nnoremap <C-t> <Nop>
 
-"Remap to act as expected
+" Remap to act as expected
 nnoremap j gj
 nnoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
 
-"Reverse of above
 nnoremap gj j
 nnoremap gk k
 nnoremap g0 0
 nnoremap g$ $
 
-"Use Y as y$
+" Use Y as y$
 nnoremap Y y$
 
-"Access to system clipboard
+" Access to system clipboard
 nnoremap ,p "+p
 nnoremap ,P "+P
 nnoremap ,y "+y
@@ -2116,21 +2105,21 @@ nnoremap ,d "+d
 vnoremap ,y "+y
 vnoremap ,d "+d
 
-"Use Emacs-like keybinds on insert-mode
+" Use Emacs-like keybinds on insert-mode
 inoremap <C-b> <Left>
-"inoremap <C-n> <Down>
-"inoremap <C-p> <Up>
+" inoremap <C-n> <Down>
+" inoremap <C-p> <Up>
 inoremap <C-f> <Right>
 
-"Use Emacs-like keybinds on command-mode
+" Use Emacs-like keybinds on command-mode
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 
-"Use completion with C-p or C-n on command-mode
+" Use completion with C-p or C-n on command-mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-"for tabline
+" for tabline
 nnoremap [Tab] <Nop>
 nmap ,t [Tab]
 
@@ -2143,7 +2132,7 @@ nnoremap <silent> [Tab]x :<C-u>tabclose<CR>
 nnoremap <silent> [Tab]n :<C-u>tabnext<CR>
 nnoremap <silent> [Tab]p :<C-u>tabprevious<CR>
 
-"for window
+" for window
 nnoremap s <Nop>
 nnoremap <silent> sj <C-w>j
 nnoremap <silent> sk <C-w>k
@@ -2163,16 +2152,16 @@ nnoremap <silent> s= <C-w>=
 nnoremap <silent> ss :<C-u>sp<CR>
 nnoremap <silent> sv :<C-u>vs<CR>
 
-"nohilight by pressing Esc twice
+" nohilight by pressing Esc twice
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 
-"toggle paste mode
+" toggle paste mode
 nnoremap <silent> <Leader>p :setl paste!<CR>
 
-"toggle relativenumber
+" toggle relativenumber
 nnoremap <silent> <Leader>r :setl relativenumber!<CR>
 
-"close special windows from another window
+" close special windows from another window
 nnoremap <silent> <Leader>q :<C-u>call <SID>close_special_windows()<CR>
 
 function! s:close_window(winnr)
@@ -2208,7 +2197,7 @@ function! s:close_special_windows()
     endwhile
 endfunction
 
-"disable some default mappings
+" disable some default mappings
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
@@ -2243,9 +2232,9 @@ function! s:sticky_func()
 endfunction
 
 
-" --- filetype settings ---
+" --- filetype
 
-"golang
+" golang
 set rtp^=$GOROOT/misc/vim
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 let g:gofmt_command = 'goimports'
@@ -2257,9 +2246,9 @@ augroup vimrc-golang
 augroup END
 
 
-" --- below this, they are not filetypes but ...
+" --- miscellaneous
 
-"QuickFix window
+" QuickFix window
 augroup vimrc-forQuickFix
     autocmd!
     " mappings
@@ -2277,14 +2266,14 @@ augroup vimrc-forQuickFix
     autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif
 augroup END
 
-"Help window
+" Help window
 augroup vimrc-forHelpWindow
     autocmd!
     autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END
 
 
-" --- Statusline settings ---
+" --- statusline
 
 set laststatus=2
 
@@ -2449,10 +2438,7 @@ function! MyRadikoSta()
 endfunction
 
 
-" --- The end of initialization ---
-
-
-"auto-toggle of cursorline
+" auto-toggle of cursorline
 augroup vimrc-auto-cursorline
   autocmd!
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
@@ -2461,8 +2447,8 @@ augroup vimrc-auto-cursorline
   autocmd CursorHold,CursorHoldI * setlocal cursorcolumn
 augroup END
 
-"when creating new file, if it does not exist directory,
-"this function will ask you to create new directory.
+" when creating new file, if it does not exist directory,
+" this function will ask you to create new directory.
 augroup vimrc-auto-mkdir
   autocmd!
   autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
@@ -2474,7 +2460,7 @@ augroup vimrc-auto-mkdir
   endfunction
 augroup END
 
-"load Session.vim
+" load Session.vim
 augroup vimrc-session-vim-auto-load
     autocmd!
     autocmd VimEnter * nested call s:load_session_vim(expand('<afile>:p:h'))
@@ -2491,7 +2477,7 @@ function! s:load_session_vim(loc)
     endif
 endfunction
 
-"load settings for each location
+" load .vimrc.local automatically
 augroup vimrc-local
     autocmd!
     autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
