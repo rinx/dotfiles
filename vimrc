@@ -1019,6 +1019,7 @@ function! s:init_shaberu_hook_source() abort
 endfunction
 
 function! s:init_radiko_hook_add() abort
+    let g:radiko#is_loaded = 0
     let g:radiko#cache_dir = expand("~/.cache/radiko-vim")
 
     function! s:radiko_echo_rn2_musics()
@@ -1028,6 +1029,10 @@ function! s:init_radiko_hook_add() abort
                     \ . ' [Next]: ' . nextone[0] . ' - ' . nextone[1]
     endfunction
     command! RadikoRN2Musics echo <SID>radiko_echo_rn2_musics()
+endfunction
+
+function! s:init_radiko_hook_source() abort
+    let g:radiko#is_loaded = 1
 endfunction
 
 function! s:init_submode_hook_add() abort
@@ -1792,6 +1797,7 @@ call dein#config('radiko.vim', {
             \ 'on_func': [
             \   'radiko',
             \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_source()',
             \})
 
 call dein#add('tomasr/molokai')
@@ -2415,26 +2421,30 @@ function! MyAbsPath()
 endfunction
 
 function! MyRadikoSta()
-    if radiko#is_playing()
-        let _ = radiko#get_playing_station_id()
-        if winwidth('.') > 70
-            if _ == 'RN2'
-                let m = radiko#get_playing_rn2_music()
-                if winwidth('.') > 120
-                    let n = radiko#get_next_rn2_music()
-                    let _ = strlen(m[0]) ?
-                                \ strlen(n[0]) ?
-                                \ strlen(expand('%:p:h')) > 40 ?
-                                \ m[0] . ' - ' . m[1] :
-                                \ '[Now] ' . m[0] . ' - ' . m[1] .
-                                \ ' [Next] ' . n[0] . ' - ' . n[1]
-                                \ : m[0] . ' - ' . m[1] : ''
+    if g:radiko#is_loaded
+        if radiko#is_playing()
+            let _ = radiko#get_playing_station_id()
+            if winwidth('.') > 70
+                if _ == 'RN2'
+                    let m = radiko#get_playing_rn2_music()
+                    if winwidth('.') > 120
+                        let n = radiko#get_next_rn2_music()
+                        let _ = strlen(m[0]) ?
+                                    \ strlen(n[0]) ?
+                                    \ strlen(expand('%:p:h')) > 40 ?
+                                    \ m[0] . ' - ' . m[1] :
+                                    \ '[Now] ' . m[0] . ' - ' . m[1] .
+                                    \ ' [Next] ' . n[0] . ' - ' . n[1]
+                                    \ : m[0] . ' - ' . m[1] : ''
+                    else
+                        let _ = strlen(m[0]) ? m[0] . ' - ' . m[1] : ''
+                    endif
                 else
-                    let _ = strlen(m[0]) ? m[0] . ' - ' . m[1] : ''
+                    let _ = radiko#get_playing_station()
                 endif
-            else
-                let _ = radiko#get_playing_station()
             endif
+        else
+            let _ = ''
         endif
     else
         let _ = ''
