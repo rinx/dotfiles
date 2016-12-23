@@ -195,6 +195,7 @@ alias lsal='ls --color -F -a -l'
 
 #start vim as vi
 alias vi='vim'
+alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
 
 #tmux execute as 256colors-terminal
 alias tmux='tmux -2'
