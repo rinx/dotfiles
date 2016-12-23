@@ -2029,6 +2029,21 @@ command! -range CsvToTexTable <line1>,<line2>call s:csv_to_tex_table()
 " Make new window for Japanese input via skk.vim
 " !!This should be improved!!
 function! s:make_japanese_input_window()
+    if has('mac')
+       let _ = 'w !pbcopy'
+        augroup vimrc-makeJapaneseInputWindow
+            autocmd!
+            autocmd InsertLeave,FileType input_via_skk
+                        \ call <SID>cp_from_japanese_input_window('w !pbcopy')
+        augroup END
+    elseif has('unix')
+        let _ = 'w !xsel --clipboard --input'
+        augroup vimrc-makeJapaneseInputWindow
+            autocmd!
+            autocmd InsertLeave,FileType input_via_skk
+                        \ call <SID>cp_from_japanese_input_window('w !xsel --clipboard --input')
+        augroup END
+    endif
     let newbufname = 'input_via_skk'
     silent! execute 'new' newbufname
     silent! execute 'setlocal' ('filetype=' . newbufname)
@@ -2036,20 +2051,10 @@ function! s:make_japanese_input_window()
     silent! execute 'inoremap <buffer> <CR> <Esc>:' . _ . '<CR>dd'
     silent! execute 'nnoremap <buffer> <CR> :' . _ . '<CR>dd'
     silent! nnoremap <buffer> q :<C-u>q!<CR>
-
-    augroup vimrc-makeJapaneseInputWindow
-        autocmd!
-        autocmd InsertLeave,FileType input_via_skk call <SID>cp_from_japanese_input_window()
-    augroup END
 endfunction
 
-function! s:cp_from_japanese_input_window()
-    if has('mac')
-        let _ = 'w !pbcopy'
-    elseif has('unix')
-        let _ = 'w !xsel --clipboard --input'
-    endif
-    silent! execute _
+function! s:cp_from_japanese_input_window(cpcmd)
+    silent! execute a:cpcmd
     silent! execute "call setline('.', '')"
 endfunction
 
