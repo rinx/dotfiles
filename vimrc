@@ -1,4 +1,3 @@
-" ( っ'ヮ'c) < loading vimrc...
 " ----------------------------------------
 " Author: Rintaro Okamura
 " URL:    http://rinx.biz
@@ -2035,6 +2034,7 @@ command! -range CsvToTexTable <line1>,<line2>call s:csv_to_tex_table()
 " Make new window for Japanese input via skk.vim
 " !!This should be improved!!
 function! s:make_japanese_input_window()
+    let _ = ''
     if has('mac')
        let _ = 'w !pbcopy'
         augroup vimrc-makeJapaneseInputWindow
@@ -2068,7 +2068,7 @@ command! MakeJapaneseInputWindow call s:make_japanese_input_window()
 
 " --- mappings
 
-let mapleader = '\'
+let g:mapleader = '\'
 
 " reload .vimrc
 nnoremap <C-r><C-f> :source ~/.vimrc<CR>
@@ -2134,8 +2134,8 @@ cnoremap <C-n> <Down>
 nnoremap [Tab] <Nop>
 nmap ,t [Tab]
 
-for n in range(1, 9)
-    execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
+for s:n in range(1, 9)
+    execute 'nnoremap <silent> [Tab]'. s:n ':<C-u>tabnext'. s:n .'<CR>'
 endfor
 
 nnoremap <silent> [Tab]c :<C-u>tablast <bar> tabnew<CR>
