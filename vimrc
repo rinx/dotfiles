@@ -644,9 +644,10 @@ endfunction
 function! s:init_gitgutter_hook_add() abort
     let g:gitgutter_max_signs = 10000
     let g:gitgutter_map_keys = 0
-    let g:gitgutter_sign_added = '✚'
-    let g:gitgutter_sign_modified = '➜'
-    let g:gitgutter_sign_removed = '✘'
+    let g:gitgutter_sign_added = '+'
+    let g:gitgutter_sign_modified = '*'
+    let g:gitgutter_sign_removed = '-'
+    let g:gitgutter_sign_modified_removed = '~'
 endfunction
 
 function! s:init_undotree_hook_add() abort
