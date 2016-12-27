@@ -702,6 +702,7 @@ endfunction
 
 function! s:init_incsearch_hook_add() abort
     function! s:init_incsearch_hook_add_autocmd() abort
+        " except for
         let _ = [
                 \ 'markdown',
                 \ 'latex',
