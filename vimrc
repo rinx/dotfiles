@@ -1720,6 +1720,12 @@ call dein#config('TweetVim', {
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_tweetvim_hook_source()',
             \})
 call dein#add('basyura/bitly.vim')
+call dein#config('bitly.vim', {
+            \ 'lazy': 1,
+            \ 'on_func': [
+            \   'bitly',
+            \ ],
+            \})
 call dein#add('mattn/favstar-vim')
 call dein#add('basyura/J6uil.vim')
 call dein#config('J6uil.vim', {
