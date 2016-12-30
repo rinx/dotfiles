@@ -10,3 +10,6 @@
 [submodule "dottmux/plugins/tmux-yank"]
 	path = dottmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
+[submodule "dottmux/plugins/tmux-cpu"]
+	path = dottmux/plugins/tmux-cpu
+	url = https://github.com/tmux-plugins/tmux-cpu.git

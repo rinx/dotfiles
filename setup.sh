@@ -50,41 +50,6 @@ if [ "$FLG_T" = "TRUE" ]; then
     if [ ! -d $HOME/.bin ]; then
         mkdir $HOME/.bin
     fi
-    #for tmux statusline memory-status
-    if [ ! -x $HOME/.bin/used-mem ] || [ "$FLG_F" = "TRUE" ]; then
-        wget https://raw.github.com/yonchu/used-mem/master/used-mem -O $HOME/.bin/used-mem > /dev/null 2>&1
-        chmod +x $HOME/.bin/used-mem
-        if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mA executable file 'used-mem' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
-        else
-            echo -e "\033[0;31m✗ \033[1;31mA executable file 'used-mem' downloading failed\033[00m" | sed "s/^-e //"       
-        fi
-    elif [ "$FLG_C" = "TRUE" ]; then
-        [ -f $HOME/.bin/used-mem ] && rm -f $HOME/.bin/used-mem
-        if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mA executable file $HOME/.bin/used-mem removed\033[00m" | sed "s/^-e //"
-        fi
-    else
-        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.bin/used-mem\033[00m" | sed "s/^-e //"
-    fi
-
-    #for tmux statusline battery-status
-    if [ ! -x $HOME/.bin/battery ] || [ "$FLG_F" = "TRUE" ]; then
-        wget https://raw.github.com/richo/battery/master/bin/battery -O $HOME/.bin/battery > /dev/null 2>&1
-        chmod +x $HOME/.bin/battery
-        if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mA executable file 'battery' downloaded in $HOME/.bin\033[00m" | sed "s/^-e //"
-        else
-            echo -e "\033[0;31m✗ \033[1;31mA executable file 'battery' downloading failed\033[00m" | sed "s/^-e //"
-        fi
-    elif [ "$FLG_C" = "TRUE" ]; then
-        [ -f $HOME/.bin/battery ] && rm -f $HOME/.bin/battery
-        if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mA executable file $HOME/.bin/battery removed\033[00m" | sed "s/^-e //"
-        fi
-    else
-        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.bin/battery\033[00m" | sed "s/^-e //"
-    fi
 
     #for tmux statusline local-ipaddress
     if [ ! -x $HOME/.bin/getipaddr ] || [ "$FLG_F" = "TRUE" ]; then
@@ -114,7 +79,7 @@ if [ "$FLG_T" = "TRUE" ]; then
             echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.tmux/plugins creating failed\033[00m" | sed "s/^-e //"
         fi
     elif [ "$FLG_C" = "TRUE" ]; then
-        [ -f $HOME/.bin/getipaddr ] && rm -f $HOME/.bin/getipaddr
+        [ -d $HOME/.tmux/plugins ] && rm -f $HOME/.tmux/plugins
         if [ $? -eq 0 ]; then
             echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.tmux removed\033[00m" | sed "s/^-e //"
         fi
