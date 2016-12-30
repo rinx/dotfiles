@@ -71,6 +71,7 @@ if you want to clear dotfiles, use `-c` option.
 ### Requires for using
 * Zsh
 * Tmux
+    - Plugins (for install: `prefix + I`)
 * Vim
     - Vim scripts
         - vimproc `make`
