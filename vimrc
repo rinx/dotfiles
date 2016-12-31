@@ -1230,13 +1230,6 @@ call dein#config('unite-git-conflict.vim', {
             \   'unite.vim',
             \ ],
             \})
-call dein#add('haya14busa/unite-reading-vimrc')
-call dein#config('unite-reading-vimrc', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
 call dein#add('pasela/unite-webcolorname')
 call dein#config('unite-webcolorname', {
             \ 'lazy': 1,
