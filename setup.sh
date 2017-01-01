@@ -78,6 +78,12 @@ if [ "$FLG_T" = "TRUE" ]; then
         else
             echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.tmux/plugins creating failed\033[00m" | sed "s/^-e //"
         fi
+        git submodule update --init
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mCloning of submodules in $HOME/.tmux/plugins successfully executed\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mCloning of submodules in $HOME/.tmux/plugins failed\033[00m" | sed "s/^-e //"
+        fi
     elif [ "$FLG_C" = "TRUE" ]; then
         [ -d $HOME/.tmux/plugins ] && rm -f $HOME/.tmux/plugins
         if [ $? -eq 0 ]; then
