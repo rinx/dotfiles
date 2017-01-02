@@ -2110,12 +2110,8 @@ nnoremap 0 g0
 nnoremap $ g$
 vnoremap j gj
 vnoremap k gk
-vnoremap 0 g0
-vnoremap $ g$
 onoremap j gj
 onoremap k gk
-onoremap 0 g0
-onoremap $ g$
 
 nnoremap gj j
 nnoremap gk k
@@ -2123,12 +2119,8 @@ nnoremap g0 0
 nnoremap g$ $
 vnoremap gj j
 vnoremap gk k
-vnoremap g0 0
-vnoremap g$ $
 onoremap gj j
 onoremap gk k
-onoremap g0 0
-onoremap g$ $
 
 " Use Y as y$
 nnoremap Y y$
