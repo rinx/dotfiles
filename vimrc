@@ -2134,17 +2134,7 @@ nnoremap ,d "+d
 vnoremap ,y "+y
 vnoremap ,d "+d
 
-" Use Emacs-like keybinds on insert-mode
-inoremap <C-b> <Left>
-" inoremap <C-n> <Down>
-" inoremap <C-p> <Up>
-inoremap <C-f> <Right>
-
-" Use Emacs-like keybinds on command-mode
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-
-" Use completion with C-p or C-n on command-mode
+" Use history with C-p or C-n on command-mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
