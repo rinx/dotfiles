@@ -207,7 +207,6 @@ function! s:init_unite_hook_source() abort
                 \ ['TweetVim UserStream', 'TweetVimUserStream'],
                 \ ['J6uil lingr-client', 'J6uil'],
                 \ ['PreVim open', 'PreVimOpen'],
-                \ ['hateblo list', 'HatebloList'],
                 \ ['copy buffer into clipboard', s:copyToClipboardCommand],
                 \ ['vim-jp', 'http://vim-jp.org/'],
                 \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
@@ -1687,17 +1686,6 @@ call dein#config('learn-vimscript', {
             \})
 
 call dein#add('mattn/webapi-vim')
-call dein#add('moznion/hateblo.vim')
-call dein#config('hateblo.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'HatebloCreate',
-            \   'HatebloCreateDraft',
-            \   'HatebloList',
-            \   'HatebloUpdate',
-            \   'HatebloDelete',
-            \ ],
-            \})
 call dein#add('basyura/twibill.vim')
 call dein#add('basyura/TweetVim')
 call dein#config('TweetVim', {
