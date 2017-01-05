@@ -1674,16 +1674,6 @@ call dein#config('vim-ref', {
             \   '<Plug>(ref-',
             \ ],
             \})
-call dein#add('mattn/learn-vimscript')
-call dein#config('learn-vimscript', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'help',
-            \ ],
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
 
 call dein#add('mattn/webapi-vim')
 call dein#add('basyura/twibill.vim')
