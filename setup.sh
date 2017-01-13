@@ -123,12 +123,25 @@ if [ "$FLG_V" = "TRUE" ]; then
         mkdir -p $HOME/.vim/dein/repos/github.com/Shougo
         git clone https://github.com/Shougo/dein.vim $HOME/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
         if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36dein.vim cloned in $HOME/.vim/deinrepos/github.com/Shougo/dein.vim\033[00m" | sed "s/^-e //"
+            echo -e "\033[0;32m✔ \033[1;36mdein.vim cloned in $HOME/.vim/deinrepos/github.com/Shougo/dein.vim\033[00m" | sed "s/^-e //"
         else
             echo -e "\033[0;31m✗ \033[1;31mdein.vim cloning failed\033[00m" | sed "s/^-e //"
         fi
     else
         echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.vim/dein/repos/github.com/Shougo/dein.vim \033[00m" | sed "s/^-e //"
+    fi
+
+    # neovim
+    if [ ! -f $HOME/.config/nvim/init.vim ] || [ "$FLG_F" = "TRUE" ]; then
+        mkdir -p $HOME/.config/nvim
+        ln -s $DOTDIR/nvimrc $HOME/.config/nvim/init.vim
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.config/nvim/init.vim created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link from $HOME/.config/nvim/init.vim creating failed\033[00m" | sed "s/^-e //"
+        fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.config/nvim/init.vim \033[00m" | sed "s/^-e //"
     fi
 
     # vim filetype plugins
