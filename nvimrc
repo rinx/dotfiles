@@ -648,6 +648,7 @@ function! s:init_gitgutter_hook_add() abort
     let g:gitgutter_sign_modified = '*'
     let g:gitgutter_sign_removed = '-'
     let g:gitgutter_sign_modified_removed = '~'
+    let g:gitgutter_sign_removed_first_line = '^_'
 endfunction
 
 function! s:init_undotree_hook_add() abort
