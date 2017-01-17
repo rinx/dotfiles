@@ -4,11 +4,6 @@
 " Source: https://github.com/rinx/dotfiles
 " ----------------------------------------
 
-" not vi compatible
-if &compatible
-    set nocompatible
-endif
-
 " encoding
 set encoding=utf-8
 scriptencoding utf-8
