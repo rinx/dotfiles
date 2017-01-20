@@ -55,54 +55,12 @@ if filereadable(expand('~/.vimrc_private'))
 endif
 
 " --- Plugin settings
-function! s:init_neocomplete_hook_source() abort
-    let g:neocomplete#enable_at_startup = 1
+function! s:init_deoplete_hook_source() abort
 
-    let g:neocomplete#min_keyword_length = 3
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-    let g:neocomplete#auto_completion_start_length = 2
-    let g:neocomplete#manual_completion_start_length = 0
-
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_camel_case = 1
-
-    let g:neocomplete#enable_fuzzy_completion = 1
-
-    let g:neocomplete#enable_auto_select = 0
-    let g:neocomplete#enable_refresh_always = 0
-    let g:neocomplete#enable_cursor_hold_i = 0
-    let g:neocomplete#enable_auto_delimiter = 1
-
-    let g:neocomplete#max_list = 80
-
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns._ = '\h\w*'
-
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-
-    if !exists('g:neocomplete#sources#dictionary#dictionaries')
-      let g:neocomplete#sources#dictionary#dictionaries = {}
-    endif
-    let g:neocomplete#sources#dictionary#dictionaries.vimshell = expand('~/.vimshell/command-history')
-    let g:neocomplete#sources#dictionary#dictionaries.tweetvim_say =  expand('~/.tweetvim/screen_name')
-
-    let g:neocomplete#enable_auto_close_preview = 1
 endfunction
 
-function! s:init_neocomplete_hook_add() abort
-    inoremap <expr><C-g> neocomplete#undo_completion()
-    inoremap <expr><C-l> neocomplete#complete_common_string()
+function! s:init_deoplete_hook_add() abort
+
 endfunction
 
 " Enable omni function
@@ -1072,13 +1030,13 @@ call dein#config('vimproc.vim', {
             \ 'build': 'make',
             \})
 
-call dein#add('Shougo/neocomplete.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
+call dein#add('Shougo/deoplete.nvim', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_deoplete_hook_add()',
             \ })
-call dein#config('neocomplete.vim', {
+call dein#config('deoplete.nvim', {
             \ 'lazy': 1,
             \ 'on_i': 1,
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_source()',
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_deoplete_hook_source()',
             \})
 
 call dein#add('ujihisa/neco-look')
