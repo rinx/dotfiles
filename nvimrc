@@ -73,43 +73,6 @@ augroup vimrc-omnifuncs
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-function! s:init_neosnippet_hook_add() abort
-    imap <C-k> <Plug>(neosnippet_expand_or_jump)
-    smap <C-k> <Plug>(neosnippet_expand_or_jump)
-
-    " Tell Neosnippet about the other snippets
-    let g:neosnippet#snippets_directory = [
-                \ expand('~/.vim/bundle/vim-snippets/snippets'),
-                \ expand('~/.vim/my-snippets'),
-                \]
-
-    let g:neosnippet#enable_snipmate_compatibility = 1
-
-    " SuperTab like snippets behavior.
-    imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-    smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-    augroup vimrc-neosnippet
-        autocmd FileType neosnippet setlocal noexpandtab
-    augroup END
-endfunction
-
-function! s:init_vimfiler_hook_add() abort
-    let g:vimfiler_force_overwrite_statusline = 0
-endfunction
-
-function! s:init_vimshell_hook_add() abort
-    let g:vimshell_force_overwrite_statusline = 0
-
-    nnoremap <silent> ,v :<C-u>VimShell<CR>
-
-    let g:vimshell_prompt_expr =
-        \ 'escape(fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
-    let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+% '
-
-    let g:vimshell_external_history_path = expand('~/.zsh_history')
-endfunction
-
 function! s:init_arpeggio_hook_add() abort
     call arpeggio#load()
 endfunction
@@ -1044,50 +1007,6 @@ call dein#config('neco-look', {
             \ 'lazy' : 1,
             \ 'on_ft' : [
             \     'markdown',
-            \ ],
-            \})
-
-call dein#add('Shougo/neosnippet', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neosnippet_hook_add()',
-            \})
-call dein#config('neosnippet', {
-            \ 'lazy': 1,
-            \ 'on_i' : 1,
-            \ 'on_ft' : [
-            \     'neosnippet',
-            \ ],
-            \})
-call dein#add('Shougo/neosnippet-snippets')
-call dein#config('neosnippet-snippets', {
-            \ 'lazy': 1,
-            \ 'on_i': 1,
-            \})
-call dein#add('honza/vim-snippets')
-call dein#config('vim-snippets', {
-            \ 'lazy': 1,
-            \ 'on_i': 1,
-            \})
-
-call dein#add('Shougo/vimfiler.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimfiler_hook_add()',
-            \})
-call dein#config('vimfiler.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd' : [
-            \   'VimFilerTab',
-            \   'VimFiler',
-            \   'VimFilerExplorer',
-            \ ],
-            \})
-call dein#add('Shougo/vimshell.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimshell_hook_add()',
-            \})
-call dein#config('vimshell.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd' : [
-            \   'VimShell',
-            \   'VimShellPop',
-            \   'VimShellInteractive',
             \ ],
             \})
 
