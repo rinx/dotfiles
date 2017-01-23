@@ -77,17 +77,12 @@ function! s:init_arpeggio_hook_add() abort
     call arpeggio#load()
 endfunction
 
-function! s:init_unite_hook_source() abort
-    let g:unite_force_overwrite_statusline = 0
-    let g:unite_enable_start_insert = 0
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_source_history_yank_limit = 1000
-    let g:unite_prompt = '❯ '
+function! s:init_denite_hook_source() abort
 
-    if !exists('g:unite_source_menu_menus')
-        let g:unite_source_menu_menus = {}
+    if !exists('s:denite_source_menu')
+        let s:denite_source_menu = {}
     endif
-    let g:unite_source_menu_menus.shortcut = {
+    let s:denite_source_menu.shortcut = {
                 \ 'description' : 'shortcut'
                 \}
     if has('mac')
@@ -95,28 +90,24 @@ function! s:init_unite_hook_source() abort
     elseif has('unix')
         let s:copyToClipboardCommand = 'w !xsel --clipboard --input'
     endif
-    let g:unite_source_menu_menus.shortcut.candidates = [
-                \ ['home', $HOME],
-                \ ['dotfiles', $HOME . '/.dotfiles'],
-                \ ['vimrc', $MYVIMRC],
+    let s:denite_source_menu.shortcut.command_candidates = [
                 \ ['vimshell', 'VimShell'],
                 \ ['quickrun', 'QuickRun'],
                 \ ['make(quickrun)', 'QuickRun make'],
                 \ ['watchdogs', 'WatchdogsRun'],
                 \ ['UNDOtree', 'UndotreeToggle'],
                 \ ['NERDTree', 'NERDTreeToggle'],
-                \ ['map', 'Unite output:map'],
-                \ ['register', 'Unite output:register'],
+                \ ['map', 'Denite output:map'],
+                \ ['register', 'Denite output:register'],
                 \ ['reload .vimrc', 'source ~/.vimrc'],
                 \ ['make Session.vim', 'mks!'],
-                \ ['toggle-options', 'Unite menu:toggle'],
-                \ ['unite neosnippet', 'Unite neosnippet'],
-                \ ['unite gista', 'Unite gista'],
-                \ ['unite codic', 'Unite codic -start-insert'],
-                \ ['unite radiko', 'Unite radiko'],
+                \ ['toggle-options', 'Denite menu:toggle'],
+                \ ['denite neosnippet', 'Denite neosnippet'],
+                \ ['denite gista', 'Denite gista'],
+                \ ['denite codic', 'Denite codic -start-insert'],
+                \ ['denite radiko', 'Denite radiko'],
                 \ ['stop radiko', 'RadikoStop'],
-                \ ['unite RN2-musics', 'Unite rn2musics -no-quit'],
-                \ ['RN2-click-de-onair', 'http://www.radionikkei.jp/rn2/cdo/'],
+                \ ['denite RN2-musics', 'Denite rn2musics -no-quit'],
                 \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
                 \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
                 \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
@@ -124,50 +115,13 @@ function! s:init_unite_hook_source() abort
                 \ ['J6uil lingr-client', 'J6uil'],
                 \ ['PreVim open', 'PreVimOpen'],
                 \ ['copy buffer into clipboard', s:copyToClipboardCommand],
-                \ ['vim-jp', 'http://vim-jp.org/'],
-                \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
-                \ ['Github', 'https://github.com/'],
-                \ ['Github Gist', 'https://gist.github.com/'],
-                \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
-                \ ['stackoverflow', 'http://stackoverflow.com/'],
-                \ ['change wallpaper', '!~/.iterm_wp/wpchange.sh']
                 \]
-    function! g:unite_source_menu_menus.shortcut.map(key, value)
-        let [word, value] = a:value
-
-        if isdirectory(value)
-            return {
-                        \ 'word' : '[directory] '.word,
-                        \ 'kind' : 'directory',
-                        \ 'action__directory' : value,
-                        \}
-        elseif !empty(glob(value))
-            return {
-                        \ 'word' : '[file] '.word,
-                        \ 'kind' : 'file',
-                        \ 'default_action' : 'tabdrop',
-                        \ 'action__path' : value,
-                        \}
-        elseif value =~ '^\(http\|https\|ftp\).*'
-            return {
-                        \ 'word' : '[url] '.word,
-                        \ 'kind' : 'command',
-                        \ 'action__command' : 'OpenBrowser '.value,
-                        \}
-        else
-            return {
-                        \ 'word' : '[command] '.word,
-                        \ 'kind' : 'command',
-                        \ 'action__command' : value,
-                        \}
-        endif
-    endfunction
 
     command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
-    let g:unite_source_menu_menus.toggle = {
+    let s:denite_source_menu.toggle = {
                 \ 'description' : 'toggle menus',
                 \}
-    let g:unite_source_menu_menus.toggle.command_candidates = {
+    let s:denite_source_menu.toggle.command_candidates = {
                 \
                 \}
     let options = "
@@ -176,14 +130,14 @@ function! s:init_unite_hook_source() abort
                 \ hlsearch wrap spell
                 \ "
     for opt in split(options)
-        let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
+        let s:denite_source_menu.toggle.command_candidates[opt] = "ToggleOption " . opt
     endfor
     unlet options opt
 
-    let g:unite_source_menu_menus.kaomoji = {
+    let s:denite_source_menu.kaomoji = {
                 \ 'description' : 'kaomoji dictionary',
                 \}
-    let g:unite_source_menu_menus.kaomoji.candidates= [
+    let s:denite_source_menu.kaomoji.candidates= [
                 \["wahhab", "( っ'ヮ'c)"],
                 \["wahhab", "三( っ'ヮ'c)"],
                 \["wahhab", "( っ˘ヮ˘c)💤"],
@@ -266,7 +220,7 @@ function! s:init_unite_hook_source() abort
                 \["sake", "🍶"],
                 \["coffee", "☕"]
                 \]
-    function! g:unite_source_menu_menus.kaomoji.map(key, value)
+    function! s:denite_source_menu.kaomoji.map(key, value)
         let [word, value] = a:value
         if !empty(word)
             return {
@@ -282,49 +236,51 @@ function! s:init_unite_hook_source() abort
                         \}
         endif
     endfunction
+
+    call denite#custom#var('menu', 'menu', s:denite_source_menu)
 endfunction
 
-function! s:init_unite_hook_add() abort
-    nnoremap [unite] <Nop>
-    nmap ,u [unite]
+function! s:init_denite_hook_add() abort
+    nnoremap [denite] <Nop>
+    nmap ,u [denite]
     " buffer
-    nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
+    nnoremap <silent> [denite]b   :<C-u>Denite buffer<CR>
     " commands
-    nnoremap <silent> [unite]c   :<C-u>Unite command<CR>
+    nnoremap <silent> [denite]c   :<C-u>Denite command<CR>
     " tab
-    nnoremap <silent> [unite]t   :<C-u>Unite tab<CR>
+    nnoremap <silent> [denite]t   :<C-u>Denite tab<CR>
     " file
-    nnoremap <silent> [unite]f   :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-    nnoremap <silent> [unite]fr  :<C-u>Unite file_rec<CR>
+    nnoremap <silent> [denite]f   :<C-u>DeniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> [denite]fr  :<C-u>Denite file_rec<CR>
     " resume
-    nnoremap <silent> [unite]r   :<C-u>UniteResume<CR>
+    nnoremap <silent> [denite]r   :<C-u>DeniteResume<CR>
     " register
-    nnoremap <silent> [unite]rg  :<C-u>Unite -buffer-name=register register<CR>
+    nnoremap <silent> [denite]rg  :<C-u>Denite -buffer-name=register register<CR>
     " recently files
-    nnoremap <silent> [unite]m   :<C-u>Unite file_mru:short<CR>
-    nnoremap <silent> [unite]ml  :<C-u>Unite file_mru:long<CR>
+    nnoremap <silent> [denite]m   :<C-u>Denite file_mru:short<CR>
+    nnoremap <silent> [denite]ml  :<C-u>Denite file_mru:long<CR>
     " menu
-    nnoremap <silent> [unite]ms  :<C-u>Unite menu:shortcut<CR>
-    nnoremap <silent> [unite]msd :<C-u>Unite menu:shortcut -input=[directory]\ <CR>
-    nnoremap <silent> [unite]msf :<C-u>Unite menu:shortcut -input=[file]\ <CR>
-    nnoremap <silent> [unite]msc :<C-u>Unite menu:shortcut -input=[command]\ <CR>
-    nnoremap <silent> [unite]msu :<C-u>Unite menu:shortcut -input=[url]\ <CR>
-    nnoremap <silent> [unite]mk  :<C-u>Unite menu:kaomoji -start-insert<CR>
+    nnoremap <silent> [denite]ms  :<C-u>Denite menu:shortcut<CR>
+    nnoremap <silent> [denite]msd :<C-u>Denite menu:shortcut -input=[directory]\ <CR>
+    nnoremap <silent> [denite]msf :<C-u>Denite menu:shortcut -input=[file]\ <CR>
+    nnoremap <silent> [denite]msc :<C-u>Denite menu:shortcut -input=[command]\ <CR>
+    nnoremap <silent> [denite]msu :<C-u>Denite menu:shortcut -input=[url]\ <CR>
+    nnoremap <silent> [denite]mk  :<C-u>Denite menu:kaomoji -start-insert<CR>
     " source
-    nnoremap <silent> [unite]s   :<C-u>Unite source<CR>
+    nnoremap <silent> [denite]s   :<C-u>Denite source<CR>
     " history
-    nnoremap <silent> [unite]hy  :<C-u>Unite history/yank<CR>
+    nnoremap <silent> [denite]hy  :<C-u>Denite history/yank<CR>
     " thinca/vim-unite-history
-    nnoremap <silent> [unite]hc  :<C-u>Unite history/command<CR>
-    nnoremap <silent> [unite]hs  :<C-u>Unite history/search<CR>
+    nnoremap <silent> [denite]hc  :<C-u>Denite history/command<CR>
+    nnoremap <silent> [denite]hs  :<C-u>Denite history/search<CR>
     " Shougo/unite-outline
-    nnoremap <silent> [unite]o   :<C-u>Unite outline<CR>
-    nnoremap <silent> [unite]oq  :<C-u>Unite -no-quit -buffer-name=outline outline<CR>
+    nnoremap <silent> [denite]o   :<C-u>Denite outline<CR>
+    nnoremap <silent> [denite]oq  :<C-u>Denite -no-quit -buffer-name=outline outline<CR>
     " tsukkee/unite-help
-    nnoremap <silent> [unite]he  :<C-u>Unite -start-insert help<CR>
+    nnoremap <silent> [denite]he  :<C-u>Denite -start-insert help<CR>
     " rinx/radiko
-    nnoremap <silent> [unite]rdk :<C-u>Unite radiko -no-quit<CR>
-    nnoremap <silent> [unite]rn2 :<C-u>Unite rn2musics -no-quit<CR>
+    nnoremap <silent> [denite]rdk :<C-u>Denite radiko -no-quit<CR>
+    nnoremap <silent> [denite]rn2 :<C-u>Denite rn2musics -no-quit<CR>
 endfunction
 
 function! s:init_skk_hook_add() abort
@@ -1018,10 +974,10 @@ call dein#add('kana/vim-arpeggio', {
             \})
 call dein#add('kana/vim-altercmd')
 
-call dein#add('Shougo/unite.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_unite_hook_add()',
+call dein#add('Shougo/denite.nvim', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_denite_hook_add()',
             \})
-call dein#config('unite.vim', {
+call dein#config('denite.nvim', {
             \ 'lazy': 1,
             \ 'on_cmd' : [
             \   'Unite',
@@ -1035,35 +991,35 @@ call dein#add('Shougo/neomru.vim')
 call dein#config('neomru.vim', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('thinca/vim-unite-history')
 call dein#config('vim-unite-history', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('Shougo/unite-outline')
 call dein#config('unite-outline', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('tsukkee/unite-help')
 call dein#config('unite-help', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('osyo-manga/unite-filetype')
 call dein#config('unite-filetype', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('kmnk/vim-unite-giti')
@@ -1086,28 +1042,28 @@ call dein#config('vim-unite-giti', {
             \   'GitiLogLine',
             \ ],
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('tacroe/unite-mark')
 call dein#config('unite-mark', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('moznion/unite-git-conflict.vim')
 call dein#config('unite-git-conflict.vim', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('pasela/unite-webcolorname')
 call dein#config('unite-webcolorname', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 
@@ -1141,7 +1097,7 @@ call dein#add('osyo-manga/unite-quickrun_config')
 call dein#config('unite-quickrun_config', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 
@@ -1451,7 +1407,7 @@ call dein#add('ujihisa/unite-haskellimport')
 call dein#config('unite-haskellimport', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('pbrisbin/html-template-syntax')
@@ -1569,7 +1525,7 @@ call dein#config('TweetVim', {
             \   'TweetVimSearch',
             \ ],
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_tweetvim_hook_source()',
             \})
@@ -1590,7 +1546,7 @@ call dein#config('J6uil.vim', {
             \   'J6uilDisconnect',
             \ ],
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_j6uil_hook_source()',
             \})
@@ -1605,7 +1561,7 @@ call dein#config('vim-gista', {
             \   '<Plug>(gista-',
             \ ],
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gista_hook_source()',
             \})
@@ -1617,14 +1573,14 @@ call dein#config('codic-vim', {
             \   'Codic',
             \ ],
             \ 'on_source' : [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 call dein#add('rhysd/unite-codic.vim')
 call dein#config('unite-codic.vim', {
             \ 'lazy': 1,
             \ 'on_source' : [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \})
 
@@ -1648,7 +1604,7 @@ call dein#add('rinx/radiko.vim', {
 call dein#config('radiko.vim', {
             \ 'lazy': 1,
             \ 'on_source': [
-            \   'unite.vim',
+            \   'denite.nvim',
             \ ],
             \ 'on_cmd': [
             \   'RadikoPlay',
