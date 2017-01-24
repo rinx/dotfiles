@@ -132,6 +132,20 @@ if [ "$FLG_V" = "TRUE" ]; then
     fi
 
     # neovim
+    if [ ! -d $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim ] || [ "$FLG_F" = "TRUE" ]; then
+        [ "$FLG_F" = "TRUE" ] && [ -d $HOME/.config/nvim/repos/github.com/Shougo/dein/dein.vim ] && rm -rf $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+        mkdir -p $HOME/.config/nvim/dein/repos/github.com/Shougo
+        git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mdein.vim cloned in $HOME/.config/nvim/deinrepos/github.com/Shougo/dein.vim\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mdein.vim cloning failed\033[00m" | sed "s/^-e //"
+        fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim \033[00m" | sed "s/^-e //"
+    fi
+
+
     if [ ! -f $HOME/.config/nvim/init.vim ] || [ "$FLG_F" = "TRUE" ]; then
         mkdir -p $HOME/.config/nvim
         ln -s $DOTDIR/nvimrc $HOME/.config/nvim/init.vim
