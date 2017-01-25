@@ -513,16 +513,6 @@ function! s:init_lexima_hook_post_source() abort
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*\;\s.*\%#', 'input': '<CR>; ', 'filetype': ['idlang']})
 endfunction
 
-function! s:init_gitgutter_hook_add() abort
-    let g:gitgutter_max_signs = 10000
-    let g:gitgutter_map_keys = 0
-    let g:gitgutter_sign_added = '+'
-    let g:gitgutter_sign_modified = '*'
-    let g:gitgutter_sign_removed = '-'
-    let g:gitgutter_sign_modified_removed = '~'
-    let g:gitgutter_sign_removed_first_line = '^_'
-endfunction
-
 function! s:init_undotree_hook_add() abort
     nnoremap <F5> :<C-u>UndotreeToggle<CR>
 endfunction
@@ -571,27 +561,6 @@ function! s:init_asterisk_hook_add() abort
     map gz* <Plug>(asterisk-gz*)
     map z#  <Plug>(asterisk-z#)
     map gz# <Plug>(asterisk-gz#)
-endfunction
-
-function! s:init_incsearch_hook_add() abort
-    function! s:init_incsearch_hook_add_autocmd() abort
-        " except for
-        let _ = [
-                \ 'markdown',
-                \ 'latex',
-                \ 'tex',
-                \ 'plaintex',
-                \ ]
-        if index(_, &ft) < 0
-            map <buffer>/  <Plug>(incsearch-forward)
-            map <buffer>?  <Plug>(incsearch-backward)
-            map <buffer>g/ <plug>(incsearch-stay)
-        endif
-    endfunction
-    augroup vimrc-incsearch
-        autocmd!
-        autocmd FileType * call s:init_incsearch_hook_add_autocmd()
-    augroup END
 endfunction
 
 function! s:init_auto_programming_hook_add() abort
@@ -1142,10 +1111,6 @@ call dein#config('lexima.vim', {
             \ 'hook_post_source': 'call ' . s:SID_PREFIX() . 'init_lexima_hook_post_source()',
             \})
 
-call dein#add('airblade/vim-gitgutter', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gitgutter_hook_add()',
-            \})
-
 call dein#add('mbbill/undotree', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_undotree_hook_add()',
             \})
@@ -1191,15 +1156,6 @@ call dein#config('vim-asterisk', {
             \ 'lazy': 1,
             \ 'on_map': [
             \   '<Plug>(asterisk-',
-            \ ],
-            \})
-call dein#add('haya14busa/incsearch.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
-            \})
-call dein#config('incsearch.vim', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(incsearch-',
             \ ],
             \})
 call dein#add('haya14busa/vim-migemo')
