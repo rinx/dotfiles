@@ -267,20 +267,28 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]msu :<C-u>Denite menu:shortcut -input=[url]\ <CR>
     nnoremap <silent> [denite]mk  :<C-u>Denite menu:kaomoji -start-insert<CR>
     " source
-    nnoremap <silent> [denite]s   :<C-u>Denite source<CR>
+    nnoremap <silent> [denite]s   :<C-u>Denite unite:source<CR>
     " history
-    nnoremap <silent> [denite]hy  :<C-u>Denite history/yank<CR>
+    nnoremap <silent> [denite]hy  :<C-u>Denite unite:history/yank<CR>
     " thinca/vim-unite-history
-    nnoremap <silent> [denite]hc  :<C-u>Denite history/command<CR>
-    nnoremap <silent> [denite]hs  :<C-u>Denite history/search<CR>
+    nnoremap <silent> [denite]hc  :<C-u>Denite unite:history/command<CR>
+    nnoremap <silent> [denite]hs  :<C-u>Denite unite:history/search<CR>
     " Shougo/unite-outline
-    nnoremap <silent> [denite]o   :<C-u>Denite outline<CR>
-    nnoremap <silent> [denite]oq  :<C-u>Denite -no-quit -buffer-name=outline outline<CR>
+    nnoremap <silent> [denite]o   :<C-u>Denite unite:outline<CR>
+    nnoremap <silent> [denite]oq  :<C-u>Denite -no-quit -buffer-name=outline unite:outline<CR>
     " tsukkee/unite-help
-    nnoremap <silent> [denite]he  :<C-u>Denite -start-insert help<CR>
+    nnoremap <silent> [denite]he  :<C-u>Denite -start-insert unite:help<CR>
     " rinx/radiko
-    nnoremap <silent> [denite]rdk :<C-u>Denite radiko -no-quit<CR>
-    nnoremap <silent> [denite]rn2 :<C-u>Denite rn2musics -no-quit<CR>
+    nnoremap <silent> [denite]rdk :<C-u>Denite unite:radiko -no-quit<CR>
+    nnoremap <silent> [denite]rn2 :<C-u>Denite unite:rn2musics -no-quit<CR>
+endfunction
+
+function! s:init_unite_hook_source() abort
+
+endfunction
+
+function! s:init_unite_hook_add() abort
+
 endfunction
 
 function! s:init_skk_hook_add() abort
@@ -949,6 +957,16 @@ call dein#add('Shougo/denite.nvim', {
 call dein#config('denite.nvim', {
             \ 'lazy': 1,
             \ 'on_cmd' : [
+            \   'Denite',
+            \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_denite_hook_source()',
+            \})
+call dein#add('Shougo/unite.vim', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_unite_hook_add()',
+            \})
+call dein#config('unite.vim', {
+            \ 'lazy': 1,
+            \ 'on_cmd' : [
             \   'Unite',
             \   'UniteWithBufferDir',
             \   'UniteWithCurrentDir',
@@ -956,6 +974,7 @@ call dein#config('denite.nvim', {
             \ ],
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_unite_hook_source()',
             \})
+
 call dein#add('Shougo/neomru.vim')
 call dein#config('neomru.vim', {
             \ 'lazy': 1,
@@ -1954,6 +1973,7 @@ function! s:close_special_windows()
     let target_ft = [
                 \ 'ref',
                 \ 'unite',
+                \ 'denite',
                 \ 'vimfiler',
                 \ 'vimshell',
                 \ 'qf',
@@ -2146,6 +2166,7 @@ endfunction
 function! MyMode()
     return &ft == 'vimfiler' ? 'VimFiler' : 
                 \ &ft == 'unite' ? 'Unite' :
+                \ &ft == 'denite' ? 'Denite' :
                 \ &ft == 'vimshell' ? 'VimShell' :
                 \ &ft == 'undotree' ? 'UNDOtree' :
                 \ &ft == 'nerdtree' ? 'NERDtree' :
@@ -2178,6 +2199,7 @@ function! MyAbsPath()
     let _ = expand('%:p:h')
     return &ft == 'vimfiler' ? '' :
                 \ &ft == 'unite' ? '' :
+                \ &ft == 'denite' ? '' :
                 \ &ft == 'vimshell' ? '' :
                 \ &ft == 'qf' ? '' :
                 \ &ft == 'quickrun' ? '' :
