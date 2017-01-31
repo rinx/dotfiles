@@ -161,6 +161,14 @@ function! s:init_arpeggio_hook_add() abort
     call arpeggio#load()
 endfunction
 
+function! s:init_denite_hook_source() abort
+
+endfunction
+
+function! s:init_denite_hook_add() abort
+
+endfunction
+
 function! s:init_unite_hook_source() abort
     let g:unite_force_overwrite_statusline = 0
     let g:unite_enable_start_insert = 0
@@ -1143,6 +1151,17 @@ call dein#add('kana/vim-arpeggio', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_arpeggio_hook_add()',
             \})
 call dein#add('kana/vim-altercmd')
+
+call dein#add('Shougo/denite.nvim', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_denite_hook_add()',
+            \})
+call dein#config('denite.nvim', {
+            \ 'lazy': 1,
+            \ 'on_cmd' : [
+            \   'Denite',
+            \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_denite_hook_source()',
+            \})
 
 call dein#add('Shougo/unite.vim', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_unite_hook_add()',
@@ -2175,6 +2194,7 @@ function! s:close_special_windows()
     let target_ft = [
                 \ 'ref',
                 \ 'unite',
+                \ 'denite',
                 \ 'vimfiler',
                 \ 'vimshell',
                 \ 'qf',
@@ -2367,6 +2387,7 @@ endfunction
 function! MyMode()
     return &ft == 'vimfiler' ? 'VimFiler' : 
                 \ &ft == 'unite' ? 'Unite' :
+                \ &ft == 'denite' ? 'Denite' :
                 \ &ft == 'vimshell' ? 'VimShell' :
                 \ &ft == 'undotree' ? 'UNDOtree' :
                 \ &ft == 'nerdtree' ? 'NERDtree' :
@@ -2399,6 +2420,7 @@ function! MyAbsPath()
     let _ = expand('%:p:h')
     return &ft == 'vimfiler' ? '' :
                 \ &ft == 'unite' ? '' :
+                \ &ft == 'denite' ? '' :
                 \ &ft == 'vimshell' ? '' :
                 \ &ft == 'qf' ? '' :
                 \ &ft == 'quickrun' ? '' :
