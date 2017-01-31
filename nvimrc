@@ -102,12 +102,12 @@ function! s:init_denite_hook_source() abort
                 \ ['reload .vimrc', 'source ~/.vimrc'],
                 \ ['make Session.vim', 'mks!'],
                 \ ['toggle-options', 'Denite menu:toggle'],
-                \ ['denite neosnippet', 'Denite neosnippet'],
-                \ ['denite gista', 'Denite gista'],
-                \ ['denite codic', 'Denite codic -start-insert'],
-                \ ['denite radiko', 'Denite radiko'],
+                \ ['denite neosnippet', 'Denite unite:neosnippet'],
+                \ ['denite gista', 'Denite unite:gista'],
+                \ ['denite codic', 'Denite unite:codic'],
+                \ ['denite radiko', 'Denite unite:radiko'],
                 \ ['stop radiko', 'RadikoStop'],
-                \ ['denite RN2-musics', 'Denite rn2musics -no-quit'],
+                \ ['denite RN2-musics', 'Denite unite:rn2musics'],
                 \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
                 \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
                 \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
@@ -267,7 +267,7 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]msu :<C-u>Denite menu:shortcut -input=[url]\ <CR>
     nnoremap <silent> [denite]mk  :<C-u>Denite menu:kaomoji -start-insert<CR>
     " source
-    nnoremap <silent> [denite]s   :<C-u>Denite unite:source<CR>
+    nnoremap <silent> [denite]s   :<C-u>Denite source<CR>
     " history
     nnoremap <silent> [denite]hy  :<C-u>Denite unite:history/yank<CR>
     " thinca/vim-unite-history
@@ -275,9 +275,8 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]hs  :<C-u>Denite unite:history/search<CR>
     " Shougo/unite-outline
     nnoremap <silent> [denite]o   :<C-u>Denite unite:outline<CR>
-    nnoremap <silent> [denite]oq  :<C-u>Denite -no-quit -buffer-name=outline unite:outline<CR>
     " tsukkee/unite-help
-    nnoremap <silent> [denite]he  :<C-u>Denite -start-insert unite:help<CR>
+    nnoremap <silent> [denite]he  :<C-u>Denite unite:help<CR>
     " rinx/radiko
     nnoremap <silent> [denite]rdk :<C-u>Denite unite:radiko -no-quit<CR>
     nnoremap <silent> [denite]rn2 :<C-u>Denite unite:rn2musics -no-quit<CR>
