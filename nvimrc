@@ -56,7 +56,7 @@ endif
 
 " --- Plugin settings
 function! s:init_deoplete_hook_source() abort
-
+    let g:deoplete#enable_at_startup = 1
 endfunction
 
 function! s:init_deoplete_hook_add() abort
