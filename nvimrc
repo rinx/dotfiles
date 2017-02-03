@@ -57,6 +57,12 @@ endif
 " --- Plugin settings
 function! s:init_deoplete_hook_source() abort
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_ignore_case = 1
+    let g:deoplete#enable_smart_case = 1
+    let g:deoplete#enable_camel_case = 1
+    let g:deoplete#enable_reflesh_always = 0
+    let g:deoplete#auto_complete_start_length = 2
+    let g:deoplete#enable_profile = 0
 endfunction
 
 function! s:init_deoplete_hook_add() abort
