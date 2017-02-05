@@ -1806,7 +1806,9 @@ call dein#config('radiko.vim', {
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_source()',
             \})
 
-call dein#add('tomasr/molokai')
+" call dein#add('tomasr/molokai')
+" call dein#add('sickill/vim-monokai')
+call dein#add('jpo/vim-railscasts-theme')
 
 call dein#add('vim-jp/vital.vim')
 call dein#config('vital.vim', {
@@ -1936,11 +1938,11 @@ set nosecure
 
 syntax enable
 if !exists('g:colors_name')
-    set background=dark
-    colorscheme molokai 
+    "set background=dark
+    colorscheme railscasts
 endif
 
-hi Normal ctermbg=none
+highlight Normal ctermbg=none
 
 
 " --- functions
