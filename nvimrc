@@ -1606,7 +1606,10 @@ call dein#config('radiko.vim', {
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_source()',
             \})
 
-call dein#add('tomasr/molokai')
+" call dein#add('tomasr/molokai')
+" call dein#add('sickill/vim-monokai')
+" call dein#add('jpo/vim-railscasts-theme')
+call dein#add('w0ng/vim-hybrid')
 
 call dein#add('vim-jp/vital.vim')
 call dein#config('vital.vim', {
@@ -1728,12 +1731,12 @@ set nosecure
 " --- colorscheme
 
 syntax enable
-if !exists('g:colors_name')
-    set background=dark
-    colorscheme molokai 
-endif
+set background=dark
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+colorscheme hybrid
 
-hi Normal ctermbg=none
+highlight Normal ctermbg=none
 
 
 " --- functions
