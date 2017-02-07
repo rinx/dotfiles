@@ -911,6 +911,19 @@ function! s:init_submode_hook_add() abort
     call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 endfunction
 
+function! s:init_hybrid_hook_add() abort
+    set background=dark
+    let g:hybrid_custom_term_colors = 1
+    let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+
+    augroup vimrc-colorscheme-hybrid 
+        autocmd!
+        autocmd VimEnter * nested colorscheme hybrid
+    augroup END
+
+    highlight Normal ctermbg=none
+endfunction
+
 
 " --- plugin loading with dein.vim
 
@@ -1609,7 +1622,10 @@ call dein#config('radiko.vim', {
 " call dein#add('tomasr/molokai')
 " call dein#add('sickill/vim-monokai')
 " call dein#add('jpo/vim-railscasts-theme')
-call dein#add('w0ng/vim-hybrid')
+call dein#add('w0ng/vim-hybrid', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_hybrid_hook_add()',
+            \})
+
 
 call dein#add('vim-jp/vital.vim')
 call dein#config('vital.vim', {
@@ -1731,12 +1747,6 @@ set nosecure
 " --- colorscheme
 
 syntax enable
-set background=dark
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-colorscheme hybrid
-
-highlight Normal ctermbg=none
 
 
 " --- functions
