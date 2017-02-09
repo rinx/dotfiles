@@ -1656,32 +1656,25 @@ set wildchar=<Tab>
 
 set imdisable
 
-" search
 set incsearch
 set ignorecase
 set smartcase
 
-" indent
 filetype plugin indent on
 set autoindent
 set smartindent
 set breakindent
 
-" unsaved buffer warning
 set confirm
 
-" mouse
 set mouse=a
 
-" fold
 set foldmethod=marker
 
-" visual select
 set virtualedit=block
 
-" tab
 set expandtab
-" set smarttab
+set smarttab
 set tabstop=8
 set shiftwidth=4
 set softtabstop=4
@@ -1703,16 +1696,13 @@ set visualbell
 set lazyredraw
 set ttyfast
 
-" for session
 set sessionoptions+=tabpages
 
-" showmatch
 set showmatch
 set matchtime=3
 
 set conceallevel=0
 
-" backup
 set backup
 
 set undofile
@@ -1744,10 +1734,7 @@ set noautowrite
 set noexrc
 set nosecure
 
-" --- colorscheme
-
 syntax enable
-
 
 " --- functions
 
