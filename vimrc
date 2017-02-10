@@ -2066,14 +2066,11 @@ endfunction
 
 command! MakeJapaneseInputWindow call s:make_japanese_input_window()
 
-" --- mappings
-
 let g:mapleader = '\'
 
 " reload .vimrc
 nnoremap <C-r><C-f> :source ~/.vimrc<CR>
 
-" For US-keyboard
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
@@ -2242,8 +2239,6 @@ function! s:sticky_func()
 endfunction
 
 
-" --- filetype
-
 " golang
 set rtp^=$GOROOT/misc/vim
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
@@ -2254,9 +2249,6 @@ augroup vimrc-golang
     autocmd BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4
     autocmd FileType go compiler go
 augroup END
-
-
-" --- miscellaneous
 
 " QuickFix window
 augroup vimrc-forQuickFix
@@ -2281,9 +2273,6 @@ augroup vimrc-forHelpWindow
     autocmd!
     autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END
-
-
-" --- statusline
 
 set laststatus=2
 
