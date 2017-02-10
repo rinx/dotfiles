@@ -1836,10 +1836,6 @@ call dein#config('vital.vim', {
 
 call dein#end()
 
-
-" --- Basics
-
-" history
 set viminfo='1000,<100,f1,h,s100
 set history=300
 
@@ -1941,9 +1937,6 @@ set noexrc
 set nosecure
 
 syntax enable
-
-
-" --- functions
 
 " A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
