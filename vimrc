@@ -2271,7 +2271,18 @@ augroup END
 " Help window
 augroup vimrc-forHelpWindow
     autocmd!
+    " mappings
+    autocmd FileType help nnoremap <buffer> j j
+    autocmd FileType help nnoremap <buffer> k k
+    autocmd FileType help nnoremap <buffer> 0 0
+    autocmd FileType help nnoremap <buffer> $ $
+    autocmd FileType help nnoremap <buffer> gj gj
+    autocmd FileType help nnoremap <buffer> gk gk
+    autocmd FileType help nnoremap <buffer> g0 g0
+    autocmd FileType help nnoremap <buffer> g$ g$
     autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
+    " autoclose
+    autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif
 augroup END
 
 set laststatus=2
