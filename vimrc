@@ -1005,6 +1005,19 @@ function! s:init_ref_hook_add() abort
     call altercmd#define('wiki',  'Ref webdict wiki')
 endfunction
 
+function! s:init_translategoogle_hook_add() abort
+    let g:translategoogle_languages = ["ja", "en"]
+    let g:translategoogle_default_sl = "en"
+    let g:translategoogle_default_tl = "ja"
+    let g:translategoogle_default_ie = "UTF-8"
+    let g:translategoogle_default_oe = "UTF-8"
+    let g:translategoogle_default_opener_before = "8split"
+    let g:translategoogle_default_opener_after = "rightbelow vsplit"
+    let g:translategoogle_default_opener_retrans = "rightbelow vsplit"
+    let g:translategoogle_enable_retranslate = 0
+    let g:translategoogle_mapping_close = "q"
+endfunction
+
 function! s:init_tweetvim_hook_source() abort
     let g:tweetvim_tweet_per_page = 50
     let g:tweetvim_display_icon = 0
@@ -1704,6 +1717,18 @@ call dein#config('vim-ref', {
             \ ],
             \ 'on_map': [
             \   '<Plug>(ref-',
+            \ ],
+            \})
+
+call dein#add('daisuzu/translategoogle.vim', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_translategoogle_hook_add()',
+            \})
+call dein#config('translategoogle.vim', {
+            \ 'lazy': 1,
+            \ 'on_cmd': [
+            \   'TranslateGoogle',
+            \   'TranslateGoogleCmd',
+            \   'TranslateGoogleCmdReverse',
             \ ],
             \})
 
