@@ -867,6 +867,24 @@ function! s:init_textobj_multiblock_hook_add() abort
     omap ib <Plug>(textobj-multiblock-i)
     vmap ab <Plug>(textobj-multiblock-a)
     vmap ib <Plug>(textobj-multiblock-i)
+
+    function! s:init_textobj_multiblock_hook_add_tex() abort
+        let b:textobj_multiblock_blocks = [
+                \ ['$', '$', 1],
+                \ ['$$', '$$', 1],
+                \ ]
+    endfunction
+    function! s:init_textobj_multiblock_hook_add_ruby() abort
+        let b:textobj_multiblock_blocks = [
+                \ ['/', '/', 1],
+                \ ]
+    endfunction
+
+    augroup vimrc-init_multiblock_hook_add
+        autocmd!
+        autocmd FileType tex,latex,plaintex call <SID>init_textobj_multiblock_hook_add_tex()
+        autocmd FileType ruby call <SID>init_textobj_multiblock_hook_add_ruby()
+    augroup END
 endfunction
 
 function! s:init_textobj_multitextobj_hook_add() abort
