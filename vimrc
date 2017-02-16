@@ -870,8 +870,8 @@ function! s:init_textobj_multiblock_hook_add() abort
 
     function! s:init_textobj_multiblock_hook_add_tex() abort
         let b:textobj_multiblock_blocks = [
-                \ ['$', '$', 1],
-                \ ['$$', '$$', 1],
+                \ ['\$', '\$', 1],
+                \ ['\$\$', '\$\$', 1],
                 \ ]
     endfunction
     function! s:init_textobj_multiblock_hook_add_ruby() abort
