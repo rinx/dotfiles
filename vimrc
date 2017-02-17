@@ -984,6 +984,10 @@ function! s:init_vim2hs_hook_source() abort
     let g:haskell_conceal_enumerations = 0
 endfunction
 
+function! s:init_yesod_hook_source() abort
+    let g:yesod_disable_maps = 1
+endfunction
+
 function! s:init_ref_hook_add() abort
     let g:ref_source_webdict_sites = {
                 \ 'je' : {
@@ -1642,6 +1646,14 @@ call dein#config('unite-haskellimport', {
             \ 'on_source': [
             \   'unite.vim',
             \ ],
+            \})
+call dein#add('alx741/yesod.vim')
+call dein#config('yesod.vim', {
+            \ 'lazy': 1,
+            \ 'on_ft': [
+            \   'haskell',
+            \ ],
+            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yesod_hook_source()',
             \})
 call dein#add('pbrisbin/html-template-syntax')
 call dein#config('html-template-syntax', {
