@@ -2121,6 +2121,21 @@ endfunction
 
 command! MakeJapaneseInputWindow call s:make_japanese_input_window()
 
+function! s:init_rails_routes_quickfix_hook() abort
+    let g:rails_routes_quickfix_cmd = "bin/rake routes"
+    function! s:init_rails_routes_quickfix() abort
+        cexpr system(g:rails_routes_quickfix_cmd)
+        copen
+    endfunction
+
+    command! RailsRoutesOnQuickfix call <SID>init_rails_routes_quickfix()
+endfunction
+
+augroup vimrc-init_rails_routes_quickfix_hook
+    autocmd!
+    autocmd FileType ruby call <SID>init_rails_routes_quickfix_hook()
+augroup END
+
 let g:mapleader = '\'
 
 " reload .vimrc
