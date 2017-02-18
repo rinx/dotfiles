@@ -2237,6 +2237,9 @@ nnoremap <silent> <Leader>p :setl paste!<CR>
 " toggle relativenumber
 nnoremap <silent> <Leader>r :setl relativenumber!<CR>
 
+" toggle spell check
+nnoremap <silent> <Leader>s :setl spell!<CR>
+
 " close special windows from another window
 nnoremap <silent> <Leader>q :<C-u>call <SID>close_special_windows()<CR>
 
