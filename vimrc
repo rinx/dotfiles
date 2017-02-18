@@ -103,6 +103,31 @@ function! s:init_neocomplete_hook_source() abort
     let g:neocomplete#sources#dictionary#dictionaries.tweetvim_say =  expand('~/.tweetvim/screen_name')
 
     let g:neocomplete#enable_auto_close_preview = 1
+
+    let g:neocomplete#text_mode_filetypes = {
+            \ 'hybrid' : 1,
+            \ 'text' : 1,
+            \ 'help' : 1,
+            \ 'tex' : 1,
+            \ 'latex' : 1,
+            \ 'plaintex' : 1,
+            \ 'gitcommit' : 1,
+            \ 'gitrebase' : 1,
+            \ 'vcs-commit' : 1,
+            \ 'markdown' : 1,
+            \ 'mkd' : 1,
+            \ 'textile' : 1,
+            \ 'creole' : 1,
+            \ 'org' : 1,
+            \ 'rdoc' : 1,
+            \ 'mediawiki' : 1,
+            \ 'rst' : 1,
+            \ 'asciidoc' : 1,
+            \ 'pod' : 1,
+            \ 'gita-commit' : 1,
+            \ 'J6uil_say' : 1,
+            \}
+
 endfunction
 
 function! s:init_neocomplete_hook_add() abort
