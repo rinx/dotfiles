@@ -985,6 +985,9 @@ call dein#config('neco-look', {
             \ 'lazy' : 1,
             \ 'on_ft' : [
             \     'markdown',
+            \     'tex',
+            \     'latex',
+            \     'plaintex',
             \ ],
             \})
 
