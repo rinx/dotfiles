@@ -131,8 +131,10 @@ function! s:init_neocomplete_hook_source() abort
 endfunction
 
 function! s:init_neocomplete_hook_add() abort
-    inoremap <expr><C-g> neocomplete#undo_completion()
-    inoremap <expr><C-l> neocomplete#complete_common_string()
+    inoremap <expr><Tab>  neocomplete#start_manual_complete()
+    inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
+    inoremap <expr><C-g>  neocomplete#undo_completion()
+    inoremap <expr><C-l>  neocomplete#complete_common_string()
 endfunction
 
 " Enable omni function
@@ -156,10 +158,6 @@ function! s:init_neosnippet_hook_add() abort
                 \]
 
     let g:neosnippet#enable_snipmate_compatibility = 1
-
-    " SuperTab like snippets behavior.
-    imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-    smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
     augroup vimrc-neosnippet
         autocmd FileType neosnippet setlocal noexpandtab
