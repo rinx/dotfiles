@@ -1858,6 +1858,9 @@ call dein#config('codic-vim', {
             \ 'on_source' : [
             \   'unite.vim',
             \ ],
+            \ 'on_func': [
+            \   'codic',
+            \ ],
             \})
 call dein#add('rhysd/unite-codic.vim')
 call dein#config('unite-codic.vim', {
