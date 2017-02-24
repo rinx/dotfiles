@@ -860,29 +860,7 @@ endfunction
 function! s:init_textobj_jabraces_hook_add() abort
     let g:textobj_jabraces_no_default_key_mappings = 1
 
-    omap aj( <Plug>(textobj-jabraces-parens-a)
-    omap aj) <Plug>(textobj-jabraces-parens-a)
-    omap ij( <Plug>(textobj-jabraces-parens-i)
-    omap ij) <Plug>(textobj-jabraces-parens-i)
-    vmap aj( <Plug>(textobj-jabraces-parens-a)
-    vmap aj) <Plug>(textobj-jabraces-parens-a)
-    vmap ij( <Plug>(textobj-jabraces-parens-i)
-    vmap ij) <Plug>(textobj-jabraces-parens-i)
-
-    omap ajk <Plug>(textobj-jabraces-kakko-a)
-    omap ijk <Plug>(textobj-jabraces-kakko-i)
-    vmap ajk <Plug>(textobj-jabraces-kakko-a)
-    vmap ijk <Plug>(textobj-jabraces-kakko-i)
-
-    omap ajK <Plug>(textobj-jabraces-double-kakko-a)
-    omap ijK <Plug>(textobj-jabraces-double-kakko-i)
-    vmap ajK <Plug>(textobj-jabraces-double-kakko-a)
-    vmap ijK <Plug>(textobj-jabraces-double-kakko-i)
-
-    omap ajs <Plug>(textobj-jabraces-sumi-kakko-a)
-    omap ijs <Plug>(textobj-jabraces-sumi-kakko-i)
-    vmap ajs <Plug>(textobj-jabraces-sumi-kakko-a)
-    vmap ijs <Plug>(textobj-jabraces-sumi-kakko-i)
+    " the mappings are defined in multitextobj group A
 endfunction
 
 function! s:init_textobj_multiblock_hook_add() abort
@@ -928,6 +906,7 @@ function! s:init_textobj_multitextobj_hook_add() abort
     vmap amt <Plug>(textobj-multitextobj-a)
     vmap imt <Plug>(textobj-multitextobj-i)
 
+    " jabraces
     let g:textobj_multitextobj_textobjects_group_i = {
                 \ 'A' : [
                 \   '<Plug>(textobj-jabraces-sumi-kakko-i)',
