@@ -25,7 +25,7 @@ set softtabstop=4
 if has('vim_starting')
     set runtimepath+=~/.vim/dein/repos/github.com/itchyny/lightline.vim
     set runtimepath+=~/.vim/dein/repos/github.com/tyru/skk.vim
-    set runtimepath+=~/.vim/dein/repos/github.com/tomasr/molokai
+    set runtimepath+=~/.vim/dein/repos/github.com/w0ng/vim-hybrid
 endif
 
 let g:skk_jisyo = '~/.skk-jisyo'
@@ -82,10 +82,10 @@ nnoremap Q <Nop>
 " --- Color settings ---
 
 syntax enable
-if !exists('g:colors_name')
-    set background=dark
-    colorscheme molokai 
-endif
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+set background=dark
+colorscheme hybrid
 
 hi Normal ctermbg=none
 
