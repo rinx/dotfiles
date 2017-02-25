@@ -863,6 +863,15 @@ function! s:init_textobj_jabraces_hook_add() abort
     " the mappings are defined in multitextobj group A
 endfunction
 
+function! s:init_textobj_between_hook_add() abort
+    let g:textobj_between_no_default_key_mappings = 1
+
+    omap ac <Plug>(textobj-between-a)
+    omap ic <Plug>(textobj-between-i)
+    vmap ac <Plug>(textobj-between-a)
+    vmap ic <Plug>(textobj-between-i)
+endfunction
+
 function! s:init_textobj_multiblock_hook_add() abort
     omap ab <Plug>(textobj-multiblock-a)
     omap ib <Plug>(textobj-multiblock-i)
@@ -1533,7 +1542,9 @@ call dein#add('kana/vim-textobj-line')
 call dein#add('kana/vim-textobj-jabraces', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_jabraces_hook_add()',
             \})
-call dein#add('lucapette/vim-textobj-underscore')
+call dein#add('thinca/vim-textobj-between', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_between_hook_add()',
+            \})
 call dein#add('mattn/vim-textobj-url')
 call dein#add('osyo-manga/vim-textobj-multiblock', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multiblock_hook_add()',
