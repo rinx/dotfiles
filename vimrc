@@ -1999,7 +1999,6 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 
-" show tab, newline, etc...
 set list
 set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
 
