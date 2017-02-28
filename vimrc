@@ -2157,33 +2157,53 @@ augroup END
 " https://gist.github.com/sgur/4e1cc8e93798b8fe9621
 inoremap <silent> <C-x>c  <C-R>=<SID>codic_complete()<CR>
 function! s:codic_complete()
-  let line = getline('.')
-  let start = match(line, '\k\+$')
-  let cand = s:codic_candidates(line[start :])
-  call complete(start +1, cand)
-  return ''
+    let line = getline('.')
+    let start = match(line, '\k\+$')
+    let cand = s:codic_candidates(line[start :])
+    call complete(start +1, cand)
+    return ''
 endfunction
 function! s:codic_candidates(arglead)
-  let cand = codic#search(a:arglead, 30)
-  " error
-  if type(cand) == type(0)
-    return []
-  endif
-  " english -> english terms
-  if a:arglead =~# '^\w\+$'
-    return map(cand, '{"word": v:val["label"], "menu": join(map(copy(v:val["values"]), "v:val.word"), ",")}')
-  endif
-  " japanese -> english terms
-  return s:reverse_candidates(cand)
+    let cand = codic#search(a:arglead, 30)
+    " error
+    if type(cand) == type(0)
+        return []
+    endif
+    " english -> english terms
+    if a:arglead =~# '^\w\+$'
+        return map(cand, '{"word": v:val["label"], "menu": join(map(copy(v:val["values"]), "v:val.word"), ",")}')
+    endif
+    " japanese -> english terms
+    return s:reverse_candidates(cand)
 endfunction
 function! s:reverse_candidates(cand)
-  let _ = []
-  for c in a:cand
-    for v in c.values
-      call add(_, {"word": v.word, "menu": !empty(v.desc) ? v.desc : c.label })
+    let _ = []
+    for c in a:cand
+        for v in c.values
+            call add(_, {"word": v.word, "menu": !empty(v.desc) ? v.desc : c.label })
+        endfor
     endfor
-  endfor
-  return _
+    return _
+endfunction
+
+" Google suggestions
+" based on https://github.com/mattn/googlesuggest-complete-vim
+inoremap <silent> <C-x>g  <C-R>=<SID>googlesuggestion_complete()<CR>
+function! s:googlesuggestion_complete()
+    let line = getline('.')
+    let start = match(line, '\k\+$')
+    let cand = s:googlesuggestion_candidates(line[start :])
+    call complete(start +1, cand)
+    return ''
+endfunction
+function! s:googlesuggestion_candidates(arglead)
+    let ret = []
+    let res = webapi#http#get('http://suggestqueries.google.com/complete/search', {"client" : "youtube", "q" : a:arglead, "hjson" : "t", "hl" : "ja", "ie" : "UTF8", "oe" : "UTF8" })
+        let arr = webapi#json#decode(res.content)
+    for m in arr[1]
+      call add(ret, m[0])
+    endfor
+    return ret
 endfunction
 
 " visualize '　'
