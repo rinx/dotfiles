@@ -97,7 +97,7 @@ function! s:init_neocomplete_hook_source() abort
     let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
     if !exists('g:neocomplete#sources#dictionary#dictionaries')
-      let g:neocomplete#sources#dictionary#dictionaries = {}
+        let g:neocomplete#sources#dictionary#dictionaries = {}
     endif
     let g:neocomplete#sources#dictionary#dictionaries.vimshell = expand('~/.vimshell/command-history')
     let g:neocomplete#sources#dictionary#dictionaries.tweetvim_say =  expand('~/.tweetvim/screen_name')
@@ -105,28 +105,28 @@ function! s:init_neocomplete_hook_source() abort
     let g:neocomplete#enable_auto_close_preview = 1
 
     let g:neocomplete#text_mode_filetypes = {
-            \ 'hybrid' : 1,
-            \ 'text' : 1,
-            \ 'help' : 1,
-            \ 'tex' : 1,
-            \ 'latex' : 1,
-            \ 'plaintex' : 1,
-            \ 'gitcommit' : 1,
-            \ 'gitrebase' : 1,
-            \ 'vcs-commit' : 1,
-            \ 'markdown' : 1,
-            \ 'mkd' : 1,
-            \ 'textile' : 1,
-            \ 'creole' : 1,
-            \ 'org' : 1,
-            \ 'rdoc' : 1,
-            \ 'mediawiki' : 1,
-            \ 'rst' : 1,
-            \ 'asciidoc' : 1,
-            \ 'pod' : 1,
-            \ 'gita-commit' : 1,
-            \ 'J6uil_say' : 1,
-            \}
+                \ 'hybrid' : 1,
+                \ 'text' : 1,
+                \ 'help' : 1,
+                \ 'tex' : 1,
+                \ 'latex' : 1,
+                \ 'plaintex' : 1,
+                \ 'gitcommit' : 1,
+                \ 'gitrebase' : 1,
+                \ 'vcs-commit' : 1,
+                \ 'markdown' : 1,
+                \ 'mkd' : 1,
+                \ 'textile' : 1,
+                \ 'creole' : 1,
+                \ 'org' : 1,
+                \ 'rdoc' : 1,
+                \ 'mediawiki' : 1,
+                \ 'rst' : 1,
+                \ 'asciidoc' : 1,
+                \ 'pod' : 1,
+                \ 'gita-commit' : 1,
+                \ 'J6uil_say' : 1,
+                \}
 
 endfunction
 
@@ -174,7 +174,7 @@ function! s:init_vimshell_hook_add() abort
     nnoremap <silent> ,v :<C-u>VimShell<CR>
 
     let g:vimshell_prompt_expr =
-        \ 'escape(fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
+                \ 'escape(fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
     let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+% '
 
     let g:vimshell_external_history_path = expand('~/.zsh_history')
@@ -734,11 +734,11 @@ function! s:init_incsearch_hook_add() abort
     function! s:init_incsearch_hook_add_autocmd() abort
         " except for
         let _ = [
-                \ 'markdown',
-                \ 'latex',
-                \ 'tex',
-                \ 'plaintex',
-                \ ]
+                    \ 'markdown',
+                    \ 'latex',
+                    \ 'tex',
+                    \ 'plaintex',
+                    \ ]
         if index(_, &ft) < 0
             map <buffer>/  <Plug>(incsearch-forward)
             map <buffer>?  <Plug>(incsearch-backward)
@@ -880,14 +880,14 @@ function! s:init_textobj_multiblock_hook_add() abort
 
     function! s:init_textobj_multiblock_hook_add_tex() abort
         let b:textobj_multiblock_blocks = [
-                \ ['\$', '\$', 1],
-                \ ['\$\$', '\$\$', 1],
-                \ ]
+                    \ ['\$', '\$', 1],
+                    \ ['\$\$', '\$\$', 1],
+                    \ ]
     endfunction
     function! s:init_textobj_multiblock_hook_add_ruby() abort
         let b:textobj_multiblock_blocks = [
-                \ ['/', '/', 1],
-                \ ]
+                    \ ['/', '/', 1],
+                    \ ]
     endfunction
 
     augroup vimrc-init_multiblock_hook_add
@@ -2049,7 +2049,7 @@ function! s:csv_to_markdown_table () range
         for j in range(0, len(values[i]) - 1)
             let aftersbst .= "| " . values[i][j] . repeat(" ", maxcollen[j] - len(values[i][j])) . " "
         endfor
-       call setline(i + a:firstline, aftersbst . "|")
+        call setline(i + a:firstline, aftersbst . "|")
     endfor
     let secondline = ""
     for i in range(0, len(values[0]) - 1)
@@ -2097,7 +2097,7 @@ function! s:csv_to_tex_table() range
         for j in range(1, len(values[i]) - 1)
             let aftersbst .= "& " . values[i][j] . repeat(" ", maxcollen[j] - len(values[i][j])) . " "
         endfor
-       call setline(i + a:firstline, aftersbst . "\\\\")
+        call setline(i + a:firstline, aftersbst . "\\\\")
     endfor
 endfunction
 
@@ -2109,7 +2109,7 @@ command! -range CsvToTexTable <line1>,<line2>call s:csv_to_tex_table()
 function! s:make_japanese_input_window()
     let _ = ''
     if has('mac')
-       let _ = 'w !pbcopy'
+        let _ = 'w !pbcopy'
         augroup vimrc-makeJapaneseInputWindow
             autocmd!
             autocmd InsertLeave,FileType input_via_skk
@@ -2155,7 +2155,7 @@ augroup vimrc-init_rails_routes_quickfix_hook
 augroup END
 
 " https://gist.github.com/sgur/4e1cc8e93798b8fe9621
-inoremap <silent> <C-x>c  <C-R>=<SID>codic_complete()<CR>
+inoremap <silent> <C-x>c <C-R>=<SID>codic_complete()<CR>
 function! s:codic_complete()
     let line = getline('.')
     let start = match(line, '\k\+$')
@@ -2188,7 +2188,7 @@ endfunction
 
 " Google suggestions
 " based on https://github.com/mattn/googlesuggest-complete-vim
-inoremap <silent> <C-x>g  <C-R>=<SID>googlesuggestion_complete()<CR>
+inoremap <silent> <C-x>g <C-R>=<SID>googlesuggestion_complete()<CR>
 function! s:googlesuggestion_complete()
     let line = getline('.')
     let start = match(line, '\k\+$')
@@ -2199,26 +2199,25 @@ endfunction
 function! s:googlesuggestion_candidates(arglead)
     let ret = []
     let res = webapi#http#get('http://suggestqueries.google.com/complete/search', {"client" : "youtube", "q" : a:arglead, "hjson" : "t", "hl" : "ja", "ie" : "UTF8", "oe" : "UTF8" })
-        let arr = webapi#json#decode(res.content)
+    let arr = webapi#json#decode(res.content)
     for m in arr[1]
-      call add(ret, m[0])
+        call add(ret, m[0])
     endfor
     return ret
 endfunction
 
 " visualize '　'
 " http://inari.hatenablog.com/entry/2014/05/05/231307
-function! ZenkakuSpace()
+function! s:zenkaku_space()
     highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
-
 if has('syntax')
-    augroup ZenkakuSpace
+    augroup vimrc-zenkaku_space
         autocmd!
-        autocmd ColorScheme * call ZenkakuSpace()
+        autocmd ColorScheme * call <SID>zenkaku_space()
         autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
     augroup END
-    call ZenkakuSpace()
+    call <SID>zenkaku_space()
 endif
 
 let g:mapleader = '\'
@@ -2602,24 +2601,24 @@ endfunction
 
 " auto-toggle of cursorline
 augroup vimrc-auto-cursorline
-  autocmd!
-  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
-  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorcolumn
-  autocmd CursorHold,CursorHoldI * setlocal cursorline
-  autocmd CursorHold,CursorHoldI * setlocal cursorcolumn
+    autocmd!
+    autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
+    autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorcolumn
+    autocmd CursorHold,CursorHoldI * setlocal cursorline
+    autocmd CursorHold,CursorHoldI * setlocal cursorcolumn
 augroup END
 
 " when creating new file, if it does not exist directory,
 " this function will ask you to create new directory.
 augroup vimrc-auto-mkdir
-  autocmd!
-  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
-  function! s:auto_mkdir(dir, force)
-    if !isdirectory(a:dir) && (a:force ||
-          \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-    endif
-  endfunction
+    autocmd!
+    autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+    function! s:auto_mkdir(dir, force)
+        if !isdirectory(a:dir) && (a:force ||
+                    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+            call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+        endif
+    endfunction
 augroup END
 
 " load Session.vim
