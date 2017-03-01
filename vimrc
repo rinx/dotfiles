@@ -1091,6 +1091,12 @@ function! s:init_radiko_hook_source() abort
     let g:radiko#is_loaded = 1
 endfunction
 
+function! s:init_yj_proofreading_hook_add() abort
+    if exists('g:vimrc_private["yahoo_proofreader_apikey"]')
+        let g:yj_proofreading#yahoo_apikey = g:vimrc_private['yahoo_proofreader_apikey']
+    endif
+endfunction
+
 function! s:init_submode_hook_add() abort
     call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
     call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
@@ -1889,6 +1895,16 @@ call dein#config('radiko.vim', {
             \ ],
             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_source()',
             \})
+
+call dein#add('rinx/yj-proofreading.vim', {
+            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_yj_proofreading_hook_add()',
+            \})
+" call dein#config('yj-proofreading.vim', {
+"             \ 'lazy': 1,
+"             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yj_proofreading_hook_source()',
+"             \})
+
+
 
 " call dein#add('tomasr/molokai')
 " call dein#add('sickill/vim-monokai')
