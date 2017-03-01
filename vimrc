@@ -2195,7 +2195,14 @@ function! s:googlesuggestion_complete()
 endfunction
 function! s:googlesuggestion_candidates(arglead)
     let ret = []
-    let res = webapi#http#get('http://suggestqueries.google.com/complete/search', {"client" : "youtube", "q" : a:arglead, "hjson" : "t", "hl" : "ja", "ie" : "UTF8", "oe" : "UTF8" })
+    let res = webapi#http#get('http://suggestqueries.google.com/complete/search', {
+                \ "client" : "youtube", 
+                \ "q" : a:arglead,
+                \ "hjson" : "t",
+                \ "hl" : "ja",
+                \ "ie" : "UTF8",
+                \ "oe" : "UTF8",
+                \})
     let arr = webapi#json#decode(res.content)
     for m in arr[1]
         call add(ret, m[0])
