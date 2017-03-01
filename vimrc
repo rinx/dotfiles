@@ -131,10 +131,12 @@ function! s:init_neocomplete_hook_source() abort
 endfunction
 
 function! s:init_neocomplete_hook_add() abort
-    inoremap <expr><Tab>  neocomplete#start_manual_complete()
-    inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
+    inoremap <expr><S-Tab>  neocomplete#start_manual_complete()
+
     inoremap <expr><C-g>  neocomplete#undo_completion()
     inoremap <expr><C-l>  neocomplete#complete_common_string()
+
+    inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
 endfunction
 
 " Enable omni function
@@ -1154,12 +1156,7 @@ call dein#config('neocomplete.vim', {
 call dein#add('ujihisa/neco-look')
 call dein#config('neco-look', {
             \ 'lazy' : 1,
-            \ 'on_ft' : [
-            \     'markdown',
-            \     'tex',
-            \     'latex',
-            \     'plaintex',
-            \ ],
+            \ 'on_i' : 1,
             \})
 
 call dein#add('Shougo/neosnippet', {
