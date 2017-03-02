@@ -1899,12 +1899,15 @@ call dein#config('radiko.vim', {
 call dein#add('rinx/yj-proofreading.vim', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_yj_proofreading_hook_add()',
             \})
-" call dein#config('yj-proofreading.vim', {
-"             \ 'lazy': 1,
-"             \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yj_proofreading_hook_source()',
-"             \})
-
-
+call dein#config('yj-proofreading.vim', {
+            \ 'lazy': 1,
+            \ 'on_cmd': [
+            \   'YahooProofReader',
+            \ ],
+            \ 'on_func': [
+            \   'yjproofreading',
+            \ ],
+            \})
 
 " call dein#add('tomasr/molokai')
 " call dein#add('sickill/vim-monokai')
