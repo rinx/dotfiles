@@ -100,7 +100,6 @@ function! s:init_neocomplete_hook_source() abort
         let g:neocomplete#sources#dictionary#dictionaries = {}
     endif
     let g:neocomplete#sources#dictionary#dictionaries.vimshell = expand('~/.vimshell/command-history')
-    let g:neocomplete#sources#dictionary#dictionaries.tweetvim_say =  expand('~/.tweetvim/screen_name')
 
     let g:neocomplete#enable_auto_close_preview = 1
 
@@ -236,9 +235,6 @@ function! s:init_unite_hook_source() abort
                 \ ['RN2-click-de-onair', 'http://www.radionikkei.jp/rn2/cdo/'],
                 \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
                 \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
-                \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
-                \ ['TweetVim UserStream', 'TweetVimUserStream'],
-                \ ['J6uil lingr-client', 'J6uil'],
                 \ ['PreVim open', 'PreVimOpen'],
                 \ ['copy buffer into clipboard', s:copyToClipboardCommand],
                 \ ['vim-jp', 'http://vim-jp.org/'],
@@ -1053,15 +1049,6 @@ function! s:init_translategoogle_hook_add() abort
     let g:translategoogle_mapping_close = "q"
 endfunction
 
-function! s:init_tweetvim_hook_source() abort
-    let g:tweetvim_tweet_per_page = 50
-    let g:tweetvim_display_icon = 0
-endfunction
-
-function! s:init_j6uil_hook_source() abort
-    let g:J6uil_user = 'rinx'
-endfunction
-
 function! s:init_gista_hook_source() abort
     let g:gista#github_user = 'rinx'
 endfunction
@@ -1782,50 +1769,6 @@ call dein#config('translategoogle.vim', {
             \})
 
 call dein#add('mattn/webapi-vim')
-call dein#add('basyura/twibill.vim')
-call dein#add('basyura/TweetVim')
-call dein#config('TweetVim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'TweetVimVersion',
-            \   'TweetVimAddAccount',
-            \   'TweetVimSwitchAccount',
-            \   'TweetVimHomeTimeline',
-            \   'TweetVimMentions',
-            \   'TweetVimListStatuses',
-            \   'TweetVimUserTimeline',
-            \   'TweetVimSay',
-            \   'TweetVimUserStream',
-            \   'TweetVimCommandSay',
-            \   'TweetVimCurrentLineSay',
-            \   'TweetVimSearch',
-            \ ],
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_tweetvim_hook_source()',
-            \})
-call dein#add('basyura/bitly.vim')
-call dein#config('bitly.vim', {
-            \ 'lazy': 1,
-            \ 'on_func': [
-            \   'bitly',
-            \ ],
-            \})
-call dein#add('mattn/favstar-vim')
-call dein#add('basyura/J6uil.vim')
-call dein#config('J6uil.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'J6uil',
-            \   'J6uilReconnect',
-            \   'J6uilDisconnect',
-            \ ],
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_j6uil_hook_source()',
-            \})
 
 call dein#add('lambdalisue/vim-gista')
 call dein#config('vim-gista', {
