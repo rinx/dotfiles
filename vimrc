@@ -2184,8 +2184,6 @@ let s:unite_source_googlesuggestion = {
             \   },
             \ },
             \ 'default_action' : 'google_search',
-            \ '__counter' : 0,
-            \ '__tmp_string' : '',
             \}
 
 function! s:unite_source_googlesuggestion.action_table.google_search.func(candidate)
@@ -2193,31 +2191,20 @@ function! s:unite_source_googlesuggestion.action_table.google_search.func(candid
     call openbrowser#search(a:candidate.word, 'google')
 endfunction
 
-function! s:unite_source_googlesuggestion.async_gather_candidates(args, context)
+function! s:unite_source_googlesuggestion.change_candidates(args, context)
     let word = matchstr(a:context.input, '^\S\+')
-
-    if self.__counter >= 10
-        let self.__counter = 0
-    else
-        let self.__counter += 1
-        return []
-    endif
 
     if word == '' 
         return []
     endif
-    if word == self.__tmp_string
-        return []
-    endif
 
     let cand = s:googlesuggestion_candidates(word)
-    let a:context.source.unite__cached_candidates = []
     return map(cand, '{
                 \ "word": v:val,
                 \ }')
 endfunction
 
-augroup vimrc-define-unite-source
+augroup vimrc-unite-googlesuggestion-define
     autocmd!
     autocmd VimEnter * call unite#define_source(s:unite_source_googlesuggestion)
 augroup END
