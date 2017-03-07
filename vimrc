@@ -1881,6 +1881,7 @@ set cursorline
 set cmdheight=2
 set wildmenu
 set wildchar=<Tab>
+set wildmode=longest:full,full
 
 set imdisable
 
