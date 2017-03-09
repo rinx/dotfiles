@@ -718,14 +718,14 @@ function! s:init_yankround_hook_source() abort
 endfunction
 
 function! s:init_asterisk_hook_add() abort
-    map *   <Plug>(asterisk-*)
-    map #   <Plug>(asterisk-#)
-    map g*  <Plug>(asterisk-g*)
-    map g#  <Plug>(asterisk-g#)
-    map z*  <Plug>(asterisk-z*)
-    map gz* <Plug>(asterisk-gz*)
-    map z#  <Plug>(asterisk-z#)
-    map gz# <Plug>(asterisk-gz#)
+    map *   <Plug>(asterisk-*)<Plug>(anzu-update-search-status-with-echo)
+    map #   <Plug>(asterisk-#)<Plug>(anzu-update-search-status-with-echo)
+    map g*  <Plug>(asterisk-g*)<Plug>(anzu-update-search-status-with-echo)
+    map g#  <Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
+    map z*  <Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
+    map gz* <Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
+    map z#  <Plug>(asterisk-z#<Plug>(anzu-update-search-status-with-echo))
+    map gz# <Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
 endfunction
 
 function! s:init_incsearch_hook_add() abort
@@ -756,19 +756,10 @@ endfunction
 function! s:init_anzu_hook_add() abort
     nmap n <Plug>(anzu-n)zz
     nmap N <Plug>(anzu-N)zz
-    nmap * <Plug>(anzu-star)zz
-    nmap # <Plug>(anzu-sharp)zz
     augroup vimrc-anzu
         autocmd!
         autocmd CursorHold,CursorHoldI,WinLeave,Tableave * call anzu#clear_search_status()
     augroup END
-endfunction
-
-function! s:init_visualstar_hook_add() abort
-    map * <Plug>(visualstar-*)
-    map # <Plug>(visualstar-#)
-    map g* <Plug>(visualstar-g*)
-    map g# <Plug>(visualstar-g#)
 endfunction
 
 function! s:init_cleverf_hook_add() abort
@@ -1468,15 +1459,6 @@ call dein#config('vim-anzu', {
             \ ],
             \})
 call dein#add('osyo-manga/vim-over')
-call dein#add('thinca/vim-visualstar', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_visualstar_hook_add()',
-            \})
-call dein#config('vim-visualstar', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(visualstar-',
-            \ ],
-            \})
 
 call dein#add('rhysd/clever-f.vim', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_cleverf_hook_add()',
