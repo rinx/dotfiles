@@ -2174,13 +2174,14 @@ function! s:unite_source_googlesuggestion.action_table.google_search.func(candid
 endfunction
 
 function! s:unite_source_googlesuggestion.change_candidates(args, context)
-    let word = matchstr(a:context.input, '^\S\+')
+    let word = matchstr(a:context.input, '^\(\S\|\s\)\+')
 
     if word == '' 
         return []
     endif
 
     let cand = s:googlesuggestion_candidates(word)
+    let cand = extend([word], cand)
     return map(cand, '{
                 \ "word": v:val,
                 \ }')
