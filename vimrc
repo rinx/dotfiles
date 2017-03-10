@@ -640,9 +640,9 @@ function! s:init_watchdogs_hook_add() abort
 endfunction
 
 function! s:init_lexima_hook_post_source() abort
-    let g:lexima_no_default_rules = 0
-    let g:lexima_map_escape = ''
+    let g:lexima_no_default_rules = 1
     call lexima#set_default_rules()
+    let g:lexima_map_escape = '<Esc>'
 
     let g:lexima_enable_basic_rules = 1
     let g:lexima_enable_newline_rules = 1
