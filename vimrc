@@ -873,6 +873,12 @@ function! s:init_textobj_multiblock_hook_add() abort
                     \ ['\$\$', '\$\$', 1],
                     \ ]
     endfunction
+    function! s:init_textobj_multiblock_hook_add_markdown() abort
+        let b:textobj_multiblock_blocks = [
+                    \ ['`', '`', 1],
+                    \ ['```', '```'],
+                    \ ]
+    endfunction
     function! s:init_textobj_multiblock_hook_add_ruby() abort
         let b:textobj_multiblock_blocks = [
                     \ ['/', '/', 1],
@@ -882,6 +888,7 @@ function! s:init_textobj_multiblock_hook_add() abort
     augroup vimrc-init_multiblock_hook_add
         autocmd!
         autocmd FileType tex,latex,plaintex call <SID>init_textobj_multiblock_hook_add_tex()
+        autocmd FileType markdown call <SID>init_textobj_multiblock_hook_add_markdown()
         autocmd FileType ruby call <SID>init_textobj_multiblock_hook_add_ruby()
     augroup END
 endfunction
