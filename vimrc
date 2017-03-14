@@ -912,22 +912,20 @@ function! s:init_textobj_multitextobj_hook_add() abort
     vmap imt <Plug>(textobj-multitextobj-i)
 
     " jabraces
-    let g:textobj_multitextobj_textobjects_group_i = {
-                \ 'A' : [
+    let g:textobj_multitextobj_textobjects_group_i = {}
+    let g:textobj_multitextobj_textobjects_group_i.A = [
                 \   '<Plug>(textobj-jabraces-sumi-kakko-i)',
                 \   '<Plug>(textobj-jabraces-parens-i)',
                 \   '<Plug>(textobj-jabraces-kakko-i)',
                 \   '<Plug>(textobj-jabraces-double-kakko-i)',
-                \ ],
-                \}
-    let g:textobj_multitextobj_textobjects_group_a = {
-                \ 'A' : [
+                \ ]
+    let g:textobj_multitextobj_textobjects_group_a = {}
+    let g:textobj_multitextobj_textobjects_group_a.A = [
                 \   '<Plug>(textobj-jabraces-sumi-kakko-a)',
                 \   '<Plug>(textobj-jabraces-parens-a)',
                 \   '<Plug>(textobj-jabraces-kakko-a)',
                 \   '<Plug>(textobj-jabraces-double-kakko-a)',
-                \ ],
-                \}
+                \ ]
     map <Plug>(textobj-multitextobj-jabraces-i) <Plug>(textobj-multitextobj-A-i)
     map <Plug>(textobj-multitextobj-jabraces-a) <Plug>(textobj-multitextobj-A-a)
     omap ajb <Plug>(textobj-multitextobj-jabraces-a)
