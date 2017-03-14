@@ -1532,6 +1532,7 @@ call dein#add('osyo-manga/vim-textobj-multiblock', {
 call dein#add('osyo-manga/vim-textobj-multitextobj', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multitextobj_hook_add()',
             \})
+call dein#add('Julian/vim-textobj-variable-segment')
 call dein#add('rhysd/vim-textobj-ruby')
 call dein#config('vim-textobj-ruby', {
             \ 'lazy': 1,
