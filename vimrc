@@ -2422,6 +2422,11 @@ augroup vimrc-forHelpWindow
     autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif
 augroup END
 
+augroup vimrc-filetype-force-tex
+    autocmd!
+    autocmd FileType latex,plaintex setlocal filetype=tex
+augroup END
+
 set laststatus=2
 
 let g:lightline = {
