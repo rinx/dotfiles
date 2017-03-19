@@ -2332,6 +2332,7 @@ endfunction
 function! s:close_special_windows()
     let target_ft = [
                 \ 'ref',
+                \ 'ref-webdict',
                 \ 'unite',
                 \ 'denite',
                 \ 'vimfiler',
