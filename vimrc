@@ -791,6 +791,8 @@ function! s:init_jplus_hook_add() abort
 
     nmap <Leader>J <Plug>(jplus-getchar)
     vmap <Leader>J <Plug>(jplus-getchar)
+    nmap <Leader><Space>J <Plug>(jplus-getchar-with-space)
+    vmap <Leader><Space>J <Plug>(jplus-getchar-with-space)
 
     let g:jplus#config = {
                 \ 'sh' : {
@@ -805,6 +807,9 @@ function! s:init_jplus_hook_add() abort
     let g:jplus#input_config = {
                 \ '__DEFAULT__' : {
                 \   'delimiter_format' : ' %d ',
+                \ },
+                \ '__EMPTY__' : {
+                \   'delimiter_format' : '%d',
                 \ },
                 \ ',' : {
                 \   'delimiter_format' : '%d ',
