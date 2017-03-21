@@ -1519,6 +1519,19 @@ call dein#add('rhysd/vim-operator-surround', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_surround_hook_add()',
             \})
 
+" textobj reference
+" ai, ii: indent
+" af, if: function
+" ae, ie: entire
+" al, il: line
+" ajb, ijb: ja-braces
+" ac, ic: between
+" au, iu: url
+" ab, ib: multiblock
+" amt, imt: multitextobj (url, multiblock, function, entire)
+" av, iv: variable segment
+" ar, ir: ruby
+
 call dein#add('kana/vim-textobj-user')
 call dein#add('kana/vim-textobj-indent')
 call dein#add('kana/vim-textobj-function')
