@@ -783,6 +783,7 @@ function! s:init_cleverf_hook_add() abort
     nmap F <Plug>(clever-f-F)
     nmap t <Plug>(clever-f-t)
     nmap T <Plug>(clever-f-T)
+    nmap <Space> <Plug>(clever-f-reset)
 endfunction
 
 function! s:init_jplus_hook_add() abort
@@ -2379,9 +2380,9 @@ nnoremap Q <Nop>
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html
-inoremap <expr> ;  <SID>sticky_func()
-cnoremap <expr> ;  <SID>sticky_func()
-snoremap <expr> ;  <SID>sticky_func()
+inoremap <expr> ; <SID>sticky_func()
+cnoremap <expr> ; <SID>sticky_func()
+snoremap <expr> ; <SID>sticky_func()
 
 function! s:sticky_func()
     let l:sticky_table = {
