@@ -1509,6 +1509,14 @@ call dein#config('vim-niji', {
 
 call dein#add('Konfekt/FastFold')
 
+" operator reference
+" <or>: replace
+" <oc>: comment
+" <od>: uncomment
+" Sa: surround-append
+" Sd: surround-delete
+" Sr: surround-replace
+
 call dein#add('kana/vim-operator-user')
 call dein#add('kana/vim-operator-replace', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_replace_hook_add()',
