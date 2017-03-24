@@ -640,9 +640,9 @@ function! s:init_watchdogs_hook_add() abort
 endfunction
 
 function! s:init_lexima_hook_post_source() abort
-    let g:lexima_no_default_rules = 0
-    let g:lexima_map_escape = ''
+    let g:lexima_no_default_rules = 1
     call lexima#set_default_rules()
+    let g:lexima_map_escape = '<Esc>'
 
     let g:lexima_enable_basic_rules = 1
     let g:lexima_enable_newline_rules = 1
@@ -783,6 +783,7 @@ function! s:init_cleverf_hook_add() abort
     nmap F <Plug>(clever-f-F)
     nmap t <Plug>(clever-f-t)
     nmap T <Plug>(clever-f-T)
+    nmap <Space> <Plug>(clever-f-reset)
 endfunction
 
 function! s:init_jplus_hook_add() abort
@@ -791,6 +792,8 @@ function! s:init_jplus_hook_add() abort
 
     nmap <Leader>J <Plug>(jplus-getchar)
     vmap <Leader>J <Plug>(jplus-getchar)
+    nmap <Leader><Space>J <Plug>(jplus-getchar-with-space)
+    vmap <Leader><Space>J <Plug>(jplus-getchar-with-space)
 
     let g:jplus#config = {
                 \ 'sh' : {
@@ -805,6 +808,9 @@ function! s:init_jplus_hook_add() abort
     let g:jplus#input_config = {
                 \ '__DEFAULT__' : {
                 \   'delimiter_format' : ' %d ',
+                \ },
+                \ '__EMPTY__' : {
+                \   'delimiter_format' : '%d',
                 \ },
                 \ ',' : {
                 \   'delimiter_format' : '%d ',
@@ -873,6 +879,12 @@ function! s:init_textobj_multiblock_hook_add() abort
                     \ ['\$\$', '\$\$', 1],
                     \ ]
     endfunction
+    function! s:init_textobj_multiblock_hook_add_markdown() abort
+        let b:textobj_multiblock_blocks = [
+                    \ ['`', '`', 1],
+                    \ ['```', '```'],
+                    \ ]
+    endfunction
     function! s:init_textobj_multiblock_hook_add_ruby() abort
         let b:textobj_multiblock_blocks = [
                     \ ['/', '/', 1],
@@ -882,6 +894,7 @@ function! s:init_textobj_multiblock_hook_add() abort
     augroup vimrc-init_multiblock_hook_add
         autocmd!
         autocmd FileType tex,latex,plaintex call <SID>init_textobj_multiblock_hook_add_tex()
+        autocmd FileType markdown call <SID>init_textobj_multiblock_hook_add_markdown()
         autocmd FileType ruby call <SID>init_textobj_multiblock_hook_add_ruby()
     augroup END
 endfunction
@@ -905,22 +918,20 @@ function! s:init_textobj_multitextobj_hook_add() abort
     vmap imt <Plug>(textobj-multitextobj-i)
 
     " jabraces
-    let g:textobj_multitextobj_textobjects_group_i = {
-                \ 'A' : [
+    let g:textobj_multitextobj_textobjects_group_i = {}
+    let g:textobj_multitextobj_textobjects_group_i.A = [
                 \   '<Plug>(textobj-jabraces-sumi-kakko-i)',
                 \   '<Plug>(textobj-jabraces-parens-i)',
                 \   '<Plug>(textobj-jabraces-kakko-i)',
                 \   '<Plug>(textobj-jabraces-double-kakko-i)',
-                \ ],
-                \}
-    let g:textobj_multitextobj_textobjects_group_a = {
-                \ 'A' : [
+                \ ]
+    let g:textobj_multitextobj_textobjects_group_a = {}
+    let g:textobj_multitextobj_textobjects_group_a.A = [
                 \   '<Plug>(textobj-jabraces-sumi-kakko-a)',
                 \   '<Plug>(textobj-jabraces-parens-a)',
                 \   '<Plug>(textobj-jabraces-kakko-a)',
                 \   '<Plug>(textobj-jabraces-double-kakko-a)',
-                \ ],
-                \}
+                \ ]
     map <Plug>(textobj-multitextobj-jabraces-i) <Plug>(textobj-multitextobj-A-i)
     map <Plug>(textobj-multitextobj-jabraces-a) <Plug>(textobj-multitextobj-A-a)
     omap ajb <Plug>(textobj-multitextobj-jabraces-a)
@@ -1498,6 +1509,14 @@ call dein#config('vim-niji', {
 
 call dein#add('Konfekt/FastFold')
 
+" operator reference
+" <or>: replace
+" <oc>: comment
+" <od>: uncomment
+" Sa: surround-append
+" Sd: surround-delete
+" Sr: surround-replace
+
 call dein#add('kana/vim-operator-user')
 call dein#add('kana/vim-operator-replace', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_replace_hook_add()',
@@ -1508,6 +1527,19 @@ call dein#add('emonkak/vim-operator-comment', {
 call dein#add('rhysd/vim-operator-surround', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_surround_hook_add()',
             \})
+
+" textobj reference
+" ai, ii: indent
+" af, if: function
+" ae, ie: entire
+" al, il: line
+" ajb, ijb: ja-braces
+" ac, ic: between
+" au, iu: url
+" ab, ib: multiblock
+" amt, imt: multitextobj (url, multiblock, function, entire)
+" av, iv: variable segment
+" ar, ir: ruby
 
 call dein#add('kana/vim-textobj-user')
 call dein#add('kana/vim-textobj-indent')
@@ -1527,6 +1559,7 @@ call dein#add('osyo-manga/vim-textobj-multiblock', {
 call dein#add('osyo-manga/vim-textobj-multitextobj', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multitextobj_hook_add()',
             \})
+call dein#add('Julian/vim-textobj-variable-segment')
 call dein#add('rhysd/vim-textobj-ruby')
 call dein#config('vim-textobj-ruby', {
             \ 'lazy': 1,
@@ -2174,13 +2207,14 @@ function! s:unite_source_googlesuggestion.action_table.google_search.func(candid
 endfunction
 
 function! s:unite_source_googlesuggestion.change_candidates(args, context)
-    let word = matchstr(a:context.input, '^\S\+')
+    let word = matchstr(a:context.input, '^\(\S\|\s\)\+')
 
     if word == '' 
         return []
     endif
 
     let cand = s:googlesuggestion_candidates(word)
+    let cand = extend([word], cand)
     return map(cand, '{
                 \ "word": v:val,
                 \ }')
@@ -2325,6 +2359,7 @@ endfunction
 function! s:close_special_windows()
     let target_ft = [
                 \ 'ref',
+                \ 'ref-webdict',
                 \ 'unite',
                 \ 'denite',
                 \ 'vimfiler',
@@ -2353,9 +2388,9 @@ nnoremap Q <Nop>
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html
-inoremap <expr> ;  <SID>sticky_func()
-cnoremap <expr> ;  <SID>sticky_func()
-snoremap <expr> ;  <SID>sticky_func()
+inoremap <expr> ; <SID>sticky_func()
+cnoremap <expr> ; <SID>sticky_func()
+snoremap <expr> ; <SID>sticky_func()
 
 function! s:sticky_func()
     let l:sticky_table = {
@@ -2413,6 +2448,11 @@ augroup vimrc-forHelpWindow
     autocmd FileType help nnoremap <buffer><silent>q :<C-u>q<CR>
     " autoclose
     autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif
+augroup END
+
+augroup vimrc-filetype-force-tex
+    autocmd!
+    autocmd FileType latex,plaintex setlocal filetype=tex
 augroup END
 
 set laststatus=2
