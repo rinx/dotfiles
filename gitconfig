@@ -17,6 +17,7 @@
 
 [merge]
     tool = vimdiff
+	ff = false
 
 [mergetool]
     prompt = false
@@ -73,3 +74,5 @@
     show = diff-highlight | less
     diff = diff-highlight | less
 
+[pull]
+	ff = only
