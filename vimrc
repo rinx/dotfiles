@@ -1749,18 +1749,6 @@ call dein#config('vim-tmux', {
             \ ],
             \})
 
-call dein#add('Shougo/vinarise.vim')
-call dein#config('vinarise.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Vinarise',
-            \   'VinariseScript2Hex',
-            \   'VinariseHex2Script',
-            \   'VinarisePluginDump',
-            \   'VinarisePluginViewBitmapView',
-            \ ],
-            \})
-
 call dein#add('thinca/vim-ref', {
             \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_ref_hook_add()',
             \})
