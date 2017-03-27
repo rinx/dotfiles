@@ -667,6 +667,11 @@ function! s:init_lexima_hook_post_source() abort
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*for\s*\>.*do\s*begin\%#', 'input_after': '<CR>endfor', 'filetype': ['idlang']})
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*case\>.*of\%#', 'input_after': '<CR>endcase', 'filetype': ['idlang']})
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*\;\s.*\%#', 'input': '<CR>; ', 'filetype': ['idlang']})
+
+    " markdown
+    call lexima#add_rule({'char': '**', 'input_after': '**', 'filetype': ['markdown']})
+    call lexima#add_rule({'char': '<BS>', 'at': '\*\%#\*', 'delete': 1, 'filetype': ['markdown']})
+
 endfunction
 
 function! s:init_gitgutter_hook_add() abort
