@@ -676,8 +676,8 @@ function! s:init_lexima_hook_post_source() abort
     call lexima#add_rule({'char': '~~', 'input_after': '~~', 'filetype': ['markdown']})
     call lexima#add_rule({'char': '<BS>', 'at': '\~\%#\~', 'delete': 1, 'filetype': ['markdown']})
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*\*\s.*\%#', 'input': '<CR>* ', 'filetype': ['markdown']})
+    call lexima#add_rule({'char': '<CR>', 'at': '^\s*+\s.*\%#', 'input': '<CR>+ ', 'filetype': ['markdown']})
     call lexima#add_rule({'char': '<CR>', 'at': '^\s*-\s.*\%#', 'input': '<CR>- ', 'filetype': ['markdown']})
-
 endfunction
 
 function! s:init_gitgutter_hook_add() abort
