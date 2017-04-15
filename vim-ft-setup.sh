@@ -31,7 +31,7 @@ do
 done
 
 mkdir -p $HOME/.vim/ftdetect
-for scriptname in markdown.vim
+for scriptname in markdown.vim purescript.vim
 do
     if [ ! -f $HOME/.vim/ftdetect/${scriptname} ] || [ "$FLG_F" = "TRUE" ]; then
         [ "$FLG_F" = "TRUE" ] && rm -f $HOME/.vim/ftdetect/${scriptname}
