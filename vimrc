@@ -55,9 +55,11 @@ let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
 
 let g:vimrc_private = {}
-if filereadable(expand('~/.vimrc_private'))
-    execute 'source' expand('~/.vimrc_private')
+let vimrc_private_filename = '~/.vimrc_private'
+if filereadable(expand(vimrc_private_filename))
+    execute 'source' expand(vimrc_private_filename)
 endif
+unlet vimrc_private_filename
 
 " --- Plugin settings
 function! s:init_neocomplete_hook_source() abort
