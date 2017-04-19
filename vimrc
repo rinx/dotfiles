@@ -58,6 +58,8 @@ let g:vimrc_private = {}
 let vimrc_private_filename = '~/.vimrc_private'
 if filereadable(expand(vimrc_private_filename))
     execute 'source' expand(vimrc_private_filename)
+else
+    let _ = system('touch ' . expand(vimrc_private_filename))
 endif
 unlet vimrc_private_filename
 
