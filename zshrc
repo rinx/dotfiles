@@ -190,10 +190,12 @@ alias uuu='cd ../../../'
 alias uuuu='cd ../../../../'
 alias cdr='cd -'
 
-alias ls='ls --color -F'
-alias lsa='ls --color -F -a'
-alias lsl='ls --color -F -l'
-alias lsal='ls --color -F -a -l'
+if ls --color > /dev/null ; then
+    alias ls='ls --color -F'
+    alias lsa='ls --color -F -a'
+    alias lsl='ls --color -F -l'
+    alias lsal='ls --color -F -a -l'
+fi
 
 #start vim as vi
 alias vi='vim'
@@ -215,9 +217,11 @@ alias be='bundle exec'
 alias q='exit'
 
 #grep
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+if echo a | grep --color a > /dev/null ; then
+    alias grep='grep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+fi
 
 #global
 alias -g @l='| less'
@@ -227,7 +231,9 @@ alias -g @g='| grep'
 
 #pandoc with lualatex
 if builtin command -v pandoc > /dev/null 2>&1 ; then
-    alias pandoclt='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
+    if buildin command -v lualatex > /dev/null 2>&1 ; then
+        alias pandoclt='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
+    fi
 fi
 
 #hub aliasing (https://github.com/defunkt/hub)
