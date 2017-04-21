@@ -1951,6 +1951,7 @@ set lazyredraw
 set ttyfast
 
 set sessionoptions+=tabpages
+set sessionoptions-=options
 
 set showmatch
 set matchtime=3
