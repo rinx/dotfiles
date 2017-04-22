@@ -1128,7 +1128,7 @@ endfunction
 
 " --- plugin loading with dein.vim
 
-if v:version >= 800
+if v:version >= 800 || has('nvim')
     if has('vim_starting')
         set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
     endif
@@ -1891,7 +1891,7 @@ if v:version >= 800
 
     call dein#end()
 else
-    echo "If you want to use plugins, you should use version 8 or newer one."
+    echo "If you want to use plugins, you should use VIM 8.0, newer one, or NVIM."
 endif
 
 set viminfo='1000,<100,f1,h,s100
