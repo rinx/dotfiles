@@ -1128,767 +1128,771 @@ endfunction
 
 " --- plugin loading with dein.vim
 
-if has('vim_starting')
-    set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-endif
+if v:version >= 800
+    if has('vim_starting')
+        set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+    endif
 
-call dein#begin(expand('~/.vim/dein/'))
+    call dein#begin(expand('~/.vim/dein/'))
 
-call dein#add('Shougo/dein.vim')
+    call dein#add('Shougo/dein.vim')
 
-call dein#add('haya14busa/dein-command.vim')
-call dein#config('dein-command.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Dein',
-            \ ],
-            \})
-
-let g:make = 'gmake'
-if system('uname -o') =~ '^GNU/'
-    let g:make = 'make'
-endif
-
-call dein#add('Shougo/vimproc.vim')
-call dein#config('vimproc.vim', {
-            \ 'build': 'make',
-            \})
-
-call dein#add('Shougo/neocomplete.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
-            \ })
-call dein#config('neocomplete.vim', {
-            \ 'lazy': 1,
-            \ 'on_i': 1,
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_source()',
-            \})
-
-call dein#add('ujihisa/neco-look')
-call dein#config('neco-look', {
-            \ 'lazy' : 1,
-            \ 'on_i' : 1,
-            \})
-
-call dein#add('Shougo/neosnippet', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neosnippet_hook_add()',
-            \})
-call dein#config('neosnippet', {
-            \ 'lazy': 1,
-            \ 'on_i' : 1,
-            \ 'on_ft' : [
-            \     'neosnippet',
-            \ ],
-            \})
-call dein#add('Shougo/neosnippet-snippets')
-call dein#config('neosnippet-snippets', {
-            \ 'lazy': 1,
-            \ 'on_i': 1,
-            \})
-call dein#add('honza/vim-snippets')
-call dein#config('vim-snippets', {
-            \ 'lazy': 1,
-            \ 'on_i': 1,
-            \})
-
-call dein#add('Shougo/vimfiler.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimfiler_hook_add()',
-            \})
-call dein#config('vimfiler.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd' : [
-            \   'VimFilerTab',
-            \   'VimFiler',
-            \   'VimFilerExplorer',
-            \ ],
-            \})
-call dein#add('Shougo/vimshell.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimshell_hook_add()',
-            \})
-call dein#config('vimshell.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd' : [
-            \   'VimShell',
-            \   'VimShellPop',
-            \   'VimShellInteractive',
-            \ ],
-            \})
-
-call dein#add('kana/vim-submode', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_submode_hook_add()',
-            \})
-call dein#add('kana/vim-arpeggio', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_arpeggio_hook_add()',
-            \})
-call dein#add('kana/vim-altercmd')
-
-call dein#add('Shougo/denite.nvim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_denite_hook_add()',
-            \})
-call dein#config('denite.nvim', {
-            \ 'lazy': 1,
-            \ 'on_cmd' : [
-            \   'Denite',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_denite_hook_source()',
-            \})
-
-call dein#add('Shougo/unite.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_unite_hook_add()',
-            \})
-call dein#config('unite.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd' : [
-            \   'Unite',
-            \   'UniteWithBufferDir',
-            \   'UniteWithCurrentDir',
-            \   'UniteResume',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_unite_hook_source()',
-            \ 'on_func': [
-            \   'unite',
-            \ ],
-            \})
-call dein#add('Shougo/neomru.vim')
-call dein#config('neomru.vim', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('thinca/vim-unite-history')
-call dein#config('vim-unite-history', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('Shougo/unite-outline')
-call dein#config('unite-outline', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('tsukkee/unite-help')
-call dein#config('unite-help', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('osyo-manga/unite-filetype')
-call dein#config('unite-filetype', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('kmnk/vim-unite-giti')
-call dein#config('vim-unite-giti', {
-            \ 'lazy': 1,
-            \ 'on_cmd' : [
-            \   'Giti',
-            \   'GitiWithConfirm',
-            \   'GitiFetch',
-            \   'GitiPush',
-            \   'GitiPushWithSettingUpstream',
-            \   'GitiPushExpressly',
-            \   'GitiPull',
-            \   'GitiPullSquash',
-            \   'GitiPullRebase',
-            \   'GitiPullExpressly',
-            \   'GitiDiff',
-            \   'GitiDiffCached',
-            \   'GitiLog',
-            \   'GitiLogLine',
-            \ ],
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('tacroe/unite-mark')
-call dein#config('unite-mark', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('moznion/unite-git-conflict.vim')
-call dein#config('unite-git-conflict.vim', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('pasela/unite-webcolorname')
-call dein#config('unite-webcolorname', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-
-call dein#add('itchyny/lightline.vim')
-
-let s:enable_eskk = 0
-if s:enable_eskk
-    call dein#add('tyru/eskk.vim', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_eskk_hook_add()',
+    call dein#add('haya14busa/dein-command.vim')
+    call dein#config('dein-command.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Dein',
+                \ ],
                 \})
+
+    let g:make = 'gmake'
+    if system('uname -o') =~ '^GNU/'
+        let g:make = 'make'
+    endif
+
+    call dein#add('Shougo/vimproc.vim')
+    call dein#config('vimproc.vim', {
+                \ 'build': 'make',
+                \})
+
+    call dein#add('Shougo/neocomplete.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
+                \ })
+    call dein#config('neocomplete.vim', {
+                \ 'lazy': 1,
+                \ 'on_i': 1,
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_source()',
+                \})
+
+    call dein#add('ujihisa/neco-look')
+    call dein#config('neco-look', {
+                \ 'lazy' : 1,
+                \ 'on_i' : 1,
+                \})
+
+    call dein#add('Shougo/neosnippet', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neosnippet_hook_add()',
+                \})
+    call dein#config('neosnippet', {
+                \ 'lazy': 1,
+                \ 'on_i' : 1,
+                \ 'on_ft' : [
+                \     'neosnippet',
+                \ ],
+                \})
+    call dein#add('Shougo/neosnippet-snippets')
+    call dein#config('neosnippet-snippets', {
+                \ 'lazy': 1,
+                \ 'on_i': 1,
+                \})
+    call dein#add('honza/vim-snippets')
+    call dein#config('vim-snippets', {
+                \ 'lazy': 1,
+                \ 'on_i': 1,
+                \})
+
+    call dein#add('Shougo/vimfiler.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimfiler_hook_add()',
+                \})
+    call dein#config('vimfiler.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd' : [
+                \   'VimFilerTab',
+                \   'VimFiler',
+                \   'VimFilerExplorer',
+                \ ],
+                \})
+    call dein#add('Shougo/vimshell.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimshell_hook_add()',
+                \})
+    call dein#config('vimshell.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd' : [
+                \   'VimShell',
+                \   'VimShellPop',
+                \   'VimShellInteractive',
+                \ ],
+                \})
+
+    call dein#add('kana/vim-submode', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_submode_hook_add()',
+                \})
+    call dein#add('kana/vim-arpeggio', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_arpeggio_hook_add()',
+                \})
+    call dein#add('kana/vim-altercmd')
+
+    call dein#add('Shougo/denite.nvim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_denite_hook_add()',
+                \})
+    call dein#config('denite.nvim', {
+                \ 'lazy': 1,
+                \ 'on_cmd' : [
+                \   'Denite',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_denite_hook_source()',
+                \})
+
+    call dein#add('Shougo/unite.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_unite_hook_add()',
+                \})
+    call dein#config('unite.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd' : [
+                \   'Unite',
+                \   'UniteWithBufferDir',
+                \   'UniteWithCurrentDir',
+                \   'UniteResume',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_unite_hook_source()',
+                \ 'on_func': [
+                \   'unite',
+                \ ],
+                \})
+    call dein#add('Shougo/neomru.vim')
+    call dein#config('neomru.vim', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('thinca/vim-unite-history')
+    call dein#config('vim-unite-history', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('Shougo/unite-outline')
+    call dein#config('unite-outline', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('tsukkee/unite-help')
+    call dein#config('unite-help', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('osyo-manga/unite-filetype')
+    call dein#config('unite-filetype', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('kmnk/vim-unite-giti')
+    call dein#config('vim-unite-giti', {
+                \ 'lazy': 1,
+                \ 'on_cmd' : [
+                \   'Giti',
+                \   'GitiWithConfirm',
+                \   'GitiFetch',
+                \   'GitiPush',
+                \   'GitiPushWithSettingUpstream',
+                \   'GitiPushExpressly',
+                \   'GitiPull',
+                \   'GitiPullSquash',
+                \   'GitiPullRebase',
+                \   'GitiPullExpressly',
+                \   'GitiDiff',
+                \   'GitiDiffCached',
+                \   'GitiLog',
+                \   'GitiLogLine',
+                \ ],
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('tacroe/unite-mark')
+    call dein#config('unite-mark', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('moznion/unite-git-conflict.vim')
+    call dein#config('unite-git-conflict.vim', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('pasela/unite-webcolorname')
+    call dein#config('unite-webcolorname', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+
+    call dein#add('itchyny/lightline.vim')
+
+    let s:enable_eskk = 0
+    if s:enable_eskk
+        call dein#add('tyru/eskk.vim', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_eskk_hook_add()',
+                    \})
+    else
+        call dein#add('tyru/skk.vim', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_skk_hook_add()',
+                    \})
+    endif
+
+    call dein#add('thinca/vim-quickrun', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_quickrun_hook_add()',
+                \})
+    call dein#config('vim-quickrun', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'QuickRun',
+                \ ],
+                \ 'on_map': [
+                \   '<Plug>(quickrun',
+                \ ],
+                \ 'hook_post_source': 'call ' . s:SID_PREFIX() . 'init_quickrun_hook_post_source()',
+                \})
+    call dein#add('osyo-manga/unite-quickrun_config')
+    call dein#config('unite-quickrun_config', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+
+    call dein#add('osyo-manga/shabadou.vim')
+    call dein#config('shabadou.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'QuickRun',
+                \ ],
+                \ 'on_map': [
+                \   '<Plug>(quickrun',
+                \ ],
+                \})
+    call dein#add('osyo-manga/vim-watchdogs', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_watchdogs_hook_add()',
+                \})
+    call dein#add('jceb/vim-hier')
+    call dein#config('vim-hier', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'HierStart',
+                \   'HierStop',
+                \   'HierUpdate',
+                \   'HierClear',
+                \ ],
+                \})
+
+    call dein#add('ynkdir/vim-vimlparser')
+    call dein#add('syngan/vim-vimlint')
+
+    call dein#add('vim-scripts/eregex.vim')
+
+    call dein#add('tmhedberg/matchit')
+
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('tpope/vim-repeat')
+
+    call dein#add('cohama/lexima.vim')
+    call dein#config('lexima.vim', {
+                \ 'lazy': 1,
+                \ 'on_i': 1,
+                \ 'hook_post_source': 'call ' . s:SID_PREFIX() . 'init_lexima_hook_post_source()',
+                \})
+
+    call dein#add('airblade/vim-gitgutter', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gitgutter_hook_add()',
+                \})
+
+    call dein#add('mbbill/undotree', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_undotree_hook_add()',
+                \})
+    call dein#add('mbbill/undotree', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'UndotreeToggle',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_undotree_hook_source()',
+                \})
+    call dein#add('scrooloose/nerdtree', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_add()',
+                \})
+    call dein#config('nerdtree', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'NERDTree',
+                \   'NERDTreeFromBookmark',
+                \   'NERDTreeToggle',
+                \   'NERDTreeMirror',
+                \   'NERDTreeClose',
+                \   'NERDTreeFind',
+                \   'NERDTreeCWD',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_source()',
+                \})
+
+    call dein#add('LeafCage/yankround.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_yankround_hook_add()',
+                \})
+    call dein#config('yankround.vim', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(yankround-',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yankround_hook_source()',
+                \})
+
+    call dein#add('haya14busa/vim-asterisk', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_asterisk_hook_add()',
+                \})
+    call dein#config('vim-asterisk', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(asterisk-',
+                \ ],
+                \})
+    call dein#add('haya14busa/incsearch.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
+                \})
+    call dein#config('incsearch.vim', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(incsearch-',
+                \ ],
+                \})
+    call dein#add('haya14busa/vim-migemo')
+
+    call dein#add('haya14busa/vim-auto-programming', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_auto_programming_hook_add()',
+                \})
+
+    call dein#add('osyo-manga/vim-anzu', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_anzu_hook_add()',
+                \})
+    call dein#config('vim-anzu', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(anzu-',
+                \ ],
+                \ 'on_func': [
+                \   'anzu',
+                \ ],
+                \ 'on_event': [
+                \   'TabLeave',
+                \ ],
+                \})
+    call dein#add('osyo-manga/vim-over')
+
+    call dein#add('rhysd/clever-f.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_cleverf_hook_add()',
+                \})
+    call dein#add('osyo-manga/vim-jplus', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_jplus_hook_add()',
+                \})
+
+    call dein#add('thinca/vim-qfreplace')
+    call dein#config('vim-qfreplace', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Qfreplace',
+                \ ],
+                \})
+
+    call dein#add('t9md/vim-quickhl', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_quickhl_hook_add()',
+                \})
+    call dein#config('vim-quickhl', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(quickhl-',
+                \ ],
+                \})
+
+    call dein#add('spinningarrow/vim-niji')
+    call dein#config('vim-niji', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'lisp',
+                \   'scheme',
+                \   'clojure',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_niji_hook_source()',
+                \})
+
+    call dein#add('Konfekt/FastFold')
+
+    " operator reference
+    " <or>: replace
+    " <oc>: comment
+    " <od>: uncomment
+    " Sa: surround-append
+    " Sd: surround-delete
+    " Sr: surround-replace
+
+    call dein#add('kana/vim-operator-user')
+    call dein#add('kana/vim-operator-replace', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_replace_hook_add()',
+                \})
+    call dein#add('emonkak/vim-operator-comment', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_comment_hook_add()',
+                \})
+    call dein#add('rhysd/vim-operator-surround', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_surround_hook_add()',
+                \})
+
+    " textobj reference
+    " ai, ii: indent
+    " af, if: function
+    " ae, ie: entire
+    " al, il: line
+    " ajb, ijb: ja-braces
+    " ac, ic: between
+    " au, iu: url
+    " ab, ib: multiblock
+    " amt, imt: multitextobj (url, multiblock, function, entire)
+    " av, iv: variable segment
+    " ar, ir: ruby
+
+    call dein#add('kana/vim-textobj-user')
+    call dein#add('kana/vim-textobj-indent')
+    call dein#add('kana/vim-textobj-function')
+    call dein#add('kana/vim-textobj-entire')
+    call dein#add('kana/vim-textobj-line')
+    call dein#add('kana/vim-textobj-jabraces', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_jabraces_hook_add()',
+                \})
+    call dein#add('thinca/vim-textobj-between', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_between_hook_add()',
+                \})
+    call dein#add('mattn/vim-textobj-url')
+    call dein#add('osyo-manga/vim-textobj-multiblock', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multiblock_hook_add()',
+                \})
+    call dein#add('osyo-manga/vim-textobj-multitextobj', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multitextobj_hook_add()',
+                \})
+    call dein#add('Julian/vim-textobj-variable-segment')
+    call dein#add('rhysd/vim-textobj-ruby')
+    call dein#config('vim-textobj-ruby', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'ruby',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_textobj_ruby_hook_source()',
+                \})
+
+    call dein#add('tyru/capture.vim')
+    call dein#config('capture.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Capture',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_capture_hook_source()',
+                \})
+
+    call dein#add('tyru/open-browser.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_openbrowser_hook_add()',
+                \})
+    call dein#config('open-browser.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'OpenBrowser',
+                \   'OpenBrowserSearch',
+                \ ],
+                \ 'on_func': [
+                \   'openbrowser',
+                \ ],
+                \ 'on_ft': [
+                \   'markdown',
+                \ ],
+                \ 'on_map': [
+                \   '<Plug>(openbrowser-',
+                \ ],
+                \})
+    call dein#add('tyru/open-browser-github.vim')
+    call dein#config('open-browser-github.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'OpenGithubFile',
+                \   'OpenGithubIssue',
+                \   'OpenGithubPullReq',
+                \ ],
+                \})
+
+    call dein#add('kannokanno/previm')
+    call dein#config('previm', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'markdown',
+                \ ],
+                \ 'on_cmd': [
+                \   'PrevimOpen',
+                \ ],
+                \})
+
+    call dein#add('rhysd/vim-gfm-syntax')
+    call dein#config('vim-gfm-syntax', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'markdown',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gfm_syntax_hook_source()',
+                \})
+
+    call dein#add('basyura/unite-rails')
+    call dein#config('unite-rails', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'ruby',
+                \ ],
+                \})
+
+    call dein#add('eagletmt/ghcmod-vim')
+    call dein#config('ghcmod-vim', {
+                \ 'lazy': 1,
+                \ 'on_ft' : [
+                \   'haskell',
+                \ ],
+                \})
+    call dein#add('eagletmt/neco-ghc')
+    call dein#config('neco-ghc', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'haskell',
+                \ ],
+                \})
+    call dein#add('dag/vim2hs')
+    call dein#config('vim2hs', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'haskell',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_vim2hs_hook_source()',
+                \})
+    call dein#add('ujihisa/ref-hoogle')
+    call dein#config('ref-hoogle', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'haskell',
+                \ ],
+                \})
+    call dein#add('ujihisa/unite-haskellimport')
+    call dein#config('unite-haskellimport', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \})
+    call dein#add('alx741/yesod.vim')
+    call dein#config('yesod.vim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'haskell',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yesod_hook_source()',
+                \})
+    call dein#add('pbrisbin/html-template-syntax')
+    call dein#config('html-template-syntax', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'hamlet',
+                \   'cassius',
+                \   'lucius',
+                \   'julius',
+                \ ],
+                \ 'on_path': [
+                \   '.*.hamlet$',
+                \   '.*.cassius$',
+                \   '.*.lucius$',
+                \   '.*.julius$',
+                \ ],
+                \})
+
+    call dein#add('google/vim-ft-go')
+    call dein#config('vim-ft-go', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'go',
+                \ ],
+                \})
+    call dein#add('vim-jp/vim-go-extra')
+    call dein#config('vim-go-extra', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'go',
+                \ ],
+                \})
+
+    call dein#add('mattn/emmet-vim')
+    call dein#config('emmet-vim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'html',
+                \   'xhtml',
+                \   'css',
+                \   'sass',
+                \   'scss',
+                \   'xml',
+                \   'markdown',
+                \ ],
+                \})
+
+    call dein#add('elzr/vim-json')
+    call dein#config('vim-json', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'json',
+                \   'jsonp',
+                \ ],
+                \ 'on_path': [
+                \   '.*.json$',
+                \   '.*.jsonp$',
+                \ ],
+                \})
+
+    call dein#add('tmux-plugins/vim-tmux')
+    call dein#config('vim-tmux', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'tmux',
+                \ ],
+                \ 'on_path': [
+                \   'tmux.conf',
+                \ ],
+                \})
+
+    call dein#add('thinca/vim-ref', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_ref_hook_add()',
+                \})
+    call dein#config('vim-ref', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Ref',
+                \ ],
+                \ 'on_map': [
+                \   '<Plug>(ref-',
+                \ ],
+                \})
+
+    call dein#add('daisuzu/translategoogle.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_translategoogle_hook_add()',
+                \})
+    call dein#config('translategoogle.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'TranslateGoogle',
+                \   'TranslateGoogleCmd',
+                \   'TranslateGoogleCmdReverse',
+                \ ],
+                \})
+
+    call dein#add('mattn/webapi-vim')
+
+    call dein#add('lambdalisue/vim-gista')
+    call dein#config('vim-gista', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Gista',
+                \ ],
+                \ 'on_map': [
+                \   '<Plug>(gista-',
+                \ ],
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gista_hook_source()',
+                \})
+
+    call dein#add('koron/codic-vim')
+    call dein#config('codic-vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Codic',
+                \ ],
+                \ 'on_source' : [
+                \   'unite.vim',
+                \ ],
+                \ 'on_func': [
+                \   'codic',
+                \ ],
+                \})
+    call dein#add('rhysd/unite-codic.vim')
+    call dein#config('unite-codic.vim', {
+                \ 'lazy': 1,
+                \ 'on_source' : [
+                \   'unite.vim',
+                \ ],
+                \})
+
+    call dein#add('supermomonga/shaberu.vim')
+    call dein#config('shaberu.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'ShaberuSay',
+                \   'ShaberuSayInteractive',
+                \   'ShaberuSayRecursive',
+                \   'ShaberuMuteOn',
+                \   'ShaberuMuteOff',
+                \   'ShaberuMuteToggle',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_shaberu_hook_source()',
+                \})
+
+    call dein#add('rinx/radiko.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_add()',
+                \})
+    call dein#config('radiko.vim', {
+                \ 'lazy': 1,
+                \ 'on_source': [
+                \   'unite.vim',
+                \ ],
+                \ 'on_cmd': [
+                \   'RadikoPlay',
+                \   'RadikoUpdateStations',
+                \   'RadikoStop',
+                \ ],
+                \ 'on_func': [
+                \   'radiko',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_source()',
+                \})
+
+    call dein#add('rinx/yj-proofreading.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_yj_proofreading_hook_add()',
+                \})
+    call dein#config('yj-proofreading.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'YahooProofReader',
+                \ ],
+                \ 'on_func': [
+                \   'yjproofreading',
+                \ ],
+                \})
+
+    " call dein#add('tomasr/molokai')
+    " call dein#add('sickill/vim-monokai')
+    " call dein#add('jpo/vim-railscasts-theme')
+    call dein#add('w0ng/vim-hybrid', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_hybrid_hook_add()',
+                \})
+
+    call dein#add('vim-jp/vital.vim')
+    call dein#config('vital.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Vitalize',
+                \ ],
+                \})
+
+    call dein#end()
 else
-    call dein#add('tyru/skk.vim', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_skk_hook_add()',
-                \})
+    echo "If you want to use plugins, you should use version 8 or newer one."
 endif
-
-call dein#add('thinca/vim-quickrun', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_quickrun_hook_add()',
-            \})
-call dein#config('vim-quickrun', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'QuickRun',
-            \ ],
-            \ 'on_map': [
-            \   '<Plug>(quickrun',
-            \ ],
-            \ 'hook_post_source': 'call ' . s:SID_PREFIX() . 'init_quickrun_hook_post_source()',
-            \})
-call dein#add('osyo-manga/unite-quickrun_config')
-call dein#config('unite-quickrun_config', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-
-call dein#add('osyo-manga/shabadou.vim')
-call dein#config('shabadou.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'QuickRun',
-            \ ],
-            \ 'on_map': [
-            \   '<Plug>(quickrun',
-            \ ],
-            \})
-call dein#add('osyo-manga/vim-watchdogs', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_watchdogs_hook_add()',
-            \})
-call dein#add('jceb/vim-hier')
-call dein#config('vim-hier', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'HierStart',
-            \   'HierStop',
-            \   'HierUpdate',
-            \   'HierClear',
-            \ ],
-            \})
-
-call dein#add('ynkdir/vim-vimlparser')
-call dein#add('syngan/vim-vimlint')
-
-call dein#add('vim-scripts/eregex.vim')
-
-call dein#add('tmhedberg/matchit')
-
-call dein#add('tpope/vim-fugitive')
-call dein#add('tpope/vim-repeat')
-
-call dein#add('cohama/lexima.vim')
-call dein#config('lexima.vim', {
-            \ 'lazy': 1,
-            \ 'on_i': 1,
-            \ 'hook_post_source': 'call ' . s:SID_PREFIX() . 'init_lexima_hook_post_source()',
-            \})
-
-call dein#add('airblade/vim-gitgutter', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gitgutter_hook_add()',
-            \})
-
-call dein#add('mbbill/undotree', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_undotree_hook_add()',
-            \})
-call dein#add('mbbill/undotree', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'UndotreeToggle',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_undotree_hook_source()',
-            \})
-call dein#add('scrooloose/nerdtree', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_add()',
-            \})
-call dein#config('nerdtree', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'NERDTree',
-            \   'NERDTreeFromBookmark',
-            \   'NERDTreeToggle',
-            \   'NERDTreeMirror',
-            \   'NERDTreeClose',
-            \   'NERDTreeFind',
-            \   'NERDTreeCWD',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook_source()',
-            \})
-
-call dein#add('LeafCage/yankround.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_yankround_hook_add()',
-            \})
-call dein#config('yankround.vim', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(yankround-',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yankround_hook_source()',
-            \})
-
-call dein#add('haya14busa/vim-asterisk', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_asterisk_hook_add()',
-            \})
-call dein#config('vim-asterisk', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(asterisk-',
-            \ ],
-            \})
-call dein#add('haya14busa/incsearch.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_incsearch_hook_add()',
-            \})
-call dein#config('incsearch.vim', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(incsearch-',
-            \ ],
-            \})
-call dein#add('haya14busa/vim-migemo')
-
-call dein#add('haya14busa/vim-auto-programming', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_auto_programming_hook_add()',
-            \})
-
-call dein#add('osyo-manga/vim-anzu', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_anzu_hook_add()',
-            \})
-call dein#config('vim-anzu', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(anzu-',
-            \ ],
-            \ 'on_func': [
-            \   'anzu',
-            \ ],
-            \ 'on_event': [
-            \   'TabLeave',
-            \ ],
-            \})
-call dein#add('osyo-manga/vim-over')
-
-call dein#add('rhysd/clever-f.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_cleverf_hook_add()',
-            \})
-call dein#add('osyo-manga/vim-jplus', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_jplus_hook_add()',
-            \})
-
-call dein#add('thinca/vim-qfreplace')
-call dein#config('vim-qfreplace', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Qfreplace',
-            \ ],
-            \})
-
-call dein#add('t9md/vim-quickhl', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_quickhl_hook_add()',
-            \})
-call dein#config('vim-quickhl', {
-            \ 'lazy': 1,
-            \ 'on_map': [
-            \   '<Plug>(quickhl-',
-            \ ],
-            \})
-
-call dein#add('spinningarrow/vim-niji')
-call dein#config('vim-niji', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'lisp',
-            \   'scheme',
-            \   'clojure',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_niji_hook_source()',
-            \})
-
-call dein#add('Konfekt/FastFold')
-
-" operator reference
-" <or>: replace
-" <oc>: comment
-" <od>: uncomment
-" Sa: surround-append
-" Sd: surround-delete
-" Sr: surround-replace
-
-call dein#add('kana/vim-operator-user')
-call dein#add('kana/vim-operator-replace', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_replace_hook_add()',
-            \})
-call dein#add('emonkak/vim-operator-comment', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_comment_hook_add()',
-            \})
-call dein#add('rhysd/vim-operator-surround', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_surround_hook_add()',
-            \})
-
-" textobj reference
-" ai, ii: indent
-" af, if: function
-" ae, ie: entire
-" al, il: line
-" ajb, ijb: ja-braces
-" ac, ic: between
-" au, iu: url
-" ab, ib: multiblock
-" amt, imt: multitextobj (url, multiblock, function, entire)
-" av, iv: variable segment
-" ar, ir: ruby
-
-call dein#add('kana/vim-textobj-user')
-call dein#add('kana/vim-textobj-indent')
-call dein#add('kana/vim-textobj-function')
-call dein#add('kana/vim-textobj-entire')
-call dein#add('kana/vim-textobj-line')
-call dein#add('kana/vim-textobj-jabraces', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_jabraces_hook_add()',
-            \})
-call dein#add('thinca/vim-textobj-between', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_between_hook_add()',
-            \})
-call dein#add('mattn/vim-textobj-url')
-call dein#add('osyo-manga/vim-textobj-multiblock', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multiblock_hook_add()',
-            \})
-call dein#add('osyo-manga/vim-textobj-multitextobj', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_textobj_multitextobj_hook_add()',
-            \})
-call dein#add('Julian/vim-textobj-variable-segment')
-call dein#add('rhysd/vim-textobj-ruby')
-call dein#config('vim-textobj-ruby', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'ruby',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_textobj_ruby_hook_source()',
-            \})
-
-call dein#add('tyru/capture.vim')
-call dein#config('capture.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Capture',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_capture_hook_source()',
-            \})
-
-call dein#add('tyru/open-browser.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_openbrowser_hook_add()',
-            \})
-call dein#config('open-browser.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'OpenBrowser',
-            \   'OpenBrowserSearch',
-            \ ],
-            \ 'on_func': [
-            \   'openbrowser',
-            \ ],
-            \ 'on_ft': [
-            \   'markdown',
-            \ ],
-            \ 'on_map': [
-            \   '<Plug>(openbrowser-',
-            \ ],
-            \})
-call dein#add('tyru/open-browser-github.vim')
-call dein#config('open-browser-github.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'OpenGithubFile',
-            \   'OpenGithubIssue',
-            \   'OpenGithubPullReq',
-            \ ],
-            \})
-
-call dein#add('kannokanno/previm')
-call dein#config('previm', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'markdown',
-            \ ],
-            \ 'on_cmd': [
-            \   'PrevimOpen',
-            \ ],
-            \})
-
-call dein#add('rhysd/vim-gfm-syntax')
-call dein#config('vim-gfm-syntax', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'markdown',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gfm_syntax_hook_source()',
-            \})
-
-call dein#add('basyura/unite-rails')
-call dein#config('unite-rails', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'ruby',
-            \ ],
-            \})
-
-call dein#add('eagletmt/ghcmod-vim')
-call dein#config('ghcmod-vim', {
-            \ 'lazy': 1,
-            \ 'on_ft' : [
-            \   'haskell',
-            \ ],
-            \})
-call dein#add('eagletmt/neco-ghc')
-call dein#config('neco-ghc', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'haskell',
-            \ ],
-            \})
-call dein#add('dag/vim2hs')
-call dein#config('vim2hs', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'haskell',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_vim2hs_hook_source()',
-            \})
-call dein#add('ujihisa/ref-hoogle')
-call dein#config('ref-hoogle', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'haskell',
-            \ ],
-            \})
-call dein#add('ujihisa/unite-haskellimport')
-call dein#config('unite-haskellimport', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \})
-call dein#add('alx741/yesod.vim')
-call dein#config('yesod.vim', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'haskell',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_yesod_hook_source()',
-            \})
-call dein#add('pbrisbin/html-template-syntax')
-call dein#config('html-template-syntax', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'hamlet',
-            \   'cassius',
-            \   'lucius',
-            \   'julius',
-            \ ],
-            \ 'on_path': [
-            \   '.*.hamlet$',
-            \   '.*.cassius$',
-            \   '.*.lucius$',
-            \   '.*.julius$',
-            \ ],
-            \})
-
-call dein#add('google/vim-ft-go')
-call dein#config('vim-ft-go', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'go',
-            \ ],
-            \})
-call dein#add('vim-jp/vim-go-extra')
-call dein#config('vim-go-extra', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'go',
-            \ ],
-            \})
-
-call dein#add('mattn/emmet-vim')
-call dein#config('emmet-vim', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'html',
-            \   'xhtml',
-            \   'css',
-            \   'sass',
-            \   'scss',
-            \   'xml',
-            \   'markdown',
-            \ ],
-            \})
-
-call dein#add('elzr/vim-json')
-call dein#config('vim-json', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'json',
-            \   'jsonp',
-            \ ],
-            \ 'on_path': [
-            \   '.*.json$',
-            \   '.*.jsonp$',
-            \ ],
-            \})
-
-call dein#add('tmux-plugins/vim-tmux')
-call dein#config('vim-tmux', {
-            \ 'lazy': 1,
-            \ 'on_ft': [
-            \   'tmux',
-            \ ],
-            \ 'on_path': [
-            \   'tmux.conf',
-            \ ],
-            \})
-
-call dein#add('thinca/vim-ref', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_ref_hook_add()',
-            \})
-call dein#config('vim-ref', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Ref',
-            \ ],
-            \ 'on_map': [
-            \   '<Plug>(ref-',
-            \ ],
-            \})
-
-call dein#add('daisuzu/translategoogle.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_translategoogle_hook_add()',
-            \})
-call dein#config('translategoogle.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'TranslateGoogle',
-            \   'TranslateGoogleCmd',
-            \   'TranslateGoogleCmdReverse',
-            \ ],
-            \})
-
-call dein#add('mattn/webapi-vim')
-
-call dein#add('lambdalisue/vim-gista')
-call dein#config('vim-gista', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Gista',
-            \ ],
-            \ 'on_map': [
-            \   '<Plug>(gista-',
-            \ ],
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gista_hook_source()',
-            \})
-
-call dein#add('koron/codic-vim')
-call dein#config('codic-vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Codic',
-            \ ],
-            \ 'on_source' : [
-            \   'unite.vim',
-            \ ],
-            \ 'on_func': [
-            \   'codic',
-            \ ],
-            \})
-call dein#add('rhysd/unite-codic.vim')
-call dein#config('unite-codic.vim', {
-            \ 'lazy': 1,
-            \ 'on_source' : [
-            \   'unite.vim',
-            \ ],
-            \})
-
-call dein#add('supermomonga/shaberu.vim')
-call dein#config('shaberu.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'ShaberuSay',
-            \   'ShaberuSayInteractive',
-            \   'ShaberuSayRecursive',
-            \   'ShaberuMuteOn',
-            \   'ShaberuMuteOff',
-            \   'ShaberuMuteToggle',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_shaberu_hook_source()',
-            \})
-
-call dein#add('rinx/radiko.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_add()',
-            \})
-call dein#config('radiko.vim', {
-            \ 'lazy': 1,
-            \ 'on_source': [
-            \   'unite.vim',
-            \ ],
-            \ 'on_cmd': [
-            \   'RadikoPlay',
-            \   'RadikoUpdateStations',
-            \   'RadikoStop',
-            \ ],
-            \ 'on_func': [
-            \   'radiko',
-            \ ],
-            \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_radiko_hook_source()',
-            \})
-
-call dein#add('rinx/yj-proofreading.vim', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_yj_proofreading_hook_add()',
-            \})
-call dein#config('yj-proofreading.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'YahooProofReader',
-            \ ],
-            \ 'on_func': [
-            \   'yjproofreading',
-            \ ],
-            \})
-
-" call dein#add('tomasr/molokai')
-" call dein#add('sickill/vim-monokai')
-" call dein#add('jpo/vim-railscasts-theme')
-call dein#add('w0ng/vim-hybrid', {
-            \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_hybrid_hook_add()',
-            \})
-
-call dein#add('vim-jp/vital.vim')
-call dein#config('vital.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': [
-            \   'Vitalize',
-            \ ],
-            \})
-
-call dein#end()
 
 set viminfo='1000,<100,f1,h,s100
 set history=300
