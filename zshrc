@@ -193,6 +193,10 @@ if ls --color > /dev/null ; then
     alias lsa='ls --color -F -a'
     alias lsl='ls --color -F -l'
     alias lsal='ls --color -F -a -l'
+else # for BSD version
+    alias lsa='ls -a'
+    alias lsl='ls -l'
+    alias lsal='ls -al'
 fi
 
 #start vim as vi
