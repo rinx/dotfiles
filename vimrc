@@ -2233,6 +2233,34 @@ augroup vimrc-unite-googlesuggestion-define
     autocmd VimEnter * call unite#define_source(s:unite_source_googlesuggestion)
 augroup END
 
+function! s:get_wild_and_tough()
+    " http://qiita.com/lVlA/items/0b14dd6dc7e69ed435dc
+
+    call append(line(".") +  0, "  ____      _")
+    call append(line(".") +  1, " / ___| ___| |_")
+    call append(line(".") +  2, "| |  _ / _ \\ __|")
+    call append(line(".") +  3, "| |_| |  __/ |_")
+    call append(line(".") +  4, " \\____|\\___|\\__|")
+    call append(line(".") +  5, "__        __  _     _")
+    call append(line(".") +  6, "\\ \\      / (_) | __| |")
+    call append(line(".") +  7, " \\ \\ /\\ / /| | |/ _  |")
+    call append(line(".") +  8, "  \\ V  V / | | | (_| |")
+    call append(line(".") +  9, "   \\_/\\_/  |_|_|\\__,_|")
+    call append(line(".") + 10, "    _              _")
+    call append(line(".") + 11, "   / \\   _ __   __| |")
+    call append(line(".") + 12, "  / _ \\ | '_ \\ / _  |")
+    call append(line(".") + 13, " / ___ \\| | | | (_| |")
+    call append(line(".") + 14, "/_/   \\_\\_| |_|\\__,_|")
+    call append(line(".") + 15, " _                    _")
+    call append(line(".") + 16, "| |_ ___  _   _  __ _| |__")
+    call append(line(".") + 17, "| __/ _ \\| | | |/ _  |  _ \\")
+    call append(line(".") + 18, "| || (_) | |_| | (_| | | | |")
+    call append(line(".") + 19, "\\__\\___/ \\__,_|\\__,  |_| |_|")
+    call append(line(".") + 20, "                |___/")
+endfunction
+
+command! GetWildAndTough call s:get_wild_and_tough()
+
 " visualize '　'
 " http://inari.hatenablog.com/entry/2014/05/05/231307
 function! s:zenkaku_space()
