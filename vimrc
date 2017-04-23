@@ -2303,9 +2303,13 @@ cnoremap <C-n> <Down>
 " for tabline
 nnoremap [Tab] <Nop>
 nmap ,t [Tab]
+" for buffer
+nnoremap [Buf] <Nop>
+nmap ,b [Buf]
 
 for s:n in range(1, 9)
     execute 'nnoremap <silent> [Tab]'. s:n ':<C-u>tabnext'. s:n .'<CR>'
+    execute 'nnoremap <silent> [Buf]'. s:n ':<C-u>buffer '. s:n .'<CR>'
 endfor
 
 nnoremap <silent> [Tab]c :<C-u>tablast <bar> tabnew<CR>
