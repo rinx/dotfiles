@@ -1095,11 +1095,17 @@ endfunction
 " --- plugin loading with dein.vim
 
 if v:version >= 800 || has('nvim')
-    if has('vim_starting')
-        set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+    if has('nvim')
+        if has('vim_starting')
+            set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+        endif
+        call dein#begin(expand('~/.config/nvim/dein/'))
+    else
+        if has('vim_starting')
+            set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+        endif
+        call dein#begin(expand('~/.vim/dein/'))
     endif
-
-    call dein#begin(expand('~/.vim/dein/'))
 
     call dein#add('Shougo/dein.vim')
 
@@ -1888,10 +1894,14 @@ set breakindent
 " unsaved buffer warning
 set confirm
 
-set clipboard+=unnamed,autoselect
+if !has('nvim')
+    set clipboard+=unnamed,autoselect
+endif
 
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+    set ttymouse=xterm2
+endif
 
 set foldmethod=marker
 
@@ -1926,7 +1936,7 @@ set sessionoptions-=options
 set showmatch
 set matchtime=3
 
-if v:version >= 703
+if v:version >= 703 && !has('nvim')
     set cryptmethod=blowfish
     set conceallevel=0
 endif
@@ -2467,7 +2477,7 @@ set showtabline=2
 let g:lightline = {
             \ 'active': {
             \   'left': [ 
-            \             [ 'mode', 'paste' ],
+            \             [ 'mode', 'paste', 'spell' ],
             \             [ 'fugitive', 'filename' ],
             \   ],
             \   'right': [
@@ -2510,6 +2520,7 @@ let g:lightline = {
             \     [ 'tablineabspath', 'tabfugitive', 'tabradikosta' ],
             \   ],
             \ },
+            \ 'colorscheme' : 'default',
             \ }
 
 function! MyModified()
@@ -2596,32 +2607,6 @@ function! MyAbsPath()
                 \ &ft == 'quickrun' ? '' :
                 \ tabpagenr('$') > 3 ? '' :
                 \ strlen(_) < winwidth('.') / 2 ? _ : ''
-endfunction
-
-function! MyTabline()
-    let s = ''
-
-    for i in range(1, tabpagenr('$'))
-        let bufnrs = tabpagebuflist(i)
-        let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
-
-        let no = i  " display 0-origin tabpagenr.
-        let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
-
-        " Use gettabvar().
-        let title = fnamemodify(bufname(bufnr), ':t')
-
-        let title = '[' . title . ']'
-
-        let s .= '%'.i.'T'
-        let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
-        let s .= no . ':' . title
-        let s .= mod
-        let s .= '%#TabLineFill# '
-    endfor
-
-    let s .= '%#TabLineFill#%T%=%#TabLine#'
-    return s
 endfunction
 
 function! MyRadikoSta()
