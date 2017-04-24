@@ -2477,7 +2477,7 @@ set showtabline=2
 let g:lightline = {
             \ 'active': {
             \   'left': [ 
-            \             [ 'mode', 'paste' ],
+            \             [ 'mode', 'paste', 'spell' ],
             \             [ 'fugitive', 'filename' ],
             \   ],
             \   'right': [
@@ -2520,6 +2520,7 @@ let g:lightline = {
             \     [ 'tablineabspath', 'tabfugitive', 'tabradikosta' ],
             \   ],
             \ },
+            \ 'colorscheme' : 'default',
             \ }
 
 function! MyModified()
