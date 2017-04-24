@@ -604,6 +604,7 @@ function! s:init_watchdogs_hook_add() abort
     let g:watchdogs_check_BufWritePost_enable = 1
     let g:watchdogs_check_BufWritePost_enables = {
                 \}
+    let g:watchdogs_check_BufWritePost_enable_on_wq = 0
     let g:watchdogs_check_CursorHold_enable = 0
     let g:watchdogs_check_CursorHold_enables = {
                 \}
@@ -1127,14 +1128,18 @@ if v:version >= 800 || has('nvim')
                 \ 'build': 'make',
                 \})
 
-    call dein#add('Shougo/neocomplete.vim', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
-                \ })
-    call dein#config('neocomplete.vim', {
-                \ 'lazy': 1,
-                \ 'on_i': 1,
-                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_source()',
-                \})
+    if has('nvim')
+        call dein#add('Shougo/deoplete.nvim')
+    else
+        call dein#add('Shougo/neocomplete.vim', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
+                    \ })
+        call dein#config('neocomplete.vim', {
+                    \ 'lazy': 1,
+                    \ 'on_i': 1,
+                    \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_source()',
+                    \})
+    endif
 
     call dein#add('ujihisa/neco-look')
     call dein#config('neco-look', {
