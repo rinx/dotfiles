@@ -604,6 +604,7 @@ function! s:init_watchdogs_hook_add() abort
     let g:watchdogs_check_BufWritePost_enable = 1
     let g:watchdogs_check_BufWritePost_enables = {
                 \}
+    let g:watchdogs_check_BufWritePost_enable_on_wq = 0
     let g:watchdogs_check_CursorHold_enable = 0
     let g:watchdogs_check_CursorHold_enables = {
                 \}
