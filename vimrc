@@ -1095,11 +1095,17 @@ endfunction
 " --- plugin loading with dein.vim
 
 if v:version >= 800 || has('nvim')
-    if has('vim_starting')
-        set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+    if has('nvim')
+        if has('vim_starting')
+            set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+        endif
+        call dein#begin(expand('~/.config/nvim/dein/'))
+    else
+        if has('vim_starting')
+            set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+        endif
+        call dein#begin(expand('~/.vim/dein/'))
     endif
-
-    call dein#begin(expand('~/.vim/dein/'))
 
     call dein#add('Shougo/dein.vim')
 
@@ -1888,10 +1894,14 @@ set breakindent
 " unsaved buffer warning
 set confirm
 
-set clipboard+=unnamed,autoselect
+if !has('nvim')
+    set clipboard+=unnamed,autoselect
+endif
 
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+    set ttymouse=xterm2
+endif
 
 set foldmethod=marker
 
@@ -1926,7 +1936,7 @@ set sessionoptions-=options
 set showmatch
 set matchtime=3
 
-if v:version >= 703
+if v:version >= 703 && !has('nvim')
     set cryptmethod=blowfish
     set conceallevel=0
 endif
