@@ -30,6 +30,20 @@ endif
 unlet vimrc_private_filename
 
 " --- Plugin settings
+
+function! s:init_deoplete_hook_source() abort
+
+endfunction
+
+function! s:init_deoplete_hook_add() abort
+"     inoremap <expr><S-Tab>  neocomplete#start_manual_complete()
+"
+"     inoremap <expr><C-g>  neocomplete#undo_completion()
+"     inoremap <expr><C-l>  neocomplete#complete_common_string()
+"
+"     inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
+endfunction
+
 function! s:init_neocomplete_hook_source() abort
     let g:neocomplete#enable_at_startup = 1
 
@@ -1129,7 +1143,14 @@ if v:version >= 800 || has('nvim')
                 \})
 
     if has('nvim')
-        call dein#add('Shougo/deoplete.nvim')
+        call dein#add('Shougo/deoplete.nvim', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_deoplete_hook_add()',
+                    \ })
+        call dein#config('deoplete.nvim', {
+                    \ 'lazy': 1,
+                    \ 'on_i': 1,
+                    \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_deoplete_hook_source()',
+                    \})
     else
         call dein#add('Shougo/neocomplete.vim', {
                     \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neocomplete_hook_add()',
