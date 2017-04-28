@@ -53,7 +53,7 @@
     co    = checkout
 
     br    = branch
-    
+
     dm    = diff master
     dw    = diff --color-words
     dc    = diff --staged
