@@ -31,121 +31,113 @@ unlet vimrc_private_filename
 
 " --- Plugin settings
 
-function! s:init_deoplete_hook_source() abort
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#enable_ignore_case = 1
-    let g:deoplete#enable_smart_case = 1
-    let g:deoplete#enable_camel_case = 1
-    let g:deoplete#enable_reflesh_always = 0
-    let g:deoplete#auto_complete_start_length = 2
-    let g:deoplete#enable_profile = 0
-    let g:deoplete#max_list = 300
-    let g:deoplete#max_abbr_width = 100
-    let g:deoplete#max_menu_width = 60
-    let g:deoplete#auto_refresh_delay = 50
+if has('nvim')
+    function! s:init_deoplete_hook_source() abort
+        let g:deoplete#enable_at_startup = 1
+        let g:deoplete#enable_ignore_case = 1
+        let g:deoplete#enable_smart_case = 1
+        let g:deoplete#enable_camel_case = 1
+        let g:deoplete#enable_reflesh_always = 0
+        let g:deoplete#auto_complete_start_length = 2
+        let g:deoplete#enable_profile = 0
+        let g:deoplete#max_list = 300
+        let g:deoplete#max_abbr_width = 100
+        let g:deoplete#max_menu_width = 60
+        let g:deoplete#auto_refresh_delay = 50
 
-    let g:deoplete#keyword_patterns = {}
-    let g:deoplete#keyword_patterns.tex = '\\?[a-zA-Z_]\w*'
+        let g:deoplete#keyword_patterns = {}
+        let g:deoplete#keyword_patterns.tex = '\\?[a-zA-Z_]\w*'
 
-    let g:deoplete#omni_patterns = {}
-endfunction
+        let g:deoplete#omni_patterns = {}
+    endfunction
 
-function! s:init_deoplete_hook_add() abort
-"     inoremap <expr><S-Tab>  neocomplete#start_manual_complete()
-"
-"     inoremap <expr><C-g>  neocomplete#undo_completion()
-"     inoremap <expr><C-l>  neocomplete#complete_common_string()
-"
-"     inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
-endfunction
+    function! s:init_deoplete_hook_add() abort
+    "     inoremap <expr><S-Tab>  neocomplete#start_manual_complete()
+    "
+    "     inoremap <expr><C-g>  neocomplete#undo_completion()
+    "     inoremap <expr><C-l>  neocomplete#complete_common_string()
+    "
+    "     inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
+    endfunction
+else
+    function! s:init_neocomplete_hook_source() abort
+        let g:neocomplete#enable_at_startup = 1
 
-function! s:init_neocomplete_hook_source() abort
-    let g:neocomplete#enable_at_startup = 1
+        let g:neocomplete#min_keyword_length = 3
+        let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-    let g:neocomplete#min_keyword_length = 3
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
+        let g:neocomplete#auto_completion_start_length = 2
+        let g:neocomplete#manual_completion_start_length = 0
 
-    let g:neocomplete#auto_completion_start_length = 2
-    let g:neocomplete#manual_completion_start_length = 0
+        let g:neocomplete#enable_smart_case = 1
+        let g:neocomplete#enable_camel_case = 1
 
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_camel_case = 1
+        let g:neocomplete#enable_fuzzy_completion = 1
 
-    let g:neocomplete#enable_fuzzy_completion = 1
+        let g:neocomplete#enable_auto_select = 0
+        let g:neocomplete#enable_refresh_always = 0
+        let g:neocomplete#enable_cursor_hold_i = 0
+        let g:neocomplete#enable_auto_delimiter = 1
 
-    let g:neocomplete#enable_auto_select = 0
-    let g:neocomplete#enable_refresh_always = 0
-    let g:neocomplete#enable_cursor_hold_i = 0
-    let g:neocomplete#enable_auto_delimiter = 1
+        let g:neocomplete#max_list = 80
 
-    let g:neocomplete#max_list = 80
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+        let g:neocomplete#keyword_patterns._ = '\h\w*'
 
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns._ = '\h\w*'
+        if !exists('g:neocomplete#sources#omni#input_patterns')
+            let g:neocomplete#sources#omni#input_patterns = {}
+        endif
+        let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+        if !exists('g:neocomplete#force_omni_input_patterns')
+            let g:neocomplete#force_omni_input_patterns = {}
+        endif
+        let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+        if !exists('g:neocomplete#sources#dictionary#dictionaries')
+            let g:neocomplete#sources#dictionary#dictionaries = {}
+        endif
+        let g:neocomplete#sources#dictionary#dictionaries.vimshell = expand('~/.vimshell/command-history')
 
-    if !exists('g:neocomplete#sources#dictionary#dictionaries')
-        let g:neocomplete#sources#dictionary#dictionaries = {}
-    endif
-    let g:neocomplete#sources#dictionary#dictionaries.vimshell = expand('~/.vimshell/command-history')
+        let g:neocomplete#enable_auto_close_preview = 1
 
-    let g:neocomplete#enable_auto_close_preview = 1
+        let g:neocomplete#text_mode_filetypes = {
+                    \ 'hybrid' : 1,
+                    \ 'text' : 1,
+                    \ 'help' : 1,
+                    \ 'tex' : 1,
+                    \ 'latex' : 1,
+                    \ 'plaintex' : 1,
+                    \ 'gitcommit' : 1,
+                    \ 'gitrebase' : 1,
+                    \ 'vcs-commit' : 1,
+                    \ 'markdown' : 1,
+                    \ 'mkd' : 1,
+                    \ 'textile' : 1,
+                    \ 'creole' : 1,
+                    \ 'org' : 1,
+                    \ 'rdoc' : 1,
+                    \ 'mediawiki' : 1,
+                    \ 'rst' : 1,
+                    \ 'asciidoc' : 1,
+                    \ 'pod' : 1,
+                    \ 'gita-commit' : 1,
+                    \ 'J6uil_say' : 1,
+                    \}
 
-    let g:neocomplete#text_mode_filetypes = {
-                \ 'hybrid' : 1,
-                \ 'text' : 1,
-                \ 'help' : 1,
-                \ 'tex' : 1,
-                \ 'latex' : 1,
-                \ 'plaintex' : 1,
-                \ 'gitcommit' : 1,
-                \ 'gitrebase' : 1,
-                \ 'vcs-commit' : 1,
-                \ 'markdown' : 1,
-                \ 'mkd' : 1,
-                \ 'textile' : 1,
-                \ 'creole' : 1,
-                \ 'org' : 1,
-                \ 'rdoc' : 1,
-                \ 'mediawiki' : 1,
-                \ 'rst' : 1,
-                \ 'asciidoc' : 1,
-                \ 'pod' : 1,
-                \ 'gita-commit' : 1,
-                \ 'J6uil_say' : 1,
-                \}
+    endfunction
 
-endfunction
+    function! s:init_neocomplete_hook_add() abort
+        inoremap <expr><S-Tab>  neocomplete#start_manual_complete()
 
-function! s:init_neocomplete_hook_add() abort
-    inoremap <expr><S-Tab>  neocomplete#start_manual_complete()
+        inoremap <expr><C-g>  neocomplete#undo_completion()
+        inoremap <expr><C-l>  neocomplete#complete_common_string()
 
-    inoremap <expr><C-g>  neocomplete#undo_completion()
-    inoremap <expr><C-l>  neocomplete#complete_common_string()
-
-    inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
-endfunction
-
-" Enable omni function
-augroup vimrc-omnifuncs
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup END
+        inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
+    endfunction
+endif
 
 function! s:init_neosnippet_hook_add() abort
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
