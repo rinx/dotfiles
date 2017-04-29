@@ -1169,11 +1169,44 @@ if v:version >= 800 || has('nvim')
                     \})
     endif
 
+    " neocomplete sources
     call dein#add('ujihisa/neco-look')
     call dein#config('neco-look', {
                 \ 'lazy' : 1,
                 \ 'on_i' : 1,
                 \})
+    call dein#add('Shougo/neco-vim')
+    call dein#config('neco-vim', {
+                \ 'lazy' : 1,
+                \ 'on_ft' : [
+                \     'vim',
+                \ ],
+                \})
+    call dein#add('eagletmt/neco-ghc')
+    call dein#config('neco-ghc', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'haskell',
+                \ ],
+                \})
+
+    " deoplete sources (only for neovim)
+    if has('nvim')
+"         call dein#add('fishbullet/deoplete-ruby')
+"         call dein#config('deoplete-ruby', {
+"                     \ 'lazy': 1,
+"                     \ 'on_ft': [
+"                     \   'ruby',
+"                     \ ],
+"                     \})
+        if has('mac')
+            call dein#add('thalesmello/webcomplete.vim')
+            call dein#config('webcomplete.vim', {
+                        \ 'lazy': 1,
+                        \ 'on_i': 1,
+                        \})
+        endif
+    endif
 
     call dein#add('Shougo/neosnippet', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_neosnippet_hook_add()',
@@ -1660,13 +1693,6 @@ if v:version >= 800 || has('nvim')
     call dein#config('ghcmod-vim', {
                 \ 'lazy': 1,
                 \ 'on_ft' : [
-                \   'haskell',
-                \ ],
-                \})
-    call dein#add('eagletmt/neco-ghc')
-    call dein#config('neco-ghc', {
-                \ 'lazy': 1,
-                \ 'on_ft': [
                 \   'haskell',
                 \ ],
                 \})
