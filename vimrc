@@ -2032,6 +2032,8 @@ set nosecure
 
 syntax enable
 
+let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
+
 " A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
     let lines = getline(a:firstline, a:lastline)
