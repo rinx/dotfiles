@@ -176,117 +176,40 @@ function! s:init_arpeggio_hook_add() abort
     call arpeggio#load()
 endfunction
 
-function! s:init_denite_hook_source() abort
+" denite.nvim and unite.vim configures
 
-endfunction
-
-function! s:init_denite_hook_add() abort
-
-endfunction
-
-function! s:init_unite_hook_source() abort
-    let g:unite_force_overwrite_statusline = 0
-    let g:unite_enable_start_insert = 0
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_source_history_yank_limit = 1000
-    let g:unite_prompt = '❯ '
-
-    if !exists('g:unite_source_menu_menus')
-        let g:unite_source_menu_menus = {}
-    endif
-    let g:unite_source_menu_menus.shortcut = {
-                \ 'description' : 'shortcut'
-                \}
-    if has('mac')
-        let s:copyToClipboardCommand = 'w !pbcopy'
-    elseif has('unix')
-        let s:copyToClipboardCommand = 'w !xsel --clipboard --input'
-    endif
-    let g:unite_source_menu_menus.shortcut.candidates = [
-                \ ['home', $HOME],
-                \ ['dotfiles', $HOME . '/.dotfiles'],
-                \ ['vimrc', $MYVIMRC],
+if has('mac')
+    let s:copyToClipboardCommand = 'w !pbcopy'
+elseif has('unix')
+    let s:copyToClipboardCommand = 'w !xsel --clipboard --input'
+endif
+let s:unite_denite_shortcut_candidates = [
                 \ ['vimshell', 'VimShell'],
                 \ ['quickrun', 'QuickRun'],
                 \ ['make(quickrun)', 'QuickRun make'],
                 \ ['watchdogs', 'WatchdogsRun'],
                 \ ['UNDOtree', 'UndotreeToggle'],
                 \ ['NERDTree', 'NERDTreeToggle'],
-                \ ['map', 'Unite output:map'],
-                \ ['register', 'Unite output:register'],
+                \ ['map', 'Denite output:map'],
+                \ ['register', 'Denite output:register'],
                 \ ['reload .vimrc', 'source ~/.vimrc'],
                 \ ['make Session.vim', 'mks!'],
-                \ ['toggle-options', 'Unite menu:toggle'],
-                \ ['unite neosnippet', 'Unite neosnippet'],
-                \ ['unite gista', 'Unite gista'],
-                \ ['unite codic', 'Unite codic -start-insert'],
-                \ ['unite radiko', 'Unite radiko'],
+                \ ['toggle-options', 'Denite menu:toggle'],
+                \ ['denite neosnippet', 'Denite unite:neosnippet'],
+                \ ['denite gista', 'Denite unite:gista'],
+                \ ['denite codic', 'Denite unite:codic'],
+                \ ['denite radiko', 'Denite unite:radiko'],
                 \ ['stop radiko', 'RadikoStop'],
-                \ ['unite RN2-musics', 'Unite rn2musics -no-quit'],
-                \ ['RN2-click-de-onair', 'http://www.radionikkei.jp/rn2/cdo/'],
+                \ ['denite RN2-musics', 'Denite unite:rn2musics'],
                 \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
                 \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
+                \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
+                \ ['TweetVim UserStream', 'TweetVimUserStream'],
+                \ ['J6uil lingr-client', 'J6uil'],
                 \ ['PreVim open', 'PreVimOpen'],
                 \ ['copy buffer into clipboard', s:copyToClipboardCommand],
-                \ ['vim-jp', 'http://vim-jp.org/'],
-                \ ['reading-vimrc', 'http://vim-jp.org/reading-vimrc/'],
-                \ ['Github', 'https://github.com/'],
-                \ ['Github Gist', 'https://gist.github.com/'],
-                \ ['Japan Meteorological Agency(JMA)', 'http://www.jma.go.jp/'],
-                \ ['stackoverflow', 'http://stackoverflow.com/'],
                 \]
-    function! g:unite_source_menu_menus.shortcut.map(key, value)
-        let [word, value] = a:value
-
-        if isdirectory(value)
-            return {
-                        \ 'word' : '[directory] '.word,
-                        \ 'kind' : 'directory',
-                        \ 'action__directory' : value,
-                        \}
-        elseif !empty(glob(value))
-            return {
-                        \ 'word' : '[file] '.word,
-                        \ 'kind' : 'file',
-                        \ 'default_action' : 'tabdrop',
-                        \ 'action__path' : value,
-                        \}
-        elseif value =~ '^\(http\|https\|ftp\).*'
-            return {
-                        \ 'word' : '[url] '.word,
-                        \ 'kind' : 'command',
-                        \ 'action__command' : 'OpenBrowser '.value,
-                        \}
-        else
-            return {
-                        \ 'word' : '[command] '.word,
-                        \ 'kind' : 'command',
-                        \ 'action__command' : value,
-                        \}
-        endif
-    endfunction
-
-    command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
-    let g:unite_source_menu_menus.toggle = {
-                \ 'description' : 'toggle menus',
-                \}
-    let g:unite_source_menu_menus.toggle.command_candidates = {
-                \
-                \}
-    let options = "
-                \ paste rule number relativenumber
-                \ list
-                \ hlsearch wrap spell
-                \ "
-    for opt in split(options)
-        let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
-    endfor
-    unlet options opt
-
-    let g:unite_source_menu_menus.kaomoji = {
-                \ 'description' : 'kaomoji dictionary',
-                \}
-    let g:unite_source_menu_menus.kaomoji.candidates= [
+let s:unite_denite_kaomoji_dictionary = [
                 \["wahhab", "( っ'ヮ'c)"],
                 \["wahhab", "三( っ'ヮ'c)"],
                 \["wahhab", "( っ˘ヮ˘c)💤"],
@@ -369,6 +292,97 @@ function! s:init_unite_hook_source() abort
                 \["sake", "🍶"],
                 \["coffee", "☕"]
                 \]
+
+function! s:init_denite_hook_source() abort
+
+endfunction
+
+function! s:init_denite_hook_add() abort
+    nnoremap [denite] <Nop>
+    nmap ,ud [denite]
+    " buffer
+    nnoremap <silent> [denite]b   :<C-u>Denite buffer<CR>
+    " commands
+    nnoremap <silent> [denite]c   :<C-u>Denite command<CR>
+    " file
+    nnoremap <silent> [denite]f   :<C-u>DeniteBufferDir<CR>
+    nnoremap <silent> [denite]fr  :<C-u>Denite file_rec<CR>
+    " resume
+    nnoremap <silent> [denite]r   :<C-u>Denite -resume<CR>
+    " register
+    nnoremap <silent> [denite]rg  :<C-u>Denite -buffer-name=register register<CR>
+    " recently files
+    nnoremap <silent> [denite]m   :<C-u>Denite file_mru<CR>
+    " Shougo/unite-outline
+    nnoremap <silent> [denite]o   :<C-u>Denite unite:outline<CR>
+endfunction
+
+function! s:init_unite_hook_source() abort
+    let g:unite_force_overwrite_statusline = 0
+    let g:unite_enable_start_insert = 0
+    let g:unite_source_history_yank_enable = 1
+    let g:unite_source_history_yank_limit = 1000
+    let g:unite_prompt = '❯ '
+
+    if !exists('g:unite_source_menu_menus')
+        let g:unite_source_menu_menus = {}
+    endif
+    let g:unite_source_menu_menus.shortcut = {
+                \ 'description' : 'shortcut'
+                \}
+    let g:unite_source_menu_menus.shortcut.candidates = s:unite_denite_shortcut_candidates
+    function! g:unite_source_menu_menus.shortcut.map(key, value)
+        let [word, value] = a:value
+
+        if isdirectory(value)
+            return {
+                        \ 'word' : '[directory] '.word,
+                        \ 'kind' : 'directory',
+                        \ 'action__directory' : value,
+                        \}
+        elseif !empty(glob(value))
+            return {
+                        \ 'word' : '[file] '.word,
+                        \ 'kind' : 'file',
+                        \ 'default_action' : 'tabdrop',
+                        \ 'action__path' : value,
+                        \}
+        elseif value =~ '^\(http\|https\|ftp\).*'
+            return {
+                        \ 'word' : '[url] '.word,
+                        \ 'kind' : 'command',
+                        \ 'action__command' : 'OpenBrowser '.value,
+                        \}
+        else
+            return {
+                        \ 'word' : '[command] '.word,
+                        \ 'kind' : 'command',
+                        \ 'action__command' : value,
+                        \}
+        endif
+    endfunction
+
+    command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
+    let g:unite_source_menu_menus.toggle = {
+                \ 'description' : 'toggle menus',
+                \}
+    let g:unite_source_menu_menus.toggle.command_candidates = {
+                \
+                \}
+    let options = "
+                \ paste rule number relativenumber
+                \ list
+                \ hlsearch wrap spell
+                \ "
+    for opt in split(options)
+        let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
+    endfor
+    unlet options opt
+
+    let g:unite_source_menu_menus.kaomoji = {
+                \ 'description' : 'kaomoji dictionary',
+                \}
+    let g:unite_source_menu_menus.kaomoji.candidates = s:unite_denite_kaomoji_dictionary
     function! g:unite_source_menu_menus.kaomoji.map(key, value)
         let [word, value] = a:value
         if !empty(word)
