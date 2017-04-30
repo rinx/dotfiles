@@ -2032,6 +2032,8 @@ set nosecure
 
 syntax enable
 
+let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
+
 " A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
     let lines = getline(a:firstline, a:lastline)
@@ -2359,9 +2361,10 @@ nnoremap Y y$
 " Access to system clipboard
 nnoremap ,p "+p
 nnoremap ,P "+P
+
+" yank (copy) and delete (cut) for system clipboard
 nnoremap ,y "+y
 nnoremap ,d "+d
-
 vnoremap ,y "+y
 vnoremap ,d "+d
 
