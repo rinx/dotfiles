@@ -2361,9 +2361,10 @@ nnoremap Y y$
 " Access to system clipboard
 nnoremap ,p "+p
 nnoremap ,P "+P
+
+" yank (copy) and delete (cut) for system clipboard
 nnoremap ,y "+y
 nnoremap ,d "+d
-
 vnoremap ,y "+y
 vnoremap ,d "+d
 
