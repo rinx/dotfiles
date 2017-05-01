@@ -1932,6 +1932,9 @@ if v:version >= 800 || has('nvim')
                 \ 'on_cmd': [
                 \   'Vitalize',
                 \ ],
+                \ 'on_func': [
+                \   'vital',
+                \ ],
                 \})
 
     call dein#end()
