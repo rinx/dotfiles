@@ -292,9 +292,64 @@ let s:unite_denite_kaomoji_dictionary = [
                 \["sake", "🍶"],
                 \["coffee", "☕"]
                 \]
+command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
+let s:unite_denite_toggle_options = [
+            \ "paste",
+            \ "rule",
+            \ "number",
+            \ "relativenumber",
+            \ "list",
+            \ "hlsearch",
+            \ "wrap",
+            \ "spell",
+            \ ]
 
 function! s:init_denite_hook_source() abort
+    if !exists('s:denite_source_menu')
+        let s:denite_source_menu = {}
+    endif
+    let s:denite_source_menu.shortcut = {
+                \ 'description' : 'shortcut'
+                \}
+    let s:denite_source_menu.shortcut.command_candidates = s:unite_denite_shortcut_candidates
+    function! s:denite_source_menu.shortcut.map(key, value)
+        let [word, value] = a:value
 
+        if isdirectory(value)
+            return [word, value]
+        elseif !empty(glob(value))
+            return [word, value]
+        elseif value =~ '^\(http\|https\|ftp\).*'
+            return [word, 'OpenBrowser' . value]
+        else
+            return [word, value]
+        endif
+    endfunction
+
+    let s:denite_source_menu.toggle = {
+                \ 'description' : 'toggle menus',
+                \}
+    let s:denite_source_menu.toggle.command_candidates = {}
+    for opt in s:unite_denite_toggle_options
+        let s:denite_source_menu.toggle.command_candidates[opt] = "ToggleOption " . opt
+    endfor
+
+    let s:denite_source_menu.kaomoji = {
+                \ 'description' : 'kaomoji dictionary',
+                \}
+    let s:denite_source_menu.kaomoji.command_candidates = {}
+    for val in s:unite_denite_kaomoji_dictionary
+        let [word, value] = val
+        if !empty(word)
+            let s:denite_source_menu.kaomoji.command_candidates['[' . word . '] ' . value] =
+                        \ 'call append(line("."), "' . value . '")'
+        else
+            let s:denite_source_menu.kaomoji.command_candidates['[no pronounciation] ' . value] =
+                        \ 'call append(line("."), "' . value . '")'
+        endif
+    endfor
+
+    call denite#custom#var('menu', 'menus', s:denite_source_menu)
 endfunction
 
 function! s:init_denite_hook_add() abort
@@ -362,22 +417,13 @@ function! s:init_unite_hook_source() abort
         endif
     endfunction
 
-    command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
     let g:unite_source_menu_menus.toggle = {
                 \ 'description' : 'toggle menus',
                 \}
-    let g:unite_source_menu_menus.toggle.command_candidates = {
-                \
-                \}
-    let options = "
-                \ paste rule number relativenumber
-                \ list
-                \ hlsearch wrap spell
-                \ "
-    for opt in split(options)
+    let g:unite_source_menu_menus.toggle.command_candidates = {}
+    for opt in s:unite_denite_toggle_options
         let g:unite_source_menu_menus.toggle.command_candidates[opt] = "ToggleOption " . opt
     endfor
-    unlet options opt
 
     let g:unite_source_menu_menus.kaomoji = {
                 \ 'description' : 'kaomoji dictionary',
@@ -1931,6 +1977,9 @@ if v:version >= 800 || has('nvim')
                 \ 'lazy': 1,
                 \ 'on_cmd': [
                 \   'Vitalize',
+                \ ],
+                \ 'on_func': [
+                \   'vital',
                 \ ],
                 \})
 
