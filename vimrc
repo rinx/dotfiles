@@ -2472,9 +2472,6 @@ nnoremap <silent> s= <C-w>=
 nnoremap <silent> ss :<C-u>sp<CR>
 nnoremap <silent> sv :<C-u>vs<CR>
 
-" nohilight by pressing Esc twice
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
-
 " toggle paste mode
 nnoremap <silent> <Leader>p :setl paste!<CR>
 
