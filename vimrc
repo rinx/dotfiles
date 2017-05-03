@@ -329,10 +329,8 @@ function! s:init_denite_hook_source() abort
     let s:denite_source_menu.toggle = {
                 \ 'description' : 'toggle menus',
                 \}
-    let s:denite_source_menu.toggle.command_candidates = {}
-    for opt in s:unite_denite_toggle_options
-        let s:denite_source_menu.toggle.command_candidates[opt] = "ToggleOption " . opt
-    endfor
+    let s:denite_source_menu.toggle.command_candidates =
+                \ map(copy(s:unite_denite_toggle_options), '[v:val, "ToggleOption " . v:val]')
 
     let s:denite_source_menu.kaomoji = {
                 \ 'description' : 'kaomoji dictionary',
