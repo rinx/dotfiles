@@ -1354,6 +1354,7 @@ if v:version >= 800 || has('nvim')
     call dein#config('neomru.vim', {
                 \ 'lazy': 1,
                 \ 'on_source': [
+                \   'denite.nvim',
                 \   'unite.vim',
                 \ ],
                 \})
