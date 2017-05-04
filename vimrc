@@ -348,6 +348,9 @@ function! s:init_denite_hook_source() abort
     endfor
 
     call denite#custom#var('menu', 'menus', s:denite_source_menu)
+
+    " custom key mappings
+    call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
 endfunction
 
 function! s:init_denite_hook_add() abort
