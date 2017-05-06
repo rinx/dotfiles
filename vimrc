@@ -2100,6 +2100,10 @@ set noautowrite
 set noexrc
 set nosecure
 
+set timeout
+set timeoutlen=1000
+set ttimeoutlen=200
+
 syntax enable
 
 let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
