@@ -1248,13 +1248,13 @@ if v:version >= 800 || has('nvim')
                 \     'vim',
                 \ ],
                 \})
-"     call dein#add('eagletmt/neco-ghc')
-"     call dein#config('neco-ghc', {
-"                 \ 'lazy': 1,
-"                 \ 'on_ft': [
-"                 \   'haskell',
-"                 \ ],
-"                 \})
+    call dein#add('eagletmt/neco-ghc')
+    call dein#config('neco-ghc', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'haskell',
+                \ ],
+                \})
 
     " deoplete sources (only for neovim)
     if has('nvim')
