@@ -1064,6 +1064,11 @@ function! s:init_vim2hs_hook_source() abort
     let g:haskell_conceal_enumerations = 0
 endfunction
 
+function! s:init_ref_hoogle_hook_add() abort
+    call altercmd#define('hoogle', 'Ref hoogle')
+    nnoremap <silent> [ref]hg :<C-u>Ref hoogle <C-r><C-w><CR>
+endfunction
+
 function! s:init_yesod_hook_source() abort
     let g:yesod_disable_maps = 1
 endfunction
@@ -1771,7 +1776,9 @@ if v:version >= 800 || has('nvim')
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_vim2hs_hook_source()',
                 \})
-    call dein#add('ujihisa/ref-hoogle')
+    call dein#add('ujihisa/ref-hoogle', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_ref_hoogle_hook_add()',
+                \})
     call dein#config('ref-hoogle', {
                 \ 'lazy': 1,
                 \ 'on_ft': [
