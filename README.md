@@ -72,7 +72,6 @@ if you want to clear dotfiles, use `-c` option.
     - Plugins (for install: `prefix + I`)
 * Vim
     - Vim scripts
-        - vimproc `make`
     - Haskell
         - ghc-mod `cabal install ghc-mod`
         - hoogle  `cabal install hoogle`
@@ -81,4 +80,17 @@ if you want to clear dotfiles, use `-c` option.
 * OSX
     - MacVim
     - reattach-to-user-namespace
+
+### Troubleshooting
+
+#### vim
+
+##### If ref-webdic does not work correctly
+
+Please check `w3m` is installed correctly.
+
+##### If it takes too long time for searching candidates of haskell import
+
+Please check `ghc-mod` is installed.
+
 
