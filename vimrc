@@ -1046,6 +1046,7 @@ function! s:init_openbrowser_hook_add() abort
     nmap ,op <Plug>(openbrowser-smart-search)
     vmap ,op <Plug>(openbrowser-smart-search)
 
+    nnoremap <silent> ,og :<C-u>OpenBrowserSearch -google <C-r><C-w><CR>
     nnoremap <silent> ,ow :<C-u>OpenBrowserSearch -weblio <C-r><C-w><CR>
     nnoremap <silent> ,oa :<C-u>OpenBrowserSearch -alc <C-r><C-w><CR>
 
