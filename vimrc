@@ -1040,6 +1040,7 @@ function! s:init_openbrowser_hook_add() abort
                 \get(g:, 'openbrowser_search_engines', {}),
                 \{
                 \ 'weblio' : 'http://ejje.weblio.jp/content/{query}',
+                \ 'yahoojp': 'http://search.yahoo.co.jp/search?p={query}',
                 \},
                 \)
 
@@ -1047,10 +1048,12 @@ function! s:init_openbrowser_hook_add() abort
     vmap ,op <Plug>(openbrowser-smart-search)
 
     nnoremap <silent> ,og :<C-u>OpenBrowserSearch -google <C-r><C-w><CR>
+    nnoremap <silent> ,oy :<C-u>OpenBrowserSearch -yahoojp <C-r><C-w><CR>
     nnoremap <silent> ,ow :<C-u>OpenBrowserSearch -weblio <C-r><C-w><CR>
     nnoremap <silent> ,oa :<C-u>OpenBrowserSearch -alc <C-r><C-w><CR>
 
     call altercmd#define('google', 'OpenBrowserSearch -google')
+    call altercmd#define('yahoo', 'OpenBrowserSearch -yahoojp')
     call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
     call altercmd#define('alc', 'OpenBrowserSearch -alc')
 endfunction
