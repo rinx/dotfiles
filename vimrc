@@ -1820,6 +1820,13 @@ if v:version >= 800 || has('nvim')
                 \   '.*.julius$',
                 \ ],
                 \})
+    call dein#add('ElmCast/elm-vim')
+    call dein#config('elm-vim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'elm',
+                \ ],
+                \})
 
     call dein#add('google/vim-ft-go')
     call dein#config('vim-ft-go', {
