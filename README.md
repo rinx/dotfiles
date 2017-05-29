@@ -75,6 +75,8 @@ if you want to clear dotfiles, use `-c` option.
     - Haskell
         - ghc-mod `cabal install ghc-mod`
         - hoogle  `cabal install hoogle`
+    - Elm
+        - npm install -g elm elm-test elm-oracle
     - Miscellaneous
         - w3m (for ref-webdict)
 * OSX
