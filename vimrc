@@ -1079,6 +1079,9 @@ endfunction
 
 function! s:init_elm_hook_source() abort
     let g:elm_setup_keybindings = 0
+    let g:elm_make_show_warnings = 1
+    let g:elm_detailed_complete = 1
+    let g:elm_format_fail_silently = 1
     nmap <Leader>d <Plug>(elm-show-docs)
 endfunction
 
