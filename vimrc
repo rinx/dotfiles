@@ -630,6 +630,11 @@ function! s:init_quickrun_hook_add() abort
                 \ 'cpp/g++' : {
                 \   'hook/time/enable' : 1,
                 \ },
+                \ 'elm' : {
+                \   'command' : 'elm make',
+                \   'exec' : '%c %o',
+                \   'runner' : 'vimproc',
+                \ },
                 \ 'fortran' : {
                 \   'type' : 'fortran/gfortran',
                 \ },
