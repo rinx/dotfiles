@@ -1083,6 +1083,7 @@ function! s:init_yesod_hook_source() abort
 endfunction
 
 function! s:init_elm_hook_source() abort
+    let g:elm_jump_to_error = 0
     let g:elm_setup_keybindings = 0
     let g:elm_make_show_warnings = 1
     let g:elm_detailed_complete = 1
