@@ -213,9 +213,6 @@ if [ -d /Applications/MacVim.app/ ]; then
     alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim'
 fi
 
-#tmux execute as 256colors-terminal
-alias tmux='tmux -2'
-
 alias be='bundle exec'
 
 alias q='exit'
