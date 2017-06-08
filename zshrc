@@ -203,9 +203,6 @@ fi
 alias vi='vim'
 alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
 
-#tmux execute as 256colors-terminal
-alias tmux='tmux -2'
-
 alias be='bundle exec'
 
 alias q='exit'
