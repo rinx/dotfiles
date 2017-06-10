@@ -63,6 +63,8 @@
     mg    = merge
     mgn   = merge --no-commit
 
+    sq    = squash
+
 [url "https://"]
 	insteadOf = git://
 
