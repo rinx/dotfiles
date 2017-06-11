@@ -92,17 +92,23 @@ setopt correct
 
 #prompt
 
+local lf=$'\n'
+
+local afterhost=''
+
 # when connected to remote host
 if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
     local usrathn="%F{yellow}%n@$HOST%f"
+    if [ ${#HOST} -gt 10 ]; then
+        local afterhost="$lf"
+    fi
 else
     local usrathn="%n"
 fi
 
 local plat='%(?.%F{green}[%~]%f.%F{red}[%~]%f)'
-local pbase="%F{cyan}[$usrathn%F{cyan}]%f$plat"
-local pbase_nor="%F{red}[$usrathn%F{red}]%f$plat"
-local lf=$'\n'
+local pbase="%F{cyan}[$usrathn%F{cyan}]%f$afterhost$plat"
+local pbase_nor="%F{red}[$usrathn%F{red}]%f$afterhost$plat"
 
 PROMPT="%5(~|$pbase$lf|$pbase)%% "
 
