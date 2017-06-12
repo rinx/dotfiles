@@ -73,10 +73,10 @@ if you want to clear dotfiles, use `-c` option.
 * Vim
     - Vim scripts
     - Haskell
-        - ghc-mod `cabal install ghc-mod`
-        - hoogle  `cabal install hoogle`
+        - ghc-mod: `cabal install ghc-mod`
+        - hoogle:  `cabal install hoogle`
     - Elm
-        - npm install -g elm elm-test elm-oracle
+        - elm binaries: `npm install -g elm elm-test elm-oracle`
     - Miscellaneous
         - w3m (for ref-webdict)
 * OSX
@@ -94,5 +94,18 @@ Please check `w3m` is installed correctly.
 ##### If it takes too long time for searching candidates of haskell import
 
 Please check `ghc-mod` is installed.
+
+
+## Notation
+
+You can use private configurations by creating following files:
+
+* `~/.vimrc_private`
+* `~/.gitconfig.local`
+
+Also, you can use local configurations in each directory by adding following files:
+
+* `.vimrc.local`
+* `.latexmkrc`
 
 
