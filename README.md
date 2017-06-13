@@ -71,6 +71,9 @@ if you want to clear dotfiles, use `-c` option.
 * Tmux
     - Plugins (for install: `prefix + I`)
 * Vim
+    - neovim
+        - +python3
+        - `pip3 install neovim`
     - Vim scripts
     - Haskell
         - ghc-mod: `cabal install ghc-mod`
