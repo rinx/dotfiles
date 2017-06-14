@@ -77,6 +77,10 @@ if you want to clear dotfiles, use `-c` option.
         - +python3
         - `pip3 install neovim`
     - Vim scripts
+        - radiko.vim
+            - mplayer
+            - rtmpdump
+            - swftools
     - Haskell
         - ghc-mod: `cabal install ghc-mod`
         - hoogle:  `cabal install hoogle`
