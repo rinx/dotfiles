@@ -74,6 +74,9 @@ if you want to clear dotfiles, use `-c` option.
     - neovim
         - +python3
         - `pip3 install neovim`
+        - it is recommended to use `pyenv` and `pyenv-virtualenv`
+            - `pyenv virtualenv 3.x.x neovim3`
+            - `pyenv activate neovim3 && pip install neovim`
     - Vim scripts
         - radiko.vim
             - mplayer
