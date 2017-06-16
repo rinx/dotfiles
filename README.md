@@ -68,6 +68,7 @@ if you want to clear dotfiles, use `-c` option.
 
 ### Requires for using
 * Zsh
+    - it is recommended to use GNU coreutils
 * Tmux
     - Plugins (for install: `prefix + I`)
 * Vim
