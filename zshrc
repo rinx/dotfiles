@@ -194,7 +194,7 @@ alias uuu='cd ../../../'
 alias uuuu='cd ../../../../'
 alias cdr='cd -'
 
-if ls --color > /dev/null ; then
+if ls --color > /dev/null 2>&1 ; then
     alias ls='ls --color -F'
     alias lsa='ls --color -F -a'
     alias lsl='ls --color -F -l'
@@ -214,7 +214,7 @@ alias be='bundle exec'
 alias q='exit'
 
 #grep
-if echo a | grep --color a > /dev/null ; then
+if echo a | grep --color a > /dev/null 2>&1 ; then
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
