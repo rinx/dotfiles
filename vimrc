@@ -184,114 +184,114 @@ elseif has('unix')
     let s:copyToClipboardCommand = 'w !xsel --clipboard --input'
 endif
 let s:unite_denite_shortcut_candidates = [
-                \ ['vimshell', 'VimShell'],
-                \ ['quickrun', 'QuickRun'],
-                \ ['make(quickrun)', 'QuickRun make'],
-                \ ['watchdogs', 'WatchdogsRun'],
-                \ ['UNDOtree', 'UndotreeToggle'],
-                \ ['NERDTree', 'NERDTreeToggle'],
-                \ ['map', 'Denite output:map'],
-                \ ['register', 'Denite output:register'],
-                \ ['reload .vimrc', 'source ~/.vimrc'],
-                \ ['make Session.vim', 'mks!'],
-                \ ['toggle-options', 'Denite menu:toggle'],
-                \ ['denite neosnippet', 'Denite unite:neosnippet'],
-                \ ['denite gista', 'Denite unite:gista'],
-                \ ['denite codic', 'Denite unite:codic'],
-                \ ['denite radiko', 'Denite unite:radiko'],
-                \ ['stop radiko', 'RadikoStop'],
-                \ ['denite RN2-musics', 'Denite unite:rn2musics'],
-                \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
-                \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
-                \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
-                \ ['TweetVim UserStream', 'TweetVimUserStream'],
-                \ ['J6uil lingr-client', 'J6uil'],
-                \ ['PreVim open', 'PreVimOpen'],
-                \ ['copy buffer into clipboard', s:copyToClipboardCommand],
-                \]
+            \ ['vimshell', 'VimShell'],
+            \ ['quickrun', 'QuickRun'],
+            \ ['make(quickrun)', 'QuickRun make'],
+            \ ['watchdogs', 'WatchdogsRun'],
+            \ ['UNDOtree', 'UndotreeToggle'],
+            \ ['NERDTree', 'NERDTreeToggle'],
+            \ ['map', 'Denite output:map'],
+            \ ['register', 'Denite output:register'],
+            \ ['reload .vimrc', 'source ~/.vimrc'],
+            \ ['make Session.vim', 'mks!'],
+            \ ['toggle-options', 'Denite menu:toggle'],
+            \ ['denite neosnippet', 'Denite unite:neosnippet'],
+            \ ['denite gista', 'Denite unite:gista'],
+            \ ['denite codic', 'Denite unite:codic'],
+            \ ['denite radiko', 'Denite unite:radiko'],
+            \ ['stop radiko', 'RadikoStop'],
+            \ ['denite RN2-musics', 'Denite unite:rn2musics'],
+            \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
+            \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
+            \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
+            \ ['TweetVim UserStream', 'TweetVimUserStream'],
+            \ ['J6uil lingr-client', 'J6uil'],
+            \ ['PreVim open', 'PreVimOpen'],
+            \ ['copy buffer into clipboard', s:copyToClipboardCommand],
+            \]
 let s:unite_denite_kaomoji_dictionary = [
-                \["wahhab", "( っ'ヮ'c)"],
-                \["wahhab", "三( っ'ヮ'c)"],
-                \["wahhab", "( っ˘ヮ˘c)💤"],
-                \["wahhab", "(っ'ヮ')っ"],
-                \["wahhab", "(((っ'ヮ')っ"],
-                \["wahhab", "( っ'ヮ'c)❤"],
-                \["talk", "( っ'ヮ'c)💬"],
-                \["sing", "( っ'ヮ'c)～♪"],
-                \["sleep", "( っ˘ヮ˘c)💤"],
-                \["sunglasses", "( っ🕶c)"],
-                \["lambda", "( っ'λ'c)"],
-                \["no smoking", "(っ'ヮ')っ🚭"],
-                \["", "( 'ω').｡oO(…)"],
-                \["", "ヾ(⌒(\_•ω•)\_"],
-                \["", "ヾ(⌒(ﾉ•ω•)ﾉ"],
-                \["kyun", "\_(⌒(\_*'ω'*)\_"],
-                \["kyun", "ヾ(⌒(\_*'ω'*)\_"],
-                \["kyun", "三ヾ(⌒(\_*'ω'*)\_"],
-                \["kyun", "（*/ω＼*）"],
-                \["kyun", "(っ´ω`c)♡"],
-                \["namida", "\.˚‧º·(´ฅωฅ｀)‧º·˚."],
-                \["namida", "(☍﹏⁰)"],
-                \["namida", "( ˃﹏˂ഃ )"],
-                \["hawawa", "｡ﾟ(ﾟ∩´﹏`∩ﾟ)ﾟ｡"],
-                \["hawawa", "\:;( っ'﹏'c);:"],
-                \["hawawa", "\:;( っ'ω'c);:"],
-                \["hawawa", "\:;(∩´﹏`∩);:"],
-                \["hawawa", "｡+ﾟ(∩´﹏`∩)ﾟ+｡"],
-                \["dame", "(乂'ω')"],
-                \["hawawa", "(っ´﹏`c)"],
-                \["hawawa", "(｡>﹏<｡)"],
-                \["awawa", "ヾ(∂╹Δ╹)ﾉ”"],
-                \["firstspring", "(╯•﹏•╰)"],
-                \["fuee", "ヾ(｡>﹏<)ﾉ\""],
-                \["fuee", "✧*。ヾ(｡>﹏<｡)ﾉﾞ。*✧"],
-                \["ja-n", "٩( 'ω' )و"],
-                \["ja-n", "٩(*'ω'*)و"],
-                \["ja-n", "＼＼\\٩( 'ω' )و /／／"],
-                \["crow", "( っ'ω'c)"],
-                \["crow", "三( っ'ω'c)"],
-                \["crow", "( っ˘ω˘c)"],
-                \["poyo", "(｡・﹏・｡)"],
-                \["mogumogu", "(∩´〰`∩)"],
-                \["mogumogu", "ŧ‹\"ŧ‹\"(๑´ㅂ`๑)ŧ‹\"ŧ‹\""],
-                \["pero", "(๑´ڡ`๑)"],
-                \["juru", "(๑╹﹃╹)"],
-                \["makimono", "(๑╹◡╹)o[]o"],
-                \["matomo", "σ(o'v'o)まとも"],
-                \["pei", "(っ`ω´c)"],
-                \["chu", "(っ＞ω＜c)"],
-                \["chu", "°+♡:.(っ>ω<c).:♡+°"],
-                \["kichigai", "└(՞ةڼ◔)」"],
-                \["wa-i", "ヾ(✿╹◡╹)ﾉ\""],
-                \["wa-i", "ヾ(๑╹◡╹)ﾉ\""],
-                \["wa-i", "ヾ(＠⌒ー⌒＠)ノ"],
-                \["peta", "\_(⌒(\_-ω-)\_"],
-                \["mikori", "ヾ(⌒(\_๑›◡‹ )\_"],
-                \["mozomozo", "(๑•﹏•)"],
-                \["kyafu", "(⋈◍＞◡＜◍)。✧♡"],
-                \["wafu", "ヾ(✿＞ヮ＜)ノ"],
-                \["gu", "╭( ･ㅂ･)و ̑̑ ｸﾞｯ !"],
-                \["yossha", "(´◔౪◔)۶ﾖｯｼｬ!"],
-                \["yatta", "+。:.ﾟ٩(๑＞◡＜๑)۶:.｡+ﾟ"],
-                \["shobon", "(っ◞‸◟c)"],
-                \["shobon", "(๑´╹‸╹`๑)"],
-                \["nikkori", "( っ'◡'c)"],
-                \["beer", "Ʊ\"-ʓ"],
-                \["beer", "🍺"],
-                \["beer", "🍻"],
-                \["angry", "💢"],
-                \["sushi", "🍣"],
-                \["yes", "🙆"],
-                \["no", "🙅🏻"],
-                \["heart", "❤"],
-                \["camera", "📸"],
-                \["fire", "🔥"],
-                \["arm", "💪🏻"],
-                \["stop", "✋🏻"],
-                \["kirakira", "✨"],
-                \["sake", "🍶"],
-                \["coffee", "☕"]
-                \]
+            \ ["wahhab", "( っ'ヮ'c)"],
+            \ ["wahhab", "三( っ'ヮ'c)"],
+            \ ["wahhab", "( っ˘ヮ˘c)💤"],
+            \ ["wahhab", "(っ'ヮ')っ"],
+            \ ["wahhab", "(((っ'ヮ')っ"],
+            \ ["wahhab", "( っ'ヮ'c)❤"],
+            \ ["talk", "( っ'ヮ'c)💬"],
+            \ ["sing", "( っ'ヮ'c)～♪"],
+            \ ["sleep", "( っ˘ヮ˘c)💤"],
+            \ ["sunglasses", "( っ🕶c)"],
+            \ ["lambda", "( っ'λ'c)"],
+            \ ["no smoking", "(っ'ヮ')っ🚭"],
+            \ ["", "( 'ω').｡oO(…)"],
+            \ ["", "ヾ(⌒(\_•ω•)\_"],
+            \ ["", "ヾ(⌒(ﾉ•ω•)ﾉ"],
+            \ ["kyun", "\_(⌒(\_*'ω'*)\_"],
+            \ ["kyun", "ヾ(⌒(\_*'ω'*)\_"],
+            \ ["kyun", "三ヾ(⌒(\_*'ω'*)\_"],
+            \ ["kyun", "（*/ω＼*）"],
+            \ ["kyun", "(っ´ω`c)♡"],
+            \ ["namida", "\.˚‧º·(´ฅωฅ｀)‧º·˚."],
+            \ ["namida", "(☍﹏⁰)"],
+            \ ["namida", "( ˃﹏˂ഃ )"],
+            \ ["hawawa", "｡ﾟ(ﾟ∩´﹏`∩ﾟ)ﾟ｡"],
+            \ ["hawawa", "\:;( っ'﹏'c);:"],
+            \ ["hawawa", "\:;( っ'ω'c);:"],
+            \ ["hawawa", "\:;(∩´﹏`∩);:"],
+            \ ["hawawa", "｡+ﾟ(∩´﹏`∩)ﾟ+｡"],
+            \ ["dame", "(乂'ω')"],
+            \ ["hawawa", "(っ´﹏`c)"],
+            \ ["hawawa", "(｡>﹏<｡)"],
+            \ ["awawa", "ヾ(∂╹Δ╹)ﾉ”"],
+            \ ["firstspring", "(╯•﹏•╰)"],
+            \ ["fuee", "ヾ(｡>﹏<)ﾉ\""],
+            \ ["fuee", "✧*。ヾ(｡>﹏<｡)ﾉﾞ。*✧"],
+            \ ["ja-n", "٩( 'ω' )و"],
+            \ ["ja-n", "٩(*'ω'*)و"],
+            \ ["ja-n", "＼＼\\٩( 'ω' )و /／／"],
+            \ ["crow", "( っ'ω'c)"],
+            \ ["crow", "三( っ'ω'c)"],
+            \ ["crow", "( っ˘ω˘c)"],
+            \ ["poyo", "(｡・﹏・｡)"],
+            \ ["mogumogu", "(∩´〰`∩)"],
+            \ ["mogumogu", "ŧ‹\"ŧ‹\"(๑´ㅂ`๑)ŧ‹\"ŧ‹\""],
+            \ ["pero", "(๑´ڡ`๑)"],
+            \ ["juru", "(๑╹﹃╹)"],
+            \ ["makimono", "(๑╹◡╹)o[]o"],
+            \ ["matomo", "σ(o'v'o)まとも"],
+            \ ["pei", "(っ`ω´c)"],
+            \ ["chu", "(っ＞ω＜c)"],
+            \ ["chu", "°+♡:.(っ>ω<c).:♡+°"],
+            \ ["kichigai", "└(՞ةڼ◔)」"],
+            \ ["wa-i", "ヾ(✿╹◡╹)ﾉ\""],
+            \ ["wa-i", "ヾ(๑╹◡╹)ﾉ\""],
+            \ ["wa-i", "ヾ(＠⌒ー⌒＠)ノ"],
+            \ ["peta", "\_(⌒(\_-ω-)\_"],
+            \ ["mikori", "ヾ(⌒(\_๑›◡‹ )\_"],
+            \ ["mozomozo", "(๑•﹏•)"],
+            \ ["kyafu", "(⋈◍＞◡＜◍)。✧♡"],
+            \ ["wafu", "ヾ(✿＞ヮ＜)ノ"],
+            \ ["gu", "╭( ･ㅂ･)و ̑̑ ｸﾞｯ !"],
+            \ ["yossha", "(´◔౪◔)۶ﾖｯｼｬ!"],
+            \ ["yatta", "+。:.ﾟ٩(๑＞◡＜๑)۶:.｡+ﾟ"],
+            \ ["shobon", "(っ◞‸◟c)"],
+            \ ["shobon", "(๑´╹‸╹`๑)"],
+            \ ["nikkori", "( っ'◡'c)"],
+            \ ["beer", "Ʊ\"-ʓ"],
+            \ ["beer", "🍺"],
+            \ ["beer", "🍻"],
+            \ ["angry", "💢"],
+            \ ["sushi", "🍣"],
+            \ ["yes", "🙆"],
+            \ ["no", "🙅🏻"],
+            \ ["heart", "❤"],
+            \ ["camera", "📸"],
+            \ ["fire", "🔥"],
+            \ ["arm", "💪🏻"],
+            \ ["stop", "✋🏻"],
+            \ ["kirakira", "✨"],
+            \ ["sake", "🍶"],
+            \ ["coffee", "☕"]
+            \]
 command! -nargs=1 ToggleOption set <args>! <bar> set <args>?
 let s:unite_denite_toggle_options = [
             \ "paste",
@@ -302,7 +302,7 @@ let s:unite_denite_toggle_options = [
             \ "hlsearch",
             \ "wrap",
             \ "spell",
-            \ ]
+            \]
 
 function! s:init_denite_hook_source() abort
     if !exists('s:denite_source_menu')
@@ -311,8 +311,7 @@ function! s:init_denite_hook_source() abort
     let s:denite_source_menu.shortcut = {
                 \ 'description' : 'shortcut'
                 \}
-    let s:denite_source_menu.shortcut.command_candidates = s:unite_denite_shortcut_candidates
-    function! s:denite_source_menu.shortcut.map(key, value)
+    function! s:denite_source_menu_shortcut_mapper(value)
         let [word, value] = a:value
 
         if isdirectory(value)
@@ -325,6 +324,8 @@ function! s:init_denite_hook_source() abort
             return [word, value]
         endif
     endfunction
+    let s:denite_source_menu.shortcut.command_candidates =
+                \ map(copy(s:unite_denite_shortcut_candidates), 's:denite_source_menu_shortcut_mapper(v:val)')
 
     let s:denite_source_menu.toggle = {
                 \ 'description' : 'toggle menus',
@@ -335,17 +336,17 @@ function! s:init_denite_hook_source() abort
     let s:denite_source_menu.kaomoji = {
                 \ 'description' : 'kaomoji dictionary',
                 \}
-    let s:denite_source_menu.kaomoji.command_candidates = {}
-    for val in s:unite_denite_kaomoji_dictionary
-        let [word, value] = val
+    function! s:denite_source_menu_kaomoji_mapper(value)
+        let [word, value] = a:value
+
         if !empty(word)
-            let s:denite_source_menu.kaomoji.command_candidates['[' . word . '] ' . value] =
-                        \ 'call append(line("."), "' . value . '")'
+            return ["[" . word . "] " . value, "call append(line('.'), '" . value . "')"]
         else
-            let s:denite_source_menu.kaomoji.command_candidates['[no pronounciation] ' . value] =
-                        \ 'call append(line("."), "' . value . '")'
+            return ["[no pronounciation] " . value, "call append(line('.'), '" . value . "')"]
         endif
-    endfor
+    endfunction
+    let s:denite_source_menu.kaomoji.command_candidates =
+                \ map(copy(s:unite_denite_kaomoji_dictionary), 's:denite_source_menu_kaomoji_mapper(v:val)')
 
     call denite#custom#var('menu', 'menus', s:denite_source_menu)
 
