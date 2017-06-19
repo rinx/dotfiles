@@ -124,7 +124,6 @@ else
                     \ 'asciidoc' : 1,
                     \ 'pod' : 1,
                     \ 'gita-commit' : 1,
-                    \ 'J6uil_say' : 1,
                     \}
 
     endfunction
@@ -203,9 +202,6 @@ let s:unite_denite_shortcut_candidates = [
             \ ['denite RN2-musics', 'Denite unite:rn2musics'],
             \ ['skk-kutouten-type-en', 'let g:skk_kutouten_type = "en"'],
             \ ['skk-kutouten-type-jp', 'let g:skk_kutouten_type = "jp"'],
-            \ ['TweetVim home-timeline', 'TweetVimHomeTimeline'],
-            \ ['TweetVim UserStream', 'TweetVimUserStream'],
-            \ ['J6uil lingr-client', 'J6uil'],
             \ ['PreVim open', 'PreVimOpen'],
             \ ['copy buffer into clipboard', s:copyToClipboardCommand],
             \]
