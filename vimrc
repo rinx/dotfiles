@@ -336,10 +336,12 @@ function! s:init_denite_hook_source() abort
         let [word, value] = a:value
 
         if !empty(word)
-            return ["[" . word . "] " . value, "call append(line('.'), '" . value . "')"]
+            let _ = "[" . word . "] "
         else
-            return ["[no pronounciation] " . value, "call append(line('.'), '" . value . "')"]
+            let _ = "[no pronounciation] "
         endif
+
+        return [_ . value, "call append(line('.'), '" . value . "')"]
     endfunction
     let s:denite_source_menu.kaomoji.command_candidates =
                 \ map(copy(s:unite_denite_kaomoji_dictionary), 's:denite_source_menu_kaomoji_mapper(v:val)')
