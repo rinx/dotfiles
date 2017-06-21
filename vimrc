@@ -348,8 +348,13 @@ function! s:init_denite_hook_source() abort
 
     call denite#custom#var('menu', 'menus', s:denite_source_menu)
 
+    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+    call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
+
     " custom key mappings
     call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
+
+    call denite#custom#option('default', 'prompt', '❯')
 endfunction
 
 function! s:init_denite_hook_add() abort
@@ -375,6 +380,8 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]mk  :<C-u>Denite menu:kaomoji<CR>
     " outline (built in source)
     nnoremap <silent> [denite]o   :<C-u>Denite outline<CR>
+    " line search
+    nnoremap <silent> [denite]/   :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 endfunction
 
 function! s:init_unite_hook_source() abort
