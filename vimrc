@@ -21,13 +21,13 @@ function! s:SID_PREFIX()
 endfunction
 
 let g:vimrc_private = {}
-let vimrc_private_filename = '~/.vimrc_private'
-if filereadable(expand(vimrc_private_filename))
-    execute 'source' expand(vimrc_private_filename)
+let s:vimrc_private_filename = '~/.vimrc_private'
+if filereadable(expand(s:vimrc_private_filename))
+    execute 'source' expand(s:vimrc_private_filename)
 else
-    let _ = system('touch ' . expand(vimrc_private_filename))
+    call system('touch ' . expand(s:vimrc_private_filename))
 endif
-unlet vimrc_private_filename
+unlet s:vimrc_private_filename
 
 " --- Plugin settings
 
