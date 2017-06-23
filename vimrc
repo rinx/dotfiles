@@ -1532,6 +1532,8 @@ if v:version >= 800 || has('nvim')
     call dein#add('ynkdir/vim-vimlparser')
     call dein#add('syngan/vim-vimlint')
 
+    call dein#add('thinca/vim-themis', {'lazy': 1})
+
     call dein#add('vim-scripts/eregex.vim')
 
     call dein#add('tmhedberg/matchit')
