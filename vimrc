@@ -1073,6 +1073,12 @@ function! s:init_gfm_syntax_hook_source() abort
     let g:gfm_syntax_emoji_conceal = 1
 endfunction
 
+function! s:init_github_complete_hook_source() abort
+    let g:github_complete_enable_neocomplete = 1
+    let g:github_complete_enable_omni_completion = 0
+    imap <C-x>e <Plug>(github-complete-manual-completion)
+endfunction
+
 function! s:init_vim2hs_hook_source() abort
     let g:haskell_conceal = 0
     let g:haskell_conceal_wide = 0
@@ -1775,6 +1781,21 @@ if v:version >= 800 || has('nvim')
                 \   'markdown',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gfm_syntax_hook_source()',
+                \})
+
+    call dein#add('rhysd/github-complete.vim')
+    call dein#config('github-complete.vim', {
+                \ 'lazy': 1,
+                \ 'on_i': 1,
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_github_complete_hook_source()',
+                \})
+
+    call dein#add('junegunn/vim-emoji')
+    call dein#config('vim-emoji', {
+                \ 'lazy': 1,
+                \ 'on_func': [
+                \   'emoji',
+                \ ],
                 \})
 
     call dein#add('basyura/unite-rails')
