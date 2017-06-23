@@ -29,6 +29,8 @@ else
 endif
 unlet s:vimrc_private_filename
 
+let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
+
 " --- Plugin settings
 
 if has('nvim')
@@ -1530,6 +1532,8 @@ if v:version >= 800 || has('nvim')
     call dein#add('ynkdir/vim-vimlparser')
     call dein#add('syngan/vim-vimlint')
 
+    call dein#add('thinca/vim-themis', {'lazy': 1})
+
     call dein#add('vim-scripts/eregex.vim')
 
     call dein#add('tmhedberg/matchit')
@@ -2165,8 +2169,6 @@ set timeoutlen=1000
 set ttimeoutlen=200
 
 syntax enable
-
-let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
 " A function to convert csv to markdown table
 function! s:csv_to_markdown_table () range
