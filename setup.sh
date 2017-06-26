@@ -125,6 +125,15 @@ if [ "$FLG_V" = "TRUE" ]; then
         git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo -e "\033[0;32m✔ \033[1;36mdein.vim cloned in $HOME/.config/nvim/deinrepos/github.com/Shougo/dein.vim\033[00m" | sed "s/^-e //"
+
+            # install plugins using dein.vim
+            nvim -N -u NONE -i NONE -V1 -e -s --cmd "source $DOTDIR/vimrc" --cmd 'call dein#install()' --cmd quit
+            if [ $? -eq 0 ]; then
+                echo -e "\033[0;32m✔ \033[1;36minstall plugins using dein.vim successed\033[00m" | sed "s/^-e //"
+            else
+                echo -e "\033[0;31m✗ \033[1;31minstall plugins using dein.vim failed\033[00m" | sed "s/^-e //"
+            fi
+
         else
             echo -e "\033[0;31m✗ \033[1;31mdein.vim cloning failed\033[00m" | sed "s/^-e //"
         fi
