@@ -1794,14 +1794,6 @@ if v:version >= 800 || has('nvim')
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_github_complete_hook_source()',
                 \})
 
-    call dein#add('junegunn/vim-emoji')
-    call dein#config('vim-emoji', {
-                \ 'lazy': 1,
-                \ 'on_func': [
-                \   'emoji',
-                \ ],
-                \})
-
     call dein#add('basyura/unite-rails')
     call dein#config('unite-rails', {
                 \ 'lazy': 1,
