@@ -71,7 +71,7 @@ if you want to clear dotfiles, use `-c` option.
     - it is recommended to use GNU coreutils
 * Tmux
     - Plugins (for install: `prefix + I`)
-* Vim
+* Vim (it is recommended to use Vim 8.0+ or NeoVim)
     - neovim
         - +python3
         - `pip3 install neovim`
@@ -91,7 +91,7 @@ if you want to clear dotfiles, use `-c` option.
     - Miscellaneous
         - w3m (for ref-webdict)
 * OSX
-    - MacVim
+    - MacVim 8.0+
     - reattach-to-user-namespace
 
 ### Troubleshooting
