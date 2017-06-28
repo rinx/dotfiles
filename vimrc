@@ -2305,6 +2305,31 @@ augroup vimrc-init_rails_routes_quickfix_hook
     autocmd FileType ruby call <SID>init_rails_routes_quickfix_hook()
 augroup END
 
+" completion function for fixed candidate list
+" example:
+" let testlist = [
+"             \ ['immobile', 'immobile: 動かせない'],
+"             \ ['immodest', 'immodest: 慎みのない'],
+"             \ ['immoderation', 'immoderation: 過度'],
+"             \ ['immodulated', 'immodulated: 節度のない'],
+"             \]
+" inoremap <silent> <C-x>a <C-r>=<SID>anything_complete(testlist, '[testlist]')<CR>
+function! s:anything_complete(list, menu)
+    let line = getline('.')
+    let start = match(line, '\k\+$')
+    let candlist = map(copy(a:list), '{
+                \ "word": v:val[0],
+                \ "abbr": v:val[1],
+                \ "menu": a:menu
+                \}')
+    let cand = s:anything_complete_candidates(candlist, line[start :])
+    call complete(start +1, cand)
+    return ''
+endfunction
+function! s:anything_complete_candidates(list, arglead)
+    return filter(copy(a:list), 'stridx(v:val.word, a:arglead) == 0')
+endfunction
+
 " https://gist.github.com/sgur/4e1cc8e93798b8fe9621
 inoremap <silent> <C-x>c <C-R>=<SID>codic_complete()<CR>
 function! s:codic_complete()
