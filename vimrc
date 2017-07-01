@@ -2867,7 +2867,7 @@ augroup END
 " this function will ask you to create new directory.
 augroup vimrc-auto-mkdir
     autocmd!
-    autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+    autocmd BufWritePre * call <SID>auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
     function! s:auto_mkdir(dir, force)
         if match(a:dir, '\(scp://\|http://\|https://\)') == -1
             if !isdirectory(a:dir) && (a:force ||
@@ -2881,7 +2881,7 @@ augroup END
 " load Session.vim
 augroup vimrc-session-vim-auto-load
     autocmd!
-    autocmd VimEnter * nested call s:load_session_vim(expand('<afile>:p:h'))
+    autocmd VimEnter * nested call <SID>load_session_vim(expand('<afile>:p:h'))
 augroup END
 
 function! s:load_session_vim(loc)
@@ -2898,7 +2898,7 @@ endfunction
 " load .vimrc.local automatically
 augroup vimrc-local
     autocmd!
-    autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+    autocmd BufNewFile,BufReadPost * call <SID>vimrc_local(expand('<afile>:p:h'))
 augroup END
 
 function! s:vimrc_local(loc)
