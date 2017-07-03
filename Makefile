@@ -1,6 +1,15 @@
 # this Makefile is just a draft!!
-DOTDIR := ~/.dotfiles
-DOTFILES := vimrc zshrc tmux.conf gitconfig gitignore gitattributes_global latexmkrc vimshrc
+DOTDIR := \
+    ~/.dotfiles
+DOTFILES := \
+    vimrc \
+    zshrc \
+    tmux.conf \
+    gitconfig \
+    gitignore \
+    gitattributes_global \
+    latexmkrc \
+    vimshrc
 
 
 all: deploy
