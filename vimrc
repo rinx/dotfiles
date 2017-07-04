@@ -2047,6 +2047,10 @@ if v:version >= 800 || has('nvim')
                 \})
 
     call dein#end()
+
+"     if has('nvim')
+"         call dein#remote_plugins()
+"     endif
 else
     echo "If you want to use plugins, you should use VIM 8.0, newer one, or NVIM."
 endif
