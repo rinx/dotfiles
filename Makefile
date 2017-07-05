@@ -12,48 +12,59 @@ DOTFILES := \
     vimshrc
 
 
-all: deploy
+all: \
+    deploy \
+    init
+
+# make symbolic links to the dotfiles
+deploy: \
+    vim-deploy \
+    git-deploy \
+    tmux-deploy \
+    zsh-deploy \
+    others-deploy
+	# sh setup.sh -af
 
 
-deploy: # make symbolic links to the dotfiles
-	sh setup.sh -af
-
-
-init: # initialize all configures
+# initialize all configures
+init: \
+    vim-init \
+    tmux-init
 
 
 test:
 
 
-check-commands: # check whether required commands are installed
+# check whether required commands are installed
+check-commands:
 
 
 clean:
-
+	# sh setup.sh -ac
 
 # deploy
 
 vim-deploy:
-
+	echo "vim"
 
 git-deploy:
-
+	echo "git"
 
 tmux-deploy:
-
+	echo "tmux"
 
 zsh-deploy:
-
+	echo "zsh"
 
 others-deploy:
-
+	echo "others"
 
 # init
 
 vim-init:
-
+	# install dein
 
 tmux-init:
-
+	# git submodule update --init
 
 
