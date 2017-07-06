@@ -46,18 +46,26 @@ clean:
 
 vim-deploy:
 	echo "vim"
+	# ln -s $(DOTDIR)/vimrc $(HOME)/.vimrc
+	# ln -s $(DOTDIR)/vimshrc $(HOME)/.vimshrc
 
 git-deploy:
 	echo "git"
+	# ln -s $(DOTDIR)/gitconfig $(HOME)/.gitconfig
+	# ln -s $(DOTDIR)/gitignore $(HOME)/.gitignore
+	# ln -s $(DOTDIR)/gitattributes_global $(HOME)/.gitattributes_global
 
 tmux-deploy:
 	echo "tmux"
+	# ln -s $(DOTDIR)/tmux.conf $(HOME)/.tmux.conf
 
 zsh-deploy:
 	echo "zsh"
+	# ln -s $(DOTDIR)/zshrc $(HOME)/.zshrc
 
 others-deploy:
 	echo "others"
+	# ln -s $(DOTDIR)/latexmkrc $(HOME)/.latexmkrc
 
 # init
 
