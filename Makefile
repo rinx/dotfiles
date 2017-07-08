@@ -11,6 +11,20 @@ DOTFILES := \
     latexmkrc \
     vimshrc
 
+# color palletes
+C_WHITE := "\033[00m"
+C_RED := "\033[0;31m"
+C_GREEN := "\033[0;32m"
+C_YELLOW := "\033[0;33m"
+C_BLUE := "\033[0;34m"
+C_PINK := "\033[0;35m"
+C_CYAN := "\033[0;36m"
+C_RED2 := "\033[1;31m"
+C_GREEN2 := "\033[1;32m"
+C_YELLOW2 := "\033[1;33m"
+C_BLUE2:= "\033[1;34m"
+C_PINK2 := "\033[1;35m"
+C_CYAN2 := "\033[1;36m"
 
 all: \
     deploy \
