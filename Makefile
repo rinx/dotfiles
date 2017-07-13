@@ -93,12 +93,18 @@ vim-deploy:
 	# ln -s $(DOTDIR)/vimshrc $(HOME)/.vimshrc
 	@echo install dein for Vim$(C_WHITE)
 	@echo ---$(C_WHITE)
+	# mkdir -p $HOME/.vim/dein/repos/github.com/Shougo
+	# git clone https://github.com/Shougo/dein.vim $HOME/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
 neovim-deploy:
 	@echo neovim-deploy$(C_WHITE)
 	@echo ===$(C_WHITE)
+	# mkdir -p $HOME/.config/nvim
+	# ln -s $DOTDIR/nvimrc $HOME/.config/nvim/init.vim
 	@echo install dein for NeoVim$(C_WHITE)
 	@echo ---$(C_WHITE)
+	# mkdir -p $HOME/.config/nvim/dein/repos/github.com/Shougo
+	# git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
 git-deploy:
 	@echo git-deploy$(C_WHITE)
@@ -113,8 +119,12 @@ tmux-deploy:
 	# ln -s $(DOTDIR)/tmux.conf $(HOME)/.tmux.conf
 	@echo tmux plugin manager$(C_WHITE)
 	@echo ---$(C_WHITE)
+	# mkdir -p $HOME/.tmux
+	# ln -s $DOTDIR/dottmux/plugins $HOME/.tmux/plugins
 	@echo getipaddr binary$(C_WHITE)
 	@echo ---$(C_WHITE)
+	# wget https://gist.github.com/raw/9885825/getipaddr -O $HOME/.bin/getipaddr > /dev/null 2>&1
+	# chmod +x $HOME/.bin/getipaddr
 
 zsh-deploy:
 	@echo zsh-deploy$(C_WHITE)
@@ -137,12 +147,14 @@ vim-init:
 	@echo ===$(C_WHITE)
 	@echo initialize dein for Vim$(C_WHITE)
 	@echo ---$(C_WHITE)
+	# vim -N -u NONE -i NONE -V1 -e -s --cmd "source $DOTDIR/vimrc" --cmd 'call dein#install()' --cmd quit
 
 neovim-init:
 	@echo neovim-init$(C_WHITE)
 	@echo ===$(C_WHITE)
 	@echo initialize dein for NeoVim$(C_WHITE)
 	@echo ---$(C_WHITE)
+	# nvim -N -u NONE -i NONE -V1 -e -s --cmd "source $DOTDIR/vimrc" --cmd 'call dein#install()' --cmd quit
 
 tmux-init:
 	@echo tmux-init$(C_WHITE)
