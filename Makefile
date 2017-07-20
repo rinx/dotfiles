@@ -52,39 +52,39 @@ init: \
     prepare-init \
     vim-init \
     tmux-init
-	@echo ===$(C_WHITE)
-	@echo initialize stage has been done$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_GREEN)===$(C_WHITE)
+	@echo $(C_GREEN)initialize stage has been done$(C_WHITE)
+	@echo $(C_GREEN)===$(C_WHITE)
 	@echo
 
 test: \
     prepare-test
-	@echo ===$(C_WHITE)
-	@echo test stage has been done$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
+	@echo $(C_BLUE)test stage has been done$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
 	@echo
 
 # check whether required commands are installed
 check-commands: \
     prepare-check-commands
-	@echo ===$(C_WHITE)
-	@echo check-commands stage has been done$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
+	@echo $(C_BLUE)check-commands stage has been done$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
 
 
 clean: \
     prepare-clean
-	@echo ===$(C_WHITE)
-	@echo clean stage has been done$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_YELLOW)===$(C_WHITE)
+	@echo $(C_YELLOW)clean stage has been done$(C_WHITE)
+	@echo $(C_YELLOW)===$(C_WHITE)
 	# sh setup.sh -ac
 
 # deploy
 
 prepare-deploy:
-	@echo ===$(C_WHITE)
-	@echo deploy stage$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_CYAN)===$(C_WHITE)
+	@echo $(C_CYAN)deploy stage$(C_WHITE)
+	@echo $(C_CYAN)===$(C_WHITE)
 
 vim-deploy:
 	@echo vim-deploy$(C_WHITE)
@@ -138,9 +138,9 @@ others-deploy:
 
 # init
 prepare-init:
-	@echo ===$(C_WHITE)
-	@echo initialize stage$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_GREEN)===$(C_WHITE)
+	@echo $(C_GREEN)initialize stage$(C_WHITE)
+	@echo $(C_GREEN)===$(C_WHITE)
 
 vim-init:
 	@echo vim-init$(C_WHITE)
@@ -163,19 +163,19 @@ tmux-init:
 
 # test
 prepare-test:
-	@echo ===$(C_WHITE)
-	@echo test stage$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
+	@echo $(C_BLUE)test stage$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
 
 # check-commands
 prepare-check-commands:
-	@echo ===$(C_WHITE)
-	@echo check-commands stage$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
+	@echo $(C_BLUE)check-commands stage$(C_WHITE)
+	@echo $(C_BLUE)===$(C_WHITE)
 
 # clean
 prepare-clean:
-	@echo ===$(C_WHITE)
-	@echo clean stage$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@echo $(C_YELLOW)===$(C_WHITE)
+	@echo $(C_YELLOW)clean stage$(C_WHITE)
+	@echo $(C_YELLOW)===$(C_WHITE)
 
