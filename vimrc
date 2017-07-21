@@ -2260,7 +2260,6 @@ command! -range CsvToTexTable <line1>,<line2>call s:csv_to_tex_table()
 
 
 " Make new window for Japanese input via skk.vim
-" !!This should be improved!!
 function! s:make_japanese_input_window()
     let _ = ''
     if has('mac')
@@ -2282,7 +2281,6 @@ function! s:make_japanese_input_window()
     silent! execute 'new' newbufname
     silent! execute 'setlocal' ('filetype=' . newbufname)
 
-    silent! execute 'inoremap <buffer> <CR> <Esc>:' . _ . '<CR>dd'
     silent! execute 'nnoremap <buffer> <CR> :' . _ . '<CR>dd'
     silent! nnoremap <buffer> q :<C-u>q!<CR>
 endfunction
@@ -2293,6 +2291,7 @@ function! s:cp_from_japanese_input_window(cpcmd)
 endfunction
 
 command! MakeJapaneseInputWindow call s:make_japanese_input_window()
+
 
 function! s:init_rails_routes_quickfix_hook() abort
     let g:rails_routes_quickfix_cmd = "bin/rake routes"
@@ -2308,6 +2307,7 @@ augroup vimrc-init_rails_routes_quickfix_hook
     autocmd!
     autocmd FileType ruby call <SID>init_rails_routes_quickfix_hook()
 augroup END
+
 
 " completion function for fixed candidate list
 " example:
