@@ -1,0 +1,10 @@
+language: generic
+
+install:
+    - git clone https://github.com/sstephenson/bats.git /tmp/bats
+
+before_script:
+    - ""
+
+script:
+    - make test
