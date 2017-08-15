@@ -1473,7 +1473,11 @@ if v:version >= 800 || has('nvim')
 
     call dein#add('itchyny/lightline.vim')
 
-    let s:enable_eskk = 0
+    if has('nvim')
+        let s:enable_eskk = 1
+    else
+        let s:enable_eskk = 0
+    endif
     if s:enable_eskk
         call dein#add('tyru/eskk.vim', {
                     \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_eskk_hook_add()',
