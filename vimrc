@@ -361,7 +361,7 @@ endfunction
 
 function! s:init_denite_hook_add() abort
     nnoremap [denite] <Nop>
-    nmap ,ud [denite]
+    nmap ,u [denite]
     " buffer
     nnoremap <silent> [denite]b   :<C-u>Denite buffer<CR>
     " commands
@@ -369,8 +369,7 @@ function! s:init_denite_hook_add() abort
     " commands history
     nnoremap <silent> [denite]ch  :<C-u>Denite command_history<CR>
     " file
-    nnoremap <silent> [denite]f   :<C-u>DeniteBufferDir<CR>
-    nnoremap <silent> [denite]fr  :<C-u>Denite file_rec<CR>
+    nnoremap <silent> [denite]f   :<C-u>Denite file_rec<CR>
     " resume
     nnoremap <silent> [denite]r   :<C-u>Denite -resume<CR>
     " register
@@ -463,7 +462,7 @@ endfunction
 
 function! s:init_unite_hook_add() abort
     nnoremap [unite] <Nop>
-    nmap ,u [unite]
+    nmap ,uu [unite]
     " buffer
     nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
     " commands
