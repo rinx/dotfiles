@@ -1911,6 +1911,14 @@ if v:version >= 800 || has('nvim')
                 \ ],
                 \})
 
+    call dein#add('stephpy/vim-yaml')
+    call dein#config('vim-yaml', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'yaml',
+                \ ],
+                \})
+
     call dein#add('tmux-plugins/vim-tmux')
     call dein#config('vim-tmux', {
                 \ 'lazy': 1,
