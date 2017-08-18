@@ -94,6 +94,11 @@ if you want to clear dotfiles, use `-c` option.
         - w3m (for ref-webdict)
 * OSX
     - MacVim 8.0+
+        - `brew tap universal-ctags/universal-ctags`
+        - `brew install --HEAD universal-ctags`
+        - `brew tap splhack/splhack`
+        - `brew install --HEAD cmigemo-mk`
+        - `brew install --HEAD --with-properly-linked-python2-python3 macvim-kaoriya`
     - reattach-to-user-namespace
 
 ### Troubleshooting
