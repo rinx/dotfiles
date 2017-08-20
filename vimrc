@@ -2701,6 +2701,12 @@ augroup END
 set laststatus=2
 set showtabline=2
 
+if has('nvim')
+    let lightline_colorscheme = 'one'
+else
+    let lightline_colorscheme = 'default'
+endif
+
 let g:lightline = {
             \ 'active': {
             \   'left': [ 
@@ -2747,7 +2753,7 @@ let g:lightline = {
             \     [ 'tablineabspath', 'tabfugitive', 'tabradikosta' ],
             \   ],
             \ },
-            \ 'colorscheme' : 'default',
+            \ 'colorscheme' : lightline_colorscheme,
             \ }
 
 function! MyModified()
