@@ -590,7 +590,7 @@ function! s:init_eskk_hook_add() abort
     let g:eskk#show_candidates_count = 3
     let g:eskk#kata_convert_to_hira_at_henkan = 1
     let g:eskk#kata_convert_to_hira_at_completion = 1
-    let g:eskk#show_annotation = 1
+    let g:eskk#show_annotation = 0
     let g:eskk#kakutei_when_unique_candidate = 1
     let g:eskk#no_default_mappings = 0
     let g:eskk#dont_map_default_if_already_mapped = 0
@@ -608,7 +608,7 @@ function! s:init_eskk_hook_add() abort
     let g:eskk#marker_jisyo_touroku = "?"
     let g:eskk#enable_completion = 1
     let g:eskk#max_candidates = 15
-    let g:eskk#start_completion_length = 2
+    let g:eskk#start_completion_length = 4
     let g:eskk#register_completed_word = 1
     let g:eskk#use_color_cursor = 0
     " Maybe conflict with arpeggio.vim
