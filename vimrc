@@ -1104,6 +1104,12 @@ function! s:init_elm_hook_source() abort
     nmap <Leader>d <Plug>(elm-show-docs)
 endfunction
 
+function! s:init_racer_hook_source() abort
+    set hidden
+    let g:racer_cmd = expand('~/.cargo/bin/racer')
+    let g:racer_experimental_completer = 1
+endfunction
+
 function! s:init_ref_hook_add() abort
     let g:ref_source_webdict_sites = {
                 \ 'je' : {
@@ -1882,6 +1888,22 @@ if v:version >= 800 || has('nvim')
                 \ 'on_ft': [
                 \   'go',
                 \ ],
+                \})
+
+    call dein#add('rust-lang/rust.vim')
+    call dein#config('rust.vim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'rust',
+                \ ],
+                \})
+    call dein#add('racer-rust/vim-racer')
+    call dein#config('vim-racer', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'rust',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_racer_hook_source()',
                 \})
 
     call dein#add('mattn/emmet-vim')
