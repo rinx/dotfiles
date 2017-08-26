@@ -88,6 +88,9 @@ if you want to clear dotfiles, use `-c` option.
         - hoogle:  `cabal install hoogle`
     - Elm
         - elm binaries: `npm install -g elm elm-test elm-oracle`
+    - Rust
+        - use nightly compiler: `rustup default nightly`
+        - racer: `cargo install racer && rustup component add rust-src`
     - Miscellaneous
         - w3m (for ref-webdict)
 * OSX
