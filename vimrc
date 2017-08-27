@@ -687,6 +687,20 @@ function! s:init_quickrun_hook_add() abort
                 \   'runner/vimproc/updatetime' : 40,
                 \ },
                 \}
+
+    function! s:init_quickrun_rust_cargo_hook() abort
+        if len(findfile('Cargo.toml', '.;', -1))
+            let b:quickrun_config = {
+                        \ 'command' : 'cargo',
+                        \ 'exec' : ['%c run'],
+                        \}
+        endif
+    endfunction
+
+    augroup vimrc-init_quickrun_rust_cargo_hook
+        autocmd!
+        autocmd FileType rust call <SID>init_quickrun_rust_cargo_hook()
+    augroup END
 endfunction
 
 function! s:init_quickrun_hook_post_source() abort
