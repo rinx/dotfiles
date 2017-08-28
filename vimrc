@@ -688,6 +688,20 @@ function! s:init_quickrun_hook_add() abort
                 \ },
                 \}
 
+    function! s:init_quickrun_haskell_stack_hook() abort
+        if len(findfile('stack.yaml', '.;', -1))
+            let b:quickrun_config = {
+                        \ 'command' : 'stack',
+                        \ 'exec' : ['%c run'],
+                        \}
+        endif
+    endfunction
+
+    augroup vimrc-init_quickrun_haskell_stack_hook
+        autocmd!
+        autocmd FileType haskell call <SID>init_quickrun_haskell_stack_hook()
+    augroup END
+
     function! s:init_quickrun_rust_cargo_hook() abort
         if len(findfile('Cargo.toml', '.;', -1))
             let b:quickrun_config = {
