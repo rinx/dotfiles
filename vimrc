@@ -356,6 +356,11 @@ function! s:init_denite_hook_source() abort
     " custom key mappings
     call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
 
+    call denite#custom#map('normal', 'sh', '<denite:wincmd:h>')
+    call denite#custom#map('normal', 'sj', '<denite:wincmd:j>')
+    call denite#custom#map('normal', 'sk', '<denite:wincmd:k>')
+    call denite#custom#map('normal', 'sl', '<denite:wincmd:l>')
+
     call denite#custom#option('default', 'prompt', '❯')
 endfunction
 
