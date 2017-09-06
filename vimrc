@@ -360,6 +360,11 @@ function! s:init_denite_hook_source() abort
     call denite#custom#map('normal', 'sj', '<denite:wincmd:j>')
     call denite#custom#map('normal', 'sk', '<denite:wincmd:k>')
     call denite#custom#map('normal', 'sl', '<denite:wincmd:l>')
+    call denite#custom#map('normal', 'sw', '<denite:wincmd:w>')
+    call denite#custom#map('normal', 'sW', '<denite:wincmd:W>')
+    call denite#custom#map('normal', 'st', '<denite:wincmd:t>')
+    call denite#custom#map('normal', 'sb', '<denite:wincmd:b>')
+    call denite#custom#map('normal', 'sp', '<denite:wincmd:p>')
 
     call denite#custom#option('default', 'prompt', '❯')
 endfunction
