@@ -72,9 +72,9 @@
 	helper = cache --timeout=3600
 
 [pager]
-    log  = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+    log  = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
+    show = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
+    diff = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
 
 [pull]
 	ff = only
