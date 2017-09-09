@@ -172,7 +172,7 @@ function rprompt-git-current-branch {
   fi
 
   # when this script requires long time to run, do not show color again
-  if [[ $(($SECONDS - $start_time)) -gt 2 ]]; then
+  if [[ $(($SECONDS - $start_time)) -gt 3 ]]; then
     echo "test"
     touch $gitdir/rprompt-nostatus
   fi
