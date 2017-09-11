@@ -70,27 +70,11 @@ if [ "$FLG_T" = "TRUE" ]; then
     fi
 
     #tmux-plugin manager
-    if [ ! -d $HOME/.tmux ] || [ "$FLG_F" = "TRUE" ]; then
-        mkdir -p $HOME/.tmux
-        ln -s $DOTDIR/dottmux/plugins $HOME/.tmux/plugins
-        if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.tmux/plugins created\033[00m" | sed "s/^-e //"
-        else
-            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.tmux/plugins creating failed\033[00m" | sed "s/^-e //"
-        fi
-        git submodule update --init
-        if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mCloning of submodules in $HOME/.tmux/plugins successfully executed\033[00m" | sed "s/^-e //"
-        else
-            echo -e "\033[0;31m✗ \033[1;31mCloning of submodules in $HOME/.tmux/plugins failed\033[00m" | sed "s/^-e //"
-        fi
-    elif [ "$FLG_C" = "TRUE" ]; then
-        [ -d $HOME/.tmux/plugins ] && rm -f $HOME/.tmux/plugins
-        if [ $? -eq 0 ]; then
-            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.tmux removed\033[00m" | sed "s/^-e //"
-        fi
+    if [ ! -d $HOME/.tmux/plugins ] || [ "$FLG_F" = "TRUE" ]; then
+        mkdir -p $HOME/.tmux/plugins
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     else
-        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.tmux \033[00m" | sed "s/^-e //"
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.tmux/plugins \033[00m" | sed "s/^-e //"
     fi
 fi
 
