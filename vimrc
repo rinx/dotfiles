@@ -157,14 +157,14 @@ function! s:init_neosnippet_hook_add() abort
     augroup END
 endfunction
 
-function! s:init_vimfiler_hook_add() abort
-    let g:vimfiler_force_overwrite_statusline = 0
+function! s:init_vaffle_hook_add() abort
+    nnoremap [vaffle] <Nop>
+    nmap ,v [vaffle]
+    nnoremap <silent> [vaffle] :<C-u>Vaffle<CR>
 endfunction
 
 function! s:init_vimshell_hook_add() abort
     let g:vimshell_force_overwrite_statusline = 0
-
-    nnoremap <silent> ,v :<C-u>VimShell<CR>
 
     let g:vimshell_prompt_expr =
                 \ 'escape(fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
@@ -1375,15 +1375,13 @@ if v:version >= 800 || has('nvim')
                 \ 'on_i': 1,
                 \})
 
-    call dein#add('Shougo/vimfiler.vim', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimfiler_hook_add()',
+    call dein#add('cocopon/vaffle.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vaffle_hook_add()',
                 \})
-    call dein#config('vimfiler.vim', {
+    call dein#config('vaffle.vim', {
                 \ 'lazy': 1,
                 \ 'on_cmd' : [
-                \   'VimFilerTab',
-                \   'VimFiler',
-                \   'VimFilerExplorer',
+                \   'Vaffle',
                 \ ],
                 \})
     call dein#add('Shougo/vimshell.vim', {
@@ -2665,7 +2663,7 @@ function! s:close_special_windows()
                 \ 'ref-webdict',
                 \ 'unite',
                 \ 'denite',
-                \ 'vimfiler',
+                \ 'vaffle',
                 \ 'vimshell',
                 \ 'qf',
                 \ 'quickrun',
@@ -2817,16 +2815,16 @@ let g:lightline = {
             \ }
 
 function! MyModified()
-    return &ft =~ 'help\|vimfiler\|undotree\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-    return &ft !~? 'help\|vimfiler\|undotree\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
+    return &ft !~? 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
 endfunction
 
 function! MyFugitive()
     try
-        if &ft !~? 'vimfiler\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+        if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
             let _ = fugitive#head()
             return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
         endif
@@ -2837,7 +2835,7 @@ endfunction
 
 function! MyFugitiveInv()
     try
-        if &ft !~? 'vimfiler\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
+        if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
             let _ = fugitive#head()
             return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
         endif
@@ -2859,7 +2857,7 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-    return &ft == 'vimfiler' ? 'VimFiler' : 
+    return &ft == 'vaffle' ? 'Vaffle' : 
                 \ &ft == 'unite' ? 'Unite' :
                 \ &ft == 'denite' ? 'Denite' :
                 \ &ft == 'vimshell' ? 'VimShell' :
@@ -2872,8 +2870,7 @@ endfunction
 
 function! MyFilename()
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \  &ft == 'unite' ? unite#get_status_string() :
+                \ (&ft == 'unite' ? unite#get_status_string() :
                 \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
                 \  &ft == 'qf' ? len(getqflist()) . ' fixes' :
                 \  &ft == 'quickrun' ? 'QuickRun' :
@@ -2892,7 +2889,7 @@ endfunction
 
 function! MyAbsPath()
     let _ = expand('%:p:h')
-    return &ft == 'vimfiler' ? '' :
+    return &ft == 'vaffle' ? '' :
                 \ &ft == 'unite' ? '' :
                 \ &ft == 'denite' ? '' :
                 \ &ft == 'vimshell' ? '' :
