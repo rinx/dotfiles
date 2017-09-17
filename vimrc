@@ -161,6 +161,11 @@ function! s:init_vaffle_hook_add() abort
     nnoremap [vaffle] <Nop>
     nmap ,v [vaffle]
     nnoremap <silent> [vaffle] :<C-u>Vaffle<CR>
+
+    let g:vaffle_auto_cd = 0
+    let g:vaffle_force_delete = 0
+    let g:vaffle_show_hidden_files = 1
+    let g:vaffle_use_default_mappings = 1
 endfunction
 
 function! s:init_vimshell_hook_add() abort
