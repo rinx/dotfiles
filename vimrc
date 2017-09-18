@@ -1123,10 +1123,25 @@ function! s:init_github_complete_hook_source() abort
     imap <C-x>e <Plug>(github-complete-manual-completion)
 endfunction
 
-function! s:init_vim2hs_hook_source() abort
-    let g:haskell_conceal = 0
-    let g:haskell_conceal_wide = 0
-    let g:haskell_conceal_enumerations = 0
+function! s:init_haskell_vim_hook_source() abort
+    let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+    let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+    let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+    let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+    let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+    let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+    let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+    let g:haskell_indent_if = 4
+    let g:haskell_indent_case = 4
+    let g:haskell_indent_let = 4
+    let g:haskell_indent_before_where = 0
+    let g:haskell_indent_after_bare_where = 4
+    let g:haskell_indent_do = 4
+    let g:haskell_indent_in = 1
+    let g:haskell_indent_guard = 4
+    let g:haskell_indent_case_alternative = 4
+    let g:cabal_indent_section = 2
 endfunction
 
 function! s:init_ref_hoogle_hook_add() abort
@@ -1859,13 +1874,13 @@ if v:version >= 800 || has('nvim')
                 \   'haskell',
                 \ ],
                 \})
-    call dein#add('dag/vim2hs')
-    call dein#config('vim2hs', {
+    call dein#add('neovimhaskell/haskell-vim')
+    call dein#config('haskell-vim', {
                 \ 'lazy': 1,
                 \ 'on_ft': [
                 \   'haskell',
                 \ ],
-                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_vim2hs_hook_source()',
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_haskell_vim_hook_source()',
                 \})
     call dein#add('ujihisa/ref-hoogle', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_ref_hoogle_hook_add()',
