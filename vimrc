@@ -41,6 +41,7 @@ if has('nvim')
         let g:deoplete#enable_camel_case = 1
         let g:deoplete#enable_reflesh_always = 0
         let g:deoplete#auto_complete_start_length = 2
+        let g:deoplete#auto_complete_delay = 0
         let g:deoplete#enable_profile = 0
         let g:deoplete#max_list = 300
         let g:deoplete#max_abbr_width = 100
@@ -1335,9 +1336,14 @@ if v:version >= 800 || has('nvim')
                     \})
     endif
 
-    " neocomplete sources
+    " neocomplete/deoplete sources 
     call dein#add('ujihisa/neco-look')
     call dein#config('neco-look', {
+                \ 'lazy' : 1,
+                \ 'on_i' : 1,
+                \})
+    call dein#add('Shougo/neco-syntax')
+    call dein#config('neco-syntax', {
                 \ 'lazy' : 1,
                 \ 'on_i' : 1,
                 \})
@@ -1358,13 +1364,34 @@ if v:version >= 800 || has('nvim')
 
     " deoplete sources (only for neovim)
     if has('nvim')
-"         call dein#add('fishbullet/deoplete-ruby')
-"         call dein#config('deoplete-ruby', {
-"                     \ 'lazy': 1,
-"                     \ 'on_ft': [
-"                     \   'ruby',
-"                     \ ],
-"                     \})
+        call dein#add('fishbullet/deoplete-ruby')
+        call dein#config('deoplete-ruby', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'ruby',
+                    \ ],
+                    \})
+        call dein#add('sebastianmarkow/deoplete-rust')
+        call dein#config('deoplete-rust', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'rust',
+                    \ ],
+                    \})
+        call dein#add('pbogut/deoplete-elm')
+        call dein#config('deoplete-elm', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'elm',
+                    \ ],
+                    \})
+        call dein#add('zchee/deoplete-go')
+        call dein#config('deoplete-go', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'go',
+                    \ ],
+                    \})
         if has('mac')
             call dein#add('thalesmello/webcomplete.vim')
             call dein#config('webcomplete.vim', {
