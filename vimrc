@@ -2158,7 +2158,7 @@ set breakindent
 set confirm
 
 if !has('nvim')
-    set clipboard+=unnamed,autoselect
+    set clipboard+=unnamed,autoselect,unnamedplus
 endif
 
 set mouse=a
