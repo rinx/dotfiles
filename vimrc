@@ -962,6 +962,11 @@ function! s:init_niji_hook_source() abort
                 \ ]
 endfunction
 
+function! s:init_easy_align_hook_add() abort
+    nmap ga <Plug>(EasyAlign)
+    xmap ga <Plug>(EasyAlign)
+endfunction
+
 " operator
 
 function! s:init_operator_replace_hook_add() abort
@@ -1630,8 +1635,6 @@ if v:version >= 800 || has('nvim')
 
     call dein#add('thinca/vim-themis', {'lazy': 1})
 
-    call dein#add('vim-scripts/eregex.vim')
-
     call dein#add('tmhedberg/matchit')
 
     call dein#add('tpope/vim-fugitive')
@@ -1764,6 +1767,17 @@ if v:version >= 800 || has('nvim')
                 \})
 
     call dein#add('Konfekt/FastFold')
+
+    call dein#add('junegunn/vim-easy-align', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(EasyAlign)',
+                \ ],
+                \ 'on_cmd': [
+                \   'EasyAlign',
+                \ ],
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_easy_align_hook_add()',
+                \})
 
     " operator reference
     " <or>: replace
