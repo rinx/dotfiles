@@ -102,7 +102,6 @@ else
         if !exists('g:neocomplete#sources#dictionary#dictionaries')
             let g:neocomplete#sources#dictionary#dictionaries = {}
         endif
-        let g:neocomplete#sources#dictionary#dictionaries.vimshell = expand('~/.vimshell/command-history')
 
         let g:neocomplete#enable_auto_close_preview = 1
 
@@ -173,16 +172,6 @@ function! s:init_vaffle_hook_add() abort
     let g:vaffle_use_default_mappings = 1
 endfunction
 
-function! s:init_vimshell_hook_add() abort
-    let g:vimshell_force_overwrite_statusline = 0
-
-    let g:vimshell_prompt_expr =
-                \ 'escape(fnamemodify(getcwd(), ":~")."%", "\\[]()?! ")." "'
-    let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+% '
-
-    let g:vimshell_external_history_path = expand('~/.zsh_history')
-endfunction
-
 function! s:init_arpeggio_hook_add() abort
     call arpeggio#load()
 endfunction
@@ -195,7 +184,6 @@ elseif has('unix')
     let s:copyToClipboardCommand = 'w !xsel --clipboard --input'
 endif
 let s:unite_denite_shortcut_candidates = [
-            \ ['vimshell', 'VimShell'],
             \ ['quickrun', 'QuickRun'],
             \ ['make(quickrun)', 'QuickRun make'],
             \ ['watchdogs', 'WatchdogsRun'],
@@ -1438,17 +1426,6 @@ if v:version >= 800 || has('nvim')
                 \ 'lazy': 1,
                 \ 'on_cmd' : [
                 \   'Vaffle',
-                \ ],
-                \})
-    call dein#add('Shougo/vimshell.vim', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_vimshell_hook_add()',
-                \})
-    call dein#config('vimshell.vim', {
-                \ 'lazy': 1,
-                \ 'on_cmd' : [
-                \   'VimShell',
-                \   'VimShellPop',
-                \   'VimShellInteractive',
                 \ ],
                 \})
 
@@ -2729,7 +2706,6 @@ function! s:close_special_windows()
                 \ 'unite',
                 \ 'denite',
                 \ 'vaffle',
-                \ 'vimshell',
                 \ 'qf',
                 \ 'quickrun',
                 \ 'undotree',
@@ -2925,7 +2901,6 @@ function! MyMode()
     return &ft == 'vaffle' ? 'Vaffle' : 
                 \ &ft == 'unite' ? 'Unite' :
                 \ &ft == 'denite' ? 'Denite' :
-                \ &ft == 'vimshell' ? 'VimShell' :
                 \ &ft == 'undotree' ? 'UNDOtree' :
                 \ &ft == 'nerdtree' ? 'NERDtree' :
                 \ &ft == 'qf' ? 'QuickFix' :
@@ -2936,7 +2911,6 @@ endfunction
 function! MyFilename()
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
                 \ (&ft == 'unite' ? unite#get_status_string() :
-                \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
                 \  &ft == 'qf' ? len(getqflist()) . ' fixes' :
                 \  &ft == 'quickrun' ? 'QuickRun' :
                 \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
@@ -2957,7 +2931,6 @@ function! MyAbsPath()
     return &ft == 'vaffle' ? '' :
                 \ &ft == 'unite' ? '' :
                 \ &ft == 'denite' ? '' :
-                \ &ft == 'vimshell' ? '' :
                 \ &ft == 'qf' ? '' :
                 \ &ft == 'quickrun' ? '' :
                 \ tabpagenr('$') > 3 ? '' :
