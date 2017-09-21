@@ -1746,6 +1746,9 @@ if v:version >= 800 || has('nvim')
     call dein#add('Konfekt/FastFold')
 
     call dein#add('junegunn/vim-easy-align', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_easy_align_hook_add()',
+                \})
+    call dein#config('vim-easy-align', {
                 \ 'lazy': 1,
                 \ 'on_map': [
                 \   '<Plug>(EasyAlign)',
@@ -1753,7 +1756,6 @@ if v:version >= 800 || has('nvim')
                 \ 'on_cmd': [
                 \   'EasyAlign',
                 \ ],
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_easy_align_hook_add()',
                 \})
 
     " operator reference
