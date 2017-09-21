@@ -1635,8 +1635,6 @@ if v:version >= 800 || has('nvim')
 
     call dein#add('thinca/vim-themis', {'lazy': 1})
 
-    call dein#add('vim-scripts/eregex.vim')
-
     call dein#add('tmhedberg/matchit')
 
     call dein#add('tpope/vim-fugitive')
