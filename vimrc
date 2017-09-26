@@ -1698,10 +1698,25 @@ if v:version >= 800 || has('nvim')
                 \ ],
                 \})
     call dein#add('haya14busa/vim-migemo')
-
-    call dein#add('haya14busa/vim-auto-programming', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_auto_programming_hook_add()',
+    call dein#config('vim-migemo', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(migemo-',
+                \ ],
+                \ 'on_func': [
+                \   'migemo',
+                \ ],
                 \})
+
+    if !has('nvim')
+        call dein#add('haya14busa/vim-auto-programming', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_auto_programming_hook_add()',
+                    \})
+        call dein#config('vim-auto-programming', {
+                    \ 'lazy': 1,
+                    \ 'on_i': 1,
+                    \})
+    endif
 
     call dein#add('osyo-manga/vim-anzu', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_anzu_hook_add()',
@@ -1719,12 +1734,32 @@ if v:version >= 800 || has('nvim')
                 \ ],
                 \})
     call dein#add('osyo-manga/vim-over')
+    call dein#config('vim-over', {
+                \ 'lazy': 1,
+                \ 'on_func': [
+                \   'over',
+                \ ],
+                \ 'on_cmd': [
+                \   'OverCommandLine',
+                \ ],
+                \})
 
     call dein#add('rhysd/clever-f.vim', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_cleverf_hook_add()',
                 \})
+    call dein#config('clever-f.vim', {
+                \ 'lazy': 1,
+                \ 'on_i': 1,
+                \})
     call dein#add('osyo-manga/vim-jplus', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_jplus_hook_add()',
+                \})
+    call dein#config('vim-jplus', {
+                \ 'lazy': 1,
+                \ 'on_map': [
+                \   '<Plug>(jplus)',
+                \   '<Plug>(jplus-',
+                \ ],
                 \})
 
     call dein#add('thinca/vim-qfreplace')
