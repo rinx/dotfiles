@@ -23,9 +23,30 @@ set shiftwidth=4
 set softtabstop=4
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/dein/repos/github.com/itchyny/lightline.vim
-    set runtimepath+=~/.vim/dein/repos/github.com/tyru/skk.vim
-    set runtimepath+=~/.vim/dein/repos/github.com/w0ng/vim-hybrid
+    let lightline_repo_dir = "~/.vim/dein/repos/github.com/itchyny/lightline.vim"
+    let skkvim_repo_dir = "~/.vim/dein/repos/github.com/tyru/skk.vim"
+    let hybrid_repo_dir = "~/.vim/dein/repos/github.com/w0ng/vim-hybrid"
+    if !isdirectory(expand(lightline_repo_dir))
+        if executable("git")
+            call system("git clone http://github.com/itchyny/lightline.vim " . lightline_repo_dir)
+        endif
+    endif
+    if !isdirectory(expand(skkvim_repo_dir))
+        if executable("git")
+            call system("git clone http://github.com/tyru/skk.vim " . skkvim_repo_dir)
+        endif
+    endif
+    if !isdirectory(expand(hybrid_repo_dir))
+        if executable("git")
+            call system("git clone http://github.com/w0ng/vim-hybrid " . hybrid_repo_dir)
+        endif
+    endif
+    execute "set runtimepath+=" . lightline_repo_dir
+    execute "set runtimepath+=" . skkvim_repo_dir
+    execute "set runtimepath+=" . hybrid_repo_dir
+    unlet lightline_repo_dir
+    unlet skkvim_repo_dir
+    unlet hybrid_repo_dir
 endif
 
 let g:skk_jisyo = '~/.skk-jisyo'
