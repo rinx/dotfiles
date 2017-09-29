@@ -313,3 +313,21 @@ gbr () {
 alias gtl='git l'
 
 
+# vim / neovim auto-switcher
+vimswitcher () {
+    case $1 in
+        *.vim)   nvim $1 ;;
+        *.hs)    nvim $1 ;;
+        *.rs)    nvim $1 ;;
+        *.py)    nvim $1 ;;
+        *.rb)    nvim $1 ;;
+        *.txt)   vim $1  ;;
+        *.tex)   vim $1  ;;
+        *.md)    vim $1  ;;
+        *.elm)   nvim $1 ;;
+        *.go)    nvim $1 ;;
+        *)       nvim ;;
+    esac
+}
+
+
