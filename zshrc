@@ -322,7 +322,7 @@ vimswitcher () {
         *.md)    vim $1  ;;
         *.elm)   nvim $1 ;;
         *.go)    nvim $1 ;;
-        *)       nvim ;;
+        *)       nvim $1 ;;
     esac
 }
 
