@@ -208,15 +208,14 @@ let s:unite_denite_shortcut_candidates = [
 let s:unite_denite_kaomoji_dictionary = [
             \ ["wahhab", "( っ'ヮ'c)"],
             \ ["wahhab", "三( っ'ヮ'c)"],
-            \ ["wahhab", "( っ˘ヮ˘c)💤"],
             \ ["wahhab", "(っ'ヮ')っ"],
             \ ["wahhab", "(((っ'ヮ')っ"],
             \ ["wahhab", "( っ'ヮ'c)❤"],
             \ ["talk", "( っ'ヮ'c)💬"],
             \ ["sing", "( っ'ヮ'c)～♪"],
+            \ ["thinking", "( っ˘ヮ˘c).｡oO(…)"],
             \ ["sleep", "( っ˘ヮ˘c)💤"],
             \ ["sunglasses", "( っ🕶c)"],
-            \ ["lambda", "( っ'λ'c)"],
             \ ["no smoking", "(っ'ヮ')っ🚭"],
             \ ["", "( 'ω').｡oO(…)"],
             \ ["", "ヾ(⌒(\_•ω•)\_"],
@@ -258,6 +257,7 @@ let s:unite_denite_kaomoji_dictionary = [
             \ ["chu", "(っ＞ω＜c)"],
             \ ["chu", "°+♡:.(っ>ω<c).:♡+°"],
             \ ["kichigai", "└(՞ةڼ◔)」"],
+            \ ["wa-i", "٩꒰｡•◡•｡꒱۶"],
             \ ["wa-i", "ヾ(✿╹◡╹)ﾉ\""],
             \ ["wa-i", "ヾ(๑╹◡╹)ﾉ\""],
             \ ["wa-i", "ヾ(＠⌒ー⌒＠)ノ"],
@@ -1402,6 +1402,16 @@ if v:version >= 800 || has('nvim')
                     \   'go',
                     \ ],
                     \})
+        call dein#add('mitsuse/autocomplete-swift')
+        call dein#config('autocomplete-swift', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'swift',
+                    \ ],
+                    \ 'on_path': [
+                    \   '.*.swift$',
+                    \ ],
+                    \})
         if has('mac')
             call dein#add('thalesmello/webcomplete.vim')
             call dein#config('webcomplete.vim', {
@@ -2032,6 +2042,17 @@ if v:version >= 800 || has('nvim')
                 \   'rust',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_racer_hook_source()',
+                \})
+
+    call dein#add('keith/swift.vim')
+    call dein#config('swift.vim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'swift',
+                \ ],
+                \ 'on_path': [
+                \   '.*.swift$',
+                \ ],
                 \})
 
     call dein#add('mattn/emmet-vim')
