@@ -93,6 +93,8 @@ if you want to clear dotfiles, use `-c` option.
         - racer: `cargo install racer && rustup component add rust-src`
     - Go
         - gocode: `go get -u github.com/nsf/gocode`
+    - Swift
+        - sourcekitten: `brew install sourcekitten`
     - Miscellaneous
         - w3m (for ref-webdict)
 * OSX

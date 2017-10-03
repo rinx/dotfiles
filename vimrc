@@ -1402,6 +1402,16 @@ if v:version >= 800 || has('nvim')
                     \   'go',
                     \ ],
                     \})
+        call dein#add('mitsuse/autocomplete-swift')
+        call dein#config('autocomplete-swift', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'swift',
+                    \ ],
+                    \ 'on_path': [
+                    \   '.*.swift$',
+                    \ ],
+                    \})
         if has('mac')
             call dein#add('thalesmello/webcomplete.vim')
             call dein#config('webcomplete.vim', {
@@ -2032,6 +2042,17 @@ if v:version >= 800 || has('nvim')
                 \   'rust',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_racer_hook_source()',
+                \})
+
+    call dein#add('keith/swift.vim')
+    call dein#config('swift.vim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'swift',
+                \ ],
+                \ 'on_path': [
+                \   '.*.swift$',
+                \ ],
                 \})
 
     call dein#add('mattn/emmet-vim')
