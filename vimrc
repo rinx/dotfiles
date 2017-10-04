@@ -2265,8 +2265,10 @@ set breakindent
 " unsaved buffer warning
 set confirm
 
-if !has('nvim')
+if has('nvim')
     set clipboard+=unnamed,autoselect,unnamedplus
+else
+    set clipboard+=unnamed,autoselect
 endif
 
 set mouse=a
