@@ -2020,6 +2020,13 @@ if v:version >= 800 || has('nvim')
                 \   'go',
                 \ ],
                 \})
+    call dein#add('fatih/vim-go')
+    call dein#config('vim-go', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'go',
+                \ ],
+                \})
     call dein#add('vim-jp/vim-go-extra')
     call dein#config('vim-go-extra', {
                 \ 'lazy': 1,
