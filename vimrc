@@ -2266,7 +2266,7 @@ set breakindent
 set confirm
 
 if has('nvim')
-    set clipboard+=unnamed,autoselect,unnamedplus
+    set clipboard+=unnamed,unnamedplus
 else
     set clipboard+=unnamed,autoselect
 endif
