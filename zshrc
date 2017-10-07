@@ -214,7 +214,7 @@ else # for BSD version
 fi
 
 #start vim as vi
-alias vi='vim'
+alias vi='vimswitcher'
 alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
 
 alias be='bundle exec'
