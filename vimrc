@@ -1168,6 +1168,17 @@ function! s:init_elm_hook_source() abort
     nmap <Leader>d <Plug>(elm-show-docs)
 endfunction
 
+
+function! s:init_go_hook_source() abort
+    augroup vimrc-golang
+        autocmd!
+        autocmd FileType go setlocal noexpandtab
+        autocmd FileType go setlocal sw=4
+        autocmd FileType go setlocal ts=4
+        autocmd FileType go compiler go
+    augroup END
+endfunction
+
 function! s:init_racer_hook_source() abort
     set hidden
     let g:racer_cmd = expand('~/.cargo/bin/racer')
@@ -2013,26 +2024,13 @@ if v:version >= 800 || has('nvim')
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_elm_hook_source()',
                 \})
 
-    call dein#add('google/vim-ft-go')
-    call dein#config('vim-ft-go', {
-                \ 'lazy': 1,
-                \ 'on_ft': [
-                \   'go',
-                \ ],
-                \})
     call dein#add('fatih/vim-go')
     call dein#config('vim-go', {
                 \ 'lazy': 1,
                 \ 'on_ft': [
                 \   'go',
                 \ ],
-                \})
-    call dein#add('vim-jp/vim-go-extra')
-    call dein#config('vim-go-extra', {
-                \ 'lazy': 1,
-                \ 'on_ft': [
-                \   'go',
-                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_go_hook_source()',
                 \})
 
     call dein#add('rust-lang/rust.vim')
@@ -3103,5 +3101,4 @@ function! s:vimrc_local(loc)
         source `=i`
     endfor
 endfunction
-
 
