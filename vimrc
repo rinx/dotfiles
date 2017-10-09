@@ -145,10 +145,17 @@ function! s:init_neosnippet_hook_add() abort
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
     " Tell Neosnippet about the other snippets
+    if has('nvim')
+        let reporoot = '~/.config/nvim/dein'
+    else
+        let reporoot = '~/.vim/dein'
+    endif
     let g:neosnippet#snippets_directory = [
-                \ expand('~/.vim/bundle/vim-snippets/snippets'),
+                \ expand(reporoot . '/repos/github.com/honza/vim-snippets/snippets'),
+                \ expand(reporoot . '/repos/github.com/Shougo/neosnippet-snippets/neosnippets'),
                 \ expand('~/.vim/my-snippets'),
                 \]
+    unlet reporoot
 
     let g:neosnippet#enable_snipmate_compatibility = 1
 
