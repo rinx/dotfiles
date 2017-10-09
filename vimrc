@@ -55,12 +55,10 @@ if has('nvim')
     endfunction
 
     function! s:init_deoplete_hook_add() abort
-    "     inoremap <expr><S-Tab>  neocomplete#start_manual_complete()
-    "
-    "     inoremap <expr><C-g>  neocomplete#undo_completion()
-    "     inoremap <expr><C-l>  neocomplete#complete_common_string()
-    "
-    "     inoremap <expr><C-x>l neocomplete#start_manual_complete('look')
+        inoremap <expr><S-Tab>  deoplete#manual_complete()
+        inoremap <expr><C-x>l   deoplete#manual_complete(['look'])
+        inoremap <expr><C-g>    deoplete#undo_completion()
+        inoremap <expr><C-l>    deoplete#complete_common_string()
     endfunction
 else
     function! s:init_neocomplete_hook_source() abort
