@@ -974,9 +974,10 @@ function! s:init_operator_replace_hook_add() abort
     Arpeggio map or <Plug>(operator-replace)
 endfunction
 
-function! s:init_operator_comment_hook_add() abort
-    Arpeggio map oc <Plug>(operator-comment)
-    Arpeggio map od <Plug>(operator-uncomment)
+function! s:init_caw_comment_hook_add() abort
+    let g:caw_no_default_keymappings = 1
+    Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)
+    Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)
 endfunction
 
 function! s:init_operator_surround_hook_add() abort
@@ -1844,8 +1845,8 @@ if v:version >= 800 || has('nvim')
     call dein#add('kana/vim-operator-replace', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_replace_hook_add()',
                 \})
-    call dein#add('emonkak/vim-operator-comment', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_comment_hook_add()',
+    call dein#add('tyru/caw.vim', {
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_caw_comment_hook_add()',
                 \})
     call dein#add('rhysd/vim-operator-surround', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_operator_surround_hook_add()',
