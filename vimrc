@@ -219,6 +219,7 @@ let s:unite_denite_kaomoji_dictionary = [
             \ ["talk", "( っ'ヮ'c)💬"],
             \ ["sing", "( っ'ヮ'c)～♪"],
             \ ["thinking", "( っ˘ヮ˘c).｡oO(…)"],
+            \ ["thinking", "( っ˘ヮ˘c)💭"],
             \ ["sleep", "( っ˘ヮ˘c)💤"],
             \ ["sunglasses", "( っ🕶c)"],
             \ ["no smoking", "(っ'ヮ')っ🚭"],
