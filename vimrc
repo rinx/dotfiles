@@ -979,6 +979,7 @@ function! s:init_caw_comment_hook_add() abort
     let g:caw_no_default_keymappings = 1
     Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)
     Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)
+    Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)
 endfunction
 
 function! s:init_operator_surround_hook_add() abort
@@ -1840,8 +1841,9 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
 
     " operator reference
     " <or>: replace
-    " <oc>: comment
+    " <oc>: comment toggle
     " <od>: uncomment
+    " <oe>: comment toggle (zeropos)
     " Sa: surround-append
     " Sd: surround-delete
     " Sr: surround-replace
