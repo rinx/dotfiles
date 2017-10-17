@@ -124,6 +124,7 @@ else
                     \ 'asciidoc' : 1,
                     \ 'pod' : 1,
                     \ 'gita-commit' : 1,
+                    \ 'gina-commit' : 1,
                     \}
 
     endfunction
@@ -2145,6 +2146,14 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \})
 
     call dein#add('mattn/webapi-vim')
+
+    call dein#add('lambdalisue/gina.vim')
+    call dein#config('gina.vim', {
+                \ 'lazy': 1,
+                \ 'on_cmd': [
+                \   'Gina',
+                \ ],
+                \})
 
     call dein#add('lambdalisue/vim-gista')
     call dein#config('vim-gista', {
