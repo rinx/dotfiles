@@ -1547,29 +1547,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \   'unite.vim',
                 \ ],
                 \})
-    call dein#add('kmnk/vim-unite-giti')
-    call dein#config('vim-unite-giti', {
-                \ 'lazy': 1,
-                \ 'on_cmd' : [
-                \   'Giti',
-                \   'GitiWithConfirm',
-                \   'GitiFetch',
-                \   'GitiPush',
-                \   'GitiPushWithSettingUpstream',
-                \   'GitiPushExpressly',
-                \   'GitiPull',
-                \   'GitiPullSquash',
-                \   'GitiPullRebase',
-                \   'GitiPullExpressly',
-                \   'GitiDiff',
-                \   'GitiDiffCached',
-                \   'GitiLog',
-                \   'GitiLogLine',
-                \ ],
-                \ 'on_source': [
-                \   'unite.vim',
-                \ ],
-                \})
     call dein#add('tacroe/unite-mark')
     call dein#config('unite-mark', {
                 \ 'lazy': 1,
