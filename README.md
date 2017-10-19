@@ -67,44 +67,61 @@ if you want to clear dotfiles, use `-c` option.
 * wget
 
 ### Requires for using
-* Zsh
-    - it is recommended to use GNU coreutils
-* Tmux
-    - Plugins (for install: `prefix + I`)
-* Vim (it is recommended to use Vim 8.0+ or NeoVim)
-    - neovim
-        - +python3
-        - `pip3 install neovim`
-        - it is recommended to use `pyenv` and `pyenv-virtualenv`
-            - `pyenv virtualenv 3.x.x neovim3`
-            - `pyenv activate neovim3 && pip install neovim`
-    - Vim scripts
-        - radiko.vim
-            - mplayer
-            - rtmpdump
-            - swftools
-    - Haskell
-        - ghc-mod: `cabal install ghc-mod`
-        - hoogle:  `cabal install hoogle`
-    - Elm
-        - elm binaries: `npm install -g elm elm-test elm-oracle`
-    - Rust
-        - use nightly compiler: `rustup default nightly`
-        - racer: `cargo install racer && rustup component add rust-src`
-    - Go
-        - gocode: `go get -u github.com/nsf/gocode`
-    - Swift
-        - sourcekitten: `brew install sourcekitten`
-    - Miscellaneous
-        - w3m (for ref-webdict)
-* OSX
-    - MacVim 8.0+
-        - `brew tap universal-ctags/universal-ctags`
-        - `brew install --HEAD universal-ctags`
-        - `brew tap splhack/splhack`
-        - `brew install --HEAD cmigemo-mk`
-        - `brew install --HEAD --with-properly-linked-python2-python3 macvim-kaoriya`
-    - reattach-to-user-namespace
+#### Zsh
+    it is recommended to use GNU coreutils
+
+#### Tmux
+    Plugins (for install: `prefix + I`)
+
+#### Vim (it is recommended to use Vim 8.0+ or NeoVim)
+##### neovim
+    - +python3
+    - `pip3 install neovim`
+    - it is recommended to use `pyenv` and `pyenv-virtualenv`
+        - `pyenv virtualenv 3.x.x neovim3`
+        - `pyenv activate neovim3 && pip install neovim`
+
+##### Vim scripts
+    - radiko.vim
+        - mplayer
+        - rtmpdump
+        - swftools
+
+##### Haskell
+    - ghc-mod: `cabal install ghc-mod`
+    - hoogle:  `cabal install hoogle`
+
+##### Elm
+    - elm binaries: `npm install -g elm elm-test elm-oracle`
+
+##### Clojure
+Add followings to `~/.lein/profiles.clj`.
+```
+[refactor-nrepl "2.3.0-SNAPSHOT"]
+[cider/cider-nrepl "0.14.0"]
+```
+
+##### Rust
+    - use nightly compiler: `rustup default nightly`
+    - racer: `cargo install racer && rustup component add rust-src`
+
+##### Go
+    - gocode: `go get -u github.com/nsf/gocode`
+
+##### Swift
+    - sourcekitten: `brew install sourcekitten`
+
+##### Miscellaneous
+    - w3m (for ref-webdict)
+
+#### OSX
+##### MacVim 8.0+
+    - `brew tap universal-ctags/universal-ctags`
+    - `brew install --HEAD universal-ctags`
+    - `brew tap splhack/splhack`
+    - `brew install --HEAD cmigemo-mk`
+    - `brew install --HEAD --with-properly-linked-python2-python3 macvim-kaoriya`
+##### reattach-to-user-namespace
 
 ### Troubleshooting
 
