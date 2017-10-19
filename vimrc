@@ -50,6 +50,7 @@ if has('nvim')
 
         let g:deoplete#keyword_patterns = {}
         let g:deoplete#keyword_patterns.tex = '\\?[a-zA-Z_]\w*'
+        let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
         let g:deoplete#omni_patterns = {}
     endfunction
@@ -2014,6 +2015,23 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_elm_hook_source()',
                 \})
+
+    if has('nvim')
+        call dein#add('clojure-vim/acid.nvim')
+        call dein#config('clojure-vim/acid.nvim', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'clojure',
+                    \ ],
+                    \})
+        call dein#add('clojure-vim/async-clj-omni')
+        call dein#config('async-clj-omni', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'clojure',
+                    \ ],
+                    \})
+    endif
 
     call dein#add('fatih/vim-go')
     call dein#config('vim-go', {

@@ -325,6 +325,7 @@ vimswitcher () {
         *.tex)   vim $1  ;;
         *.md)    vim $1  ;;
         *.elm)   nvim $1 ;;
+        *.clj)   nvim $1 ;;
         *.go)    nvim $1 ;;
         *)       nvim $1 ;;
     esac
