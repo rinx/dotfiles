@@ -70,31 +70,31 @@ if you want to clear dotfiles, use `-c` option.
 
 ### Requires for using
 #### Zsh
-    it is recommended to use GNU coreutils
+it is recommended to use GNU coreutils
 
 #### Tmux
-    Plugins (for install: `prefix + I`)
+Plugins (for install: `prefix + I`)
 
 #### Vim (it is recommended to use Vim 8.0+ or NeoVim)
 ##### neovim
-    - +python3
-    - `pip3 install neovim`
-    - it is recommended to use `pyenv` and `pyenv-virtualenv`
-        - `pyenv virtualenv 3.x.x neovim3`
-        - `pyenv activate neovim3 && pip install neovim`
+- +python3
+- `pip3 install neovim`
+- it is recommended to use `pyenv` and `pyenv-virtualenv`
+    - `pyenv virtualenv 3.x.x neovim3`
+    - `pyenv activate neovim3 && pip install neovim`
 
 ##### Vim scripts
-    - radiko.vim
-        - mplayer
-        - rtmpdump
-        - swftools
+- radiko.vim
+    - mplayer
+    - rtmpdump
+    - swftools
 
 ##### Haskell
-    - ghc-mod: `cabal install ghc-mod`
-    - hoogle:  `cabal install hoogle`
+- ghc-mod: `cabal install ghc-mod`
+- hoogle:  `cabal install hoogle`
 
 ##### Elm
-    - elm binaries: `npm install -g elm elm-test elm-oracle`
+- elm binaries: `npm install -g elm elm-test elm-oracle`
 
 ##### Clojure
 Add followings to `~/.lein/profiles.clj`.
@@ -104,25 +104,25 @@ Add followings to `~/.lein/profiles.clj`.
 ```
 
 ##### Rust
-    - use nightly compiler: `rustup default nightly`
-    - racer: `cargo install racer && rustup component add rust-src`
+- use nightly compiler: `rustup default nightly`
+- racer: `cargo install racer && rustup component add rust-src`
 
 ##### Go
-    - gocode: `go get -u github.com/nsf/gocode`
+- gocode: `go get -u github.com/nsf/gocode`
 
 ##### Swift
-    - sourcekitten: `brew install sourcekitten`
+- sourcekitten: `brew install sourcekitten`
 
 ##### Miscellaneous
-    - w3m (for ref-webdict)
+- w3m (for ref-webdict)
 
 #### OSX
 ##### MacVim 8.0+
-    - `brew tap universal-ctags/universal-ctags`
-    - `brew install --HEAD universal-ctags`
-    - `brew tap splhack/splhack`
-    - `brew install --HEAD cmigemo-mk`
-    - `brew install --HEAD --with-properly-linked-python2-python3 macvim-kaoriya`
+- `brew tap universal-ctags/universal-ctags`
+- `brew install --HEAD universal-ctags`
+- `brew tap splhack/splhack`
+- `brew install --HEAD cmigemo-mk`
+- `brew install --HEAD --with-properly-linked-python2-python3 macvim-kaoriya`
 ##### reattach-to-user-namespace
 
 ### Troubleshooting
