@@ -1336,11 +1336,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    let g:make = 'gmake'
-    if system('uname -o') =~ '^GNU/'
-        let g:make = 'make'
-    endif
-
     call dein#add('Shougo/vimproc.vim')
     call dein#config('vimproc.vim', {
                 \ 'build': 'make',
