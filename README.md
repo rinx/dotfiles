@@ -99,8 +99,12 @@ Plugins (for install: `prefix + I`)
 ##### Clojure
 Add followings to `~/.lein/profiles.clj`.
 ```
-[refactor-nrepl "2.3.0-SNAPSHOT"]
-[cider/cider-nrepl "0.14.0"]
+{:user
+ {:plugins
+  [[refactor-nrepl "2.3.0-SNAPSHOT"]
+   [cider/cider-nrepl "0.14.0"]]
+  }
+ }
 ```
 
 ##### Rust
