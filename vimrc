@@ -1178,6 +1178,16 @@ function! s:init_elm_hook_source() abort
     nmap <Leader>d <Plug>(elm-show-docs)
 endfunction
 
+function! s:init_sexp_hook_source() abort
+    let g:sexp_filetypes = 'clojure,scheme,lisp,timl'
+    let g:sexp_enable_insert_mode_mappings = 0
+    let g:sexp_insert_after_wrap = 0
+
+    nmap <buffer> >(  <Plug>(sexp_emit_head_element)
+    nmap <buffer> <)  <Plug>(sexp_emit_tail_element)
+    nmap <buffer> <(  <Plug>(sexp_capture_prev_element)
+    nmap <buffer> >)  <Plug>(sexp_capture_next_element)
+endfunction
 
 function! s:init_go_hook_source() abort
     augroup vimrc-golang
@@ -2027,6 +2037,19 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                     \ ],
                     \})
     endif
+    call dein#add('guns/vim-sexp')
+    call dein#config('vim-sexp', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'lisp',
+                \   'scheme',
+                \   'clojure',
+                \ ],
+                \ 'on_map': [
+                \   '<Plug>(sexp_',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_sexp_hook_source()',
+                \})
 
     call dein#add('fatih/vim-go')
     call dein#config('vim-go', {
