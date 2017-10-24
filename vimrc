@@ -958,6 +958,11 @@ function! s:init_quickhl_hook_add() abort
     xmap <Space>M <Plug>(quickhl-manual-reset)
 endfunction
 
+function! s:init_indentLine_hook_source() abort
+    let g:indentLine_enabled = 1
+    let g:indentLine_setConceal = 0
+endfunction
+
 function! s:init_niji_hook_source() abort
     let g:niji_matching_filetypes = [
                 \ 'lisp',
@@ -1795,6 +1800,11 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'on_map': [
                 \   '<Plug>(quickhl-',
                 \ ],
+                \})
+
+    call dein#add('Yggdroot/indentLine')
+    call dein#config('indentLine', {
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_indentLine_hook_source()',
                 \})
 
     call dein#add('spinningarrow/vim-niji')
