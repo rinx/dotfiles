@@ -1403,7 +1403,7 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \})
 
     " deoplete sources (only for neovim)
-    if has('nvim')
+    if dein#tap('deoplete.nvim')
         call dein#add('rinx/deoplete-auto-programming')
         call dein#config('deoplete-auto-programming', {
                     \ 'lazy': 1,
