@@ -1649,7 +1649,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
 
     call dein#add('tmhedberg/matchit')
 
-    call dein#add('tpope/vim-fugitive')
     call dein#add('tpope/vim-repeat')
 
     call dein#add('cohama/lexima.vim')
