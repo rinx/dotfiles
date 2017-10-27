@@ -2783,6 +2783,11 @@ nnoremap <silent> [Tab]x :<C-u>tabclose<CR>
 nnoremap <silent> [Tab]n :<C-u>tabnext<CR>
 nnoremap <silent> [Tab]p :<C-u>tabprevious<CR>
 
+if has('nvim')
+    " for terminal
+    tnoremap <silent> <ESC> <C-\><C-n>
+endif
+
 " for window
 nnoremap s <Nop>
 nnoremap <silent> sj <C-w>j
