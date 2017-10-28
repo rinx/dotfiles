@@ -1642,7 +1642,7 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    call dein#add('ynkdir/vim-vimlparser')
+    call dein#add('vim-jp/vim-vimlparser')
     call dein#add('syngan/vim-vimlint')
 
     call dein#add('thinca/vim-themis', {'lazy': 1})
