@@ -2861,9 +2861,6 @@ nnoremap Q <Nop>
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html
-inoremap <expr> ; <SID>sticky_func()
-cnoremap <expr> ; <SID>sticky_func()
-snoremap <expr> ; <SID>sticky_func()
 
 function! s:sticky_func()
     let l:sticky_table = {
@@ -2887,6 +2884,31 @@ function! s:sticky_func()
         return ''
     endif
 endfunction
+
+cnoremap <expr> ; <SID>sticky_func()
+
+let s:sticky_shift_except_for_filetype = [
+            \ 'c',
+            \ 'cpp',
+            \ 'idlang',
+            \ 'javascript',
+            \ 'clojure',
+            \]
+
+function! s:init_sticky_shift_hook_autocmd() abort
+    if index(s:sticky_shift_except_for_filetype, &ft) < 0
+        inoremap <buffer><expr> ; <SID>sticky_func()
+        snoremap <buffer><expr> ; <SID>sticky_func()
+    else
+        inoremap <buffer> ; ;
+        snoremap <buffer> ; ;
+    endif
+endfunction
+
+augroup vimrc-sticky-shift
+    autocmd!
+    autocmd FileType * call s:init_sticky_shift_hook_autocmd()
+augroup END
 
 " QuickFix window
 augroup vimrc-forQuickFix
