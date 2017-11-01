@@ -2890,6 +2890,7 @@ cnoremap <expr> ; <SID>sticky_func()
 let s:sticky_shift_except_for_filetype = [
             \ 'c',
             \ 'cpp',
+            \ 'java',
             \ 'idlang',
             \ 'javascript',
             \ 'clojure',
