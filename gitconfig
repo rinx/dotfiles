@@ -65,16 +65,22 @@
 
     sq    = squash
 
+    wdiff = diff --color-words --ignore-all-space
+    latexdiff = difftool -y -t latex
+
 [url "https://"]
-	insteadOf = git://
+    insteadOf = git://
 
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 
 [pager]
     log  = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
     show = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
     diff = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
 
+[difftool.latex]
+    cmd = latexdiff "$LOCAL" "$REMOTE"
+
 [pull]
-	ff = only
+    ff = only
