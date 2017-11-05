@@ -1262,6 +1262,10 @@ function! s:init_translategoogle_hook_add() abort
     let g:translategoogle_mapping_close = "q"
 endfunction
 
+function! s:init_gina_hook_source() abort
+    call gina#custom#command#option('log', '--opener', 'vsplit')
+endfunction
+
 function! s:init_gista_hook_source() abort
     let g:gista#github_user = 'rinx'
 endfunction
@@ -2175,6 +2179,13 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'on_cmd': [
                 \   'Gina',
                 \ ],
+                \ 'on_map': [
+                \   '<Plug>(gina-',
+                \ ],
+                \ 'on_func': [
+                \   'gina',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_gina_hook_source()',
                 \})
 
     call dein#add('lambdalisue/vim-gista')
@@ -2964,7 +2975,7 @@ let g:lightline = {
             \ 'active': {
             \   'left': [ 
             \             [ 'mode', 'paste', 'spell' ],
-            \             [ 'fugitive', 'filename' ],
+            \             [ 'gina', 'filename' ],
             \   ],
             \   'right': [
             \             [ 'lineinfo' ],
@@ -2975,7 +2986,7 @@ let g:lightline = {
             \ 'component_function': {
             \   'modified': 'MyModified',
             \   'readonly': 'MyReadonly',
-            \   'fugitive': 'MyFugitive',
+            \   'gina': 'MyGina',
             \   'filename': 'MyFilename',
             \   'fileformat': 'MyFileformat',
             \   'filetype': 'MyFiletype',
@@ -2983,7 +2994,7 @@ let g:lightline = {
             \   'skkstatus': 'MySkkgetmode',
             \   'anzu': 'anzu#search_status',
             \   'tablineabspath': 'MyAbsPath',
-            \   'tabfugitive': 'MyFugitiveInv',
+            \   'tabGina': 'MyGinaInv',
             \   'tabradikosta': 'MyRadikoSta',
             \ },
             \ 'component_expand': {
@@ -3003,7 +3014,7 @@ let g:lightline = {
             \     [ 'tabs' ],
             \   ],
             \   'right' : [
-            \     [ 'tablineabspath', 'tabfugitive', 'tabradikosta' ],
+            \     [ 'tablineabspath', 'tabGina', 'tabradikosta' ],
             \   ],
             \ },
             \ 'colorscheme' : lightline_colorscheme,
@@ -3017,10 +3028,10 @@ function! MyReadonly()
     return &ft !~? 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
 endfunction
 
-function! MyFugitive()
+function! MyGina()
     try
-        if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
-            let _ = fugitive#head()
+        if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun'
+            let _ = gina#component#repo#branch()
             return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
         endif
     catch
@@ -3028,10 +3039,10 @@ function! MyFugitive()
     return ''
 endfunction
 
-function! MyFugitiveInv()
+function! MyGinaInv()
     try
-        if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun' && exists('*fugitive#head')
-            let _ = fugitive#head()
+        if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun'
+            let _ = gina#component#repo#branch()
             return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
         endif
     catch
