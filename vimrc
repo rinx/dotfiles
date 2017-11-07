@@ -1737,7 +1737,7 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    if !has('nvim')
+    if dein#tap('neocomplete.vim')
         call dein#add('haya14busa/vim-auto-programming', {
                     \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_auto_programming_hook_add()',
                     \})
