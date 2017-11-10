@@ -1626,16 +1626,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    call dein#add('osyo-manga/shabadou.vim')
-    call dein#config('shabadou.vim', {
-                \ 'lazy': 1,
-                \ 'on_cmd': [
-                \   'QuickRun',
-                \ ],
-                \ 'on_map': [
-                \   '<Plug>(quickrun',
-                \ ],
-                \})
     call dein#add('osyo-manga/vim-watchdogs', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_watchdogs_hook_add()',
                 \})
@@ -3138,16 +3128,6 @@ function! MyRadikoSta()
     endif
     return winwidth('.') > 30 ? strlen(_) ? '♪' . _ : '' : ''
 endfunction
-
-
-" auto-toggle of cursorline
-augroup vimrc-auto-cursorline
-    autocmd!
-    autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
-    autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorcolumn
-    autocmd CursorHold,CursorHoldI * setlocal cursorline
-    autocmd CursorHold,CursorHoldI * setlocal cursorcolumn
-augroup END
 
 " when creating new file, if it does not exist directory,
 " this function will ask you to create new directory.
