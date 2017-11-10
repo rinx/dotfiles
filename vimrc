@@ -1626,16 +1626,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    call dein#add('osyo-manga/shabadou.vim')
-    call dein#config('shabadou.vim', {
-                \ 'lazy': 1,
-                \ 'on_cmd': [
-                \   'QuickRun',
-                \ ],
-                \ 'on_map': [
-                \   '<Plug>(quickrun',
-                \ ],
-                \})
     call dein#add('osyo-manga/vim-watchdogs', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_watchdogs_hook_add()',
                 \})
