@@ -10,6 +10,7 @@ do
         "c" ) FLG_C="TRUE" ;;
         "f" ) FLG_F="TRUE" ;;
         "s" ) FLG_S="TRUE" ;;
+        "p" ) FLG_P="TRUE" ;;
         "t" ) FLG_T="TRUE" ;;
         "v" ) FLG_V="TRUE" ;;
         "x" ) FLG_X="TRUE" ;;
@@ -20,6 +21,7 @@ done
 
 if [ "$FLG_A" = "TRUE" ]; then
     FLG_S="TRUE"
+    FLG_P="TRUE"
     FLG_T="TRUE"
     FLG_V="TRUE"
     FLG_X="TRUE"
@@ -65,6 +67,30 @@ if [ "$FLG_X" = "TRUE" ]; then
         fi
     else
         echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.xmonad/xmonad.hs file.\033[00m" | sed "s/^-e //"
+    fi
+fi
+
+if [ "$FLG_P" = "TRUE" ]; then
+    # for leiningen
+    if [ ! -d $HOME/.lein ]; then
+        mkdir $HOME/.lein
+    fi
+
+    if [ ! -f $HOME/.lein/profiles.clj ] || [ "$FLG_F" = "TRUE" ]; then
+        [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.lein/profiles.clj ] && rm -f $HOME/.lein/profiles.clj
+        ln -s $DOTDIR/profiles.clj $HOME/.lein/profiles.clj
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.lein/profiles.clj created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.lein/profiles.clj creating failed\033[00m" | sed "s/^-e //"
+        fi
+    elif [ "$FLG_C" = "TRUE" ]; then
+        [ -f $HOME/.lein/profiles.clj ] && rm -f $HOME/.lein/profiles.clj
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.lein/profiles.clj removed\033[00m" | sed "s/^-e //"
+        fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.lein/profiles.clj file.\033[00m" | sed "s/^-e //"
     fi
 fi
 
