@@ -11,11 +11,11 @@
 * .latexmkrc
 * tiny.vimrc (for git-commit editor)
 * .vimshrc
+* .lein/profiles.clj
 
 ### directories
 
 * dotvim (will be linked to `$HOME/.vim`)
-* dottmux (will be linked to `$HOME/.tmux`)
 
 ### setup scripts
 
@@ -52,8 +52,9 @@ to specify what type of dotfiles for installing
 |:--:|:----------------------------------------------------|
 | -a | for all type of dotfiles                            |
 | -s | make symbolic links                                 |
+| -p | make symbolic links for programming configures      |
 | -v | link `$HOME/.vim` files                             |
-| -t | fetch `$HOME/.bin` files / link `$HOME/.tmux` files |
+| -t | fetch `$HOME/.bin` files                            |
 
 if you have some dotfiles and want to overwrite it, `-f` option is useful.
 
@@ -95,15 +96,8 @@ Plugins (for install: `prefix + I`)
 - elm binaries: `npm install -g elm elm-test elm-oracle`
 
 ##### Clojure
-Add followings to `~/.lein/profiles.clj`.
-``` clojure
-{:user
- {:plugins
-  [[refactor-nrepl "2.3.1"]
-   [cider/cider-nrepl "0.15.1"]
-   [lein-kibit "0.1.5"]
-   [jonase/eastwood "0.2.5"]]}}
-```
+- leiningen: `lein`
+- `profiles.clj` is included in this repository.
 
 ##### Rust
 - use nightly compiler: `rustup default nightly`
