@@ -1198,6 +1198,10 @@ function! s:init_sexp_hook_source() abort
     nmap <buffer> >)  <Plug>(sexp_capture_next_element)
 endfunction
 
+function! s:init_paredit_hook_source() abort
+    let g:paredit_mode = 1
+endfunction
+
 function! s:init_go_hook_source() abort
     augroup vimrc-golang
         autocmd!
@@ -2057,6 +2061,16 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \   '<Plug>(sexp_',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_sexp_hook_source()',
+                \})
+    call dein#add('vim-scripts/paredit.vim')
+    call dein#config('paredit.vim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'lisp',
+                \   'scheme',
+                \   'clojure',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_paredit_hook_source()',
                 \})
 
     call dein#add('fatih/vim-go')
