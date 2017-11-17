@@ -1281,14 +1281,6 @@ function! s:init_gista_hook_source() abort
     let g:gista#github_user = 'rinx'
 endfunction
 
-function! s:init_shaberu_hook_source() abort
-    let g:shaberu_use_voicetext_api = 1
-    if exists('g:vimrc_private["shaberu_voicetext_apikey"]')
-        let g:shaberu_voicetext_apikey = g:vimrc_private['shaberu_voicetext_apikey']
-    endif
-    let g:shaberu_voicetext_speaker = 'hikari'
-endfunction
-
 function! s:init_radiko_hook_add() abort
     let g:radiko#is_loaded = 0
     let g:radiko#cache_dir = expand("~/.cache/radiko-vim")
@@ -2234,20 +2226,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'on_source' : [
                 \   'unite.vim',
                 \ ],
-                \})
-
-    call dein#add('supermomonga/shaberu.vim')
-    call dein#config('shaberu.vim', {
-                \ 'lazy': 1,
-                \ 'on_cmd': [
-                \   'ShaberuSay',
-                \   'ShaberuSayInteractive',
-                \   'ShaberuSayRecursive',
-                \   'ShaberuMuteOn',
-                \   'ShaberuMuteOff',
-                \   'ShaberuMuteToggle',
-                \ ],
-                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_shaberu_hook_source()',
                 \})
 
     call dein#add('rinx/radiko.vim', {
