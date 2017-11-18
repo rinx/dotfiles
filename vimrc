@@ -2176,6 +2176,12 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \})
 
     call dein#add('mattn/webapi-vim')
+    call dein#config('webapi-vim', {
+                \ 'lazy': 1,
+                \ 'on_func': [
+                \   'webapi',
+                \ ],
+                \})
 
     call dein#add('lambdalisue/gina.vim')
     call dein#config('gina.vim', {
