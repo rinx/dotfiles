@@ -2266,9 +2266,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    " call dein#add('tomasr/molokai')
-    " call dein#add('sickill/vim-monokai')
-    " call dein#add('jpo/vim-railscasts-theme')
     call dein#add('w0ng/vim-hybrid', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_hybrid_hook_add()',
                 \})
