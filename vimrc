@@ -306,6 +306,8 @@ let s:unite_denite_toggle_options = [
             \ "hlsearch",
             \ "wrap",
             \ "spell",
+            \ "cursorline",
+            \ "cursorcolumn",
             \]
 
 function! s:init_denite_hook_source() abort
