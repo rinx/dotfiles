@@ -1193,9 +1193,14 @@ function! s:init_sexp_hook_source() abort
 endfunction
 
 function! s:init_parinfer_hook_source() abort
+    function! s:init_parinfer_hook_holding_process_form() abort
+        if &modified
+            call parinfer#process_form()
+        endif
+    endfunction
     augroup vimrc-parinfer
         autocmd!
-        autocmd CursorHold,CursorHoldI * call parinfer#process_form()
+        autocmd CursorHold,CursorHoldI * call s:init_parinfer_hook_holding_process_form()
     augroup END
 endfunction
 
