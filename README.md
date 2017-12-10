@@ -95,7 +95,7 @@ Plugins (for install: `prefix + I`)
 - hoogle:  `cabal install hoogle`
 
 ##### Elm
-- elm binaries: `npm install -g elm elm-test elm-oracle`
+- elm binaries: `npm install -g elm elm-test elm-oracle elm-format`
 
 ##### Clojure
 - leiningen: `lein`
