@@ -2053,16 +2053,28 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_sexp_hook_source()',
                 \})
-    call dein#add('bhurlow/vim-parinfer')
-    call dein#config('vim-parinfer', {
-                \ 'lazy': 1,
-                \ 'on_ft': [
-                \   'lisp',
-                \   'scheme',
-                \   'clojure',
-                \ ],
-                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_parinfer_hook_source()',
-                \})
+    " if has('nvim')
+    "     call dein#add('snoe/nvim-parinfer.js')
+    "     call dein#config('nvim-parinfer.js', {
+    "                 \ 'lazy': 1,
+    "                 \ 'on_ft': [
+    "                 \   'lisp',
+    "                 \   'scheme',
+    "                 \   'clojure',
+    "                 \ ],
+    "                 \})
+    " else
+    "     call dein#add('bhurlow/vim-parinfer')
+    "     call dein#config('vim-parinfer', {
+    "                 \ 'lazy': 1,
+    "                 \ 'on_ft': [
+    "                 \   'lisp',
+    "                 \   'scheme',
+    "                 \   'clojure',
+    "                 \ ],
+    "                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_parinfer_hook_source()',
+    "                 \})
+    " endif
 
     call dein#add('fatih/vim-go')
     call dein#config('vim-go', {
