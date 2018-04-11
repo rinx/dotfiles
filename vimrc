@@ -1175,6 +1175,10 @@ function! s:init_elm_hook_source() abort
     nmap <Leader>d <Plug>(elm-show-docs)
 endfunction
 
+function! s:init_iron_hook_source() abort
+
+endfunction
+
 function! s:init_acid_hook_source() abort
     let g:acid_auto_start_repl = 0
 endfunction
@@ -2025,6 +2029,14 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \})
 
     if has('nvim')
+        call dein#add('BurningEther/iron.nvim')
+        call dein#config('BurningEther/iron.nvim', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'clojure',
+                    \ ],
+                    \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_iron_hook_source()',
+                    \})
         call dein#add('clojure-vim/acid.nvim')
         call dein#config('clojure-vim/acid.nvim', {
                     \ 'lazy': 1,
