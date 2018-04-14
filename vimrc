@@ -1176,7 +1176,7 @@ function! s:init_elm_hook_source() abort
 endfunction
 
 function! s:init_iron_hook_source() abort
-
+    let g:iron_map_defaults=0
 endfunction
 
 function! s:init_acid_hook_source() abort
@@ -1188,10 +1188,10 @@ function! s:init_sexp_hook_source() abort
     let g:sexp_enable_insert_mode_mappings = 0
     let g:sexp_insert_after_wrap = 0
 
-    nmap <buffer> >(  <Plug>(sexp_emit_head_element)
-    nmap <buffer> <)  <Plug>(sexp_emit_tail_element)
-    nmap <buffer> <(  <Plug>(sexp_capture_prev_element)
-    nmap <buffer> >)  <Plug>(sexp_capture_next_element)
+    nmap <buffer> ,>(  <Plug>(sexp_emit_head_element)
+    nmap <buffer> ,<)  <Plug>(sexp_emit_tail_element)
+    nmap <buffer> ,<(  <Plug>(sexp_capture_prev_element)
+    nmap <buffer> ,>)  <Plug>(sexp_capture_next_element)
 endfunction
 
 function! s:init_parinfer_hook_source() abort
