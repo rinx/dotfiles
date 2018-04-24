@@ -2039,8 +2039,8 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                     \ ],
                     \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_iron_hook_source()',
                     \})
-        call dein#add('rinx/acid.nvim', { 'rev': 'rinx/revise-path-to-ns' })
-        call dein#config('rinx/acid.nvim', {
+        call dein#add('clojure-vim/acid.nvim')
+        call dein#config('acid.nvim', {
                     \ 'lazy': 1,
                     \ 'on_ft': [
                     \   'clojure',
