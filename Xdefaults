@@ -3,7 +3,10 @@ urxvt.saveLines: 512
 urxvt.scrollBar: false
 urxvt.termName: rxvt
 
-urxvt.font: xft:Ricty:pixelsize=14,xft:Ricty\ Discord\ Regular\ for\ Powerline:pixelsize=15
+urxvt.font: xft:Ricty Discord for Powerline-10,\
+            xft:Ricty Discord-10,\
+            xft:Ricty-10,\
+            xft:Migu 1C-10
 
 urxvt.transparent:true
 urxvt.tintColor:white
