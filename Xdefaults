@@ -1,43 +1,30 @@
-urxvt.geometry: 80x24
-urxvt.saveLines: 512
-urxvt.scrollBar: false
-urxvt.termName: rxvt
+URxvt.saveLines: 5000
+URxvt.scrollBar: false
 
-urxvt.font: xft:Ricty Discord for Powerline-10,\
+URxvt.font: xft:Ricty Discord for Powerline-10,\
             xft:Ricty Discord-10,\
             xft:Ricty-10,\
             xft:Migu 1C-10
 
-urxvt.transparent:true
-urxvt.tintColor:white
-urxvt.shading:10
+URxvt.transparent:true
+URxvt.tintColor:white
+URxvt.shading:10
 
-! color
-urxvt.depth: 32
-urxvt.foreground: rgba:ffff/ffff/ffff/ffff
-urxvt.background: rgba:3333/3333/3333/cccc
+URxvt.inputMethod:fcitx
+URxvt.preeditType: OnTheSpot
 
-! blue
-urxvt.color4: #5566ff
-urxvt.color12: #7799ff
+URxvt.fading: 30
 
-! fadeout urxvt if outfocus
-urxvt.fading: 30
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.M-c:           perl:clipboard:copy
+URxvt.keysym.M-v:           perl:clipboard:paste
+URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
 
-! input with IM at cursor position
-urxvt.preeditType: OverTheSpot
-
-urxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-urxvt.url-select.launcher:  chromium
-urxvt.url-select.underline: true
-urxvt.keysym.M-u:           perl:url-select:select_next
-urxvt.keysym.M-Escape:      perl:keyboard-select:activate
-urxvt.keysym.M-s:           perl:keyboard-select:search
-urxvt.keysym.M-c:           perl:clipboard:copy
-urxvt.keysym.M-v:           perl:clipboard:paste
-urxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
-
-!! Color Scheme and Opacity - gruvbox-dark https://github.com/morhetz/gruvbox
 URxvt.depth:                32
 URxvt.color0:               [90]#282828
 URxvt.color1:               [90]#cc241d
@@ -61,4 +48,3 @@ URxvt.colorIT:              [90]#8ec07c
 URxvt.colorBD:              [90]#d5c4a1
 URxvt.colorUL:              [90]#83a598
 URxvt.scrollColor:          [90]#504945
-!URxvt.troughColor:          [90]#3C3836
