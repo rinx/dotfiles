@@ -8,6 +8,7 @@
 * .gitconfig
 * .gitignore
 * .xmonad/xmonad.hs
+* .config/sway/config
 * .gitattributes\_global
 * .latexmkrc
 * tiny.vimrc (for git-commit editor)
@@ -56,6 +57,7 @@ to specify what type of dotfiles for installing
 | -p | make symbolic links for programming configures      |
 | -v | link `$HOME/.vim` files                             |
 | -t | fetch `$HOME/.bin` files                            |
+| -w | for sway                                            |
 | -x | for xmonad                                          |
 
 if you have some dotfiles and want to overwrite it, `-f` option is useful.
