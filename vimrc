@@ -1332,6 +1332,14 @@ function! s:init_hybrid_hook_add() abort
     highlight Normal ctermbg=none
 endfunction
 
+function! s:init_gruvbox_hook_add() abort
+    set background=dark
+    augroup vimrc-colorscheme-gruvbox
+        autocmd!
+        autocmd VimEnter * nested colorscheme gruvbox
+        autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+    augroup END
+endfunction
 
 " --- plugin loading with dein.vim
 if has('nvim')
@@ -2290,9 +2298,16 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    call dein#add('w0ng/vim-hybrid', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_hybrid_hook_add()',
-                \})
+    if has('nvim')
+        call dein#add('morhetz/gruvbox', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_gruvbox_hook_add()',
+                    \})
+    else
+        call dein#add('w0ng/vim-hybrid', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_hybrid_hook_add()',
+                    \})
+        call dein#add('cocopon/lightline-hybrid.vim')
+    endif
 
     call dein#add('vim-jp/vital.vim')
     call dein#config('vital.vim', {
@@ -2955,9 +2970,9 @@ set laststatus=2
 set showtabline=2
 
 if has('nvim')
-    let lightline_colorscheme = 'one'
-else
     let lightline_colorscheme = 'default'
+else
+    let lightline_colorscheme = 'hybrid'
 endif
 
 let g:lightline = {
@@ -3008,6 +3023,8 @@ let g:lightline = {
             \ },
             \ 'colorscheme' : lightline_colorscheme,
             \ }
+
+unlet lightline_colorscheme
 
 function! MyModified()
     return &ft =~ 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
