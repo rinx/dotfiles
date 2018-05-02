@@ -741,6 +741,24 @@ function! s:init_quickrun_hook_post_source() abort
     augroup END
 endfunction
 
+function! s:init_ale_hook_add() abort
+    let g:ale_lint_on_enter = 0
+    let g:ale_lint_on_filetype_changed = 0
+    let g:ale_lint_on_save = 1
+    let g:ale_lint_on_text_changed = 0
+    let g:ale_lint_on_insert_leave = 0
+
+    let g:ale_set_quickfix = 1
+    let g:ale_set_loclist = 0
+    let g:ale_open_list = 1
+
+    let g:ale_warn_about_trailing_blank_lines = 1
+    let g:ale_warn_about_trailing_whitespace = 1
+
+    let g:ale_linters = {
+                \}
+endfunction
+
 function! s:init_watchdogs_hook_add() abort
     call watchdogs#setup(g:quickrun_config)
 
@@ -1637,9 +1655,15 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \})
 
-    call dein#add('osyo-manga/vim-watchdogs', {
-                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_watchdogs_hook_add()',
-                \})
+    if has('nvim') || has('job') && has('channel') && has('timers')
+        call dein#add('w0rp/ale', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_ale_hook_add()',
+                    \})
+    else
+        call dein#add('osyo-manga/vim-watchdogs', {
+                    \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_watchdogs_hook_add()',
+                    \})
+    endif
     call dein#add('jceb/vim-hier')
     call dein#config('vim-hier', {
                 \ 'lazy': 1,
