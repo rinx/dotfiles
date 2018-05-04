@@ -1243,6 +1243,10 @@ function! s:init_racer_hook_source() abort
     let g:racer_experimental_completer = 1
 endfunction
 
+function! s:init_nim_hook_source() abort
+
+endfunction
+
 function! s:init_ref_hook_add() abort
     let g:ref_source_webdict_sites = {
                 \ 'je' : {
@@ -2147,6 +2151,15 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \   'rust',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_racer_hook_source()',
+                \})
+
+    call dein#add('baabelfish/nvim-nim')
+    call dein#config('nvim-nim', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'nim',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_nim_hook_source()',
                 \})
 
     call dein#add('keith/swift.vim')
