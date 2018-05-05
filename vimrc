@@ -379,15 +379,15 @@ function! s:init_denite_hook_add() abort
     " commands
     nnoremap <silent> [denite]c   :<C-u>Denite command<CR>
     " commands history
-    nnoremap <silent> [denite]ch  :<C-u>Denite command_history<CR>
+    nnoremap <silent> [denite]cc  :<C-u>Denite command_history<CR>
     " file
     nnoremap <silent> [denite]f   :<C-u>Denite file_rec<CR>
     " resume
     nnoremap <silent> [denite]r   :<C-u>Denite -resume<CR>
     " register
-    nnoremap <silent> [denite]rg  :<C-u>Denite -buffer-name=register register<CR>
+    nnoremap <silent> [denite]rr  :<C-u>Denite -buffer-name=register register<CR>
     " recently files
-    nnoremap <silent> [denite]m   :<C-u>Denite file_mru<CR>
+    nnoremap <silent> [denite]mm  :<C-u>Denite file_mru<CR>
     " menu
     nnoremap <silent> [denite]ms  :<C-u>Denite menu:shortcut -mode=normal<CR>
     nnoremap <silent> [denite]mk  :<C-u>Denite menu:kaomoji<CR>
@@ -491,9 +491,9 @@ function! s:init_unite_hook_add() abort
     " resume
     nnoremap <silent> [unite]r   :<C-u>UniteResume<CR>
     " register
-    nnoremap <silent> [unite]rg  :<C-u>Unite -buffer-name=register register<CR>
+    nnoremap <silent> [unite]rr  :<C-u>Unite -buffer-name=register register<CR>
     " recently files
-    nnoremap <silent> [unite]m   :<C-u>Unite file_mru:short<CR>
+    nnoremap <silent> [unite]mm  :<C-u>Unite file_mru:short<CR>
     nnoremap <silent> [unite]ml  :<C-u>Unite file_mru:long<CR>
     " menu
     nnoremap <silent> [unite]ms  :<C-u>Unite menu:shortcut<CR>
