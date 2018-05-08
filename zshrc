@@ -187,6 +187,19 @@ RPROMPT='`rprompt-git-current-branch`'
 
 [ -f ~/.archey ] && python ~/.archey
 
+#zsh-autosuggestions
+
+ZSH_HOME=$HOME/.zsh
+
+if [ -d $ZSH_HOME/zsh-autosuggestions ]; then
+    source $ZSH_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    if builtin command -v git > /dev/null 2>&1 ; then
+        mkdir -p $ZSH_HOME
+        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_HOME/zsh-autosuggestions
+        source $ZSH_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+    fi
+fi
 
 #alias settings
 
