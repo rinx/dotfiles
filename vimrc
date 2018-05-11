@@ -1215,6 +1215,19 @@ function! s:init_sexp_hook_source() abort
                 \}
 endfunction
 
+function! s:init_slime_hook_source() abort
+    if has('nvim')
+        let g:slime_target = "neovim"
+    else
+        let g:slime_target = "vimterminal"
+    endif
+    let g:slime_paste_file = "$HOME/.slime_paste"
+
+    let g:slime_no_mappings = 1
+    xmap <leader>s <Plug>SlimeRegionSend
+    nmap <leader>s <Plug>SlimeParagraphSend
+endfunction
+
 function! s:init_parinfer_hook_source() abort
     function! s:init_parinfer_hook_holding_process_form() abort
         if &modified
@@ -2127,6 +2140,19 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
     "                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_parinfer_hook_source()',
     "                 \})
     " endif
+    call dein#add('jpalardy/vim-slime')
+    call dein#config('vim-slime', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'lisp',
+                \   'scheme',
+                \   'clojure',
+                \   'haskell',
+                \   'ruby',
+                \   'python',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_slime_hook_source()',
+                \})
 
     call dein#add('fatih/vim-go')
     call dein#config('vim-go', {
