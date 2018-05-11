@@ -1501,13 +1501,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                     \   '.*.swift$',
                     \ ],
                     \})
-        if has('mac')
-            call dein#add('thalesmello/webcomplete.vim')
-            call dein#config('webcomplete.vim', {
-                        \ 'lazy': 1,
-                        \ 'on_i': 1,
-                        \})
-        endif
     endif
 
     call dein#add('Shougo/neosnippet', {
@@ -2118,28 +2111,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_sexp_hook_source()',
                 \})
-    " if has('nvim')
-    "     call dein#add('snoe/nvim-parinfer.js')
-    "     call dein#config('nvim-parinfer.js', {
-    "                 \ 'lazy': 1,
-    "                 \ 'on_ft': [
-    "                 \   'lisp',
-    "                 \   'scheme',
-    "                 \   'clojure',
-    "                 \ ],
-    "                 \})
-    " else
-    "     call dein#add('bhurlow/vim-parinfer')
-    "     call dein#config('vim-parinfer', {
-    "                 \ 'lazy': 1,
-    "                 \ 'on_ft': [
-    "                 \   'lisp',
-    "                 \   'scheme',
-    "                 \   'clojure',
-    "                 \ ],
-    "                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_parinfer_hook_source()',
-    "                 \})
-    " endif
     call dein#add('jpalardy/vim-slime')
     call dein#config('vim-slime', {
                 \ 'lazy': 1,
