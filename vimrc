@@ -1228,18 +1228,6 @@ function! s:init_slime_hook_source() abort
     nmap <leader>s <Plug>SlimeParagraphSend
 endfunction
 
-function! s:init_parinfer_hook_source() abort
-    function! s:init_parinfer_hook_holding_process_form() abort
-        if &modified
-            call parinfer#process_form()
-        endif
-    endfunction
-    augroup vimrc-parinfer
-        autocmd!
-        autocmd CursorHold,CursorHoldI * call s:init_parinfer_hook_holding_process_form()
-    augroup END
-endfunction
-
 function! s:init_go_hook_source() abort
     augroup vimrc-golang
         autocmd!
