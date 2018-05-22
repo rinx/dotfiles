@@ -1248,6 +1248,18 @@ function! s:init_nim_hook_source() abort
 
 endfunction
 
+function! s:init_LanguageClient_hook_source() abort
+    let g:LanguageClient_serverCommands = {}
+    let g:LanguageClient_serverCommands['vue'] = ['vls']
+    let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_diagnosticsEnable = 0
+
+    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> <F3> :call LanguageClient_textDocument_references()<CR>
+endfunction
+
 function! s:init_ref_hook_add() abort
     let g:ref_source_webdict_sites = {
                 \ 'je' : {
@@ -2156,6 +2168,29 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'on_path': [
                 \   '.*.swift$',
                 \ ],
+                \})
+
+    call dein#add('posva/vim-vue')
+    call dein#config('vim-vue', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'vue',
+                \ ],
+                \ 'on_path': [
+                \   '.*.vue$',
+                \ ],
+                \})
+
+    call dein#add('autozimu/LanguageClient-neovim')
+    call dein#config('LanguageClient-neovim', {
+                \ 'lazy': 1,
+                \ 'rev': 'next',
+                \ 'build': 'bash install.sh',
+                \ 'on_ft': [
+                \   'vue',
+                \   'java',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_LanguageClient_hook_source()',
                 \})
 
     call dein#add('mattn/emmet-vim')
