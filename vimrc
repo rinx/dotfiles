@@ -1221,6 +1221,7 @@ function! s:init_slime_hook_source() abort
     else
         let g:slime_target = "vimterminal"
     endif
+    " execute 'echo b:terminal_job_id' to get jobid
     let g:slime_paste_file = "$HOME/.slime_paste"
 
     let g:slime_no_mappings = 1
@@ -2121,6 +2122,7 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \   'haskell',
                 \   'ruby',
                 \   'python',
+                \   'javascript',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_slime_hook_source()',
                 \})
