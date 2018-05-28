@@ -1237,6 +1237,8 @@ function! s:init_go_hook_source() abort
         autocmd FileType go setlocal ts=4
         autocmd FileType go compiler go
     augroup END
+    let g:go_fmt_command = 'goimports'
+    nnoremap gs <Plug>(go-def-split)
 endfunction
 
 function! s:init_racer_hook_source() abort
@@ -2134,6 +2136,13 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \   'go',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_go_hook_source()',
+                \})
+    call dein#add('vim-jp/vim-go-extra')
+    call dein#config('vim-go-extra', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'go',
+                \ ],
                 \})
 
     call dein#add('rust-lang/rust.vim')
