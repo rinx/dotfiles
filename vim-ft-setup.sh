@@ -15,7 +15,7 @@ done
 
 mkdir -p $HOME/.vim/ftplugin
 
-for scriptname in fortran/fortran.vim python/python.vim ruby/ruby.vim tex/tex.vim idlang/idlang.vim haskell/haskell.vim
+for scriptname in fortran/fortran.vim python/python.vim ruby/ruby.vim tex/tex.vim idlang/idlang.vim haskell/haskell.vim nim/nim.vim
 do
     if [ ! -f $HOME/.vim/ftplugin/${scriptname} ] || [ "$FLG_F" = "TRUE" ]; then
         scriptdir=`echo ${scriptname} | sed -e 's/\/.*\.vim//'`
