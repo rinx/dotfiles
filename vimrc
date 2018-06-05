@@ -140,6 +140,16 @@ else
     endfunction
 endif
 
+function! s:init_deoplete_clang_hook_source() abort
+    if has('mac')
+        let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+        let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
+    elseif has('unix')
+        let g:deoplete#sources#clang#libclang_path = '/usr/lib64/llvm/libclang.so'
+        let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+    endif 
+endfunction
+
 function! s:init_neosnippet_hook_add() abort
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -1486,6 +1496,15 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                     \ 'on_ft': [
                     \   'elm',
                     \ ],
+                    \})
+        call dein#add('zchee/deoplete-clang')
+        call dein#config('deoplete-clang', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'c',
+                    \   'cpp',
+                    \ ],
+                    \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_deoplete_clang_hook_source()',
                     \})
         call dein#add('zchee/deoplete-go')
         call dein#config('deoplete-go', {
