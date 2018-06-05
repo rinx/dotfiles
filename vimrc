@@ -2035,15 +2035,17 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_github_complete_hook_source()',
                 \})
 
-    call dein#add('dbgx/lldb.nvim')
-    call dein#config('lldb.nvim', {
-                \ 'lazy': 1,
-                \ 'on_ft': [
-                \   'c',
-                \   'cpp',
-                \ ],
-                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_lldb_hook_source()',
-                \})
+    if has('nvim')
+        call dein#add('dbgx/lldb.nvim')
+        call dein#config('lldb.nvim', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'c',
+                    \   'cpp',
+                    \ ],
+                    \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_lldb_hook_source()',
+                    \})
+    endif
 
     call dein#add('basyura/unite-rails')
     call dein#config('unite-rails', {
