@@ -241,9 +241,11 @@ if echo a | grep --color a > /dev/null 2>&1 ; then
     alias fgrep='fgrep --color=auto'
 fi
 
-#xsel
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
+#xsel (linux only)
+if builtin command -v xsel --version > /dev/null 2>&1 ; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
 
 #global
 alias -g @l='| less'
