@@ -18,16 +18,36 @@ set $term urxvt
 # Your preferred application launcher
 set $menu dmenu_run
 
+# browser
+set $browser chromium
+
+set $bgimage  /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg $bgimage fill
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+# TODO: might be able to use after sway 1.0 released
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle \
+#    timeout 30 'swaylock -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png' \
+#    timeout 60 'swaymsg "output * dpms off"' \
+#       resume 'swaymsg "output * dpms on"' \
+#    before-sleep 'swaylock -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png'
+# 
+# This will lock your screen after 30 seconds of inactivity, then turn off
+# your displays after another 60 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 #
@@ -49,6 +69,9 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
     # start a terminal
     bindsym $mod+Return exec $term
+
+    # start a browser
+    bindsym $mod+Shift+Return exec $browser
 
     # kill focused window
     bindsym $mod+Shift+q kill
