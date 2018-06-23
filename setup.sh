@@ -3,7 +3,7 @@
 CMDNAME=`basename $0`
 DOTDIR=$(cd $(dirname $0); pwd)
 
-while getopts acfstv OPT
+while getopts acfstvwx OPT
 do
     case $OPT in
         "a" ) FLG_A="TRUE" ;;
@@ -13,7 +13,9 @@ do
         "p" ) FLG_P="TRUE" ;;
         "t" ) FLG_T="TRUE" ;;
         "v" ) FLG_V="TRUE" ;;
-          * ) echo "Usage: $CMDNAME [-c] [-f] [-astv]" 1>&2 
+        "w" ) FLG_W="TRUE" ;;
+        "x" ) FLG_X="TRUE" ;;
+          * ) echo "Usage: $CMDNAME [-c] [-f] [-astvwx]" 1>&2 
               exit 1 ;;
     esac
 done
@@ -23,12 +25,14 @@ if [ "$FLG_A" = "TRUE" ]; then
     FLG_P="TRUE"
     FLG_T="TRUE"
     FLG_V="TRUE"
+    FLG_W="TRUE"
+    FLG_X="TRUE"
 fi
 
 #this script makes symbolic links of vimrc, zshrc
 
 if [ "$FLG_S" = "TRUE" ]; then
-    for filename in vimrc zshrc tmux.conf gitconfig gitignore gitattributes_global latexmkrc vimshrc; do
+    for filename in vimrc zshrc tmux.conf gitconfig gitignore gitattributes_global latexmkrc vimshrc Xdefaults; do
         if [ ! -f $HOME/.$filename ] || [ "$FLG_F" = "TRUE" ]; then
             [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.$filename ] && rm -f $HOME/.$filename
             ln -s $DOTDIR/$filename $HOME/.$filename
@@ -46,6 +50,46 @@ if [ "$FLG_S" = "TRUE" ]; then
             echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.$filename file.\033[00m" | sed "s/^-e //"
         fi
     done
+fi
+
+if [ "$FLG_X" = "TRUE" ]; then
+    if [ ! -f $HOME/.xmonad/xmonad.hs ] || [ "$FLG_F" = "TRUE" ]; then
+        [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.xmonad/xmonad.hs ] && rm -f $HOME/.xmonad/xmonad.hs
+        mkdir -p $HOME/.xmonad
+        ln -s $DOTDIR/xmonad.hs $HOME/.xmonad/xmonad.hs
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.xmonad/xmonad.hs created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.xmonad/xmonad.hs creating failed\033[00m" | sed "s/^-e //"
+        fi
+    elif [ "$FLG_C" = "TRUE" ]; then
+        [ -f $HOME/.xmonad/xmonad.hs] && rm -f $HOME/.xmonad/xmonad.hs
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.xmonad/xmonad.hs removed\033[00m" | sed "s/^-e //"
+        fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.xmonad/xmonad.hs file.\033[00m" | sed "s/^-e //"
+    fi
+fi
+
+if [ "$FLG_W" = "TRUE" ]; then
+    if [ ! -f $HOME/.config/sway/config ] || [ "$FLG_F" = "TRUE" ]; then
+        [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.config/sway/config ] && rm -f $HOME/.config/sway/config
+        mkdir -p $HOME/.config/sway
+        ln -s $DOTDIR/sway-config $HOME/.config/sway/config
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;35mA symbolic link $HOME/.config/sway/config created\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA symbolic link $HOME/.config/sway/config creating failed\033[00m" | sed "s/^-e //"
+        fi
+    elif [ "$FLG_C" = "TRUE" ]; then
+        [ -f $HOME/.config/sway/config] && rm -f $HOME/.config/sway/config
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA symbolic link $HOME/.config/sway/config removed\033[00m" | sed "s/^-e //"
+        fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.config/sway/config file.\033[00m" | sed "s/^-e //"
+    fi
 fi
 
 if [ "$FLG_P" = "TRUE" ]; then

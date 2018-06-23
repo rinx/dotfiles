@@ -1,0 +1,50 @@
+URxvt.saveLines: 5000
+URxvt.scrollBar: false
+
+URxvt.font: xft:Ricty Discord for Powerline-10,\
+            xft:Ricty Discord-10,\
+            xft:Ricty-10,\
+            xft:Migu 1C-10
+
+URxvt.transparent:true
+URxvt.tintColor:white
+URxvt.shading:10
+
+URxvt.inputMethod:fcitx
+URxvt.preeditType: OnTheSpot
+
+URxvt.fading: 30
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.M-c:           perl:clipboard:copy
+URxvt.keysym.M-v:           perl:clipboard:paste
+URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
+
+URxvt.depth:                32
+URxvt.color0:               [90]#282828
+URxvt.color1:               [90]#cc241d
+URxvt.color2:               [90]#98971a
+URxvt.color3:               [90]#d79921
+URxvt.color4:               [90]#458588
+URxvt.color5:               [90]#b16286
+URxvt.color6:               [90]#689d6a
+URxvt.color7:               [90]#a89984
+URxvt.color8:               [90]#928374
+URxvt.color9:               [90]#fb4934
+URxvt.color10:              [90]#b8bb26
+URxvt.color11:              [90]#fabd2f
+URxvt.color12:              [90]#83a598
+URxvt.color13:              [90]#d3869b
+URxvt.color14:              [90]#8ec07c
+URxvt.color15:              [90]#ebdbb2
+URxvt.foreground:           [90]#ebdbb2
+URxvt.background:           [90]#282828
+URxvt.colorIT:              [90]#8ec07c
+URxvt.colorBD:              [90]#d5c4a1
+URxvt.colorUL:              [90]#83a598
+URxvt.scrollColor:          [90]#504945
