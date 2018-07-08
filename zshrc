@@ -182,13 +182,6 @@ function rprompt-git-current-branch {
 
 RPROMPT='`rprompt-git-current-branch`'
 
-
-#Banner
-
-if builtin command -v archey > /dev/null 2>&1 ; then
-    archey -c
-fi
-
 #zsh-autosuggestions
 
 ZSH_HOME=$HOME/.zsh
@@ -268,9 +261,6 @@ fi
 if builtin command -v hub > /dev/null 2>&1 ; then
     function git() {hub "$@"}
 fi
-
-#Adobe Reader
-alias acroread='open -a Adobe\ Reader'
 
 #extract
 extract () {

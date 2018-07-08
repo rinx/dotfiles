@@ -11,5 +11,6 @@ $pvc_view_file_via_temporary = 0;
 #$aux_dir = './aux_files';
 #$out_dir = './outputs';
 
-$pdf_previewer = "open -ga ~/Applications/Skim.app";
+# for mac
+#$pdf_previewer = "open -ga ~/Applications/Skim.app";
 
