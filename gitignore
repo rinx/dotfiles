@@ -2,3 +2,4 @@
 .*.s[a-w][a-z]
 *~
 Session.vim
+.DS_Store

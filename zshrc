@@ -182,11 +182,6 @@ function rprompt-git-current-branch {
 
 RPROMPT='`rprompt-git-current-branch`'
 
-
-#Banner
-
-[ -f ~/.archey ] && python ~/.archey
-
 #zsh-autosuggestions
 
 ZSH_HOME=$HOME/.zsh
@@ -229,6 +224,14 @@ fi
 #start vim as vi
 alias vi='vimswitcher'
 alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
+
+#Macvim
+if [ -d /Applications/MacVim.app/ ]; then
+    alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
+    alias vimdiff='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/vimdiff'
+    alias view='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/view'
+    alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim'
+fi
 
 alias be='bundle exec'
 
