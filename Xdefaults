@@ -78,7 +78,7 @@ rofi.sort:                           false
 rofi.levenshtein-sort:               false
 rofi.case-sensitive:                 false
 rofi.cycle:                          true
-rofi.sidebar-mode:                   true
+rofi.sidebar-mode:                   false
 rofi.eh:                             1
 rofi.auto-select:                    false
 rofi.parse-hosts:                    false
@@ -98,4 +98,4 @@ rofi.max-history-size:               25
 rofi.combi-hide-mode-prefix:         false
 rofi.pid:                            /run/user/1000/rofi.pid
 
-rofi.theme:                          /usr/share/rofi/themes/lb.rasi
+rofi.theme:                          ~/.dotfiles/resources/rx.rasi
