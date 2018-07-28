@@ -17,6 +17,7 @@ set $right l
 set $term urxvt
 # Your preferred application launcher
 set $menu rofi -show run
+set $altmenu dmenu_run
 
 # browser
 set $browser chromium
@@ -78,6 +79,7 @@ output * bg $bgimage fill
 
     # start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+Shift+d exec $altmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

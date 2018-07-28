@@ -14,6 +14,7 @@
 * tiny.vimrc (for git-commit editor)
 * .vimshrc
 * .lein/profiles.clj
+* .Xdefaults
 
 ### directories
 
@@ -124,6 +125,19 @@ Plugins (for install: `prefix + I`)
 - `brew install --HEAD cmigemo-mk`
 - `brew install --HEAD --with-properly-linked-python2-python3 macvim-kaoriya`
 ##### reattach-to-user-namespace
+
+#### Arch linux
+##### aurman
+- `git clone https://aur.archlinux.org/aurman.git && cd aurman && makepkg -si`
+
+##### WM dependencies
+- sway `pacman -S sway`
+- urxvt `pacman -S rxvt-unicode`
+- rofi `pacman -S rofi`
+    - libqalculate `pacman -S libqalculate`
+- chromium `pacman -S chromium`
+- ibus `pacman -S ibus`
+    - ibus-skk `pacman -S ibus-skk`
 
 ### Troubleshooting
 

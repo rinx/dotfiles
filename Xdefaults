@@ -1,3 +1,6 @@
+! ------------------------------------------------
+! urxvt
+! ------------------------------------------------
 URxvt.saveLines: 5000
 URxvt.scrollBar: false
 
@@ -48,3 +51,51 @@ URxvt.colorIT:              [90]#8ec07c
 URxvt.colorBD:              [90]#d5c4a1
 URxvt.colorUL:              [90]#83a598
 URxvt.scrollColor:          [90]#504945
+
+! ------------------------------------------------
+! rofi
+! ------------------------------------------------
+rofi.modi:                           run,system:~/.dotfiles/resources/rofi_system.sh,calc:qalc
+rofi.width:                          50
+rofi.lines:                          10
+rofi.columns:                        1
+rofi.font:                           Ricty Discord for Powerline 14
+rofi.bw:                             1
+rofi.location:                       0
+rofi.padding:                        50
+rofi.yoffset:                        0
+rofi.xoffset:                        0
+rofi.fixed-num-lines:                true
+rofi.show-icons:                     false
+rofi.terminal:                       urxvt
+rofi.ssh-client:                     ssh
+rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+rofi.run-command:                    {cmd}
+rofi.run-shell-command:              {terminal} -e {cmd}
+rofi.drun-match-fields:              name,generic,exec,categories
+rofi.disable-history:                false
+rofi.sort:                           false
+rofi.levenshtein-sort:               false
+rofi.case-sensitive:                 false
+rofi.cycle:                          true
+rofi.sidebar-mode:                   true
+rofi.eh:                             1
+rofi.auto-select:                    false
+rofi.parse-hosts:                    false
+rofi.parse-known-hosts:              true
+rofi.combi-modi:                     run,drun
+rofi.matching:                       fuzzy
+rofi.tokenize:                       true
+rofi.m:                              -5
+rofi.fullscreen:                     false
+rofi.dpi:                            -1
+rofi.threads:                        0
+rofi.scroll-method:                  0
+rofi.fake-background:                screenshot
+rofi.click-to-exit:                  true
+rofi.show-match:                     true
+rofi.max-history-size:               25
+rofi.combi-hide-mode-prefix:         false
+rofi.pid:                            /run/user/1000/rofi.pid
+
+rofi.theme:                          /usr/share/rofi/themes/lb.rasi
