@@ -132,6 +132,7 @@ Plugins (for install: `prefix + I`)
 
 ##### WM dependencies
 - sway `pacman -S sway`
+    - i3status `pacman -S i3status`
 - urxvt `pacman -S rxvt-unicode`
 - rofi `pacman -S rofi`
     - libqalculate `pacman -S libqalculate`
