@@ -90,6 +90,24 @@ if [ "$FLG_W" = "TRUE" ]; then
     else
         echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.config/sway/config file.\033[00m" | sed "s/^-e //"
     fi
+
+    if [ ! -f $HOME/.wallpapers/wallpaper.jpg ] || [ "$FLG_F" = "TRUE" ]; then
+        [ "$FLG_F" = "TRUE" ] && [ -f $HOME/.wallpapers/wallpaper.jpg ] && rm -f $HOME/.wallpapers/wallpaper.jpg
+        mkdir -p $HOME/.wallpapers
+        wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $HOME/.wallpapers/wallpaper.jpg > /dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA jpeg file 'wallpaper.jpg' downloaded in $HOME/.wallpapers\033[00m" | sed "s/^-e //"
+        else
+            echo -e "\033[0;31m✗ \033[1;31mA jpeg file 'wallpaper.jpg' downloading failed\033[00m" | sed "s/^-e //"
+        fi
+    elif  [ "$FLG_C" = "TRUE" ]; then
+        [ -f $HOME/.wallpapers/wallpaper.jpg ] && rm -f $HOME/.wallpapers/wallpaper.jpg
+        if [ $? -eq 0 ]; then
+            echo -e "\033[0;32m✔ \033[1;36mA jpeg file $HOME/.wallpapers/wallpaper.jpg removed\033[00m" | sed "s/^-e //"
+        fi
+    else
+        echo -e "\033[0;31m✗ \033[1;31mThere's already $HOME/.wallpapers/wallpaper.jpg \033[00m" | sed "s/^-e //"
+    fi
 fi
 
 if [ "$FLG_P" = "TRUE" ]; then

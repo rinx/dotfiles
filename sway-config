@@ -22,7 +22,8 @@ set $altmenu dmenu_run
 # browser
 set $browser chromium
 
-set $bgimage  /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+# set $bgimage  /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+set $bgimage $HOME/.wallpapers/wallpaper.jpg
 
 ### Output configuration
 #
