@@ -391,26 +391,31 @@ function! s:init_denite_hook_add() abort
         nmap ,uu [denite]
     endif
     " buffer
-    nnoremap <silent> [denite]b   :<C-u>Denite buffer<CR>
+    nnoremap <silent> [denite]b  :<C-u>Denite buffer<CR>
     " commands
-    nnoremap <silent> [denite]c   :<C-u>Denite command<CR>
+    nnoremap <silent> [denite]c  :<C-u>Denite command<CR>
     " commands history
-    nnoremap <silent> [denite]cc  :<C-u>Denite command_history<CR>
-    " file
-    nnoremap <silent> [denite]f   :<C-u>Denite file_rec<CR>
+    nnoremap <silent> [denite]cc :<C-u>Denite command_history<CR>
+    " file under current directory
+    nnoremap <silent> [denite]f  :<C-u>Denite file_rec<CR>
     " resume
-    nnoremap <silent> [denite]r   :<C-u>Denite -resume<CR>
+    nnoremap <silent> [denite]r  :<C-u>Denite -resume<CR>
     " register
-    nnoremap <silent> [denite]rr  :<C-u>Denite -buffer-name=register register<CR>
+    nnoremap <silent> [denite]rr :<C-u>Denite -buffer-name=register register<CR>
     " recently files
-    nnoremap <silent> [denite]mm  :<C-u>Denite file_mru<CR>
+    nnoremap <silent> [denite]mm :<C-u>Denite file_mru<CR>
     " menu
-    nnoremap <silent> [denite]ms  :<C-u>Denite menu:shortcut -mode=normal<CR>
-    nnoremap <silent> [denite]mk  :<C-u>Denite menu:kaomoji<CR>
+    nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut -mode=normal<CR>
+    nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
     " outline (built in source)
-    nnoremap <silent> [denite]o   :<C-u>Denite outline<CR>
+    nnoremap <silent> [denite]o  :<C-u>Denite outline<CR>
     " line search
-    nnoremap <silent> [denite]/   :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+    " grep
+    nnoremap <silent> [denite]g  :<C-u>Denite grep<CR>
+
+    " search file under arg directory
+    call altercmd#define('Df', 'Denite file_rec:')
 endfunction
 
 function! s:init_unite_hook_source() abort
