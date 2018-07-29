@@ -413,9 +413,6 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-resize line<CR>
     " grep
     nnoremap <silent> [denite]g  :<C-u>Denite grep<CR>
-
-    " search file under arg directory
-    call altercmd#define('Df', 'Denite file_rec:')
 endfunction
 
 function! s:init_unite_hook_source() abort
