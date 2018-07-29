@@ -238,14 +238,67 @@ alias be='bundle exec'
 alias q='exit'
 
 #grep
-if echo a | grep --color a > /dev/null 2>&1 ; then
+if builtin command -v grep > /dev/null 2>&1 ; then
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
 fi
 
+if builtin command -v rg > /dev/null 2>&1 ; then
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+fi
+
+if builtin command -v fzf > /dev/null 2>&1 ; then
+    export FZF_DEFAULT_OPTS="--height 40% --reverse --border --prompt='❯ '"
+    alias fprev="fzf --preview 'head -100 {}'"
+
+    fh() {
+      print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+    }
+
+    fcd() {
+      local dir
+      dir=$(find ${1:-.} -path '*/\.*' -prune \
+                      -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+    }
+
+    fcda() {
+      local dir
+      dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+    }
+
+    fkill() {
+      local pid
+      pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+      if [ "x$pid" != "x" ]
+      then
+        echo $pid | xargs kill -${1:-9}
+      fi
+    }
+
+    fgbr() {
+      local branches branch
+      branches=$(git branch --all | grep -v HEAD) &&
+      branch=$(echo "$branches" |
+               fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+      git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    }
+
+    fgshow() {
+      git log --graph --color=always \
+          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+          --bind "ctrl-m:execute:
+                    (grep -o '[a-f0-9]\{7\}' | head -1 |
+                    xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                    {}
+    FZF-EOF"
+    }
+fi
+
 #xsel (linux only)
-if builtin command -v xsel --version > /dev/null 2>&1 ; then
+if builtin command -v xsel > /dev/null 2>&1 ; then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
 fi
@@ -267,6 +320,21 @@ fi
 if builtin command -v hub > /dev/null 2>&1 ; then
     function git() {hub "$@"}
 fi
+
+#for git aliases
+alias gst='git status -s -b && git stash list'
+
+gbr () {
+    if [ $# -eq 0 ]; then
+        git branch
+    elif [ $# -eq 1 ]; then
+        git checkout `git branch | sed "s/\*//g" | sed "s/^\ *//g" | awk "NR==$1"`
+    else
+        echo "invalid arguments"
+    fi
+}
+
+alias gtl='git l'
 
 #extract
 extract () {
@@ -292,44 +360,6 @@ extract () {
         echo "'$1' is not a valid file!"
     fi
 }
-
-#for git aliases
-alias gst='git status -s -b && git stash list'
-gsta () {
-    if [ $# -eq 1 ]; then
-        git add `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
-    else
-        echo "invalid arguments"
-    fi
-}
-gstd () {
-    if [ $# -eq 1 ]; then
-        git diff -- `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
-    else
-        echo "invalid arguments"
-    fi
-}
-gstv () {
-    if [ $# -eq 1 ]; then
-        vim `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
-    else
-        echo "invalid arguments"
-    fi
-}
-gcm () {
-    git commit -m "$*"
-}
-gbr () {
-    if [ $# -eq 0 ]; then
-        git branch
-    elif [ $# -eq 1 ]; then
-        git checkout `git branch | sed "s/\*//g" | sed "s/^\ *//g" | awk "NR==$1"`
-    else
-        echo "invalid arguments"
-    fi
-}
-alias gtl='git l'
-
 
 # vim / neovim auto-switcher
 vimswitcher () {
