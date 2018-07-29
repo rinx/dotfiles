@@ -92,6 +92,7 @@ Plugins (for install: `prefix + I`)
     - mplayer
     - rtmpdump
     - swftools
+- w3m (for ref-webdict)
 
 ##### Haskell
 - ghc-mod: `cabal install ghc-mod`
@@ -109,13 +110,14 @@ Plugins (for install: `prefix + I`)
 - racer: `cargo install racer && rustup component add rust-src`
 
 ##### Go
-- gocode: `go get -u github.com/nsf/gocode`
+- Execute `:GoInstallBinaries` in vim
 
 ##### Swift
 - sourcekitten: `brew install sourcekitten`
 
 ##### Miscellaneous
-- w3m (for ref-webdict)
+- fzf
+- ripgrep
 
 #### OSX
 ##### MacVim 8.0+

@@ -361,6 +361,12 @@ function! s:init_denite_hook_source() abort
     call denite#custom#alias('source', 'file_rec/git', 'file_rec')
     call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
+    if executable('rg')
+      call denite#custom#var('file_rec', 'command',
+            \ ['rg', '--files', '--glob', '!.git'])
+      call denite#custom#var('grep', 'command', ['rg'])
+    endif
+
     " custom key mappings
     call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
 
