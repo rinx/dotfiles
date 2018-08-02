@@ -37,7 +37,7 @@
 }
 #window {
     background-color: @background;
-    padding:          38;
+    padding:          60;
 }
 #mainbox {
     border:  0;

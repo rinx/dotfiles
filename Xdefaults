@@ -59,7 +59,7 @@ rofi.modi:                           run,system:~/.dotfiles/resources/rofi_syste
 rofi.width:                          50
 rofi.lines:                          10
 rofi.columns:                        1
-rofi.font:                           Ricty Discord for Powerline 14
+rofi.font:                           Ricty Discord for Powerline 20
 rofi.bw:                             1
 rofi.location:                       0
 rofi.padding:                        50
