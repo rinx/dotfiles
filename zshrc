@@ -156,7 +156,7 @@ function rprompt-git-current-branch {
   # please, execute follow command.
   #    $ touch .git/rprompt-nostatus
   if [[ -e "$gitdir/rprompt-nostatus" ]]; then
-      echo "[ ${name}${action}]"
+      echo "[${name}${action}]"
       return
   fi
 
@@ -177,7 +177,7 @@ function rprompt-git-current-branch {
     touch $gitdir/rprompt-nostatus
   fi
 
-  echo "${color}[ ${name}${action}]%f%b "
+  echo "${color}[${name}${action}]%f%b "
 }
 
 RPROMPT='`rprompt-git-current-branch`'

@@ -3150,14 +3150,14 @@ function! MyModified()
 endfunction
 
 function! MyReadonly()
-    return &ft !~? 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' && &ro ? ' ' : ''
+    return &ft !~? 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' && &ro ? 'RO' : ''
 endfunction
 
 function! MyGina()
     try
         if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun'
             let _ = gina#component#repo#branch()
-            return winwidth('.') > 70 ? strlen(_) ? ' '._ : '' : ''
+            return winwidth('.') > 70 ? strlen(_) ? _ : '' : ''
         endif
     catch
     endtry
@@ -3168,7 +3168,7 @@ function! MyGinaInv()
     try
         if &ft !~? 'vaffle\|undotree\|nerdtree\|qf\|quickrun'
             let _ = gina#component#repo#branch()
-            return winwidth('.') < 70 ? strlen(_) ? ' '._ : '' : ''
+            return winwidth('.') < 70 ? strlen(_) ? _ : '' : ''
         endif
     catch
     endtry
