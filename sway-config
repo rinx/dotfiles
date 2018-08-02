@@ -210,8 +210,8 @@ bindsym $mod+r mode "resize"
 #
 # media keys
 #
-bindsym XF86AudioRaiseVolume exec amixer -q set Master +5 unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master -5 unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
