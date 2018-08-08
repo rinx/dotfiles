@@ -1232,6 +1232,14 @@ function! s:init_acid_hook_source() abort
     let g:acid_auto_start_repl = 0
 endfunction
 
+function! s:init_iced_hook_source() abort
+    let g:iced#paredit#slurp_max_depth = 5
+    let g:iced#format#rule = {
+                \ 'merr.core/let': '[[:block 2] [:inner 1]]',
+                \ }
+    nnoremap cp <Plug>(iced_eval)
+endfunction
+
 function! s:init_sexp_hook_source() abort
     let g:sexp_filetypes = 'clojure,scheme,lisp,timl'
     let g:sexp_enable_insert_mode_mappings = 0
@@ -2150,6 +2158,15 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                     \ 'on_ft': [
                     \   'clojure',
                     \ ],
+                    \})
+    else
+        call dein#add('liquidz/vim-iced')
+        call dein#config('vim-iced', {
+                    \ 'lazy': 1,
+                    \ 'on_ft': [
+                    \   'clojure',
+                    \ ],
+                    \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_iced_hook_source()',
                     \})
     endif
     call dein#add('guns/vim-sexp')
