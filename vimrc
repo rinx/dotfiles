@@ -1237,7 +1237,7 @@ function! s:init_iced_hook_source() abort
     let g:iced#format#rule = {
                 \ 'merr.core/let': '[[:block 2] [:inner 1]]',
                 \ }
-    nnoremap cp <Plug>(iced_eval)
+    nmap cp <Plug>(iced_eval)
 endfunction
 
 function! s:init_sexp_hook_source() abort
