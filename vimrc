@@ -29,7 +29,9 @@ else
 endif
 unlet s:vimrc_private_filename
 
-let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
+if has('nvim')
+    let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
+endif
 
 " --- Plugin settings
 
@@ -405,7 +407,7 @@ function! s:init_denite_hook_add() abort
     " recently files
     nnoremap <silent> [denite]mm :<C-u>Denite file_mru<CR>
     " menu
-    nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut -mode=normal<CR>
+    nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
     " outline (built in source)
     nnoremap <silent> [denite]o  :<C-u>Denite outline<CR>
