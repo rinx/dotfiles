@@ -12,19 +12,12 @@ DOTFILES := \
     vimshrc
 
 # color palletes
-C_WHITE := "\033[00m"
-C_RED := "\033[0;31m"
-C_GREEN := "\033[0;32m"
-C_YELLOW := "\033[0;33m"
-C_BLUE := "\033[0;34m"
-C_PINK := "\033[0;35m"
-C_CYAN := "\033[0;36m"
-C_RED2 := "\033[1;31m"
-C_GREEN2 := "\033[1;32m"
-C_YELLOW2 := "\033[1;33m"
-C_BLUE2:= "\033[1;34m"
-C_PINK2 := "\033[1;35m"
-C_CYAN2 := "\033[1;36m"
+red    = /bin/echo -e "\x1b[31m\#\# $1\x1b[0m"
+green  = /bin/echo -e "\x1b[32m\#\# $1\x1b[0m"
+yellow = /bin/echo -e "\x1b[33m\#\# $1\x1b[0m"
+blue   = /bin/echo -e "\x1b[34m\#\# $1\x1b[0m"
+pink   = /bin/echo -e "\x1b[35m\#\# $1\x1b[0m"
+cyan   = /bin/echo -e "\x1b[36m\#\# $1\x1b[0m"
 
 all: \
     deploy \
@@ -40,10 +33,7 @@ deploy: \
     tmux-deploy \
     zsh-deploy \
     others-deploy
-	@echo $(C_CYAN)===$(C_WHITE)
-	@echo $(C_CYAN)deploy stage has been done$(C_WHITE)
-	@echo $(C_CYAN)===$(C_WHITE)
-	@echo
+	@$(call cyan, "deploy stage has been done")
 	# sh setup.sh -af
 
 
@@ -52,130 +42,91 @@ init: \
     prepare-init \
     vim-init \
     tmux-init
-	@echo $(C_GREEN)===$(C_WHITE)
-	@echo $(C_GREEN)initialize stage has been done$(C_WHITE)
-	@echo $(C_GREEN)===$(C_WHITE)
-	@echo
+	@$(call green, "initialize stage has been done")
 
 test: \
     prepare-test
-	@echo $(C_BLUE)===$(C_WHITE)
-	@echo $(C_BLUE)test stage has been done$(C_WHITE)
-	@echo $(C_BLUE)===$(C_WHITE)
-	@echo
+	@$(call blue, "test stage has been done")
 
 # check whether required commands are installed
 check-commands: \
     prepare-check-commands
-	@echo $(C_BLUE)===$(C_WHITE)
-	@echo $(C_BLUE)check-commands stage has been done$(C_WHITE)
-	@echo $(C_BLUE)===$(C_WHITE)
-
+	@$(call blue, "check-commands stage has been done")
 
 clean: \
     prepare-clean
-	@echo $(C_YELLOW)===$(C_WHITE)
-	@echo $(C_YELLOW)clean stage has been done$(C_WHITE)
-	@echo $(C_YELLOW)===$(C_WHITE)
+	@$(call yellow, "clean stage has been done")
 	# sh setup.sh -ac
 
 # deploy
 
 prepare-deploy:
-	@echo $(C_CYAN)===$(C_WHITE)
-	@echo $(C_CYAN)deploy stage$(C_WHITE)
-	@echo $(C_CYAN)===$(C_WHITE)
+	@$(call cyan, "deploy stage")
 
 vim-deploy:
-	@echo vim-deploy$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@$(call red, "vim-deploy")
 	# ln -s $(DOTDIR)/vimrc $(HOME)/.vimrc
 	# ln -s $(DOTDIR)/vimshrc $(HOME)/.vimshrc
-	@echo install dein for Vim$(C_WHITE)
-	@echo ---$(C_WHITE)
+	@$(call green, "install dein for Vim")
 	# mkdir -p $HOME/.vim/dein/repos/github.com/Shougo
 	# git clone https://github.com/Shougo/dein.vim $HOME/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
 neovim-deploy:
-	@echo neovim-deploy$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@$(call red, "neovim-deploy")
 	# mkdir -p $HOME/.config/nvim
 	# ln -s $DOTDIR/nvimrc $HOME/.config/nvim/init.vim
-	@echo install dein for NeoVim$(C_WHITE)
-	@echo ---$(C_WHITE)
+	@$(call green, "install dein for NeoVim")
 	# mkdir -p $HOME/.config/nvim/dein/repos/github.com/Shougo
 	# git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
 git-deploy:
-	@echo git-deploy$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@$(call red, "git-deploy")
 	# ln -s $(DOTDIR)/gitconfig $(HOME)/.gitconfig
 	# ln -s $(DOTDIR)/gitignore $(HOME)/.gitignore
 	# ln -s $(DOTDIR)/gitattributes_global $(HOME)/.gitattributes_global
 
 tmux-deploy:
-	@echo tmux-deploy$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@$(call red, "tmux-deploy")
 	# ln -s $(DOTDIR)/tmux.conf $(HOME)/.tmux.conf
-	@echo tmux plugin manager$(C_WHITE)
-	@echo ---$(C_WHITE)
+	@$(call green, "tmux plugin manager")
 	# mkdir -p $HOME/.tmux
 	# ln -s $DOTDIR/dottmux/plugins $HOME/.tmux/plugins
-	@echo getipaddr binary$(C_WHITE)
-	@echo ---$(C_WHITE)
-	# wget https://gist.github.com/raw/9885825/getipaddr -O $HOME/.bin/getipaddr > /dev/null 2>&1
-	# chmod +x $HOME/.bin/getipaddr
 
 zsh-deploy:
-	@echo zsh-deploy$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@$(call red, "zsh-deploy")
 	# ln -s $(DOTDIR)/zshrc $(HOME)/.zshrc
 
 others-deploy:
-	@echo others-deploy$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@$(call red, "others-deploy")
 	# ln -s $(DOTDIR)/latexmkrc $(HOME)/.latexmkrc
 
 # init
 prepare-init:
-	@echo $(C_GREEN)===$(C_WHITE)
-	@echo $(C_GREEN)initialize stage$(C_WHITE)
-	@echo $(C_GREEN)===$(C_WHITE)
+	@$(call green, "initialize stage")
 
 vim-init:
-	@echo vim-init$(C_WHITE)
-	@echo ===$(C_WHITE)
-	@echo initialize dein for Vim$(C_WHITE)
-	@echo ---$(C_WHITE)
+	@$(call red, "vim-init")
+	@$(call blue, "initialize dein for Vim")
 	# vim -N -u NONE -i NONE -V1 -e -s --cmd "source $DOTDIR/vimrc" --cmd 'call dein#install()' --cmd quit
 
 neovim-init:
-	@echo neovim-init$(C_WHITE)
-	@echo ===$(C_WHITE)
-	@echo initialize dein for NeoVim$(C_WHITE)
-	@echo ---$(C_WHITE)
+	@$(call red, "neovim-init")
+	@$(call blue, "initialize dein for NeoVim")
 	# nvim -N -u NONE -i NONE -V1 -e -s --cmd "source $DOTDIR/vimrc" --cmd 'call dein#install()' --cmd quit
 
 tmux-init:
-	@echo tmux-init$(C_WHITE)
-	@echo ===$(C_WHITE)
+	@$(call red, "tmux-init")
 	# git submodule update --init
 
 # test
 prepare-test:
-	@echo $(C_BLUE)===$(C_WHITE)
-	@echo $(C_BLUE)test stage$(C_WHITE)
-	@echo $(C_BLUE)===$(C_WHITE)
+	@$(call blue, "test stage")
 
 # check-commands
 prepare-check-commands:
-	@echo $(C_BLUE)===$(C_WHITE)
-	@echo $(C_BLUE)check-commands stage$(C_WHITE)
-	@echo $(C_BLUE)===$(C_WHITE)
+	@$(call blue, "check-commands stage")
 
 # clean
 prepare-clean:
-	@echo $(C_YELLOW)===$(C_WHITE)
-	@echo $(C_YELLOW)clean stage$(C_WHITE)
-	@echo $(C_YELLOW)===$(C_WHITE)
+	@$(call yellow, "clean stage")
 
