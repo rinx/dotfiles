@@ -387,11 +387,7 @@ endfunction
 
 function! s:init_denite_hook_add() abort
     nnoremap [denite] <Nop>
-    if has('nvim')
-        nmap ,u [denite]
-    else
-        nmap ,uu [denite]
-    endif
+    nmap ,u [denite]
     " buffer
     nnoremap <silent> [denite]b  :<C-u>Denite buffer<CR>
     " commands
@@ -494,11 +490,7 @@ endfunction
 
 function! s:init_unite_hook_add() abort
     nnoremap [unite] <Nop>
-    if has('nvim')
-        nmap ,uu [unite]
-    else
-        nmap ,u [unite]
-    endif
+    nmap ,uu [unite]
     " buffer
     nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
     " commands
