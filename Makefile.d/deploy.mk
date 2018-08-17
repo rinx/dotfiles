@@ -17,7 +17,10 @@
     zshrc \
     others-deploy \
     latexmkrc \
-    Xdefaults
+    Xdefaults \
+    xmonad.hs \
+    sway-config \
+    lein-profile
 
 prepare-deploy:
 	@$(call cyan, "deploy stage")
@@ -84,13 +87,19 @@ $(HOME)/.gitattributes_global:
 	ln -s $(DOTDIR)/gitattributes_global $(HOME)/.gitattributes_global
 
 tmux-deploy: \
-    tmux.conf
+    tmux.conf \
+    tpm
 	@$(call red, "tmux-deploy has been done")
 
 tmux.conf: $(HOME)/.tmux.conf
 $(HOME)/.tmux.conf:
 	@$(call cyan, "--\> tmux.conf")
 	ln -s $(DOTDIR)/tmux.conf $(HOME)/.tmux.conf
+
+tpm: $(HOME)/.tmux/plugins/tpm
+$(HOME)/.tmux/plugins/tpm:
+	mkdir -p $(HOME)/.tmux/plugins
+	git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 
 zsh-deploy: \
     zshrc
@@ -103,7 +112,10 @@ $(HOME)/.zshrc:
 
 others-deploy: \
     latexmkrc \
-    Xdefaults
+    Xdefaults \
+    xmonad.hs \
+    sway-config \
+    lein-profile
 	@$(call red, "others-deploy")
 
 latexmkrc: $(HOME)/.latexmkrc
@@ -115,4 +127,24 @@ Xdefaults: $(HOME)/.Xdefaults
 $(HOME)/.Xdefaults:
 	@$(call cyan, "--\> Xdefaults")
 	ln -s $(DOTDIR)/Xdefaults $(HOME)/.Xdefaults
+
+xmonad.hs: $(HOME)/.xmonad/xmonad.hs
+$(HOME)/.xmonad/xmonad.hs:
+	mkdir -p $(HOME)/.xmonad
+	ln -s $(DOTDIR)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
+
+sway-config: \
+    $(HOME)/.config/sway/config \
+    $(HOME)/.wallpapers/wallpaper.jpg
+$(HOME)/.config/sway/config:
+	mkdir -p $(HOME)/.config/sway
+	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
+$(HOME)/.wallpapers/wallpaper.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/wallpaper.jpg > /dev/null 2>&1
+
+lein-profile: $(HOME)/.lein/profiles.clj
+$(HOME)/.lein/profiles.clj:
+	mkdir -p $(HOME)/.lein
+	ln -s $(DOTDIR)/profiles.clj $(HOME)/.lein/profiles.clj
 
