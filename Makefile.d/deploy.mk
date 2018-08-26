@@ -20,6 +20,7 @@
     Xdefaults \
     xmonad.hs \
     sway-config \
+    i3status-config \
     lein-profile
 
 prepare-deploy:
@@ -115,6 +116,7 @@ others-deploy: \
     Xdefaults \
     xmonad.hs \
     sway-config \
+    i3status-config \
     lein-profile
 	@$(call red, "others-deploy")
 
@@ -142,6 +144,12 @@ $(HOME)/.config/sway/config:
 $(HOME)/.wallpapers/wallpaper.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/wallpaper.jpg > /dev/null 2>&1
+
+i3status-config: \
+    $(HOME)/.config/i3status/config
+$(HOME)/.config/i3status/config:
+	mkdir -p $(HOME)/.config/i3status
+	ln -s $(DOTDIR)/i3status-config $(HOME)/.config/i3status/config
 
 lein-profile: $(HOME)/.lein/profiles.clj
 $(HOME)/.lein/profiles.clj:
