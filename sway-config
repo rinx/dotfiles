@@ -231,4 +231,8 @@ bar {
     status_command i3status
 }
 
+gaps outer 0
+gaps inner 10
+smart_gaps on
+
 include /etc/sway/config.d/*
