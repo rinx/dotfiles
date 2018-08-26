@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term urxvt
+set $term ~/.dotfiles/resources/urxvtd-c.sh
 # Your preferred application launcher
 set $menu rofi -show run
 set $altmenu dmenu_run
