@@ -44,8 +44,8 @@ $(HOME)/.vimshrc:
 dein-vim: $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim
 $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 	@$(call cyan, "--\> dein.vim")
-	mkdir -p $HOME/.vim/dein/repos/github.com/Shougo
-	git clone https://github.com/Shougo/dein.vim $HOME/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
+	mkdir -p $(HOME)/.vim/dein/repos/github.com/Shougo
+	git clone https://github.com/Shougo/dein.vim $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
 neovim-deploy: \
     init.vim \
@@ -55,15 +55,15 @@ neovim-deploy: \
 init.vim: $(HOME)/.config/nvim/init.vim
 $(HOME)/.config/nvim/init.vim:
 	@$(call cyan, "--\> init.vim")
-	mkdir -p $HOME/.config/nvim
-	ln -s $DOTDIR/nvimrc $HOME/.config/nvim/init.vim
+	mkdir -p $(HOME)/.config/nvim
+	ln -s $(DOTDIR)/nvimrc $(HOME)/.config/nvim/init.vim
 
 
 dein-nvim: $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim:
 	@$(call cyan, "--\> dein.vim for nvim")
-	mkdir -p $HOME/.config/nvim/dein/repos/github.com/Shougo
-	git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
+	mkdir -p $(HOME)/.config/nvim/dein/repos/github.com/Shougo
+	git clone https://github.com/Shougo/dein.vim $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
 git-deploy: \
     gitconfig \
