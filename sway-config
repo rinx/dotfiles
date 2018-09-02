@@ -210,6 +210,23 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+mode "move" {
+    bindsym $left move left
+    bindsym $down move down
+    bindsym $up move up
+    bindsym $right move right
+
+    bindsym Left move left
+    bindsym Down move down
+    bindsym Up move up
+    bindsym Right move right
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m mode "move"
+
 #
 # media keys
 #
