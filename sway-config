@@ -236,6 +236,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
+font "Ricty Discord 9"
+
 #
 # Status Bar:
 #
