@@ -25,6 +25,9 @@ set $browser chromium
 # set $bgimage  /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 set $bgimage $HOME/.wallpapers/wallpaper.jpg
 
+# input method daemon
+set $imdaemon ~/.dotfiles/resources/ibus-startup.sh
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -236,3 +239,5 @@ gaps inner 10
 smart_gaps on
 
 include /etc/sway/config.d/*
+
+exec_always $imdaemon
