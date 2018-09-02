@@ -20,6 +20,7 @@
     Xdefaults \
     xmonad.hs \
     sway-config \
+    wallpapers \
     i3status-config \
     lein-profile
 
@@ -137,13 +138,40 @@ $(HOME)/.xmonad/xmonad.hs:
 
 sway-config: \
     $(HOME)/.config/sway/config \
-    $(HOME)/.wallpapers/wallpaper.jpg
+    wallpapers
 $(HOME)/.config/sway/config:
 	mkdir -p $(HOME)/.config/sway
 	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
-$(HOME)/.wallpapers/wallpaper.jpg:
+
+wallpapers: \
+    $(HOME)/.wallpapers/lavender.jpg \
+    $(HOME)/.wallpapers/yosemite.jpg \
+    $(HOME)/.wallpapers/elcapitan.jpg \
+    $(HOME)/.wallpapers/sierra.jpg \
+    $(HOME)/.wallpapers/highsierra.jpg \
+    $(HOME)/.wallpapers/mojave-day.jpg \
+    $(HOME)/.wallpapers/mojave-night.jpg
+$(HOME)/.wallpapers/lavender.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/wallpaper.jpg > /dev/null 2>&1
+	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/lavender.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/yosemite.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget http://512pixels.net/downloads/macos-wallpapers/10-10.jpg -O $(HOME)/.wallpapers/yosemite.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/elcapitan.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget http://512pixels.net/downloads/macos-wallpapers/10-11.jpg -O $(HOME)/.wallpapers/elcapitan.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/sierra.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget http://512pixels.net/downloads/macos-wallpapers/10-12.jpg -O $(HOME)/.wallpapers/sierra.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/highsierra.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget http://512pixels.net/downloads/macos-wallpapers/10-13.jpg -O $(HOME)/.wallpapers/highsierra.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/mojave-day.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget http://512pixels.net/downloads/macos-wallpapers/10-14-Day.jpg -O $(HOME)/.wallpapers/mojave-day.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/mojave-night.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget http://512pixels.net/downloads/macos-wallpapers/10-14-Night.jpg -O $(HOME)/.wallpapers/mojave-night.jpg > /dev/null 2>&1
 
 i3status-config: \
     $(HOME)/.config/i3status/config
