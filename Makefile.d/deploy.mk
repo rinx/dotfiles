@@ -150,7 +150,8 @@ wallpapers: \
     $(HOME)/.wallpapers/sierra.jpg \
     $(HOME)/.wallpapers/highsierra.jpg \
     $(HOME)/.wallpapers/mojave-day.jpg \
-    $(HOME)/.wallpapers/mojave-night.jpg
+    $(HOME)/.wallpapers/mojave-night.jpg \
+    $(HOME)/.wallpapers/modis-cuba.jpg
 $(HOME)/.wallpapers/lavender.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/lavender.jpg > /dev/null 2>&1
@@ -172,6 +173,9 @@ $(HOME)/.wallpapers/mojave-day.jpg:
 $(HOME)/.wallpapers/mojave-night.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget http://512pixels.net/downloads/macos-wallpapers/10-14-Night.jpg -O $(HOME)/.wallpapers/mojave-night.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/modis-cuba.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://eoimages.gsfc.nasa.gov/images/imagerecords/64000/64374/Cuba.A2003021.1600.250m.jpg -O $(HOME)/.wallpapers/modis-cuba.jpg > /dev/null 2>&1
 
 i3status-config: \
     $(HOME)/.config/i3status/config
