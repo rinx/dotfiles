@@ -9,4 +9,4 @@ numimglist=${#image_list[@]}
 rannum=$(( $RANDOM % ${numimglist}))
 image_path=${image_list[$rannum]}
 
-mv -f $image_path ${BASE_DIR}/wallpaper.jpg
+ln -s $image_path ${BASE_DIR}/wallpaper.jpg
