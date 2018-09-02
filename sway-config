@@ -259,6 +259,7 @@ bar {
 gaps outer 0
 gaps inner 10
 smart_gaps on
+hide_edge_borders smart
 
 # applications
 for_window [class="Chromium"] move container to workspace 2:browser
