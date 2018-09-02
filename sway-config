@@ -125,10 +125,10 @@ output * bg $bgimage fill
 # Workspaces:
 #
     # switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
+    bindsym $mod+1 workspace 1:works
+    bindsym $mod+2 workspace 2:browser
+    bindsym $mod+3 workspace 3:franz
+    bindsym $mod+4 workspace 4:media
     bindsym $mod+5 workspace 5
     bindsym $mod+6 workspace 6
     bindsym $mod+7 workspace 7
@@ -136,10 +136,10 @@ output * bg $bgimage fill
     bindsym $mod+9 workspace 9
     bindsym $mod+0 workspace 10
     # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+1 move container to workspace 1:works
+    bindsym $mod+Shift+2 move container to workspace 2:browser
+    bindsym $mod+Shift+3 move container to workspace 3:franz
+    bindsym $mod+Shift+4 move container to workspace 4:media
     bindsym $mod+Shift+5 move container to workspace 5
     bindsym $mod+Shift+6 move container to workspace 6
     bindsym $mod+Shift+7 move container to workspace 7
@@ -246,8 +246,11 @@ bar {
     position top
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #323232cc
+        inactive_workspace #32323266 #32323266 #ffffff
+        active_workspace #ffffffcc #32323266 #ffffff
+        urgent_workspace #ffffffcc #32323266 #ffffff
+        focused_workspace #ffffffcc #689d6acc #ffffff
     }
     font "Ricty Discord 9"
     status_command i3status
@@ -257,6 +260,11 @@ gaps outer 0
 gaps inner 10
 smart_gaps on
 
-include /etc/sway/config.d/*
+# applications
+for_window [class="Chromium"] move container to workspace 2:browser
+for_window [class="Franz"] move container to workspace 3:franz
+for_window [class="Spotify"] move container to workspace 4:media
 
 exec_always $imdaemon
+
+include /etc/sway/config.d/*
