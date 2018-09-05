@@ -25,7 +25,7 @@ order += "tztime local"
 
 wireless _first_ {
         format_up = ":%quality %essid %bitrate %ip"
-        format_down = "W: down"
+        format_down = ": down"
 }
 
 ethernet _first_ {
