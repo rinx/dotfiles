@@ -24,7 +24,7 @@ order += "tztime local"
 # order += "ethernet _first_"
 
 wireless _first_ {
-        format_up = "WIFI:%quality %essid %bitrate %ip"
+        format_up = ":%quality %essid %bitrate %ip"
         format_down = "W: down"
 }
 
@@ -36,37 +36,37 @@ ethernet _first_ {
 
 battery all {
         format = "%status %percentage %remaining"
-        format_down = "No battery"
-        status_chr = "⚡ CHR"
-        status_bat = "BAT"
-        status_unk = "? UNK"
-        status_full = "☻ FULL"
+        format_down = ": NO BAT"
+        status_chr = ": CHR"
+        status_bat = ": BAT"
+        status_unk = "?: UNK"
+        status_full = ": FULL"
         low_threshold = 10
         threshold_type = "percentage"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = ": %Y-%m-%d %H:%M:%S"
 }
 
 load {
-        format = "LOAD: %1min, %5min"
+        format = ": %1min, %5min"
 }
 
 disk "/" {
-        format = "DISK: %avail / %total"
+        format = ": %avail / %total"
 }
 
 volume master {
-        format = "VOL: %volume "
-        format_muted = "MUTE: %volume"
+        format = ": %volume "
+        format_muted = ": %volume"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
 }
 
 cpu_usage {
-        format = "CPU: %usage "
+        format = ": %usage "
         max_threshold = 80
         degraded_threshold = 25
 }
