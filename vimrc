@@ -601,13 +601,13 @@ function! s:init_eskk_hook_add() abort
                 \}
     if has('mac')
         let g:eskk#large_dictionary = {
-                    \ 'path' : '/Library/Dictionaries/SKK/SKK-JISYO.LL',
+                    \ 'path' : '/Library/Dictionaries/SKK/SKK-JISYO.L',
                     \ 'sorted' : 0,
                     \ 'encoding' : 'euc_jp',
                     \}
     elseif has('unix')
         let g:eskk#large_dictionary = {
-                    \ 'path' : '/usr/share/skk/SKK-JISYO.LL',
+                    \ 'path' : '/usr/share/skk/SKK-JISYO.L',
                     \ 'sorted' : 0,
                     \ 'encoding' : 'euc_jp',
                     \}
