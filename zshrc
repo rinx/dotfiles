@@ -4,16 +4,13 @@
 # Source: https://github.com/rinx/dotfiles
 # ----------------------------------------
 
-
-#basic settings for zsh
-
 autoload -U compinit
 compinit
 
-#highlight for completion
+# highlight for completion
 zstyle ':completion:*:default' menu select=2 
 
-#completion settings
+# completion settings
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
@@ -24,7 +21,7 @@ zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAU
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-#separators for completion
+# separators for completion
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 
@@ -33,25 +30,8 @@ colors
 
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
-#vimlike keybind
+# vimlike keybind
 bindkey -v 
-
-#export LANG=ja_JP.UTF-8
-
-case ${UID} in
-0)
-    LANG=C
-	;;
-esac
-
-case "${TERM}" in
-kterm*|xterm)
-    precmd() {
-	    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-	}
-	;;
-esac
-
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -87,9 +67,7 @@ setopt auto_param_keys
 setopt correct
 
 
-#prompt settings
-
-#prompt
+# prompt
 
 local lf=$'\n'
 
@@ -111,7 +89,7 @@ local pbase_nor="%F{red}[$usrathn%F{red}]%f$afterhost$plat"
 
 PROMPT="%5(~|$pbase$lf|$pbase)%% "
 
-##zsh vi-like keybind mode indicator
+# zsh vi-like keybind mode indicator
 function zle-line-init zle-keymap-select {
     case $KEYMAP in
         vicmd)
@@ -127,41 +105,25 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 
-#for, while, etc...
+# for, while, etc...
 PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> " 
 
-#missing spell
+# missing spell
 SPROMPT="%F{yellow}(っ'ヮ'c) < Did you mean %r?[n,y,a,e]:%f "
 
-#precmd
 function precmd() {
   if [ ! -z $TMUX ]; then
     tmux refresh-client -S
   fi
 }
 
-#zsh-autosuggestions
-
-ZSH_HOME=$HOME/.zsh
-
-if [ -d $ZSH_HOME/zsh-autosuggestions ]; then
-    source $ZSH_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-    if builtin command -v git > /dev/null 2>&1 ; then
-        mkdir -p $ZSH_HOME
-        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_HOME/zsh-autosuggestions
-        source $ZSH_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
-    fi
-fi
-
-#alias settings
+# aliases
 
 alias rm='rm -i'
 alias mv='mv -i'
 alias rr='rm -ri'
 alias rrf='rm -rf'
 
-#cd
 alias u='cd ../'
 alias uu='cd ../../'
 alias uuu='cd ../../../'
@@ -179,11 +141,11 @@ else # for BSD version
     alias lsal='ls -al'
 fi
 
-#start vim as vi
+# start vim as vi
 alias vi='vimswitcher'
 alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
 
-#Macvim
+# Macvim
 if [ -d /Applications/MacVim.app/ ]; then
     alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
     alias vimdiff='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/vimdiff'
@@ -195,7 +157,7 @@ alias be='bundle exec'
 
 alias q='exit'
 
-#grep
+# grep
 if builtin command -v grep > /dev/null 2>&1 ; then
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
@@ -255,31 +217,31 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     }
 fi
 
-#xsel (linux only)
+# xsel (linux only)
 if builtin command -v xsel > /dev/null 2>&1 ; then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
 fi
 
-#global
+# global
 alias -g @l='| less'
 alias -g @h='| head'
 alias -g @t='| tail'
 alias -g @g='| grep'
 
-#pandoc with lualatex
+# pandoc with lualatex
 if builtin command -v pandoc > /dev/null 2>&1 ; then
     if buildin command -v lualatex > /dev/null 2>&1 ; then
         alias pandoclt='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
     fi
 fi
 
-#hub aliasing (https://github.com/defunkt/hub)
+# hub aliasing (https://github.com/defunkt/hub)
 if builtin command -v hub > /dev/null 2>&1 ; then
     function git() {hub "$@"}
 fi
 
-#for git aliases
+# for git aliases
 alias gst='git status -s -b && git stash list'
 
 gbr () {
@@ -294,7 +256,7 @@ gbr () {
 
 alias gtl='git l'
 
-#extract
+# extract
 extract () {
     if [ -f $1 ] ; then
         case $1 in
@@ -337,4 +299,37 @@ vimswitcher () {
     esac
 }
 
+# zplug
+
+export ZPLUG_HOME=$HOME/.zplug
+
+if [ ! -f $ZPLUG_HOME/init.zsh ]; then
+    if builtin command -v git > /dev/null 2>&1 ; then
+        git clone https://github.com/zplug/zplug $ZPLUG_HOME
+    else
+        return 0
+    fi
+fi
+
+source $ZPLUG_HOME/init.zsh
+
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions", as:plugin, use:"src"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search"
+
+zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
+zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+
+zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+
+zplug "greymd/tmux-xpanes"
+
+if ! zplug check --verbose; then
+    zplug install
+fi
+
+zplug load
 
