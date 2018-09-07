@@ -117,6 +117,43 @@ function precmd() {
   fi
 }
 
+
+# zplug
+export ZPLUG_HOME=$HOME/.zplug
+
+if builtin command -v git > /dev/null 2>&1 ; then
+    if [ ! -f $ZPLUG_HOME/init.zsh ]; then
+        git clone https://github.com/zplug/zplug $ZPLUG_HOME
+    fi
+
+    source $ZPLUG_HOME/init.zsh
+
+    zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+    zplug "zsh-users/zsh-autosuggestions"
+    zplug "zsh-users/zsh-completions", as:plugin, use:"src"
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
+    zplug "zsh-users/zsh-history-substring-search"
+
+    zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
+    zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+
+    zplug "ogham/exa", as:command, from:gh-r, rename-to:ls
+    zplug "BurntSushi/ripgrep", as:command, from:gh-r, rename-to:rg
+    zplug "sharkdp/fd", as:command, from:gh-r, rename-to:fd
+
+    zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+
+    zplug "greymd/tmux-xpanes"
+
+    if ! zplug check --verbose; then
+        zplug install
+    fi
+
+    zplug load
+fi
+
+
 # aliases
 
 alias rm='rm -i'
@@ -298,38 +335,4 @@ vimswitcher () {
         *)       nvim $1 ;;
     esac
 }
-
-# zplug
-
-export ZPLUG_HOME=$HOME/.zplug
-
-if [ ! -f $ZPLUG_HOME/init.zsh ]; then
-    if builtin command -v git > /dev/null 2>&1 ; then
-        git clone https://github.com/zplug/zplug $ZPLUG_HOME
-    else
-        return 0
-    fi
-fi
-
-source $ZPLUG_HOME/init.zsh
-
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions", as:plugin, use:"src"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-history-substring-search"
-
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
-
-zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
-
-zplug "greymd/tmux-xpanes"
-
-if ! zplug check --verbose; then
-    zplug install
-fi
-
-zplug load
 
