@@ -261,12 +261,6 @@ if builtin command -v xsel > /dev/null 2>&1 ; then
     alias pbpaste='xsel --clipboard --output'
 fi
 
-# global
-alias -g @l='| less'
-alias -g @h='| head'
-alias -g @t='| tail'
-alias -g @g='| grep'
-
 # pandoc with lualatex
 if builtin command -v pandoc > /dev/null 2>&1 ; then
     if buildin command -v lualatex > /dev/null 2>&1 ; then
@@ -279,7 +273,7 @@ if builtin command -v hub > /dev/null 2>&1 ; then
     function git() {hub "$@"}
 fi
 
-# for git aliases
+# git aliases
 alias gst='git status -s -b && git stash list'
 
 gbr () {
