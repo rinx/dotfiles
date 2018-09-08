@@ -141,6 +141,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zplug "ogham/exa", as:command, from:gh-r, rename-to:ls
     zplug "BurntSushi/ripgrep", as:command, from:gh-r, rename-to:rg
     zplug "sharkdp/fd", as:command, from:gh-r, rename-to:fd
+    zplug "sharkdp/bat", as:command, from:gh-r, rename-to:bat
 
     zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
