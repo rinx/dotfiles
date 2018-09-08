@@ -52,9 +52,9 @@ endif
 let g:skk_jisyo = '~/.skk-jisyo'
 
 if has('mac')
-    let g:skk_large_jisyo = '/Library/Dictionaries/SKK/SKK-JISYO.LL'
+    let g:skk_large_jisyo = '/Library/Dictionaries/SKK/SKK-JISYO.L'
 elseif has('unix')
-    let g:skk_large_jisyo = '/usr/share/skk/SKK-JISYO.LL'
+    let g:skk_large_jisyo = '/usr/share/skk/SKK-JISYO.L'
 endif
 
 let g:skk_auto_save_jisyo = 1
