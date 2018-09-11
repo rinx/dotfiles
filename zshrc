@@ -140,7 +140,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
     zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
 
-    if [ "$OS" == "Darwin" ]; then
+    if [[ "$OS" == "Darwin" ]]; then
         zplug "ogham/exa", as:command, from:gh-r, use:"*macos-x86_64*", rename-to:ls
     else
         zplug "ogham/exa", as:command, from:gh-r, rename-to:ls
