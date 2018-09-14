@@ -142,12 +142,15 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     if [[ "$OS" == "Darwin" ]]; then
         zplug "ogham/exa", as:command, from:gh-r, use:"*macos-x86_64*", rename-to:ls
+        zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:rg
+        zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:bat
+        zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:fd
     else
-        zplug "ogham/exa", as:command, from:gh-r, rename-to:ls
+        zplug "ogham/exa", as:command, from:gh-r, use:"*linux-x86_64*", rename-to:ls
+        zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*linux*", rename-to:rg
+        zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:bat
+        zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:fd
     fi
-    zplug "BurntSushi/ripgrep", as:command, from:gh-r, rename-to:rg
-    zplug "sharkdp/fd", as:command, from:gh-r, rename-to:fd
-    zplug "sharkdp/bat", as:command, from:gh-r, rename-to:bat
 
     zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
