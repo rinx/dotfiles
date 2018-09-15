@@ -114,9 +114,9 @@ PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> "
 SPROMPT="%F{yellow}(っ'ヮ'c) < Did you mean %r?[n,y,a,e]:%f "
 
 function precmd() {
-  if [ ! -z $TMUX ]; then
-    tmux refresh-client -S
-  fi
+    if [ ! -z $TMUX ]; then
+        tmux refresh-client -S
+    fi
 }
 
 
@@ -219,6 +219,11 @@ fi
 if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--height 40% --reverse --border --prompt='❯ '"
     alias fprev="fzf --preview 'head -100 {}'"
+    if [ ! -z $TMUX ]; then
+        if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
+            alias fzf=fzf-tmux
+        fi
+    fi
 
     fh() {
       print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
