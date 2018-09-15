@@ -267,6 +267,12 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
                     {}
     FZF-EOF"
     }
+
+    if builtin command -v ghq > /dev/null 2>&1 ; then
+        fghq() {
+            cd `ghq root`/`ghq list | fzf -m`
+        }
+    fi
 fi
 
 # xsel (linux only)
