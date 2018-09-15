@@ -218,7 +218,6 @@ fi
 
 if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--height 40% --reverse --border --prompt='❯ '"
-    alias fprev="fzf --preview 'head -100 {}'"
     if [ ! -z $TMUX ]; then
         if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
             alias fzf=fzf-tmux
@@ -258,7 +257,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
       local branches branch
       branches=$(git branch --all | grep -v HEAD) &&
       branch=$(echo "$branches" |
-               fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+               fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
       git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
     }
 
@@ -271,6 +270,10 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
                     xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                     {}
     FZF-EOF"
+    }
+
+    fprev() {
+        fzf --preview 'head -100 {}'
     }
 
     if builtin command -v ghq > /dev/null 2>&1 ; then
