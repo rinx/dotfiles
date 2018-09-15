@@ -217,7 +217,7 @@ if builtin command -v rg > /dev/null 2>&1 ; then
 fi
 
 if builtin command -v fzf > /dev/null 2>&1 ; then
-    export FZF_DEFAULT_OPTS="--height 40% --reverse --border --prompt='❯ '"
+    export FZF_DEFAULT_OPTS="--ansi --height 40% --reverse --border --prompt='❯ '"
     if [ ! -z $TMUX ]; then
         if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
             alias fzf=fzf-tmux
@@ -262,9 +262,9 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     }
 
     fgshow() {
-      git log --graph --color=always \
+      git log --color=always \
           --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-      fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      fzf --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
           --bind "ctrl-m:execute:
                     (grep -o '[a-f0-9]\{7\}' | head -1 |
                     xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
