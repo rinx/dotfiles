@@ -93,15 +93,15 @@ PROMPT="%5(~|$pbase$lf|$pbase)%% "
 
 # zsh vi-like keybind mode indicator
 function zle-line-init zle-keymap-select {
-    case $KEYMAP in
-        vicmd)
-            PROMPT="%5(~|$pbase_nor$lf|$pbase_nor)%% "
+case $KEYMAP in
+    vicmd)
+        PROMPT="%5(~|$pbase_nor$lf|$pbase_nor)%% "
         ;;
-        main|viins)
-            PROMPT="%5(~|$pbase$lf|$pbase)%% "
+    main|viins)
+        PROMPT="%5(~|$pbase$lf|$pbase)%% "
         ;;
-    esac
-    zle reset-prompt
+esac
+zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -225,51 +225,50 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     fi
 
     fh() {
-      print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+        print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
     }
 
     fcd() {
-      local dir
-      dir=$(find ${1:-.} -path '*/\.*' -prune \
-                      -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+        local dir
+        dir=$(find ${1:-.} -path '*/\.*' -prune \
+            -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
     }
 
     fcda() {
-      local dir
-      dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+        local dir
+        dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
     }
 
     fps() {
-      ps -ef | sed 1d | fzf -m
+        ps -ef | sed 1d | fzf -m
     }
 
     fkill() {
-      local pid
-      pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+        local pid
+        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
-      if [ "x$pid" != "x" ]
-      then
-        echo $pid | xargs kill -${1:-9}
-      fi
+        if [[ "x$pid" != "x" ]] ; then
+            echo $pid | xargs kill -${1:-9}
+        fi
     }
 
     fgbr() {
-      local branches branch
-      branches=$(git branch --all | grep -v HEAD) &&
-      branch=$(echo "$branches" |
-               fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-      git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+        local branches branch
+        branches=$(git branch --all | grep -v HEAD) &&
+            branch=$(echo "$branches" |
+            fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+            git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
     }
 
     fgshow() {
-      git log --color=always \
-          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-      fzf --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-          --bind "ctrl-m:execute:
-                    (grep -o '[a-f0-9]\{7\}' | head -1 |
-                    xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                    {}
-    FZF-EOF"
+        git log --color=always \
+            --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+            fzf --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+            --bind "ctrl-m:execute:
+        (grep -o '[a-f0-9]\{7\}' | head -1 |
+            xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+        {}
+        FZF-EOF"
     }
 
     fprev() {
