@@ -234,6 +234,10 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
       dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
     }
 
+    fps() {
+      ps -ef | sed 1d | fzf -m
+    }
+
     fkill() {
       local pid
       pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
