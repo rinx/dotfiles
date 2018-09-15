@@ -278,7 +278,11 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
 
     if builtin command -v ghq > /dev/null 2>&1 ; then
         fghq() {
-            cd `ghq root`/`ghq list | fzf -m`
+            local dir
+            dir=$(ghq list | fzf +m)
+            if [[ "$dir" != "" ]]; then
+                cd "`ghq root`/$dir"
+            fi
         }
     fi
 fi
