@@ -217,7 +217,7 @@ if builtin command -v rg > /dev/null 2>&1 ; then
 fi
 
 if builtin command -v fzf > /dev/null 2>&1 ; then
-    export FZF_DEFAULT_OPTS="--ansi --height 40% --reverse --border --prompt='❯ '"
+    export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --height 40% --reverse --cycle --border"
     if [ ! -z $TMUX ]; then
         if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
             alias fzf=fzf-tmux
