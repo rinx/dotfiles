@@ -87,3 +87,6 @@
 
 [submodule]
     recurse = true
+
+[ghq]
+    root = ~/local/src

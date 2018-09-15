@@ -152,6 +152,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
         zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:fd
     fi
 
+    zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq
     zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
     zplug "greymd/tmux-xpanes"
@@ -343,4 +344,9 @@ vimswitcher () {
         *)       nvim $1 ;;
     esac
 }
+
+# export PATH=$PATH:$HOME/.bin
+# export PATH=$PATH:$HOME/.local/bin
+# export GOPATH=$HOME/local
+# export PATH=$PATH:$GOPATH/bin
 
