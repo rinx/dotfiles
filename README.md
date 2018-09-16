@@ -1,25 +1,5 @@
 # dotfiles
 
-## files
-
-* .vimrc
-* .zshrc
-* .tmux.conf
-* .gitconfig
-* .gitignore
-* .xmonad/xmonad.hs
-* .config/sway/config
-* .gitattributes\_global
-* .latexmkrc
-* tiny.vimrc (for git-commit editor)
-* .vimshrc
-* .lein/profiles.clj
-* .Xdefaults
-
-### directories
-
-* dotvim (will be linked to `$HOME/.vim`)
-
 ### setup
 
 Use `make`
