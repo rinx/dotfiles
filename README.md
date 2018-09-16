@@ -62,7 +62,6 @@ add install phase of dependencies belows by
 it is recommended to use GNU coreutils
 
 #### Tmux
-Plugins (for install: `prefix + I`)
 
 #### Vim (it is recommended to use Vim 8.0+ or NeoVim)
 ##### neovim
