@@ -2,6 +2,7 @@
     prepare-deploy \
     vim-deploy \
     vimrc \
+    vimrc-private \
     vimshrc \
     dein-vim \
     neovim-deploy \
@@ -9,6 +10,7 @@
     dein-nvim \
     git-deploy \
     gitconfig \
+    gitconfig-local \
     gitignore \
     gitattributes \
     tmux-deploy \
@@ -29,6 +31,7 @@ prepare-deploy:
 
 vim-deploy: \
     vimrc \
+    vimrc-private \
     vimshrc \
     vim-ftplugins \
     vim-ftdetects \
@@ -41,6 +44,11 @@ vimrc: $(HOME)/.vimrc
 $(HOME)/.vimrc:
 	@$(call cyan, "--\> .vimrc")
 	ln -s $(DOTDIR)/vimrc $(HOME)/.vimrc
+
+vimrc-private: $(HOME)/.vimrc_private
+$(HOME)/.vimrc_private:
+	@$(call cyan, "--\> .vimrc_private")
+	touch $(HOME)/.vimrc_private
 
 vimshrc: $(HOME)/.vimshrc
 $(HOME)/.vimshrc:
@@ -73,6 +81,7 @@ $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim:
 
 git-deploy: \
     gitconfig \
+    gitconfig-local \
     gitignore \
     gitattributes
 	@$(call red, "git-deploy")
@@ -81,6 +90,11 @@ gitconfig: $(HOME)/.gitconfig
 $(HOME)/.gitconfig:
 	@$(call cyan, "--\> gitconfig")
 	ln -s $(DOTDIR)/gitconfig $(HOME)/.gitconfig
+
+gitconfig-local: $(HOME)/.gitconfig.local
+$(HOME)/.gitconfig.local:
+	@$(call cyan, "--\> gitconfig.local")
+	touch $(HOME)/.gitconfig.local
 
 gitignore: $(HOME)/.gitignore
 $(HOME)/.gitignore:

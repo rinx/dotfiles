@@ -20,51 +20,36 @@
 
 * dotvim (will be linked to `$HOME/.vim`)
 
-### setup scripts
+### setup
 
-* setup.sh (make symbolic links in `$HOME`)
-* vim-ft-setup.sh (make symbolic links in `$HOME/.vim` / called from `setup.sh`)
+Use `make`
 
 ## install and uninstall
 
 ### install
 
-clone this repository
+clone this repository and run `make`
 
     $ git clone https://github.com/rinx/dotfiles.git ~/.dotfiles
+    $ make deploy && make init
 
-then, clone submodules
+#### future works
 
-    $ git submodule update --init
+test deploy & init phase,
 
-`setup.sh` makes symbolic link in home and gets some scripts, vim plugins
+    $ make test
 
-    $ sh setup.sh -af
+check installed objects,
 
-### uninstall
+    $ make check-commands
 
-use `setup.sh` to remove symbolic links
+for uninstall,
 
-    $ sh setup.sh -ac
+    $ make clean
 
-### options
+add install phase of dependencies belows by
 
-to specify what type of dotfiles for installing
-
-|opt | description                                         |
-|:--:|:----------------------------------------------------|
-| -a | for all type of dotfiles                            |
-| -s | make symbolic links                                 |
-| -p | make symbolic links for programming configures      |
-| -v | link `$HOME/.vim` files                             |
-| -t | fetch `$HOME/.bin` files                            |
-| -w | for sway                                            |
-| -x | for xmonad                                          |
-
-if you have some dotfiles and want to overwrite it, `-f` option is useful.
-
-if you want to clear dotfiles, use `-c` option.
-
+    $ make install-dependencies
 
 ## Dependencies
 
