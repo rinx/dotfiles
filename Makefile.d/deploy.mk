@@ -30,6 +30,10 @@ prepare-deploy:
 vim-deploy: \
     vimrc \
     vimshrc \
+    vim-ftplugins \
+    vim-ftdetects \
+    vim-snippets \
+    vim-indents \
     dein-vim
 	@$(call red, "vim-deploy has been done")
 
