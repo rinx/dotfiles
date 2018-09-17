@@ -169,7 +169,13 @@ wallpapers: \
     $(HOME)/.wallpapers/highsierra.jpg \
     $(HOME)/.wallpapers/mojave-day.jpg \
     $(HOME)/.wallpapers/mojave-night.jpg \
-    $(HOME)/.wallpapers/modis-cuba.jpg
+    $(HOME)/.wallpapers/modis-cuba.jpg \
+    $(HOME)/.wallpapers/UjK4eUF.jpg \
+    $(HOME)/.wallpapers/ZZOuSd4.jpg \
+    $(HOME)/.wallpapers/8YbJNGx.jpg \
+    $(HOME)/.wallpapers/yf2IHMV.jpg \
+    $(HOME)/.wallpapers/yDpuXU0.jpg \
+    $(HOME)/.wallpapers/rnKPcCe.jpg
 $(HOME)/.wallpapers/lavender.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/lavender.jpg > /dev/null 2>&1
@@ -194,6 +200,24 @@ $(HOME)/.wallpapers/mojave-night.jpg:
 $(HOME)/.wallpapers/modis-cuba.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget https://eoimages.gsfc.nasa.gov/images/imagerecords/64000/64374/Cuba.A2003021.1600.250m.jpg -O $(HOME)/.wallpapers/modis-cuba.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/UjK4eUF.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://i.imgur.com/UjK4eUF.jpg -O $(HOME)/.wallpapers/UjK4eUF.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/ZZOuSd4.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://i.imgur.com/ZZOuSd4.jpg -O $(HOME)/.wallpapers/ZZOuSd4.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/8YbJNGx.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://i.imgur.com/8YbJNGx.jpg -O $(HOME)/.wallpapers/8YbJNGx.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/yf2IHMV.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://i.imgur.com/yf2IHMV.jpg -O $(HOME)/.wallpapers/yf2IHMV.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/yDpuXU0.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://i.imgur.com/yDpuXU0.jpg -O $(HOME)/.wallpapers/yDpuXU0.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/rnKPcCe.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://i.imgur.com/rnKPcCe.jpg -O $(HOME)/.wallpapers/rnKPcCe.jpg > /dev/null 2>&1
 
 i3status-config: \
     $(HOME)/.config/i3status/config
