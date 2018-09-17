@@ -271,6 +271,18 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         FZF-EOF"
     }
 
+    fgstash() {
+        local out
+        out=$(git stash list --pretty="%gd %C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" \
+            | fzf --ansi --no-sort --query="$q" --print-query \
+            --preview 'echo {} | cut -d " " -f 1 | xargs -I % git stash show -p %')
+
+        if [[ "$out" != "" ]] ; then
+            echo $out
+            echo $out | cut -d " " -f 1 | xargs -I % git stash pop %
+        fi
+    }
+
     fprev() {
         fzf --preview 'head -100 {}'
     }
