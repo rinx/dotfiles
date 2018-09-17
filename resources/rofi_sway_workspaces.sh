@@ -7,8 +7,8 @@ list=(
     )
 
 for (( i=1; i<=$((${#list[@]}/2)); i++ )); do
-  [[ -z "$@" ]] && echo "${list[$i*2-2]} $(echo ${list[$i*2-1]} | sed -e 's:%%%SPACE%%%: :g')" && continue
-  [[ "$@" == "${list[$i*2-2]} $(echo ${list[$i*2-1]} | sed -e 's:%%%SPACE%%%: :g')" ]] && \
+  [[ -z "$@" ]] && echo "[${list[$i*2-2]}] $(echo ${list[$i*2-1]} | sed -e 's:%%%SPACE%%%: :g')" && continue
+  [[ "$@" == "[${list[$i*2-2]}] $(echo ${list[$i*2-1]} | sed -e 's:%%%SPACE%%%: :g')" ]] && \
       command="swaymsg workspace ${list[$i*2-2]} > /dev/null 2>&1" && break
 done
 eval "${command:-:}"
