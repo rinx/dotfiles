@@ -37,9 +37,11 @@ vim-indents: \
     $(HOME)/.config/nvim/indent
 
 $(HOME)/.vim/filetype.vim:
+	mkdir -p $(HOME)/.vim
 	ln -s $(DOTDIR)/dotvim/filetype.vim $(HOME)/.vim/filetype.vim
 
 $(HOME)/.config/nvim/filetype.vim:
+	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/dotvim/filetype.vim $(HOME)/.config/nvim/filetype.vim
 
 $(HOME)/.vim/ftplugin/fortran/fortran.vim:
