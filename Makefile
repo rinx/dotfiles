@@ -27,6 +27,7 @@ all: \
 deploy: \
     prepare-deploy \
     vim-deploy \
+    neovim-deploy \
     git-deploy \
     tmux-deploy \
     zsh-deploy \
