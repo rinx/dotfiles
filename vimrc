@@ -2927,6 +2927,8 @@ nnoremap <silent> [Tab]c :<C-u>tablast <bar> tabnew<CR>
 nnoremap <silent> [Tab]x :<C-u>tabclose<CR>
 nnoremap <silent> [Tab]n :<C-u>tabnext<CR>
 nnoremap <silent> [Tab]p :<C-u>tabprevious<CR>
+nnoremap <silent> [Tab]l :<C-u>+tabmove<CR>
+nnoremap <silent> [Tab]h :<C-u>-tabmove<CR>
 
 if has('nvim')
     " for terminal
