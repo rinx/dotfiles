@@ -43,7 +43,8 @@
     ci    = commit
     cm    = commit -m
     cv    = commit -v 
-    ca    = commit --amend
+    ca    = commit --amend --no-edit
+    cae   = commit --amend
 
     ps    = push
     psa   = push --all
