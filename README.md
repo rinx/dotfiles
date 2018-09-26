@@ -101,7 +101,6 @@ it is recommended to use GNU coreutils
     - i3status `pacman -S i3status`
 - urxvt `pacman -S rxvt-unicode`
 - rofi `pacman -S rofi`
-    - libqalculate `pacman -S libqalculate`
 - chromium `pacman -S chromium`
 - ibus `pacman -S ibus`
     - ibus-skk `pacman -S ibus-skk`

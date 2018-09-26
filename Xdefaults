@@ -55,7 +55,7 @@ URxvt.scrollColor:          [90]#504945
 ! ------------------------------------------------
 ! rofi
 ! ------------------------------------------------
-rofi.modi:                           run,system:~/.dotfiles/resources/rofi_system.sh,workspace:~/.dotfiles/resources/rofi_sway_workspaces.sh,calc:qalc
+rofi.modi:                           run,system:~/.dotfiles/resources/rofi_system.sh,workspace:~/.dotfiles/resources/rofi_sway_workspaces.sh,ssh
 rofi.width:                          50
 rofi.lines:                          10
 rofi.columns:                        1
