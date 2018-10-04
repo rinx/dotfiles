@@ -363,9 +363,15 @@ function! s:init_denite_hook_source() abort
     call denite#custom#alias('source', 'file_rec/git', 'file_rec')
     call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
+    call denite#custom#alias('source', 'file_rec/all', 'file_rec')
+
     if executable('rg')
       call denite#custom#var('file_rec', 'command',
             \ ['rg', '--files', '--glob', '!.git'])
+
+      call denite#custom#var('file_rec', 'command',
+            \ ['rg', '--files', '--no-ignore'])
+
       call denite#custom#var('grep', 'command', ['rg'])
     endif
 
@@ -396,6 +402,8 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]cc :<C-u>Denite command_history<CR>
     " file under current directory
     nnoremap <silent> [denite]f  :<C-u>Denite file_rec<CR>
+    nnoremap <silent> [denite]gf :<C-u>Denite file_rec/git<CR>
+    nnoremap <silent> [denite]af :<C-u>Denite file_rec/all<CR>
     " resume
     nnoremap <silent> [denite]r  :<C-u>Denite -resume<CR>
     " register
