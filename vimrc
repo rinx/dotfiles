@@ -366,13 +366,19 @@ function! s:init_denite_hook_source() abort
     call denite#custom#alias('source', 'file_rec/all', 'file_rec')
 
     if executable('rg')
-      call denite#custom#var('file_rec', 'command',
-            \ ['rg', '--files', '--glob', '!.git'])
+        call denite#custom#var('file_rec', 'command',
+                    \ ['rg', '--files', '--glob', '!.git'])
 
-      call denite#custom#var('file_rec/all', 'command',
-            \ ['rg', '--files', '--no-ignore', '--hidden'])
+        call denite#custom#var('file_rec/all', 'command',
+                    \ ['rg', '--files', '--no-ignore', '--hidden'])
 
-      call denite#custom#var('grep', 'command', ['rg'])
+        call denite#custom#var('grep', 'command',
+                    \ ['rg', '--threads', '1'])
+        call denite#custom#var('grep', 'recursive_opts', [])
+        call denite#custom#var('grep', 'final_opts', [])
+        call denite#custom#var('grep', 'separator', ['--'])
+        call denite#custom#var('grep', 'default_opts',
+                    \ ['--vimgrep', '--no-heading'])
     endif
 
     " custom key mappings
