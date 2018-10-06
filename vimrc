@@ -360,16 +360,16 @@ function! s:init_denite_hook_source() abort
 
     call denite#custom#var('menu', 'menus', s:denite_source_menu)
 
-    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-    call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
+    call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+    call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
-    call denite#custom#alias('source', 'file_rec/all', 'file_rec')
+    call denite#custom#alias('source', 'file/rec/all', 'file/rec')
 
     if executable('rg')
-        call denite#custom#var('file_rec', 'command',
+        call denite#custom#var('file/rec', 'command',
                     \ ['rg', '--files', '--glob', '!.git'])
 
-        call denite#custom#var('file_rec/all', 'command',
+        call denite#custom#var('file/rec/all', 'command',
                     \ ['rg', '--files', '--no-ignore', '--hidden'])
 
         call denite#custom#var('grep', 'command',
@@ -406,20 +406,16 @@ function! s:init_denite_hook_add() abort
     nmap ,u [denite]
     " buffer
     nnoremap <silent> [denite]b  :<C-u>Denite buffer<CR>
-    " commands
-    nnoremap <silent> [denite]c  :<C-u>Denite command<CR>
-    " commands history
-    nnoremap <silent> [denite]cc :<C-u>Denite command_history<CR>
+    " command hisotory & commands
+    nnoremap <silent> [denite]c  :<C-u>Denite command_history command<CR>
     " file under current directory
-    nnoremap <silent> [denite]f  :<C-u>Denite file_rec<CR>
-    nnoremap <silent> [denite]gf :<C-u>Denite file_rec/git<CR>
-    nnoremap <silent> [denite]af :<C-u>Denite file_rec/all<CR>
-    " resume
-    nnoremap <silent> [denite]r  :<C-u>Denite -resume<CR>
+    nnoremap <silent> [denite]f  :<C-u>Denite file/rec<CR>
+    nnoremap <silent> [denite]gf :<C-u>Denite file/rec/git<CR>
+    nnoremap <silent> [denite]af :<C-u>Denite file/rec/all<CR>
     " register
-    nnoremap <silent> [denite]rr :<C-u>Denite -buffer-name=register register<CR>
+    nnoremap <silent> [denite]r  :<C-u>Denite -buffer-name=register register<CR>
     " recently files
-    nnoremap <silent> [denite]mm :<C-u>Denite file_mru<CR>
+    nnoremap <silent> [denite]mr :<C-u>Denite file_mru<CR>
     " menu
     nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
