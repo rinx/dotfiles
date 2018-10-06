@@ -369,14 +369,17 @@ function! s:init_denite_hook_source() abort
       call denite#custom#var('file_rec', 'command',
             \ ['rg', '--files', '--glob', '!.git'])
 
-      call denite#custom#var('file_rec', 'command',
-            \ ['rg', '--files', '--no-ignore'])
+      call denite#custom#var('file_rec/all', 'command',
+            \ ['rg', '--files', '--no-ignore', '--hidden'])
 
       call denite#custom#var('grep', 'command', ['rg'])
     endif
 
     " custom key mappings
     call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
+    call denite#custom#map('insert', '<C-Q>', '<denite:leave_mode>')
+    call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
+    call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
 
     call denite#custom#map('normal', 'sh', '<denite:wincmd:h>')
     call denite#custom#map('normal', 'sj', '<denite:wincmd:j>')
@@ -388,6 +391,7 @@ function! s:init_denite_hook_source() abort
     call denite#custom#map('normal', 'sb', '<denite:wincmd:b>')
     call denite#custom#map('normal', 'sp', '<denite:wincmd:p>')
 
+    call denite#custom#option('default', 'auto_accel', v:true)
     call denite#custom#option('default', 'prompt', '>')
 endfunction
 
@@ -416,9 +420,11 @@ function! s:init_denite_hook_add() abort
     " outline (built in source)
     nnoremap <silent> [denite]o  :<C-u>Denite outline<CR>
     " line search
-    nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight -auto-resize line<CR>
     " grep
     nnoremap <silent> [denite]g  :<C-u>Denite grep<CR>
+    " filetype
+    nnoremap <silent> [denite]t  :<C-u>Denite filetype<CR>
 endfunction
 
 function! s:init_unite_hook_source() abort
