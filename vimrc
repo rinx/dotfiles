@@ -412,13 +412,17 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]f  :<C-u>Denite file/rec<CR>
     nnoremap <silent> [denite]gf :<C-u>Denite file/rec/git<CR>
     nnoremap <silent> [denite]af :<C-u>Denite file/rec/all<CR>
-    " register
-    nnoremap <silent> [denite]r  :<C-u>Denite -buffer-name=register register<CR>
     " recently files
     nnoremap <silent> [denite]mr :<C-u>Denite file_mru<CR>
+    " buffer and file
+    nnoremap <silent> [denite]o  :<C-u>Denite -auto-resize buffer file/rec<CR>
+    " register
+    nnoremap <silent> [denite]r  :<C-u>Denite -buffer-name=register register<CR>
     " menu
     nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
+    " jumps
+    nnoremap <silent> [denite]j  :<C-u>Denite -auto-highlight -auto-resize jump<CR>
     " line search
     nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight -auto-resize line<CR>
     " grep
