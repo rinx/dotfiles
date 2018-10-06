@@ -419,8 +419,6 @@ function! s:init_denite_hook_add() abort
     " menu
     nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
-    " outline (built in source)
-    nnoremap <silent> [denite]o  :<C-u>Denite outline<CR>
     " line search
     nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight -auto-resize line<CR>
     " grep
