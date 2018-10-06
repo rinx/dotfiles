@@ -388,7 +388,7 @@ function! s:init_denite_hook_source() abort
     call denite#custom#map('normal', 'sb', '<denite:wincmd:b>')
     call denite#custom#map('normal', 'sp', '<denite:wincmd:p>')
 
-    call denite#custom#option('default', 'prompt', '❯')
+    call denite#custom#option('default', 'prompt', '>')
 endfunction
 
 function! s:init_denite_hook_add() abort
@@ -426,7 +426,7 @@ function! s:init_unite_hook_source() abort
     let g:unite_enable_start_insert = 0
     let g:unite_source_history_yank_enable = 1
     let g:unite_source_history_yank_limit = 1000
-    let g:unite_prompt = '❯ '
+    let g:unite_prompt = '> '
 
     if !exists('g:unite_source_menu_menus')
         let g:unite_source_menu_menus = {}
