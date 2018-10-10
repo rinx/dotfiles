@@ -427,7 +427,7 @@ function! s:init_denite_hook_add() abort
     " jumps
     nnoremap <silent> [denite]j  :<C-u>Denite jump -auto-highlight<CR>
     " line search
-    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-highlight -resume<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-highlight -resume -refresh<CR>
     " grep
     nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=grep<CR>
     nnoremap <silent> [denite]rg :<C-u>Denite grep -buffer-name=grep -resume<CR>
