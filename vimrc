@@ -420,16 +420,17 @@ function! s:init_denite_hook_add() abort
     " buffer and file
     nnoremap <silent> [denite]o  :<C-u>Denite buffer file/rec<CR>
     " register
-    nnoremap <silent> [denite]r  :<C-u>Denite register -buffer-name=register<CR>
+    nnoremap <silent> [denite]r  :<C-u>Denite register<CR>
     " menu
     nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
     " jumps
     nnoremap <silent> [denite]j  :<C-u>Denite jump -auto-highlight<CR>
     " line search
-    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-highlight<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-highlight -resume<CR>
     " grep
-    nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=grep -auto-preview -post-action=suspend<CR>
+    nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=grep<CR>
+    nnoremap <silent> [denite]rg :<C-u>Denite grep -buffer-name=grep -resume<CR>
     " filetype
     nnoremap <silent> [denite]t  :<C-u>Denite filetype<CR>
 endfunction
