@@ -417,6 +417,7 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]mr :<C-u>Denite file_mru<CR>
     " buffer and file
     nnoremap <silent> [denite]o  :<C-u>Denite -auto-resize buffer file/rec<CR>
+    nnoremap <silent> [denite]po :<C-u>Denite -auto-resize buffer file/rec -auto-preview -vertical-preview<CR>
     " register
     nnoremap <silent> [denite]r  :<C-u>Denite -buffer-name=register register<CR>
     " menu
@@ -427,7 +428,7 @@ function! s:init_denite_hook_add() abort
     " line search
     nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight -auto-resize line<CR>
     " grep
-    nnoremap <silent> [denite]g  :<C-u>Denite grep -auto-preview -vertical-preview<CR>
+    nnoremap <silent> [denite]g  :<C-u>Denite grep -auto-preview -vertical-preview -post-action=suspend<CR>
     " filetype
     nnoremap <silent> [denite]t  :<C-u>Denite filetype<CR>
 endfunction
