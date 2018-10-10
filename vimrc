@@ -398,6 +398,7 @@ function! s:init_denite_hook_source() abort
     call denite#custom#map('normal', 'sp', '<denite:wincmd:p>')
 
     call denite#custom#option('default', 'auto_accel', v:true)
+    call denite#custom#option('default', 'auto_resize', v:true)
     call denite#custom#option('default', 'prompt', '>')
 endfunction
 
@@ -416,17 +417,17 @@ function! s:init_denite_hook_add() abort
     " recently files
     nnoremap <silent> [denite]mr :<C-u>Denite file_mru<CR>
     " buffer and file
-    nnoremap <silent> [denite]o  :<C-u>Denite -auto-resize buffer file/rec<CR>
-    nnoremap <silent> [denite]po :<C-u>Denite -auto-resize buffer file/rec -auto-preview -vertical-preview<CR>
+    nnoremap <silent> [denite]o  :<C-u>Denite buffer file/rec<CR>
+    nnoremap <silent> [denite]po :<C-u>Denite buffer file/rec -auto-preview -vertical-preview<CR>
     " register
     nnoremap <silent> [denite]r  :<C-u>Denite -buffer-name=register register<CR>
     " menu
     nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
     " jumps
-    nnoremap <silent> [denite]j  :<C-u>Denite -auto-highlight -auto-resize jump<CR>
+    nnoremap <silent> [denite]j  :<C-u>Denite -auto-highlight jump<CR>
     " line search
-    nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight -auto-resize line<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight line<CR>
     " grep
     nnoremap <silent> [denite]g  :<C-u>Denite grep -auto-preview -vertical-preview -post-action=suspend<CR>
     " filetype
