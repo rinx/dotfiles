@@ -399,6 +399,7 @@ function! s:init_denite_hook_source() abort
 
     call denite#custom#option('default', 'auto_accel', v:true)
     call denite#custom#option('default', 'auto_resize', v:true)
+    call denite#custom#option('default', 'vertical_preview', v:true)
     call denite#custom#option('default', 'prompt', '>')
 endfunction
 
@@ -411,25 +412,24 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]c  :<C-u>Denite command_history command<CR>
     " file under current directory
     nnoremap <silent> [denite]f  :<C-u>Denite file/rec<CR>
-    nnoremap <silent> [denite]pf :<C-u>Denite file/rec -auto-preview -vertical-preview<CR>
+    nnoremap <silent> [denite]pf :<C-u>Denite file/rec -auto-preview<CR>
     nnoremap <silent> [denite]gf :<C-u>Denite file/rec/git<CR>
     nnoremap <silent> [denite]af :<C-u>Denite file/rec/all<CR>
     " recently files
     nnoremap <silent> [denite]mr :<C-u>Denite file_mru<CR>
     " buffer and file
     nnoremap <silent> [denite]o  :<C-u>Denite buffer file/rec<CR>
-    nnoremap <silent> [denite]po :<C-u>Denite buffer file/rec -auto-preview -vertical-preview<CR>
     " register
-    nnoremap <silent> [denite]r  :<C-u>Denite -buffer-name=register register<CR>
+    nnoremap <silent> [denite]r  :<C-u>Denite register -buffer-name=register<CR>
     " menu
     nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
     " jumps
-    nnoremap <silent> [denite]j  :<C-u>Denite -auto-highlight jump<CR>
+    nnoremap <silent> [denite]j  :<C-u>Denite jump -auto-highlight<CR>
     " line search
-    nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight line<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-highlight<CR>
     " grep
-    nnoremap <silent> [denite]g  :<C-u>Denite grep -auto-preview -vertical-preview -post-action=suspend<CR>
+    nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=grep -auto-preview -post-action=suspend<CR>
     " filetype
     nnoremap <silent> [denite]t  :<C-u>Denite filetype<CR>
 endfunction
