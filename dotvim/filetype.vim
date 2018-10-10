@@ -15,6 +15,7 @@ augroup filetypedetect
     autocmd BufNewFile,BufRead *.nml setf fortran
     autocmd BufNewFile,BufRead *.namelist setf fortran
 
+    autocmd BufNewFile,BufRead *.go setf go
 augroup END
 
 
