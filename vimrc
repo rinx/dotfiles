@@ -410,6 +410,7 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]c  :<C-u>Denite command_history command<CR>
     " file under current directory
     nnoremap <silent> [denite]f  :<C-u>Denite file/rec<CR>
+    nnoremap <silent> [denite]pf :<C-u>Denite file/rec -auto-preview -vertical-preview<CR>
     nnoremap <silent> [denite]gf :<C-u>Denite file/rec/git<CR>
     nnoremap <silent> [denite]af :<C-u>Denite file/rec/all<CR>
     " recently files
@@ -426,7 +427,7 @@ function! s:init_denite_hook_add() abort
     " line search
     nnoremap <silent> [denite]/  :<C-u>Denite -buffer-name=search -auto-highlight -auto-resize line<CR>
     " grep
-    nnoremap <silent> [denite]g  :<C-u>Denite grep<CR>
+    nnoremap <silent> [denite]g  :<C-u>Denite grep -auto-preview -vertical-preview<CR>
     " filetype
     nnoremap <silent> [denite]t  :<C-u>Denite filetype<CR>
 endfunction
