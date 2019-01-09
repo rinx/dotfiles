@@ -25,6 +25,8 @@ vim-ftplugins: \
 vim-ftdetects: \
     $(HOME)/.vim/ftdetect/purescript.vim \
     $(HOME)/.config/nvim/ftdetect/purescript.vim \
+    $(HOME)/.vim/ftdetect/eta.vim \
+    $(HOME)/.config/nvim/ftdetect/eta.vim \
     $(HOME)/.vim/ftdetect/markdown.vim \
     $(HOME)/.config/nvim/ftdetect/markdown.vim
 
@@ -107,6 +109,14 @@ $(HOME)/.vim/ftdetect/purescript.vim:
 $(HOME)/.config/nvim/ftdetect/purescript.vim:
 	mkdir -p $(HOME)/.config/nvim/ftdetect
 	ln -s $(DOTDIR)/dotvim/ftdetect/purescript.vim $(HOME)/.config/nvim/ftdetect/purescript.vim
+
+$(HOME)/.vim/ftdetect/eta.vim:
+	mkdir -p $(HOME)/.vim/ftdetect
+	ln -s $(DOTDIR)/dotvim/ftdetect/eta.vim $(HOME)/.vim/ftdetect/eta.vim
+
+$(HOME)/.config/nvim/ftdetect/eta.vim:
+	mkdir -p $(HOME)/.config/nvim/ftdetect
+	ln -s $(DOTDIR)/dotvim/ftdetect/eta.vim $(HOME)/.config/nvim/ftdetect/eta.vim
 
 $(HOME)/.vim/ftdetect/markdown.vim:
 	mkdir -p $(HOME)/.vim/ftdetect
