@@ -1340,7 +1340,7 @@ function! s:init_LanguageClient_hook_source() abort
                 \ '-jar',
                 \ l:jdtls_launcher_path,
                 \ '-configuration',
-                \ '~/.config/vim/jdtls/config_' . l:jdtls_os,
+                \ l:jdtls_path . '/config_' . l:jdtls_os,
                 \ '-data',
                 \ l:jdtls_data_path,
                 \]
