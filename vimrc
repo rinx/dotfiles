@@ -1307,8 +1307,43 @@ function! s:init_nim_hook_source() abort
 endfunction
 
 function! s:init_LanguageClient_hook_source() abort
+    if has('mac')
+        let l:jdtls_os = 'mac'
+    elseif has('unix')
+        let l:jdtls_os = 'linux'
+    endif
+    let l:jdtls_path = expand('~/.config/vim/jdtls')
+    if !isdirectory(l:jdtls_path)
+        call mkdir(l:jdtls_path, "p")
+    endif
+    let l:jdtls_launcher_path = system("find " . l:jdtls_path . " -name \"org.eclipse.equinox.launcher_*.jar\"")
+    if empty(l:jdtls_launcher_path)
+        call s:SID_PREFIX() . update_LanguageClient_hook_post_update()
+    endif
+    let l:jdtls_data_path = expand('~/.config/vim/jdtls-data')
+    if !isdirectory(l:jdtls_data_path)
+        call mkdir(l:jdtls_data_path, "p")
+    endif
+
     let g:LanguageClient_serverCommands = {}
     let g:LanguageClient_serverCommands['vue'] = ['vls']
+    let g:LanguageClient_serverCommands['java'] = [
+                \ 'java',
+                \ '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
+                \ '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+                \ '-Dosgi.bundles.defaultStartLevel=4',
+                \ '-Declipse.product=org.eclipse.jdt.ls.core.product',
+                \ '-Dlog.protocol=true',
+                \ '-Dlog.level=ALL',
+                \ '-noverify',
+                \ '-Xmx1G',
+                \ '-jar',
+                \ l:jdtls_launcher_path,
+                \ '-configuration',
+                \ '~/.config/vim/jdtls/config_' . l:jdtls_os,
+                \ '-data',
+                \ l:jdtls_data_path,
+                \]
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_diagnosticsEnable = 0
 
@@ -1316,6 +1351,20 @@ function! s:init_LanguageClient_hook_source() abort
     nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> <F3> :call LanguageClient_textDocument_references()<CR>
+endfunction
+
+function! s:update_LanguageClient_hook_post_update() abort
+    let l:jdtls_path = expand('~/.config/vim/jdtls')
+    if !isdirectory(l:jdtls_path)
+        call mkdir(l:jdtls_path, "p")
+    endif
+    let l:jdtls_launcher_path = system("find " . l:jdtls_path . " -name \"org.eclipse.equinox.launcher_*.jar\"")
+    if !executable(l:jdtls_launcher_path)
+        let l:jdtls_latest = system("curl --silent https://download.eclipse.org/jdtls/snapshots/latest.txt")
+        call system("curl --silent -o /tmp/tmp_jdt_lsp.tar.gz https://download.eclipse.org/jdtls/snapshots/" . l:jdtls_latest)
+        call system("tar xf /tmp/tmp_jdt_lsp.tar.gz -C " . l:jdtls_path)
+        call system("rm /tmp/tmp_jdt_lsp.tar.gz")
+    endif
 endfunction
 
 function! s:init_ref_hook_add() abort
@@ -2287,6 +2336,7 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \   'java',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_LanguageClient_hook_source()',
+                \ 'hook_post_update': 'call ' . s:SID_PREFIX() . 'update_LanguageClient_hook_post_update()',
                 \})
 
     call dein#add('mattn/emmet-vim')
