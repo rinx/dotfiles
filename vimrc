@@ -1353,8 +1353,15 @@ function! s:init_LanguageClient_hook_source() abort
 
     nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
     nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <Leader>d :call LanguageClient_textDocument_typeDefinition()<CR>
+    nnoremap <silent> <Leader>i :call LanguageClient_textDocument_implementation()<CR>
     nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> <F3> :call LanguageClient_textDocument_references()<CR>
+
+    nnoremap <silent> [denite]lm :<C-u>Denite contextMenu<CR>
+    nnoremap <silent> [denite]lds :<C-u>Denite documentSymbol<CR>
+    nnoremap <silent> [denite]lws :<C-u>Denite workspaceSymbol<CR>
+    nnoremap <silent> [denite]lr :<C-u>Denite references<CR>
 endfunction
 
 function! s:update_LanguageClient_hook_post_update() abort
