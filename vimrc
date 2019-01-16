@@ -1307,47 +1307,91 @@ function! s:init_nim_hook_source() abort
 endfunction
 
 function! s:init_LanguageClient_hook_source() abort
-    if has('mac')
-        let l:jdtls_os = 'mac'
-    elseif has('unix')
-        let l:jdtls_os = 'linux'
-    endif
-    let l:jdtls_path = expand('~/.config/vim/jdtls')
-    if !isdirectory(l:jdtls_path)
-        call mkdir(l:jdtls_path, "p")
-    endif
-    let l:jdtls_launcher_path = substitute(system("find " . l:jdtls_path . " -name \"org.eclipse.equinox.launcher_*.jar\" | head -1"), '\n\+$', '', '')
-    if empty(l:jdtls_launcher_path)
-        call s:SID_PREFIX() . update_LanguageClient_hook_post_update()
-    endif
-    let l:jdtls_data_path = expand('~/.config/vim/jdtls-data')
-    if !isdirectory(l:jdtls_data_path)
-        call mkdir(l:jdtls_data_path, "p")
+    let g:LanguageClient_serverCommands = {}
+
+    "clojure
+    if executable('java')
+        let l:clojure_lsp_path = expand('~/.config/vim/clojure-lsp')
+        if !isdirectory(l:clojure_lsp_path)
+            call mkdir(l:clojure_lsp_path, 'p')
+        endif
+        let l:clojure_lsp_executable_path = l:clojure_lsp_path . '/clojure-lsp'
+        if !executable(l:clojure_lsp_executable_path)
+            call s:update_LanguageClient_hook_post_update()
+        endif
+        let g:LanguageClient_serverCommands['clojure'] = [
+                    \ 'java',
+                    \ '-Xmx1G',
+                    \ '-server',
+                    \ '-jar',
+                    \ l:clojure_lsp_executable_path]
+
+        function! s:LanguageClient_clojure_expand(exp) abort
+            let l:result = expand(a:exp)
+            return l:result ==# '' ? '' : "file://" . l:result
+        endfunction
+
+        nnoremap <silent> crcc :call LanguageClient#workspace_executeCommand('cycle-coll', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
+        nnoremap <silent> crth :call LanguageClient#workspace_executeCommand('thread-first', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
+        nnoremap <silent> crtt :call LanguageClient#workspace_executeCommand('thread-last', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
+        nnoremap <silent> crtf :call LanguageClient#workspace_executeCommand('thread-first-all', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
+        nnoremap <silent> crtl :call LanguageClient#workspace_executeCommand('thread-last-all', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
+        nnoremap <silent> crml :call LanguageClient#workspace_executeCommand('move-to-let', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1, input('Binding name: ')])<CR>
+        nnoremap <silent> cril :call LanguageClient#workspace_executeCommand('introduce-let', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1, input('Binding name: ')])<CR>
+        nnoremap <silent> crel :call LanguageClient#workspace_executeCommand('expand-let', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
+        nnoremap <silent> cram :call LanguageClient#workspace_executeCommand('create-missing-libspec', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
     endif
 
-    let g:LanguageClient_serverCommands = {}
+    "java
+    if executable('java')
+        if has('mac')
+            let l:jdtls_os = 'mac'
+        elseif has('unix')
+            let l:jdtls_os = 'linux'
+        endif
+        let l:jdtls_path = expand('~/.config/vim/jdtls')
+        if !isdirectory(l:jdtls_path)
+            call mkdir(l:jdtls_path, 'p')
+        endif
+        let l:jdtls_launcher_path = substitute(system('find ' . l:jdtls_path . ' -name "org.eclipse.equinox.launcher_*.jar" | head -1'), '\n\+$', '', '')
+        if empty(l:jdtls_launcher_path)
+            call s:update_LanguageClient_hook_post_update()
+        endif
+        let l:jdtls_data_path = expand('~/.config/vim/jdtls-data')
+        if !isdirectory(l:jdtls_data_path)
+            call mkdir(l:jdtls_data_path, 'p')
+        endif
+        let g:LanguageClient_serverCommands['java'] = [
+                   \ 'java',
+                   \ '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
+                   \ '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+                   \ '-Dosgi.bundles.defaultStartLevel=4',
+                   \ '-Declipse.product=org.eclipse.jdt.ls.core.product',
+                   \ '-Dlog.protocol=true',
+                   \ '-Dlog.level=ALL',
+                   \ '-noverify',
+                   \ '-Xmx1G',
+                   \ '-jar',
+                   \ l:jdtls_launcher_path,
+                   \ '-configuration',
+                   \ l:jdtls_path . '/config_' . l:jdtls_os,
+                   \ '-data',
+                   \ l:jdtls_data_path,
+                   \]
+    endif
+
+    "go
+    if executable('golsp')
+        let g:LanguageClient_serverCommands['go'] = ['golsp']
+    endif
+
+    "vue
     let g:LanguageClient_serverCommands['vue'] = ['vls']
-    let g:LanguageClient_serverCommands['java'] = [
-                \ 'java',
-                \ '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
-                \ '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-                \ '-Dosgi.bundles.defaultStartLevel=4',
-                \ '-Declipse.product=org.eclipse.jdt.ls.core.product',
-                \ '-Dlog.protocol=true',
-                \ '-Dlog.level=ALL',
-                \ '-noverify',
-                \ '-Xmx1G',
-                \ '-jar',
-                \ l:jdtls_launcher_path,
-                \ '-configuration',
-                \ l:jdtls_path . '/config_' . l:jdtls_os,
-                \ '-data',
-                \ l:jdtls_data_path,
-                \]
+
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_diagnosticsEnable = 0
 
-    let g:LanguageClient_loggingLevel = 'WARN'
+    let g:LanguageClient_loggingLevel = 'INFO'
     let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
     let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 
@@ -1365,18 +1409,32 @@ function! s:init_LanguageClient_hook_source() abort
 endfunction
 
 function! s:update_LanguageClient_hook_post_update() abort
+    "clojure
+    let l:clojure_lsp_path = expand('~/.config/vim/clojure-lsp')
+    if !isdirectory(l:clojure_lsp_path)
+        call mkdir(l:clojure_lsp_path, 'p')
+    endif
+    let l:clojure_lsp_executable_path = l:clojure_lsp_path . '/clojure-lsp'
+    if !executable(l:clojure_lsp_executable_path)
+        let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20181120T050154/clojure-lsp'
+        call system('curl --silent -fSL -o ' . l:clojure_lsp_executable_path . ' ' . l:clojure_lsp_release)
+        call system('chmod 755 ' . l:clojure_lsp_executable_path)
+    endif
+
+    "java
     let l:jdtls_path = expand('~/.config/vim/jdtls')
     if !isdirectory(l:jdtls_path)
-        call mkdir(l:jdtls_path, "p")
+        call mkdir(l:jdtls_path, 'p')
     endif
-    let l:jdtls_launcher_path = substitute(system("find " . l:jdtls_path . " -name \"org.eclipse.equinox.launcher_*.jar\" | head -1"), '\n\+$', '', '')
+    let l:jdtls_launcher_path = substitute(system('find ' . l:jdtls_path . ' -name "org.eclipse.equinox.launcher_*.jar" | head -1'), '\n\+$', '', '')
     if !executable(l:jdtls_launcher_path)
-        let l:jdtls_latest = system("curl -fSL --silent https://download.eclipse.org/jdtls/snapshots/latest.txt")
-        call system("curl --silent -fSL -o /tmp/tmp_jdt_lsp.tar.gz https://download.eclipse.org/jdtls/snapshots/" . l:jdtls_latest)
-        call system("tar xf /tmp/tmp_jdt_lsp.tar.gz -C " . l:jdtls_path)
-        call system("rm /tmp/tmp_jdt_lsp.tar.gz")
+        let l:jdtls_latest = system('curl -fSL --silent https://download.eclipse.org/jdtls/snapshots/latest.txt')
+        call system('curl --silent -fSL -o /tmp/tmp_jdt_lsp.tar.gz https://download.eclipse.org/jdtls/snapshots/' . l:jdtls_latest)
+        call system('tar xf /tmp/tmp_jdt_lsp.tar.gz -C ' . l:jdtls_path)
+        call system('rm /tmp/tmp_jdt_lsp.tar.gz')
     endif
 endfunction
+
 
 function! s:init_ref_hook_add() abort
     let g:ref_source_webdict_sites = {
@@ -1610,13 +1668,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                     \   'cpp',
                     \ ],
                     \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_deoplete_clang_hook_source()',
-                    \})
-        call dein#add('zchee/deoplete-go')
-        call dein#config('deoplete-go', {
-                    \ 'lazy': 1,
-                    \ 'on_ft': [
-                    \   'go',
-                    \ ],
                     \})
         call dein#add('mitsuse/autocomplete-swift')
         call dein#config('autocomplete-swift', {
@@ -2276,19 +2327,19 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
 
     call dein#add('fatih/vim-go')
     call dein#config('vim-go', {
-                \ 'lazy': 1,
-                \ 'on_ft': [
-                \   'go',
-                \ ],
-                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_go_hook_source()',
-                \})
+               \ 'lazy': 1,
+               \ 'on_ft': [
+               \   'go',
+               \ ],
+               \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_go_hook_source()',
+               \})
     call dein#add('vim-jp/vim-go-extra')
     call dein#config('vim-go-extra', {
-                \ 'lazy': 1,
-                \ 'on_ft': [
-                \   'go',
-                \ ],
-                \})
+               \ 'lazy': 1,
+               \ 'on_ft': [
+               \   'go',
+               \ ],
+               \})
 
     call dein#add('rust-lang/rust.vim')
     call dein#config('rust.vim', {
@@ -2343,8 +2394,11 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'rev': 'next',
                 \ 'build': 'bash install.sh',
                 \ 'on_ft': [
-                \   'vue',
+                \   'clojure',
+                \   'go',
                 \   'java',
+                \   'haskell',
+                \   'vue',
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_LanguageClient_hook_source()',
                 \ 'hook_post_update': 'call ' . s:SID_PREFIX() . 'update_LanguageClient_hook_post_update()',
