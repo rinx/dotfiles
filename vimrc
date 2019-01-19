@@ -1339,7 +1339,7 @@ function! s:init_LanguageClient_hook_source() abort
         nnoremap <silent> crml :call LanguageClient#workspace_executeCommand('move-to-let', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1, input('Binding name: ')])<CR>
         nnoremap <silent> cril :call LanguageClient#workspace_executeCommand('introduce-let', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1, input('Binding name: ')])<CR>
         nnoremap <silent> crel :call LanguageClient#workspace_executeCommand('expand-let', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
-        nnoremap <silent> cram :call LanguageClient#workspace_executeCommand('create-missing-libspec', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
+        nnoremap <silent> cram :call LanguageClient#workspace_executeCommand('add-missing-libspec', [<SID>LanguageClient_clojure_expand('%:p'), line('.') - 1, col('.') - 1])<CR>
     endif
 
     "java
