@@ -1293,7 +1293,8 @@ function! s:init_go_hook_source() abort
         autocmd FileType go compiler go
     augroup END
     let g:go_fmt_command = 'goimports'
-    nnoremap gs <Plug>(go-def-split)
+    let g:go_gocode_propose_builtins = 0
+    let g:go_def_mapping_enabled = 0
 endfunction
 
 function! s:init_racer_hook_source() abort
