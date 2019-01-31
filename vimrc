@@ -30,7 +30,12 @@ endif
 unlet s:vimrc_private_filename
 
 if has('nvim')
-    let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
+    if executable('python2')
+        let g:python_host_prog = system('which python2')
+    endif
+    if executable('python3')
+        let g:python3_host_prog = system('which python3')
+    endif
 endif
 
 " --- Plugin settings
