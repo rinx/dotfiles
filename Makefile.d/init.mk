@@ -15,10 +15,12 @@ vim-init:
 neovim-init:
 	@$(call red, "neovim-init")
 	@$(call blue, "--\> initialize dein for NeoVim")
-	nvim -N -u NONE -i NONE -V1 -e -s --cmd "source $(DOTDIR)/vimrc" --cmd 'call dein#install()' --cmd quit
+	nvim --headless +'call dein#install()' +qa
+	nvim --headless +'call dein#remote_plugins()' +qa
+	nvim --headless +'e main.go' +':GoInstallBinaries' +qa
 
 tmux-init:
 	@$(call red, "tmux-init")
 	@$(call blue, "--\> install tmux plugins")
-	sh $(HOME)/.tmux/plugins/tpm/scripts/install_plugins.sh
+	bash $(HOME)/.tmux/plugins/tpm/scripts/install_plugins.sh
 
