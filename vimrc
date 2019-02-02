@@ -31,10 +31,10 @@ unlet s:vimrc_private_filename
 
 if has('nvim')
     if executable('python2')
-        let g:python_host_prog = system('which python2')
+        let g:python_host_prog = substitute(system('which python2'),"\n","","")
     endif
     if executable('python3')
-        let g:python3_host_prog = system('which python3')
+        let g:python3_host_prog = substitute(system('which python3'),"\n","","")
     endif
 endif
 
