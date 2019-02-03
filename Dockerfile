@@ -2,23 +2,36 @@ FROM docker:18.09-dind AS docker
 
 FROM clojure:lein-alpine AS clojure
 
-# FROM openjdk:8-jdk-slim AS eta
+# FROM alpine:latest AS eta
 #
-# RUN apt-get -q update && \
-#     apt-get -q install -y --no-install-recommends ca-certificates netbase curl git gcc g++ zlib1g-dev libncurses5-dev libbz2-dev && \
-#     curl -sSL https://get.haskellstack.org/ | sh && \
-#     mkdir -p $HOME/.local/bin && \
-#     rm -rf /tmp/* \
-#            /var/cache/apk/* && \
-#     apt-get autoclean && \
-#     apt-get clean && \
-#     apt-get autoremove && \
-#     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# RUN apk update \
+#     && echo "https://s3-us-west-2.amazonaws.com/alpine-ghc/7.10" >> /etc/apk/repositories
+# ADD https://raw.githubusercontent.com/mitchty/alpine-ghc/master/mitch.tishmack%40gmail.com-55881c97.rsa.pub \
+#     /etc/apk/keys/mitch.tishmack@gmail.com-55881c97.rsa.pub
 #
-# RUN mkdir -p /usr/local/bin \
+# RUN apk update \
+#     && apk add alpine-sdk \
+#     ca-certificates \
+#     curl \
+#     ghc=7.10.3-r2 \
+#     git \
+#     gmp-dev \
+#     musl-dev \
+#     openjdk8 \
+#     zlib-dev
+#
+# RUN curl -sSL https://get.haskellstack.org/ | sh \
+#     && mkdir -p /usr/local/bin \
 #     && git clone --recursive https://github.com/typelead/eta \
 #     && cd eta \
-#     && stack install etlas --ghc-options='-optl-static -optl-pthread -fPIC' --local-bin-path="/usr/local/bin"
+#     && stack install etlas --system-ghc --ghc-options='-optl-static -optl-pthread -fPIC' --local-bin-path="/usr/local/bin"
+
+FROM ekidd/rust-musl-builder:stable AS rust
+
+RUN cargo install bat \
+    exa \
+    ripgrep \
+    && cargo install --git https://github.com/sharkdp/fd
 
 FROM golang:1.11-alpine AS go
 
@@ -39,10 +52,12 @@ RUN go get -v -u \
     github.com/fatih/motion \
     github.com/josharian/impl \
     github.com/jstemmer/gotags \
+    github.com/junegunn/fzf \
     github.com/kisielk/errcheck \
     github.com/klauspost/asmfmt/cmd/asmfmt \
     github.com/koron/iferr \
     github.com/mdempsky/gocode \
+    github.com/motemen/ghq \
     github.com/rogpeppe/godef \
     github.com/stamblerre/gocode \
     github.com/zmb3/gogetdoc \
@@ -134,6 +149,11 @@ COPY --from=clojure /usr/share/java /usr/share/java
 
 # COPY --from=eta /usr/local/bin/etlas /usr/local/bin/etlas
 
+COPY --from=rust /home/rust/.cargo/bin/bat /usr/local/bin/bat
+COPY --from=rust /home/rust/.cargo/bin/exa /usr/local/bin/exa
+COPY --from=rust /home/rust/.cargo/bin/fd /usr/local/bin/fd
+COPY --from=rust /home/rust/.cargo/bin/rg /usr/local/bin/rg
+
 COPY --from=go /usr/local/go/bin $GOROOT/bin
 COPY --from=go /usr/local/go/src $GOROOT/src
 COPY --from=go /usr/local/go/lib $GOROOT/lib
@@ -147,6 +167,8 @@ WORKDIR $DOTFILES
 COPY . .
 
 RUN ["/bin/bash", "-c", "make -j4 deploy && make prepare-init && make neovim-init && make tmux-init"]
+
+RUN git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
 RUN echo -e '[user]\n\
     name = Rintaro Okamura\n\

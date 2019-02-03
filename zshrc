@@ -137,25 +137,25 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zplug "zsh-users/zsh-syntax-highlighting", defer:2
     zplug "zsh-users/zsh-history-substring-search"
 
-    zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-    zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+    (type fzf > /dev/null 2>&1) || zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
+    (type fzf-tmux > /dev/null 2>&1) || zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
 
     if [[ "$OS" == "Darwin" ]]; then
-        zplug "ogham/exa", as:command, from:gh-r, use:"*macos-x86_64*", rename-to:ls
-        zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:rg
-        zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:bat
-        zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:fd
+        (type exa > /dev/null 2>&1) && alias ls=exa || zplug "ogham/exa", as:command, from:gh-r, use:"*macos-x86_64*", rename-to:ls
+        (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:rg
+        (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:bat
+        (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:fd
     else
-        zplug "ogham/exa", as:command, from:gh-r, use:"*linux-x86_64*", rename-to:ls
-        zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*linux*", rename-to:rg
-        zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:bat
-        zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:fd
+        (type exa > /dev/null 2>&1) && alias ls=exa || zplug "ogham/exa", as:command, from:gh-r, use:"*linux-x86_64*", rename-to:ls
+        (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*linux*", rename-to:rg
+        (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:bat
+        (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:fd
     fi
 
-    zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq
-    zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+    (type ghq > /dev/null 2>&1) || zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq
+    (type jq > /dev/null 2>&1) || zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
-    zplug "greymd/tmux-xpanes"
+    (type xpanes > /dev/null 2>&1) || zplug "greymd/tmux-xpanes"
 
     if ! zplug check --verbose; then
         zplug install
