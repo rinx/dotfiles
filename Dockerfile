@@ -11,15 +11,12 @@ RUN cargo install bat \
     ripgrep \
     && cargo install --git https://github.com/sharkdp/fd
 
-FROM golang:1.11-alpine AS go
+FROM golang:1.11-stretch AS go
 
-RUN apk update \
-    && apk upgrade \
-    && apk add --no-cache \
+RUN apt-get update \
+    && apt-get install -y \
     git \
     curl \
-    gcc \
-    musl-dev \
     wget
 
 RUN go get -v -u \
@@ -30,10 +27,12 @@ RUN go get -v -u \
     github.com/fatih/motion \
     github.com/josharian/impl \
     github.com/jstemmer/gotags \
+    github.com/junegunn/fzf \
     github.com/kisielk/errcheck \
     github.com/klauspost/asmfmt/cmd/asmfmt \
     github.com/koron/iferr \
     github.com/mdempsky/gocode \
+    github.com/motemen/ghq \
     github.com/rogpeppe/godef \
     github.com/stamblerre/gocode \
     github.com/zmb3/gogetdoc \
@@ -118,6 +117,9 @@ COPY --from=docker /usr/local/bin/runc /usr/bin/docker-runc
 
 COPY --from=clojure /usr/local/bin/lein /usr/local/bin/lein
 COPY --from=clojure /usr/share/java /usr/share/java
+RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.10.0"]])' > project.clj \
+    && lein deps \
+    && rm project.clj
 
 COPY --from=eta /root/.local/bin/etlas /usr/local/bin/etlas
 
