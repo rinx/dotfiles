@@ -1195,17 +1195,17 @@ function! s:init_github_complete_hook_source() abort
     imap <C-x>e <Plug>(github-complete-manual-completion)
 endfunction
 
-function! s:init_lldb_hook_source() abort
-    nmap <M-b> <Plug>LLBreakSwitch
-    vmap <F2> <Plug>LLStdInSelected
-    nnoremap <F4> :LLstdin<CR>
-    nnoremap <F7> :LLmode debug<CR>
-    nnoremap <S-F7> :LLmode code<CR>
-    nnoremap <F8> :LL continue<CR>
-    nnoremap <S-F8> :LL process interrupt<CR>
-    nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
-    vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
-endfunction
+" function! s:init_lldb_hook_source() abort
+"     nmap <M-b> <Plug>LLBreakSwitch
+"     vmap <F2> <Plug>LLStdInSelected
+"     nnoremap <F4> :LLstdin<CR>
+"     nnoremap <F7> :LLmode debug<CR>
+"     nnoremap <S-F7> :LLmode code<CR>
+"     nnoremap <F8> :LL continue<CR>
+"     nnoremap <S-F8> :LL process interrupt<CR>
+"     nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
+"     vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
+" endfunction
 
 function! s:init_haskell_vim_hook_source() abort
     let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
@@ -2187,17 +2187,17 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_github_complete_hook_source()',
                 \})
 
-    if has('nvim')
-        call dein#add('dbgx/lldb.nvim')
-        call dein#config('lldb.nvim', {
-                    \ 'lazy': 1,
-                    \ 'on_ft': [
-                    \   'c',
-                    \   'cpp',
-                    \ ],
-                    \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_lldb_hook_source()',
-                    \})
-    endif
+    " if has('nvim')
+    "     call dein#add('dbgx/lldb.nvim')
+    "     call dein#config('lldb.nvim', {
+    "                \ 'lazy': 1,
+    "                \ 'on_ft': [
+    "                \   'c',
+    "                \   'cpp',
+    "                \ ],
+    "                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_lldb_hook_source()',
+    "                \})
+    " endif
 
     call dein#add('basyura/unite-rails')
     call dein#config('unite-rails', {
