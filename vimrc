@@ -1,6 +1,5 @@
 " ----------------------------------------
 " Author: Rintaro Okamura
-" URL:    http://rinx.biz
 " Source: https://github.com/rinx/dotfiles
 " ----------------------------------------
 
@@ -1312,17 +1311,32 @@ function! s:init_nim_hook_source() abort
 
 endfunction
 
+function! s:init_LanguageClient_hook_add() abort
+    let s:clojure_lsp_path = expand('~/.config/vim/clojure-lsp')
+    let s:clojure_lsp_executable_path = s:clojure_lsp_path . '/clojure-lsp'
+
+    if has('mac')
+        let s:jdtls_os = 'mac'
+    elseif has('unix')
+        let s:jdtls_os = 'linux'
+    endif
+    let s:jdtls_path = expand('~/.config/vim/jdtls')
+    let s:jdtls_data_path = expand('~/.config/vim/jdtls-data')
+
+    function! s:LanguageClient_find_jdtls_launcher() abort
+        return substitute(system('find ' . s:jdtls_path . ' -name "org.eclipse.equinox.launcher_*.jar" | head -1'), '\n\+$', '', '')
+    endfunction
+endfunction
+
 function! s:init_LanguageClient_hook_source() abort
     let g:LanguageClient_serverCommands = {}
 
     "clojure
     if executable('java')
-        let l:clojure_lsp_path = expand('~/.config/vim/clojure-lsp')
-        if !isdirectory(l:clojure_lsp_path)
-            call mkdir(l:clojure_lsp_path, 'p')
+        if !isdirectory(s:clojure_lsp_path)
+            call mkdir(s:clojure_lsp_path, 'p')
         endif
-        let l:clojure_lsp_executable_path = l:clojure_lsp_path . '/clojure-lsp'
-        if !executable(l:clojure_lsp_executable_path)
+        if !executable(s:clojure_lsp_executable_path)
             call s:update_LanguageClient_hook_post_update()
         endif
         let g:LanguageClient_serverCommands['clojure'] = [
@@ -1330,7 +1344,7 @@ function! s:init_LanguageClient_hook_source() abort
                     \ '-Xmx1G',
                     \ '-server',
                     \ '-jar',
-                    \ l:clojure_lsp_executable_path]
+                    \ s:clojure_lsp_executable_path]
 
         function! s:LanguageClient_clojure_expand(exp) abort
             let l:result = expand(a:exp)
@@ -1350,22 +1364,14 @@ function! s:init_LanguageClient_hook_source() abort
 
     "java
     if executable('java')
-        if has('mac')
-            let l:jdtls_os = 'mac'
-        elseif has('unix')
-            let l:jdtls_os = 'linux'
+        if !isdirectory(s:jdtls_path)
+            call mkdir(s:jdtls_path, 'p')
         endif
-        let l:jdtls_path = expand('~/.config/vim/jdtls')
-        if !isdirectory(l:jdtls_path)
-            call mkdir(l:jdtls_path, 'p')
-        endif
-        let l:jdtls_launcher_path = substitute(system('find ' . l:jdtls_path . ' -name "org.eclipse.equinox.launcher_*.jar" | head -1'), '\n\+$', '', '')
-        if empty(l:jdtls_launcher_path)
+        if empty(s:LanguageClient_find_jdtls_launcher())
             call s:update_LanguageClient_hook_post_update()
         endif
-        let l:jdtls_data_path = expand('~/.config/vim/jdtls-data')
-        if !isdirectory(l:jdtls_data_path)
-            call mkdir(l:jdtls_data_path, 'p')
+        if !isdirectory(s:jdtls_data_path)
+            call mkdir(s:jdtls_data_path, 'p')
         endif
         let g:LanguageClient_serverCommands['java'] = [
                    \ 'java',
@@ -1378,11 +1384,11 @@ function! s:init_LanguageClient_hook_source() abort
                    \ '-noverify',
                    \ '-Xmx1G',
                    \ '-jar',
-                   \ l:jdtls_launcher_path,
+                   \ s:LanguageClient_find_jdtls_launcher(),
                    \ '-configuration',
-                   \ l:jdtls_path . '/config_' . l:jdtls_os,
+                   \ s:jdtls_path . '/config_' . s:jdtls_os,
                    \ '-data',
-                   \ l:jdtls_data_path,
+                   \ s:jdtls_data_path,
                    \]
     endif
 
@@ -1394,7 +1400,9 @@ function! s:init_LanguageClient_hook_source() abort
     endif
 
     "vue
-    let g:LanguageClient_serverCommands['vue'] = ['vls']
+    if executable('vls')
+        let g:LanguageClient_serverCommands['vue'] = ['vls']
+    enfif
 
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_diagnosticsEnable = 0
@@ -1417,32 +1425,30 @@ function! s:init_LanguageClient_hook_source() abort
 endfunction
 
 function! s:update_LanguageClient_hook_post_update() abort
-    "clojure
-    let l:clojure_lsp_path = expand('~/.config/vim/clojure-lsp')
-    if !isdirectory(l:clojure_lsp_path)
-        call mkdir(l:clojure_lsp_path, 'p')
-    endif
-    let l:clojure_lsp_executable_path = l:clojure_lsp_path . '/clojure-lsp'
-    if !executable(l:clojure_lsp_executable_path)
-        let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20181120T050154/clojure-lsp'
-        call system('curl --silent -fSL -o ' . l:clojure_lsp_executable_path . ' ' . l:clojure_lsp_release)
-        call system('chmod 755 ' . l:clojure_lsp_executable_path)
-    endif
+    if executable('java')
+        "clojure
+        if !isdirectory(s:clojure_lsp_path)
+            call mkdir(s:clojure_lsp_path, 'p')
+        endif
+        if !executable(s:clojure_lsp_executable_path)
+            let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20181120T050154/clojure-lsp'
+            call system('curl --silent -fSL -o ' . l:clojure_lsp_executable_path . ' ' . l:clojure_lsp_release)
+            call system('chmod 755 ' . l:clojure_lsp_executable_path)
+        endif
 
-    "java
-    let l:jdtls_path = expand('~/.config/vim/jdtls')
-    if !isdirectory(l:jdtls_path)
-        call mkdir(l:jdtls_path, 'p')
-    endif
-    let l:jdtls_launcher_path = substitute(system('find ' . l:jdtls_path . ' -name "org.eclipse.equinox.launcher_*.jar" | head -1'), '\n\+$', '', '')
-    if !executable(l:jdtls_launcher_path)
-        let l:jdtls_latest = system('curl -fSL --silent https://download.eclipse.org/jdtls/snapshots/latest.txt')
-        call system('curl --silent -fSL -o /tmp/tmp_jdt_lsp.tar.gz https://download.eclipse.org/jdtls/snapshots/' . l:jdtls_latest)
-        call system('tar xf /tmp/tmp_jdt_lsp.tar.gz -C ' . l:jdtls_path)
-        call system('rm /tmp/tmp_jdt_lsp.tar.gz')
+        "java
+        if !isdirectory(s:jdtls_path)
+            call mkdir(s:jdtls_path, 'p')
+        endif
+        let l:jdtls_launcher_path = s:LanguageClient_find_jdtls_launcher()
+        if !executable(l:jdtls_launcher_path)
+            let l:jdtls_latest = system('curl -fSL --silent https://download.eclipse.org/jdtls/snapshots/latest.txt')
+            call system('curl --silent -fSL -o /tmp/tmp_jdt_lsp.tar.gz https://download.eclipse.org/jdtls/snapshots/' . l:jdtls_latest)
+            call system('tar xf /tmp/tmp_jdt_lsp.tar.gz -C ' . s:jdtls_path)
+            call system('rm /tmp/tmp_jdt_lsp.tar.gz')
+        endif
     endif
 endfunction
-
 
 function! s:init_ref_hook_add() abort
     let g:ref_source_webdict_sites = {
@@ -2405,9 +2411,9 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \   'clojure',
                 \   'go',
                 \   'java',
-                \   'haskell',
                 \   'vue',
                 \ ],
+                \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_LanguageClient_hook_add()',
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_LanguageClient_hook_source()',
                 \ 'hook_post_update': 'call ' . s:SID_PREFIX() . 'update_LanguageClient_hook_post_update()',
                 \})
@@ -3462,4 +3468,3 @@ function! s:vimrc_local(loc)
         source `=i`
     endfor
 endfunction
-
