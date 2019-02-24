@@ -1402,7 +1402,7 @@ function! s:init_LanguageClient_hook_source() abort
     "vue
     if executable('vls')
         let g:LanguageClient_serverCommands['vue'] = ['vls']
-    enfif
+    endif
 
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_diagnosticsEnable = 0
