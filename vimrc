@@ -1432,8 +1432,8 @@ function! s:update_LanguageClient_hook_post_update() abort
         endif
         if !executable(s:clojure_lsp_executable_path)
             let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20181120T050154/clojure-lsp'
-            call system('curl --silent -fSL -o ' . l:clojure_lsp_executable_path . ' ' . l:clojure_lsp_release)
-            call system('chmod 755 ' . l:clojure_lsp_executable_path)
+            call system('curl --silent -fSL -o ' . s:clojure_lsp_executable_path . ' ' . l:clojure_lsp_release)
+            call system('chmod 755 ' . s:clojure_lsp_executable_path)
         endif
 
         "java
