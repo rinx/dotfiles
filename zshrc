@@ -400,3 +400,7 @@ vimswitcher () {
 # export GOPATH=$HOME/local
 # export PATH=$PATH:$GOPATH/bin
 
+# clojure
+# (please refer `deps.edn`)
+alias cljdev='clj -R:dev'
+

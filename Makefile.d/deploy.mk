@@ -24,7 +24,8 @@
     sway-config \
     wallpapers \
     i3status-config \
-    lein-profile
+    lein-profile \
+    deps-edn
 
 prepare-deploy:
 	@$(call cyan, "deploy stage")
@@ -136,7 +137,8 @@ others-deploy: \
     xmonad.hs \
     sway-config \
     i3status-config \
-    lein-profile
+    lein-profile \
+    deps-edn
 	@$(call red, "others-deploy")
 
 latexmkrc: $(HOME)/.latexmkrc
@@ -230,3 +232,7 @@ $(HOME)/.lein/profiles.clj:
 	mkdir -p $(HOME)/.lein
 	ln -s $(DOTDIR)/profiles.clj $(HOME)/.lein/profiles.clj
 
+deps-edn: $(HOME)/.clojure/deps.edn
+$(HOME)/.clojure/deps.edn:
+	mkdir -p $(HOME)/.clojure
+	ln -s $(DOTDIR)/deps.edn $(HOME)/.clojure/deps.edn
