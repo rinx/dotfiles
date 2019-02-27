@@ -402,5 +402,5 @@ vimswitcher () {
 
 # clojure
 # (please refer `deps.edn`)
-alias cljdev='clj -R:dev'
+alias cljdev='clj -A:dev'
 
