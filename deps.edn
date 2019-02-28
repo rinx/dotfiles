@@ -13,12 +13,12 @@
   :cljs {:extra-deps {org.clojure/clojurescript {:mvn/version "1.10.520"}}}
 
   :dev {:extra-deps
-        {org.clojure/spec.alpha {:mvn/version "0.2.176"}
+        {org.clojure/tools.deps.alpha {:git/url "https://github.com/clojure/tools.deps.alpha"
+                                        :sha "e160f184f051f120014244679831a9bccb37c9de"}
+         org.clojure/spec.alpha {:mvn/version "0.2.176"}
          org.clojure/test.check {:mvn/version "0.10.0-alpha3"}
          org.clojure/core.async {:mvn/version "0.4.490"}
-         com.stuartsierra/component {:mvn/version "0.4.0"}
-         com.taoensso/timbre {:mvn/version "4.10.0"}
-         orchestra {:mvn/version "2019.02.06-1"}
          clj-http {:mvn/version "3.9.1"}
          cheshire {:mvn/version "5.8.1"}
-         camel-snake-kebab {:mvn/version "0.4.0"}}}}}
+         camel-snake-kebab {:mvn/version "0.4.0"}}
+        :main-opts ["-e" "(require,'[clojure.tools.deps.alpha.repl,:refer,[add-lib]]),(require,'[clojure.java.io,:as,io]),(require,'[clojure.pprint,:refer,[pprint]]),(require,'[clojure.spec.alpha,:as,spec]),(require,'[clojure.spec.gen.alpha,:as,gen]),(require,'[clojure.core.async,:as,async,:refer,[<!,>!,<!!,>!!]]),(require,'[clojure.data,:as,data]),(require,'[clojure.edn,:as,edn]),(require,'[clojure.set,:as,set]),(require,'[clojure.string,:as,string]),(require,'[clojure.walk,:as,walk]),(require,'[clojure.xml,:as,xml]),(require,'[clojure.zip,:as,zip]),(require,'[clj-http.client,:as,http]),(require,'[cheshire.core,:as,cheshire]),(require,'[camel-snake-kebab.core,:as,camel-snake-kebab])"]}}}
