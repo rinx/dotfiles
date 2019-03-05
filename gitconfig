@@ -91,3 +91,6 @@
 
 [ghq]
     root = ~/local/src
+
+[rerere]
+	enabled = true
