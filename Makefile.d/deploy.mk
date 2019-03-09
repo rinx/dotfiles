@@ -157,8 +157,8 @@ $(HOME)/.xmonad/xmonad.hs:
 	ln -s $(DOTDIR)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
 sway-config: \
-    $(HOME)/.config/sway/config \
-    wallpapers
+    $(HOME)/.config/sway/config # \
+    # wallpapers
 $(HOME)/.config/sway/config:
 	mkdir -p $(HOME)/.config/sway
 	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
