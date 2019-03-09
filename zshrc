@@ -404,3 +404,19 @@ vimswitcher () {
 # (please refer `deps.edn`)
 alias cljdev='clj -A:dev -r'
 
+# docker
+alias docker-devstart='docker run \
+    --network host \
+    --cap-add=ALL \
+    --privileged=false \
+    --name devenv \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v $HOME/local:/root/local \
+    -v $HOME/tmp:/root/tmp \
+    -v $HOME/works:/root/works \
+    -v $HOME/Downloads:/root/Downloads \
+    -dit rinx/devenv'
+alias docker-devattach='docker exec -it devenv /bin/zsh'
+alias docker-devstop='docker stop devenv && docker rm devenv'
+

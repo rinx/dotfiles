@@ -143,6 +143,14 @@ COPY . .
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
+# zplug plugins
+RUN mkdir -p $HOME/.zplug/repos/zsh-users
+RUN git clone https://github.com/zplug/zplug $HOME/.zplug
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zplug/repos/zsh-users/zsh-autosuggestions
+RUN git clone https://github.com/zsh-users/zsh-completions $HOME/.zplug/repos/zsh-users/zsh-completions
+RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting
+RUN git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search
+
 RUN echo '[user]\n\
     name = Rintaro Okamura\n\
     email = rintaro.okamura@gmail.com\n\
