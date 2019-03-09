@@ -405,7 +405,7 @@ vimswitcher () {
 alias cljdev='clj -A:dev -r'
 
 # docker
-alias docker-devstart='docker run \
+alias devstart='docker run \
     --network host \
     --cap-add=ALL \
     --privileged=false \
@@ -417,6 +417,6 @@ alias docker-devstart='docker run \
     -v $HOME/works:/root/works \
     -v $HOME/Downloads:/root/Downloads \
     -dit rinx/devenv'
-alias docker-devattach='docker exec -it devenv /bin/zsh'
-alias docker-devstop='docker stop devenv && docker rm devenv'
+alias devattach='docker exec -it devenv /bin/zsh'
+alias devstop='docker stop devenv && docker rm devenv'
 

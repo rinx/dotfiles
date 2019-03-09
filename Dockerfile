@@ -1,8 +1,8 @@
-FROM docker:18.09-dind AS docker
+FROM docker:dind AS docker
 
-FROM clojure:lein-alpine AS clojure
+FROM clojure:lein-alpine AS clojure-lein
 
-FROM typelead/eta:latest AS eta
+FROM clojure:tools-deps-alpine AS clojure-deps
 
 FROM ekidd/rust-musl-builder:stable AS rust
 
@@ -11,7 +11,7 @@ RUN cargo install bat \
     ripgrep \
     && cargo install --git https://github.com/sharkdp/fd
 
-FROM golang:1.11-stretch AS go
+FROM golang:stretch AS go
 
 RUN apt-get update \
     && apt-get install -y \
@@ -34,11 +34,11 @@ RUN go get -v -u \
     github.com/mdempsky/gocode \
     github.com/motemen/ghq \
     github.com/rogpeppe/godef \
+    github.com/saibing/bingo \
     github.com/stamblerre/gocode \
     github.com/zmb3/gogetdoc \
     golang.org/x/lint/golint \
     golang.org/x/tools/cmd/goimports \
-    golang.org/x/tools/cmd/golsp \
     golang.org/x/tools/cmd/gorename \
     golang.org/x/tools/cmd/guru \
     honnef.co/go/tools/cmd/keyify \
@@ -75,6 +75,7 @@ RUN apt-get update \
     python-pip \
     python3-dev \
     python3-pip \
+    rlwrap \
     tar \
     tmux \
     wget \
@@ -115,13 +116,12 @@ COPY --from=docker /usr/local/bin/dockerd /usr/bin/dockerd
 COPY --from=docker /usr/local/bin/modprobe /usr/bin/modprobe
 COPY --from=docker /usr/local/bin/runc /usr/bin/docker-runc
 
-COPY --from=clojure /usr/local/bin/lein /usr/local/bin/lein
-COPY --from=clojure /usr/share/java /usr/share/java
-RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.10.0"]])' > project.clj \
-    && lein deps \
-    && rm project.clj
+COPY --from=clojure-lein /usr/local/bin/lein /usr/local/bin/lein
+COPY --from=clojure-lein /usr/share/java /usr/share/java
 
-COPY --from=eta /root/.local/bin/etlas /usr/local/bin/etlas
+COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
+COPY --from=clojure-deps /usr/local/bin/clj /usr/local/bin/clj
+COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
 COPY --from=rust /home/rust/.cargo/bin/bat /usr/local/bin/bat
 COPY --from=rust /home/rust/.cargo/bin/exa /usr/local/bin/exa
@@ -140,16 +140,16 @@ WORKDIR $DOTFILES
 
 COPY . .
 
+# zplug plugins
+RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
+    && git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zplug/repos/zsh-users/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-completions $HOME/.zplug/repos/zsh-users/zsh-completions \
+    && git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting \
+    && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
+    && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
+
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
-
-# zplug plugins
-RUN mkdir -p $HOME/.zplug/repos/zsh-users
-RUN git clone https://github.com/zplug/zplug $HOME/.zplug
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zplug/repos/zsh-users/zsh-autosuggestions
-RUN git clone https://github.com/zsh-users/zsh-completions $HOME/.zplug/repos/zsh-users/zsh-completions
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting
-RUN git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search
 
 RUN echo '[user]\n\
     name = Rintaro Okamura\n\
