@@ -1250,8 +1250,6 @@ function! s:init_iron_hook_source() abort
 endfunction
 
 function! s:init_acid_hook_source() abort
-    let g:acid_auto_start_repl = 0
-
     command! AcidConnectToRemoteREPL
                 \ call luaeval("require('acid.nrepl').start({pwd='" . expand('%:p:h')
                 \ . "', bind='" . input('host: ')
