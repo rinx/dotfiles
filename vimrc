@@ -1250,6 +1250,24 @@ function! s:init_iron_hook_source() abort
 endfunction
 
 function! s:init_acid_hook_source() abort
+    let g:acid_no_default_keymappings = 1
+
+    nnoremap [acid] <Nop>
+    nmap ,a [acid]
+
+    nmap <silent> <Leader>gd <Plug>(acid-go-to)
+    nmap <silent> <Leader>K  <Plug>(acid-docs)
+
+    nmap <silent> cp  <Plug>(acid-motion-op)
+    nmap <silent> cpp <Plug>(acid-eval-expr)
+    nmap <silent> cqp <Plug>(acid-eval-print)
+
+    nmap <silent> [acid]x  <Plug>(acid-eval-cmdline)
+    nmap <silent> [acid]ll <Plug>(acid-virtualtext-clear-line)
+    nmap <silent> [acid]ln <Plug>(acid-virtualtext-toggle)
+    nmap <silent> [acid]la <Plug>(acid-virtualtext-clear-all)
+
+    command! AcidSetNsStrategy let b:acid_ns_strategy='ns:' . input('namespace: ')
     command! AcidConnectToRemoteREPL
                 \ call luaeval("require('acid.nrepl').start({pwd='" . expand('%:p:h')
                 \ . "', bind='" . input('host: ')
