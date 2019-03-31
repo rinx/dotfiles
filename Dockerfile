@@ -110,6 +110,8 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 
 ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
 
+ENV DOCKERIZED_DEVENV="rinx/devenv"
+
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
@@ -147,7 +149,23 @@ COPY --from=go /go/bin $GOROOT/bin
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
 
-COPY . .
+COPY deps.edn             $DOTFILES/deps.edn
+COPY dotvim               $DOTFILES/dotvim
+COPY gitattributes_global $DOTFILES/gitattributes_global
+COPY gitconfig            $DOTFILES/gitconfig
+COPY gitignore            $DOTFILES/gitignore
+COPY Makefile             $DOTFILES/Makefile
+COPY Makefile.d           $DOTFILES/Makefile.d
+COPY nvimrc               $DOTFILES/nvimrc
+COPY profiles.clj         $DOTFILES/profiles.clj
+COPY resources            $DOTFILES/resources
+COPY sway-config          $DOTFILES/sway-config
+COPY tiny.vimrc           $DOTFILES/tiny.vimrc
+COPY tmux.conf            $DOTFILES/tmux.conf
+COPY vimrc                $DOTFILES/vimrc
+COPY vimshrc              $DOTFILES/vimshrc
+COPY Xdefaults            $DOTFILES/Xdefaults
+COPY zshrc                $DOTFILES/zshrc
 
 # zplug plugins
 RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
@@ -164,7 +182,12 @@ RUN echo "[user]" > $HOME/.gitconfig.local \
     && echo "    name = Rintaro Okamura" >> $HOME/.gitconfig.local \
     && echo "    email = rintaro.okamura@gmail.com" >> $HOME/.gitconfig.local
 
+# download dependencies
+RUN ["/bin/zsh", "-c", "lein"]
+RUN ["/bin/zsh", "-c", "clojure -A:dev"]
+
 WORKDIR $HOME
 
+ENTRYPOINT ["docker-entrypoint"]
 CMD ["zsh"]
 

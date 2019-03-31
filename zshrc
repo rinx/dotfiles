@@ -81,6 +81,11 @@ if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
     if [ ${#HOST} -gt 10 ]; then
         local afterhost="$lf"
     fi
+elif [ -n "${DOCKERIZED_DEVENV}" ]; then
+    local usrathn="%F{yellow}%n@${DOCKERIZED_DEVENV}%f"
+    if [ ${#DOCKERIZED_DEVENV} -gt 10 ]; then
+        local afterhost="$lf"
+    fi
 else
     local usrathn="%n"
 fi
@@ -416,6 +421,7 @@ alias devstart='docker run \
     --name devenv \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /etc/localtime:/etc/localtime:ro \
+    -v $HOME/.dotfiles:/root/.dotfiles \
     -v $HOME/local:/root/local \
     -v $HOME/tmp:/root/tmp \
     -v $HOME/works:/root/works \
