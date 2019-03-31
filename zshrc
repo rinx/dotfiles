@@ -402,7 +402,11 @@ vimswitcher () {
 
 # clojure
 # (please refer `deps.edn`)
-alias cljdev='clj -A:dev -r'
+if builtin command -v rlwrap > /dev/null 2>&1 ; then
+    alias cljdev='clj -A:dev -r'
+else
+    alias cljdev='clojure -A:dev -r'
+fi
 
 # docker
 alias devstart='docker run \

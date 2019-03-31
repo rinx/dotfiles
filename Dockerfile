@@ -11,12 +11,15 @@ RUN cargo install bat \
     ripgrep \
     && cargo install --git https://github.com/sharkdp/fd
 
-FROM golang:stretch AS go
+FROM golang:alpine AS go
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apk update \
+    && apk upgrade \
+    && apk --update add --no-cache \
     git \
     curl \
+    gcc \
+    musl-dev \
     wget
 
 RUN go get -v -u \
@@ -44,12 +47,15 @@ RUN go get -v -u \
     honnef.co/go/tools/cmd/keyify \
     && gometalinter -i
 
-FROM ubuntu:devel AS base
+FROM alpine:edge AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+    && apk update \
+    && apk upgrade \
+    && apk --update add --no-cache \
+    bash \
     cmake \
     ctags \
     curl \
@@ -61,34 +67,37 @@ RUN apt-get update \
     gnupg \
     jq \
     less \
-    locales \
+    linux-headers \
     make \
+    musl-dev \
+    ncurses \
     neovim \
     nodejs \
     npm \
-    openjdk-12-jdk \
-    openssh-client \
-    openssh-server \
+    nss \
+    openjdk8 \
+    openssh \
     openssl \
+    openssl-dev \
     perl \
+    py-pip \
+    py3-pip \
     python-dev \
-    python-pip \
     python3-dev \
-    python3-pip \
-    rlwrap \
+    # rlwrap \
     tar \
     tmux \
+    tzdata \
     wget \
     zsh \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/cache/apk/*
 
 RUN pip2 install --upgrade pip neovim \
     && pip3 install --upgrade pip neovim \
     && npm config set user root \
     && npm install -g neovim
 
-RUN localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
+ENV LANG en_US.UTF-8
 
 ENV TZ Asia/Tokyo
 ENV HOME /root
@@ -97,9 +106,9 @@ ENV GOROOT /usr/local/go
 ENV DOTFILES $HOME/.dotfiles
 ENV SHELL /bin/zsh
 
-ENV JAVA_HOME /usr/lib/jvm/java-12-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 
-ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
+ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
@@ -151,10 +160,9 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
-RUN echo '[user]\n\
-    name = Rintaro Okamura\n\
-    email = rintaro.okamura@gmail.com\n\
-' >$HOME/.gitconfig.local
+RUN echo "[user]" > $HOME/.gitconfig.local \
+    && echo "    name = Rintaro Okamura" >> $HOME/.gitconfig.local \
+    && echo "    email = rintaro.okamura@gmail.com" >> $HOME/.gitconfig.local
 
 WORKDIR $HOME
 
