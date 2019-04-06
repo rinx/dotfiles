@@ -108,10 +108,10 @@ ENV LANG en_US.UTF-8 \
 
 ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
 
-ENV DOCKER_BUILDKIT=1 \
-    GO111MODULE=1 \
+ENV DOCKER_BUILDKIT 1 \
+    GO111MODULE 1 \
     DOTFILES $HOME/.dotfiles \
-    DOCKERIZED_DEVENV="rinx/devenv"
+    DOCKERIZED_DEVENV rinx/devenv
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
