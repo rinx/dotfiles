@@ -420,7 +420,6 @@ alias devstart='docker run \
     --privileged=false \
     --name devenv \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /etc/localtime:/etc/localtime:ro \
     -v $HOME/.dotfiles:/root/.dotfiles \
     -v $HOME/local:/root/local \
     -v $HOME/tmp:/root/tmp \
