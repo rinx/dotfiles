@@ -97,17 +97,20 @@ RUN pip2 install --upgrade pip neovim \
     && npm config set user root \
     && npm install -g neovim
 
+ENV HOME /root
+
 ENV LANG en_US.UTF-8 \
     TZ Asia/Tokyo \
-    HOME /root \
     GOPATH $HOME/local \
     GOROOT /usr/local/go \
-    DOTFILES $HOME/.dotfiles \
-    SHELL /bin/zsh \
     JAVA_HOME /usr/lib/jvm/java-1.8-openjdk \
-    PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin \
-    DOCKER_BUILDKIT=1 \
+    SHELL /bin/zsh
+
+ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
+
+ENV DOCKER_BUILDKIT=1 \
     GO111MODULE=1 \
+    DOTFILES $HOME/.dotfiles \
     DOCKERIZED_DEVENV="rinx/devenv"
 
 RUN mkdir -p $HOME/.ssh \
