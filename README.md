@@ -1,4 +1,46 @@
 # dotfiles
+[![Docker Pulls](https://img.shields.io/docker/pulls/rinx/devenv.svg?style=flat-square)](https://hub.docker.com/r/rinx/devenv)
+
+## Use Dockerized environment
+
+Pull the latest image.
+
+    $ docker pull rinx/devenv:latest
+
+Add aliases to your shell (they're already described in `zshrc` in this repository).
+
+```sh
+# docker
+alias devstart='docker run \
+    --network host \
+    --cap-add=ALL \
+    --privileged=false \
+    --name devenv \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v $HOME/.dotfiles:/root/.dotfiles \
+    -v $HOME/local:/root/local \
+    -v $HOME/tmp:/root/tmp \
+    -v $HOME/works:/root/works \
+    -v $HOME/Downloads:/root/Downloads \
+    -dit rinx/devenv'
+alias devattach='docker exec -it devenv /bin/zsh'
+alias devstop='docker stop devenv && docker rm devenv'
+```
+
+Start your `devenv`.
+
+    $ devstart
+
+And attach to it.
+
+    $ devattach
+
+After finished your work, stop the environment.
+
+    $ devstop
+
+
+## Use standard environment
 
 ### setup
 
