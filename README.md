@@ -15,16 +15,17 @@ alias devstart='docker run \
     --network host \
     --cap-add=ALL \
     --privileged=false \
-    --name devenv \
+    --name rinx-devenv \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $HOME/.dotfiles:/root/.dotfiles \
+    -v $HOME/.gitconfig.local:/root/.gitconfig.local \
     -v $HOME/local:/root/local \
     -v $HOME/tmp:/root/tmp \
     -v $HOME/works:/root/works \
     -v $HOME/Downloads:/root/Downloads \
     -dit rinx/devenv'
-alias devattach='docker exec -it devenv /bin/zsh'
-alias devstop='docker stop devenv && docker rm devenv'
+alias devattach='docker exec -it rinx-devenv /bin/zsh'
+alias devstop='docker stop rinx-devenv && docker rm rinx-devenv'
 ```
 
 Start your `devenv`.

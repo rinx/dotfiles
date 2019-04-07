@@ -400,11 +400,6 @@ vimswitcher () {
     esac
 }
 
-# export PATH=$PATH:$HOME/.bin
-# export PATH=$PATH:$HOME/.local/bin
-# export GOPATH=$HOME/local
-# export PATH=$PATH:$GOPATH/bin
-
 # clojure
 # (please refer `deps.edn`)
 if builtin command -v rlwrap > /dev/null 2>&1 ; then
@@ -418,14 +413,15 @@ alias devstart='docker run \
     --network host \
     --cap-add=ALL \
     --privileged=false \
-    --name devenv \
+    --name rinx-devenv \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $HOME/.dotfiles:/root/.dotfiles \
+    -v $HOME/.gitconfig.local:/root/.gitconfig.local \
     -v $HOME/local:/root/local \
     -v $HOME/tmp:/root/tmp \
     -v $HOME/works:/root/works \
     -v $HOME/Downloads:/root/Downloads \
     -dit rinx/devenv'
-alias devattach='docker exec -it devenv /bin/zsh'
-alias devstop='docker stop devenv && docker rm devenv'
+alias devattach='docker exec -it rinx-devenv /bin/zsh'
+alias devstop='docker stop rinx-devenv && docker rm rinx-devenv'
 

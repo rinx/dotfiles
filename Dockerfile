@@ -224,10 +224,6 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
-RUN echo "[user]" > $HOME/.gitconfig.local \
-    && echo "    name = Rintaro Okamura" >> $HOME/.gitconfig.local \
-    && echo "    email = rintaro.okamura@gmail.com" >> $HOME/.gitconfig.local
-
 # download dependencies
 RUN ["/bin/zsh", "-c", "lein"]
 RUN ["/bin/zsh", "-c", "clojure -A:dev"]
