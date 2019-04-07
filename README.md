@@ -1,4 +1,5 @@
 # dotfiles
+[![CircleCI](https://circleci.com/gh/rinx/dotfiles/tree/master.svg?style=svg)](https://circleci.com/gh/rinx/dotfiles/tree/master)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rinx/devenv.svg?style=flat-square)](https://hub.docker.com/r/rinx/devenv)
 
 ## Use Dockerized environment
