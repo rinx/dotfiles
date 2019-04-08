@@ -78,14 +78,14 @@ RUN apk update \
     upx
 
 COPY --from=docker /out /out/docker
-RUN upx --lzma /out/docker/*
+RUN upx --lzma --best /out/docker/*
 
 COPY --from=rust /home/rust/out /out/rust
-RUN upx --lzma /out/rust/*
+RUN upx --lzma --best /out/rust/*
 
 COPY --from=go /out /out/go
-RUN upx --lzma /out/go/usr/local/go/bin/*
-RUN upx --lzma /out/go/go/bin/*
+RUN upx --lzma --best /out/go/usr/local/go/bin/*
+RUN upx --lzma --best /out/go/go/bin/*
 
 FROM alpine:edge AS base
 
