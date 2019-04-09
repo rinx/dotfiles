@@ -151,7 +151,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
 
 ENV DOCKER_BUILDKIT 1
-ENV GO111MODULE 1
 ENV DOCKERIZED_DEVENV rinx/devenv
 
 RUN mkdir -p $HOME/.ssh \
