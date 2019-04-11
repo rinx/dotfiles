@@ -113,7 +113,14 @@ set sessionoptions-=options
 set showmatch
 set matchtime=3
 
-set backup
+set nobackup
+set nowritebackup
+
+set updatetime=300
+
+set shortmess+=c
+
+set signcolumn=yes
 
 set undofile
 set undolevels=1000
@@ -146,6 +153,8 @@ set nosecure
 set timeout
 set timeoutlen=1000
 set ttimeoutlen=200
+
+set hidden
 
 syntax enable
 
@@ -281,6 +290,24 @@ endfunction
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
+
+"coc.nvim
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>coc_show_documentation()<CR>
+
+function! s:coc_show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nmap <leader>rn <Plug>(coc-rename)
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html

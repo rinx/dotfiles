@@ -198,6 +198,7 @@ COPY dotvim               $DOTFILES/dotvim
 COPY gitattributes_global $DOTFILES/gitattributes_global
 COPY gitconfig            $DOTFILES/gitconfig
 COPY gitignore            $DOTFILES/gitignore
+COPY light.vimrc          $DOTFILES/light.vimrc
 COPY Makefile             $DOTFILES/Makefile
 COPY Makefile.d           $DOTFILES/Makefile.d
 COPY nvimrc               $DOTFILES/nvimrc
