@@ -1421,7 +1421,9 @@ function! s:init_LanguageClient_hook_source() abort
     endif
 
     "go
-    if executable('bingo')
+    if executable('go-langserver')
+        let g:LanguageClient_serverCommands['go'] = ['go-langserver']
+    elseif executable('bingo')
         let g:LanguageClient_serverCommands['go'] = ['bingo']
     elseif executable('golsp')
         let g:LanguageClient_serverCommands['go'] = ['golsp']
