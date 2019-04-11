@@ -22,7 +22,7 @@ neovim-init:
 
 lightvim-init:
 	@$(call red, "lightvim-init")
-	@$(call blue, "--\> initialize plug for NeoVim (light.vimrc)")
+	@$(call blue, "--\> initialize plug for NeoVim - light.vimrc")
 	nvim -u ~/.dotfiles/light.vimrc --headless +'PlugInstall' +qa
 	nvim -u ~/.dotfiles/light.vimrc --headless +'UpdateRemotePlugins' +qa
 
