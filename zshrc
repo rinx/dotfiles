@@ -197,6 +197,7 @@ fi
 # start vim as vi
 alias vi='vimswitcher'
 alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
+alias lightvim='vim -u ~/.dotfiles/light.vimrc'
 
 # Macvim
 if [ -d /Applications/MacVim.app/ ]; then

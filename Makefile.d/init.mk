@@ -2,6 +2,7 @@
     prepare-init \
     vim-init \
     neovim-init \
+    lightvim-init \
     tmux-init
 
 prepare-init:
@@ -18,6 +19,12 @@ neovim-init:
 	nvim --headless +'call dein#install()' +qa
 	nvim --headless +'call dein#remote_plugins()' +qa
 	nvim --headless +'e main.go' +':GoInstallBinaries' +qa
+
+lightvim-init:
+	@$(call red, "lightvim-init")
+	@$(call blue, "--\> initialize plug for NeoVim (light.vimrc)")
+	nvim --headless +'PlugInstall' +qa
+	nvim --headless +'UpdateRemotePlugins' +qa
 
 tmux-init:
 	@$(call red, "tmux-init")
