@@ -22,5 +22,5 @@ neovim-init:
 tmux-init:
 	@$(call red, "tmux-init")
 	@$(call blue, "--\> install tmux plugins")
-	zsh $(HOME)/.tmux/plugins/tpm/scripts/install_plugins.sh
+	bash $(HOME)/.tmux/plugins/tpm/scripts/install_plugins.sh
 

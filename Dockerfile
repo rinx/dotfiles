@@ -95,6 +95,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     && apk update \
     && apk upgrade \
     && apk --update add --no-cache \
+    bash \
     cmake \
     ctags \
     curl \
@@ -219,8 +220,8 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
     && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
     && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
 
-RUN ["/bin/zsh", "-c", "make -j4 deploy"]
-RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
+RUN ["/bin/bash", "-c", "make -j4 deploy"]
+RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
 # download dependencies
 RUN ["/bin/zsh", "-c", "lein"]
