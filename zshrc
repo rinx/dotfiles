@@ -198,6 +198,7 @@ fi
 alias vi='vimswitcher'
 alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
 alias lightvim='nvim -u ~/.dotfiles/light.vimrc'
+alias lvim=lightvim
 
 # Macvim
 if [ -d /Applications/MacVim.app/ ]; then

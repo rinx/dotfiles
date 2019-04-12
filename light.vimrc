@@ -27,7 +27,7 @@ if executable('python3')
     let g:python3_host_prog = substitute(system('which python3'),"\n","","")
 endif
 
-let s:plug_dir = '~/.config/nvim/plugged'
+let s:plug_dir = '~/.config/lightvim/plugged'
 
 let s:plug_repo_dir = s:plug_dir . '/vim-plug'
 
@@ -42,12 +42,31 @@ endif
 
 call plug#begin(expand(s:plug_dir))
 
-Plug 'junegunn/vim-plug', {'dir': '~/.config/nvim/plugged/vim-plug/autoload'}
+Plug 'junegunn/vim-plug', {'dir': '~/.config/lightvim/plugged/vim-plug/autoload'}
 
 Plug 'itchyny/lightline.vim'
 
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
+function! InstallCocExtensions(info)
+    call coc#util#install()
+    call coc#util#install_extension([
+                \ 'coc-json',
+                \ 'coc-yaml',
+                \ 'coc-word',
+                \ 'coc-dictionary',
+                \ 'coc-tsserver',
+                \ 'coc-emoji',
+                \ 'coc-omni',
+                \ 'coc-syntax',
+                \ 'coc-gocode',
+                \])
+endfunction
+
+Plug 'neoclide/coc.nvim', {'do': function('InstallCocExtensions')}
+
+Plug expand('~/.zplug/repos/junegunn/fzf')
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
