@@ -55,7 +55,7 @@ RUN go get -v -u \
     github.com/mdempsky/gocode \
     github.com/motemen/ghq \
     github.com/rogpeppe/godef \
-    github.com/sourcegraph/go-langserver \
+    github.com/saibing/bingo \
     github.com/stamblerre/gocode \
     github.com/zmb3/gogetdoc \
     golang.org/x/lint/golint \
