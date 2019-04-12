@@ -7,6 +7,8 @@
 vim-ftplugins: \
     $(HOME)/.vim/filetype.vim \
     $(HOME)/.config/nvim/filetype.vim \
+    $(HOME)/.vim/ftplugin/clojure/clojure.vim \
+    $(HOME)/.config/nvim/ftplugin/clojure/clojure.vim \
     $(HOME)/.vim/ftplugin/fortran/fortran.vim \
     $(HOME)/.config/nvim/ftplugin/fortran/fortran.vim \
     $(HOME)/.vim/ftplugin/python/python.vim \
@@ -45,6 +47,14 @@ $(HOME)/.vim/filetype.vim:
 $(HOME)/.config/nvim/filetype.vim:
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/dotvim/filetype.vim $(HOME)/.config/nvim/filetype.vim
+
+$(HOME)/.vim/ftplugin/clojure/clojure.vim:
+	mkdir -p $(HOME)/.vim/ftplugin/clojure
+	ln -s $(DOTDIR)/dotvim/ftplugin/clojure/clojure.vim $(HOME)/.vim/ftplugin/clojure/clojure.vim
+
+$(HOME)/.config/nvim/ftplugin/clojure/clojure.vim:
+	mkdir -p $(HOME)/.config/nvim/ftplugin/clojure
+	ln -s $(DOTDIR)/dotvim/ftplugin/clojure/clojure.vim $(HOME)/.config/nvim/ftplugin/clojure/clojure.vim
 
 $(HOME)/.vim/ftplugin/fortran/fortran.vim:
 	mkdir -p $(HOME)/.vim/ftplugin/fortran

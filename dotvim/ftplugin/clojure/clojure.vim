@@ -1,0 +1,2 @@
+set colorcolumn=80
+
