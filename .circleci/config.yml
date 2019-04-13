@@ -81,7 +81,7 @@ jobs:
       - run:
           name: push image to registory
           command: |
-            docker push ${REPO_NAME}/${IMAGE_NAME}
+            docker push ${DOCKER_REPO_NAME}/${IMAGE_NAME}
   versioning:
     <<: *default
     steps:
@@ -90,7 +90,16 @@ jobs:
       - run:
           name: check
           command: |
-            echo "not implemented yet..."
+            NEW_VERSION=`docker run -v /tmp/rinx-devenv:/src -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent -it rinx/orchis:0.0.1 semver-tag-push`
+            if [[ -n $NEW_VERSION ]]; then
+              docker run \
+              -v /tmp/rinx-devenv:/src \
+              -v ${SSH_AUTH_SOCK}:/ssh-agent \
+              -e SSH_AUTH_SOCK=/ssh-agent \
+              -it rinx/orchis:0.0.1 gh-release \
+              --github-api-url=${GITHUB_API} --github-api-token=${GITHUB_TOKEN} \
+              --github-owner=${OWNER_NAME} --github-repo=${REPO_NAME}
+            fi
 
 workflows:
   version: 2
