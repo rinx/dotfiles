@@ -122,11 +122,17 @@ jobs:
             tar xzvf ./orchis-v0.0.1.tar.gz
             chmod a+x ./orchis
       - run:
+          name: ssh-keyscan: github.com
+          command: |
+            mkdir -p /home/circleci/.ssh
+            ssh-keyscan -H github.com >> /home/circleci/.ssh/known_hosts
+      - run:
           name: check -> add tag and create release
           command: |
             PWD=`pwd`
-            NEW_VERSION=`./orchis semver-tag-push`
+            NEW_VERSION=`./orchis semver-tag`
             if [[ -n $NEW_VERSION ]]; then
+              git push --tags
               ./orchis gh-release \
               --github-api-url=${GITHUB_API} --github-api-token=${GITHUB_TOKEN} \
               --github-owner=${OWNER_NAME} --github-repo=${REPO_NAME}
