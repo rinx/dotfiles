@@ -4,7 +4,7 @@ alias:
     docker:
       - image: circleci/clojure:tools-deps
         environment:
-          GITHUB_API: "https://api.github.com/"
+          GITHUB_API: "https://api.github.com"
           OWNER_NAME: "rinx"
           REPO_NAME: "dotfiles"
           DOCKER_USER: "rinx"
