@@ -88,17 +88,17 @@ jobs:
       - setup_remote_docker: *setup_remote_docker
       - checkout
       - run:
-          name: check
+          name: check -> add tag and create release
           command: |
             PWD=`pwd`
-            NEW_VERSION=`docker run -v ${PWD}:/src -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent -it rinx/orchis:0.0.1 semver-tag`
+            NEW_VERSION=`docker run -v ${PWD}:/src -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent -t rinx/orchis:0.0.1 semver-tag`
             if [[ -n $NEW_VERSION ]]; then
               git push --tags
               docker run \
               -v ${PWD}:/src \
               -v ${SSH_AUTH_SOCK}:/ssh-agent \
               -e SSH_AUTH_SOCK=/ssh-agent \
-              -it rinx/orchis:0.0.1 gh-release \
+              -t rinx/orchis:0.0.1 gh-release \
               --github-api-url=${GITHUB_API} --github-api-token=${GITHUB_TOKEN} \
               --github-owner=${OWNER_NAME} --github-repo=${REPO_NAME}
             fi
