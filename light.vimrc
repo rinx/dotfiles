@@ -48,7 +48,7 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'w0rp/ale'
 
-function! InstallCocExtensions(info)
+function! PostInstallCoc()
     call coc#util#install()
     call coc#util#install_extension([
                 \ 'coc-json',
@@ -63,7 +63,7 @@ function! InstallCocExtensions(info)
                 \])
 endfunction
 
-Plug 'neoclide/coc.nvim', {'do': function('InstallCocExtensions')}
+Plug 'neoclide/coc.nvim', {'do': { -> PostInstallCoc() }}
 
 Plug expand('~/.zplug/repos/junegunn/fzf')
 Plug 'junegunn/fzf.vim'

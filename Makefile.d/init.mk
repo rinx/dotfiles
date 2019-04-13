@@ -25,7 +25,6 @@ lightvim-init:
 	@$(call blue, "--\> initialize plug for NeoVim - light.vimrc")
 	nvim -u ~/.dotfiles/light.vimrc --headless +'PlugInstall' +qa
 	nvim -u ~/.dotfiles/light.vimrc --headless +'UpdateRemotePlugins' +qa
-	# nvim -u ~/.dotfiles/light.vimrc --headless +'CocInstall coc-json coc-yaml coc-word coc-dictionary coc-tsserver coc-emoji coc-omni coc-syntax coc-gocode' +qa
 
 tmux-init:
 	@$(call red, "tmux-init")

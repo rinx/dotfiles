@@ -205,7 +205,6 @@ COPY nvimrc               $DOTFILES/nvimrc
 COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
 COPY sway-config          $DOTFILES/sway-config
-COPY tiny.vimrc           $DOTFILES/tiny.vimrc
 COPY tmux.conf            $DOTFILES/tmux.conf
 COPY vimrc                $DOTFILES/vimrc
 COPY vimshrc              $DOTFILES/vimshrc

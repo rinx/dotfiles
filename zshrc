@@ -195,8 +195,11 @@ else # for BSD version
 fi
 
 # start vim as vi
-alias vi='vimswitcher'
-alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
+if builtin command -v vim > /dev/null 2>&1 ; then
+    alias vi='vimswitcher'
+    alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
+fi
+
 alias lightvim='nvim -u ~/.dotfiles/light.vimrc'
 alias lvim=lightvim
 
@@ -207,8 +210,6 @@ if [ -d /Applications/MacVim.app/ ]; then
     alias view='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/view'
     alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim'
 fi
-
-alias be='bundle exec'
 
 alias q='exit'
 
