@@ -19,6 +19,13 @@ jobs:
   build:
     <<: *default
     steps:
+      - run:
+          name: docker init
+          command: |
+            if [[ $CIRCLE_SHELL_ENV =~ "localbuild" ]]; then
+              sudo chown root /usr/bin/docker
+              sudo chmod u+s /usr/bin/docker
+            fi
       - setup_remote_docker: *setup_remote_docker
       - checkout
       - run:
@@ -41,6 +48,13 @@ jobs:
   publish_nightly:
     <<: *default
     steps:
+      - run:
+          name: docker init
+          command: |
+            if [[ $CIRCLE_SHELL_ENV =~ "localbuild" ]]; then
+              sudo chown root /usr/bin/docker
+              sudo chmod u+s /usr/bin/docker
+            fi
       - setup_remote_docker: *setup_remote_docker
       - attach_workspace:
           at: .
@@ -63,6 +77,13 @@ jobs:
   publish:
     <<: *default
     steps:
+      - run:
+          name: docker init
+          command: |
+            if [[ $CIRCLE_SHELL_ENV =~ "localbuild" ]]; then
+              sudo chown root /usr/bin/docker
+              sudo chmod u+s /usr/bin/docker
+            fi
       - setup_remote_docker: *setup_remote_docker
       - attach_workspace:
           at: .
@@ -85,20 +106,28 @@ jobs:
   versioning:
     <<: *default
     steps:
+      - run:
+          name: docker init
+          command: |
+            if [[ $CIRCLE_SHELL_ENV =~ "localbuild" ]]; then
+              sudo chown root /usr/bin/docker
+              sudo chmod u+s /usr/bin/docker
+            fi
       - setup_remote_docker: *setup_remote_docker
       - checkout
+      - run:
+          name: fetch rinx/orchis
+          command: |
+            wget https://github.com/rinx/orchis/releases/download/0.0.1/orchis-v0.0.1.tar.gz
+            tar xzvf ./orchis-v0.0.1.tar.gz
+            chmod a+x ./orchis
       - run:
           name: check -> add tag and create release
           command: |
             PWD=`pwd`
-            NEW_VERSION=`docker run -v ${PWD}:/src -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent -t rinx/orchis:0.0.1 semver-tag`
+            NEW_VERSION=`./orchis semver-tag-push`
             if [[ -n $NEW_VERSION ]]; then
-              git push --tags
-              docker run \
-              -v ${PWD}:/src \
-              -v ${SSH_AUTH_SOCK}:/ssh-agent \
-              -e SSH_AUTH_SOCK=/ssh-agent \
-              -t rinx/orchis:0.0.1 gh-release \
+              ./orchis gh-release \
               --github-api-url=${GITHUB_API} --github-api-token=${GITHUB_TOKEN} \
               --github-owner=${OWNER_NAME} --github-repo=${REPO_NAME}
             fi
