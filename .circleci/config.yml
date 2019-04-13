@@ -90,8 +90,9 @@ jobs:
       - run:
           name: check
           command: |
-            NEW_VERSION=`docker run -v /tmp/rinx-devenv:/src -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent -it rinx/orchis:0.0.1 semver-tag-push`
+            NEW_VERSION=`docker run -v /tmp/rinx-devenv:/src -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent -it rinx/orchis:0.0.1 semver-tag`
             if [[ -n $NEW_VERSION ]]; then
+              git push --tags
               docker run \
               -v /tmp/rinx-devenv:/src \
               -v ${SSH_AUTH_SOCK}:/ssh-agent \
