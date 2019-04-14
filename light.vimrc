@@ -45,25 +45,11 @@ call plug#begin(expand(s:plug_dir))
 Plug 'junegunn/vim-plug', {'dir': '~/.config/lightvim/plugged/vim-plug/autoload'}
 
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/seoul256.vim'
 
 Plug 'w0rp/ale'
 
-function! PostInstallCoc()
-    call coc#util#install()
-    call coc#util#install_extension([
-                \ 'coc-json',
-                \ 'coc-yaml',
-                \ 'coc-word',
-                \ 'coc-dictionary',
-                \ 'coc-tsserver',
-                \ 'coc-emoji',
-                \ 'coc-omni',
-                \ 'coc-syntax',
-                \ 'coc-gocode',
-                \])
-endfunction
-
-Plug 'neoclide/coc.nvim', {'do': { -> PostInstallCoc() }}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
 Plug expand('~/.zplug/repos/junegunn/fzf')
 Plug 'junegunn/fzf.vim'
@@ -109,18 +95,31 @@ set tabstop=8
 set shiftwidth=4
 set softtabstop=4
 
-if &term=="xterm"
-    set t_Co=256
-    set t_Sb=[4%dm
-    set t_Sf=[3%dm
-endif
+" if &term=="xterm"
+"     set t_Co=256
+"     set t_Sb=[4%dm
+"     set t_Sf=[3%dm
+" endif
 
 syntax on
 set hlsearch
 
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+if empty($TMUX) && empty($STY)
+  " See https://gist.github.com/XVilka/8346728.
+  if $COLORTERM =~# 'truecolor' || $COLORTERM =~# '24bit'
+    if has('termguicolors')
+      " See :help xterm-true-color
+      if $TERM =~# '^screen'
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      endif
+      set termguicolors
+    endif
+  endif
+endif
+
+colorscheme seoul256
+set background=dark
 
 set visualbell
 set lazyredraw
@@ -311,6 +310,17 @@ nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
 "coc.nvim
+let g:coc_global_extensions = [
+            \ 'coc-json',
+            \ 'coc-yaml',
+            \ 'coc-word',
+            \ 'coc-dictionary',
+            \ 'coc-tsserver',
+            \ 'coc-emoji',
+            \ 'coc-omni',
+            \ 'coc-syntax',
+            \ 'coc-gocode',
+            \]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -327,6 +337,18 @@ function! s:coc_show_documentation()
 endfunction
 
 nmap <leader>rn <Plug>(coc-rename)
+
+"fzf.vim
+nnoremap [fzf] <Nop>
+nmap ,u [fzf]
+
+nnoremap <silent> [fzf]b :<C-u>Buffers<CR>
+nnoremap <silent> [fzf]f :<C-u>Files<CR>
+nnoremap <silent> [fzf]gf :<C-u>GFiles<CR>
+nnoremap <silent> [fzf]/ :<C-u>BLines<CR>
+nnoremap <silent> [fzf]c :<C-u>History:<CR>
+nnoremap <silent> [fzf]h :<C-u>Helptags<CR>
+nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html
@@ -423,6 +445,110 @@ augroup END
 set laststatus=2
 set showtabline=2
 
+let g:lightline = {
+            \ 'active': {
+            \   'left': [ 
+            \             [ 'mode', 'paste', 'spell' ],
+            \   ],
+            \   'right': [
+            \             [ 'lineinfo' ],
+            \             [ 'percent' ],
+            \             [ 'fileformat', 'fileencoding', 'filetype', 'cocstatus' ],
+            \   ],
+            \ },
+            \ 'component_function': {
+            \   'modified': 'MyModified',
+            \   'readonly': 'MyReadonly',
+            \   'filename': 'MyFilename',
+            \   'fileformat': 'MyFileformat',
+            \   'filetype': 'MyFiletype',
+            \   'mode': 'MyMode',
+            \   'cocstatus': 'coc#status',
+            \   'tablineabspath': 'MyAbsPath',
+            \ },
+            \ 'component_expand': {
+            \ },
+            \ 'component_type': {
+            \ },
+            \ 'inactive' : {
+            \   'left' : [
+            \     [ 'filename' ],
+            \   ],
+            \   'right' : [
+            \     [ 'lineinfo' ],
+            \   ],
+            \ },
+            \ 'tabline' : {
+            \   'left' : [
+            \     [ 'tabs' ],
+            \   ],
+            \   'right' : [
+            \     [ 'tablineabspath' ],
+            \   ],
+            \ },
+            \ 'colorscheme': 'seoul256',
+            \ }
+
+function! MyModified()
+    return &ft =~ 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+    return &ft !~? 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' && &ro ? 'RO' : ''
+endfunction
+
+function! MyFileformat()
+    return winwidth('.') > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+    return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+    return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+    return &ft == 'vaffle' ? 'Vaffle' :
+                \ &ft == 'unite' ? 'Unite' :
+                \ &ft == 'denite' ? 'Denite' :
+                \ &ft == 'undotree' ? 'UNDOtree' :
+                \ &ft == 'nerdtree' ? 'NERDtree' :
+                \ &ft == 'qf' ? 'QuickFix' :
+                \ &ft == 'quickrun' ? '' :
+                \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
+endfunction
+
+function! MyFilename()
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                \ (&ft == 'unite' ? unite#get_status_string() :
+                \  &ft == 'qf' ? len(getqflist()) . ' fixes' :
+                \  &ft == 'quickrun' ? 'QuickRun' :
+                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MySkkgetmode()
+    if s:enable_eskk
+        let _ = eskk#get_mode()
+    else
+        let _ = SkkGetModeStr()
+    endif
+    return winwidth('.') > 70 ? strlen(_) ? substitute(_, '\[\|\]', '', 'g') : '' : ''
+endfunction
+
+function! MyAbsPath()
+    let _ = expand('%:p:h')
+    return &ft == 'vaffle' ? '' :
+                \ &ft == 'unite' ? '' :
+                \ &ft == 'denite' ? '' :
+                \ &ft == 'qf' ? '' :
+                \ &ft == 'quickrun' ? '' :
+                \ tabpagenr('$') > 3 ? '' :
+                \ strlen(_) < winwidth('.') / 2 ? _ : ''
+endfunction
+
 augroup vimrc-auto-mkdir
     autocmd!
     autocmd BufWritePre * call <SID>auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
@@ -463,3 +589,5 @@ function! s:vimrc_local(loc)
         source `=i`
     endfor
 endfunction
+
+highlight Normal ctermbg=none
