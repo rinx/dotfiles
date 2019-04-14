@@ -54,6 +54,8 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 Plug expand('~/.zplug/repos/junegunn/fzf')
 Plug 'junegunn/fzf.vim'
 
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 set viminfo='1000,<100,f1,h,s100
@@ -74,7 +76,6 @@ set incsearch
 set ignorecase
 set smartcase
 
-filetype plugin indent on
 set autoindent
 set smartindent
 set breakindent
@@ -95,13 +96,15 @@ set tabstop=8
 set shiftwidth=4
 set softtabstop=4
 
-" if &term=="xterm"
-"     set t_Co=256
-"     set t_Sb=[4%dm
-"     set t_Sf=[3%dm
-" endif
+if &term=="xterm"
+    set t_Co=256
+    set t_Sb=[4%dm
+    set t_Sf=[3%dm
+endif
 
 syntax on
+filetype plugin indent on
+
 set hlsearch
 
 if empty($TMUX) && empty($STY)
@@ -309,6 +312,24 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
+"ale.vim
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_filetype_changed = 1
+
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
+let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 0
+let g:ale_open_list = 1
+
+let g:ale_sign_column_always = 1
+let g:ale_warn_about_trailing_blank_lines = 1
+let g:ale_warn_about_trailing_whitespace = 1
+
+
 "coc.nvim
 let g:coc_global_extensions = [
             \ 'coc-json',
@@ -349,6 +370,15 @@ nnoremap <silent> [fzf]/ :<C-u>BLines<CR>
 nnoremap <silent> [fzf]c :<C-u>History:<CR>
 nnoremap <silent> [fzf]h :<C-u>Helptags<CR>
 nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
+
+"gitgutter
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_max_signs = 10000
+let g:gitgutter_map_keys = 0
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '*'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_modified_removed = '~'
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html
@@ -447,13 +477,14 @@ set showtabline=2
 
 let g:lightline = {
             \ 'active': {
-            \   'left': [ 
+            \   'left': [
             \             [ 'mode', 'paste', 'spell' ],
+            \             [ 'filename', 'cocstatus' ],
             \   ],
             \   'right': [
             \             [ 'lineinfo' ],
             \             [ 'percent' ],
-            \             [ 'fileformat', 'fileencoding', 'filetype', 'cocstatus' ],
+            \             [ 'fileformat', 'fileencoding', 'filetype' ],
             \   ],
             \ },
             \ 'component_function': {
