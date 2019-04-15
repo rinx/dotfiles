@@ -51,7 +51,7 @@ Plug 'w0rp/ale'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
-Plug expand('~/.zplug/repos/junegunn/fzf')
+Plug 'junegunn/fzf', { 'dir': '~/.zplug/repos/junegunn/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'airblade/vim-gitgutter'
@@ -370,6 +370,7 @@ nnoremap <silent> [fzf]/ :<C-u>BLines<CR>
 nnoremap <silent> [fzf]c :<C-u>History:<CR>
 nnoremap <silent> [fzf]h :<C-u>Helptags<CR>
 nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
+nnoremap <silent> [fzf]g :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(input('Query: ')), 1, 0)<CR>
 
 "gitgutter
 let g:gitgutter_highlight_lines = 1
