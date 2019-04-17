@@ -92,9 +92,13 @@ jobs:
           command: |
             docker load -i ./docker-image.tar
       - run:
-          name: tag to latest
+          name: tag to version-tag
           command: |
             docker tag ${DOCKER_REPO_NAME}/${IMAGE_NAME}:latest ${DOCKER_REPO_NAME}/${IMAGE_NAME}:$CIRCLE_TAG
+      - run:
+          name: tag to stable
+          command: |
+            docker tag ${DOCKER_REPO_NAME}/${IMAGE_NAME}:latest ${DOCKER_REPO_NAME}/${IMAGE_NAME}:stable
       - run:
           name: docker login
           command: |
