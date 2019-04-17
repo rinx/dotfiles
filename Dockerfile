@@ -140,6 +140,10 @@ RUN pip2 install --upgrade pip neovim \
     && npm config set user root \
     && npm install -g neovim
 
+RUN npm install -g \
+    dockerfile-language-server-nodejs \
+    bash-language-server
+
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
@@ -195,6 +199,7 @@ COPY --from=packer /out/go/go/bin $GOROOT/bin
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
 
+COPY coc-settings.json    $DOTFILES/coc-settings.json
 COPY deps.edn             $DOTFILES/deps.edn
 COPY dotvim               $DOTFILES/dotvim
 COPY gitattributes_global $DOTFILES/gitattributes_global
@@ -234,4 +239,3 @@ WORKDIR $HOME
 
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["zsh"]
-

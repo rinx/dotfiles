@@ -8,6 +8,7 @@
     neovim-deploy \
     init.vim \
     dein-nvim \
+    coc-settings.json \
     git-deploy \
     gitconfig \
     gitconfig-local \
@@ -64,7 +65,8 @@ $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 
 neovim-deploy: \
     init.vim \
-    dein-nvim
+    dein-nvim \
+    coc-settings.json
 	@$(call red, "neovim-deploy has been done")
 
 init.vim: $(HOME)/.config/nvim/init.vim
@@ -79,6 +81,12 @@ $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim:
 	@$(call cyan, "--\> dein.vim for nvim")
 	mkdir -p $(HOME)/.config/nvim/dein/repos/github.com/Shougo
 	git clone https://github.com/Shougo/dein.vim $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
+
+coc-settings.json: $(HOME)/.config/nvim/coc-settings.json
+$(HOME)/.config/nvim/coc-settings.json:
+	@$(call cyan, "--\> coc-settings.json for nvim")
+	mkdir -p $(HOME)/.config/nvim
+	ln -s $(DOTDIR)/coc-settings.json $(HOME)/.config/nvim/coc-settings.json
 
 git-deploy: \
     gitconfig \
