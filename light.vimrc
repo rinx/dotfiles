@@ -56,11 +56,35 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'cohama/lexima.vim'
+
+Plug 'haya14busa/vim-asterisk'
+
+Plug 'haya14busa/incsearch.vim'
+
+Plug 'rhysd/clever-f.vim'
+
+Plug 't9md/vim-quickhl'
+
+Plug 'kana/vim-arpeggio'
+
+Plug 'kana/vim-operator-user'
+Plug 'kana/vim-operator-replace'
+Plug 'rhysd/vim-operator-surround'
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-line'
+Plug 'thinca/vim-textobj-between'
+Plug 'mattn/vim-textobj-url'
+Plug 'osyo-manga/vim-textobj-multiblock'
+
 call plug#end()
 
 set viminfo='1000,<100,f1,h,s100
 set history=300
-
 set bs=indent,eol,start
 
 set ruler
@@ -380,6 +404,83 @@ let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_modified_removed = '~'
+
+"lexima
+let g:lexima_no_default_rules = 1
+call lexima#set_default_rules()
+let g:lexima_map_escape = '<Esc>'
+
+let g:lexima_enable_basic_rules = 1
+let g:lexima_enable_newline_rules = 1
+let g:lexima_enable_space_rules = 1
+let g:lexima_enable_endwise_rules = 1
+
+"asterisk
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+"incsearch
+map <buffer>/  <Plug>(incsearch-forward)
+map <buffer>?  <Plug>(incsearch-backward)
+map <buffer>g/ <plug>(incsearch-stay)
+
+"clever-f
+let g:clever_f_not_overwrites_standard_mappings = 1
+let g:clever_f_across_no_line = 0
+let g:clever_f_ignore_case = 0
+let g:clever_f_smart_case = 0
+let g:clever_f_use_migemo = 0
+let g:clever_f_fix_key_direction = 0
+let g:clever_f_show_prompt = 0
+let g:clever_f_chars_match_any_signs = ''
+let g:clever_f_mark_cursor = 1
+let g:clever_f_mark_cursor_color = 'Cursor'
+let g:clever_f_hide_cursor_on_cmdline = 1
+let g:clever_f_timeout_ms = 0
+let g:clever_f_mark_char = 1
+let g:clever_f_mark_char_color = 'CleverFDefaultLabel'
+let g:clever_f_repeat_last_char_inputs = ["\<CR>"]
+nmap f <Plug>(clever-f-f)
+nmap F <Plug>(clever-f-F)
+nmap t <Plug>(clever-f-t)
+nmap T <Plug>(clever-f-T)
+nmap <Space> <Plug>(clever-f-reset)
+
+"quickhl
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+
+"arpeggio
+call arpeggio#load()
+
+"operator
+let g:caw_no_default_keymappings = 1
+Arpeggio map or <Plug>(operator-replace)
+Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)
+Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)
+Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)
+map Sa <Plug>(operator-surround-append)
+map Sd <Plug>(operator-surround-delete)
+map Sr <Plug>(operator-surround-replace)
+
+"textobj
+let g:textobj_between_no_default_key_mappings = 1
+omap ac <Plug>(textobj-between-a)
+omap ic <Plug>(textobj-between-i)
+vmap ac <Plug>(textobj-between-a)
+vmap ic <Plug>(textobj-between-i)
+omap ab <Plug>(textobj-multiblock-a)
+omap ib <Plug>(textobj-multiblock-i)
+vmap ab <Plug>(textobj-multiblock-a)
+vmap ib <Plug>(textobj-multiblock-i)
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html

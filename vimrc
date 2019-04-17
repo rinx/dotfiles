@@ -153,7 +153,7 @@ function! s:init_deoplete_clang_hook_source() abort
     elseif has('unix')
         let g:deoplete#sources#clang#libclang_path = '/usr/lib64/llvm/libclang.so'
         let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-    endif 
+    endif
 endfunction
 
 function! s:init_neosnippet_hook_add() abort
@@ -917,7 +917,7 @@ function! s:init_asterisk_hook_add() abort
     map g#  <Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
     map z*  <Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
     map gz* <Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
-    map z#  <Plug>(asterisk-z#<Plug>(anzu-update-search-status-with-echo))
+    map z#  <Plug>(asterisk-z#)<Plug>(anzu-update-search-status-with-echo)
     map gz# <Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
 endfunction
 
@@ -1582,7 +1582,7 @@ function! s:init_hybrid_hook_add() abort
     let g:hybrid_custom_term_colors = 1
     let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 
-    augroup vimrc-colorscheme-hybrid 
+    augroup vimrc-colorscheme-hybrid
         autocmd!
         autocmd VimEnter * nested colorscheme hybrid
     augroup END
@@ -1653,7 +1653,7 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                     \})
     endif
 
-    " neocomplete/deoplete sources 
+    " neocomplete/deoplete sources
     call dein#add('ujihisa/neco-look')
     call dein#config('neco-look', {
                 \ 'lazy' : 1,
@@ -2974,7 +2974,7 @@ endfunction
 function! s:googlesuggestion_candidates(arglead)
     let ret = []
     let res = webapi#http#get('http://suggestqueries.google.com/complete/search', {
-                \ "client" : "youtube", 
+                \ "client" : "youtube",
                 \ "q" : a:arglead,
                 \ "hjson" : "t",
                 \ "hl" : "ja",
@@ -3006,7 +3006,7 @@ endfunction
 function! s:unite_source_googlesuggestion.change_candidates(args, context)
     let word = matchstr(a:context.input, '^\(\S\|\s\)\+')
 
-    if word == '' 
+    if word == ''
         return []
     endif
 
@@ -3294,7 +3294,7 @@ endif
 
 let g:lightline = {
             \ 'active': {
-            \   'left': [ 
+            \   'left': [
             \             [ 'mode', 'paste', 'spell' ],
             \             [ 'gina', 'filename' ],
             \   ],
@@ -3386,7 +3386,7 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-    return &ft == 'vaffle' ? 'Vaffle' : 
+    return &ft == 'vaffle' ? 'Vaffle' :
                 \ &ft == 'unite' ? 'Unite' :
                 \ &ft == 'denite' ? 'Denite' :
                 \ &ft == 'undotree' ? 'UNDOtree' :
