@@ -15,13 +15,11 @@
         "go"
       ]
     },
-    "languageserver": {
-      "bash": {
-        "command": "bash-language-server",
-        "args": ["start"],
-        "filetypes": ["sh"],
-        "ignoredRootPaths": ["~"]
-      }
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
     },
     "dockerfile": {
       "command": "docker-langserver",
