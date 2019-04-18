@@ -198,6 +198,8 @@ fi
 if builtin command -v vim > /dev/null 2>&1 ; then
     alias vi='vimswitcher'
     alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
+else
+    alias vi='nvim'
 fi
 
 alias lightvim='nvim -u ~/.dotfiles/light.vimrc'
