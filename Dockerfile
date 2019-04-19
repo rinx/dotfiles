@@ -229,8 +229,9 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
     && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
     && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
 
-RUN wget -O /usr/share/skk/SKK-JISYO.L.gz http://openlab.jp/skk/dic/SKK-JISYO.L.gz \
-    && gzip -d /usr/share/skk/SKK-JISYO.L.gz
+RUN mkdir -p /usr/share/skk
+    && wget -O /usr/share/skk/SKK-JISYO.L.gz http://openlab.jp/skk/dic/SKK-JISYO.L.gz \
+    && gunzip /usr/share/skk/SKK-JISYO.L.gz
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-init && make tmux-init"]
