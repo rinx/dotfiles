@@ -6,7 +6,7 @@
 
 Pull the latest image.
 
-    $ docker pull rinx/devenv:latest
+    $ docker pull rinx/devenv:stable
 
 Add aliases to your shell (they're already described in `zshrc` in this repository).
 
@@ -18,14 +18,12 @@ alias devstart='docker run \
     --privileged=false \
     --name rinx-devenv \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -v $HOME/.dotfiles:/root/.dotfiles \
     -v $HOME/.ssh:/root/.ssh \
     -v $HOME/.gitconfig.local:/root/.gitconfig.local \
     -v $HOME/local:/root/local \
-    -v $HOME/tmp:/root/tmp \
     -v $HOME/works:/root/works \
     -v $HOME/Downloads:/root/Downloads \
-    -dit rinx/devenv'
+    -dit rinx/devenv:stable'
 alias devattach='docker exec -it rinx-devenv /bin/zsh'
 alias devstop='docker stop rinx-devenv && docker rm rinx-devenv'
 ```
@@ -75,4 +73,3 @@ for uninstall,
 add install phase of dependencies belows by
 
     $ make install-dependencies
-

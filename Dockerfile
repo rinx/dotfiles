@@ -60,6 +60,7 @@ RUN go get -v -u \
     github.com/zmb3/gogetdoc \
     golang.org/x/lint/golint \
     golang.org/x/tools/cmd/goimports \
+    golang.org/x/tools/cmd/gopls \
     golang.org/x/tools/cmd/gorename \
     golang.org/x/tools/cmd/guru \
     honnef.co/go/tools/cmd/keyify \
@@ -227,6 +228,9 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
     && git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting \
     && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
     && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
+
+RUN wget -O /usr/share/skk/SKK-JISYO.L.gz http://openlab.jp/skk/dic/SKK-JISYO.L.gz \
+    && gzip -d /usr/share/skk/SKK-JISYO.L.gz
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-init && make tmux-init"]

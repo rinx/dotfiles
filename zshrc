@@ -414,11 +414,13 @@ else
 fi
 
 # docker
-alias devstart='docker run \
+container_name='rinx-devenv'
+
+alias devstart-stable="docker run \
     --network host \
     --cap-add=ALL \
     --privileged=false \
-    --name rinx-devenv \
+    --name $container_name \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $HOME/.dotfiles:/root/.dotfiles \
     -v $HOME/.ssh:/root/.ssh \
@@ -427,7 +429,24 @@ alias devstart='docker run \
     -v $HOME/tmp:/root/tmp \
     -v $HOME/works:/root/works \
     -v $HOME/Downloads:/root/Downloads \
-    -dit rinx/devenv'
-alias devattach='docker exec -it rinx-devenv /bin/zsh'
-alias devstop='docker stop rinx-devenv && docker rm rinx-devenv'
+    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect
+    -dit rinx/devenv:stable"
+
+alias devstart="docker run \
+    --network host \
+    --cap-add=ALL \
+    --privileged=false \
+    --name $container_name \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v $HOME/.dotfiles:/root/.dotfiles \
+    -v $HOME/.ssh:/root/.ssh \
+    -v $HOME/.gitconfig.local:/root/.gitconfig.local \
+    -v $HOME/local:/root/local \
+    -v $HOME/tmp:/root/tmp \
+    -v $HOME/works:/root/works \
+    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect
+    -v $HOME/Downloads:/root/Downloads \
+    -dit rinx/devenv:latest"
+alias devattach="docker exec -it $container_name /bin/zsh"
+alias devstop="docker stop $container_name && docker rm $container_name"
 
