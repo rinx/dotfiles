@@ -229,7 +229,7 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
     && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
     && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
 
-RUN mkdir -p /usr/share/skk
+RUN mkdir -p /usr/share/skk \
     && wget -O /usr/share/skk/SKK-JISYO.L.gz http://openlab.jp/skk/dic/SKK-JISYO.L.gz \
     && gunzip /usr/share/skk/SKK-JISYO.L.gz
 
