@@ -429,7 +429,7 @@ alias devstart-stable="docker run \
     -v $HOME/tmp:/root/tmp \
     -v $HOME/works:/root/works \
     -v $HOME/Downloads:/root/Downloads \
-    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect
+    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect \
     -dit rinx/devenv:stable"
 
 alias devstart="docker run \
@@ -444,9 +444,9 @@ alias devstart="docker run \
     -v $HOME/local:/root/local \
     -v $HOME/tmp:/root/tmp \
     -v $HOME/works:/root/works \
-    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect
+    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect \
     -v $HOME/Downloads:/root/Downloads \
-    -dit rinx/devenv:latest"
+    -dit rinx/devenv:nightly"
 alias devattach="docker exec -it $container_name /bin/zsh"
 alias devstop="docker stop $container_name && docker rm $container_name"
 
