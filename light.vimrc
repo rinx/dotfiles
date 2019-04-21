@@ -66,6 +66,7 @@ Plug 'rhysd/clever-f.vim'
 
 Plug 't9md/vim-quickhl'
 
+Plug 'kana/vim-submode'
 Plug 'kana/vim-arpeggio'
 
 Plug 'kana/vim-operator-user'
@@ -80,6 +81,11 @@ Plug 'kana/vim-textobj-line'
 Plug 'thinca/vim-textobj-between'
 Plug 'mattn/vim-textobj-url'
 Plug 'osyo-manga/vim-textobj-multiblock'
+
+Plug 'tpope/vim-repeat'
+Plug 'guns/vim-sexp'
+
+Plug 'fatih/vim-go', { 'for': ['go'] }
 
 call plug#end()
 
@@ -458,6 +464,16 @@ xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
 xmap <Space>M <Plug>(quickhl-manual-reset)
 
+"submode
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+
 "arpeggio
 call arpeggio#load()
 
@@ -481,6 +497,24 @@ omap ab <Plug>(textobj-multiblock-a)
 omap ib <Plug>(textobj-multiblock-i)
 vmap ab <Plug>(textobj-multiblock-a)
 vmap ib <Plug>(textobj-multiblock-i)
+
+"sexp
+let g:sexp_enable_insert_mode_mappings = 0
+let g:sexp_insert_after_wrap = 0
+nmap <silent><buffer> >( <Plug>(sexp_emit_head_element)
+nmap <silent><buffer> <) <Plug>(sexp_emit_tail_element)
+nmap <silent><buffer> <( <Plug>(sexp_capture_prev_element)
+nmap <silent><buffer> >) <Plug>(sexp_capture_next_element)
+
+"vim-go
+let g:go_fmt_command = 'goimports'
+augroup vimrc-golang
+    autocmd!
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType go setlocal sw=8
+    autocmd FileType go setlocal ts=8
+    autocmd FileType go compiler go
+augroup END
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html

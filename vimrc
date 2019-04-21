@@ -1323,8 +1323,8 @@ function! s:init_go_hook_source() abort
     augroup vimrc-golang
         autocmd!
         autocmd FileType go setlocal noexpandtab
-        autocmd FileType go setlocal sw=4
-        autocmd FileType go setlocal ts=4
+        autocmd FileType go setlocal sw=8
+        autocmd FileType go setlocal ts=8
         autocmd FileType go compiler go
     augroup END
     let g:go_fmt_command = 'goimports'
