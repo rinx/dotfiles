@@ -46,6 +46,7 @@ RUN go get -v -u \
     github.com/derekparker/delve/cmd/dlv \
     github.com/fatih/gomodifytags \
     github.com/fatih/motion \
+    github.com/golangci/golangci-lint/cmd/golangci-lint \
     github.com/josharian/impl \
     github.com/jstemmer/gotags \
     github.com/junegunn/fzf \
