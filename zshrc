@@ -426,7 +426,7 @@ devstarter() {
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v $HOME/.dotfiles:/root/.dotfiles \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local \
-        -v $HOME/local:/root/local \
+        -v $HOME/local/src:/root/local/src \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
         -v $HOME/Downloads:/root/Downloads \
