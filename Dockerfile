@@ -197,16 +197,7 @@ COPY --from=go /usr/local/go/pkg  $GOROOT/pkg
 COPY --from=go /usr/local/go/misc $GOROOT/misc
 
 COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
-COPY --from=packer /out/go/go/bin           $GOPATH/bin
-
-COPY --from=go /go/bin/bingo        $GOPATH/bin/bingo
-COPY --from=go /go/bin/dep          $GOPATH/bin/dep
-COPY --from=go /go/bin/dlv          $GOPATH/bin/dlv
-COPY --from=go /go/bin/gocode       $GOPATH/bin/gocode
-COPY --from=go /go/bin/gocode-gomod $GOPATH/bin/gocode-gomod
-COPY --from=go /go/bin/godef        $GOPATH/bin/godef
-COPY --from=go /go/bin/gometalinter $GOPATH/bin/gometalinter
-COPY --from=go /go/bin/grpcurl      $GOPATH/bin/grpcurl
+COPY --from=packer /out/go/go/bin           $GOROOT/bin
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
