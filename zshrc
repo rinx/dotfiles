@@ -10,7 +10,7 @@ autoload -U compinit
 compinit
 
 # highlight for completion
-zstyle ':completion:*:default' menu select=2 
+zstyle ':completion:*:default' menu select=2
 
 # completion settings
 zstyle ':completion:*' verbose yes
@@ -33,7 +33,7 @@ colors
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 # vimlike keybind
-bindkey -v 
+bindkey -v
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -113,7 +113,7 @@ zle -N zle-keymap-select
 
 
 # for, while, etc...
-PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> " 
+PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> "
 
 # missing spell
 SPROMPT="%F{yellow}(っ'ヮ'c) < Did you mean %r?[n,y,a,e]:%f "
@@ -416,37 +416,42 @@ fi
 # docker
 container_name='rinx-devenv'
 
-alias devstart-stable="docker run \
-    --network host \
-    --cap-add=ALL \
-    --privileged=false \
-    --name $container_name \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v $HOME/.dotfiles:/root/.dotfiles \
-    -v $HOME/.ssh:/root/.ssh:ro \
-    -v $HOME/.gitconfig.local:/root/.gitconfig.local \
-    -v $HOME/local:/root/local \
-    -v $HOME/tmp:/root/tmp \
-    -v $HOME/works:/root/works \
-    -v $HOME/Downloads:/root/Downloads \
-    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect \
-    -dit rinx/devenv:stable"
+devstarter() {
+    image_name=$1
+    shift
+    opts="--network host \
+        --cap-add=ALL \
+        --privileged=false \
+        --name $container_name \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v $HOME/.dotfiles:/root/.dotfiles \
+        -v $HOME/.gitconfig.local:/root/.gitconfig.local \
+        -v $HOME/local:/root/local \
+        -v $HOME/tmp:/root/tmp \
+        -v $HOME/works:/root/works \
+        -v $HOME/Downloads:/root/Downloads \
+        -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect \
+        $@"
 
-alias devstart="docker run \
-    --network host \
-    --cap-add=ALL \
-    --privileged=false \
-    --name $container_name \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v $HOME/.dotfiles:/root/.dotfiles \
-    -v $HOME/.ssh:/root/.ssh:ro \
-    -v $HOME/.gitconfig.local:/root/.gitconfig.local \
-    -v $HOME/local:/root/local \
-    -v $HOME/tmp:/root/tmp \
-    -v $HOME/works:/root/works \
-    -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect \
-    -v $HOME/Downloads:/root/Downloads \
-    -dit rinx/devenv:nightly"
+    case "$(uname -s)" in
+        Darwin)
+            opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
+            ;;
+        Linux)
+            if [[ -n "${SSH_AUTH_SOCK}" ]]; then
+                opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
+            fi
+            ;;
+        *)
+            ;;
+        esac
+
+    start_cmd="docker run $opts -dit $image_name"
+    echo $start_cmd | sed -e 's/ \+/ /g'
+    eval $start_cmd
+}
+
+alias devstart-stable="devstarter rinx/devenv:stable"
+alias devstart="devstarter rinx/devenv:nightly"
 alias devattach="docker exec -it $container_name /bin/zsh"
 alias devstop="docker stop $container_name && docker rm $container_name"
-
