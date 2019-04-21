@@ -1,10 +1,12 @@
 # dotfiles
-[![CircleCI](https://circleci.com/gh/rinx/dotfiles/tree/master.svg?style=svg)](https://circleci.com/gh/rinx/dotfiles/tree/master)
+[![CircleCI](https://circleci.com/gh/rinx/dotfiles/tree/master.svg?style=svg)](https://circleci.com/gh/rinx/dotfiles)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rinx/devenv.svg?style=flat-square)](https://hub.docker.com/r/rinx/devenv)
 
 ## Use Dockerized environment
 
-Pull the latest image.
+Pull the latest stable image `rinx/devenv:stable`, that is built from [the latest release](https://github.com/rinx/dotfiles/releases).
+(or `rinx/devenv:nightly` = the image built from the latest master branch is also available.
+[please see here](https://hub.docker.com/r/rinx/devenv/tags))
 
     $ docker pull rinx/devenv:stable
 
