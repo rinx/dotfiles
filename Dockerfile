@@ -57,7 +57,6 @@ RUN go get -v -u \
     github.com/motemen/ghq \
     github.com/rogpeppe/godef \
     github.com/saibing/bingo \
-    github.com/stamblerre/gocode \
     github.com/zmb3/gogetdoc \
     golang.org/x/lint/golint \
     golang.org/x/tools/cmd/goimports \
@@ -65,6 +64,8 @@ RUN go get -v -u \
     golang.org/x/tools/cmd/gorename \
     golang.org/x/tools/cmd/guru \
     honnef.co/go/tools/cmd/keyify \
+    && go get -v -u -d github.com/stamblerre/gocode \
+    && go build -o /go/bin/gocode-gomod github.com/stamblerre/gocode \
     && gometalinter -i
 
 RUN mkdir -p /out/usr/local/go
@@ -195,7 +196,7 @@ COPY --from=go /usr/local/go/lib $GOROOT/lib
 COPY --from=go /usr/local/go/pkg $GOROOT/pkg
 COPY --from=go /usr/local/go/misc $GOROOT/misc
 
-COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
+COPY --from=packer /out/go/usr/local/go/bin $GOPATH/bin
 COPY --from=packer /out/go/go/bin $GOROOT/bin
 
 RUN mkdir $DOTFILES
