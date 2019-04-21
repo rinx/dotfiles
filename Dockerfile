@@ -202,11 +202,11 @@ COPY --from=packer /out/go/go/bin           $GOPATH/bin
 COPY --from=go /go/bin/bingo        $GOPATH/bin/bingo
 COPY --from=go /go/bin/dep          $GOPATH/bin/dep
 COPY --from=go /go/bin/dlv          $GOPATH/bin/dlv
-COPY --form=go /go/bin/gocode       $GOPATH/bin/gocode
-COPY --form=go /go/bin/gocode-gomod $GOPATH/bin/gomod
-COPY --form=go /go/bin/godef        $GOPATH/bin/godef
-COPY --form=go /go/bin/gometalinter $GOPATH/bin/gometalinter
-COPY --form=go /go/bin/grpcurl      $GOPATH/bin/grpcurl
+COPY --from=go /go/bin/gocode       $GOPATH/bin/gocode
+COPY --from=go /go/bin/gocode-gomod $GOPATH/bin/gomod
+COPY --from=go /go/bin/godef        $GOPATH/bin/godef
+COPY --from=go /go/bin/gometalinter $GOPATH/bin/gometalinter
+COPY --from=go /go/bin/grpcurl      $GOPATH/bin/grpcurl
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
