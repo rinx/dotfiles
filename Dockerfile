@@ -2,14 +2,14 @@ FROM docker:dind AS docker
 
 RUN mkdir -p /out
 
-RUN cp /usr/local/bin/containerd /out
+RUN cp /usr/local/bin/containerd      /out
 RUN cp /usr/local/bin/containerd-shim /out
-RUN cp /usr/local/bin/ctr /out
-RUN cp /usr/local/bin/docker /out
-RUN cp /usr/local/bin/docker-init /out
-RUN cp /usr/local/bin/docker-proxy /out
-RUN cp /usr/local/bin/dockerd /out
-RUN cp /usr/local/bin/runc /out
+RUN cp /usr/local/bin/ctr             /out
+RUN cp /usr/local/bin/docker          /out
+RUN cp /usr/local/bin/docker-init     /out
+RUN cp /usr/local/bin/docker-proxy    /out
+RUN cp /usr/local/bin/dockerd         /out
+RUN cp /usr/local/bin/runc            /out
 
 FROM clojure:lein-alpine AS clojure-lein
 
@@ -26,8 +26,8 @@ RUN mkdir -p /home/rust/out
 
 RUN cp /home/rust/.cargo/bin/bat /home/rust/out
 RUN cp /home/rust/.cargo/bin/exa /home/rust/out
-RUN cp /home/rust/.cargo/bin/fd /home/rust/out
-RUN cp /home/rust/.cargo/bin/rg /home/rust/out
+RUN cp /home/rust/.cargo/bin/fd  /home/rust/out
+RUN cp /home/rust/.cargo/bin/rg  /home/rust/out
 
 FROM golang:alpine AS go
 
@@ -167,37 +167,46 @@ RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
 COPY --from=docker /usr/local/bin/docker-entrypoint.sh /usr/bin/docker-entrypoint
-COPY --from=docker /usr/local/bin/dind /usr/bin/dind
-COPY --from=docker /usr/local/bin/modprobe /usr/bin/modprobe
+COPY --from=docker /usr/local/bin/dind                 /usr/bin/dind
+COPY --from=docker /usr/local/bin/modprobe             /usr/bin/modprobe
 
-COPY --from=packer /out/docker/containerd /usr/bin/docker-containerd
+COPY --from=packer /out/docker/containerd      /usr/bin/docker-containerd
 COPY --from=packer /out/docker/containerd-shim /usr/bin/docker-containerd-shim
-COPY --from=packer /out/docker/ctr /usr/bin/docker-containerd-ctr
-COPY --from=packer /out/docker/docker /usr/bin/docker
-COPY --from=packer /out/docker/docker-init /usr/bin/docker-init
-COPY --from=packer /out/docker/docker-proxy /usr/bin/docker-proxy
-COPY --from=packer /out/docker/dockerd /usr/bin/dockerd
-COPY --from=packer /out/docker/runc /usr/bin/docker-runc
+COPY --from=packer /out/docker/ctr             /usr/bin/docker-containerd-ctr
+COPY --from=packer /out/docker/docker          /usr/bin/docker
+COPY --from=packer /out/docker/docker-init     /usr/bin/docker-init
+COPY --from=packer /out/docker/docker-proxy    /usr/bin/docker-proxy
+COPY --from=packer /out/docker/dockerd         /usr/bin/dockerd
+COPY --from=packer /out/docker/runc            /usr/bin/docker-runc
 
 COPY --from=clojure-lein /usr/local/bin/lein /usr/local/bin/lein
-COPY --from=clojure-lein /usr/share/java /usr/share/java
+COPY --from=clojure-lein /usr/share/java     /usr/share/java
 
 COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
-COPY --from=clojure-deps /usr/local/bin/clj /usr/local/bin/clj
+COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
-COPY --from=packer /out/rust/fd /usr/local/bin/fd
-COPY --from=packer /out/rust/rg /usr/local/bin/rg
+COPY --from=packer /out/rust/fd  /usr/local/bin/fd
+COPY --from=packer /out/rust/rg  /usr/local/bin/rg
 
-COPY --from=go /usr/local/go/src $GOROOT/src
-COPY --from=go /usr/local/go/lib $GOROOT/lib
-COPY --from=go /usr/local/go/pkg $GOROOT/pkg
+COPY --from=go /usr/local/go/src  $GOROOT/src
+COPY --from=go /usr/local/go/lib  $GOROOT/lib
+COPY --from=go /usr/local/go/pkg  $GOROOT/pkg
 COPY --from=go /usr/local/go/misc $GOROOT/misc
 
 COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
-COPY --from=packer /out/go/go/bin $GOPATH/bin
+COPY --from=packer /out/go/go/bin           $GOPATH/bin
+
+COPY --from=go /go/bin/bingo        $GOPATH/bin/bingo
+COPY --from=go /go/bin/dep          $GOPATH/bin/dep
+COPY --from=go /go/bin/dlv          $GOPATH/bin/dlv
+COPY --form=go /go/bin/gocode       $GOPATH/bin/gocode
+COPY --form=go /go/bin/gocode-gomod $GOPATH/bin/gomod
+COPY --form=go /go/bin/godef        $GOPATH/bin/godef
+COPY --form=go /go/bin/gometalinter $GOPATH/bin/gometalinter
+COPY --form=go /go/bin/grpcurl      $GOPATH/bin/grpcurl
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
