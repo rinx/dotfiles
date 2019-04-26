@@ -362,15 +362,17 @@ let g:ale_warn_about_trailing_whitespace = 1
 
 "coc.nvim
 let g:coc_global_extensions = [
-            \ 'coc-json',
-            \ 'coc-yaml',
-            \ 'coc-word',
             \ 'coc-dictionary',
-            \ 'coc-tsserver',
             \ 'coc-emoji',
-            \ 'coc-omni',
-            \ 'coc-syntax',
             \ 'coc-gocode',
+            \ 'coc-json',
+            \ 'coc-lists',
+            \ 'coc-omni',
+            \ 'coc-snippets',
+            \ 'coc-syntax',
+            \ 'coc-tsserver',
+            \ 'coc-word',
+            \ 'coc-yaml',
             \]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -388,6 +390,17 @@ function! s:coc_show_documentation()
 endfunction
 
 nmap <leader>rn <Plug>(coc-rename)
+
+nnoremap [coc-list] <Nop>
+nmap ,c [coc-list]
+
+nnoremap <silent> [coc-list]b :<C-u>CocList buffers<CR>
+nnoremap <silent> [coc-list]c :<C-u>CocList commands<CR>
+nnoremap <silent> [coc-list]d :<C-u>CocList diagnostics<CR>
+nnoremap <silent> [coc-list]f :<C-u>CocList files<CR>
+nnoremap <silent> [coc-list]q :<C-u>CocList quickfix<CR>
+nnoremap <silent> [coc-list]s :<C-u>CocList symbols<CR>
+nnoremap <silent> [coc-list]w :<C-u>CocList words<CR>
 
 "fzf.vim
 nnoremap [fzf] <Nop>
