@@ -373,6 +373,7 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ 'coc-word',
             \ 'coc-yaml',
+            \ 'coc-yank'
             \]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -398,9 +399,12 @@ nnoremap <silent> [coc-list]b :<C-u>CocList buffers<CR>
 nnoremap <silent> [coc-list]c :<C-u>CocList commands<CR>
 nnoremap <silent> [coc-list]d :<C-u>CocList diagnostics<CR>
 nnoremap <silent> [coc-list]f :<C-u>CocList files<CR>
+nnoremap <silent> [coc-list]g :<C-u>CocList --interactive grep<CR>
 nnoremap <silent> [coc-list]q :<C-u>CocList quickfix<CR>
+nnoremap <silent> [coc-list]r :<C-u>CocListResume<CR>
 nnoremap <silent> [coc-list]s :<C-u>CocList symbols<CR>
 nnoremap <silent> [coc-list]w :<C-u>CocList words<CR>
+nnoremap <silent> [coc-list]y :<C-u>CocList -A yank<CR>
 
 "fzf.vim
 nnoremap [fzf] <Nop>

@@ -41,5 +41,9 @@
         "--stdio"
       ]
     }
+  },
+  "list.insertMappings": {
+    "<C-n>": "normal:j",
+    "<C-p>": "normal:k"
   }
 }
