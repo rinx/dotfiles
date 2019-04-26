@@ -15,6 +15,17 @@
         "go"
       ]
     },
+    "clojure": {
+      "command": "java",
+      "args": [
+        "-Xmx1G",
+        "-server",
+        "-jar",
+        "~/.config/vim/clojure-lsp/clojure-lsp"
+      ],
+      "filetypes": ["clj", "cljs", "edn"],
+      "rootPatterns": ["project.clj", "deps.edn"]
+    },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
