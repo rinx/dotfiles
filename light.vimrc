@@ -69,6 +69,8 @@ Plug 't9md/vim-quickhl'
 Plug 'kana/vim-submode'
 Plug 'kana/vim-arpeggio'
 
+Plug 'tyru/caw.vim'
+
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
 Plug 'rhysd/vim-operator-surround'
