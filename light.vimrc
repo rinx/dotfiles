@@ -329,6 +329,7 @@ function! s:close_special_windows()
     let target_ft = [
                 \ 'qf',
                 \ 'help',
+                \ 'fzf',
                 \ ]
     let i = 1
     while i <= winnr('$')
@@ -420,6 +421,11 @@ nnoremap <silent> [fzf]c :<C-u>History:<CR>
 nnoremap <silent> [fzf]h :<C-u>Helptags<CR>
 nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
 nnoremap <silent> [fzf]g :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(input('Query: ')), 1, 0)<CR>
+
+augroup vimrc-fzf
+    autocmd!
+    autocmd FileType fzf nnoremap <buffer><silent>q :<C-u>q<CR>
+augroup END
 
 "gitgutter
 let g:gitgutter_highlight_lines = 1
