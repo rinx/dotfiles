@@ -327,6 +327,20 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
             fi
         }
     fi
+
+    fgitmoji() {
+        gitmojis=$(curl --silent 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json')
+        target=$(echo $gitmojis | jq -r '.gitmojis[] | "\(.code) \(.description)"' | fzf -m | awk '{print $1}')
+        print -z "git commit -m \"$target \""
+    }
+
+    if builtin command -v git-duet > /dev/null 2>&1 ; then
+        fgitmoji-duet() {
+        gitmojis=$(curl --silent 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json')
+        target=$(echo $gitmojis | jq -r '.gitmojis[] | "\(.code) \(.description)"' | fzf -m | awk '{print $1}')
+        print -z "git duet-commit -m \"$target \""
+    }
+fi
 fi
 
 # xsel (linux only)
