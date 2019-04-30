@@ -185,7 +185,8 @@ wallpapers: \
     $(HOME)/.wallpapers/8YbJNGx.jpg \
     $(HOME)/.wallpapers/yf2IHMV.jpg \
     $(HOME)/.wallpapers/yDpuXU0.jpg \
-    $(HOME)/.wallpapers/rnKPcCe.jpg
+    $(HOME)/.wallpapers/rnKPcCe.jpg \
+    $(HOME)/.wallpapers/rain-night-girl.jpg
 $(HOME)/.wallpapers/lavender.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/lavender.jpg > /dev/null 2>&1
@@ -228,6 +229,9 @@ $(HOME)/.wallpapers/yDpuXU0.jpg:
 $(HOME)/.wallpapers/rnKPcCe.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget https://i.imgur.com/rnKPcCe.jpg -O $(HOME)/.wallpapers/rnKPcCe.jpg > /dev/null 2>&1
+$(HOME)/.wallpapers/rain-night-girl.jpg:
+	mkdir -p $(HOME)/.wallpapers
+	wget https://www.grayscale-wallpapers.com/grayscale/rain-night-manga-anime-girl-sad.jpg -O $(HOME)/.wallpapers/rain-night-girl.jpg > /dev/null 2>&1
 
 i3status-config: \
     $(HOME)/.config/i3status/config
