@@ -330,17 +330,21 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
 
     fgitmoji() {
         gitmojis=$(curl --silent 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json')
-        target=$(echo $gitmojis | jq -r '.gitmojis[] | "\(.code) \(.description)"' | fzf -m | awk '{print $1}')
-        print -z "git commit -m \"$target \""
+        target=$(echo $gitmojis | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $1}')
+        if [[ "$target" != "" ]]; then
+            print -z "git commit -m \"$target \""
+        fi
     }
 
     if builtin command -v git-duet > /dev/null 2>&1 ; then
         fgitmoji-duet() {
-        gitmojis=$(curl --silent 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json')
-        target=$(echo $gitmojis | jq -r '.gitmojis[] | "\(.code) \(.description)"' | fzf -m | awk '{print $1}')
-        print -z "git duet-commit -m \"$target \""
-    }
-fi
+            gitmojis=$(curl --silent 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json')
+            target=$(echo $gitmojis | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $1}')
+            if [[ "$target" != "" ]]; then
+                print -z "git duet-commit -m \"$target \""
+            fi
+        }
+    fi
 fi
 
 # xsel (linux only)
