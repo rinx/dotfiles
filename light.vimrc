@@ -682,11 +682,11 @@ let g:lightline = {
             \ }
 
 function! MyModified()
-    return &ft =~ 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|qf' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-    return &ft !~? 'help\|vaffle\|undotree\|nerdtree\|qf\|quickrun' && &ro ? 'RO' : ''
+    return &ft !~? 'help\|qf' && &ro ? 'RO' : ''
 endfunction
 
 function! MyFileformat()
@@ -702,41 +702,20 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-    return &ft == 'vaffle' ? 'Vaffle' :
-                \ &ft == 'unite' ? 'Unite' :
-                \ &ft == 'denite' ? 'Denite' :
-                \ &ft == 'undotree' ? 'UNDOtree' :
-                \ &ft == 'nerdtree' ? 'NERDtree' :
-                \ &ft == 'qf' ? 'QuickFix' :
-                \ &ft == 'quickrun' ? '' :
+    return &ft == 'qf' ? 'QuickFix' :
                 \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
 endfunction
 
 function! MyFilename()
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-                \ (&ft == 'unite' ? unite#get_status_string() :
-                \  &ft == 'qf' ? len(getqflist()) . ' fixes' :
-                \  &ft == 'quickrun' ? 'QuickRun' :
+                \ (&ft == 'qf' ? len(getqflist()) . ' fixes' :
                 \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
                 \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
-function! MySkkgetmode()
-    if s:enable_eskk
-        let _ = eskk#get_mode()
-    else
-        let _ = SkkGetModeStr()
-    endif
-    return winwidth('.') > 70 ? strlen(_) ? substitute(_, '\[\|\]', '', 'g') : '' : ''
-endfunction
-
 function! MyAbsPath()
     let _ = expand('%:p:h')
-    return &ft == 'vaffle' ? '' :
-                \ &ft == 'unite' ? '' :
-                \ &ft == 'denite' ? '' :
-                \ &ft == 'qf' ? '' :
-                \ &ft == 'quickrun' ? '' :
+    return &ft == 'qf' ? '' :
                 \ tabpagenr('$') > 3 ? '' :
                 \ strlen(_) < winwidth('.') / 2 ? _ : ''
 endfunction
