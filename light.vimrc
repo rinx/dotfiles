@@ -56,8 +56,6 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 Plug 'junegunn/fzf', { 'dir': '~/.zplug/repos/junegunn/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'airblade/vim-gitgutter'
-
 Plug 'cohama/lexima.vim'
 
 Plug 'haya14busa/vim-asterisk'
@@ -392,6 +390,7 @@ let g:ale_warn_about_trailing_whitespace = 1
 let g:coc_global_extensions = [
             \ 'coc-dictionary',
             \ 'coc-emoji',
+            \ 'coc-git',
             \ 'coc-gocode',
             \ 'coc-json',
             \ 'coc-lists',
@@ -423,16 +422,19 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap [coc-list] <Nop>
 nmap ,c [coc-list]
 
-nnoremap <silent> [coc-list]b :<C-u>CocList buffers<CR>
-nnoremap <silent> [coc-list]c :<C-u>CocList commands<CR>
-nnoremap <silent> [coc-list]d :<C-u>CocList diagnostics<CR>
-nnoremap <silent> [coc-list]f :<C-u>CocList files<CR>
-nnoremap <silent> [coc-list]g :<C-u>CocList --interactive grep<CR>
-nnoremap <silent> [coc-list]q :<C-u>CocList quickfix<CR>
-nnoremap <silent> [coc-list]r :<C-u>CocListResume<CR>
-nnoremap <silent> [coc-list]s :<C-u>CocList symbols<CR>
-nnoremap <silent> [coc-list]w :<C-u>CocList words<CR>
-nnoremap <silent> [coc-list]y :<C-u>CocList -A yank<CR>
+nnoremap <silent> [coc-list]b  :<C-u>CocList buffers<CR>
+nnoremap <silent> [coc-list]c  :<C-u>CocList commands<CR>
+nnoremap <silent> [coc-list]d  :<C-u>CocList diagnostics<CR>
+nnoremap <silent> [coc-list]f  :<C-u>CocList files<CR>
+nnoremap <silent> [coc-list]gf :<C-u>CocList gfiles<CR>
+nnoremap <silent> [coc-list]gs :<C-u>CocList gstatus<CR>
+nnoremap <silent> [coc-list]gb :<C-u>CocList branches<CR>
+nnoremap <silent> [coc-list]g  :<C-u>CocList --interactive grep<CR>
+nnoremap <silent> [coc-list]q  :<C-u>CocList quickfix<CR>
+nnoremap <silent> [coc-list]r  :<C-u>CocListResume<CR>
+nnoremap <silent> [coc-list]s  :<C-u>CocList symbols<CR>
+nnoremap <silent> [coc-list]w  :<C-u>CocList words<CR>
+nnoremap <silent> [coc-list]y  :<C-u>CocList -A yank<CR>
 
 "fzf.vim
 nnoremap [fzf] <Nop>
@@ -451,15 +453,6 @@ augroup vimrc-fzf
     autocmd!
     autocmd FileType fzf nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END
-
-"gitgutter
-let g:gitgutter_highlight_lines = 1
-let g:gitgutter_max_signs = 10000
-let g:gitgutter_map_keys = 0
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '*'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_modified_removed = '~'
 
 "lexima
 let g:lexima_no_default_rules = 1
@@ -689,7 +682,7 @@ let g:lightline = {
             \ 'active': {
             \   'left': [
             \             [ 'mode', 'paste', 'spell' ],
-            \             [ 'filename', 'cocstatus' ],
+            \             [ 'filename', 'gitstatus', 'cocstatus' ],
             \   ],
             \   'right': [
             \             [ 'lineinfo' ],
@@ -704,6 +697,7 @@ let g:lightline = {
             \   'fileformat': 'MyFileformat',
             \   'filetype': 'MyFiletype',
             \   'mode': 'MyMode',
+            \   'gitstatus': 'MyGitStatus',
             \   'cocstatus': 'coc#status',
             \   'tablineabspath': 'MyAbsPath',
             \ },
@@ -753,6 +747,10 @@ endfunction
 function! MyMode()
     return &ft == 'qf' ? 'QuickFix' :
                 \ winwidth('.') > 60 ? lightline#mode() : lightline#mode()[0]
+endfunction
+
+function! MyGitStatus()
+    return substitute(get(g:,'coc_git_status',''), " ", "", "g")
 endfunction
 
 function! MyFilename()
