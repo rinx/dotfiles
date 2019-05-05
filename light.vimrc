@@ -47,6 +47,8 @@ Plug 'junegunn/vim-plug', {'dir': '~/.config/lightvim/plugged/vim-plug/autoload'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/seoul256.vim'
 
+Plug 'tyru/eskk.vim'
+
 Plug 'w0rp/ale'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
@@ -86,6 +88,8 @@ Plug 'osyo-manga/vim-textobj-multiblock'
 
 Plug 'tpope/vim-repeat'
 Plug 'guns/vim-sexp'
+
+Plug 'jpalardy/vim-slime', { 'for': ['clojure'] }
 
 Plug 'fatih/vim-go', { 'for': ['go'] }
 
@@ -345,6 +349,27 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
+"eskk
+let g:eskk#dictionary = {
+            \ 'path' : '~/.skk-jisyo',
+            \ 'sorted' : 0,
+            \ 'encoding' : 'euc_jp',
+            \}
+let g:eskk#large_dictionary = {
+            \ 'path' : '/usr/share/skk/SKK-JISYO.L',
+            \ 'sorted' : 0,
+            \ 'encoding' : 'euc_jp',
+            \}
+let g:eskk#show_candidates_count = 3
+let g:eskk#kakutei_when_unique_candidate = 1
+let g:eskk#marker_henkan = ">"
+let g:eskk#marker_okuri = "*"
+let g:eskk#marker_henkan_select =">>"
+let g:eskk#marker_jisyo_touroku = "?"
+let g:eskk#enable_completion = 0
+let g:eskk#max_candidates = 15
+let g:eskk#use_color_cursor = 0
+
 "ale.vim
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_filetype_changed = 1
@@ -531,14 +556,38 @@ nmap <silent><buffer> <) <Plug>(sexp_emit_tail_element)
 nmap <silent><buffer> <( <Plug>(sexp_capture_prev_element)
 nmap <silent><buffer> >) <Plug>(sexp_capture_next_element)
 
-"vim-go
+"slime
+let g:slime_target = "neovim"
+" execute 'echo b:terminal_job_id' to get jobid
+let g:slime_paste_file = "$HOME/.slime_paste"
+
+let g:slime_no_mappings = 1
+augroup vimrc-slime
+    autocmd!
+    autocmd User vim-slime xmap <leader>s <Plug>SlimeRegionSend
+    autocmd User vim-slime nmap <leader>s <Plug>SlimeParagraphSend
+augroup END
+
+"go
 let g:go_fmt_command = 'goimports'
 augroup vimrc-golang
     autocmd!
     autocmd FileType go setlocal noexpandtab
-    autocmd FileType go setlocal sw=8
-    autocmd FileType go setlocal ts=8
+    autocmd FileType go setlocal shiftwidth=8
+    autocmd FileType go setlocal tabstop=8
     autocmd FileType go compiler go
+augroup END
+
+"json
+augroup vimrc-json
+    autocmd!
+    autocmd FileType json setlocal shiftwidth=2
+augroup END
+
+"yaml
+augroup vimrc-yaml
+    autocmd!
+    autocmd FileType yaml setlocal shiftwidth=2
 augroup END
 
 " sticky shift
