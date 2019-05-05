@@ -392,6 +392,7 @@ let g:coc_global_extensions = [
             \ 'coc-emoji',
             \ 'coc-git',
             \ 'coc-gocode',
+            \ 'coc-highlight',
             \ 'coc-json',
             \ 'coc-lists',
             \ 'coc-omni',
@@ -435,6 +436,13 @@ nnoremap <silent> [coc-list]r  :<C-u>CocListResume<CR>
 nnoremap <silent> [coc-list]s  :<C-u>CocList symbols<CR>
 nnoremap <silent> [coc-list]w  :<C-u>CocList words<CR>
 nnoremap <silent> [coc-list]y  :<C-u>CocList -A yank<CR>
+
+augroup vimrc-coc
+    autocmd!
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
+
+highlight CocHighlightText guibg=#111111 ctermbg=23
 
 "fzf.vim
 nnoremap [fzf] <Nop>

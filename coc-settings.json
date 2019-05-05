@@ -45,5 +45,16 @@
   "list.insertMappings": {
     "<C-n>": "normal:j",
     "<C-p>": "normal:k"
-  }
+  },
+  "git.branchCharacter": "",
+  "git.addedSign.text": "+",
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.text": "~",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.text": "_",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.text": "‾",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.text": "≃",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
 }
