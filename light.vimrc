@@ -56,8 +56,6 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 Plug 'junegunn/fzf', { 'dir': '~/.zplug/repos/junegunn/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'cohama/lexima.vim'
-
 Plug 'haya14busa/vim-asterisk'
 
 Plug 'haya14busa/incsearch.vim'
@@ -396,6 +394,7 @@ let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-lists',
             \ 'coc-omni',
+            \ 'coc-pairs',
             \ 'coc-snippets',
             \ 'coc-syntax',
             \ 'coc-tsserver',
@@ -476,16 +475,6 @@ augroup vimrc-fzf
     autocmd!
     autocmd FileType fzf nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END
-
-"lexima
-let g:lexima_no_default_rules = 1
-call lexima#set_default_rules()
-let g:lexima_map_escape = '<Esc>'
-
-let g:lexima_enable_basic_rules = 1
-let g:lexima_enable_newline_rules = 1
-let g:lexima_enable_space_rules = 1
-let g:lexima_enable_endwise_rules = 1
 
 "asterisk
 map *   <Plug>(asterisk-*)

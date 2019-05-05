@@ -46,6 +46,8 @@
     "<C-n>": "normal:j",
     "<C-p>": "normal:k"
   },
+  "pairs.enableBackspace": true,
+  "pairs.enableCharacters": ["(", "[", "{", "<", "'", "\"", "`"],
   "snippets.ultisnips.directories": [
     "UltiSnips",
     "gosnippets/UltiSnips"
