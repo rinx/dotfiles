@@ -46,6 +46,10 @@
     "<C-n>": "normal:j",
     "<C-p>": "normal:k"
   },
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
   "git.branchCharacter": "",
   "git.addedSign.text": "+",
   "git.addedSign.hlGroup": "GitGutterAdd",

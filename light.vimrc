@@ -399,6 +399,7 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-syntax',
             \ 'coc-tsserver',
+            \ 'coc-ultisnips',
             \ 'coc-word',
             \ 'coc-yaml',
             \ 'coc-yank'
