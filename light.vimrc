@@ -445,10 +445,13 @@ nnoremap <silent> [coc-list]gf :<C-u>CocList gfiles<CR>
 nnoremap <silent> [coc-list]gs :<C-u>CocList gstatus<CR>
 nnoremap <silent> [coc-list]gb :<C-u>CocList branches<CR>
 nnoremap <silent> [coc-list]g  :<C-u>CocList --interactive grep<CR>
+nnoremap <silent> [coc-list]h  :<C-u>CocList helptags<CR>
 nnoremap <silent> [coc-list]q  :<C-u>CocList quickfix<CR>
 nnoremap <silent> [coc-list]r  :<C-u>CocListResume<CR>
 nnoremap <silent> [coc-list]s  :<C-u>CocList symbols<CR>
-nnoremap <silent> [coc-list]w  :<C-u>CocList words<CR>
+nnoremap <silent> [coc-list]t  :<C-u>CocList filetypes<CR>
+nnoremap <silent> [coc-list]w  :<C-u>CocList --interactive words<CR>
+nnoremap <silent> [coc-list]/  :<C-u>CocList --interactive words<CR>
 nnoremap <silent> [coc-list]y  :<C-u>CocList -A yank<CR>
 
 augroup vimrc-coc
@@ -462,14 +465,14 @@ highlight CocHighlightText guibg=#111111 ctermbg=23
 nnoremap [fzf] <Nop>
 nmap ,u [fzf]
 
-nnoremap <silent> [fzf]b :<C-u>Buffers<CR>
-nnoremap <silent> [fzf]f :<C-u>Files<CR>
+nnoremap <silent> [fzf]b  :<C-u>Buffers<CR>
+nnoremap <silent> [fzf]f  :<C-u>Files<CR>
 nnoremap <silent> [fzf]gf :<C-u>GFiles<CR>
-nnoremap <silent> [fzf]/ :<C-u>BLines<CR>
-nnoremap <silent> [fzf]c :<C-u>History:<CR>
-nnoremap <silent> [fzf]h :<C-u>Helptags<CR>
-nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
-nnoremap <silent> [fzf]g :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(input('Query: ')), 1, 0)<CR>
+nnoremap <silent> [fzf]/  :<C-u>BLines<CR>
+nnoremap <silent> [fzf]c  :<C-u>History:<CR>
+nnoremap <silent> [fzf]h  :<C-u>Helptags<CR>
+nnoremap <silent> [fzf]t  :<C-u>Filetypes<CR>
+nnoremap <silent> [fzf]g  :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(input('Query: ')), 1, 0)<CR>
 
 augroup vimrc-fzf
     autocmd!
