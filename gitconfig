@@ -28,7 +28,7 @@
 [core]
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes_global
-    editor = vim -u ~/.dotfiles/tiny.vimrc
+    editor = nvim -u ~/.dotfiles/light.vimrc
 
 [alias]
     this  = !git init && git add . && git commit -m \"first commit\"
@@ -42,7 +42,7 @@
 
     ci    = commit
     cm    = commit -m
-    cv    = commit -v 
+    cv    = commit -v
     ca    = commit --amend --no-edit
     cae   = commit --amend
 
