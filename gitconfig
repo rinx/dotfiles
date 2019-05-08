@@ -73,7 +73,8 @@
     insteadOf = git://
 
 [credential]
-    helper = cache --timeout=3600
+    helper = store --file ~/.git-credentials
+    helper = cache --timeout=360000
 
 [pager]
     log  = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
