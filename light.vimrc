@@ -823,4 +823,4 @@ function! s:vimrc_local(loc)
     endfor
 endfunction
 
-highlight Normal ctermbg=none
+highlight Normal ctermbg=none guibg=none
