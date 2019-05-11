@@ -26,7 +26,8 @@
     wallpapers \
     i3status-config \
     lein-profile \
-    deps-edn
+    deps-edn \
+    hyper
 
 prepare-deploy:
 	@$(call cyan, "deploy stage")
@@ -146,7 +147,8 @@ others-deploy: \
     sway-config \
     i3status-config \
     lein-profile \
-    deps-edn
+    deps-edn \
+    hyper
 	@$(call red, "others-deploy")
 
 latexmkrc: $(HOME)/.latexmkrc
@@ -248,3 +250,7 @@ deps-edn: $(HOME)/.clojure/deps.edn
 $(HOME)/.clojure/deps.edn:
 	mkdir -p $(HOME)/.clojure
 	ln -s $(DOTDIR)/deps.edn $(HOME)/.clojure/deps.edn
+
+hyper: $(HOME)/.hyper.js
+$(HOME)/.hyper.js:
+	ln -s $(DOTDIR)/hyper.js $(HOME)/.hyper.js
