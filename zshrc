@@ -194,10 +194,8 @@ else # for BSD version
     alias lsal='ls -al'
 fi
 
-# start vim as vi
 if builtin command -v vim > /dev/null 2>&1 ; then
     alias vi='vimswitcher'
-    alias tinyvim='vim -u ~/.dotfiles/tiny.vimrc'
 else
     alias vi='nvim'
 fi
