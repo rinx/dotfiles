@@ -215,11 +215,8 @@ COPY Makefile.d           $DOTFILES/Makefile.d
 COPY nvimrc               $DOTFILES/nvimrc
 COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
-COPY sway-config          $DOTFILES/sway-config
 COPY tmux.conf            $DOTFILES/tmux.conf
 COPY vimrc                $DOTFILES/vimrc
-COPY vimshrc              $DOTFILES/vimshrc
-COPY Xdefaults            $DOTFILES/Xdefaults
 COPY zshrc                $DOTFILES/zshrc
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime

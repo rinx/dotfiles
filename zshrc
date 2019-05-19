@@ -83,7 +83,7 @@ if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
     fi
 elif [ -n "${DOCKERIZED_DEVENV}" ]; then
     local usrathn="%F{yellow}%n@${DOCKERIZED_DEVENV}%f"
-    if [ ${#DOCKERIZED_DEVENV} -gt 10 ]; then
+    if [ ${#DOCKERIZED_DEVENV} -gt 12 ]; then
         local afterhost="$lf"
     fi
 else
