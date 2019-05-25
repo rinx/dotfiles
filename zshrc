@@ -476,7 +476,13 @@ devstarter() {
     eval $start_cmd
 }
 
-alias devstart-stable="devstarter rinx/devenv:stable"
-alias devstart="devstarter rinx/devenv:nightly"
+devstart-stable() {
+    devstarter rinx/devenv:stable $@
+}
+
+devstart() {
+    devstarter rinx/devenv:nightly $@
+}
+
 alias devattach="docker exec -it $container_name /bin/zsh"
 alias devstop="docker stop $container_name && docker rm $container_name"
