@@ -455,6 +455,8 @@ devstarter() {
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
         -v $HOME/Downloads:/root/Downloads \
+        -v $HOME/.zsh_history:/root/.zsh_history \
+        -v $HOME/.skk-jisyo:/root/.skk-jisyo \
         -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect \
         $@"
 
