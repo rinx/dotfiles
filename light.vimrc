@@ -85,6 +85,8 @@ Plug 'jpalardy/vim-slime', { 'for': ['clojure'] }
 
 Plug 'fatih/vim-go', { 'for': ['go'] }
 
+Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown', 'for': ['markdown'] }
+
 call plug#end()
 
 set viminfo='1000,<100,f1,h,s100
@@ -581,6 +583,10 @@ augroup vimrc-golang
     autocmd FileType go setlocal tabstop=8
     autocmd FileType go compiler go
 augroup END
+
+"markdown
+let g:livedown_open = 0
+let g:livedown_port = 1337
 
 "json
 augroup vimrc-json

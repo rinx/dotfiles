@@ -443,7 +443,7 @@ container_name='rinx-devenv'
 devstarter() {
     image_name=$1
     shift
-    opts="--network host \
+    opts="--net=host \
         --cap-add=ALL \
         --privileged=false \
         --name $container_name \
