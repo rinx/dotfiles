@@ -120,16 +120,19 @@ jobs:
       - setup_remote_docker: *setup_remote_docker
       - checkout
       - run:
+          name: fetch rinx/orchis
+          command: |
+            wget https://github.com/rinx/orchis/releases/download/0.0.1/orchis-v0.0.1.tar.gz
+            tar xzvf ./orchis-v0.0.1.tar.gz
+            chmod a+x ./orchis
+      - run:
           name: ssh-keyscan - github.com
           command: |
             mkdir -p /home/circleci/.ssh
             ssh-keyscan -H github.com >> /home/circleci/.ssh/known_hosts
       - run:
-          name: fetch rinx/orchis -> check -> add tag and create release
+          name: check -> add tag and create release
           command: |
-            wget https://github.com/rinx/orchis/releases/download/0.0.3/orchis-v0.0.3.tar.gz
-            tar xzvf ./orchis-v0.0.3.tar.gz
-            chmod a+x ./orchis
             PWD=`pwd`
             NEW_VERSION=`./orchis semver-tag`
             if [[ -n $NEW_VERSION ]]; then
