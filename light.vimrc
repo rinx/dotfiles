@@ -85,7 +85,7 @@ Plug 'jpalardy/vim-slime', { 'for': ['clojure'] }
 
 Plug 'fatih/vim-go', { 'for': ['go'] }
 
-Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown', 'for': ['markdown'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': ['markdown'] }
 
 call plug#end()
 
@@ -585,8 +585,8 @@ augroup vimrc-golang
 augroup END
 
 "markdown
-let g:livedown_open = 0
-let g:livedown_port = 1337
+let g:mkdp_open_to_the_world = 1
+let g:mkdp_port = '8000'
 
 "json
 augroup vimrc-json
