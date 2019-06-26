@@ -443,7 +443,7 @@ container_name='rinx-devenv'
 devstarter() {
     image_name=$1
     shift
-    opts="--net=host \
+    opts="\
         --cap-add=ALL \
         --privileged=false \
         --name $container_name \
@@ -465,6 +465,7 @@ devstarter() {
             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
             ;;
         Linux)
+            opts="--net=host $opts"
             if [[ -n "${SSH_AUTH_SOCK}" ]]; then
                 opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
             fi
