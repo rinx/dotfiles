@@ -122,8 +122,8 @@ jobs:
       - run:
           name: fetch rinx/orchis
           command: |
-            wget https://github.com/rinx/orchis/releases/download/0.0.3/orchis-v0.0.3.tar.gz
-            tar xzvf ./orchis-v0.0.3.tar.gz
+            wget https://github.com/rinx/orchis/releases/download/0.0.1/orchis-v0.0.1.tar.gz
+            tar xzvf ./orchis-v0.0.1.tar.gz
             chmod a+x ./orchis
       - run:
           name: ssh-keyscan - github.com
