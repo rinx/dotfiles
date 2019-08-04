@@ -62,5 +62,6 @@
   "git.topRemovedSign.text": "‾",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.text": "≃",
-  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"]
 }

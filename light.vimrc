@@ -87,6 +87,8 @@ Plug 'fatih/vim-go', { 'for': ['go'] }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': ['markdown'] }
 
+Plug 'jparise/vim-graphql', { 'for': ['graphql'] }
+
 call plug#end()
 
 set viminfo='1000,<100,f1,h,s100
@@ -393,6 +395,7 @@ let g:coc_global_extensions = [
             \ 'coc-lists',
             \ 'coc-omni',
             \ 'coc-pairs',
+            \ 'coc-prettier',
             \ 'coc-snippets',
             \ 'coc-syntax',
             \ 'coc-tsserver',
