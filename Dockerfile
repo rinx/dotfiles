@@ -230,8 +230,7 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
     && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
 
 RUN mkdir -p /usr/share/skk \
-    && wget -O /usr/share/skk/SKK-JISYO.L.gz http://openlab.jp/skk/dic/SKK-JISYO.L.gz \
-    && gunzip /usr/share/skk/SKK-JISYO.L.gz
+    && wget -O /usr/share/skk/SKK-JISYO.L https://raw.githubusercontent.com/skk-users-jp/dic-mirror/gh-pages/SKK-JISYO.L
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-init && make tmux-init"]
