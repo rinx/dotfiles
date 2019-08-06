@@ -19,7 +19,7 @@ FROM ekidd/rust-musl-builder:stable AS rust
 
 RUN cargo install bat \
     exa \
-    ripgrep \
+    && cargo install --version 11.0.1 ripgrep \
     && cargo install --git https://github.com/sharkdp/fd
 
 RUN mkdir -p /home/rust/out
