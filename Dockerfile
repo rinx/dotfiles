@@ -17,8 +17,8 @@ FROM clojure:tools-deps-alpine AS clojure-deps
 
 FROM ekidd/rust-musl-builder:stable AS rust
 
-RUN cargo install bat \
-    exa \
+RUN cargo install --version 0.11.0 bat \
+    && cargo install exa \
     && cargo install --version 11.0.1 ripgrep \
     && cargo install --git https://github.com/sharkdp/fd
 
