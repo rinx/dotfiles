@@ -1464,7 +1464,7 @@ function! s:update_LanguageClient_hook_post_update() abort
             call mkdir(s:clojure_lsp_path, 'p')
         endif
         if !executable(s:clojure_lsp_executable_path)
-            let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20190331T074339/clojure-lsp'
+            let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20190614T052638/clojure-lsp'
             call system('curl --silent -fSL -o ' . s:clojure_lsp_executable_path . ' ' . l:clojure_lsp_release)
             call system('chmod 755 ' . s:clojure_lsp_executable_path)
         endif
@@ -1475,10 +1475,9 @@ function! s:update_LanguageClient_hook_post_update() abort
         endif
         let l:jdtls_launcher_path = s:LanguageClient_find_jdtls_launcher()
         if !executable(l:jdtls_launcher_path)
-            let l:jdtls_latest = system('curl -fSL --silent https://download.eclipse.org/jdtls/snapshots/latest.txt')
-            call system('curl --silent -fSL -o /tmp/tmp_jdt_lsp.tar.gz https://download.eclipse.org/jdtls/snapshots/' . l:jdtls_latest)
+            call system('curl --silent -L -o /tmp/tmp_jdt_lsp.tar.gz http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz')
             call system('tar xf /tmp/tmp_jdt_lsp.tar.gz -C ' . s:jdtls_path)
-            call system('rm /tmp/tmp_jdt_lsp.tar.gz')
+            call delete('/tmp/tmp_jdt_lsp.tar.gz', 'f')
         endif
     endif
 endfunction
