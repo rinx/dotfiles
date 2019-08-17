@@ -340,6 +340,17 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         fi
     }
 
+    fgitmoji-semver() {
+        if [ ! -f ~/.gitmojis.json ]; then
+            fgitmoji-cache
+        fi
+        semver=$(echo "[patch]\n[minor]\n[major]" | fzf -m)
+        target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
+        if [[ "$target" != "" ]]; then
+            print -z "git commit -m \"$semver $target \""
+        fi
+    }
+
     if builtin command -v git-duet > /dev/null 2>&1 ; then
         fgitmoji-duet() {
             if [ ! -f ~/.gitmojis.json ]; then
