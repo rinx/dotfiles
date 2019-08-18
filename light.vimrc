@@ -352,7 +352,7 @@ let g:eskk#dictionary = {
             \ 'encoding' : 'euc_jp',
             \}
 let g:eskk#large_dictionary = {
-            \ 'path' : '/usr/share/skk/SKK-JISYO.L',
+            \ 'path' : '~/.SKK-JISYO.L',
             \ 'sorted' : 0,
             \ 'encoding' : 'euc_jp',
             \}

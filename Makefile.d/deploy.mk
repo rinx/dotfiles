@@ -9,6 +9,7 @@
     init.vim \
     dein-nvim \
     coc-settings.json \
+    skk-jisyo-large \
     git-deploy \
     gitconfig \
     gitconfig-local \
@@ -40,7 +41,8 @@ vim-deploy: \
     vim-ftdetects \
     vim-snippets \
     vim-indents \
-    dein-vim
+    dein-vim \
+    skk-jisyo-large
 	@$(call red, "vim-deploy has been done")
 
 vimrc: $(HOME)/.vimrc
@@ -67,7 +69,8 @@ $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 neovim-deploy: \
     init.vim \
     dein-nvim \
-    coc-settings.json
+    coc-settings.json \
+    skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
 
 init.vim: $(HOME)/.config/nvim/init.vim
@@ -88,6 +91,11 @@ $(HOME)/.config/nvim/coc-settings.json:
 	@$(call cyan, "--\> coc-settings.json for nvim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/coc-settings.json $(HOME)/.config/nvim/coc-settings.json
+
+skk-jisyo-large: $(HOME)/.SKK-JISYO.L
+$(HOME)/.SKK-JISYO.L:
+	@$(call cyan, "--\> download SKK-JISYO.L")
+	wget -O $(HOME)/.SKK-JISYO.L https://raw.githubusercontent.com/skk-users-jp/dic-mirror/gh-pages/SKK-JISYO.L
 
 git-deploy: \
     gitconfig \

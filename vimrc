@@ -560,12 +560,7 @@ endfunction
 
 function! s:init_skk_hook_add() abort
     let g:skk_jisyo = '~/.skk-jisyo'
-
-    if has('mac')
-        let g:skk_large_jisyo = '/Library/Dictionaries/SKK/SKK-JISYO.L'
-    elseif has('unix')
-        let g:skk_large_jisyo = '/usr/share/skk/SKK-JISYO.L'
-    endif
+    let g:skk_large_jisyo = '~/.SKK-JISYO.L'
 
     let g:skk_auto_save_jisyo = 1
     let g:skk_manual_save_jisyo_keys = ""
@@ -628,13 +623,13 @@ function! s:init_eskk_hook_add() abort
                 \}
     if has('mac')
         let g:eskk#large_dictionary = {
-                    \ 'path' : '/Library/Dictionaries/SKK/SKK-JISYO.L',
+                    \ 'path' : '~/.SKK-JISYO.L',
                     \ 'sorted' : 0,
                     \ 'encoding' : 'euc_jp',
                     \}
     elseif has('unix')
         let g:eskk#large_dictionary = {
-                    \ 'path' : '/usr/share/skk/SKK-JISYO.L',
+                    \ 'path' : '~/.SKK-JISYO.L',
                     \ 'sorted' : 0,
                     \ 'encoding' : 'euc_jp',
                     \}
