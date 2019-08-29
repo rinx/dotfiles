@@ -387,8 +387,10 @@ let g:ale_warn_about_trailing_whitespace = 1
 "coc.nvim
 let g:coc_global_extensions = [
             \ 'coc-dictionary',
+            \ 'coc-docker',
             \ 'coc-emoji',
             \ 'coc-git',
+            \ 'coc-go',
             \ 'coc-gocode',
             \ 'coc-highlight',
             \ 'coc-json',
