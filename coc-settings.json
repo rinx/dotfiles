@@ -1,7 +1,7 @@
 {
   "languageserver": {
     "golang": {
-      "command": "bingo",
+      "command": "gopls",
       "args": [
         "--format-style",
         "goimports",
@@ -63,5 +63,6 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.text": "≃",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"]
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"],
+  "go.enable": true
 }
