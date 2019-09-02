@@ -386,20 +386,27 @@ function! s:init_denite_hook_source() abort
     endif
 
     " custom key mappings
-    call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
-    call denite#custom#map('insert', '<C-Q>', '<denite:leave_mode>')
-    call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
-    call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
+    augroup vimrc-denite_buffer_mappings
+        autocmd!
+        autocmd FileType denite call <SID>denite_buffer_mappings()
+        autocmd FileType denite-filter call <SID>denite_filter_settings()
+    augroup END
 
-    call denite#custom#map('normal', 'sh', '<denite:wincmd:h>')
-    call denite#custom#map('normal', 'sj', '<denite:wincmd:j>')
-    call denite#custom#map('normal', 'sk', '<denite:wincmd:k>')
-    call denite#custom#map('normal', 'sl', '<denite:wincmd:l>')
-    call denite#custom#map('normal', 'sw', '<denite:wincmd:w>')
-    call denite#custom#map('normal', 'sW', '<denite:wincmd:W>')
-    call denite#custom#map('normal', 'st', '<denite:wincmd:t>')
-    call denite#custom#map('normal', 'sb', '<denite:wincmd:b>')
-    call denite#custom#map('normal', 'sp', '<denite:wincmd:p>')
+    function! s:denite_buffer_mappings() abort
+        nnoremap <silent><buffer><expr> <BS>    denite#do_map('move_up_path')
+        nnoremap <silent><buffer><expr> <C-c>   denite#do_map('quit')
+        nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
+        nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select).'j'
+        nnoremap <silent><buffer><expr> <Tab>   denite#do_map('choose_action')
+        nnoremap <silent><buffer><expr> a       denite#do_map('open_filter_buffer')
+        nnoremap <silent><buffer><expr> i       denite#do_map('open_filter_buffer')
+        nnoremap <silent><buffer><expr> p       denite#do_map('do_action', 'preview')
+        nnoremap <silent><buffer><expr> q       denite#do_map('quit')
+    endfunction
+
+    function! s:denite_filter_settings() abort
+        call deoplete#custom#buffer_option('auto_complete', v:false)
+    endfunction
 
     call denite#custom#option('default', 'auto_accel', v:true)
     call denite#custom#option('default', 'auto_resize', v:true)
@@ -416,7 +423,7 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]c  :<C-u>Denite command_history command<CR>
     " file under current directory
     nnoremap <silent> [denite]f  :<C-u>Denite file/rec<CR>
-    nnoremap <silent> [denite]pf :<C-u>Denite file/rec -auto-preview<CR>
+    nnoremap <silent> [denite]pf :<C-u>Denite file/rec -auto-action='preview'<CR>
     nnoremap <silent> [denite]gf :<C-u>Denite file/rec/git<CR>
     nnoremap <silent> [denite]af :<C-u>Denite file/rec/all<CR>
     " recently files
@@ -429,10 +436,10 @@ function! s:init_denite_hook_add() abort
     nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
     nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
     " jumps
-    nnoremap <silent> [denite]j  :<C-u>Denite jump -auto-highlight<CR>
+    nnoremap <silent> [denite]j  :<C-u>Denite jump -auto-action='highlight'<CR>
     " line search
-    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-highlight<CR>
-    nnoremap <silent> [denite]r/  :<C-u>Denite line -buffer-name=search -auto-highlight -resume -refresh<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-action='highlight'<CR>
+    nnoremap <silent> [denite]r/  :<C-u>Denite line -buffer-name=search -auto-action='highlight' -resume -refresh<CR>
     " grep
     nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=grep<CR>
     nnoremap <silent> [denite]rg :<C-u>Denite grep -buffer-name=grep -resume<CR>
