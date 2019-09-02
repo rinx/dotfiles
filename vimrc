@@ -413,33 +413,33 @@ function! s:init_denite_hook_add() abort
     nnoremap [denite] <Nop>
     nmap ,u [denite]
     " buffer
-    nnoremap <silent> [denite]b  :<C-u>Denite buffer<CR>
+    nnoremap <silent> [denite]b  :<C-u>Denite buffer -start-filter<CR>
     " command hisotory & commands
-    nnoremap <silent> [denite]c  :<C-u>Denite command_history command<CR>
+    nnoremap <silent> [denite]c  :<C-u>Denite command_history command -start-filter<CR>
     " file under current directory
-    nnoremap <silent> [denite]f  :<C-u>Denite file/rec<CR>
-    nnoremap <silent> [denite]pf :<C-u>Denite file/rec -auto-action='preview'<CR>
-    nnoremap <silent> [denite]gf :<C-u>Denite file/rec/git<CR>
-    nnoremap <silent> [denite]af :<C-u>Denite file/rec/all<CR>
+    nnoremap <silent> [denite]f  :<C-u>Denite file/rec -start-filter<CR>
+    nnoremap <silent> [denite]pf :<C-u>Denite file/rec -auto-action='preview' -start-filter<CR>
+    nnoremap <silent> [denite]gf :<C-u>Denite file/rec/git -start-filter<CR>
+    nnoremap <silent> [denite]af :<C-u>Denite file/rec/all -start-filter<CR>
     " recently files
-    nnoremap <silent> [denite]mr :<C-u>Denite file_mru<CR>
+    nnoremap <silent> [denite]mr :<C-u>Denite file_mru -start-filter<CR>
     " buffer and file
-    nnoremap <silent> [denite]o  :<C-u>Denite buffer file/rec<CR>
+    nnoremap <silent> [denite]o  :<C-u>Denite buffer file/rec -start-filter<CR>
     " register
-    nnoremap <silent> [denite]r  :<C-u>Denite register<CR>
+    nnoremap <silent> [denite]r  :<C-u>Denite register -start-filter<CR>
     " menu
-    nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut<CR>
-    nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji<CR>
+    nnoremap <silent> [denite]ms :<C-u>Denite menu:shortcut -start-filter<CR>
+    nnoremap <silent> [denite]mk :<C-u>Denite menu:kaomoji -start-filter<CR>
     " jumps
-    nnoremap <silent> [denite]j  :<C-u>Denite jump -auto-action='highlight'<CR>
+    nnoremap <silent> [denite]j  :<C-u>Denite jump -auto-action='highlight' -start-filter<CR>
     " line search
-    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-action='highlight'<CR>
-    nnoremap <silent> [denite]r/  :<C-u>Denite line -buffer-name=search -auto-action='highlight' -resume -refresh<CR>
+    nnoremap <silent> [denite]/  :<C-u>Denite line -buffer-name=search -auto-action='highlight' -start-filter<CR>
+    nnoremap <silent> [denite]r/  :<C-u>Denite line -buffer-name=search -auto-action='highlight' -resume -refresh -start-filter<CR>
     " grep
-    nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=grep<CR>
-    nnoremap <silent> [denite]rg :<C-u>Denite grep -buffer-name=grep -resume<CR>
+    nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=grep -start-filter<CR>
+    nnoremap <silent> [denite]rg :<C-u>Denite grep -buffer-name=grep -resume -start-filter<CR>
     " filetype
-    nnoremap <silent> [denite]t  :<C-u>Denite filetype<CR>
+    nnoremap <silent> [denite]t  :<C-u>Denite filetype -start-filter<CR>
 endfunction
 
 function! s:init_unite_hook_source() abort
