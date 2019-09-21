@@ -128,33 +128,22 @@ set tabstop=8
 set shiftwidth=4
 set softtabstop=4
 
-if &term=="xterm"
-    set t_Co=256
-    set t_Sb=[4%dm
-    set t_Sf=[3%dm
-endif
-
 syntax on
 filetype plugin indent on
 
 set hlsearch
 
-if empty($TMUX) && empty($STY)
-  " See https://gist.github.com/XVilka/8346728.
-  if $COLORTERM =~# 'truecolor' || $COLORTERM =~# '24bit'
-    if has('termguicolors')
-      " See :help xterm-true-color
-      if $TERM =~# '^screen'
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-      endif
-      set termguicolors
-    endif
-  endif
-endif
+set termguicolors
 
 colorscheme seoul256
 set background=dark
+
+if exists('&pumblend')
+    set pumblend=30
+endif
+if exists('&winblend')
+    set winblend=30
+endif
 
 set visualbell
 set lazyredraw
@@ -481,6 +470,31 @@ augroup vimrc-fzf
     autocmd!
     autocmd FileType fzf nnoremap <buffer><silent>q :<C-u>q<CR>
 augroup END
+
+if exists('*nvim_open_win')
+    hi NormalFloat ctermbg=237 ctermfg=252
+
+    let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+    function! FloatingFZF()
+      let buf = nvim_create_buf(v:false, v:true)
+
+      let height = 20
+      let width = float2nr(&columns - (&columns * 2 / 10))
+      let row = float2nr((&lines - height) / 2)
+      let col = float2nr((&columns - width) / 2)
+
+      let opts = {
+            \ 'relative': 'editor',
+            \ 'row': row,
+            \ 'col': col,
+            \ 'width': width,
+            \ 'height': height
+            \ }
+
+      call nvim_open_win(buf, v:true, opts)
+    endfunction
+endif
 
 "asterisk
 map *   <Plug>(asterisk-*)
