@@ -388,6 +388,9 @@ function! s:init_denite_hook_source() abort
     augroup END
 
     function! s:denite_buffer_mappings() abort
+        if exists('&winblend')
+            setlocal winblend=30
+        endif
         nnoremap <silent><buffer><expr> <BS>    denite#do_map('move_up_path')
         nnoremap <silent><buffer><expr> <C-c>   denite#do_map('quit')
         nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
@@ -400,6 +403,9 @@ function! s:init_denite_hook_source() abort
     endfunction
 
     function! s:denite_filter_settings() abort
+        if exists('&winblend')
+            setlocal winblend=30
+        endif
         call deoplete#custom#buffer_option('auto_complete', v:false)
     endfunction
 
