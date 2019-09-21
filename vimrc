@@ -407,6 +407,7 @@ function! s:init_denite_hook_source() abort
     call denite#custom#option('default', 'auto_resize', v:true)
     call denite#custom#option('default', 'vertical_preview', v:true)
     call denite#custom#option('default', 'prompt', '>')
+    call denite#custom#option('default', 'split', 'floating')
 endfunction
 
 function! s:init_denite_hook_add() abort
