@@ -37,7 +37,7 @@ FROM golang:alpine AS go
 
 RUN apk update \
     && apk upgrade \
-    && apk --update add --no-cache \
+    && apk --update-cache add --no-cache \
     git \
     curl \
     gcc \
@@ -81,7 +81,7 @@ FROM alpine:edge AS packer
 
 RUN apk update \
     && apk upgrade \
-    && apk --update add --no-cache \
+    && apk --update-cache add --no-cache \
     upx
 
 COPY --from=docker /out /out/docker
@@ -101,7 +101,7 @@ LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && apk update \
     && apk upgrade \
-    && apk --update add --no-cache \
+    && apk --update-cache add --no-cache \
     bash \
     cmake \
     ctags \

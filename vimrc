@@ -407,6 +407,8 @@ function! s:init_denite_hook_source() abort
             setlocal winblend=30
         endif
         call deoplete#custom#buffer_option('auto_complete', v:false)
+        inoremap <C-n> <Nop>
+        inoremap <C-p> <Nop>
     endfunction
 
     call denite#custom#option('_', 'auto_accel', v:true)
