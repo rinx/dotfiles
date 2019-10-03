@@ -234,7 +234,7 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
     && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
-# RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-init && make tmux-init"]
+RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-init && make tmux-init"]
 
 # download dependencies
 RUN ["/bin/zsh", "-c", "lein"]
