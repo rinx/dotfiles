@@ -1,0 +1,27 @@
+name: Build docker image
+on:
+  push:
+    tags:
+      - *.*.*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        echo "Build docker image"
+        docker build -t devenv .
+    - name: login to GitHub package registry
+      run: |
+        echo "Login to GitHub package registry"
+        echo ${GITHUB_TOKEN} | docker login docker.pkg.github.com --username rinx --password-stdin
+      env:
+        GITHUB_TOKEN: ${{ secrets.DOTFILES_TOKEN }}
+    - name: tag and push to GitHub package registry
+      run: |
+        echo "Push to GitHub package registry"
+        GIT_TAG=`git describe --abbrev=0 --tags`
+        docker tag devenv docker.pkg.github.com/rinx/dotfiles/devenv:${GIT_TAG}
+        docker push docker.pkg.github.com/rinx/dotfiles/devenv:${GIT_TAG}
