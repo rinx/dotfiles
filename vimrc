@@ -1193,11 +1193,6 @@ function! s:init_openbrowser_hook_add() abort
     nnoremap <silent> ,oy :<C-u>OpenBrowserSearch -yahoojp <C-r><C-w><CR>
     nnoremap <silent> ,ow :<C-u>OpenBrowserSearch -weblio <C-r><C-w><CR>
     nnoremap <silent> ,oa :<C-u>OpenBrowserSearch -alc <C-r><C-w><CR>
-
-    call altercmd#define('google', 'OpenBrowserSearch -google')
-    call altercmd#define('yahoo', 'OpenBrowserSearch -yahoojp')
-    call altercmd#define('weblio', 'OpenBrowserSearch -weblio')
-    call altercmd#define('alc', 'OpenBrowserSearch -alc')
 endfunction
 
 function! s:init_gfm_syntax_hook_source() abort
@@ -1244,7 +1239,6 @@ function! s:init_haskell_vim_hook_source() abort
 endfunction
 
 function! s:init_ref_hoogle_hook_add() abort
-    call altercmd#define('hoogle', 'Ref hoogle')
     nnoremap <silent> [ref]hg :<C-u>Ref hoogle <C-r><C-w><CR>
 endfunction
 
@@ -1523,10 +1517,6 @@ function! s:init_ref_hook_add() abort
     nnoremap <silent> [ref]ej :<C-u>Ref webdict ej <C-r><C-w><CR>
     nnoremap <silent> [ref]je :<C-u>Ref webdict je <C-r><C-w><CR>
     nnoremap <silent> [ref]wk :<C-u>Ref webdict wiki <C-r><C-w><CR>
-
-    call altercmd#define('ejdic', 'Ref webdict ej')
-    call altercmd#define('jedic', 'Ref webdict je')
-    call altercmd#define('wiki',  'Ref webdict wiki')
 endfunction
 
 function! s:init_translategoogle_hook_add() abort
@@ -1772,7 +1762,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
     call dein#add('kana/vim-arpeggio', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_arpeggio_hook_add()',
                 \})
-    call dein#add('kana/vim-altercmd')
 
     call dein#add('Shougo/denite.nvim', {
                 \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_denite_hook_add()',
