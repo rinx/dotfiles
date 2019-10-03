@@ -1,7 +1,8 @@
 name: Build docker image
 on:
   push:
-    - tags
+    tags:
+      - '*.*.*'
 
 jobs:
   build:
