@@ -1,6 +1,8 @@
 # dotfiles
+
 [![CircleCI](https://circleci.com/gh/rinx/dotfiles/tree/master.svg?style=svg)](https://circleci.com/gh/rinx/dotfiles)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rinx/devenv.svg?style=flat-square)](https://hub.docker.com/r/rinx/devenv)
+[![GitHub Actions: Build docker image](https://github.com/rinx/dotfiles/workflows/Build%20docker%20image/badge.svg)](https://github.com/rinx/dotfiles/actions)
 
 ## Use Dockerized environment
 
@@ -41,7 +43,6 @@ And attach to it.
 After finished your work, stop the environment.
 
     $ devstop
-
 
 ## Use standard environment
 
