@@ -23,11 +23,10 @@ neovim-init:
 lightvim-init:
 	@$(call red, "lightvim-init")
 	@$(call blue, "--\> initialize plug for NeoVim - light.vimrc")
-	nvim -u ~/.dotfiles/light.vimrc --headless +'PlugInstall' +qa
+	nvim -u ~/.dotfiles/light.vimrc --headless +'PlugInstall --sync' +qa
 	nvim -u ~/.dotfiles/light.vimrc --headless +'UpdateRemotePlugins' +qa
 
 tmux-init:
 	@$(call red, "tmux-init")
 	@$(call blue, "--\> install tmux plugins")
 	bash $(HOME)/.tmux/plugins/tpm/scripts/install_plugins.sh
-

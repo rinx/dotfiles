@@ -540,24 +540,24 @@ nmap <Space>M <Plug>(quickhl-manual-reset)
 xmap <Space>M <Plug>(quickhl-manual-reset)
 
 "submode
-call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-call submode#map('bufmove', 'n', '', '<', '<C-w><')
-call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+silent! call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+silent! call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+silent! call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+silent! call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+silent! call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+silent! call submode#map('bufmove', 'n', '', '<', '<C-w><')
+silent! call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+silent! call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 "arpeggio
-call arpeggio#load()
+silent! call arpeggio#load()
 
 "operator
 let g:caw_no_default_keymappings = 1
-Arpeggio map or <Plug>(operator-replace)
-Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)
-Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)
-Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)
+silent! Arpeggio map or <Plug>(operator-replace)
+silent! Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)
+silent! Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)
+silent! Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)
 map Sa <Plug>(operator-surround-append)
 map Sd <Plug>(operator-surround-delete)
 map Sr <Plug>(operator-surround-replace)

@@ -191,7 +191,7 @@ function! s:init_vaffle_hook_add() abort
 endfunction
 
 function! s:init_arpeggio_hook_add() abort
-    call arpeggio#load()
+    silent! call arpeggio#load()
 endfunction
 
 " denite.nvim and unite.vim configures
@@ -677,7 +677,7 @@ function! s:init_eskk_hook_add() abort
 endfunction
 
 function! s:init_quickrun_hook_add() abort
-    Arpeggio nmap qr <Plug>(quickrun)
+    silent! Arpeggio nmap qr <Plug>(quickrun)
     let g:quickrun_config = {
                 \ '_' : {
                 \   'outputter' : 'error',
@@ -1045,14 +1045,14 @@ endfunction
 " operator
 
 function! s:init_operator_replace_hook_add() abort
-    Arpeggio map or <Plug>(operator-replace)
+    silent! Arpeggio map or <Plug>(operator-replace)
 endfunction
 
 function! s:init_caw_comment_hook_add() abort
     let g:caw_no_default_keymappings = 1
-    Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)
-    Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)
-    Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)
+    silent! Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)
+    silent! Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)
+    silent! Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)
 endfunction
 
 function! s:init_operator_surround_hook_add() abort
@@ -1564,14 +1564,14 @@ function! s:init_yj_proofreading_hook_add() abort
 endfunction
 
 function! s:init_submode_hook_add() abort
-    call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-    call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-    call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-    call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-    call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-    call submode#map('bufmove', 'n', '', '<', '<C-w><')
-    call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-    call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+    silent! call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+    silent! call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+    silent! call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+    silent! call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+    silent! call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+    silent! call submode#map('bufmove', 'n', '', '<', '<C-w><')
+    silent! call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+    silent! call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 endfunction
 
 function! s:init_hybrid_hook_add() abort
