@@ -16,9 +16,9 @@ vim-init:
 neovim-init:
 	@$(call red, "neovim-init")
 	@$(call blue, "--\> initialize dein for NeoVim")
-	nvim +'call dein#install()' +qa
-	nvim +'call dein#remote_plugins()' +qa
-	nvim +'e main.go' +':GoInstallBinaries' +qa
+	nvim --headless +'call dein#install()' +qa
+	nvim --headless +'call dein#remote_plugins()' +qa
+	nvim --headless +'e main.go' +':GoInstallBinaries' +qa
 
 lightvim-init:
 	@$(call red, "lightvim-init")
