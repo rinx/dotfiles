@@ -2633,13 +2633,6 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
 
     call dein#end()
     call dein#save_state()
-
-    if has('vim_starting') && dein#check_install()
-        call dein#install()
-        if has('nvim')
-            call dein#remote_plugins()
-        endif
-    endif
 else
     echo "If you want to use plugins, you should use VIM 8.0, newer one, or NVIM."
 endif
