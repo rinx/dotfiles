@@ -135,7 +135,7 @@ set hlsearch
 
 set termguicolors
 
-colorscheme seoul256
+silent! colorscheme seoul256
 set background=dark
 
 if exists('&pumblend')
@@ -448,7 +448,7 @@ nnoremap <silent> [coc-list]y  :<C-u>CocList -A yank<CR>
 
 augroup vimrc-coc
     autocmd!
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd CursorHold * silent! call CocActionAsync('highlight')
 augroup END
 
 highlight CocHighlightText guibg=#111111 ctermbg=23
