@@ -1466,7 +1466,7 @@ function! s:update_LanguageClient_hook_post_update() abort
             call mkdir(s:clojure_lsp_path, 'p')
         endif
         if !executable(s:clojure_lsp_executable_path)
-            let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20190614T052638/clojure-lsp'
+            let l:clojure_lsp_release = 'https://github.com/snoe/clojure-lsp/releases/download/release-20191010T151127/clojure-lsp'
             call system('curl --silent -fSL -o ' . s:clojure_lsp_executable_path . ' ' . l:clojure_lsp_release)
             call system('chmod 755 ' . s:clojure_lsp_executable_path)
         endif
