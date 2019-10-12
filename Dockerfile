@@ -71,9 +71,32 @@ RUN cd / \
         --static \
         -J-Xmx3g
 
+RUN cd / \
+    && git clone --depth=1 https://github.com/borkdude/jet.git \
+    && cd jet \
+    && lein uberjar \
+    && JET_VERSION=$(cat resources/JET_VERSION) \
+    && native-image \
+        -jar target/jet-$JET_VERSION-standalone.jar \
+        -H:Name=jet \
+        -H:+ReportExceptionStackTraces \
+        -J-Dclojure.spec.skip-macros=true \
+        -J-Dclojure.compiler.direct-linking=true \
+        "-H:IncludeResources=JET_VERSION" \
+        -H:ReflectionConfigurationFiles=reflection.json \
+        -H:Log=registerResource: \
+        --verbose \
+        --no-fallback \
+        --no-server \
+        --report-unsupported-elements-at-runtime \
+        --initialize-at-build-time \
+        --static \
+        -J-Xmx3g
+
 RUN mkdir -p /out
 RUN cp -r /clj-kondo/clj-kondo /out
 RUN cp -r /babashka/bb /out
+RUN cp -r /jet/jet /out
 
 FROM ekidd/rust-musl-builder:latest AS rust
 
@@ -257,6 +280,7 @@ COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
 COPY --from=packer /out/graalvm-ce/clj-kondo /usr/local/bin/clj-kondo
 COPY --from=packer /out/graalvm-ce/bb        /usr/local/bin/bb
+COPY --from=packer /out/graalvm-ce/jet       /usr/local/bin/jet
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
