@@ -803,15 +803,15 @@ function! s:init_ale_hook_add() abort
     let g:ale_warn_about_trailing_whitespace = 1
 
     let g:ale_linters = {
+                \ 'clojure': ['clj-kondo'],
                 \}
     let g:ale_fixers = {
-                \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+                \ '*': ['remove_trailing_lines', 'trim_whitespace'],
                 \}
 
     augroup vimrc-init_ale_hook
         autocmd!
         autocmd FileType proto let b:ale_fixers = ['clang-format']
-        autocmd FileType clojure let b:ale_fixers = ['clj-kondo']
     augroup END
 endfunction
 
