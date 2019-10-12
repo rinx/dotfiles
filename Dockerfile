@@ -93,30 +93,10 @@ RUN cd / \
         --static \
         -J-Xmx3g
 
-RUN cd / \
-    && git clone --depth=1 https://github.com/snoe/clojure-lsp.git \
-    && cd clojure-lsp \
-    && lein uberjar \
-    && native-image \
-        -jar target/clojure-lsp-0.1.0-SNAPSHOT-standalone.jar \
-        -H:Name=clojure-lsp \
-        -H:+ReportExceptionStackTraces \
-        -J-Dclojure.spec.skip-macros=true \
-        -J-Dclojure.compiler.direct-linking=true \
-        -H:Log=registerResource: \
-        --verbose \
-        --no-fallback \
-        --no-server \
-        --report-unsupported-elements-at-runtime \
-        --initialize-at-build-time \
-        --static \
-        -J-Xmx3g
-
 RUN mkdir -p /out
 RUN cp -r /clj-kondo/clj-kondo /out
 RUN cp -r /babashka/bb /out
 RUN cp -r /jet/jet /out
-RUN cp -r /clojure-lsp/clojure-lsp /out
 
 FROM ekidd/rust-musl-builder:latest AS rust
 
@@ -298,10 +278,9 @@ COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
 COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
-COPY --from=packer /out/graalvm-ce/clj-kondo   /usr/local/bin/clj-kondo
-COPY --from=packer /out/graalvm-ce/bb          /usr/local/bin/bb
-COPY --from=packer /out/graalvm-ce/jet         /usr/local/bin/jet
-COPY --from=packer /out/graalvm-ce/clojure-lsp /usr/local/bin/clojure-lsp
+COPY --from=packer /out/graalvm-ce/clj-kondo /usr/local/bin/clj-kondo
+COPY --from=packer /out/graalvm-ce/bb        /usr/local/bin/bb
+COPY --from=packer /out/graalvm-ce/jet       /usr/local/bin/jet
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
