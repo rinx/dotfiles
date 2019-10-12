@@ -109,7 +109,7 @@ RUN apk update \
 COPY --from=docker /out /out/docker
 RUN upx --lzma --best /out/docker/*
 
-COPY --from=graalvm-ce /out/clj-kondo /out/graalvm-ce
+COPY --from=graalvm-ce /out /out/graalvm-ce
 RUN upx --lzma --best /out/graalvm-ce/*
 
 COPY --from=rust /home/rust/out /out/rust
