@@ -811,6 +811,7 @@ function! s:init_ale_hook_add() abort
     augroup vimrc-init_ale_hook
         autocmd!
         autocmd FileType proto let b:ale_fixers = ['clang-format']
+        autocmd FileType clojure let b:ale_fixers = ['clj-kondo']
     augroup END
 endfunction
 

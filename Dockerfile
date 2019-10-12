@@ -15,6 +15,30 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
+FROM oracle/graalvm-ce AS graalvm-ce
+
+RUN yum install -y git \
+    && gu install native-image
+RUN mkdir -p lein/bin \
+    && curl -o lein/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
+    && chmod a+x /lein/bin/lein \
+    && export PATH=$PATH:/lein/bin
+
+RUN cd / \
+    && git clone https://github.com/borkdude/clj-kondo.git \
+    && cd clj-kondo \
+    && lein uberjar \
+    && mv target/clj-kondo-*-standalone.jar target/clj-kondo-standalone.jar \
+    && native-image \
+        --report-unsupported-elements-at-runtime \
+        --initialize-at-build-time \
+        --static \
+        -jar target/clj-kondo-standalone.jar \
+        -H:Name=clj-kondo
+
+RUN mkdir -p /out
+RUN cp -r /clj-kondo/clj-kondo /out
+
 FROM ekidd/rust-musl-builder:latest AS rust
 
 # RUN cargo install bat \
@@ -86,6 +110,9 @@ RUN apk update \
 
 COPY --from=docker /out /out/docker
 RUN upx --lzma --best /out/docker/*
+
+COPY --from=graalvm-ce /out/clj-kondo /out/graalvm-ce
+RUN upx --lzma --best /out/graalvm-ce/*
 
 COPY --from=rust /home/rust/out /out/rust
 RUN upx --lzma --best /out/rust/*
@@ -190,6 +217,8 @@ COPY --from=clojure-lein /usr/share/java     /usr/share/java
 COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
 COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
+
+COPY --from=packer /out/graalvm-ce/clj-kondo /usr/local/bin/clj-kondo
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
