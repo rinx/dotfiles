@@ -26,16 +26,54 @@ RUN cd / \
     && git clone --depth=1 https://github.com/borkdude/clj-kondo.git \
     && cd clj-kondo \
     && lein uberjar \
-    && mv target/clj-kondo-*-standalone.jar target/clj-kondo-standalone.jar \
+    && CLJ_KONDO_VERSION=$(cat resources/CLJ_KONDO_VERSION) \
     && native-image \
+        -jar target/clj-kondo-$CLJ_KONDO_VERSION-standalone.jar \
+        -H:Name=clj-kondo \
+        -H:+ReportExceptionStackTraces \
+        -J-Dclojure.spec.skip-macros=true \
+        -J-Dclojure.compiler.direct-linking=true \
+        "-H:IncludeResources=clj_kondo/impl/cache/built_in/.*" \
+        -H:ReflectionConfigurationFiles=reflection.json \
+        -H:Log=registerResource: \
+        --verbose \
+        --no-fallback \
+        --no-server \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -jar target/clj-kondo-standalone.jar \
-        -H:Name=clj-kondo
+        -J-Xmx3g
+
+RUN cd / \
+    && git clone --recursive --depth=1 https://github.com/borkdude/babashka.git \
+    && cd babashka \
+    && lein uberjar \
+    && BABASHKA_VERSION=$(cat resources/BABASHKA_VERSION) \
+    && native-image \
+        -jar target/babashka-$BABASHKA_VERSION-standalone.jar \
+        -H:Name=bb \
+        -H:+ReportExceptionStackTraces \
+        -J-Dclojure.spec.skip-macros=true \
+        -J-Dclojure.compiler.direct-linking=true \
+        "-H:IncludeResources=BABASHKA_VERSION" \
+        "-H:IncludeResources=SCI_VERSION" \
+        -H:ReflectionConfigurationFiles=reflection.json \
+        -H:Log=registerResource: \
+        -H:EnableURLProtocols=http,https \
+        -H:+JNI \
+        --enable-all-security-services \
+        --initialize-at-run-time=java.lang.Math\$RandomNumberGeneratorHolder \
+        --verbose \
+        --no-fallback \
+        --no-server \
+        --report-unsupported-elements-at-runtime \
+        --initialize-at-build-time \
+        --static \
+        -J-Xmx3g
 
 RUN mkdir -p /out
 RUN cp -r /clj-kondo/clj-kondo /out
+RUN cp -r /babashka/bb /out
 
 FROM ekidd/rust-musl-builder:latest AS rust
 
@@ -192,6 +230,7 @@ ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/lo
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
 ENV DOCKERIZED_DEVENV rinx/devenv
+ENV BABASHKA_PRELOADS "(System/setProperty \"java.library.path\" \"$JAVA_HOME/jre/lib/amd64\")"
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
@@ -217,6 +256,7 @@ COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
 COPY --from=packer /out/graalvm-ce/clj-kondo /usr/local/bin/clj-kondo
+COPY --from=packer /out/graalvm-ce/bb        /usr/local/bin/bb
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
