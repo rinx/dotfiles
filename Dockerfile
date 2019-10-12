@@ -19,13 +19,11 @@ FROM oracle/graalvm-ce AS graalvm-ce
 
 RUN yum install -y git \
     && gu install native-image
-RUN mkdir -p lein/bin \
-    && curl -o lein/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
-    && chmod a+x /lein/bin/lein \
-    && export PATH=$PATH:/lein/bin
+RUN curl -o /usr/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
+    && chmod a+x /usr/bin/lein
 
 RUN cd / \
-    && git clone https://github.com/borkdude/clj-kondo.git \
+    && git clone --depth=1 https://github.com/borkdude/clj-kondo.git \
     && cd clj-kondo \
     && lein uberjar \
     && mv target/clj-kondo-*-standalone.jar target/clj-kondo-standalone.jar \
