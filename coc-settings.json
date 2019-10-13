@@ -64,5 +64,6 @@
   "git.changeRemovedSign.text": "≃",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"],
-  "go.enable": true
+  "go.enable": true,
+  "coc.source.iced.enable": true
 }

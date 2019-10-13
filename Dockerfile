@@ -50,7 +50,6 @@ RUN cd / \
     && cd babashka \
     && lein uberjar \
     && BABASHKA_VERSION=$(cat resources/BABASHKA_VERSION) \
-    && SCI_VERSION=$(cat sci/resources/SCI_VERSION) \
     && native-image \
         -jar target/babashka-$BABASHKA_VERSION-standalone.jar \
         -H:Name=bb \
@@ -254,12 +253,11 @@ ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 
-ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
+ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
 ENV DOCKERIZED_DEVENV rinx/devenv
-ENV BABASHKA_PRELOADS "(System/setProperty \"java.library.path\" \"$JAVA_HOME/jre/lib/amd64\")"
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts

@@ -81,7 +81,8 @@ Plug 'osyo-manga/vim-textobj-multiblock'
 Plug 'tpope/vim-repeat'
 Plug 'guns/vim-sexp'
 
-Plug 'jpalardy/vim-slime', { 'for': ['clojure'] }
+Plug 'liquidz/vim-iced', {'for': ['clojure'] }
+Plug 'liquidz/vim-iced-coc-source', { 'for': ['clojure'] }
 
 Plug 'fatih/vim-go', { 'for': ['go'] }
 
@@ -360,9 +361,12 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_filetype_changed = 1
 
 let g:ale_fix_on_save = 1
+let g:ale_linters = {
+            \ 'clojure': ['clj-kondo'],
+            \}
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \}
 
 let g:ale_set_quickfix = 1
 let g:ale_set_loclist = 0
@@ -581,17 +585,8 @@ nmap <silent><buffer> <) <Plug>(sexp_emit_tail_element)
 nmap <silent><buffer> <( <Plug>(sexp_capture_prev_element)
 nmap <silent><buffer> >) <Plug>(sexp_capture_next_element)
 
-"slime
-let g:slime_target = "neovim"
-" execute 'echo b:terminal_job_id' to get jobid
-let g:slime_paste_file = "$HOME/.slime_paste"
-
-let g:slime_no_mappings = 1
-augroup vimrc-slime
-    autocmd!
-    autocmd User vim-slime xmap <leader>s <Plug>SlimeRegionSend
-    autocmd User vim-slime nmap <leader>s <Plug>SlimeParagraphSend
-augroup END
+"iced
+let g:iced_enable_default_key_mappings = v:true
 
 "go
 let g:go_fmt_command = 'goimports'
@@ -718,7 +713,7 @@ let g:lightline = {
             \ 'active': {
             \   'left': [
             \             [ 'mode', 'paste', 'spell' ],
-            \             [ 'filename', 'gitstatus', 'cocstatus' ],
+            \             [ 'filename', 'gitstatus', 'cocstatus', 'iced' ],
             \   ],
             \   'right': [
             \             [ 'lineinfo' ],
@@ -736,6 +731,7 @@ let g:lightline = {
             \   'gitstatus': 'MyGitStatus',
             \   'cocstatus': 'coc#status',
             \   'tablineabspath': 'MyAbsPath',
+            \   'iced': 'MyIced',
             \ },
             \ 'component_expand': {
             \ },
@@ -801,6 +797,10 @@ function! MyAbsPath()
     return &ft == 'qf' ? '' :
                 \ tabpagenr('$') > 3 ? '' :
                 \ strlen(_) < winwidth('.') / 2 ? _ : ''
+endfunction
+
+function! MyIced()
+    return &ft =~ 'clojure' ? iced#status() : ''
 endfunction
 
 augroup vimrc-auto-mkdir
