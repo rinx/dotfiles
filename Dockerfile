@@ -42,24 +42,28 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xmx3g
+        -J-Xms2g \
+        -J-Xmx4g
 
 RUN cd / \
     && git clone --recursive --depth=1 https://github.com/borkdude/babashka.git \
     && cd babashka \
     && lein uberjar \
     && BABASHKA_VERSION=$(cat resources/BABASHKA_VERSION) \
+    && SCI_VERSION=$(cat sci/resources/SCI_VERSION) \
     && native-image \
         -jar target/babashka-$BABASHKA_VERSION-standalone.jar \
         -H:Name=bb \
         -H:+ReportExceptionStackTraces \
         -J-Dclojure.spec.skip-macros=true \
         -J-Dclojure.compiler.direct-linking=true \
+        -J-Djava.library.path=$JAVA_HOME/jre/lib/amd64 \
         "-H:IncludeResources=BABASHKA_VERSION" \
         "-H:IncludeResources=SCI_VERSION" \
         -H:ReflectionConfigurationFiles=reflection.json \
         -H:Log=registerResource: \
-        -H:EnableURLProtocols=http,https \
+        --enable-http \
+        --enable-https \
         -H:+JNI \
         --enable-all-security-services \
         --initialize-at-run-time=java.lang.Math\$RandomNumberGeneratorHolder \
@@ -69,7 +73,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xmx3g
+        -J-Xms2g \
+        -J-Xmx4g
 
 RUN cd / \
     && git clone --depth=1 https://github.com/borkdude/jet.git \
@@ -91,7 +96,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xmx3g
+        -J-Xms2g \
+        -J-Xmx4g
 
 RUN mkdir -p /out
 RUN cp -r /clj-kondo/clj-kondo /out
