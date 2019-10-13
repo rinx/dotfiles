@@ -150,11 +150,15 @@ if builtin command -v git > /dev/null 2>&1 ; then
         (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:rg
         (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:bat
         (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:fd
+        (type bb > /dev/null 2>&1) || zplug "borkdude/babashka", as:command, from:gh-r, use:"*-macos-amd64*", rename-to:bb
+        (type jet > /dev/null 2>&1) || zplug "borkdude/jet", as:command, from:gh-r, use:"*-macos-amd64*", rename-to:jet
     else
         (type exa > /dev/null 2>&1) && alias ls=exa || zplug "ogham/exa", as:command, from:gh-r, use:"*linux-x86_64*", rename-to:ls
         (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*linux*", rename-to:rg
         (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:bat
         (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:fd
+        (type bb > /dev/null 2>&1) || zplug "borkdude/babashka", as:command, from:gh-r, use:"*-linux-amd64*", rename-to:bb
+        (type jet > /dev/null 2>&1) || zplug "borkdude/jet", as:command, from:gh-r, use:"*-linux-amd64*", rename-to:jet
     fi
 
     (type ghq > /dev/null 2>&1) || zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq
