@@ -57,7 +57,7 @@ RUN cd / \
         -H:+ReportExceptionStackTraces \
         -J-Dclojure.spec.skip-macros=true \
         -J-Dclojure.compiler.direct-linking=true \
-        -J-Djava.library.path=$JAVA_HOME/jre/lib/amd64 \
+        -Djava.library.path=$JAVA_HOME/jre/lib/amd64 \
         "-H:IncludeResources=BABASHKA_VERSION" \
         "-H:IncludeResources=SCI_VERSION" \
         -H:ReflectionConfigurationFiles=reflection.json \
