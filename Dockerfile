@@ -98,10 +98,32 @@ RUN cd / \
         -J-Xms2g \
         -J-Xmx4g
 
+RUN cd / \
+    && git clone --depth=1 https://github.com/rinx/ye.git \
+    && cd ye \
+    && lein uberjar \
+    && native-image \
+        -jar target/ye-0.1.0-SNAPSHOT-standalone.jar \
+        -H:Name=ye \
+        -H:+ReportExceptionStackTraces \
+        -J-Dclojure.spec.skip-macros=true \
+        -J-Dclojure.compiler.direct-linking=true \
+        -H:Log=registerResource: \
+        -H:ReflectionConfigurationFiles=reflection.json \
+        --verbose \
+        --no-fallback \
+        --no-server \
+        --report-unsupported-elements-at-runtime \
+        --initialize-at-build-time \
+        --static \
+        -J-Xms2g \
+        -J-Xmx4g
+
 RUN mkdir -p /out
-RUN cp -r /clj-kondo/clj-kondo /out
-RUN cp -r /babashka/bb /out
-RUN cp -r /jet/jet /out
+RUN cp /clj-kondo/clj-kondo /out
+RUN cp /babashka/bb /out
+RUN cp /jet/jet /out
+RUN cp /ye/ye /out
 
 FROM ekidd/rust-musl-builder:latest AS rust
 
@@ -285,6 +307,7 @@ COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 COPY --from=packer /out/graalvm-ce/clj-kondo /usr/local/bin/clj-kondo
 COPY --from=packer /out/graalvm-ce/bb        /usr/local/bin/bb
 COPY --from=packer /out/graalvm-ce/jet       /usr/local/bin/jet
+COPY --from=packer /out/graalvm-ce/ye        /usr/local/bin/ye
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
