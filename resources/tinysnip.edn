@@ -1,0 +1,18 @@
+{:user
+ {:description "user defined snippets"
+  :snippets
+  [{:title "review must badge"
+    :body "![badge](https://img.shields.io/badge/review-must-red.svg)"
+    :tags #{:github :badge}}
+   {:title "review imo badge"
+    :body "![badge](https://img.shields.io/badge/review-imo-orange.svg)"
+    :tags #{:github :badge}}
+   {:title "review ask badge"
+    :body "![badge](https://img.shields.io/badge/review-ask-blueviolet.svg)"
+    :tags #{:github :badge}}
+   {:title "review nit pick badge"
+    :body "![badge](https://img.shields.io/badge/review-nits-green.svg)"
+    :tags #{:github :badge}}
+   {:title "review suggestion badge"
+    :body "![badge](https://img.shields.io/badge/review-suggestion-blue.svg)"
+    :tags #{:github :badge}}]}}

@@ -366,6 +366,20 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
             fi
         }
     fi
+
+    tinysnip-base() {
+        namespaces=$1
+        filters=`echo $2 | jet --query '(str #jet/lit "(filter [:tags (get " (id) #jet/lit ")])")' | jet --collect --to json | jq -r '.[]' | tr '\n' ' '`
+        cat ~/.dotfiles/resources/tinysnip.edn | \
+            jet --query "[$namespaces $filters (map (str #jet/lit \"[[\" :title #jet/lit \"]] \" :body))]" --to json | \
+            jq -r '.[]' | \
+            fzf -m | \
+            sed -e 's/^\[\[.*\]\] //g'
+    }
+
+    tinysnip-gh-badge() {
+        tinysnip-base ':user :snippets' ':github :badge'
+    }
 fi
 
 # xsel (linux only)
