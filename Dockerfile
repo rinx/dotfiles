@@ -193,6 +193,10 @@ FROM ubuntu:devel AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+ENV TZ Asia/Tokyo
+
 RUN apt-get update \
     && apt-get install -y \
     cmake \
@@ -241,9 +245,6 @@ RUN npm install -g \
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-ENV TZ Asia/Tokyo
 ENV SHELL /bin/zsh
 
 ENV GOPATH $HOME/local
