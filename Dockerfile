@@ -98,32 +98,12 @@ RUN cd / \
         -J-Xms2g \
         -J-Xmx4g
 
-RUN cd / \
-    && git clone --depth=1 https://github.com/rinx/ye.git \
-    && cd ye \
-    && lein uberjar \
-    && native-image \
-        -jar target/ye-0.1.0-SNAPSHOT-standalone.jar \
-        -H:Name=ye \
-        -H:+ReportExceptionStackTraces \
-        -J-Dclojure.spec.skip-macros=true \
-        -J-Dclojure.compiler.direct-linking=true \
-        -H:Log=registerResource: \
-        -H:ReflectionConfigurationFiles=reflection.json \
-        --verbose \
-        --no-fallback \
-        --no-server \
-        --report-unsupported-elements-at-runtime \
-        --initialize-at-build-time \
-        --static \
-        -J-Xms2g \
-        -J-Xmx4g
-
 RUN mkdir -p /out
 RUN cp /clj-kondo/clj-kondo /out
 RUN cp /babashka/bb /out
 RUN cp /jet/jet /out
-RUN cp /ye/ye /out
+
+FROM rinx/ye AS ye
 
 FROM ekidd/rust-musl-builder:latest AS rust
 
@@ -199,6 +179,7 @@ COPY --from=docker /out /out/docker
 RUN upx --lzma --best /out/docker/*
 
 COPY --from=graalvm-ce /out /out/graalvm-ce
+COPY --from=ye /ye /out/graalvm-ce
 RUN upx --lzma --best /out/graalvm-ce/*
 
 COPY --from=rust /home/rust/out /out/rust
@@ -208,15 +189,12 @@ COPY --from=go /out /out/go
 RUN upx --lzma --best /out/go/usr/local/go/bin/*
 RUN upx --lzma --best /out/go/go/bin/*
 
-FROM alpine:edge AS base
+FROM ubuntu:devel AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-    && apk update \
-    && apk upgrade \
-    && apk --update-cache add --no-cache \
-    bash \
+RUN apt-get update \
+    && apt-get install -y \
     cmake \
     ctags \
     curl \
@@ -225,36 +203,31 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     gawk \
     gcc \
     git \
-    git-email \
-    git-perl \
     gnupg \
     jq \
     less \
-    linux-headers \
+    locales \
     make \
-    musl-dev \
-    ncurses \
     neovim \
     nodejs \
     npm \
-    nss \
-    openjdk8 \
-    openssh \
+    openjdk-8-jdk \
+    openssh-client \
+    openssh-server \
     openssl \
-    openssl-dev \
     perl \
-    py-pip \
-    py3-pip \
     python-dev \
+    python-pip \
     python3-dev \
-    # rlwrap \
+    python3-pip \
+    rlwrap \
     tar \
     tmux \
     tzdata \
     wget \
     yarn \
     zsh \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/*
 
 RUN pip2 install --upgrade pip neovim \
     && pip3 install --upgrade pip neovim \
@@ -269,18 +242,20 @@ ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
 ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Tokyo
 ENV SHELL /bin/zsh
 
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
 ENV DOCKERIZED_DEVENV rinx/devenv
+ENV BABASHKA_PRELOADS "(System/setProperty \"java.library.path\" \"$JAVA_HOME/jre/lib/amd64\")"
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
@@ -342,7 +317,8 @@ COPY tmux.conf            $DOTFILES/tmux.conf
 COPY vimrc                $DOTFILES/vimrc
 COPY zshrc                $DOTFILES/zshrc
 
-RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+    && locale-gen --purge $LANG
 
 # zplug plugins
 RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
