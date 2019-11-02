@@ -213,6 +213,7 @@ RUN apt-get update \
     less \
     locales \
     make \
+    musl-dev \
     neovim \
     nodejs \
     npm \
