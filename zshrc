@@ -380,6 +380,14 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     tinysnip-gh-badge() {
         tinysnip-base ':user :snippets' ':github :badge'
     }
+
+    tinysnip-kaomoji() {
+        tinysnip-base ':user :snippets' ':kaomoji'
+    }
+
+    tinysnip() {
+        print -z $(echo "tinysnip-gh-badge\ntinysnip-kaomoji" | fzf -m)
+    }
 fi
 
 # xsel (linux only)
