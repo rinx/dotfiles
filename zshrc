@@ -111,6 +111,13 @@ zle reset-prompt
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+if [ ! -f "$HOME/.zshrc.zwc" -o "$HOME/.zshrc" -nt "$HOME/.zshrc.zwc" ]; then
+    zcompile $HOME/.zshrc
+fi
+
+if [ ! -f "$HOME/.zcompdump.zwc" -o "$HOME/.zcompdump" -nt "$HOME/.zcompdump.zwc" ]; then
+    zcompile $HOME/.zcompdump
+fi
 
 # for, while, etc...
 PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> "
