@@ -495,6 +495,7 @@ devstarter() {
         -v $HOME/.dotfiles:/root/.dotfiles \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
+        -v $HOME/.kube:/root/.kube \
         -v $HOME/local/src:/root/local/src \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \

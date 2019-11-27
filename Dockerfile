@@ -168,6 +168,30 @@ RUN mkdir -p /out/go
 RUN cp -r /usr/local/go/bin /out/usr/local/go/bin
 RUN cp -r /go/bin /out/go/bin
 
+FROM alpine:edge AS kube
+
+RUN apk update \
+    && apk upgrade \
+    && apk --update-cache add --no-cache \
+    make \
+    curl \
+    gcc \
+    openssl \
+    bash \
+    git
+
+RUN mkdir -p /out/packer \
+    && mkdir -p /out/kube \
+    && KUBECTL_VERSION=`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt` curl -fsSL "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" -o /out/packer/kubectl \
+    && chmod a+x /out/packer/kubectl \
+    && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
+    && mv /usr/local/bin/helm /out/packer/helm \
+    && curl -fsSL https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-$(uname)-amd64 -o /out/packer/kind \
+    && chmod a+x /out/packer/kind \
+    && git clone "https://github.com/ahmetb/kubectx" /opt/kubectx \
+    && mv /opt/kubectx/kubectx /out/kube/kubectx \
+    && mv /opt/kubectx/kubens /out/kube/kubens \
+
 FROM alpine:edge AS packer
 
 RUN apk update \
@@ -188,6 +212,9 @@ RUN upx --lzma --best /out/rust/*
 COPY --from=go /out /out/go
 RUN upx --lzma --best /out/go/usr/local/go/bin/*
 RUN upx --lzma --best /out/go/go/bin/*
+
+COPY --from=kube /out/packer /out/kube
+RUN upx --lzma --best /out/kube/*
 
 FROM alpine:edge AS base
 # FROM ubuntu:devel AS base
@@ -346,6 +373,13 @@ COPY --from=go /usr/local/go/misc $GOROOT/misc
 
 COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
 COPY --from=packer /out/go/go/bin           $GOROOT/bin
+
+COPY --from=kube /out/kube/kubectx /usr/local/bin/kubectx
+COPY --from=kube /out/kube/kubenx  /usr/local/bin/kubens
+
+COPY --from=packer /out/kube/kubectl /usr/local/bin/kubectl
+COPY --from=packer /out/kube/helm    /usr/local/bin/helm
+COPY --from=packer /out/kube/kind    /usr/local/bin/kind
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
