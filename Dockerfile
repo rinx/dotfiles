@@ -191,9 +191,9 @@ RUN mkdir -p /out/packer \
     && mv /usr/local/bin/helm /out/packer/helm \
     && curl -L https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-$(uname)-amd64 -o /out/packer/kind \
     && chmod a+x /out/packer/kind \
-    && git clone "https://github.com/ahmetb/kubectx" /opt/kubectx \
+    && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
-    && mv /opt/kubectx/kubens /out/kube/kubens \
+    && mv /opt/kubectx/kubens /out/kube/kubens
 
 FROM alpine:edge AS packer
 
