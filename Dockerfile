@@ -378,7 +378,7 @@ COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
 COPY --from=packer /out/go/go/bin           $GOROOT/bin
 
 COPY --from=kube /out/kube/kubectx /usr/local/bin/kubectx
-COPY --from=kube /out/kube/kubenx  /usr/local/bin/kubens
+COPY --from=kube /out/kube/kubens  /usr/local/bin/kubens
 COPY --from=kube /out/kube/kubectl /usr/local/bin/kubectl
 
 COPY --from=packer /out/kube/helm  /usr/local/bin/helm
