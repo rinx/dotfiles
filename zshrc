@@ -473,6 +473,11 @@ else
     alias cljdev='clojure -A:dev -r'
 fi
 
+# kube
+if builtin command -v kubectl > /dev/null 2>&1 ; then
+    source <(kubectl completion zsh)
+fi
+
 # docker
 container_name='rinx-devenv'
 
