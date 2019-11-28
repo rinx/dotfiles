@@ -149,7 +149,6 @@ RUN go get -v -u \
     github.com/klauspost/asmfmt/cmd/asmfmt \
     github.com/koron/iferr \
     github.com/mdempsky/gocode \
-    github.com/motemen/ghq \
     github.com/rogpeppe/godef \
     github.com/saibing/bingo \
     github.com/zmb3/gogetdoc \
@@ -162,6 +161,10 @@ RUN go get -v -u \
     && go get -v -u -d github.com/stamblerre/gocode \
     && go build -o /go/bin/gocode-gomod github.com/stamblerre/gocode \
     && gometalinter -i
+
+ENV GO111MODULE on
+RUN go get -v -u \
+    github.com/motemen/ghq
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
