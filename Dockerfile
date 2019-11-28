@@ -185,11 +185,11 @@ RUN apk update \
 
 RUN mkdir -p /out/packer \
     && mkdir -p /out/kube \
-    && KUBECTL_VERSION=`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt` curl -fsSL "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" -o /out/packer/kubectl \
+    && KUBECTL_VERSION=`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt` curl -L "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" -o /out/packer/kubectl \
     && chmod a+x /out/packer/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm \
-    && curl -fsSL https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-$(uname)-amd64 -o /out/packer/kind \
+    && curl -L https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-$(uname)-amd64 -o /out/packer/kind \
     && chmod a+x /out/packer/kind \
     && git clone "https://github.com/ahmetb/kubectx" /opt/kubectx \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
