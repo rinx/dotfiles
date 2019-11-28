@@ -185,7 +185,7 @@ RUN apk update \
 
 RUN mkdir -p /out/packer \
     && mkdir -p /out/kube \
-    && KUBECTL_VERSION=`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt` curl -L "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" -o /out/kube/kubectl \
+    && curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /out/kube/kubectl \
     && chmod a+x /out/kube/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm \
