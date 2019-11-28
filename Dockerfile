@@ -185,8 +185,8 @@ RUN apk update \
 
 RUN mkdir -p /out/packer \
     && mkdir -p /out/kube \
-    && KUBECTL_VERSION=`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt` curl -L "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" -o /out/packer/kubectl \
-    && chmod a+x /out/packer/kubectl \
+    && KUBECTL_VERSION=`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt` curl -L "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" -o /out/kube/kubectl \
+    && chmod a+x /out/kube/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm \
     && curl -L https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-$(uname)-amd64 -o /out/packer/kind \
@@ -379,10 +379,10 @@ COPY --from=packer /out/go/go/bin           $GOROOT/bin
 
 COPY --from=kube /out/kube/kubectx /usr/local/bin/kubectx
 COPY --from=kube /out/kube/kubenx  /usr/local/bin/kubens
+COPY --from=kube /out/kube/kubectl /usr/local/bin/kubectl
 
-COPY --from=packer /out/kube/kubectl /usr/local/bin/kubectl
-COPY --from=packer /out/kube/helm    /usr/local/bin/helm
-COPY --from=packer /out/kube/kind    /usr/local/bin/kind
+COPY --from=packer /out/kube/helm  /usr/local/bin/helm
+COPY --from=packer /out/kube/kind  /usr/local/bin/kind
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
