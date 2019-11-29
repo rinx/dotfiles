@@ -193,7 +193,9 @@ RUN mkdir -p /out/packer \
     && chmod a+x /out/packer/kind \
     && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
-    && mv /opt/kubectx/kubens /out/kube/kubens
+    && mv /opt/kubectx/kubens /out/kube/kubens \
+    && curl -L https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 -o /out/packer/stern \
+    && chmod a+x /out/packer/stern
 
 FROM alpine:edge AS packer
 
@@ -383,6 +385,7 @@ COPY --from=kube /out/kube/kubectl /usr/local/bin/kubectl
 
 COPY --from=packer /out/kube/helm  /usr/local/bin/helm
 COPY --from=packer /out/kube/kind  /usr/local/bin/kind
+COPY --from=packer /out/kube/stern /usr/local/bin/stern
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
