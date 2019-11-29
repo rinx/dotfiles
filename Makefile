@@ -9,6 +9,8 @@
 DOTDIR := \
     ~/.dotfiles
 
+MAKELISTS := Makefile $(shell find Makefile.d -type f -regex ".*\.mk")
+
 # color palletes
 red    = /bin/echo -e "\x1b[31m\#\# $1\x1b[0m"
 green  = /bin/echo -e "\x1b[32m\#\# $1\x1b[0m"
@@ -22,6 +24,22 @@ all: \
     init \
     test \
     check-commands
+
+.PHONY: help
+## print all available commands
+help:
+	@awk '/^[a-zA-Z_0-9%:\\\/-]+:/ { \
+	  helpMessage = match(lastLine, /^## (.*)/); \
+	  if (helpMessage) { \
+	    helpCommand = $$1; \
+	    helpMessage = substr(lastLine, RSTART + 3, RLENGTH); \
+      gsub("\\\\", "", helpCommand); \
+      gsub(":+$$", "", helpCommand); \
+	    printf "  \x1b[32;01m%-35s\x1b[0m %s\n", helpCommand, helpMessage; \
+	  } \
+	} \
+	{ lastLine = $$0 }' $(MAKELISTS) | sort -u
+	@printf "\n"
 
 # make symbolic links to the dotfiles
 deploy: \
@@ -57,4 +75,3 @@ clean: \
 	@$(call yellow, "clean stage has been done")
 
 include Makefile.d/*.mk
-
