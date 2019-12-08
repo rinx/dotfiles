@@ -1,11 +1,3 @@
-.PHONY: \
-    all \
-    deploy \
-    init \
-    test \
-    check-commands \
-    clean
-
 DOTDIR := \
     ~/.dotfiles
 
@@ -19,6 +11,8 @@ blue   = /bin/echo -e "\x1b[34m\#\# $1\x1b[0m"
 pink   = /bin/echo -e "\x1b[35m\#\# $1\x1b[0m"
 cyan   = /bin/echo -e "\x1b[36m\#\# $1\x1b[0m"
 
+.PHONY: all
+## deploy -> init -> test -> check
 all: \
     deploy \
     init \
@@ -41,7 +35,8 @@ help:
 	{ lastLine = $$0 }' $(MAKELISTS) | sort -u
 	@printf "\n"
 
-# make symbolic links to the dotfiles
+.PHONY: deploy
+## make symbolic links to the dotfiles
 deploy: \
     prepare-deploy \
     vim-deploy \
@@ -52,24 +47,28 @@ deploy: \
     others-deploy
 	@$(call cyan, "deploy stage has been done")
 
-# initialize all configures
+.PHONY: init
+## initialize all configures
 init: \
     prepare-init \
     vim-init \
     neovim-init
 	@$(call green, "initialize stage has been done")
 
-# test
+.PHONY: test
+## test
 test: \
     prepare-test
 	@$(call blue, "test stage has been done")
 
-# check whether required commands are installed
+.PHONY: check-commands
+## check whether required commands are installed
 check-commands: \
     prepare-check-commands
 	@$(call blue, "check-commands stage has been done")
 
-# clean all
+.PHONY: clean
+## clean all
 clean: \
     prepare-clean
 	@$(call yellow, "clean stage has been done")

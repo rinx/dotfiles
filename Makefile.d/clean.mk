@@ -1,5 +1,3 @@
-.PHONY: \
-    prepare-clean
-
+.PHONY: prepare-clean
 prepare-clean:
 	@$(call yellow, "clean stage")

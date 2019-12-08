@@ -1,9 +1,4 @@
-.PHONY: \
-    vim-ftplugins \
-    vim-ftdetects \
-    vim-snippets \
-    vim-indents
-
+.PHONY: vim-ftplugins
 vim-ftplugins: \
     $(HOME)/.vim/filetype.vim \
     $(HOME)/.config/nvim/filetype.vim \
@@ -24,6 +19,7 @@ vim-ftplugins: \
     $(HOME)/.vim/ftplugin/nim/nim.vim \
     $(HOME)/.config/nvim/ftplugin/nim/nim.vim
 
+.PHONY: vim-ftdetects
 vim-ftdetects: \
     $(HOME)/.vim/ftdetect/purescript.vim \
     $(HOME)/.config/nvim/ftdetect/purescript.vim \
@@ -32,10 +28,12 @@ vim-ftdetects: \
     $(HOME)/.vim/ftdetect/markdown.vim \
     $(HOME)/.config/nvim/ftdetect/markdown.vim
 
+.PHONY: vim-snippets
 vim-snippets: \
     $(HOME)/.vim/my-snippets \
     $(HOME)/.config/nvim/my-snippets
 
+.PHONY: vim-indents
 vim-indents: \
     $(HOME)/.vim/indent \
     $(HOME)/.config/nvim/indent
@@ -151,4 +149,3 @@ $(HOME)/.vim/indent:
 $(HOME)/.config/nvim/indent:
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/dotvim/indent $(HOME)/.config/nvim/indent
-

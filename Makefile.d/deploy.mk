@@ -1,38 +1,8 @@
-.PHONY: \
-    prepare-deploy \
-    vim-deploy \
-    vimrc \
-    vimrc-private \
-    vimshrc \
-    dein-vim \
-    neovim-deploy \
-    init.vim \
-    dein-nvim \
-    coc-settings.json \
-    skk-jisyo-large \
-    git-deploy \
-    gitconfig \
-    gitconfig-local \
-    gitignore \
-    gitattributes \
-    tmux-deploy \
-    tmux.conf \
-    zsh-deploy \
-    zshrc \
-    others-deploy \
-    latexmkrc \
-    Xdefaults \
-    xmonad.hs \
-    sway-config \
-    wallpapers \
-    i3status-config \
-    lein-profile \
-    deps-edn \
-    hyper
-
+.PHONY: prepare-deploy
 prepare-deploy:
 	@$(call cyan, "deploy stage")
 
+.PHONY: vim-deploy
 vim-deploy: \
     vimrc \
     vimrc-private \
@@ -45,27 +15,32 @@ vim-deploy: \
     skk-jisyo-large
 	@$(call red, "vim-deploy has been done")
 
+.PHONY: vimrc
 vimrc: $(HOME)/.vimrc
 $(HOME)/.vimrc:
 	@$(call cyan, "--\> .vimrc")
 	ln -s $(DOTDIR)/vimrc $(HOME)/.vimrc
 
+.PHONY: vimrc-private
 vimrc-private: $(HOME)/.vimrc_private
 $(HOME)/.vimrc_private:
 	@$(call cyan, "--\> .vimrc_private")
 	touch $(HOME)/.vimrc_private
 
+.PHONY: vimshrc
 vimshrc: $(HOME)/.vimshrc
 $(HOME)/.vimshrc:
 	@$(call cyan, "--\> .vimshrc")
 	ln -s $(DOTDIR)/vimshrc $(HOME)/.vimshrc
 
+.PHONY: dein-vim
 dein-vim: $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim
 $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 	@$(call cyan, "--\> dein.vim")
 	mkdir -p $(HOME)/.vim/dein/repos/github.com/Shougo
 	git clone https://github.com/Shougo/dein.vim $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
+.PHONY: neovim-deploy
 neovim-deploy: \
     init.vim \
     dein-nvim \
@@ -73,30 +48,34 @@ neovim-deploy: \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
 
+.PHONY: init.vim
 init.vim: $(HOME)/.config/nvim/init.vim
 $(HOME)/.config/nvim/init.vim:
 	@$(call cyan, "--\> init.vim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/nvimrc $(HOME)/.config/nvim/init.vim
 
-
+.PHONY: dein-nvim
 dein-nvim: $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim:
 	@$(call cyan, "--\> dein.vim for nvim")
 	mkdir -p $(HOME)/.config/nvim/dein/repos/github.com/Shougo
 	git clone https://github.com/Shougo/dein.vim $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
 
+.PHONY: coc-settings.json
 coc-settings.json: $(HOME)/.config/nvim/coc-settings.json
 $(HOME)/.config/nvim/coc-settings.json:
 	@$(call cyan, "--\> coc-settings.json for nvim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/coc-settings.json $(HOME)/.config/nvim/coc-settings.json
 
+.PHONY: skk-jisyo-large
 skk-jisyo-large: $(HOME)/.SKK-JISYO.L
 $(HOME)/.SKK-JISYO.L:
 	@$(call cyan, "--\> download SKK-JISYO.L")
 	wget -O $(HOME)/.SKK-JISYO.L https://raw.githubusercontent.com/skk-users-jp/dic-mirror/gh-pages/SKK-JISYO.L
 
+.PHONY: git-deploy
 git-deploy: \
     gitconfig \
     gitconfig-local \
@@ -104,50 +83,60 @@ git-deploy: \
     gitattributes
 	@$(call red, "git-deploy")
 
+.PHONY: gitconfig
 gitconfig: $(HOME)/.gitconfig
 $(HOME)/.gitconfig:
 	@$(call cyan, "--\> gitconfig")
 	ln -s $(DOTDIR)/gitconfig $(HOME)/.gitconfig
 
+.PHONY: gitconfig-local
 gitconfig-local: $(HOME)/.gitconfig.local
 $(HOME)/.gitconfig.local:
 	@$(call cyan, "--\> gitconfig.local")
 	touch $(HOME)/.gitconfig.local
 
+.PHONY: gitignore
 gitignore: $(HOME)/.gitignore
 $(HOME)/.gitignore:
 	@$(call cyan, "--\> gitignore")
 	ln -s $(DOTDIR)/gitignore $(HOME)/.gitignore
 
+.PHONY: gitattributes
 gitattributes: $(HOME)/.gitattributes_global
 $(HOME)/.gitattributes_global:
 	@$(call cyan, "--\> gitattributes_global")
 	ln -s $(DOTDIR)/gitattributes_global $(HOME)/.gitattributes_global
 
+.PHONY: tmux-deploy
 tmux-deploy: \
     tmux.conf \
     tpm
 	@$(call red, "tmux-deploy has been done")
 
+.PHONY: tmux.conf
 tmux.conf: $(HOME)/.tmux.conf
 $(HOME)/.tmux.conf:
 	@$(call cyan, "--\> tmux.conf")
 	ln -s $(DOTDIR)/tmux.conf $(HOME)/.tmux.conf
 
+.PHONY: tpm
 tpm: $(HOME)/.tmux/plugins/tpm
 $(HOME)/.tmux/plugins/tpm:
 	mkdir -p $(HOME)/.tmux/plugins
 	git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 
+.PHONY: zsh-deploy
 zsh-deploy: \
     zshrc
 	@$(call red, "zsh-deploy has been done")
 
+.PHONY: zshrc
 zshrc: $(HOME)/.zshrc
 $(HOME)/.zshrc:
 	@$(call cyan, "--\> zshrc")
 	ln -s $(DOTDIR)/zshrc $(HOME)/.zshrc
 
+.PHONY: others-deploy
 others-deploy: \
     latexmkrc \
     Xdefaults \
@@ -159,21 +148,25 @@ others-deploy: \
     hyper
 	@$(call red, "others-deploy")
 
+.PHONY: latexmkrc
 latexmkrc: $(HOME)/.latexmkrc
 $(HOME)/.latexmkrc:
 	@$(call cyan, "--\> latexmkrc")
 	ln -s $(DOTDIR)/latexmkrc $(HOME)/.latexmkrc
 
+.PHONY: Xdefaults
 Xdefaults: $(HOME)/.Xdefaults
 $(HOME)/.Xdefaults:
 	@$(call cyan, "--\> Xdefaults")
 	ln -s $(DOTDIR)/Xdefaults $(HOME)/.Xdefaults
 
+.PHONY: xmonad.hs
 xmonad.hs: $(HOME)/.xmonad/xmonad.hs
 $(HOME)/.xmonad/xmonad.hs:
 	mkdir -p $(HOME)/.xmonad
 	ln -s $(DOTDIR)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
+.PHONY: sway-config
 sway-config: \
     $(HOME)/.config/sway/config # \
     # wallpapers
@@ -181,6 +174,7 @@ $(HOME)/.config/sway/config:
 	mkdir -p $(HOME)/.config/sway
 	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
 
+.PHONY: wallpapers
 wallpapers: \
     $(HOME)/.wallpapers/lavender.jpg \
     $(HOME)/.wallpapers/yosemite.jpg \
@@ -243,22 +237,26 @@ $(HOME)/.wallpapers/rain-night-girl.jpg:
 	mkdir -p $(HOME)/.wallpapers
 	wget https://www.grayscale-wallpapers.com/grayscale/rain-night-manga-anime-girl-sad.jpg -O $(HOME)/.wallpapers/rain-night-girl.jpg > /dev/null 2>&1
 
+.PHONY: i3status-config
 i3status-config: \
     $(HOME)/.config/i3status/config
 $(HOME)/.config/i3status/config:
 	mkdir -p $(HOME)/.config/i3status
 	ln -s $(DOTDIR)/i3status-config $(HOME)/.config/i3status/config
 
+.PHONY: lein-profile
 lein-profile: $(HOME)/.lein/profiles.clj
 $(HOME)/.lein/profiles.clj:
 	mkdir -p $(HOME)/.lein
 	ln -s $(DOTDIR)/profiles.clj $(HOME)/.lein/profiles.clj
 
+.PHONY: deps-edn
 deps-edn: $(HOME)/.clojure/deps.edn
 $(HOME)/.clojure/deps.edn:
 	mkdir -p $(HOME)/.clojure
 	ln -s $(DOTDIR)/deps.edn $(HOME)/.clojure/deps.edn
 
+.PHONY: hyper
 hyper: $(HOME)/.hyper.js
 $(HOME)/.hyper.js:
 	ln -s $(DOTDIR)/hyper.js $(HOME)/.hyper.js
