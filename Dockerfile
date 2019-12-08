@@ -195,7 +195,9 @@ RUN mkdir -p /out/packer \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
     && mv /opt/kubectx/kubens /out/kube/kubens \
     && curl -L https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 -o /out/packer/stern \
-    && chmod a+x /out/packer/stern
+    && chmod a+x /out/packer/stern \
+    && curl -sL https://run.linkerd.io/install | sh \
+    && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd
 
 FROM alpine:edge AS packer
 
@@ -384,9 +386,10 @@ COPY --from=kube /out/kube/kubectx /usr/local/bin/kubectx
 COPY --from=kube /out/kube/kubens  /usr/local/bin/kubens
 COPY --from=kube /out/kube/kubectl /usr/local/bin/kubectl
 
-COPY --from=packer /out/kube/helm  /usr/local/bin/helm
-COPY --from=packer /out/kube/kind  /usr/local/bin/kind
-COPY --from=packer /out/kube/stern /usr/local/bin/stern
+COPY --from=packer /out/kube/helm    /usr/local/bin/helm
+COPY --from=packer /out/kube/kind    /usr/local/bin/kind
+COPY --from=packer /out/kube/stern   /usr/local/bin/stern
+COPY --from=packer /out/kube/linkerd /usr/local/bin/linkerd
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
