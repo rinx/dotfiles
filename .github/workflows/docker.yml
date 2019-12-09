@@ -1,8 +1,16 @@
 name: Build docker image
 on:
   push:
+    branches:
+      - master
     tags:
       - '*.*.*'
+      - 'v*.*.*'
+      - '*.*.*-*'
+      - 'v*.*.*-*'
+  pull_request:
+    paths:
+      - Dockerfile
 
 jobs:
   build:
@@ -11,17 +19,38 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        echo "Build docker image"
         docker build -t devenv .
-    - name: login to GitHub package registry
+    - name: Login to GitHub package registry
       run: |
-        echo "Login to GitHub package registry"
-        echo ${GITHUB_TOKEN} | docker login docker.pkg.github.com --username rinx --password-stdin
+        echo ${GITHUB_TOKEN} | docker login docker.pkg.github.com --username ${GITHUB_USER} --password-stdin
       env:
+        GITHUB_USER: ${{ secrets.DOTFILES_USER }}
         GITHUB_TOKEN: ${{ secrets.DOTFILES_TOKEN }}
-    - name: tag and push to GitHub package registry
+    - name: Push to GitHub package registry
       run: |
-        echo "Push to GitHub package registry"
         GIT_TAG=`git describe --abbrev=0 --tags`
         docker tag devenv docker.pkg.github.com/rinx/dotfiles/devenv:${GIT_TAG}
         docker push docker.pkg.github.com/rinx/dotfiles/devenv:${GIT_TAG}
+    - name: Login to DockerHub
+      run: |
+        echo ${DOCKERHUB_PASS} | docker login --username ${DOCKERHUB_USER} --password-stdin
+      env:
+        DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+        DOCKERHUB_PASS: ${{ secrets.DOCKERHUB_PASS }}
+    - name: push to DockerHub (master)
+      if: github.ref == 'refs/heads/master'
+      run: |
+        docker tag devenv rinx/devenv:nightly
+        docker push rinx/devenv:nightly
+    - name: push to DockerHub (pull request)
+      if: github.event_name == 'pull_request'
+      run: |
+        pr_num=`cat $GITHUB_EVENT_PATH | jq -r ".number"`
+        docker tag devenv rinx/devenv:pr-${pr_num}
+        docker push rinx/devenv:pr-${pr_num}
+    - name: push to DockerHub (tags)
+      if: startsWith( github.ref, 'refs/tags/')
+      run: |
+        tag_name=`echo $GITHUB_REF | sed -e 's:^refs/tags/::'`
+        docker tag devenv rinx/devenv:${tag_name}
+        docker push rinx/devenv:${tag_name}
