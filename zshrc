@@ -301,7 +301,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     if builtin command -v ghq > /dev/null 2>&1 ; then
         fghq() {
             local dir
-            dir=$(ghq list | fzf +m)
+            dir=$(ghq list --vcs git | fzf +m)
             if [[ "$dir" != "" ]]; then
                 cd "`ghq root`/$dir"
             fi
