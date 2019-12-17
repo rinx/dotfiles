@@ -31,7 +31,7 @@
     editor = nvim -u ~/.dotfiles/light.vimrc
 
 [alias]
-    this  = !git init && git add . && git commit -m \"first commit\"
+    this  = !git init && git add . && git commit --signoff -m \"first commit\"
 
     st    = status -s -b
 
@@ -40,11 +40,11 @@
 
     ad    = add
 
-    ci    = commit
-    cm    = commit -m
-    cv    = commit -v
-    ca    = commit --amend --no-edit
-    cae   = commit --amend
+    ci    = commit --signoff
+    cm    = commit --signoff -m
+    cv    = commit --signoff -v
+    ca    = commit --signoff --amend --no-edit
+    cae   = commit --signoff --amend
 
     ps    = push
     psa   = push --all
@@ -61,7 +61,7 @@
 
     sb    = show-branch
 
-    mg    = merge
+    mg    = merge --signoff
     mgn   = merge --no-commit
 
     sq    = squash

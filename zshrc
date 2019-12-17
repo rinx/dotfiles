@@ -339,7 +339,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         fi
         target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
         if [[ "$target" != "" ]]; then
-            print -z "git commit -m \"$target \""
+            print -z "git commit --signoff -m \"$target \""
         fi
     }
 
@@ -350,21 +350,9 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         semver=$(echo "[ci skip]\n[patch]\n[minor]\n[major]" | fzf -m)
         target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
         if [[ "$target" != "" ]]; then
-            print -z "git commit -m \"$semver $target \""
+            print -z "git commit --signoff -m \"$semver $target \""
         fi
     }
-
-    if builtin command -v git-duet > /dev/null 2>&1 ; then
-        fgitmoji-duet() {
-            if [ ! -f ~/.gitmojis.json ]; then
-                fgitmoji-cache
-            fi
-            target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
-            if [[ "$target" != "" ]]; then
-                print -z "git duet-commit -m \"$target \""
-            fi
-        }
-    fi
 
     tinysnip-base() {
         namespaces=$1
