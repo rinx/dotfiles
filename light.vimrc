@@ -45,7 +45,7 @@ Plug 'junegunn/seoul256.vim'
 
 Plug 'tyru/eskk.vim'
 
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
@@ -81,14 +81,13 @@ Plug 'osyo-manga/vim-textobj-multiblock'
 Plug 'tpope/vim-repeat'
 Plug 'guns/vim-sexp'
 
-Plug 'liquidz/vim-iced', {'for': ['clojure'] }
+Plug 'mileszs/ack.vim'
+Plug 'thinca/vim-qfreplace'
+
+Plug 'liquidz/vim-iced', { 'for': ['clojure'] }
 Plug 'liquidz/vim-iced-coc-source', { 'for': ['clojure'] }
 
-Plug 'fatih/vim-go', { 'for': ['go'] }
-
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': ['markdown'] }
-
-Plug 'jparise/vim-graphql', { 'for': ['graphql'] }
 
 call plug#end()
 
@@ -339,6 +338,7 @@ nnoremap Q <Nop>
 if executable("rg")
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 
 "eskk
@@ -364,18 +364,22 @@ let g:eskk#use_color_cursor = 0
 
 "ale.vim
 let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_filetype_changed = 1
 
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
             \ 'clojure': ['clj-kondo'],
+            \ 'go': ['golangci-lint'],
             \}
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'go': ['goimports'],
             \}
 
-let g:ale_set_quickfix = 1
-let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
+let g:ale_set_loclist = 1
 let g:ale_open_list = 1
 
 let g:ale_sign_column_always = 1
@@ -390,7 +394,6 @@ let g:coc_global_extensions = [
             \ 'coc-emoji',
             \ 'coc-git',
             \ 'coc-go',
-            \ 'coc-gocode',
             \ 'coc-highlight',
             \ 'coc-json',
             \ 'coc-lists',
@@ -595,13 +598,14 @@ nmap <silent><buffer> >) <Plug>(sexp_capture_next_element)
 let g:iced_enable_default_key_mappings = v:true
 
 "go
-let g:go_fmt_command = 'goimports'
 augroup vimrc-golang
     autocmd!
     autocmd FileType go setlocal noexpandtab
     autocmd FileType go setlocal shiftwidth=8
     autocmd FileType go setlocal tabstop=8
     autocmd FileType go compiler go
+    autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+    let g:ale_go_golangci_lint_options = '--enable-all --disable=gochecknoglobals --disable=gochecknoinits --disable=typecheck --disable=lll --enable=gosec --enable=prealloc'
 augroup END
 
 "markdown

@@ -1,20 +1,5 @@
 {
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "args": [
-        "--format-style",
-        "goimports",
-        "--cache-style",
-        "on-demand",
-        "-mode",
-        "stdio",
-        "--diagnostics-style=instant"
-      ],
-      "filetypes": [
-        "go"
-      ]
-    },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
@@ -54,5 +39,18 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"],
   "go.enable": true,
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "completionDocumentation": false,
+    "deepCompletion": false,
+    "fuzzyMatching": true,
+    "usePlaceholders": true,
+    "staticcheck": false
+  },
+  "go.tags": {
+    "option": "",
+    "tags": "json,yaml",
+    "transform": "snakecase"
+  },
   "coc.source.iced.enable": true
 }
