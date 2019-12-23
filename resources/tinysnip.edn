@@ -2,19 +2,25 @@
  {:description "user defined snippets"
   :snippets
   [{:title "review must badge"
-    :body "![badge](https://img.shields.io/badge/review-must-red.svg)"
+    :body "![badge](https://img.shields.io/badge/review-must-red.svg?style=flat-square)"
     :tags #{:github :badge}}
    {:title "review imo badge"
-    :body "![badge](https://img.shields.io/badge/review-imo-orange.svg)"
+    :body "![badge](https://img.shields.io/badge/review-imo-orange.svg?style=flat-square)"
     :tags #{:github :badge}}
    {:title "review ask badge"
-    :body "![badge](https://img.shields.io/badge/review-ask-blueviolet.svg)"
+    :body "![badge](https://img.shields.io/badge/review-ask-blueviolet.svg?style=flat-square)"
     :tags #{:github :badge}}
    {:title "review nit pick badge"
-    :body "![badge](https://img.shields.io/badge/review-nits-green.svg)"
+    :body "![badge](https://img.shields.io/badge/review-nits-green.svg?style=flat-square)"
     :tags #{:github :badge}}
    {:title "review suggestion badge"
-    :body "![badge](https://img.shields.io/badge/review-suggestion-blue.svg)"
+    :body "![badge](https://img.shields.io/badge/review-suggestion-blue.svg?style=flat-square)"
+    :tags #{:github :badge}}
+   {:title "review note badge"
+    :body "![badge](https://img.shields.io/badge/review-note-informational.svg?style=flat-square)"
+    :tags #{:github :badge}}
+   {:title "review resolved badge"
+    :body "![badge](https://img.shields.io/badge/review-resolved-success.svg?style=flat-square)"
     :tags #{:github :badge}}
    {:title "nikkori"
     :body "( っ'ヮ'c)"
