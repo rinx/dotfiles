@@ -134,6 +134,7 @@ RUN apk update \
     musl-dev \
     wget
 
+ENV GO111MODULE on
 RUN go get -v -u \
     github.com/alecthomas/gometalinter \
     github.com/davidrjenni/reftools/cmd/fillstruct \
@@ -149,6 +150,7 @@ RUN go get -v -u \
     github.com/klauspost/asmfmt/cmd/asmfmt \
     github.com/koron/iferr \
     github.com/mdempsky/gocode \
+    github.com/motemen/ghq \
     github.com/rogpeppe/godef \
     github.com/saibing/bingo \
     github.com/zmb3/gogetdoc \
@@ -161,10 +163,6 @@ RUN go get -v -u \
     && go get -v -u -d github.com/stamblerre/gocode \
     && go build -o /go/bin/gocode-gomod github.com/stamblerre/gocode \
     && gometalinter -i
-
-ENV GO111MODULE on
-RUN go get -v -u \
-    github.com/motemen/ghq
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
@@ -339,7 +337,6 @@ ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/lo
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
 ENV DOCKERIZED_DEVENV rinx/devenv
-ENV BABASHKA_PRELOADS "(System/setProperty \"java.library.path\" \"$JAVA_HOME/jre/lib/amd64\")"
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
@@ -421,6 +418,9 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
     && git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting \
     && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
     && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
+
+# babashka classpath
+RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}' -Spath)
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-init && make tmux-init"]
