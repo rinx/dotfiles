@@ -15,7 +15,7 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
-FROM oracle/graalvm-ce:19.3.0-java11 AS graalvm-ce
+FROM oracle/graalvm-ce:19.3.0-java8 AS graalvm-ce
 
 RUN yum install -y git \
     && gu install native-image
