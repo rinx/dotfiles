@@ -21,7 +21,7 @@
          org.clojure/spec.alpha {:mvn/version "0.2.176"}
          org.clojure/test.check {:mvn/version "0.10.0-alpha3"}
          org.clojure/core.async {:mvn/version "0.4.490"}
-         clj-http {:mvn/version "3.9.1"}
+         org.martinklepsch/clj-http-lite {:mvn/version "0.4.3"}
          metosin/jsonista {:mvn/version "0.2.2"}
          camel-snake-kebab {:mvn/version "0.4.0"}}
-        :main-opts ["-e" "(require,'[clojure.tools.deps.alpha.repl,:refer,[add-lib]]),(require,'[clojure.java.io,:as,io]),(require,'[clojure.pprint,:refer,[pprint]]),(require,'[clojure.spec.alpha,:as,spec]),(require,'[clojure.spec.gen.alpha,:as,gen]),(require,'[clojure.core.async,:as,async,:refer,[<!,>!,<!!,>!!]]),(require,'[clojure.data,:as,data]),(require,'[clojure.edn,:as,edn]),(require,'[clojure.set,:as,set]),(require,'[clojure.string,:as,string]),(require,'[clojure.walk,:as,walk]),(require,'[clojure.xml,:as,xml]),(require,'[clojure.zip,:as,zip]),(require,'[clj-http.client,:as,http]),(require,'[jsonista.core,:as,jsonista]),(require,'[camel-snake-kebab.core,:as,camel-snake-kebab])"]}}}
+        :main-opts ["-e" "(require,'[clojure.tools.deps.alpha.repl,:refer,[add-lib]]),(require,'[clojure.java.io,:as,io]),(require,'[clojure.pprint,:refer,[pprint]]),(require,'[clojure.spec.alpha,:as,spec]),(require,'[clojure.spec.gen.alpha,:as,gen]),(require,'[clojure.core.async,:as,async,:refer,[<!,>!,<!!,>!!]]),(require,'[clojure.data,:as,data]),(require,'[clojure.edn,:as,edn]),(require,'[clojure.set,:as,set]),(require,'[clojure.string,:as,string]),(require,'[clojure.walk,:as,walk]),(require,'[clojure.xml,:as,xml]),(require,'[clojure.zip,:as,zip]),(require,'[clj-http.lite.client,:as,http]),(require,'[jsonista.core,:as,jsonista]),(require,'[camel-snake-kebab.core,:as,camel-snake-kebab])"]}}}
