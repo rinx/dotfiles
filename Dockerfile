@@ -138,10 +138,10 @@ ENV GO111MODULE on
 RUN go get -v -u \
     github.com/alecthomas/gometalinter \
     github.com/davidrjenni/reftools/cmd/fillstruct \
-    github.com/derekparker/delve/cmd/dlv \
     github.com/fatih/gomodifytags \
     github.com/fatih/motion \
     github.com/fullstorydev/grpcurl/cmd/grpcurl \
+    github.com/go-delve/delve/cmd/dlv \
     github.com/golangci/golangci-lint/cmd/golangci-lint \
     github.com/josharian/impl \
     github.com/jstemmer/gotags \
