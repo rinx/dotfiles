@@ -134,9 +134,6 @@ RUN apk update \
     musl-dev \
     wget
 
-RUN go get -v -u \
-    golang.org/x/tools/cmd/gopls
-
 ENV GO111MODULE on
 RUN go get -v -u \
     github.com/alecthomas/gometalinter \
