@@ -134,6 +134,9 @@ RUN apk update \
     musl-dev \
     wget
 
+RUN go get -v -u \
+    golang.org/x/tools/cmd/gopls
+
 ENV GO111MODULE on
 RUN go get -v -u \
     github.com/alecthomas/gometalinter \
@@ -156,7 +159,6 @@ RUN go get -v -u \
     github.com/zmb3/gogetdoc \
     golang.org/x/lint/golint \
     golang.org/x/tools/cmd/goimports \
-    golang.org/x/tools/cmd/gopls \
     golang.org/x/tools/cmd/gorename \
     golang.org/x/tools/cmd/guru \
     honnef.co/go/tools/cmd/keyify \
