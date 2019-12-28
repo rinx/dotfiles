@@ -136,6 +136,7 @@ RUN apk update \
 
 ENV GO111MODULE on
 RUN go get -v -u \
+    github.com/davidrjenni/reftools/cmd/fillstruct \
     github.com/fullstorydev/grpcurl/cmd/grpcurl \
     github.com/go-delve/delve/cmd/dlv \
     github.com/golangci/golangci-lint/cmd/golangci-lint \
@@ -145,6 +146,9 @@ RUN go get -v -u \
     golang.org/x/tools/cmd/goimports \
     golang.org/x/tools/cmd/gorename \
     golang.org/x/tools/cmd/guru
+RUN go get \
+    golang.org/x/tools/gopls@latest \
+    github.com/sasha-s/goimpl/cmd/goimpl
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
