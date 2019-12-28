@@ -136,32 +136,16 @@ RUN apk update \
 
 ENV GO111MODULE on
 RUN go get -v -u \
-    github.com/alecthomas/gometalinter \
-    github.com/davidrjenni/reftools/cmd/fillstruct \
-    github.com/fatih/gomodifytags \
-    github.com/fatih/motion \
     github.com/fullstorydev/grpcurl/cmd/grpcurl \
     github.com/go-delve/delve/cmd/dlv \
     github.com/golangci/golangci-lint/cmd/golangci-lint \
-    github.com/josharian/impl \
-    github.com/jstemmer/gotags \
     github.com/junegunn/fzf \
-    github.com/kisielk/errcheck \
-    github.com/klauspost/asmfmt/cmd/asmfmt \
-    github.com/koron/iferr \
-    github.com/mdempsky/gocode \
+    github.com/ktr0731/evans \
     github.com/motemen/ghq \
-    github.com/rogpeppe/godef \
-    github.com/saibing/bingo \
-    github.com/zmb3/gogetdoc \
     golang.org/x/lint/golint \
     golang.org/x/tools/cmd/goimports \
     golang.org/x/tools/cmd/gorename \
-    golang.org/x/tools/cmd/guru \
-    honnef.co/go/tools/cmd/keyify \
-    && go get -v -u -d github.com/stamblerre/gocode \
-    && go build -o /go/bin/gocode-gomod github.com/stamblerre/gocode \
-    && gometalinter -i
+    golang.org/x/tools/cmd/guru
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
