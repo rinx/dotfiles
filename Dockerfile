@@ -6,6 +6,8 @@ ARG GRAALVM_XMX=6g
 ARG KIND_VERSION=v0.6.1
 ARG STERN_VERSION=1.11.0
 
+ARG PROTOBUF_VERSION=3.11.2
+
 FROM docker:dind AS docker
 
 RUN mkdir -p /out
@@ -224,6 +226,7 @@ FROM ubuntu:devel AS base
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
+ARG PROTOBUF_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -262,8 +265,11 @@ RUN apt-get update \
     tar \
     tmux \
     tzdata \
+    unzip \
+    upx \
     wget \
     yarn \
+    zip \
     zsh \
     && rm -rf /var/lib/apt/lists/*
 
@@ -281,7 +287,19 @@ RUN cd /tmp \
     && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
     && mkdir -p ${GRAALVM_HOME} \
     && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
-    && chmod -R a+rwx ${GRAALVM_HOME}
+    && chmod -R a+rwx ${GRAALVM_HOME} \
+    && rm -rf graalvm.tar.gz \
+    && upx --lzma --best /usr/lib/graalvm/jre/bin/polyglot \
+    && upx --lzma --best /usr/lib/graalvm/jre/languages/js/bin/js \
+    && upx --lzma --best /usr/lib/graalvm/jre/languages/js/bin/node
+
+RUN cd /tmp \
+    && curl -OL "https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
+    && unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3 \
+    && upx --lzma --best protoc3/bin/* \
+    && mv protoc3/bin/* /usr/local/bin/ \
+    && mv protoc3/include/* /usr/local/include/ \
+    && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
@@ -387,6 +405,8 @@ RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-
 # download dependencies
 RUN ["/bin/zsh", "-c", "lein"]
 RUN ["/bin/zsh", "-c", "clojure -A:dev"]
+
+RUN rm -rf /tmp/*
 
 WORKDIR $HOME
 
