@@ -1,3 +1,11 @@
+ARG GRAALVM_VERSION=19.3.0.2
+ARG GRAALVM_JAVA_VERSION=java8
+ARG GRAALVM_XMS=2g
+ARG GRAALVM_XMX=6g
+
+ARG KIND_VERSION=v0.6.1
+ARG STERN_VERSION=1.11.0
+
 FROM docker:dind AS docker
 
 RUN mkdir -p /out
@@ -15,7 +23,9 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
-FROM oracle/graalvm-ce:19.3.0-java8 AS graalvm-ce
+FROM oracle/graalvm-ce:${GRAALVM_VERSION}-${GRAALVM_JAVA_VERSION} AS graalvm-ce
+ARG GRAALVM_XMS
+ARG GRAALVM_XMX
 
 RUN yum install -y git \
     && gu install native-image
@@ -42,8 +52,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms2g \
-        -J-Xmx4g
+        -J-Xms${GRAALVM_XMS} \
+        -J-Xmx${GRAALVM_XMX}
 
 RUN cd / \
     && git clone --recursive --depth=1 https://github.com/borkdude/babashka.git \
@@ -72,8 +82,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms2g \
-        -J-Xmx4g
+        -J-Xms${GRAALVM_XMS} \
+        -J-Xmx${GRAALVM_XMX}
 
 RUN cd / \
     && git clone --depth=1 https://github.com/borkdude/jet.git \
@@ -95,8 +105,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms2g \
-        -J-Xmx4g
+        -J-Xms${GRAALVM_XMS} \
+        -J-Xmx${GRAALVM_XMX}
 
 RUN mkdir -p /out
 RUN cp /clj-kondo/clj-kondo /out
@@ -156,6 +166,8 @@ RUN cp -r /usr/local/go/bin /out/usr/local/go/bin
 RUN cp -r /go/bin /out/go/bin
 
 FROM alpine:edge AS kube
+ARG KIND_VERSION
+ARG STERN_VERSION
 
 RUN apk update \
     && apk upgrade \
@@ -173,12 +185,12 @@ RUN mkdir -p /out/packer \
     && chmod a+x /out/kube/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm \
-    && curl -L https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-$(uname)-amd64 -o /out/packer/kind \
+    && curl -L https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERSION}/kind-$(uname)-amd64 -o /out/packer/kind \
     && chmod a+x /out/packer/kind \
     && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
     && mv /opt/kubectx/kubens /out/kube/kubens \
-    && curl -L https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 -o /out/packer/stern \
+    && curl -L https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64 -o /out/packer/stern \
     && chmod a+x /out/packer/stern \
     && curl -sL https://run.linkerd.io/install | sh \
     && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd
@@ -210,6 +222,8 @@ RUN upx --lzma --best /out/kube/*
 FROM ubuntu:devel AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
+ARG GRAALVM_VERSION
+ARG GRAALVM_JAVA_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -235,7 +249,6 @@ RUN apt-get update \
     neovim \
     nodejs \
     npm \
-    openjdk-8-jdk \
     openssh-client \
     openssh-server \
     openssl \
@@ -263,6 +276,13 @@ RUN npm install -g \
     dockerfile-language-server-nodejs \
     bash-language-server
 
+ENV GRAALVM_HOME /usr/lib/graalvm
+RUN cd /tmp \
+    && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
+    && mkdir -p ${GRAALVM_HOME} \
+    && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
+    && chmod -R a+rwx ${GRAALVM_HOME}
+
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
@@ -270,9 +290,9 @@ ENV SHELL /bin/zsh
 
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV JAVA_HOME ${GRAALVM_HOME}
 
-ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
+ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
