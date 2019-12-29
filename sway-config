@@ -29,10 +29,10 @@ set $bgimage ~/.wallpapers/wallpaper.jpg
 set $imdaemon ~/.dotfiles/resources/ibus-startup.sh
 
 # names of workspace
-set $workspace1 1:terms
-set $workspace2 2:browser
-set $workspace3 3:franz
-set $workspace4 4:media
+set $workspace1 1:fool
+set $workspace2 2:magician
+set $workspace3 3:highpriestess
+set $workspace4 4:empress
 set $workspace5 5:hierophant
 set $workspace6 6:lovers
 set $workspace7 7:chariot
@@ -61,7 +61,7 @@ output * bg $bgimage fill
 #    timeout 60 'swaymsg "output * dpms off"' \
 #       resume 'swaymsg "output * dpms on"' \
 #    before-sleep 'swaylock -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png'
-# 
+#
 # This will lock your screen after 30 seconds of inactivity, then turn off
 # your displays after another 60 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -274,9 +274,7 @@ smart_gaps on
 hide_edge_borders smart
 
 # applications
-for_window [class="Chromium"] move container to workspace $workspace2
-for_window [class="Franz"] move container to workspace $workspace3
-for_window [class="Spotify"] move container to workspace $workspace4
+# for_window [class="Chromium"] move container to workspace $workspace2
 
 # exec_always $imdaemon
 
