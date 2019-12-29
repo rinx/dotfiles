@@ -207,58 +207,17 @@ RUN upx --lzma --best /out/go/go/bin/*
 COPY --from=kube /out/packer /out/kube
 RUN upx --lzma --best /out/kube/*
 
-FROM alpine:edge AS base
-# FROM ubuntu:devel AS base
+FROM ubuntu:devel AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Tokyo
-# ENV DEBIAN_FRONTEND noninteractive
-#
-# RUN apt-get update \
-#     && apt-get install -y \
-#     cmake \
-#     ctags \
-#     curl \
-#     diffutils \
-#     g++ \
-#     gawk \
-#     gcc \
-#     git \
-#     gnupg \
-#     jq \
-#     less \
-#     locales \
-#     make \
-#     musl-dev \
-#     neovim \
-#     nodejs \
-#     npm \
-#     openjdk-8-jdk \
-#     openssh-client \
-#     openssh-server \
-#     openssl \
-#     perl \
-#     python-dev \
-#     python-pip \
-#     python3-dev \
-#     python3-pip \
-#     rlwrap \
-#     tar \
-#     tmux \
-#     tzdata \
-#     wget \
-#     yarn \
-#     zsh \
-#     && rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-    && apk update \
-    && apk upgrade \
-    && apk --update-cache add --no-cache \
-    bash \
+RUN apt-get update \
+    && apt-get install -y \
     cmake \
     ctags \
     curl \
@@ -267,29 +226,25 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     gawk \
     gcc \
     git \
-    git-email \
-    git-perl \
     gnupg \
     jq \
     less \
-    linux-headers \
+    locales \
     make \
     musl-dev \
-    ncurses \
     neovim \
     nodejs \
     npm \
-    nss \
-    openjdk8 \
-    openssh \
+    openjdk-8-jdk \
+    openssh-client \
+    openssh-server \
     openssl \
-    openssl-dev \
     perl \
-    py-pip \
-    py3-pip \
     python-dev \
+    python-pip \
     python3-dev \
-    # rlwrap \
+    python3-pip \
+    rlwrap \
     sed \
     tar \
     tmux \
@@ -297,7 +252,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     wget \
     yarn \
     zsh \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/*
 
 RUN pip2 install --upgrade pip neovim \
     && pip3 install --upgrade pip neovim \
@@ -315,8 +270,7 @@ ENV SHELL /bin/zsh
 
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
-# ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
 
@@ -393,9 +347,8 @@ COPY tmux.conf            $DOTFILES/tmux.conf
 COPY vimrc                $DOTFILES/vimrc
 COPY zshrc                $DOTFILES/zshrc
 
-# RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
-#     && locale-gen --purge $LANG
-RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+    && locale-gen --purge $LANG
 
 # zplug plugins
 RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
