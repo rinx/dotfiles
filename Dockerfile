@@ -1,3 +1,13 @@
+ARG GRAALVM_VERSION=19.3.0.2
+ARG GRAALVM_JAVA_VERSION=java8
+ARG GRAALVM_XMS=2g
+ARG GRAALVM_XMX=6g
+
+ARG KIND_VERSION=v0.6.1
+ARG STERN_VERSION=1.11.0
+
+ARG PROTOBUF_VERSION=3.11.2
+
 FROM docker:dind AS docker
 
 RUN mkdir -p /out
@@ -15,7 +25,9 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
-FROM oracle/graalvm-ce:19.3.0-java8 AS graalvm-ce
+FROM oracle/graalvm-ce:${GRAALVM_VERSION}-${GRAALVM_JAVA_VERSION} AS graalvm-ce
+ARG GRAALVM_XMS
+ARG GRAALVM_XMX
 
 RUN yum install -y git \
     && gu install native-image
@@ -42,8 +54,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms2g \
-        -J-Xmx4g
+        -J-Xms${GRAALVM_XMS} \
+        -J-Xmx${GRAALVM_XMX}
 
 RUN cd / \
     && git clone --recursive --depth=1 https://github.com/borkdude/babashka.git \
@@ -72,8 +84,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms2g \
-        -J-Xmx4g
+        -J-Xms${GRAALVM_XMS} \
+        -J-Xmx${GRAALVM_XMX}
 
 RUN cd / \
     && git clone --depth=1 https://github.com/borkdude/jet.git \
@@ -95,8 +107,8 @@ RUN cd / \
         --report-unsupported-elements-at-runtime \
         --initialize-at-build-time \
         --static \
-        -J-Xms2g \
-        -J-Xmx4g
+        -J-Xms${GRAALVM_XMS} \
+        -J-Xmx${GRAALVM_XMX}
 
 RUN mkdir -p /out
 RUN cp /clj-kondo/clj-kondo /out
@@ -156,6 +168,8 @@ RUN cp -r /usr/local/go/bin /out/usr/local/go/bin
 RUN cp -r /go/bin /out/go/bin
 
 FROM alpine:edge AS kube
+ARG KIND_VERSION
+ARG STERN_VERSION
 
 RUN apk update \
     && apk upgrade \
@@ -173,12 +187,12 @@ RUN mkdir -p /out/packer \
     && chmod a+x /out/kube/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm \
-    && curl -L https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-$(uname)-amd64 -o /out/packer/kind \
+    && curl -L https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERSION}/kind-$(uname)-amd64 -o /out/packer/kind \
     && chmod a+x /out/packer/kind \
     && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
     && mv /opt/kubectx/kubens /out/kube/kubens \
-    && curl -L https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 -o /out/packer/stern \
+    && curl -L https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64 -o /out/packer/stern \
     && chmod a+x /out/packer/stern \
     && curl -sL https://run.linkerd.io/install | sh \
     && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd
@@ -207,58 +221,20 @@ RUN upx --lzma --best /out/go/go/bin/*
 COPY --from=kube /out/packer /out/kube
 RUN upx --lzma --best /out/kube/*
 
-FROM alpine:edge AS base
-# FROM ubuntu:devel AS base
+FROM ubuntu:devel AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
+ARG GRAALVM_VERSION
+ARG GRAALVM_JAVA_VERSION
+ARG PROTOBUF_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Tokyo
-# ENV DEBIAN_FRONTEND noninteractive
-#
-# RUN apt-get update \
-#     && apt-get install -y \
-#     cmake \
-#     ctags \
-#     curl \
-#     diffutils \
-#     g++ \
-#     gawk \
-#     gcc \
-#     git \
-#     gnupg \
-#     jq \
-#     less \
-#     locales \
-#     make \
-#     musl-dev \
-#     neovim \
-#     nodejs \
-#     npm \
-#     openjdk-8-jdk \
-#     openssh-client \
-#     openssh-server \
-#     openssl \
-#     perl \
-#     python-dev \
-#     python-pip \
-#     python3-dev \
-#     python3-pip \
-#     rlwrap \
-#     tar \
-#     tmux \
-#     tzdata \
-#     wget \
-#     yarn \
-#     zsh \
-#     && rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-    && apk update \
-    && apk upgrade \
-    && apk --update-cache add --no-cache \
-    bash \
+RUN apt-get update \
+    && apt-get install -y \
     cmake \
     ctags \
     curl \
@@ -267,37 +243,35 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     gawk \
     gcc \
     git \
-    git-email \
-    git-perl \
     gnupg \
     jq \
     less \
-    linux-headers \
+    locales \
     make \
     musl-dev \
-    ncurses \
     neovim \
     nodejs \
     npm \
-    nss \
-    openjdk8 \
-    openssh \
+    openssh-client \
+    openssh-server \
     openssl \
-    openssl-dev \
     perl \
-    py-pip \
-    py3-pip \
     python-dev \
+    python-pip \
     python3-dev \
-    # rlwrap \
+    python3-pip \
+    rlwrap \
     sed \
     tar \
     tmux \
     tzdata \
+    unzip \
+    upx \
     wget \
     yarn \
+    zip \
     zsh \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/*
 
 RUN pip2 install --upgrade pip neovim \
     && pip3 install --upgrade pip neovim \
@@ -308,6 +282,25 @@ RUN npm install -g \
     dockerfile-language-server-nodejs \
     bash-language-server
 
+ENV GRAALVM_HOME /usr/lib/graalvm
+RUN cd /tmp \
+    && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
+    && mkdir -p ${GRAALVM_HOME} \
+    && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
+    && chmod -R a+rwx ${GRAALVM_HOME} \
+    && rm -rf graalvm.tar.gz \
+    && upx --lzma --best /usr/lib/graalvm/jre/bin/polyglot \
+    && upx --lzma --best /usr/lib/graalvm/jre/languages/js/bin/js \
+    && upx --lzma --best /usr/lib/graalvm/jre/languages/js/bin/node
+
+RUN cd /tmp \
+    && curl -OL "https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
+    && unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3 \
+    && upx --lzma --best protoc3/bin/* \
+    && mv protoc3/bin/* /usr/local/bin/ \
+    && mv protoc3/include/* /usr/local/include/ \
+    && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
+
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
@@ -315,10 +308,9 @@ ENV SHELL /bin/zsh
 
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
-# ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME ${GRAALVM_HOME}
 
-ENV PATH $PATH:$JAVA_HOME/jre/bin:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
+ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
@@ -393,9 +385,8 @@ COPY tmux.conf            $DOTFILES/tmux.conf
 COPY vimrc                $DOTFILES/vimrc
 COPY zshrc                $DOTFILES/zshrc
 
-# RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
-#     && locale-gen --purge $LANG
-RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+    && locale-gen --purge $LANG
 
 # zplug plugins
 RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
@@ -414,6 +405,8 @@ RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-
 # download dependencies
 RUN ["/bin/zsh", "-c", "lein"]
 RUN ["/bin/zsh", "-c", "clojure -A:dev"]
+
+RUN rm -rf /tmp/*
 
 WORKDIR $HOME
 
