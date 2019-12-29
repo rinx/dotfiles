@@ -22,9 +22,9 @@
   },
   "pairs.enableBackspace": true,
   "pairs.enableCharacters": ["(", "[", "{", "<", "'", "\"", "`"],
+  "coc.source.ultisnips.enable": true,
   "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "gosnippets/UltiSnips"
+    "UltiSnips"
   ],
   "git.branchCharacter": "",
   "git.addedSign.text": "+",
@@ -45,13 +45,17 @@
     "completionDocumentation": false,
     "deepCompletion": false,
     "fuzzyMatching": true,
-    "usePlaceholders": true,
-    "staticcheck": false
+    "hoverKind": "FullDocumentation",
+    "staticcheck": false,
+    "usePlaceholders": true
   },
   "go.tags": {
     "option": "",
     "tags": "json,yaml",
     "transform": "snakecase"
+  },
+  "go.tests": {
+    "generateFlags": []
   },
   "coc.source.iced.enable": true
 }

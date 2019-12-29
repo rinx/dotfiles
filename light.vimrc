@@ -49,6 +49,9 @@ Plug 'dense-analysis/ale'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 Plug 'junegunn/fzf', { 'dir': '~/.zplug/repos/junegunn/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -129,6 +132,7 @@ set shiftwidth=4
 set softtabstop=4
 
 syntax on
+filetype off
 filetype plugin indent on
 
 set hlsearch
@@ -395,6 +399,7 @@ let g:coc_global_extensions = [
             \ 'coc-git',
             \ 'coc-go',
             \ 'coc-highlight',
+            \ 'coc-java',
             \ 'coc-json',
             \ 'coc-lists',
             \ 'coc-omni',
@@ -405,6 +410,7 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ 'coc-ultisnips',
             \ 'coc-word',
+            \ 'coc-xml',
             \ 'coc-yaml',
             \ 'coc-yank'
             \]
