@@ -278,6 +278,6 @@ for_window [class="Chromium"] move container to workspace $workspace2
 for_window [class="Franz"] move container to workspace $workspace3
 for_window [class="Spotify"] move container to workspace $workspace4
 
-exec_always $imdaemon
+# exec_always $imdaemon
 
 include /etc/sway/config.d/*
