@@ -60,6 +60,7 @@ RUN cd / \
 RUN cd / \
     && git clone --recursive --depth=1 https://github.com/borkdude/babashka.git \
     && cd babashka \
+    && lein with-profiles +reflection do run \
     && lein uberjar \
     && BABASHKA_VERSION=$(cat resources/BABASHKA_VERSION) \
     && native-image \
