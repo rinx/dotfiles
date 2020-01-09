@@ -14,6 +14,15 @@
       "args": [
         "--stdio"
       ]
+    },
+    "fortran": {
+      "command": "fortls",
+      "filetypes": ["fortran"],
+      "rootPatterns": [".fortls", ".git/"]
+    },
+    "kotlin": {
+      "command": "kotlin-language-server",
+      "filetypes": ["kotlin"]
     }
   },
   "list.insertMappings": {

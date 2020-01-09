@@ -281,7 +281,9 @@ RUN pip2 install --upgrade pip neovim \
 
 RUN npm install -g \
     dockerfile-language-server-nodejs \
-    bash-language-server
+    bash-language-server \
+    && pip install \
+    fortran-language-server
 
 ENV GRAALVM_HOME /usr/lib/graalvm
 RUN cd /tmp \
@@ -301,6 +303,13 @@ RUN cd /tmp \
     && mv protoc3/bin/* /usr/local/bin/ \
     && mv protoc3/include/* /usr/local/include/ \
     && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
+
+RUN cd /tmp \
+    && curl -L "https://github.com/fwcd/kotlin-language-server/releases/download/0.5.2/server.zip" --output kotlin-ls.zip \
+    && unzip kotlin-ls.zip \
+    && rm -f kotiln-ls.zip \
+    && mv server /usr/local/kotlin-language-server \
+    && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
