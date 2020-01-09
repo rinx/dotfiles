@@ -7,6 +7,7 @@ ARG KIND_VERSION=v0.6.1
 ARG STERN_VERSION=1.11.0
 
 ARG PROTOBUF_VERSION=3.11.2
+ARG KOTLIN_LS_VERSION=0.5.2
 
 FROM docker:dind AS docker
 
@@ -228,6 +229,7 @@ LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
 ARG PROTOBUF_VERSION
+ARG KOTLIN_LS_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -305,7 +307,7 @@ RUN cd /tmp \
     && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
 
 RUN cd /tmp \
-    && curl -L "https://github.com/fwcd/kotlin-language-server/releases/download/0.5.2/server.zip" --output kotlin-ls.zip \
+    && curl -L "https://github.com/fwcd/kotlin-language-server/releases/download/${KOTLIN_LS_VERSION}/server.zip" --output kotlin-ls.zip \
     && unzip kotlin-ls.zip \
     && rm -f kotiln-ls.zip \
     && mv server /usr/local/kotlin-language-server \
