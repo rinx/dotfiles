@@ -124,7 +124,7 @@ FROM ekidd/rust-musl-builder:latest AS rust
 # RUN cargo install bat \
 #     exa \
 RUN cargo install exa \
-    && cargo install ripgrep \
+    && cargo install --version 11.0.1 ripgrep \
     && cargo install --git https://github.com/sharkdp/fd
 RUN curl -o bat-v0.12.1-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-v0.12.1-x86_64-unknown-linux-musl.tar.gz \
     && tar xzvf bat-v0.12.1-x86_64-unknown-linux-musl.tar.gz \
