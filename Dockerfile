@@ -295,9 +295,10 @@ RUN cd /tmp \
     && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
     && chmod -R a+rwx ${GRAALVM_HOME} \
     && rm -rf graalvm.tar.gz \
-    && upx --lzma --best /usr/lib/graalvm/jre/bin/polyglot \
-    && upx --lzma --best /usr/lib/graalvm/jre/languages/js/bin/js \
-    && upx --lzma --best /usr/lib/graalvm/jre/languages/js/bin/node
+    && upx --lzma --best /usr/lib/graalvm/bin/polyglot \
+    && upx --lzma --best /usr/lib/graalvm/languages/js/bin/js \
+    && upx --lzma --best /usr/lib/graalvm/languages/js/bin/node \
+    && upx --lzma --best /usr/lib/graalvm/languages/llvm/bin/lli
 
 RUN cd /tmp \
     && curl -OL "https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
