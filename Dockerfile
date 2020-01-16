@@ -1,5 +1,5 @@
-ARG GRAALVM_VERSION=19.3.0.2
-ARG GRAALVM_JAVA_VERSION=java8
+ARG GRAALVM_VERSION=19.3.1
+ARG GRAALVM_JAVA_VERSION=java11
 ARG GRAALVM_XMS=2g
 ARG GRAALVM_XMX=6g
 
@@ -26,7 +26,8 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
-FROM oracle/graalvm-ce:${GRAALVM_VERSION}-${GRAALVM_JAVA_VERSION} AS graalvm-ce
+# FROM oracle/graalvm-ce:${GRAALVM_VERSION}-${GRAALVM_JAVA_VERSION} AS graalvm-ce
+FROM oracle/graalvm-ce:${GRAALVM_VERSION}-java8 AS graalvm-ce
 ARG GRAALVM_XMS
 ARG GRAALVM_XMX
 
