@@ -5,6 +5,7 @@ ARG GRAALVM_XMX=6g
 
 ARG KIND_VERSION=v0.7.0
 ARG STERN_VERSION=1.11.0
+ARG K9S_VERSION=0.13.1
 
 ARG PROTOBUF_VERSION=3.11.2
 ARG KOTLIN_LS_VERSION=0.5.2
@@ -174,6 +175,7 @@ RUN cp -r /go/bin /out/go/bin
 FROM alpine:edge AS kube
 ARG KIND_VERSION
 ARG STERN_VERSION
+ARG K9S_VERSION
 
 RUN apk update \
     && apk upgrade \
@@ -199,7 +201,10 @@ RUN mkdir -p /out/packer \
     && curl -L https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64 -o /out/packer/stern \
     && chmod a+x /out/packer/stern \
     && curl -sL https://run.linkerd.io/install | sh \
-    && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd
+    && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd \
+    && curl -L https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_${K9S_VERSION}_Linux_x86_64.tar.gz -o k9s.tar.gz \
+    && tar xzvf k9s.tar.gz \
+    && mv k9s /out/packer/k9s
 
 FROM alpine:edge AS packer
 
@@ -380,6 +385,7 @@ COPY --from=packer /out/kube/helm    /usr/local/bin/helm
 COPY --from=packer /out/kube/kind    /usr/local/bin/kind
 COPY --from=packer /out/kube/stern   /usr/local/bin/stern
 COPY --from=packer /out/kube/linkerd /usr/local/bin/linkerd
+COPY --from=packer /out/kube/k9s     /usr/local/bin/k9s
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
