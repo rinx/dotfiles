@@ -818,7 +818,11 @@ function! MyAbsPath()
 endfunction
 
 function! MyIced()
-    return &ft =~ 'clojure' ? iced#status() : ''
+    try
+        return &ft =~ 'clojure' ? iced#status() : ''
+    catch
+    endtry
+    return ''
 endfunction
 
 augroup vimrc-auto-mkdir
