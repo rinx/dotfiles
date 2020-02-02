@@ -266,8 +266,6 @@ RUN apt-get update \
     openssh-server \
     openssl \
     perl \
-    python-dev \
-    python-pip \
     python3-dev \
     python3-pip \
     rlwrap \
@@ -283,15 +281,14 @@ RUN apt-get update \
     zsh \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip2 install --upgrade pip neovim \
-    && pip3 install --upgrade pip neovim \
+RUN pip3 install --upgrade pip neovim \
     && npm config set user root \
     && npm install -g neovim
 
 RUN npm install -g \
     dockerfile-language-server-nodejs \
     bash-language-server \
-    && pip install \
+    && pip3 install \
     fortran-language-server
 
 ENV GRAALVM_HOME /usr/lib/graalvm
