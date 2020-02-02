@@ -158,7 +158,7 @@ RUN go get -v -u \
     github.com/golangci/golangci-lint/cmd/golangci-lint \
     github.com/junegunn/fzf \
     github.com/mikefarah/yq/v2 \
-    github.com/motemen/ghq \
+    github.com/x-motemen/ghq \
     golang.org/x/lint/golint \
     golang.org/x/tools/cmd/goimports \
     golang.org/x/tools/cmd/gorename \
