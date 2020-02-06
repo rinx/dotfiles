@@ -476,17 +476,16 @@ devstarter() {
         --privileged=false \
         --name $container_name \
         -v /var/run/docker.sock:/var/run/docker.sock \
-        -v $HOME/.dotfiles:/root/.dotfiles \
+        -v $HOME/.dotfiles:/root/.dotfiles:delegated \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
         -v $HOME/.kube:/root/.kube \
-        -v $HOME/local/src:/root/local/src \
+        -v $HOME/local/src:/root/local/src:delegated \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
         -v $HOME/Downloads:/root/Downloads \
         -v $HOME/.zsh_history:/root/.zsh_history \
         -v $HOME/.skk-jisyo:/root/.skk-jisyo \
-        -v /tmp/containers/$container_name/tmux/resurrect:/root/.tmux/resurrect \
         $@"
 
     case "$(uname -s)" in
