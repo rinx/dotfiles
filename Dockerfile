@@ -10,6 +10,8 @@ ARG K9S_VERSION=0.13.1
 ARG PROTOBUF_VERSION=3.11.2
 ARG KOTLIN_LS_VERSION=0.5.2
 
+ARG VALDCLI_VERSION=v0.0.1-alpha
+
 FROM docker:dind AS docker
 
 RUN mkdir -p /out
@@ -237,6 +239,7 @@ ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
 ARG PROTOBUF_VERSION
 ARG KOTLIN_LS_VERSION
+ARG VALDCLI_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -317,6 +320,13 @@ RUN cd /tmp \
     && rm -f kotiln-ls.zip \
     && mv server /usr/local/kotlin-language-server \
     && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
+
+RUN cd /tmp \
+    && curl -OL "https://github.com/rinx/vald-client-clj/releases/download/${VALDCLI_VERSION}/valdcli-linux.zip" \
+    && unzip valdcli-linux.zip \
+    && rm -f valdcli-linux.zip \
+    && chmod a+x valdcli \
+    && mv valdcli /usr/local/bin/
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles

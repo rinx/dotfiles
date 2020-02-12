@@ -389,9 +389,9 @@ if builtin command -v pandoc > /dev/null 2>&1 ; then
     fi
 fi
 
-# hub aliasing (https://github.com/defunkt/hub)
-if builtin command -v hub > /dev/null 2>&1 ; then
-    function git() {hub "$@"}
+# valdcli
+if builtin command -v valdcli --help > /dev/null 2>&1 ; then
+    alias agentcli='valdcli --agent'
 fi
 
 # git aliases
