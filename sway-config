@@ -40,6 +40,8 @@ set $workspace8 8:strength
 set $workspace9 9:hermit
 set $workspace10 10:wheel
 
+set $opacity 0.92
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -275,6 +277,8 @@ hide_edge_borders smart
 
 # applications
 # for_window [class="Chromium"] move container to workspace $workspace2
+
+for_window [class=".*"] opacity $opacity
 
 # exec_always $imdaemon
 
