@@ -322,9 +322,9 @@ RUN cd /tmp \
     && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
 
 RUN cd /tmp \
-    && curl -OL "https://github.com/rinx/vald-client-clj/releases/download/${VALDCLI_VERSION}/valdcli-linux.zip" \
-    && unzip valdcli-linux.zip \
-    && rm -f valdcli-linux.zip \
+    && curl -OL "https://github.com/rinx/vald-client-clj/releases/download/${VALDCLI_VERSION}/valdcli-linux-static.zip" \
+    && unzip valdcli-linux-static.zip \
+    && rm -f valdcli-linux-static.zip \
     && chmod a+x valdcli \
     && mv valdcli /usr/local/bin/
 
