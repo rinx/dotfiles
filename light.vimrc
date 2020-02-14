@@ -408,6 +408,7 @@ let g:coc_global_extensions = [
             \ 'coc-pairs',
             \ 'coc-prettier',
             \ 'coc-snippets',
+            \ 'coc-spell-checker',
             \ 'coc-syntax',
             \ 'coc-tsserver',
             \ 'coc-ultisnips',
