@@ -471,7 +471,6 @@ devstarter() {
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
         -v $HOME/.kube:/root/.kube \
-        -v $HOME/local/src:/root/local/src:delegated \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
         -v $HOME/Downloads:/root/Downloads \
@@ -484,6 +483,7 @@ devstarter() {
             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
             ;;
         Linux)
+            opts="$opts -v $HOME/local/src:/root/local/src:delegated"
             opts="--net=host $opts"
             if [[ -n "${SSH_AUTH_SOCK}" ]]; then
                 opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
