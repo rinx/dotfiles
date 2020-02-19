@@ -204,7 +204,7 @@ RUN mkdir -p /out/packer \
     && chmod a+x /out/packer/stern \
     && curl -sL https://run.linkerd.io/install | sh \
     && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd \
-    && curl -L https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_${K9S_VERSION}_Linux_x86_64.tar.gz -o k9s.tar.gz \
+    && curl -L https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_x86_64.tar.gz -o k9s.tar.gz \
     && tar xzvf k9s.tar.gz \
     && mv k9s /out/packer/k9s
 
