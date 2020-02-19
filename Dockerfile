@@ -188,7 +188,8 @@ RUN apk update \
     openssl \
     bash \
     git \
-    tar
+    tar \
+    gzip
 
 RUN mkdir -p /out/packer \
     && mkdir -p /out/kube \
