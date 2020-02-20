@@ -5,7 +5,7 @@ ARG GRAALVM_XMX=6g
 
 ARG KIND_VERSION=v0.7.0
 ARG STERN_VERSION=1.11.0
-ARG K9S_VERSION=0.15.2
+ARG K9S_VERSION=v0.15.2
 
 ARG PROTOBUF_VERSION=3.11.4
 ARG KOTLIN_LS_VERSION=0.5.2
@@ -187,9 +187,7 @@ RUN apk update \
     gcc \
     openssl \
     bash \
-    git \
-    tar \
-    gzip
+    git
 
 RUN mkdir -p /out/packer \
     && mkdir -p /out/kube \
