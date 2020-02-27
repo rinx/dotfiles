@@ -382,11 +382,8 @@ if builtin command -v xsel > /dev/null 2>&1 ; then
     alias pbpaste='xsel --clipboard --output'
 fi
 
-# valdcli -> agentcli
-alias agentcli='valdcli --agent'
-
 # git aliases
-alias gst='git status -s -b && git stash list'
+alias gst='git status -s -b'
 
 gbr () {
     if [ $# -eq 0 ]; then

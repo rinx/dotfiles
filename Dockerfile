@@ -3,9 +3,12 @@ ARG GRAALVM_JAVA_VERSION=java11
 ARG GRAALVM_XMS=2g
 ARG GRAALVM_XMX=6g
 
+ARG RIPGREP_VERSION=11.0.1
+ARG BAT_VERSION=v0.12.1
+
 ARG KIND_VERSION=v0.7.0
 ARG STERN_VERSION=1.11.0
-ARG K9S_VERSION=v0.16.1
+ARG K9S_VERSION=v0.17.0
 
 ARG PROTOBUF_VERSION=3.11.4
 ARG KOTLIN_LS_VERSION=0.5.2
@@ -124,15 +127,17 @@ RUN cp /jet/jet /out
 FROM rinx/ye AS ye
 
 FROM ekidd/rust-musl-builder:latest AS rust
+ARG RIPGREP_VERSION
+ARG BAT_VERSION
 
 # RUN cargo install bat \
 #     exa \
 RUN cargo install exa \
-    && cargo install --version 11.0.1 ripgrep \
+    && cargo install --version ${RIPGREP_VERSION} ripgrep \
     && cargo install --git https://github.com/sharkdp/fd
-RUN curl -o bat-v0.12.1-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-v0.12.1-x86_64-unknown-linux-musl.tar.gz \
-    && tar xzvf bat-v0.12.1-x86_64-unknown-linux-musl.tar.gz \
-    && cp bat-v0.12.1-x86_64-unknown-linux-musl/bat /home/rust/.cargo/bin/bat
+RUN curl -o bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/bat/releases/download/${BAT_VERSION}/bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && tar xzvf bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && cp bat-${BAT_VERSION}-x86_64-unknown-linux-musl/bat /home/rust/.cargo/bin/bat
 
 RUN mkdir -p /home/rust/out
 
