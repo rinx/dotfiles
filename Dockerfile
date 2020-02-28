@@ -346,6 +346,7 @@ ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.conf
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
+ENV DOCKER_CLI_EXPERIMENTAL "enabled"
 ENV DOCKERIZED_DEVENV rinx/devenv
 
 RUN mkdir -p $HOME/.ssh \

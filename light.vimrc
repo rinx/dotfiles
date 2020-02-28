@@ -406,7 +406,6 @@ let g:coc_global_extensions = [
             \ 'coc-lists',
             \ 'coc-omni',
             \ 'coc-pairs',
-            \ 'coc-prettier',
             \ 'coc-snippets',
             \ 'coc-spell-checker',
             \ 'coc-syntax',
