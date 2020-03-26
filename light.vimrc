@@ -92,8 +92,6 @@ Plug 'liquidz/vim-iced-coc-source', { 'for': ['clojure'] }
 
 Plug 'udalov/kotlin-vim', { 'for': ['kotlin'] }
 
-Plug 'LumaKernel/coquille', { 'for': ['coq'] }
-
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': ['markdown'] }
 
 call plug#end()

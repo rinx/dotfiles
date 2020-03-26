@@ -1256,6 +1256,22 @@ function! s:init_elm_hook_source() abort
     nmap <Leader>d <Plug>(elm-show-docs)
 endfunction
 
+function! s:init_coquille_hook_source() abort
+    nnoremap <silent> <C-C>        :CoqLaunch<CR>
+    nnoremap <silent> <Leader>j    :CoqNext<CR>
+    nnoremap <silent> <Leader>k    :CoqBack<CR>
+    nnoremap <silent> <Leader>l    :CoqToCursor<CR>
+    nnoremap <silent> <Leader>G    :CoqToLast<CR>
+    nnoremap <silent> <Leader>g    :CoqRerun<CR>
+    nnoremap <silent> <Leader>t    :MoveToTop<CR>
+    nnoremap <silent> <Leader><F5> :CoqRefresh<CR>
+
+    nnoremap <Leader>compute :CoqQuery Compute .<Left>
+    nnoremap <Leader>print   :CoqQuery Print .<Left>
+    nnoremap <Leader>check   :CoqQuery Check .<Left>
+    nnoremap <Leader>se      :CoqQuery Search ().<Left><Left>
+endfunction
+
 function! s:init_iron_hook_source() abort
     let g:iron_map_defaults=0
 endfunction
@@ -2306,6 +2322,16 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ ],
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_elm_hook_source()',
                 \})
+
+    call dein#add('LumaKernel/coquille')
+    call dein#config('coquille', {
+                \ 'lazy': 1,
+                \ 'on_ft': [
+                \   'coq',
+                \ ],
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_coquille_hook_source()',
+                \})
+
 
     if has('nvim')
         call dein#add('BurningEther/iron.nvim')
