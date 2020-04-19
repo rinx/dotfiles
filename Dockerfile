@@ -161,10 +161,9 @@ ENV GO111MODULE on
 RUN go get -v -u \
     github.com/davidrjenni/reftools/cmd/fillstruct \
     github.com/fullstorydev/grpcurl/cmd/grpcurl \
-    github.com/go-delve/delve/cmd/dlv \
     github.com/golangci/golangci-lint/cmd/golangci-lint \
     github.com/junegunn/fzf \
-    github.com/mikefarah/yq/v2 \
+    github.com/mikefarah/yq/v3 \
     github.com/x-motemen/ghq \
     golang.org/x/lint/golint \
     golang.org/x/tools/cmd/goimports \
