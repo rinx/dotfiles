@@ -160,7 +160,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
         (type jet > /dev/null 2>&1) || zplug "borkdude/jet", as:command, from:gh-r, use:"*-linux-amd64*", rename-to:jet
     fi
 
-    (type ghq > /dev/null 2>&1) || zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq
+    (type ghq > /dev/null 2>&1) || zplug "x-motemen/ghq", from:gh-r, as:command, rename-to:ghq
     (type jq > /dev/null 2>&1) || zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
     (type xpanes > /dev/null 2>&1) || zplug "greymd/tmux-xpanes"
