@@ -250,8 +250,8 @@ ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Tokyo
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt update \
-    && apt install -y \
+RUN apt-get update \
+    && apt-get install -y \
     cmake \
     ctags \
     curl \

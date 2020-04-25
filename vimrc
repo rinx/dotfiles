@@ -1256,7 +1256,7 @@ function! s:init_elm_hook_source() abort
     nmap <Leader>d <Plug>(elm-show-docs)
 endfunction
 
-function! s:init_coquille_hook_source() abort
+function! s:init_coqpit_hook_source() abort
     nnoremap <silent> <C-C>        :CoqLaunch<CR>
     nnoremap <silent> <Leader>j    :CoqNext<CR>
     nnoremap <silent> <Leader>k    :CoqBack<CR>
@@ -2323,13 +2323,13 @@ if v:version >= 800 || has('nvim') && dein#load_state(s:dein_dir)
                 \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_elm_hook_source()',
                 \})
 
-    call dein#add('LumaKernel/coquille')
-    call dein#config('coquille', {
+    call dein#add('LumaKernel/coqpit.vim')
+    call dein#config('coqpit.vim', {
                 \ 'lazy': 1,
                 \ 'on_ft': [
                 \   'coq',
                 \ ],
-                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_coquille_hook_source()',
+                \ 'hook_source': 'call ' . s:SID_PREFIX() . 'init_coqpit_hook_source()',
                 \})
 
 
