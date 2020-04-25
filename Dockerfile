@@ -87,6 +87,7 @@ RUN cd / \
         -H:+JNI \
         --enable-all-security-services \
         --initialize-at-run-time=java.lang.Math\$RandomNumberGeneratorHolder \
+        --initialize-at-run-time=org.postgresql.sspi.SSPIClient \
         --verbose \
         --no-fallback \
         --no-server \
