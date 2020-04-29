@@ -17,9 +17,9 @@ jobs:
         run: |
           wget "https://github.com/rinx/gitwerk/releases/latest/download/gitwerk-linux-amd64.zip"
           unzip gitwerk-linux-amd64.zip
-      - name: Run gitwerk semver-auto
+      - name: Run gitwerk contextual-semver
         run: |
-          ./gitwerk semver-auto
+          ./gitwerk contextual-semver
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push origin --tags
         env:
