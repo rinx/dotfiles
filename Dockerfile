@@ -1,7 +1,5 @@
 ARG GRAALVM_VERSION=20.0.0
 ARG GRAALVM_JAVA_VERSION=java11
-ARG GRAALVM_XMS=2g
-ARG GRAALVM_XMX=6g
 
 ARG RIPGREP_VERSION=11.0.1
 ARG BAT_VERSION=v0.12.1
@@ -13,6 +11,9 @@ ARG K9S_VERSION=v0.19.3
 ARG PROTOBUF_VERSION=3.11.4
 ARG KOTLIN_LS_VERSION=0.5.2
 
+ARG BABASHKA_VERSION=0.0.89
+ARG JET_VERSION=0.0.12
+ARG CLJ_KONDO_VERSION=2020.04.05
 ARG VALDCLI_VERSION=v0.0.34
 
 FROM docker:dind AS docker
@@ -31,101 +32,6 @@ RUN cp /usr/local/bin/runc            /out
 FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
-
-# FROM oracle/graalvm-ce:${GRAALVM_VERSION}-${GRAALVM_JAVA_VERSION} AS graalvm-ce
-FROM oracle/graalvm-ce:${GRAALVM_VERSION}-java8 AS graalvm-ce
-ARG GRAALVM_XMS
-ARG GRAALVM_XMX
-
-RUN yum install -y git \
-    && gu install native-image
-RUN curl -o /usr/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
-    && chmod a+x /usr/bin/lein
-
-RUN cd / \
-    && git clone --depth=1 https://github.com/borkdude/clj-kondo.git \
-    && cd clj-kondo \
-    && lein uberjar \
-    && CLJ_KONDO_VERSION=$(cat resources/CLJ_KONDO_VERSION) \
-    && native-image \
-        -jar target/clj-kondo-$CLJ_KONDO_VERSION-standalone.jar \
-        -H:Name=clj-kondo \
-        -H:+ReportExceptionStackTraces \
-        -J-Dclojure.spec.skip-macros=true \
-        -J-Dclojure.compiler.direct-linking=true \
-        "-H:IncludeResources=clj_kondo/impl/cache/built_in/.*" \
-        -H:ReflectionConfigurationFiles=reflection.json \
-        -H:Log=registerResource: \
-        --verbose \
-        --no-fallback \
-        --no-server \
-        --report-unsupported-elements-at-runtime \
-        --initialize-at-build-time \
-        --static \
-        -J-Xms${GRAALVM_XMS} \
-        -J-Xmx${GRAALVM_XMX}
-
-RUN cd / \
-    && git clone --recursive --depth=1 https://github.com/borkdude/babashka.git \
-    && cd babashka \
-    && lein with-profiles +reflection do run \
-    && lein uberjar \
-    && BABASHKA_VERSION=$(cat resources/BABASHKA_VERSION) \
-    && native-image \
-        -jar target/babashka-$BABASHKA_VERSION-standalone.jar \
-        -H:Name=bb \
-        -H:+ReportExceptionStackTraces \
-        -J-Dclojure.spec.skip-macros=true \
-        -J-Dclojure.compiler.direct-linking=true \
-        -Djava.library.path=$JAVA_HOME/jre/lib/amd64 \
-        "-H:IncludeResources=BABASHKA_VERSION" \
-        "-H:IncludeResources=SCI_VERSION" \
-        -H:ReflectionConfigurationFiles=reflection.json \
-        -H:Log=registerResource: \
-        --enable-http \
-        --enable-https \
-        -H:+JNI \
-        --enable-all-security-services \
-        --initialize-at-run-time=java.lang.Math\$RandomNumberGeneratorHolder \
-        --initialize-at-run-time=org.postgresql.sspi.SSPIClient \
-        --verbose \
-        --no-fallback \
-        --no-server \
-        --report-unsupported-elements-at-runtime \
-        --initialize-at-build-time \
-        --static \
-        -J-Xms${GRAALVM_XMS} \
-        -J-Xmx${GRAALVM_XMX}
-
-RUN cd / \
-    && git clone --depth=1 https://github.com/borkdude/jet.git \
-    && cd jet \
-    && lein uberjar \
-    && JET_VERSION=$(cat resources/JET_VERSION) \
-    && native-image \
-        -jar target/jet-$JET_VERSION-standalone.jar \
-        -H:Name=jet \
-        -H:+ReportExceptionStackTraces \
-        -J-Dclojure.spec.skip-macros=true \
-        -J-Dclojure.compiler.direct-linking=true \
-        "-H:IncludeResources=JET_VERSION" \
-        -H:ReflectionConfigurationFiles=reflection.json \
-        -H:Log=registerResource: \
-        --verbose \
-        --no-fallback \
-        --no-server \
-        --report-unsupported-elements-at-runtime \
-        --initialize-at-build-time \
-        --static \
-        -J-Xms${GRAALVM_XMS} \
-        -J-Xmx${GRAALVM_XMX}
-
-RUN mkdir -p /out
-RUN cp /clj-kondo/clj-kondo /out
-RUN cp /babashka/bb /out
-RUN cp /jet/jet /out
-
-FROM rinx/ye AS ye
 
 FROM ekidd/rust-musl-builder:latest AS rust
 ARG RIPGREP_VERSION
@@ -223,10 +129,6 @@ RUN apk update \
 COPY --from=docker /out /out/docker
 RUN upx --lzma --best /out/docker/*
 
-COPY --from=graalvm-ce /out /out/graalvm-ce
-COPY --from=ye /ye /out/graalvm-ce
-RUN upx --lzma --best /out/graalvm-ce/*
-
 COPY --from=rust /home/rust/out /out/rust
 RUN upx --lzma --best /out/rust/*
 
@@ -244,6 +146,9 @@ ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
 ARG PROTOBUF_VERSION
 ARG KOTLIN_LS_VERSION
+ARG BABASHKA_VERSION
+ARG JET_VERSION
+ARG CLJ_KONDO_VERSION
 ARG VALDCLI_VERSION
 
 ENV LANG en_US.UTF-8
@@ -333,6 +238,30 @@ RUN cd /tmp \
     && chmod a+x valdcli \
     && mv valdcli /usr/local/bin/
 
+RUN cd /tmp \
+    && curl -L "https://github.com/borkdude/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-amd64.zip" --output babashka.zip \
+    && unzip babashka.zip \
+    && rm -f babashka.zip \
+    && chmod a+x bb \
+    && upx --lzma --best bb \
+    && mv bb /usr/local/bin/
+
+RUN cd /tmp \
+    && curl -L "https://github.com/borkdude/jet/releases/download/v${JET_VERSION}/jet-${JET_VERSION}-linux-amd64.zip" --output jet.zip \
+    && unzip jet.zip \
+    && rm -f jet.zip \
+    && chmod a+x jet \
+    && upx --lzma --best jet \
+    && mv jet /usr/local/bin/
+
+RUN cd /tmp \
+    && curl -L "https://github.com/borkdude/clj-kondo/releases/download/v${CLJ_KONDO_VERSION}/clj-kondo-${CLJ_KONDO_VERSION}-linux-amd64.zip" --output clj-kondo.zip \
+    && unzip clj-kondo.zip \
+    && rm -f clj-kondo.zip \
+    && chmod a+x clj-kondo \
+    && upx --lzma --best clj-kondo \
+    && mv clj-kondo /usr/local/bin/
+
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
@@ -371,11 +300,6 @@ COPY --from=clojure-lein /usr/share/java     /usr/share/java
 COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
 COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
-
-COPY --from=packer /out/graalvm-ce/clj-kondo /usr/local/bin/clj-kondo
-COPY --from=packer /out/graalvm-ce/bb        /usr/local/bin/bb
-COPY --from=packer /out/graalvm-ce/jet       /usr/local/bin/jet
-COPY --from=packer /out/graalvm-ce/ye        /usr/local/bin/ye
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
