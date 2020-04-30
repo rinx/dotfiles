@@ -27,6 +27,7 @@ jobs:
         GITHUB_USER: ${{ secrets.DOTFILES_USER }}
         GITHUB_TOKEN: ${{ secrets.DOTFILES_TOKEN }}
     - name: Push to GitHub package registry
+      continue-on-error: true
       run: |
         GIT_TAG=`git describe --abbrev=0 --tags`
         docker tag devenv docker.pkg.github.com/rinx/dotfiles/devenv:${GIT_TAG}
