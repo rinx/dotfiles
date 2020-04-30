@@ -8,12 +8,12 @@ ARG BAT_VERSION=v0.12.1
 
 ARG KIND_VERSION=v0.7.0
 ARG STERN_VERSION=1.11.0
-ARG K9S_VERSION=v0.19.2
+ARG K9S_VERSION=v0.19.3
 
 ARG PROTOBUF_VERSION=3.11.4
 ARG KOTLIN_LS_VERSION=0.5.2
 
-ARG VALDCLI_VERSION=v0.0.10
+ARG VALDCLI_VERSION=v0.0.34
 
 FROM docker:dind AS docker
 
@@ -327,7 +327,7 @@ RUN cd /tmp \
     && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
 
 RUN cd /tmp \
-    && curl -OL "https://github.com/rinx/vald-client-clj/releases/download/${VALDCLI_VERSION}/valdcli-linux-static.zip" \
+    && curl -OL "https://github.com/vdaas/vald-client-clj/releases/download/${VALDCLI_VERSION}/valdcli-linux-static.zip" \
     && unzip valdcli-linux-static.zip \
     && rm -f valdcli-linux-static.zip \
     && chmod a+x valdcli \
