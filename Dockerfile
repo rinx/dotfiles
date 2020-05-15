@@ -70,7 +70,6 @@ ENV GO111MODULE on
 RUN go get -v -u \
     github.com/davidrjenni/reftools/cmd/fillstruct \
     github.com/fullstorydev/grpcurl/cmd/grpcurl \
-    github.com/golangci/golangci-lint/cmd/golangci-lint \
     github.com/junegunn/fzf \
     github.com/mikefarah/yq/v3 \
     github.com/x-motemen/ghq \
