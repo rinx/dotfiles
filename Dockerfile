@@ -7,6 +7,8 @@ ARG BAT_VERSION=v0.12.1
 ARG KIND_VERSION=v0.7.0
 ARG STERN_VERSION=1.11.0
 ARG K9S_VERSION=v0.19.4
+ARG HELMFILE_VERSION=v0.116.0
+ARG KUSTOMIZE_VERSION=v3.5.5
 
 ARG PROTOBUF_VERSION=3.11.4
 ARG KOTLIN_LS_VERSION=0.5.2
@@ -89,6 +91,8 @@ FROM alpine:edge AS kube
 ARG KIND_VERSION
 ARG STERN_VERSION
 ARG K9S_VERSION
+ARG HELMFILE_VERSION
+ARG KUSTOMIZE_VERSION
 
 RUN apk update \
     && apk upgrade \
@@ -117,7 +121,12 @@ RUN mkdir -p /out/packer \
     && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd \
     && curl -L https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_x86_64.tar.gz -o k9s.tar.gz \
     && tar xzvf k9s.tar.gz \
-    && mv k9s /out/packer/k9s
+    && mv k9s /out/packer/k9s \
+    && curl -L https://github.com/roboll/helmfile/releases/download/${HELMFILE_VERSION}/helmfile_linux_amd64 -o /out/packer/helmfile \
+    && chmod a+x /out/packer/helmfile \
+    && curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz -o kustomize.tar.gz \
+    && tar xzvf kustomize.tar.gz \
+    && mv kustomize /out/packer/kustomize
 
 FROM alpine:edge AS packer
 
@@ -318,11 +327,13 @@ COPY --from=kube /out/kube/kubectx /usr/local/bin/kubectx
 COPY --from=kube /out/kube/kubens  /usr/local/bin/kubens
 COPY --from=kube /out/kube/kubectl /usr/local/bin/kubectl
 
-COPY --from=packer /out/kube/helm    /usr/local/bin/helm
-COPY --from=packer /out/kube/kind    /usr/local/bin/kind
-COPY --from=packer /out/kube/stern   /usr/local/bin/stern
-COPY --from=packer /out/kube/linkerd /usr/local/bin/linkerd
-COPY --from=packer /out/kube/k9s     /usr/local/bin/k9s
+COPY --from=packer /out/kube/helm      /usr/local/bin/helm
+COPY --from=packer /out/kube/kind      /usr/local/bin/kind
+COPY --from=packer /out/kube/stern     /usr/local/bin/stern
+COPY --from=packer /out/kube/linkerd   /usr/local/bin/linkerd
+COPY --from=packer /out/kube/k9s       /usr/local/bin/k9s
+COPY --from=packer /out/kube/helmfile  /usr/local/bin/helmfile
+COPY --from=packer /out/kube/kustomize /usr/local/bin/kustomize
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
