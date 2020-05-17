@@ -47,7 +47,7 @@ Plug 'tyru/eskk.vim'
 
 Plug 'dense-analysis/ale'
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
