@@ -219,7 +219,7 @@ RUN cd /tmp \
     && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
     && chmod -R a+rwx ${GRAALVM_HOME} \
     && rm -rf graalvm.tar.gz \
-    && upx --lzma --best /usr/lib/graalvm/bin/polyglot \
+    && upx --lzma --best /usr/lib/graalvm/lib/polyglot/bin/polyglot \
     && upx --lzma --best /usr/lib/graalvm/languages/js/bin/js \
     && upx --lzma --best /usr/lib/graalvm/languages/js/bin/node \
     && upx --lzma --best /usr/lib/graalvm/languages/llvm/bin/lli
