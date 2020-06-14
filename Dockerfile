@@ -6,17 +6,16 @@ ARG BAT_VERSION=v0.12.1
 
 ARG KIND_VERSION=v0.8.1
 ARG STERN_VERSION=1.11.0
-ARG K9S_VERSION=v0.19.6
-ARG HELMFILE_VERSION=v0.116.0
+ARG K9S_VERSION=v0.20.5
+ARG HELMFILE_VERSION=v0.118.7
 ARG KUSTOMIZE_VERSION=v3.5.5
 
 ARG PROTOBUF_VERSION=3.11.4
-ARG KOTLIN_LS_VERSION=0.5.2
+ARG KOTLIN_LS_VERSION=0.6.0
 
-ARG BABASHKA_VERSION=0.0.96
+ARG BABASHKA_VERSION=0.1.1
 ARG JET_VERSION=0.0.12
 ARG CLJ_KONDO_VERSION=2020.04.05
-ARG VALDCLI_VERSION=v0.0.37
 
 FROM docker:dind AS docker
 
@@ -157,7 +156,6 @@ ARG KOTLIN_LS_VERSION
 ARG BABASHKA_VERSION
 ARG JET_VERSION
 ARG CLJ_KONDO_VERSION
-ARG VALDCLI_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -237,13 +235,6 @@ RUN cd /tmp \
     && rm -f kotiln-ls.zip \
     && mv server /usr/local/kotlin-language-server \
     && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
-
-RUN cd /tmp \
-    && curl -OL "https://github.com/vdaas/vald-client-clj/releases/download/${VALDCLI_VERSION}/valdcli-linux-static.zip" \
-    && unzip valdcli-linux-static.zip \
-    && rm -f valdcli-linux-static.zip \
-    && chmod a+x valdcli \
-    && mv valdcli /usr/local/bin/
 
 RUN cd /tmp \
     && curl -L "https://github.com/borkdude/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-amd64.zip" --output babashka.zip \
