@@ -11,6 +11,8 @@ on:
   pull_request:
     paths:
       - Dockerfile
+  schedule:
+    - cron: 0 18 * * *
 
 jobs:
   build:
