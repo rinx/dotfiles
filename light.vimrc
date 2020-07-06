@@ -92,7 +92,7 @@ Plug 'liquidz/vim-iced-coc-source', { 'for': ['clojure'] }
 
 Plug 'udalov/kotlin-vim', { 'for': ['kotlin'] }
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': ['markdown'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 
 call plug#end()
 
@@ -618,7 +618,12 @@ augroup END
 
 "markdown
 let g:mkdp_open_to_the_world = 1
+let g:mkdp_open_ip = '0.0.0.0'
 let g:mkdp_port = '8000'
+function! g:Mkdp_echo_url(url)
+    :echo a:url
+endfunction
+let g:mkdp_browserfunc = 'g:Mkdp_echo_url'
 
 "json
 augroup vimrc-json
