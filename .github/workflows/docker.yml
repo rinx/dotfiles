@@ -57,6 +57,8 @@ jobs:
         tag_name=`echo $GITHUB_REF | sed -e 's:^refs/tags/::'`
         docker tag devenv rinx/devenv:${tag_name}
         docker push rinx/devenv:${tag_name}
+        docker tag devenv rinx/devenv:stable
+        docker push rinx/devenv:stable
   build-java8:
     runs-on: ubuntu-latest
     steps:
@@ -99,3 +101,5 @@ jobs:
         tag_name=`echo $GITHUB_REF | sed -e 's:^refs/tags/::'`
         docker tag devenv rinx/devenv:${tag_name}-java8
         docker push rinx/devenv:${tag_name}-java8
+        docker tag devenv rinx/devenv:stable-java8
+        docker push rinx/devenv:stable-java8
