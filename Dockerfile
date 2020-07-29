@@ -1,21 +1,22 @@
 ARG GRAALVM_VERSION=20.1.0
 ARG GRAALVM_JAVA_VERSION=java11
 
-ARG RIPGREP_VERSION=11.0.1
-ARG BAT_VERSION=v0.12.1
+ARG RIPGREP_VERSION=12.1.1
+ARG BAT_VERSION=v0.15.4
+ARG FD_VERSION=v8.1.1
 
 ARG KIND_VERSION=v0.8.1
 ARG STERN_VERSION=1.11.0
-ARG K9S_VERSION=v0.20.5
-ARG HELMFILE_VERSION=v0.119.1
-ARG KUSTOMIZE_VERSION=v3.6.1
+ARG K9S_VERSION=v0.21.4
+ARG HELMFILE_VERSION=v0.125.0
+ARG KUSTOMIZE_VERSION=v3.8.1
 
-ARG PROTOBUF_VERSION=3.12.3
-ARG KOTLIN_LS_VERSION=0.6.0
+ARG PROTOBUF_VERSION=3.12.4
+ARG KOTLIN_LS_VERSION=0.7.0
 
 ARG BABASHKA_VERSION=0.1.3
 ARG JET_VERSION=0.0.12
-ARG CLJ_KONDO_VERSION=2020.06.21
+ARG CLJ_KONDO_VERSION=2020.07.26
 
 FROM docker:dind AS docker
 
@@ -37,15 +38,18 @@ FROM clojure:tools-deps-alpine AS clojure-deps
 FROM ekidd/rust-musl-builder:latest AS rust
 ARG RIPGREP_VERSION
 ARG BAT_VERSION
+ARG FD_VERSION
 
-# RUN cargo install bat \
-#     exa \
-RUN cargo install exa \
-    && cargo install --version ${RIPGREP_VERSION} ripgrep \
-    && cargo install --git https://github.com/sharkdp/fd
+RUN cargo install exa
+RUN curl -o ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && tar xzvf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && cp ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg /home/rust/.cargo/bin/rg
 RUN curl -o bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/bat/releases/download/${BAT_VERSION}/bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
     && tar xzvf bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
     && cp bat-${BAT_VERSION}-x86_64-unknown-linux-musl/bat /home/rust/.cargo/bin/bat
+RUN curl -o fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && tar xzvf fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && cp fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /home/rust/.cargo/bin/fd
 
 RUN mkdir -p /home/rust/out
 
