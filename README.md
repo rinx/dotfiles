@@ -5,8 +5,6 @@
 [![GitHub Actions: Run gitwerk](https://github.com/rinx/dotfiles/workflows/Run%20gitwerk/badge.svg)](https://github.com/rinx/dotfiles/actions)
 [![GitHub Actions: Build docker image](https://github.com/rinx/dotfiles/workflows/Build%20docker%20image/badge.svg)](https://github.com/rinx/dotfiles/actions)
 
-## Use Dockerized environment
-
 Pull the latest stable image `rinx/devenv:stable`, that is built from [the latest release](https://github.com/rinx/dotfiles/releases).
 (or `rinx/devenv:nightly` = the image built from the latest master branch is also available.
 [please see here](https://hub.docker.com/r/rinx/devenv/tags))
@@ -45,35 +43,3 @@ After finished your work, stop the environment.
 
     $ devstop
 
-## Use standard environment
-
-### setup
-
-Use `make`
-
-## install and uninstall
-
-### install
-
-clone this repository and run `make`
-
-    $ git clone https://github.com/rinx/dotfiles.git ~/.dotfiles
-    $ make deploy && make init
-
-#### future works
-
-test deploy & init phase,
-
-    $ make test
-
-check installed objects,
-
-    $ make check-commands
-
-for uninstall,
-
-    $ make clean
-
-add install phase of dependencies belows by
-
-    $ make install-dependencies
