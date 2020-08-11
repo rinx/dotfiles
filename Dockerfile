@@ -175,6 +175,7 @@ RUN apt-get update \
     g++ \
     gawk \
     gcc \
+    gfortran \
     git \
     gnupg \
     jq \
