@@ -213,7 +213,8 @@ RUN npm install -g \
     dockerfile-language-server-nodejs \
     bash-language-server \
     && pip3 install \
-    fortran-language-server
+    fortran-language-server \
+    hy
 
 ENV GRAALVM_HOME /usr/lib/graalvm
 RUN cd /tmp \

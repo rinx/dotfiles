@@ -90,6 +90,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'liquidz/vim-iced', { 'for': ['clojure'] }
 Plug 'liquidz/vim-iced-coc-source', { 'for': ['clojure'] }
 
+Plug 'hylang/vim-hy', { 'for': ['hy'] }
 Plug 'udalov/kotlin-vim', { 'for': ['kotlin'] }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
@@ -604,6 +605,10 @@ nmap <silent><buffer> >) <Plug>(sexp_capture_next_element)
 
 "iced
 let g:iced_enable_default_key_mappings = v:true
+
+"hy
+let g:hy_enable_conceal = 0
+let g:hy_conceal_fancy = 0
 
 "go
 augroup vimrc-golang
