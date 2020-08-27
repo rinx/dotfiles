@@ -61,7 +61,6 @@ RUN cp /home/rust/.cargo/bin/bat /home/rust/out
 RUN cp /home/rust/.cargo/bin/exa /home/rust/out
 RUN cp /home/rust/.cargo/bin/fd  /home/rust/out
 RUN cp /home/rust/.cargo/bin/rg  /home/rust/out
-RUN cp /home/rust/.cargo/bin/sd  /home/rust/out
 
 FROM golang:alpine AS go
 
@@ -313,7 +312,7 @@ COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
 COPY --from=packer /out/rust/fd  /usr/local/bin/fd
 COPY --from=packer /out/rust/rg  /usr/local/bin/rg
-COPY --from=packer /out/rust/sd  /usr/local/bin/sd
+COPY --from=packer /home/rust/.cargo/bin/sd /usr/local/bin/sd
 
 COPY --from=go /usr/local/go/src  $GOROOT/src
 COPY --from=go /usr/local/go/lib  $GOROOT/lib
