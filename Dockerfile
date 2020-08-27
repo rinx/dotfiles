@@ -4,6 +4,7 @@ ARG GRAALVM_JAVA_VERSION=java11
 ARG RIPGREP_VERSION=12.1.1
 ARG BAT_VERSION=v0.15.4
 ARG FD_VERSION=v8.1.1
+ARG SD_VERSION=v0.7.6
 
 ARG KIND_VERSION=v0.8.1
 ARG STERN_VERSION=1.11.0
@@ -39,6 +40,7 @@ FROM ekidd/rust-musl-builder:latest AS rust
 ARG RIPGREP_VERSION
 ARG BAT_VERSION
 ARG FD_VERSION
+ARG SD_VERSION
 
 RUN cargo install exa
 RUN curl -o ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
@@ -50,6 +52,8 @@ RUN curl -o bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://githu
 RUN curl -o fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
     && tar xzvf fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
     && cp fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /home/rust/.cargo/bin/fd
+RUN curl -o /home/rust/.cargo/bin/sd https://github.com/chmln/sd/releases/download/${SD_VERSION}/sd-${SD_VERSION}-x86_64-unknown-linux-musl \
+    && chmod a+x /home/rust/.cargo/bin/sd
 
 RUN mkdir -p /home/rust/out
 
@@ -169,7 +173,6 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get install -y \
     cmake \
-    ctags \
     curl \
     diffutils \
     g++ \
@@ -309,6 +312,7 @@ COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
 COPY --from=packer /out/rust/fd  /usr/local/bin/fd
 COPY --from=packer /out/rust/rg  /usr/local/bin/rg
+COPY --from=packer /out/rust/sd  /usr/local/bin/sd
 
 COPY --from=go /usr/local/go/src  $GOROOT/src
 COPY --from=go /usr/local/go/lib  $GOROOT/lib
