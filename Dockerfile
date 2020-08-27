@@ -343,10 +343,9 @@ COPY dotvim               $DOTFILES/dotvim
 COPY gitattributes_global $DOTFILES/gitattributes_global
 COPY gitconfig            $DOTFILES/gitconfig
 COPY gitignore            $DOTFILES/gitignore
-COPY light.vimrc          $DOTFILES/light.vimrc
+COPY init.vim             $DOTFILES/init.vim
 COPY Makefile             $DOTFILES/Makefile
 COPY Makefile.d           $DOTFILES/Makefile.d
-COPY nvimrc               $DOTFILES/nvimrc
 COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
