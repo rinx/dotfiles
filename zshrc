@@ -203,7 +203,7 @@ else
     alias vi='nvim'
 fi
 
-alias lightvim='nvim -u ~/.dotfiles/light.vimrc'
+alias lightvim='nvim'
 alias lvim=lightvim
 
 # Macvim

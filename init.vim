@@ -23,7 +23,7 @@ if executable('python3')
     let g:python3_host_prog = substitute(system('which python3'),"\n","","")
 endif
 
-let s:plug_dir = '~/.config/lightvim/plugged'
+let s:plug_dir = '~/.config/nvim/plugged'
 
 let s:plug_repo_dir = s:plug_dir . '/vim-plug'
 
@@ -38,7 +38,7 @@ endif
 
 call plug#begin(expand(s:plug_dir))
 
-Plug 'junegunn/vim-plug', {'dir': '~/.config/lightvim/plugged/vim-plug/autoload'}
+Plug 'junegunn/vim-plug', {'dir': '~/.config/nvim/plugged/vim-plug/autoload'}
 
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/seoul256.vim'
@@ -175,9 +175,9 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-set backupdir=~/.config/lightvim/tmp/backup
-set undodir=~/.config/lightvim/tmp/undo
-set directory=~/.config/lightvim/tmp/swap
+set backupdir=~/.config/nvim/tmp/backup
+set undodir=~/.config/nvim/tmp/undo
+set directory=~/.config/nvim/tmp/swap
 
 if !isdirectory(expand(&backupdir))
     call mkdir(expand(&backupdir), "p")

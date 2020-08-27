@@ -43,7 +43,6 @@ $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 .PHONY: neovim-deploy
 neovim-deploy: \
     init.vim \
-    dein-nvim \
     coc-settings.json \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
@@ -53,14 +52,7 @@ init.vim: $(HOME)/.config/nvim/init.vim
 $(HOME)/.config/nvim/init.vim:
 	@$(call cyan, "--\> init.vim")
 	mkdir -p $(HOME)/.config/nvim
-	ln -s $(DOTDIR)/nvimrc $(HOME)/.config/nvim/init.vim
-
-.PHONY: dein-nvim
-dein-nvim: $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim
-$(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim:
-	@$(call cyan, "--\> dein.vim for nvim")
-	mkdir -p $(HOME)/.config/nvim/dein/repos/github.com/Shougo
-	git clone https://github.com/Shougo/dein.vim $(HOME)/.config/nvim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
+	ln -s $(DOTDIR)/init.vim $(HOME)/.config/nvim/init.vim
 
 .PHONY: coc-settings.json
 coc-settings.json: $(HOME)/.config/nvim/coc-settings.json
