@@ -61,6 +61,7 @@ RUN cp /home/rust/.cargo/bin/bat /home/rust/out
 RUN cp /home/rust/.cargo/bin/exa /home/rust/out
 RUN cp /home/rust/.cargo/bin/fd  /home/rust/out
 RUN cp /home/rust/.cargo/bin/rg  /home/rust/out
+RUN cp /home/rust/.cargo/bin/sd  /home/rust/out
 
 FROM golang:alpine AS go
 
