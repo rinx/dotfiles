@@ -197,22 +197,8 @@ else # for BSD version
     alias lsal='ls -al'
 fi
 
-if builtin command -v vim > /dev/null 2>&1 ; then
-    alias vi='vimswitcher'
-else
-    alias vi='nvim'
-fi
-
-alias lightvim='nvim -u ~/.dotfiles/light.vimrc'
-alias lvim=lightvim
-
-# Macvim
-if [ -d /Applications/MacVim.app/ ]; then
-    alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
-    alias vimdiff='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/vimdiff'
-    alias view='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/view'
-    alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim'
-fi
+alias vi='nvim'
+alias lvim='nvim'
 
 alias q='exit'
 
@@ -420,24 +406,6 @@ extract () {
     else
         echo "'$1' is not a valid file!"
     fi
-}
-
-# vim / neovim auto-switcher
-vimswitcher () {
-    case $1 in
-        *.vim)   nvim $1 ;;
-        *.hs)    nvim $1 ;;
-        *.rs)    nvim $1 ;;
-        *.py)    nvim $1 ;;
-        *.rb)    nvim $1 ;;
-        *.txt)   vim $1  ;;
-        *.tex)   vim $1  ;;
-        *.md)    vim $1  ;;
-        *.elm)   nvim $1 ;;
-        *.clj)   nvim $1 ;;
-        *.go)    nvim $1 ;;
-        *)       nvim $1 ;;
-    esac
 }
 
 # clojure

@@ -28,7 +28,7 @@
 [core]
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes_global
-    editor = nvim -u ~/.dotfiles/light.vimrc
+    editor = nvim -u ~/.dotfiles/init.vim
 
 [alias]
     this  = !git init && git add . && git commit --signoff -m \"first commit\"

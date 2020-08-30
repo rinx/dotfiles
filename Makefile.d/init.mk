@@ -12,16 +12,8 @@ vim-init:
 neovim-init:
 	@$(call red, "neovim-init")
 	@$(call blue, "--\> initialize dein for NeoVim")
-	nvim --headless +'call dein#install()' +qa
-	nvim --headless +'call dein#remote_plugins()' +qa
-	nvim --headless +'e main.go' +':GoInstallBinaries' +qa
-
-.PHONY: lightvim-init
-lightvim-init:
-	@$(call red, "lightvim-init")
-	@$(call blue, "--\> initialize plug for NeoVim - light.vimrc")
-	nvim -u ~/.dotfiles/light.vimrc --headless +'PlugInstall --sync' +qa
-	nvim -u ~/.dotfiles/light.vimrc --headless +'UpdateRemotePlugins' +qa
+	nvim --headless +'PlugInstall --sync' +qa
+	nvim --headless +'UpdateRemotePlugins' +qa
 
 .PHONY: tmux-init
 tmux-init:

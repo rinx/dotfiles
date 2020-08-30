@@ -278,7 +278,7 @@ ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
 ENV JAVA_HOME ${GRAALVM_HOME}
 
-ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/lightvim/plugged/vim-iced/bin
+ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/nvim/plugged/vim-iced/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
@@ -343,10 +343,9 @@ COPY dotvim               $DOTFILES/dotvim
 COPY gitattributes_global $DOTFILES/gitattributes_global
 COPY gitconfig            $DOTFILES/gitconfig
 COPY gitignore            $DOTFILES/gitignore
-COPY light.vimrc          $DOTFILES/light.vimrc
+COPY init.vim             $DOTFILES/init.vim
 COPY Makefile             $DOTFILES/Makefile
 COPY Makefile.d           $DOTFILES/Makefile.d
-COPY nvimrc               $DOTFILES/nvimrc
 COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
@@ -368,7 +367,7 @@ RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
 RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}' -Spath)
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
-RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make lightvim-init && make tmux-init"]
+RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
 # download dependencies
 RUN ["/bin/zsh", "-c", "lein"]
