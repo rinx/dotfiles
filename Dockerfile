@@ -15,7 +15,7 @@ ARG KUSTOMIZE_VERSION=v3.8.1
 ARG PROTOBUF_VERSION=3.12.4
 ARG KOTLIN_LS_VERSION=0.7.0
 
-ARG BABASHKA_VERSION=0.1.3
+ARG BABASHKA_VERSION=0.2.0
 ARG JET_VERSION=0.0.12
 ARG CLJ_KONDO_VERSION=2020.07.26
 
@@ -268,6 +268,9 @@ RUN cd /tmp \
     && chmod a+x clj-kondo \
     && upx --lzma --best clj-kondo \
     && mv clj-kondo /usr/local/bin/
+
+RUN curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash \
+    && upx --lzma --best /usr/local/bin/k3d
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
