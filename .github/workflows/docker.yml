@@ -74,7 +74,8 @@ jobs:
             --cache-from=type=local,src=/tmp/.buildx-cache \
             --cache-to=type=local,mode=max,dest=/tmp/.buildx-cache \
             ${EXTRA_OPTS} \
-            --push
+            --push \
+            .
         env:
           DOCKER_BUILDKIT: 1
           PLATFORMS: linux/amd64
@@ -139,7 +140,8 @@ jobs:
             --cache-to=type=local,mode=max,dest=/tmp/.buildx-cache \
             --build-arg GRAALVM_JAVA_VERSION=java8 \
             ${EXTRA_OPTS} \
-            --push
+            --push \
+            .
         env:
           DOCKER_BUILDKIT: 1
           PLATFORMS: linux/amd64
