@@ -465,11 +465,11 @@ devstarter() {
 }
 
 devstart-stable() {
-    devstarter rinx/devenv:stable $@
+    devstarter ghcr.io/rinx/devenv:stable $@
 }
 
 devstart() {
-    devstarter rinx/devenv:nightly $@
+    devstarter ghcr.io/rinx/devenv:nightly $@
 }
 
 alias devattach="docker exec -it $container_name /bin/zsh"
