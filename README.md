@@ -25,7 +25,7 @@ alias devstart='docker run \
     -v $HOME/local:/root/local \
     -v $HOME/works:/root/works \
     -v $HOME/Downloads:/root/Downloads \
-    -dit rinx/devenv:stable'
+    -dit ghcr.io/rinx/devenv:stable'
 alias devattach='docker exec -it rinx-devenv /bin/zsh'
 alias devstop='docker stop rinx-devenv && docker rm rinx-devenv'
 ```
