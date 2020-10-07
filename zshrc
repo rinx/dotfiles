@@ -1,6 +1,5 @@
 # ----------------------------------------
 # Author: Rintaro Okamura
-# URL:    http://rinx.biz
 # Source: https://github.com/rinx/dotfiles
 # ----------------------------------------
 

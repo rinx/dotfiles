@@ -6,7 +6,6 @@ prepare-deploy:
 vim-deploy: \
     vimrc \
     vimrc-private \
-    vimshrc \
     vim-ftplugins \
     vim-ftdetects \
     vim-snippets \
@@ -26,12 +25,6 @@ vimrc-private: $(HOME)/.vimrc_private
 $(HOME)/.vimrc_private:
 	@$(call cyan, "--\> .vimrc_private")
 	touch $(HOME)/.vimrc_private
-
-.PHONY: vimshrc
-vimshrc: $(HOME)/.vimshrc
-$(HOME)/.vimshrc:
-	@$(call cyan, "--\> .vimshrc")
-	ln -s $(DOTDIR)/vimshrc $(HOME)/.vimshrc
 
 .PHONY: dein-vim
 dein-vim: $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim
@@ -130,9 +123,7 @@ $(HOME)/.zshrc:
 
 .PHONY: others-deploy
 others-deploy: \
-    latexmkrc \
     Xdefaults \
-    xmonad.hs \
     sway-config \
     i3status-config \
     lein-profile \
@@ -140,28 +131,15 @@ others-deploy: \
     hyper
 	@$(call red, "others-deploy")
 
-.PHONY: latexmkrc
-latexmkrc: $(HOME)/.latexmkrc
-$(HOME)/.latexmkrc:
-	@$(call cyan, "--\> latexmkrc")
-	ln -s $(DOTDIR)/latexmkrc $(HOME)/.latexmkrc
-
 .PHONY: Xdefaults
 Xdefaults: $(HOME)/.Xdefaults
 $(HOME)/.Xdefaults:
 	@$(call cyan, "--\> Xdefaults")
 	ln -s $(DOTDIR)/Xdefaults $(HOME)/.Xdefaults
 
-.PHONY: xmonad.hs
-xmonad.hs: $(HOME)/.xmonad/xmonad.hs
-$(HOME)/.xmonad/xmonad.hs:
-	mkdir -p $(HOME)/.xmonad
-	ln -s $(DOTDIR)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
-
 .PHONY: sway-config
 sway-config: \
-    $(HOME)/.config/sway/config # \
-    # wallpapers
+    $(HOME)/.config/sway/config
 $(HOME)/.config/sway/config:
 	mkdir -p $(HOME)/.config/sway
 	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
