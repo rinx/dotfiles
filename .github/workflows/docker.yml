@@ -68,7 +68,7 @@ jobs:
         run: |
           docker buildx build \
             --builder ${BUILDER} \
-            --platforms ${PLATFORMS} \
+            --platform ${PLATFORMS} \
             --tag rinx/devenv:${PRIMARY_TAG} \
             --tag ghcr.io/rinx/devenv:${PRIMARY_TAG} \
             --cache-from=type=local,src=/tmp/.buildx-cache \
@@ -132,7 +132,7 @@ jobs:
         run: |
           docker buildx build \
             --builder ${BUILDER} \
-            --platforms ${PLATFORMS} \
+            --platform ${PLATFORMS} \
             --tag rinx/devenv:${PRIMARY_TAG} \
             --tag ghcr.io/rinx/devenv:${PRIMARY_TAG} \
             --cache-from=type=local,src=/tmp/.buildx-cache \
