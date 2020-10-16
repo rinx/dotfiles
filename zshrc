@@ -212,6 +212,11 @@ if builtin command -v rg > /dev/null 2>&1 ; then
     export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 fi
 
+if builtin command -v bat > /dev/null 2>&1 ; then
+    alias bat='bat --paging=never'
+    alias batp='bat --paging=auto'
+fi
+
 if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --height 40% --reverse --cycle --border"
     if [ ! -z $TMUX ]; then
