@@ -145,17 +145,17 @@ RUN apk update \
     upx
 
 COPY --from=docker /out /out/docker
-RUN upx --lzma --best /out/docker/*
+RUN upx -9 /out/docker/*
 
 COPY --from=rust /home/rust/out /out/rust
-RUN upx --lzma --best /out/rust/*
+RUN upx -9 /out/rust/*
 
 COPY --from=go /out /out/go
-RUN upx --lzma --best /out/go/usr/local/go/bin/*
-RUN upx --lzma --best /out/go/go/bin/*
+RUN upx --9 /out/go/usr/local/go/bin/*
+RUN upx --9 /out/go/go/bin/*
 
 COPY --from=kube /out/packer /out/kube
-RUN upx --lzma --best /out/kube/*
+RUN upx --9 /out/kube/*
 
 FROM ubuntu:devel AS base
 
@@ -229,14 +229,14 @@ RUN cd /tmp \
     && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
     && chmod -R a+rwx ${GRAALVM_HOME} \
     && rm -rf graalvm.tar.gz \
-    && upx --lzma --best $(find /usr/lib/graalvm -name js -type f -executable | head -1) \
-    && upx --lzma --best $(find /usr/lib/graalvm -name node -type f -executable | head -1) \
-    && upx --lzma --best $(find /usr/lib/graalvm -name lli -type f -executable | head -1)
+    && upx -9 $(find /usr/lib/graalvm -name js -type f -executable | head -1) \
+    && upx -9 $(find /usr/lib/graalvm -name node -type f -executable | head -1) \
+    && upx -9 $(find /usr/lib/graalvm -name lli -type f -executable | head -1)
 
 RUN cd /tmp \
     && curl -OL "https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
     && unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3 \
-    && upx --lzma --best protoc3/bin/* \
+    && upx -9 protoc3/bin/* \
     && mv protoc3/bin/* /usr/local/bin/ \
     && mv protoc3/include/* /usr/local/include/ \
     && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
@@ -253,7 +253,7 @@ RUN cd /tmp \
     && unzip babashka.zip \
     && rm -f babashka.zip \
     && chmod a+x bb \
-    && upx --lzma --best bb \
+    && upx -9 bb \
     && mv bb /usr/local/bin/
 
 RUN cd /tmp \
@@ -261,7 +261,7 @@ RUN cd /tmp \
     && unzip jet.zip \
     && rm -f jet.zip \
     && chmod a+x jet \
-    && upx --lzma --best jet \
+    && upx -9 jet \
     && mv jet /usr/local/bin/
 
 RUN cd /tmp \
@@ -269,11 +269,11 @@ RUN cd /tmp \
     && unzip clj-kondo.zip \
     && rm -f clj-kondo.zip \
     && chmod a+x clj-kondo \
-    && upx --lzma --best clj-kondo \
+    && upx -9 clj-kondo \
     && mv clj-kondo /usr/local/bin/
 
 RUN curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash \
-    && upx --lzma --best /usr/local/bin/k3d
+    && upx -9 /usr/local/bin/k3d
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
