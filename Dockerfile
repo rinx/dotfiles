@@ -4,9 +4,7 @@ ARG GRAALVM_JAVA_VERSION=java11
 ARG RIPGREP_VERSION=12.1.1
 ARG BAT_VERSION=v0.15.4
 ARG FD_VERSION=v8.1.1
-ARG SD_VERSION=v0.7.6
 
-ARG KIND_VERSION=v0.8.1
 ARG STERN_VERSION=1.11.0
 ARG K9S_VERSION=v0.22.1
 ARG HELMFILE_VERSION=v0.125.0
@@ -36,31 +34,39 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
-FROM ekidd/rust-musl-builder:latest AS rust
+FROM rust:alpine AS rust
 ARG RIPGREP_VERSION
 ARG BAT_VERSION
 ARG FD_VERSION
-ARG SD_VERSION
+
+RUN apk update \
+    && apk upgrade \
+    && apk --update-cache add --no-cache \
+    curl \
+    gcc \
+    musl-dev
 
 RUN cargo install exa
 RUN curl -o ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
     && tar xzvf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && cp ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg /home/rust/.cargo/bin/rg
+    && cp ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg /usr/local/cargo/bin/rg
 RUN curl -o bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/bat/releases/download/${BAT_VERSION}/bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
     && tar xzvf bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && cp bat-${BAT_VERSION}-x86_64-unknown-linux-musl/bat /home/rust/.cargo/bin/bat
+    && cp bat-${BAT_VERSION}-x86_64-unknown-linux-musl/bat /usr/local/cargo/bin/bat
 RUN curl -o fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
     && tar xzvf fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && cp fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /home/rust/.cargo/bin/fd
-RUN curl -o /home/rust/.cargo/bin/sd https://github.com/chmln/sd/releases/download/${SD_VERSION}/sd-${SD_VERSION}-x86_64-unknown-linux-musl \
-    && chmod a+x /home/rust/.cargo/bin/sd
+    && cp fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /usr/local/cargo/bin/fd
 
 RUN mkdir -p /home/rust/out
 
-RUN cp /home/rust/.cargo/bin/bat /home/rust/out
-RUN cp /home/rust/.cargo/bin/exa /home/rust/out
-RUN cp /home/rust/.cargo/bin/fd  /home/rust/out
-RUN cp /home/rust/.cargo/bin/rg  /home/rust/out
+RUN cp /usr/local/cargo/bin/cargo  /home/rust/out
+RUN cp /usr/local/cargo/bin/rustc  /home/rust/out
+RUN cp /usr/local/cargo/bin/rustup /home/rust/out
+
+RUN cp /usr/local/cargo/bin/bat /home/rust/out
+RUN cp /usr/local/cargo/bin/exa /home/rust/out
+RUN cp /usr/local/cargo/bin/fd  /home/rust/out
+RUN cp /usr/local/cargo/bin/rg  /home/rust/out
 
 FROM golang:alpine AS go
 
@@ -94,7 +100,6 @@ RUN cp -r /usr/local/go/bin /out/usr/local/go/bin
 RUN cp -r /go/bin /out/go/bin
 
 FROM alpine:edge AS kube
-ARG KIND_VERSION
 ARG STERN_VERSION
 ARG K9S_VERSION
 ARG HELMFILE_VERSION
@@ -116,8 +121,6 @@ RUN mkdir -p /out/packer \
     && chmod a+x /out/kube/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm \
-    && curl -L https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERSION}/kind-$(uname)-amd64 -o /out/packer/kind \
-    && chmod a+x /out/packer/kind \
     && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
     && mv /opt/kubectx/kubens /out/kube/kubens \
@@ -311,11 +314,14 @@ COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
 COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
+COPY --from=packer /out/rust/cargo  /usr/local/bin/cargo
+COPY --from=packer /out/rust/rustc  /usr/local/bin/rustc
+COPY --from=packer /out/rust/rustup /usr/local/bin/rustup
+
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
 COPY --from=packer /out/rust/fd  /usr/local/bin/fd
 COPY --from=packer /out/rust/rg  /usr/local/bin/rg
-COPY --from=rust /home/rust/.cargo/bin/sd /usr/local/bin/sd
 
 COPY --from=go /usr/local/go/src  $GOROOT/src
 COPY --from=go /usr/local/go/lib  $GOROOT/lib
@@ -330,7 +336,6 @@ COPY --from=kube /out/kube/kubens  /usr/local/bin/kubens
 COPY --from=kube /out/kube/kubectl /usr/local/bin/kubectl
 
 COPY --from=packer /out/kube/helm      /usr/local/bin/helm
-COPY --from=packer /out/kube/kind      /usr/local/bin/kind
 COPY --from=packer /out/kube/stern     /usr/local/bin/stern
 COPY --from=packer /out/kube/linkerd   /usr/local/bin/linkerd
 COPY --from=packer /out/kube/k9s       /usr/local/bin/k9s
