@@ -679,6 +679,7 @@ function! s:init_sticky_shift_hook_autocmd() abort
                 \ 'idlang',
                 \ 'javascript',
                 \ 'clojure',
+                \ 'rust',
                 \]
 
     if index(s:sticky_shift_except_for_filetype, &ft) < 0
