@@ -117,8 +117,8 @@ RUN apk update \
 
 RUN mkdir -p /out/packer \
     && mkdir -p /out/kube \
-    && curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /out/kube/kubectl \
-    && chmod a+x /out/kube/kubectl \
+    && curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /out/packer/kubectl \
+    && chmod a+x /out/packer/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm \
     && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
@@ -333,8 +333,8 @@ COPY --from=packer /out/go/go/bin           $GOROOT/bin
 
 COPY --from=kube /out/kube/kubectx /usr/local/bin/kubectx
 COPY --from=kube /out/kube/kubens  /usr/local/bin/kubens
-COPY --from=kube /out/kube/kubectl /usr/local/bin/kubectl
 
+COPY --from=packer /out/kube/kubectl   /usr/local/bin/kubectl
 COPY --from=packer /out/kube/helm      /usr/local/bin/helm
 COPY --from=packer /out/kube/stern     /usr/local/bin/stern
 COPY --from=packer /out/kube/linkerd   /usr/local/bin/linkerd
