@@ -151,11 +151,11 @@ COPY --from=rust /home/rust/out /out/rust
 RUN upx -9 /out/rust/*
 
 COPY --from=go /out /out/go
-RUN upx --9 /out/go/usr/local/go/bin/*
-RUN upx --9 /out/go/go/bin/*
+RUN upx -9 /out/go/usr/local/go/bin/*
+RUN upx -9 /out/go/go/bin/*
 
 COPY --from=kube /out/packer /out/kube
-RUN upx --9 /out/kube/*
+RUN upx -9 /out/kube/*
 
 FROM ubuntu:devel AS base
 
