@@ -34,7 +34,9 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
-FROM rust:alpine AS rust
+FROM rust:slim AS rust
+
+FROM rust:alpine AS rust-musl
 ARG RIPGREP_VERSION
 ARG BAT_VERSION
 ARG FD_VERSION
@@ -58,10 +60,6 @@ RUN curl -o fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.
     && cp fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /usr/local/cargo/bin/fd
 
 RUN mkdir -p /home/rust/out
-
-RUN cp /usr/local/cargo/bin/cargo  /home/rust/out
-RUN cp /usr/local/cargo/bin/rustc  /home/rust/out
-RUN cp /usr/local/cargo/bin/rustup /home/rust/out
 
 RUN cp /usr/local/cargo/bin/bat /home/rust/out
 RUN cp /usr/local/cargo/bin/exa /home/rust/out
@@ -147,7 +145,7 @@ RUN apk update \
 COPY --from=docker /out /out/docker
 RUN upx -9 /out/docker/*
 
-COPY --from=rust /home/rust/out /out/rust
+COPY --from=rust-musl /home/rust/out /out/rust
 RUN upx -9 /out/rust/*
 
 COPY --from=go /out /out/go
@@ -283,8 +281,10 @@ ENV SHELL /bin/zsh
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
 ENV JAVA_HOME ${GRAALVM_HOME}
+ENV RUSTUP_HOME /usr/local/rustup
+ENV CARGO_HOME /usr/local/cargo
 
-ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:$HOME/.config/nvim/plugged/vim-iced/bin
+ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:$CARGO_HOME/bin:/usr/local/bin:$HOME/.config/nvim/plugged/vim-iced/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
@@ -314,9 +314,8 @@ COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
 COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
-COPY --from=packer /out/rust/cargo  /usr/local/bin/cargo
-COPY --from=packer /out/rust/rustc  /usr/local/bin/rustc
-COPY --from=packer /out/rust/rustup /usr/local/bin/rustup
+COPY --from=rust /usr/local/cargo  $CARGO_HOME
+COPY --from=rust /usr/local/rustup $RUSTUP_HOME
 
 COPY --from=packer /out/rust/bat /usr/local/bin/bat
 COPY --from=packer /out/rust/exa /usr/local/bin/exa
