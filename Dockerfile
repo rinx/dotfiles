@@ -366,7 +366,6 @@ COPY --from=packer /out/kube/helmfile  /usr/local/bin/helmfile
 COPY --from=packer /out/kube/kustomize /usr/local/bin/kustomize
 
 COPY --from=neovim /usr/local/bin/nvim     /usr/local/bin/nvim
-COPY --from=neovim /usr/local/lib64/nvim   /usr/local/lib64/nvim
 COPY --from=neovim /usr/local/share/locale /usr/local/share/locale
 COPY --from=neovim /usr/local/share/nvim   /usr/local/share/nvim
 
