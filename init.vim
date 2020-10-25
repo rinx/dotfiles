@@ -95,6 +95,9 @@ Plug 'udalov/kotlin-vim', { 'for': ['kotlin'] }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'romgrk/nvim-treesitter-context'
+
 call plug#end()
 
 set viminfo='1000,<100,f1,h,s100
@@ -642,6 +645,30 @@ augroup vimrc-yaml
     autocmd!
     autocmd FileType yaml setlocal shiftwidth=2
 augroup END
+
+"treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    'bash',
+    'c',
+    'cpp',
+    'fennel',
+    'go',
+    'java',
+    'javascript',
+    'json',
+    'lua',
+    'python',
+    'rust',
+    'typescript',
+  },
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+}
+EOF
 
 " sticky shift
 " http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html

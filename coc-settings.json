@@ -53,8 +53,8 @@
     "completeUnimported": true,
     "completionDocumentation": false,
     "deepCompletion": false,
-    "fuzzyMatching": true,
     "hoverKind": "FullDocumentation",
+    "matcher": "Fuzzy",
     "staticcheck": false,
     "usePlaceholders": true
   },

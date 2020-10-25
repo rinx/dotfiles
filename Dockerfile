@@ -97,7 +97,7 @@ RUN mkdir -p /out/go
 RUN cp -r /usr/local/go/bin /out/usr/local/go/bin
 RUN cp -r /go/bin /out/go/bin
 
-FROM alpine:edge AS kube
+FROM alpine:latest AS kube
 ARG STERN_VERSION
 ARG K9S_VERSION
 ARG HELMFILE_VERSION
@@ -135,7 +135,32 @@ RUN mkdir -p /out/packer \
     && tar xzvf kustomize.tar.gz \
     && mv kustomize /out/packer/kustomize
 
-FROM alpine:edge AS packer
+FROM ubuntu:devel AS neovim
+
+RUN apt-get update \
+    && apt-get install -y \
+    autoconf \
+    automake \
+    cmake \
+    g++ \
+    gettext \
+    git \
+    libtool \
+    libtool-bin \
+    ninja-build \
+    pkg-config \
+    unzip \
+    upx \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN cd /tmp \
+    && git clone --depth 1 https://github.com/neovim/neovim \
+    && cd /tmp/neovim \
+    && make CMAKE_BUILD_TYPE=RelWithDebInfo \
+    && make install \
+    && upx -9 /usr/local/bin/nvim
+
+FROM alpine:latest AS packer
 
 RUN apk update \
     && apk upgrade \
@@ -187,7 +212,6 @@ RUN apt-get update \
     locales \
     make \
     musl-dev \
-    neovim \
     nodejs \
     npm \
     openssh-client \
@@ -340,6 +364,11 @@ COPY --from=packer /out/kube/linkerd   /usr/local/bin/linkerd
 COPY --from=packer /out/kube/k9s       /usr/local/bin/k9s
 COPY --from=packer /out/kube/helmfile  /usr/local/bin/helmfile
 COPY --from=packer /out/kube/kustomize /usr/local/bin/kustomize
+
+COPY --from=neovim /usr/local/bin/nvim     /usr/local/bin/nvim
+COPY --from=neovim /usr/local/lib64/nvim   /usr/local/lib64/nvim
+COPY --from=neovim /usr/local/share/locale /usr/local/share/locale
+COPY --from=neovim /usr/local/share/nvim   /usr/local/share/nvim
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
