@@ -408,6 +408,7 @@ let g:coc_global_extensions = [
             \ 'coc-java',
             \ 'coc-json',
             \ 'coc-lists',
+            \ 'coc-lua',
             \ 'coc-omni',
             \ 'coc-rls',
             \ 'coc-pairs',

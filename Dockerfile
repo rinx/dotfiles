@@ -124,8 +124,6 @@ RUN mkdir -p /out/packer \
     && mv /opt/kubectx/kubens /out/kube/kubens \
     && curl -L https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64 -o /out/packer/stern \
     && chmod a+x /out/packer/stern \
-    && curl -sL https://run.linkerd.io/install | sh \
-    && mv /root/.linkerd2/bin/linkerd-* /out/packer/linkerd \
     && curl -L https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_x86_64.tar.gz -o k9s.tar.gz \
     && tar xzvf k9s.tar.gz \
     && mv k9s /out/packer/k9s \
@@ -210,6 +208,7 @@ RUN apt-get update \
     jq \
     less \
     locales \
+    luarocks \
     make \
     musl-dev \
     nodejs \
@@ -360,7 +359,6 @@ COPY --from=kube /out/kube/kubens  /usr/local/bin/kubens
 COPY --from=packer /out/kube/kubectl   /usr/local/bin/kubectl
 COPY --from=packer /out/kube/helm      /usr/local/bin/helm
 COPY --from=packer /out/kube/stern     /usr/local/bin/stern
-COPY --from=packer /out/kube/linkerd   /usr/local/bin/linkerd
 COPY --from=packer /out/kube/k9s       /usr/local/bin/k9s
 COPY --from=packer /out/kube/helmfile  /usr/local/bin/helmfile
 COPY --from=packer /out/kube/kustomize /usr/local/bin/kustomize
