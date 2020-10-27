@@ -1,8 +1,3 @@
-# ----------------------------------------
-# Author: Rintaro Okamura
-# Source: https://github.com/rinx/dotfiles
-# ----------------------------------------
-
 OS=$(uname -s)
 
 autoload -U compinit

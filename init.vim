@@ -1,8 +1,3 @@
-" ----------------------------------------
-" Author: Rintaro Okamura
-" Source: https://github.com/rinx/dotfiles
-" ----------------------------------------
-
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,sjis
