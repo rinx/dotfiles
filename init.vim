@@ -439,13 +439,6 @@ nnoremap <silent> [coc-list]w  :<C-u>CocList --interactive words<CR>
 nnoremap <silent> [coc-list]/  :<C-u>CocList --interactive words<CR>
 nnoremap <silent> [coc-list]y  :<C-u>CocList -A yank<CR>
 
-augroup vimrc-coc
-    autocmd!
-    autocmd CursorHold * silent! call CocActionAsync('highlight')
-augroup END
-
-highlight CocHighlightText guibg=#111111 ctermbg=23
-
 "fzf.vim
 nnoremap [fzf] <Nop>
 nmap ,u [fzf]
