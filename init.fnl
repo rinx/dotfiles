@@ -5,18 +5,18 @@
 
 ;; treesitter
 (ts-cfg.setup
- {:ensure_installed [:bash
-                     :c
-                     :cpp
-                     :fennel
-                     :go
-                     :java
-                     :javascript
-                     :json
-                     :lua
-                     :python
-                     :rust
-                     :toml
-                     :typescript]
-  :highlight {:enable true
-              :disable []}})
+  {:ensure_installed [:bash
+                      :c
+                      :cpp
+                      :fennel
+                      :go
+                      :java
+                      :javascript
+                      :json
+                      :lua
+                      :python
+                      :rust
+                      :toml
+                      :typescript]
+   :highlight {:enable true
+               :disable []}})

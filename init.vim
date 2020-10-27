@@ -86,6 +86,7 @@ Plug 'udalov/kotlin-vim', { 'for': ['kotlin'] }
 
 Plug 'Olical/aniseed'
 Plug 'Olical/conjure', { 'for': ['fennel'] }
+Plug 'bakpakin/fennel.vim', { 'for': ['fennel'] }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 
