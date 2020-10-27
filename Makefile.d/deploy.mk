@@ -4,8 +4,6 @@ prepare-deploy:
 
 .PHONY: vim-deploy
 vim-deploy: \
-    vimrc \
-    vimrc-private \
     vim-ftplugins \
     vim-ftdetects \
     vim-snippets \
@@ -13,18 +11,6 @@ vim-deploy: \
     dein-vim \
     skk-jisyo-large
 	@$(call red, "vim-deploy has been done")
-
-.PHONY: vimrc
-vimrc: $(HOME)/.vimrc
-$(HOME)/.vimrc:
-	@$(call cyan, "--\> .vimrc")
-	ln -s $(DOTDIR)/vimrc $(HOME)/.vimrc
-
-.PHONY: vimrc-private
-vimrc-private: $(HOME)/.vimrc_private
-$(HOME)/.vimrc_private:
-	@$(call cyan, "--\> .vimrc_private")
-	touch $(HOME)/.vimrc_private
 
 .PHONY: dein-vim
 dein-vim: $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim
@@ -36,6 +22,7 @@ $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 .PHONY: neovim-deploy
 neovim-deploy: \
     init.vim \
+    init.fnl \
     coc-settings.json \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
@@ -46,6 +33,13 @@ $(HOME)/.config/nvim/init.vim:
 	@$(call cyan, "--\> init.vim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/init.vim $(HOME)/.config/nvim/init.vim
+
+.PHONY: init.fnl
+init.fnl: $(HOME)/.config/nvim/fnl/init.fnl
+$(HOME)/.config/nvim/fnl/init.fnl:
+	@$(call cyan, "--\> init.fnl")
+	mkdir -p $(HOME)/.config/nvim/fnl
+	ln -s $(DOTDIR)/init.fnl $(HOME)/.config/nvim/fnl/init.fnl
 
 .PHONY: coc-settings.json
 coc-settings.json: $(HOME)/.config/nvim/coc-settings.json

@@ -382,7 +382,6 @@ COPY Makefile.d           $DOTFILES/Makefile.d
 COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
-COPY vimrc                $DOTFILES/vimrc
 COPY zshrc                $DOTFILES/zshrc
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \

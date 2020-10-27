@@ -7,15 +7,6 @@ set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,sjis
 
-let g:vimrc_private = {}
-let s:vimrc_private_filename = '~/.vimrc_private'
-if filereadable(expand(s:vimrc_private_filename))
-    execute 'source' expand(s:vimrc_private_filename)
-else
-    call system('touch ' . expand(s:vimrc_private_filename))
-endif
-unlet s:vimrc_private_filename
-
 if executable('python2')
     let g:python_host_prog = substitute(system('which python2'),"\n","","")
 endif
@@ -92,6 +83,9 @@ Plug 'liquidz/vim-iced-coc-source', { 'for': ['clojure'] }
 
 Plug 'hylang/vim-hy', { 'for': ['hy'] }
 Plug 'udalov/kotlin-vim', { 'for': ['kotlin'] }
+
+Plug 'Olical/aniseed'
+Plug 'Olical/conjure', { 'for': ['fennel'] }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 
@@ -615,6 +609,14 @@ let g:iced_enable_default_key_mappings = v:true
 let g:hy_enable_conceal = 0
 let g:hy_conceal_fancy = 0
 
+"fennel
+let g:conjure#client#fennel#aniseed#aniseed_module_prefix = "aniseed."
+
+augroup vimrc-fennel
+    autocmd!
+    autocmd FileType fennel setlocal shiftwidth=2
+augroup END
+
 "go
 augroup vimrc-golang
     autocmd!
@@ -645,83 +647,6 @@ augroup END
 augroup vimrc-yaml
     autocmd!
     autocmd FileType yaml setlocal shiftwidth=2
-augroup END
-
-"treesitter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    'bash',
-    'c',
-    'cpp',
-    'fennel',
-    'go',
-    'java',
-    'javascript',
-    'json',
-    'lua',
-    'python',
-    'rust',
-    'typescript',
-  },
-  highlight = {
-    enable = true,
-    disable = {},
-  },
-}
-EOF
-
-" sticky shift
-" http://vim-jp.org/vim-users-jp/2009/08/09/Hack-54.html
-
-function! s:sticky_func()
-    let l:sticky_table = {
-                \',' : '<', '.' : '>', '/' : '?',
-                \'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%',
-                \'6' : '^', '7' : '&', '8' : '*', '9' : '(', '0' : ')', '-' : '_', '=' : '+',
-                \';' : ':', '[' : '{', ']' : '}', '`' : '~', "'" : "\"", '\' : '|',
-                \}
-    let l:special_table = {
-                \"\<ESC>" : "\<ESC>", "\<Space>" : ';', "\<CR>" : ";\<CR>"
-                \}
-
-    let l:key = getchar()
-    if nr2char(l:key) =~ '\l'
-        return toupper(nr2char(l:key))
-    elseif has_key(l:sticky_table, nr2char(l:key))
-        return l:sticky_table[nr2char(l:key)]
-    elseif has_key(l:special_table, nr2char(l:key))
-        return l:special_table[nr2char(l:key)]
-    else
-        return ''
-    endif
-endfunction
-
-cnoremap <expr> ; <SID>sticky_func()
-
-function! s:init_sticky_shift_hook_autocmd() abort
-    let s:sticky_shift_except_for_filetype = [
-                \ 'c',
-                \ 'cpp',
-                \ 'java',
-                \ 'idlang',
-                \ 'javascript',
-                \ 'clojure',
-                \ 'rust',
-                \]
-
-    if index(s:sticky_shift_except_for_filetype, &ft) < 0
-        inoremap <buffer><expr> ; <SID>sticky_func()
-        snoremap <buffer><expr> ; <SID>sticky_func()
-    else
-        inoremap <buffer> ; ;
-        snoremap <buffer> ; ;
-    endif
-endfunction
-
-augroup vimrc-sticky-shift
-    autocmd!
-    autocmd FileType * call s:init_sticky_shift_hook_autocmd()
 augroup END
 
 " QuickFix window
@@ -865,45 +790,6 @@ function! MyIced()
     return ''
 endfunction
 
-augroup vimrc-auto-mkdir
-    autocmd!
-    autocmd BufWritePre * call <SID>auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
-    function! s:auto_mkdir(dir, force)
-        if match(a:dir, '\(scp://\|http://\|https://\)') == -1
-            if !isdirectory(a:dir) && (a:force ||
-                        \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-                call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-            endif
-        endif
-    endfunction
-augroup END
-
-augroup vimrc-session-vim-auto-load
-    autocmd!
-    autocmd VimEnter * nested call <SID>load_session_vim(expand('<afile>:p:h'))
-augroup END
-
-function! s:load_session_vim(loc)
-    let files = findfile('Session.vim', escape(a:loc, ' ') . ';', -1)
-    if !argc()
-        for i in reverse(filter(files, 'filereadable(v:val)'))
-            if input(printf('Session.vim exists in "%s". Load it? [y/N]', i)) =~? '^y\%[es]$'
-                source `=i`
-            endif
-        endfor
-    endif
-endfunction
-
-augroup vimrc-local
-    autocmd!
-    autocmd BufNewFile,BufReadPost * call <SID>vimrc_local(expand('<afile>:p:h'))
-augroup END
-
-function! s:vimrc_local(loc)
-    let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
-    for i in reverse(filter(files, 'filereadable(v:val)'))
-        source `=i`
-    endfor
-endfunction
-
 highlight Normal ctermbg=none guibg=none
+
+lua require('aniseed.env').init()

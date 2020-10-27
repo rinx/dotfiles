@@ -28,7 +28,9 @@ vim-ftdetects: \
     $(HOME)/.vim/ftdetect/markdown.vim \
     $(HOME)/.config/nvim/ftdetect/markdown.vim \
     $(HOME)/.vim/ftdetect/hy.vim \
-    $(HOME)/.config/nvim/ftdetect/hy.vim
+    $(HOME)/.config/nvim/ftdetect/hy.vim \
+    $(HOME)/.vim/ftdetect/fennel.vim \
+    $(HOME)/.config/nvim/ftdetect/fennel.vim
 
 .PHONY: vim-snippets
 vim-snippets: \
@@ -143,6 +145,14 @@ $(HOME)/.vim/ftdetect/hy.vim:
 $(HOME)/.config/nvim/ftdetect/hy.vim:
 	mkdir -p $(HOME)/.config/nvim/ftdetect
 	ln -s $(DOTDIR)/dotvim/ftdetect/hy.vim $(HOME)/.config/nvim/ftdetect/hy.vim
+
+$(HOME)/.vim/ftdetect/fennel.vim:
+	mkdir -p $(HOME)/.vim/ftdetect
+	ln -s $(DOTDIR)/dotvim/ftdetect/fennel.vim $(HOME)/.vim/ftdetect/fennel.vim
+
+$(HOME)/.config/nvim/ftdetect/fennel.vim:
+	mkdir -p $(HOME)/.config/nvim/ftdetect
+	ln -s $(DOTDIR)/dotvim/ftdetect/fennel.vim $(HOME)/.config/nvim/ftdetect/fennel.vim
 
 $(HOME)/.vim/my-snippets:
 	mkdir -p $(HOME)/.vim
