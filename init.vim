@@ -306,35 +306,6 @@ nnoremap <silent> <Leader>r :setl relativenumber!<CR>
 " toggle spell check
 nnoremap <silent> <Leader>s :setl spell!<CR>
 
-" close special windows from another window
-nnoremap <silent> <Leader>q :<C-u>call <SID>close_special_windows()<CR>
-
-function! s:close_window(winnr)
-    if winbufnr(a:winnr) !=# -1
-        execute a:winnr . 'wincmd w'
-        execute 'wincmd c'
-        return 1
-    else
-        return 0
-    endif
-endfunction
-
-function! s:close_special_windows()
-    let target_ft = [
-                \ 'qf',
-                \ 'help',
-                \ 'fzf',
-                \ ]
-    let i = 1
-    while i <= winnr('$')
-        let bufnr = winbufnr(i)
-        if index(target_ft, getbufvar(bufnr, '&filetype')) >= 0
-            call s:close_window(i)
-        endif
-        let i = i + 1
-    endwhile
-endfunction
-
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
@@ -598,6 +569,7 @@ vmap ib <Plug>(textobj-multiblock-i)
 "sexp
 let g:sexp_enable_insert_mode_mappings = 0
 let g:sexp_insert_after_wrap = 0
+let g:sexp_filetypes = 'clojure.scheme,lisp,fennel'
 nmap <silent><buffer> >( <Plug>(sexp_emit_head_element)
 nmap <silent><buffer> <) <Plug>(sexp_emit_tail_element)
 nmap <silent><buffer> <( <Plug>(sexp_capture_prev_element)
