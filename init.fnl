@@ -8,24 +8,6 @@
 (defn- bridge [from to]
   (util.fn-bridge from :init to {:return true}))
 
-;; treesitter
-(ts-cfg.setup
-  {:ensure_installed [:bash
-                      :c
-                      :cpp
-                      :fennel
-                      :go
-                      :java
-                      :javascript
-                      :json
-                      :lua
-                      :python
-                      :rust
-                      :toml
-                      :typescript]
-   :highlight {:enable true
-               :disable []}})
-
 (local icon-table {:lock ""
                    :plus ""
                    :minus ""
@@ -53,6 +35,24 @@
                    :pix-r ""})
 (defn get-icon [name]
   (. icon-table name))
+
+;; treesitter
+(ts-cfg.setup
+  {:ensure_installed [:bash
+                      :c
+                      :cpp
+                      :fennel
+                      :go
+                      :java
+                      :javascript
+                      :json
+                      :lua
+                      :python
+                      :rust
+                      :toml
+                      :typescript]
+   :highlight {:enable true
+               :disable []}})
 
 ;; lightline
 (defn lightline-filename []
