@@ -33,8 +33,6 @@
                    :utri-r ""
                    :pix-l ""
                    :pix-r ""})
-(defn get-icon [name]
-  (. icon-table name))
 
 ;; treesitter
 (ts-cfg.setup
@@ -62,32 +60,32 @@
                    filename)
         extension (nvim.fn.expand "%:e")
         icon (match nvim.bo.ft
-               :help (get-icon :lock)
-               :qf (get-icon :lock)
+               :help icon-table.lock
+               :qf icon-table.lock
                _ (if nvim.bo.ro
-                   (get-icon :lock)
+                   icon-table.lock
                    (icon.get_icon filename extension {:default true})))
         modified (match nvim.bo.ft
                    :help ""
                    :qf ""
                    _ (if nvim.bo.modified
-                       (.. " " (get-icon :plus))
+                       (.. " " icon-table.plus)
                        (if nvim.bo.modifiable
                          ""
-                         (.. " " (get-icon :minus)))))]
+                         (.. " " icon-table.minus))))]
     (.. icon " " filename modified)))
 (bridge :LightlineFilename :lightline-filename)
 
 (defn lightline-lineinfo []
   (let [row (nvim.fn.line ".")
         col (nvim.fn.col ".")]
-    (.. (get-icon :ln) row " " (get-icon :cn) col)))
+    (.. icon-table.ln row " " icon-table.cn col)))
 (bridge :LightlineLineinfo :lightline-lineinfo)
 
 (defn lightline-gitstatus []
   (let [g-status (. nvim.g :coc_git_status)]
     (if (and g-status (not (= g-status "")))
-      (.. (get-icon :branch) " " g-status)
+      (.. icon-table.branch " " g-status)
       "")))
 (bridge :LightlineGitstatus :lightline-gitstatus)
 
@@ -96,7 +94,7 @@
     (if (and info (not (= info "")))
       (let [warn (or (. info :warning) 0)
             err (or (. info :error) 0)]
-        (.. (get-icon :times) err " " (get-icon :exclam) warn))
+        (.. icon-table.times err " " icon-table.exclam warn))
       "")))
 (bridge :LightlineCocDiagnostic :lightline-coc-diagnostic)
 
@@ -116,5 +114,5 @@
                  :right [[:filetype]]}
       :tabline {:left [[:tabs]]
                 :right [[:cocdiagnostic]]}
-      :separator {:left (get-icon :pix-l)
-                  :right (get-icon :pix-r)}})
+      :separator {:left icon-table.pix-l
+                  :right icon-table.pix-r}})
