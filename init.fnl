@@ -96,7 +96,7 @@
     (if (and info (not (= info "")))
       (let [warn (or (. info :warning) 0)
             err (or (. info :error) 0)]
-        (.. (get-icon :times) err) " " (get-icon :exclam) warn)
+        (.. (get-icon :times) err " " (get-icon :exclam) warn))
       "")))
 (bridge :LightlineCocDiagnostic :lightline-coc-diagnostic)
 
