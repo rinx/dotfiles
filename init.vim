@@ -29,6 +29,8 @@ Plug 'junegunn/vim-plug', {'dir': '~/.config/nvim/plugged/vim-plug/autoload'}
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/seoul256.vim'
 
+Plug 'kyazdani42/nvim-web-devicons'
+
 Plug 'tyru/eskk.vim'
 
 Plug 'dense-analysis/ale'

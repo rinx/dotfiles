@@ -4,7 +4,7 @@
 URxvt.saveLines: 5000
 URxvt.scrollBar: false
 
-URxvt.font: xft:Ricty Discord for Powerline-10,\
+URxvt.font: xft:FiraCode Nerd Font Mono:size=10,\
             xft:Ricty Discord-10,\
             xft:Ricty-10,\
             xft:Migu 1C-10
