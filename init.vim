@@ -559,11 +559,11 @@ vmap ib <Plug>(textobj-multiblock-i)
 "sexp
 let g:sexp_enable_insert_mode_mappings = 0
 let g:sexp_insert_after_wrap = 0
-let g:sexp_filetypes = 'clojure.scheme,lisp,fennel'
-nmap <silent><buffer> >( <Plug>(sexp_emit_head_element)
-nmap <silent><buffer> <) <Plug>(sexp_emit_tail_element)
-nmap <silent><buffer> <( <Plug>(sexp_capture_prev_element)
-nmap <silent><buffer> >) <Plug>(sexp_capture_next_element)
+let g:sexp_filetypes = 'clojure,scheme,lisp,fennel'
+nmap <buffer> >( <Plug>(sexp_emit_head_element)
+nmap <buffer> <) <Plug>(sexp_emit_tail_element)
+nmap <buffer> <( <Plug>(sexp_capture_prev_element)
+nmap <buffer> >) <Plug>(sexp_capture_next_element)
 
 "iced
 let g:iced_enable_default_key_mappings = v:true

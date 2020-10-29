@@ -22,7 +22,7 @@ $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 .PHONY: neovim-deploy
 neovim-deploy: \
     init.vim \
-    init.fnl \
+    nvim-fnl \
     coc-settings.json \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
@@ -34,19 +34,19 @@ $(HOME)/.config/nvim/init.vim:
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/init.vim $(HOME)/.config/nvim/init.vim
 
-.PHONY: init.fnl
-init.fnl: $(HOME)/.config/nvim/fnl/init.fnl
-$(HOME)/.config/nvim/fnl/init.fnl:
-	@$(call cyan, "--\> init.fnl")
-	mkdir -p $(HOME)/.config/nvim/fnl
-	ln -s $(DOTDIR)/init.fnl $(HOME)/.config/nvim/fnl/init.fnl
+.PHONY: nvim-fnl
+nvim-fnl: $(HOME)/.config/nvim/fnl
+$(HOME)/.config/nvim/fnl:
+	@$(call cyan, "--\> nvim/fnl directory for nvim")
+	mkdir -p $(HOME)/.config/nvim
+	ln -s $(DOTDIR)/nvim/fnl $(HOME)/.config/nvim/fnl
 
 .PHONY: coc-settings.json
 coc-settings.json: $(HOME)/.config/nvim/coc-settings.json
 $(HOME)/.config/nvim/coc-settings.json:
 	@$(call cyan, "--\> coc-settings.json for nvim")
 	mkdir -p $(HOME)/.config/nvim
-	ln -s $(DOTDIR)/coc-settings.json $(HOME)/.config/nvim/coc-settings.json
+	ln -s $(DOTDIR)/nvim/coc-settings.json $(HOME)/.config/nvim/coc-settings.json
 
 .PHONY: skk-jisyo-large
 skk-jisyo-large: $(HOME)/.SKK-JISYO.L

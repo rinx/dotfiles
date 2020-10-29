@@ -370,13 +370,13 @@ COPY --from=neovim /usr/local/share/nvim   /usr/local/share/nvim
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
 
-COPY coc-settings.json    $DOTFILES/coc-settings.json
 COPY deps.edn             $DOTFILES/deps.edn
 COPY dotvim               $DOTFILES/dotvim
 COPY gitattributes_global $DOTFILES/gitattributes_global
 COPY gitconfig            $DOTFILES/gitconfig
 COPY gitignore            $DOTFILES/gitignore
 COPY init.vim             $DOTFILES/init.vim
+COPY nvim                 $DOTFILES/nvim
 COPY Makefile             $DOTFILES/Makefile
 COPY Makefile.d           $DOTFILES/Makefile.d
 COPY profiles.clj         $DOTFILES/profiles.clj
