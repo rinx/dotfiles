@@ -2,64 +2,21 @@
   {require {core aniseed.core
             nvim aniseed.nvim
             util aniseed.nvim.util
+            icon util.icon
             ts-cfg nvim-treesitter.configs
-            icon nvim-web-devicons}})
+            devicon nvim-web-devicons}
+   require-macros [util.macros]})
 
 (defn- bridge [from to]
   (util.fn-bridge from :init to {:return true}))
 
-(local icontab {:vim-classic ""
-                :vim ""
-                :lock ""
-                :plus ""
-                :plus-circle ""
-                :plus-square ""
-                :minus ""
-                :minus-circle ""
-                :minus-square ""
-                :branch ""
-                :compare ""
-                :merge ""
-                :pullreq ""
-                :ln ""
-                :cn ""
-                :zap ""
-                :info ""
-                :ban ""
-                :exclam ""
-                :exclam-circle ""
-                :exclam-tri ""
-                :times ""
-                :check ""
-                :check-circle ""
-                :check-square ""
-                :pencil-square ""
-                :cursor ""
-                :cursor-text "﫦"
-                :terminal ""
-                :cube ""
-                :comment ""
-                :github ""
-                :beer-fa ""
-                :beer-mdi ""
-                :quote-l ""
-                :quote-r ""
-                :arrow-u ""
-                :arrow-d ""
-                :arrow-l ""
-                :arrow-r ""
-                :chevron-u ""
-                :chevron-d ""
-                :chevron-l ""
-                :chevron-r ""
-                :tri-l ""
-                :tri-r ""
-                :ltri-l ""
-                :ltri-r ""
-                :utri-l ""
-                :utri-r ""
-                :pix-l ""
-                :pix-r ""})
+(local icontab icon.tab)
+
+;; fennel
+(set nvim.g.conjure#client#fennel#aniseed#aniseed_module_prefix "aniseed.")
+
+(augroup init-fennel
+         (autocmd :FileType :fennel "setlocal shiftwidth=2"))
 
 ;; treesitter
 (ts-cfg.setup
@@ -91,7 +48,7 @@
                :qf icontab.lock
                _ (if nvim.bo.ro
                    icontab.lock
-                   (icon.get_icon filename extension {:default true})))
+                   (devicon.get_icon filename extension {:default true})))
         modified (match nvim.bo.ft
                    :help ""
                    :qf ""

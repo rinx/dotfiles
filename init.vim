@@ -572,14 +572,6 @@ let g:iced_enable_default_key_mappings = v:true
 let g:hy_enable_conceal = 0
 let g:hy_conceal_fancy = 0
 
-"fennel
-let g:conjure#client#fennel#aniseed#aniseed_module_prefix = "aniseed."
-
-augroup vimrc-fennel
-    autocmd!
-    autocmd FileType fennel setlocal shiftwidth=2
-augroup END
-
 "go
 augroup vimrc-golang
     autocmd!
