@@ -18,6 +18,10 @@
 (augroup init-fennel
          (autocmd :FileType :fennel "setlocal shiftwidth=2"))
 
+;; rust
+(augroup init-rust
+         (autocmd :FileType :rust "let b:coc_pairs_disabled = [\"'\"]"))
+
 ;; treesitter
 (ts-cfg.setup
   {:ensure_installed [:bash
