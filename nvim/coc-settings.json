@@ -66,5 +66,7 @@
   "go.tests": {
     "generateFlags": []
   },
+  "rust-client.updateOnStartup": true,
+  "rust.unstable_features": true,
   "coc.source.iced.enable": true
 }

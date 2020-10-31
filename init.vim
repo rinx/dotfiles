@@ -345,10 +345,12 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {
             \ 'clojure': ['clj-kondo'],
             \ 'go': ['golangci-lint'],
+            \ 'rust': ['rls'],
             \}
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'go': ['goimports'],
+            \ 'rust': ['rustfmt'],
             \}
 
 let g:ale_set_quickfix = 0
