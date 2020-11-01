@@ -37,7 +37,6 @@ Plug 'dense-analysis/ale'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'junegunn/fzf', { 'dir': '~/.zplug/repos/junegunn/fzf', 'do': './install --all' }
@@ -381,7 +380,6 @@ let g:coc_global_extensions = [
             \ 'coc-spell-checker',
             \ 'coc-syntax',
             \ 'coc-tsserver',
-            \ 'coc-ultisnips',
             \ 'coc-word',
             \ 'coc-xml',
             \ 'coc-yaml',
