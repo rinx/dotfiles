@@ -74,6 +74,7 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.text": "≃",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"],
   "go.enable": true,
   "go.goplsPath": "/usr/local/go/bin/gopls",

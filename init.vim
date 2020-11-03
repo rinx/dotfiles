@@ -245,10 +245,13 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 inoremap <silent><expr> <Tab>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+            \ pumvisible() ? coc#_select_confirm() :
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<Tab>" :
+            \ coc#refresh()
+inoremap <silent><expr> <CR>
+            \ pumvisible() ? coc#_select_confirm() :
+            \ "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
