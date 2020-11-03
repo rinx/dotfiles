@@ -26,10 +26,12 @@ call plug#begin(expand(s:plug_dir))
 
 Plug 'junegunn/vim-plug', {'dir': '~/.config/nvim/plugged/vim-plug/autoload'}
 
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/seoul256.vim'
 
 Plug 'kyazdani42/nvim-web-devicons'
+
+Plug 'itchyny/lightline.vim'
+Plug 'romgrk/barbar.nvim'
 
 Plug 'tyru/eskk.vim'
 
@@ -200,166 +202,6 @@ set ttimeoutlen=200
 set hidden
 
 syntax enable
-
-let g:mapleader = '\'
-
-nnoremap <C-r><C-f> :source ~/.vimrc<CR>
-
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
-
-nnoremap <Left> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Up> <Nop>
-nnoremap <Right> <Nop>
-
-inoremap <Left> <Nop>
-inoremap <Down> <Nop>
-inoremap <Up> <Nop>
-inoremap <Right> <Nop>
-
-nnoremap <C-t> <Nop>
-
-nnoremap j gj
-nnoremap k gk
-nnoremap 0 g0
-nnoremap $ g$
-vnoremap j gj
-vnoremap k gk
-onoremap j gj
-onoremap k gk
-
-nnoremap gj j
-nnoremap gk k
-nnoremap g0 0
-nnoremap g$ $
-vnoremap gj j
-vnoremap gk k
-onoremap gj j
-onoremap gk k
-
-nnoremap Y y$
-
-nnoremap ,p "+p
-nnoremap ,P "+P
-
-nnoremap ,y "+y
-nnoremap ,d "+d
-vnoremap ,y "+y
-vnoremap ,d "+d
-
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
-nnoremap [Tab] <Nop>
-nmap ,t [Tab]
-nnoremap [Buf] <Nop>
-nmap ,b [Buf]
-
-for s:n in range(1, 9)
-    execute 'nnoremap <silent> [Tab]'. s:n ':<C-u>tabnext'. s:n .'<CR>'
-    execute 'nnoremap <silent> [Buf]'. s:n ':<C-u>buffer '. s:n .'<CR>'
-endfor
-
-nnoremap <silent> [Tab]c :<C-u>tablast <bar> tabnew<CR>
-nnoremap <silent> [Tab]x :<C-u>tabclose<CR>
-nnoremap <silent> [Tab]n :<C-u>tabnext<CR>
-nnoremap <silent> [Tab]p :<C-u>tabprevious<CR>
-nnoremap <silent> [Tab]l :<C-u>+tabmove<CR>
-nnoremap <silent> [Tab]h :<C-u>-tabmove<CR>
-
-" for terminal
-tnoremap <silent> <ESC> <C-\><C-n>
-
-" for window
-nnoremap s <Nop>
-nnoremap <silent> sj <C-w>j
-nnoremap <silent> sk <C-w>k
-nnoremap <silent> sl <C-w>l
-nnoremap <silent> sh <C-w>h
-nnoremap <silent> sJ <C-w>J
-nnoremap <silent> sK <C-w>K
-nnoremap <silent> sL <C-w>L
-nnoremap <silent> sH <C-w>H
-nnoremap <silent> sr <C-w>r
-nnoremap <silent> sw <C-w>w
-nnoremap <silent> s_ <C-w>_
-nnoremap <silent> s| <C-w>|
-nnoremap <silent> so <C-w>_<C-w>|
-nnoremap <silent> sO <C-w>=
-nnoremap <silent> s= <C-w>=
-nnoremap <silent> ss :<C-u>sp<CR>
-nnoremap <silent> sv :<C-u>vs<CR>
-
-" toggle paste mode
-nnoremap <silent> <Leader>p :setl paste!<CR>
-
-" toggle relativenumber
-nnoremap <silent> <Leader>r :setl relativenumber!<CR>
-
-" toggle spell check
-nnoremap <silent> <Leader>s :setl spell!<CR>
-
-nnoremap ZZ <Nop>
-nnoremap ZQ <Nop>
-nnoremap Q <Nop>
-
-" grep
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-    let g:ackprg = 'rg --vimgrep --no-heading'
-endif
-
-"eskk
-let g:eskk#dictionary = {
-            \ 'path' : '~/.skk-jisyo',
-            \ 'sorted' : 0,
-            \ 'encoding' : 'euc_jp',
-            \}
-let g:eskk#large_dictionary = {
-            \ 'path' : '~/.SKK-JISYO.L',
-            \ 'sorted' : 0,
-            \ 'encoding' : 'euc_jp',
-            \}
-let g:eskk#show_candidates_count = 3
-let g:eskk#kakutei_when_unique_candidate = 1
-let g:eskk#marker_henkan = ">"
-let g:eskk#marker_okuri = "*"
-let g:eskk#marker_henkan_select =">>"
-let g:eskk#marker_jisyo_touroku = "?"
-let g:eskk#enable_completion = 0
-let g:eskk#max_candidates = 15
-let g:eskk#use_color_cursor = 0
-
-"ale.vim
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_filetype_changed = 1
-
-let g:ale_fix_on_save = 1
-let g:ale_linters = {
-            \ 'clojure': ['clj-kondo'],
-            \ 'go': ['golangci-lint'],
-            \ 'rust': ['rls'],
-            \}
-let g:ale_fixers = {
-            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'go': ['goimports'],
-            \ 'rust': ['rustfmt'],
-            \}
-
-let g:ale_set_quickfix = 0
-let g:ale_set_loclist = 1
-let g:ale_open_list = 1
-
-let g:ale_sign_column_always = 1
-let g:ale_warn_about_trailing_blank_lines = 1
-let g:ale_warn_about_trailing_whitespace = 1
-
 
 "coc.nvim
 let g:coc_global_extensions = [

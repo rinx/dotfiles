@@ -52,6 +52,8 @@
    :chevron-d ""
    :chevron-l ""
    :chevron-r ""
+   :round-l ""
+   :round-r ""
    :tri-l ""
    :tri-r ""
    :ltri-l ""
