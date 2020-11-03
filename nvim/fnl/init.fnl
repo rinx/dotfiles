@@ -153,6 +153,14 @@
 (set nvim.g.ale_warn_about_trailing_blank_lines 1)
 (set nvim.g.ale_warn_about_trailing_whitespace 1)
 
+;; json
+(augroup init-json
+         (autocmd :FileType :json "setlocal shiftwidth=2"))
+
+;; yaml
+(augroup init-yaml
+         (autocmd :FileType :yaml "setlocal shiftwidth=2"))
+
 ;; fennel
 (set nvim.g.conjure#client#fennel#aniseed#aniseed_module_prefix "aniseed.")
 

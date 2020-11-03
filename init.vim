@@ -434,18 +434,6 @@ function! g:Mkdp_echo_url(url)
 endfunction
 let g:mkdp_browserfunc = 'g:Mkdp_echo_url'
 
-"json
-augroup vimrc-json
-    autocmd!
-    autocmd FileType json setlocal shiftwidth=2
-augroup END
-
-"yaml
-augroup vimrc-yaml
-    autocmd!
-    autocmd FileType yaml setlocal shiftwidth=2
-augroup END
-
 " QuickFix window
 augroup vimrc-forQuickFix
     autocmd!
