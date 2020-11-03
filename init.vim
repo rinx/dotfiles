@@ -93,43 +93,6 @@ Plug 'romgrk/nvim-treesitter-context'
 
 call plug#end()
 
-set viminfo='1000,<100,f1,h,s100
-set history=300
-set bs=indent,eol,start
-
-set ruler
-set number
-set cmdheight=2
-set wildmenu
-set wildchar=<Tab>
-set wildmode=longest:full,full
-
-set imdisable
-
-set incsearch
-set ignorecase
-set smartcase
-
-set autoindent
-set smartindent
-set breakindent
-
-set confirm
-
-set clipboard+=unnamed,unnamedplus
-
-set mouse=a
-
-set foldmethod=marker
-
-set virtualedit=block
-
-set expandtab
-set smarttab
-set tabstop=8
-set shiftwidth=4
-set softtabstop=4
-
 syntax on
 filetype off
 filetype plugin indent on
@@ -141,65 +104,8 @@ set termguicolors
 silent! colorscheme seoul256
 set background=dark
 
-if exists('&pumblend')
-    set pumblend=30
-endif
-if exists('&winblend')
-    set winblend=30
-endif
-
-set visualbell
-set lazyredraw
-set ttyfast
-
 set sessionoptions+=tabpages
 set sessionoptions-=options
-
-set showmatch
-set matchtime=3
-
-set nobackup
-set nowritebackup
-
-set updatetime=300
-
-set shortmess+=c
-
-set signcolumn=yes
-
-set undofile
-set undolevels=1000
-set undoreload=10000
-
-set backupdir=~/.config/nvim/tmp/backup
-set undodir=~/.config/nvim/tmp/undo
-set directory=~/.config/nvim/tmp/swap
-
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
-endif
-if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
-endif
-
-set list
-set listchars=eol:¬,tab:▸\ ,extends:>,precedes:<,trail:-
-
-set noautochdir
-set autoread
-set noautowrite
-
-set noexrc
-set nosecure
-
-set timeout
-set timeoutlen=1000
-set ttimeoutlen=200
-
-set hidden
 
 syntax enable
 
@@ -471,14 +377,6 @@ augroup vimrc-forHelpWindow
     " autoclose
     autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif
 augroup END
-
-augroup vimrc-filetype-force-tex
-    autocmd!
-    autocmd FileType latex,plaintex setlocal filetype=tex
-augroup END
-
-set laststatus=2
-set showtabline=2
 
 highlight Normal ctermbg=none guibg=none
 
