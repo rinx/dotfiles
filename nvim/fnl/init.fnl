@@ -12,6 +12,14 @@
 (defn- bridge [from to]
   (util.fn-bridge from :init to {:return true}))
 
+(defn- nmap [from to]
+  (nvim.set_keymap :n from to {}))
+(defn- xmap [from to]
+  (nvim.set_keymap :x from to {}))
+(defn- vmap [from to]
+  (nvim.set_keymap :v from to {}))
+(defn- omap [from to]
+  (nvim.set_keymap :o from to {}))
 (defn- nnoremap [from to]
   (nvim.set_keymap :n from to {:noremap true}))
 (defn- inoremap [from to]
@@ -23,6 +31,8 @@
 (defn- onoremap [from to]
   (nvim.set_keymap :o from to {:noremap true}))
 
+(defn- nmap-silent [from to]
+  (nvim.set_keymap :n from to {:silent true}))
 (defn- nnoremap-silent [from to]
   (nvim.set_keymap :n from to {:noremap true
                                :silent true}))
@@ -247,6 +257,179 @@
 (set nvim.g.ale_sign_column_always 1)
 (set nvim.g.ale_warn_about_trailing_blank_lines 1)
 (set nvim.g.ale_warn_about_trailing_whitespace 1)
+(set nvim.g.ale_go_golangci_lint_options "--enable-all --disable=gochecknoglobals --disable=gochecknoinits --disable=typecheck --disable=lll --enable=gosec --enable=prealloc")
+
+;; coc.nvim
+(set nvim.g.coc_global_extensions
+     [:coc-dictionary
+      :coc-docker
+      :coc-emoji
+      :coc-git
+      :coc-go
+      :coc-highlight
+      :coc-java
+      :coc-json
+      :coc-lists
+      :coc-lua
+      :coc-omni
+      :coc-rls
+      :coc-pairs
+      :coc-snippets
+      :coc-spell-checker
+      :coc-syntax
+      :coc-tsserver
+      :coc-word
+      :coc-xml
+      :coc-yaml
+      :coc-yank])
+(nmap-silent "gd" "<Plug>(coc-definition)")
+(nmap-silent "gy" "<Plug>(coc-type-definition)")
+(nmap-silent "gi" "<Plug>(coc-implementation)")
+(nmap-silent "gr" "<Plug>(coc-references)")
+(nmap-silent "<leader>rn" "<Plug>(coc-rename)")
+
+(defn coc-show-documentation []
+  (match nvim.bo.ft
+    :vim (nvim.ex.execute (.. "h " (nvim.fn.expand "<cword>")))
+    _ (nvim.ex.call "CocAction('doHover')")))
+(bridge :CocShowDocumentation :coc-show-documentation)
+
+(nnoremap-silent "K" ":call CocShowDocumentation()<CR>")
+
+(set nvim.g.coc_snippet_next "<Tab>")
+(set nvim.g.coc_snippet_prev "<S-Tab>")
+
+(nnoremap-silent ",cb" ":<C-u>CocList buffers<CR>")
+(nnoremap-silent ",cc"  ":<C-u>CocList commands<CR>")
+(nnoremap-silent ",cd"  ":<C-u>CocList diagnostics<CR>")
+(nnoremap-silent ",cf"  ":<C-u>CocList files<CR>")
+(nnoremap-silent ",cgf" ":<C-u>CocList gfiles<CR>")
+(nnoremap-silent ",cgs" ":<C-u>CocList gstatus<CR>")
+(nnoremap-silent ",cgb" ":<C-u>CocList branches<CR>")
+(nnoremap-silent ",cg"  ":<C-u>CocList --interactive grep<CR>")
+(nnoremap-silent ",ch"  ":<C-u>CocList helptags<CR>")
+(nnoremap-silent ",cq"  ":<C-u>CocList quickfix<CR>")
+(nnoremap-silent ",cr"  ":<C-u>CocListResume<CR>")
+(nnoremap-silent ",cs"  ":<C-u>CocList symbols<CR>")
+(nnoremap-silent ",ct"  ":<C-u>CocList filetypes<CR>")
+(nnoremap-silent ",cw"  ":<C-u>CocList --interactive words<CR>")
+(nnoremap-silent ",c/"  ":<C-u>CocList --interactive words<CR>")
+(nnoremap-silent ",cy"  ":<C-u>CocList -A yank<CR>")
+
+;; fzf.vim
+(nnoremap-silent ",ub"  ":<C-u>Buffers<CR>")
+(nnoremap-silent ",uf"  ":<C-u>Files<CR>")
+(nnoremap-silent ",ugf" ":<C-u>GFiles<CR>")
+(nnoremap-silent ",u/"  ":<C-u>BLines<CR>")
+(nnoremap-silent ",uc"  ":<C-u>History:<CR>")
+(nnoremap-silent ",uh"  ":<C-u>Helptags<CR>")
+(nnoremap-silent ",ut"  ":<C-u>Filetypes<CR>")
+(nnoremap-silent ",ug"  ":call fzf#vim#grep(\"rg --column --line-number --no-heading --color=always --smart-case \".shellescape(input('Query: ')), 1, 0)<CR>")
+
+(augroup init-fzf
+         (autocmd :FileType :fzf "nnoremap <buffer><silent>q :<C-u>q<CR>"))
+
+;; asterisk
+(nvim.set_keymap "" "*" "<Plug>(asterisk-*)" {})
+(nvim.set_keymap "" "#" "<Plug>(asterisk-#)" {})
+(nvim.set_keymap "" "g*" "<Plug>(asterisk-g*)" {})
+(nvim.set_keymap "" "g#" "<Plug>(asterisk-g#)" {})
+(nvim.set_keymap "" "z*" "<Plug>(asterisk-z*)" {})
+(nvim.set_keymap "" "gz*" "<Plug>(asterisk-gz*)" {})
+(nvim.set_keymap "" "z#" "<Plug>(asterisk-z#)" {})
+(nvim.set_keymap "" "gz#" "<Plug>(asterisk-gz#)" {})
+
+;; incsearch
+(nvim.set_keymap "" "<buffer>/" "<Plug>(incsearch-forward)" {})
+(nvim.set_keymap "" "<buffer>?" "<Plug>(incsearch-backward)" {})
+(nvim.set_keymap "" "<buffer>g/" "<Plug>(incsearch-stay)" {})
+
+;; clever-f
+(set nvim.g.clever_f_not_overwrites_standard_mappings 1)
+(set nvim.g.clever_f_across_no_line 0)
+(set nvim.g.clever_f_ignore_case 0)
+(set nvim.g.clever_f_smart_case 0)
+(set nvim.g.clever_f_use_migemo 0)
+(set nvim.g.clever_f_fix_key_direction 0)
+(set nvim.g.clever_f_show_prompt 0)
+(set nvim.g.clever_f_chars_match_any_signs "")
+(set nvim.g.clever_f_mark_cursor 1)
+(set nvim.g.clever_f_mark_cursor_color "Cursor")
+(set nvim.g.clever_f_hide_cursor_on_cmdline 1)
+(set nvim.g.clever_f_timeout_ms 0)
+(set nvim.g.clever_f_mark_char 1)
+(set nvim.g.clever_f_mark_char_color "CleverFDefaultLabel")
+(set nvim.g.clever_f_repeat_last_char_inputs ["\r"])
+(nmap "f" "<Plug>(clever-f-f)")
+(nmap "F" "<Plug>(clever-f-F)")
+(nmap "t" "<Plug>(clever-f-t)")
+(nmap "T" "<Plug>(clever-f-T)")
+(nmap "<Space>" "<Plug>(clever-f-reset)")
+
+;; quickhl
+(nmap "<Space>m" "<Plug>(quickhl-manual-this)")
+(xmap "<Space>m" "<Plug>(quickhl-manual-this)")
+(nmap "<Space>M" "<Plug>(quickhl-manual-reset)")
+(xmap "<Space>M" "<Plug>(quickhl-manual-reset)")
+
+;; submode
+(nvim.ex.silent_ "call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')")
+(nvim.ex.silent_ "call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')")
+(nvim.ex.silent_ "call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')")
+(nvim.ex.silent_ "call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')")
+(nvim.ex.silent_ "call submode#map('bufmove', 'n', '', '>', '<C-w>>')")
+(nvim.ex.silent_ "call submode#map('bufmove', 'n', '', '<', '<C-w><')")
+(nvim.ex.silent_ "call submode#map('bufmove', 'n', '', '+', '<C-w>+')")
+(nvim.ex.silent_ "call submode#map('bufmove', 'n', '', '-', '<C-w>-')")
+
+;; arpeggio
+(nvim.ex.silent_ "call arpeggio#load()")
+
+;; operator
+(set nvim.g.caw_no_default_keymappings 1)
+(nvim.ex.silent_ "Arpeggio map or <Plug>(operator-replace)")
+(nvim.ex.silent_ "Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)")
+(nvim.ex.silent_ "Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)")
+(nvim.ex.silent_ "Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)")
+(nvim.set_keymap "" "Sa" "<Plug>(operator-surround-append)" {})
+(nvim.set_keymap "" "Sd" "<Plug>(operator-surround-delete)" {})
+(nvim.set_keymap "" "Sr" "<Plug>(operator-surround-replace)" {})
+
+;; textobj
+(set nvim.g.textobj_between_no_default_key_mappings 1)
+(omap "ac" "<Plug>(textobj-between-a)")
+(omap "ic" "<Plug>(textobj-between-i)")
+(vmap "ac" "<Plug>(textobj-between-a)")
+(vmap "ic" "<Plug>(textobj-between-i)")
+(omap "ab" "<Plug>(textobj-multiblock-a)")
+(omap "ib" "<Plug>(textobj-multiblock-i)")
+(vmap "ab" "<Plug>(textobj-multiblock-a)")
+(vmap "ib" "<Plug>(textobj-multiblock-i)")
+
+;; sexp
+(set nvim.g.sexp_enable_insert_mode_mappings 0)
+(set nvim.g.sexp_insert_after_wrap 0)
+(set nvim.g.sexp_filetypes "clojure,scheme,lisp,fennel")
+(nmap ">(" "<Plug>(sexp_emit_head_element)")
+(nmap "<)" "<Plug>(sexp_emit_tail_element)")
+(nmap "<(" "<Plug>(sexp_capture_prev_element)")
+(nmap ">)" "<Plug>(sexp_capture_next_element)")
+
+;; markdown
+(set nvim.g.mkdp_open_to_the_world 1)
+(set nvim.g.mkdp_open_ip "0.0.0.0")
+(set nvim.g.mkdp_port "8000")
+(defn mkdp-echo-url [url]
+  (nvim.ex.echo (.. "'" url "'")))
+(bridge :MkdpEchoURL :mkdp-echo-url)
+(set nvim.g.mkdp_browserfunc "MkdpEchoURL")
+
+;; iced
+(set nvim.g.iced_enable_default_key_mappings true)
+
+;; hy
+(set nvim.g.hy_enable_conceal 0)
+(set nvim.g.hy_conceal_fancy 0)
 
 ;; json
 (augroup init-json
@@ -265,6 +448,41 @@
 ;; rust
 (augroup init-rust
          (autocmd :FileType :rust "let b:coc_pairs_disabled = [\"'\"]"))
+
+;; go
+(augroup init-golang
+    (autocmd :FileType :go "setlocal noexpandtab")
+    (autocmd :FileType :go "setlocal shiftwidth=8")
+    (autocmd :FileType :go "setlocal tabstop=8")
+    (autocmd :FileType :go "compiler go")
+    (autocmd :BufWritePre "*.go" ":call CocAction('runCommand', 'editor.action.organizeImport')"))
+
+
+;; QuickFix
+(augroup init-qf
+    (autocmd :FileType :qf "nnoremap <buffer> j j")
+    (autocmd :FileType :qf "nnoremap <buffer> k k")
+    (autocmd :FileType :qf "nnoremap <buffer> 0 0")
+    (autocmd :FileType :qf "nnoremap <buffer> $ $")
+    (autocmd :FileType :qf "nnoremap <buffer> gj gj")
+    (autocmd :FileType :qf "nnoremap <buffer> gk gk")
+    (autocmd :FileType :qf "nnoremap <buffer> g0 g0")
+    (autocmd :FileType :qf "nnoremap <buffer> g$ g$")
+    (autocmd :FileType :qf "nnoremap <buffer><silent>q :<C-u>q<CR>")
+    (autocmd :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif"))
+
+;; Help
+(augroup init-help
+    (autocmd :FileType :help "nnoremap <buffer> j j")
+    (autocmd :FileType :help "nnoremap <buffer> k k")
+    (autocmd :FileType :help "nnoremap <buffer> 0 0")
+    (autocmd :FileType :help "nnoremap <buffer> $ $")
+    (autocmd :FileType :help "nnoremap <buffer> gj gj")
+    (autocmd :FileType :help "nnoremap <buffer> gk gk")
+    (autocmd :FileType :help "nnoremap <buffer> g0 g0")
+    (autocmd :FileType :help "nnoremap <buffer> g$ g$")
+    (autocmd :FileType :help "nnoremap <buffer><silent>q :<C-u>q<CR>")
+    (autocmd :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif"))
 
 ;; treesitter
 (ts-cfg.setup
@@ -347,7 +565,7 @@
 (set nvim.g.lightline
      {:enable {:statusline 1
                :tabline 0}
-      :colorscheme :seoul256
+      :colorscheme :ayu_dark
       :active {:left [[:mode :paste :spell]
                       [:filename :gitstatus :cocstatus]]
                :right [[:lineinfo]
