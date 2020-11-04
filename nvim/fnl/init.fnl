@@ -515,6 +515,8 @@
 (nnoremap-silent "gt"  ":BufferNext<CR>")
 (nnoremap-silent "gT"  ":BufferPrevious<CR>")
 
+(set nvim.g.bufferline {:maximum_padding 6})
+
 ;; lightline
 (defn lightline-filename []
   (let [filename (nvim.fn.expand "%")
