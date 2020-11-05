@@ -600,8 +600,8 @@
                  :v icontab.cursor-text
                  :V icontab.cursor
                  "" icontab.cursor
-                 :c icontab.terminal
+                 :c icontab.chevron-r
                  :s "S"
                  :S "SL"
                  "" "SB"
-                 :t "T"}})
+                 :t icontab.terminal}})

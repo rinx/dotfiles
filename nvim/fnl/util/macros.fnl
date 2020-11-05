@@ -8,4 +8,8 @@
       (nvim.ex.augroup ,(tostring name))
       (nvim.ex.autocmd_)
       ,...
-      (nvim.ex.augroup :END)))}
+      (nvim.ex.augroup :END)))
+
+ :->viml
+ (fn [name]
+   `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))}
