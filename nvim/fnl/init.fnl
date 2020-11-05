@@ -132,6 +132,18 @@
 (set nvim.o.laststatus 2)
 (set nvim.o.showtabline 2)
 
+(nvim.ex.set :hlsearch)
+(nvim.ex.set :termguicolors)
+(nvim.ex.syntax :on)
+(nvim.ex.filetype :off)
+(nvim.ex.filetype "plugin indent on")
+
+(nvim.ex.silent_ "colorscheme doom-one")
+(nvim.ex.set "background=dark")
+(nvim.ex.syntax :enable)
+
+(nvim.ex.highlight "Normal ctermbg=none guibg=none")
+
 ;; mappings
 (set nvim.g.mapleader :\)
 

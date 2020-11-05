@@ -93,22 +93,6 @@ Plug 'romgrk/nvim-treesitter-context'
 
 call plug#end()
 
-syntax on
-filetype off
-filetype plugin indent on
-
-set hlsearch
-
-set termguicolors
-
-silent! colorscheme doom-one
-set background=dark
-
-set sessionoptions+=tabpages
-set sessionoptions-=options
-
-syntax enable
-
 " coc.nvim
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -149,7 +133,5 @@ if exists('*nvim_open_win')
       call nvim_open_win(buf, v:true, opts)
     endfunction
 endif
-
-highlight Normal ctermbg=none guibg=none
 
 lua require('aniseed.env').init()
