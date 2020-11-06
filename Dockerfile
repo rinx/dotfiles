@@ -5,17 +5,17 @@ ARG RIPGREP_VERSION=12.1.1
 ARG BAT_VERSION=v0.15.4
 ARG FD_VERSION=v8.1.1
 
-ARG STERN_VERSION=1.11.0
-ARG K9S_VERSION=v0.22.1
-ARG HELMFILE_VERSION=v0.125.0
+ARG STERN_VERSION=1.12.1
+ARG K9S_VERSION=v0.23.7
+ARG HELMFILE_VERSION=v0.133.0
 ARG KUSTOMIZE_VERSION=v3.8.1
 
 ARG PROTOBUF_VERSION=3.12.4
 ARG KOTLIN_LS_VERSION=0.7.0
 
-ARG BABASHKA_VERSION=0.2.2
-ARG JET_VERSION=0.0.12
-ARG CLJ_KONDO_VERSION=2020.09.09
+ARG BABASHKA_VERSION=0.2.3
+ARG JET_VERSION=0.0.13
+ARG CLJ_KONDO_VERSION=2020.10.10
 
 FROM docker:dind AS docker
 
@@ -122,8 +122,9 @@ RUN mkdir -p /out/packer \
     && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
     && mv /opt/kubectx/kubectx /out/kube/kubectx \
     && mv /opt/kubectx/kubens /out/kube/kubens \
-    && curl -L https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64 -o /out/packer/stern \
-    && chmod a+x /out/packer/stern \
+    && curl -L https://github.com/stern/stern/releases/download/v${STERN_VERSION}/stern_${STERN_VERSION}_linux_amd64.tar.gz -o stern.tar.gz \
+    && tar xzvf stern.tar.gz \
+    && mv stern_${STERN_VERSION}_linux_amd64/stern /out/packer/stern \
     && curl -L https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_x86_64.tar.gz -o k9s.tar.gz \
     && tar xzvf k9s.tar.gz \
     && mv k9s /out/packer/k9s \
