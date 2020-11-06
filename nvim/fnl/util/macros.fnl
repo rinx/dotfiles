@@ -7,7 +7,8 @@
    `(do
       (nvim.ex.augroup ,(tostring name))
       (nvim.ex.autocmd_)
-      ,...
+      (do
+        ,...)
       (nvim.ex.augroup :END)))
 
  :->viml

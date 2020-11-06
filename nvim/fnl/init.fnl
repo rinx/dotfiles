@@ -463,38 +463,39 @@
 
 ;; go
 (augroup init-golang
-    (autocmd :FileType :go "setlocal noexpandtab")
-    (autocmd :FileType :go "setlocal shiftwidth=8")
-    (autocmd :FileType :go "setlocal tabstop=8")
-    (autocmd :FileType :go "compiler go")
-    (autocmd :BufWritePre "*.go" ":call CocAction('runCommand', 'editor.action.organizeImport')"))
+         (autocmd :FileType :go "set noexpandtab")
+         (autocmd :FileType :go "set shiftwidth=4")
+         (autocmd :FileType :go "set tabstop=4")
+         (autocmd :FileType :go "set softtabstop=4")
+         (autocmd :FileType :go "compiler go")
+         (autocmd :BufWritePre "*.go" ":call CocAction('runCommand', 'editor.action.organizeImport')"))
 
 
 ;; QuickFix
 (augroup init-qf
-    (autocmd :FileType :qf "nnoremap <buffer> j j")
-    (autocmd :FileType :qf "nnoremap <buffer> k k")
-    (autocmd :FileType :qf "nnoremap <buffer> 0 0")
-    (autocmd :FileType :qf "nnoremap <buffer> $ $")
-    (autocmd :FileType :qf "nnoremap <buffer> gj gj")
-    (autocmd :FileType :qf "nnoremap <buffer> gk gk")
-    (autocmd :FileType :qf "nnoremap <buffer> g0 g0")
-    (autocmd :FileType :qf "nnoremap <buffer> g$ g$")
-    (autocmd :FileType :qf "nnoremap <buffer><silent>q :<C-u>q<CR>")
-    (autocmd :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif"))
+         (autocmd :FileType :qf "nnoremap <buffer> j j")
+         (autocmd :FileType :qf "nnoremap <buffer> k k")
+         (autocmd :FileType :qf "nnoremap <buffer> 0 0")
+         (autocmd :FileType :qf "nnoremap <buffer> $ $")
+         (autocmd :FileType :qf "nnoremap <buffer> gj gj")
+         (autocmd :FileType :qf "nnoremap <buffer> gk gk")
+         (autocmd :FileType :qf "nnoremap <buffer> g0 g0")
+         (autocmd :FileType :qf "nnoremap <buffer> g$ g$")
+         (autocmd :FileType :qf "nnoremap <buffer><silent>q :<C-u>q<CR>")
+         (autocmd :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif"))
 
 ;; Help
 (augroup init-help
-    (autocmd :FileType :help "nnoremap <buffer> j j")
-    (autocmd :FileType :help "nnoremap <buffer> k k")
-    (autocmd :FileType :help "nnoremap <buffer> 0 0")
-    (autocmd :FileType :help "nnoremap <buffer> $ $")
-    (autocmd :FileType :help "nnoremap <buffer> gj gj")
-    (autocmd :FileType :help "nnoremap <buffer> gk gk")
-    (autocmd :FileType :help "nnoremap <buffer> g0 g0")
-    (autocmd :FileType :help "nnoremap <buffer> g$ g$")
-    (autocmd :FileType :help "nnoremap <buffer><silent>q :<C-u>q<CR>")
-    (autocmd :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif"))
+         (autocmd :FileType :help "nnoremap <buffer> j j")
+         (autocmd :FileType :help "nnoremap <buffer> k k")
+         (autocmd :FileType :help "nnoremap <buffer> 0 0")
+         (autocmd :FileType :help "nnoremap <buffer> $ $")
+         (autocmd :FileType :help "nnoremap <buffer> gj gj")
+         (autocmd :FileType :help "nnoremap <buffer> gk gk")
+         (autocmd :FileType :help "nnoremap <buffer> g0 g0")
+         (autocmd :FileType :help "nnoremap <buffer> g$ g$")
+         (autocmd :FileType :help "nnoremap <buffer><silent>q :<C-u>q<CR>")
+         (autocmd :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif"))
 
 ;; treesitter
 (ts-cfg.setup
