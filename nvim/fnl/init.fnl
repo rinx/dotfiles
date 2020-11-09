@@ -285,6 +285,7 @@
       :coc-lua
       :coc-omni
       :coc-rls
+      :coc-rust-analyzer
       :coc-pairs
       :coc-snippets
       :coc-spell-checker
