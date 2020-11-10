@@ -204,7 +204,7 @@ if builtin command -v grep > /dev/null 2>&1 ; then
 fi
 
 if builtin command -v rg > /dev/null 2>&1 ; then
-    export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git" --no-ignore'
 fi
 
 if builtin command -v bat > /dev/null 2>&1 ; then
