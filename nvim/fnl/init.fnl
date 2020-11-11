@@ -93,7 +93,7 @@
 (set nvim.o.updatetime 300)
 (set nvim.o.timeoutlen 500)
 
-(set nvim.wo.signcolumn "yes")
+(set nvim.wo.signcolumn "number")
 
 (nvim.ex.set :undofile)
 (set nvim.o.undolevels 1000)
@@ -304,7 +304,9 @@
 (defn coc-show-documentation []
   (match nvim.bo.ft
     :vim (nvim.ex.execute (.. "h " (nvim.fn.expand "<cword>")))
-    _ (nvim.ex.call "CocAction('doHover')")))
+    _ (if (= (nvim.fn.coc#rpc#ready) 1)
+        (nvim.ex.call "CocActionAsync('doHover')")
+        (nvim.ex.execute (.. "!" nvim.o.keywordprg " " (nvim.fn.expand "<cword>"))))))
 (bridge :CocShowDocumentation :coc-show-documentation)
 
 (nnoremap-silent "K" ":call CocShowDocumentation()<CR>")
