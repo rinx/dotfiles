@@ -22,6 +22,7 @@
    :heart ""
    :heart-o ""
    :ban ""
+   :circle "●"
    :asterisk ""
    :exclam ""
    :exclam-circle ""
@@ -33,6 +34,9 @@
    :check-circle ""
    :check-square ""
    :pencil-square ""
+   :text ""
+   :folder ""
+   :folder-open ""
    :cursor ""
    :cursor-text "﫦"
    :level-down ""
@@ -45,6 +49,7 @@
    :beer-mdi ""
    :quote-l ""
    :quote-r ""
+   :symlink ""
    :diff-add ""
    :diff-igored ""
    :diff-modified ""
@@ -68,3 +73,8 @@
    :utri-r ""
    :pix-l ""
    :pix-r ""})
+
+(let [devicon (require :nvim-web-devicons)]
+  (devicon.setup {:override {:fnl {:icon ""
+                                   :color "#51a0cf"
+                                   :name "Fennel"}}}))

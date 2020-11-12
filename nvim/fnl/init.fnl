@@ -331,6 +331,24 @@
 (nnoremap-silent ",c/"  ":<C-u>CocList --interactive words<CR>")
 (nnoremap-silent ",cy"  ":<C-u>CocList -A yank<CR>")
 
+;; nvim-tree.lua
+(set nvim.g.lua_tree_side :left)
+(set nvim.g.lua_tree_width 30)
+(set nvim.g.lua_tree_auto_close 1)
+(set nvim.g.lua_tree_follow 1)
+(set nvim.g.lua_tree_indent_markers 1)
+(set nvim.g.lua_tree_icons {:default icontab.text
+                            :symlink icontab.symlink
+                            :git {:unstaged icontab.diff-modified
+                                  :staged icontab.check
+                                  :unmerged icontab.merge
+                                  :renamed icontab.diff-renamed
+                                  :untracked icontab.asterisk}
+                            :folder {:default icontab.folder
+                                     :open icontab.folder-open}})
+
+(nnoremap-silent "<leader>t" ":<C-u>LuaTreeToggle<CR>")
+
 ;; fzf.vim
 (nnoremap-silent ",ub"  ":<C-u>Buffers<CR>")
 (nnoremap-silent ",uf"  ":<C-u>Files<CR>")
@@ -568,7 +586,7 @@
 (defn lightline-gitstatus []
   (let [g-status (. nvim.g :coc_git_status)]
     (if (and g-status (not (= g-status "")))
-      (.. icontab.branch " " g-status)
+      (.. icontab.github " " g-status)
       "")))
 (bridge :LightlineGitstatus :lightline-gitstatus)
 
