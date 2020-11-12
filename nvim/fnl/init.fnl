@@ -524,9 +524,11 @@
 (ts-cfg.setup
   {:ensure_installed [:bash
                       :c
+                      :clojure
                       :cpp
                       :fennel
                       :go
+                      :html
                       :java
                       :javascript
                       :json
