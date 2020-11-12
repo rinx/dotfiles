@@ -37,7 +37,12 @@ Plug 'tyru/eskk.vim'
 
 Plug 'dense-analysis/ale'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'steelsojka/completion-buffers'
+Plug 'nvim-lua/diagnostic-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
 
 Plug 'honza/vim-snippets'
 
@@ -95,20 +100,8 @@ Plug 'romgrk/nvim-treesitter-context'
 
 call plug#end()
 
-" coc.nvim
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-            \ pumvisible() ? coc#_select_confirm() :
-            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-            \ <SID>check_back_space() ? "\<Tab>" :
-            \ coc#refresh()
-inoremap <silent><expr> <CR>
-            \ pumvisible() ? coc#_select_confirm() :
-            \ "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "fzf.vim
 if exists('*nvim_open_win')

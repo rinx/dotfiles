@@ -49,6 +49,10 @@
 (set nvim.o.wildchar 9) ;; 9 = <Tab>
 (set nvim.o.wildmode "longest:full,full")
 
+(set nvim.o.shortmess "filnxtToOFc")
+
+(set nvim.o.completeopt "menuone,noinsert,noselect")
+
 (nvim.ex.set :imdisable)
 
 (nvim.ex.set :incsearch)
@@ -271,65 +275,34 @@
 (set nvim.g.ale_warn_about_trailing_whitespace 1)
 (set nvim.g.ale_go_golangci_lint_options "--enable-all --disable=gochecknoglobals --disable=gochecknoinits --disable=typecheck --disable=lll --enable=gosec --enable=prealloc")
 
-;; coc.nvim
-(set nvim.g.coc_global_extensions
-     [:coc-dictionary
-      :coc-docker
-      :coc-emoji
-      :coc-git
-      :coc-go
-      :coc-highlight
-      :coc-java
-      :coc-json
-      :coc-lists
-      :coc-lua
-      :coc-omni
-      :coc-rls
-      :coc-rust-analyzer
-      :coc-pairs
-      :coc-snippets
-      :coc-spell-checker
-      :coc-syntax
-      :coc-tsserver
-      :coc-word
-      :coc-xml
-      :coc-yaml
-      :coc-yank])
-(nmap-silent "gd" "<Plug>(coc-definition)")
-(nmap-silent "gy" "<Plug>(coc-type-definition)")
-(nmap-silent "gi" "<Plug>(coc-implementation)")
-(nmap-silent "gr" "<Plug>(coc-references)")
-(nmap-silent "<leader>rn" "<Plug>(coc-rename)")
+;; neovim LSP
+(let [lsp (require :nvim_lsp)
+      completion (require :completion)
+      diagnostic (require :diagnostic)
+      on_attach (fn [client]
+                  (completion.on_attach client)
+                  (diagnostic.on_attach client))]
+  (lsp.bashls.setup {:on_attach on_attach})
+  (lsp.dockerls.setup {:on_attach on_attach})
+  (lsp.fortls.setup {:on_attach on_attach})
+  (lsp.gopls.setup {:on_attach on_attach})
+  (lsp.jdtls.setup {:on_attach on_attach})
+  (lsp.jsonls.setup {:on_attach on_attach})
+  (lsp.kotlin_language_server.setup {:on_attach on_attach})
+  (lsp.rls.setup {:on_attach on_attach})
+  (lsp.rust_analyzer.setup {:on_attach on_attach})
+  (lsp.tsserver.setup {:on_attach on_attach})
+  (lsp.vimls.setup {:on_attach on_attach})
+  (lsp.yamlls.setup {:on_attach on_attach}))
 
-(defn coc-show-documentation []
-  (match nvim.bo.ft
-    :vim (nvim.ex.execute (.. "h " (nvim.fn.expand "<cword>")))
-    _ (if (= (nvim.fn.coc#rpc#ready) 1)
-        (nvim.ex.call "CocActionAsync('doHover')")
-        (nvim.ex.execute (.. "!" nvim.o.keywordprg " " (nvim.fn.expand "<cword>"))))))
-(bridge :CocShowDocumentation :coc-show-documentation)
+(nnoremap-silent "K" ":<C-u>lua vim.lsp.buf.hover()<CR>")
+(nnoremap-silent "gd" ":<C-u>lua vim.lsp.buf.definition()<CR>")
+(nnoremap-silent "gD" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
+(nnoremap-silent "gr" ":<C-u>lua vim.lsp.buf.references()<CR>")
 
-(nnoremap-silent "K" ":call CocShowDocumentation()<CR>")
-
-(set nvim.g.coc_snippet_next "<Tab>")
-(set nvim.g.coc_snippet_prev "<S-Tab>")
-
-(nnoremap-silent ",cb" ":<C-u>CocList buffers<CR>")
-(nnoremap-silent ",cc"  ":<C-u>CocList commands<CR>")
-(nnoremap-silent ",cd"  ":<C-u>CocList diagnostics<CR>")
-(nnoremap-silent ",cf"  ":<C-u>CocList files<CR>")
-(nnoremap-silent ",cgf" ":<C-u>CocList gfiles<CR>")
-(nnoremap-silent ",cgs" ":<C-u>CocList gstatus<CR>")
-(nnoremap-silent ",cgb" ":<C-u>CocList branches<CR>")
-(nnoremap-silent ",cg"  ":<C-u>CocList --interactive grep<CR>")
-(nnoremap-silent ",ch"  ":<C-u>CocList helptags<CR>")
-(nnoremap-silent ",cq"  ":<C-u>CocList quickfix<CR>")
-(nnoremap-silent ",cr"  ":<C-u>CocListResume<CR>")
-(nnoremap-silent ",cs"  ":<C-u>CocList symbols<CR>")
-(nnoremap-silent ",ct"  ":<C-u>CocList filetypes<CR>")
-(nnoremap-silent ",cw"  ":<C-u>CocList --interactive words<CR>")
-(nnoremap-silent ",c/"  ":<C-u>CocList --interactive words<CR>")
-(nnoremap-silent ",cy"  ":<C-u>CocList -A yank<CR>")
+(set nvim.g.diagnostic_enable_virtual_text 1)
+(set nvim.g.diagnostic_trimmed_virtual_text 40)
+(set nvim.g.diagnostic_insert_delay 1)
 
 ;; nvim-tree.lua
 (set nvim.g.lua_tree_side :left)
