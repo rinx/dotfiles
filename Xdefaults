@@ -4,11 +4,8 @@
 URxvt.saveLines: 5000
 URxvt.scrollBar: false
 
-URxvt.font: xft:FiraCode Nerd Font:size=10,\
-            xft:FiraCode Nerd Font Mono:size=10,\
-            xft:Ricty Discord-10,\
-            xft:Ricty-10,\
-            xft:Migu 1C-10
+URxvt.font: xft:FiraCode Nerd Font:size=12,\
+            xft:FiraCode Nerd Font Mono:size=12
 
 URxvt.transparent:true
 URxvt.tintColor:white
@@ -18,6 +15,8 @@ URxvt.inputMethod:fcitx
 URxvt.preeditType: OnTheSpot
 
 URxvt.fading: 30
+
+URxvt.pointerBlank: true
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  chromium
