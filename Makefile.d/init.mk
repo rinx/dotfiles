@@ -2,12 +2,6 @@
 prepare-init:
 	@$(call green, "initialize stage")
 
-.PHONY: vim-init
-vim-init:
-	@$(call red, "vim-init")
-	@$(call blue, "--\> initialize dein for Vim")
-	vim -N -u NONE -i NONE -V1 -e -s --cmd "source $(DOTDIR)/vimrc" --cmd 'call dein#install()' --cmd quit
-
 .PHONY: neovim-init
 neovim-init:
 	@$(call red, "neovim-init")

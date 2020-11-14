@@ -117,6 +117,7 @@ $(HOME)/.zshrc:
 
 .PHONY: others-deploy
 others-deploy: \
+    alacritty.yml \
     Xdefaults \
     sway-config \
     i3status-config \
@@ -124,6 +125,12 @@ others-deploy: \
     deps-edn \
     hyper
 	@$(call red, "others-deploy")
+
+.PHONY: alacritty.yml
+alacritty.yml: $(HOME)/.alacritty.yml
+$(HOME)/.alacritty.yml:
+	@$(call cyan, "--\> alacritty.yml")
+	ln -s $(DOTDIR)/alacritty.yml $(HOME)/.alacritty.yml
 
 .PHONY: Xdefaults
 Xdefaults: $(HOME)/.Xdefaults
