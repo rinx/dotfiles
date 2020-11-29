@@ -300,6 +300,7 @@ ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
 ENV SHELL /bin/zsh
+ENV EDITOR nvim
 
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
