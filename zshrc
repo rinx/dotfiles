@@ -11,11 +11,12 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
 zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
-zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
+zstyle ":completion:*:git-checkout:*" sort false
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 # separators for completion
 zstyle ':completion:*' list-separator '-->'
@@ -134,6 +135,8 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zplug "zsh-users/zsh-completions", as:plugin, use:"src"
     zplug "zsh-users/zsh-syntax-highlighting", defer:2
     zplug "zsh-users/zsh-history-substring-search"
+
+    zplug "Aloxaf/fzf-tab"
 
     (type fzf > /dev/null 2>&1) || zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
     (type fzf-tmux > /dev/null 2>&1) || zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
