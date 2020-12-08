@@ -161,7 +161,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit load stedolan/jq
 
     zinit ice from"gh" as"program" pick"bin/xpanes"
-    zinit "greymd/tmux-xpanes"
+    zinit load greymd/tmux-xpanes
 
     zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 fi
