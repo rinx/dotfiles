@@ -3,24 +3,20 @@ OS=$(uname -s)
 autoload -U compinit
 compinit
 
-# highlight for completion
-zstyle ':completion:*:default' menu select=2
-
 # completion settings
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
 zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
-zstyle ":completion:*:git-checkout:*" sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-
-# separators for completion
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 autoload colors
 colors
@@ -118,57 +114,57 @@ function precmd() {
     fi
 }
 
-
-# zplug
-export ZPLUG_HOME=$HOME/.zplug
+# zinit
+export ZINIT_HOME=$HOME/.zinit
 
 if builtin command -v git > /dev/null 2>&1 ; then
-    if [ ! -f $ZPLUG_HOME/init.zsh ]; then
-        git clone https://github.com/zplug/zplug $ZPLUG_HOME
+    if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ];  then
+        mkdir -p ${ZINIT_HOME}
+        git clone --depth=1 https://github.com/zdharma/zinit.git ${ZINIT_HOME}/bin
     fi
 
-    source $ZPLUG_HOME/init.zsh
+    source ${ZINIT_HOME}/bin/zinit.zsh
 
-    zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+    autoload -Uz _zinit
+    (( ${+_comps} )) && _comps[zinit]=_zinit
 
-    zplug "zsh-users/zsh-autosuggestions"
-    zplug "zsh-users/zsh-completions", as:plugin, use:"src"
-    zplug "zsh-users/zsh-syntax-highlighting", defer:2
-    zplug "zsh-users/zsh-history-substring-search"
+    zinit light zsh-users/zsh-autosuggestions
+    zinit light zdharma/fast-syntax-highlighting
 
-    zplug "Aloxaf/fzf-tab"
+    zinit light Aloxaf/fzf-tab
 
-    (type fzf > /dev/null 2>&1) || zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-    (type fzf-tmux > /dev/null 2>&1) || zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+    zinit ice from"gh-r" as"program"
+    zinit load junegunn/fzf
 
-    if [[ "$OS" == "Darwin" ]]; then
-        (type exa > /dev/null 2>&1) && alias ls=exa || zplug "ogham/exa", as:command, from:gh-r, use:"*macos-x86_64*", rename-to:ls
-        (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:rg
-        (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:bat
-        (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:fd
-        (type bb > /dev/null 2>&1) || zplug "borkdude/babashka", as:command, from:gh-r, use:"*-macos-amd64*", rename-to:bb
-        (type jet > /dev/null 2>&1) || zplug "borkdude/jet", as:command, from:gh-r, use:"*-macos-amd64*", rename-to:jet
-    else
-        (type exa > /dev/null 2>&1) && alias ls=exa || zplug "ogham/exa", as:command, from:gh-r, use:"*linux-x86_64*", rename-to:ls
-        (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*linux*", rename-to:rg
-        (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:bat
-        (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:fd
-        (type bb > /dev/null 2>&1) || zplug "borkdude/babashka", as:command, from:gh-r, use:"*-linux-amd64*", rename-to:bb
-        (type jet > /dev/null 2>&1) || zplug "borkdude/jet", as:command, from:gh-r, use:"*-linux-amd64*", rename-to:jet
-    fi
+    zinit ice from"gh" as"program" pick"bin/fzf-tmux"
+    zinit load junegunn/fzf
 
-    (type ghq > /dev/null 2>&1) || zplug "x-motemen/ghq", from:gh-r, as:command, rename-to:ghq
-    (type jq > /dev/null 2>&1) || zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+    zinit ice from"gh-r" as"program" mv"exa-* -> ls"
+    zinit load ogham/exa
 
-    (type xpanes > /dev/null 2>&1) || zplug "greymd/tmux-xpanes"
+    zinit ice from"gh-r" as"program" mv"ripgrep-* -> rg"
+    zinit load BurntSushi/ripgrep
 
-    if ! zplug check --verbose; then
-        zplug install
-    fi
+    zinit ice from"gh-r" as"program" mv"bat-* -> bat"
+    zinit load sharkdp/bat
 
-    zplug load
+    zinit ice from"gh-r" as"program" mv"fd-* -> fd"
+    zinit load sharkdp/fd
+
+    zinit ice from"gh-r" as"program" mv"babashka-* -> bb"
+    zinit load borkdude/babashka
+
+    zinit ice from"gh-r" as"program" mv"ghq-* -> ghq"
+    zinit load x-motemen/ghq
+
+    zinit ice from"gh-r" as"program" mv"jq-* -> jq"
+    zinit load stedolan/jq
+
+    zinit ice from"gh" as"program" pick"bin/xpanes"
+    zinit "greymd/tmux-xpanes"
+
+    zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 fi
-
 
 # aliases
 
