@@ -135,22 +135,22 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     zinit pack for fzf
 
-    zinit ice from"gh-r" as"program" mv"exa-* -> ls"
-    zinit load ogham/exa
+    zinit ice from"gh-r" as"program" mv"exa* -> ls"
+    zinit light ogham/exa
 
-    zinit ice from"gh-r" as"program" mv"ripgrep-* -> rg"
-    zinit load BurntSushi/ripgrep
+    zinit ice from"gh-r" as"program" mv"rg* -> rg" pick"rg/rg"
+    zinit light BurntSushi/ripgrep
 
-    zinit ice from"gh-r" as"program" mv"bat-* -> bat"
-    zinit load sharkdp/bat
+    zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+    zinit light sharkdp/bat
 
-    zinit ice from"gh-r" as"program" mv"fd-* -> fd"
-    zinit load sharkdp/fd
+    zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
+    zinit light sharkdp/fd
 
     zinit ice from"gh-r" as"program" mv"babashka-* -> bb"
     zinit load borkdude/babashka
 
-    zinit ice from"gh-r" as"program" mv"ghq-* -> ghq"
+    zinit ice from"gh-r" as"program" mv"*/ghq -> ghq"
     zinit load x-motemen/ghq
 
     zinit ice from"gh-r" as"program" mv"jq-* -> jq"
