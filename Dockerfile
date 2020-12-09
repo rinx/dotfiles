@@ -388,14 +388,6 @@ COPY zshrc                $DOTFILES/zshrc
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG
 
-# zplug plugins
-RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
-    && git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zplug/repos/zsh-users/zsh-autosuggestions \
-    && git clone https://github.com/zsh-users/zsh-completions $HOME/.zplug/repos/zsh-users/zsh-completions \
-    && git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting \
-    && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
-    && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
-
 # babashka classpath
 RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}' -Spath)
 
@@ -403,6 +395,7 @@ RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
 # download dependencies
+RUN ["/bin/zsh", "-c", "source ~/.zshrc", "&&", "exit"]
 RUN ["/bin/zsh", "-c", "lein"]
 RUN ["/bin/zsh", "-c", "clojure -A:dev"]
 

@@ -1,7 +1,57 @@
 OS=$(uname -s)
 
-autoload -U compinit
+# zinit
+export ZINIT_HOME=$HOME/.zinit
+
+if builtin command -v git > /dev/null 2>&1 ; then
+    if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ];  then
+        mkdir -p ${ZINIT_HOME}
+        git clone --depth=1 https://github.com/zdharma/zinit.git ${ZINIT_HOME}/bin
+    fi
+
+    source ${ZINIT_HOME}/bin/zinit.zsh
+
+    autoload -Uz _zinit
+    (( ${+_comps} )) && _comps[zinit]=_zinit
+
+    zinit light zsh-users/zsh-autosuggestions
+    zinit light zdharma/fast-syntax-highlighting
+
+    zinit light Aloxaf/fzf-tab
+
+    zinit pack for fzf
+
+    zinit ice from"gh-r" as"program" mv"exa* -> ls"
+    zinit light ogham/exa
+
+    zinit ice from"gh-r" as"program" mv"rg* -> rg" pick"rg/rg"
+    zinit light BurntSushi/ripgrep
+
+    zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+    zinit light sharkdp/bat
+
+    zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
+    zinit light sharkdp/fd
+
+    zinit ice from"gh-r" as"program" mv"babashka-* -> bb"
+    zinit load borkdude/babashka
+
+    zinit ice from"gh-r" as"program" mv"*/ghq -> ghq"
+    zinit load x-motemen/ghq
+
+    zinit ice from"gh-r" as"program" mv"jq-* -> jq"
+    zinit load stedolan/jq
+
+    zinit ice from"gh" as"program" pick"bin/xpanes"
+    zinit load greymd/tmux-xpanes
+
+    zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
+fi
+
+autoload -Uz compinit
 compinit
+
+zinit cdreplay -q
 
 # completion settings
 zstyle ':completion:*' verbose yes
@@ -17,14 +67,12 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 autoload colors
 colors
 
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-
-# vimlike keybind
-bindkey -v
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -40,6 +88,18 @@ bindkey "^N" history-beginning-search-forward-end
 
 bindkey "^R" history-incremental-search-backward
 bindkey "^E" history-incremental-search-forward
+
+edit_current_line() {
+    local tmpfile=$(mktemp)
+    echo "$BUFFER" > $tmpfile
+    nvim $tmpfile -c "normal $" -c "set filetype=zsh"
+    BUFFER="$(cat $tmpfile)"
+    CURSOR=${#BUFFER}
+    rm $tmpfile
+    zle reset-prompt
+}
+zle -N edit_current_line
+bindkey '^O' edit_current_line
 
 setopt auto_cd
 setopt auto_pushd
@@ -114,54 +174,6 @@ function precmd() {
     fi
 }
 
-# zinit
-export ZINIT_HOME=$HOME/.zinit
-
-if builtin command -v git > /dev/null 2>&1 ; then
-    if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ];  then
-        mkdir -p ${ZINIT_HOME}
-        git clone --depth=1 https://github.com/zdharma/zinit.git ${ZINIT_HOME}/bin
-    fi
-
-    source ${ZINIT_HOME}/bin/zinit.zsh
-
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
-
-    zinit light zsh-users/zsh-autosuggestions
-    zinit light zdharma/fast-syntax-highlighting
-
-    zinit light Aloxaf/fzf-tab
-
-    zinit pack for fzf
-
-    zinit ice from"gh-r" as"program" mv"exa* -> ls"
-    zinit light ogham/exa
-
-    zinit ice from"gh-r" as"program" mv"rg* -> rg" pick"rg/rg"
-    zinit light BurntSushi/ripgrep
-
-    zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
-    zinit light sharkdp/bat
-
-    zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
-    zinit light sharkdp/fd
-
-    zinit ice from"gh-r" as"program" mv"babashka-* -> bb"
-    zinit load borkdude/babashka
-
-    zinit ice from"gh-r" as"program" mv"*/ghq -> ghq"
-    zinit load x-motemen/ghq
-
-    zinit ice from"gh-r" as"program" mv"jq-* -> jq"
-    zinit load stedolan/jq
-
-    zinit ice from"gh" as"program" pick"bin/xpanes"
-    zinit load greymd/tmux-xpanes
-
-    zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
-fi
-
 # aliases
 
 alias rm='rm -i'
@@ -211,7 +223,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --height 40% --reverse --cycle --border"
     if [ ! -z $TMUX ]; then
         if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
-            alias fzf=fzf-tmux
+            alias fzf='fzf-tmux -p'
         fi
     fi
 
