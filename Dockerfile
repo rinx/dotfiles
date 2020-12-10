@@ -139,7 +139,6 @@ RUN apt-get update \
     gfortran \
     git \
     gnupg \
-    jq \
     less \
     libevent-dev \
     libtool \
@@ -293,13 +292,12 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
 # babashka classpath
 RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}' -Spath)
 
-# download dependencies
+RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/zsh", "-c", "source ~/.zshrc", "&&", "exit"]
+RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
+
 RUN ["/bin/zsh", "-c", "lein"]
 RUN ["/bin/zsh", "-c", "clojure -A:dev"]
-
-RUN ["/bin/zsh", "-c", "make -j4 deploy"]
-RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
 RUN rm -rf /tmp/*
 
