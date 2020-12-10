@@ -16,15 +16,15 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     zinit light zsh-users/zsh-autosuggestions
     zinit light zdharma/fast-syntax-highlighting
-
-    zinit light Aloxaf/fzf-tab
+    zinit light hlissner/zsh-autopair
 
     zinit pack for fzf
+    zinit light Aloxaf/fzf-tab
 
-    zinit ice from"gh-r" as"program" mv"exa* -> ls"
+    zinit ice from"gh-r" as"program" mv"exa* -> ls" pick"ls"
     zinit light ogham/exa
 
-    zinit ice from"gh-r" as"program" mv"rg* -> rg" pick"rg/rg"
+    zinit ice from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
     zinit light BurntSushi/ripgrep
 
     zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
@@ -33,17 +33,46 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
     zinit light sharkdp/fd
 
-    zinit ice from"gh-r" as"program" mv"babashka-* -> bb"
-    zinit load borkdude/babashka
+    zinit ice from"gh-r" as"program" pick"bb"
+    zinit light borkdude/babashka
 
-    zinit ice from"gh-r" as"program" mv"*/ghq -> ghq"
-    zinit load x-motemen/ghq
+    zinit ice from"gh-r" as"program" pick"clj-kondo"
+    zinit light borkdude/clj-kondo
 
-    zinit ice from"gh-r" as"program" mv"jq-* -> jq"
-    zinit load stedolan/jq
+    zinit ice from"gh-r" as"program" mv"ghq* -> ghq" pick"ghq/ghq"
+    zinit light x-motemen/ghq
+
+    zinit ice from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
+    zinit light stedolan/jq
+
+    zinit ice from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
+    zinit light stern/stern
+
+    zinit ice from"gh-r" as"program" pick"k9s"
+    zinit light derailed/k9s
+
+    zinit ice from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
+    zinit light roboll/helmfile
+
+    zinit ice from"gh-r" as"program" pick"kustomize"
+    zinit light kubernetes-sigs/kustomize
+
+    zinit ice from"gh" as"program" pick"(kubectx|kubens)"
+    zinit light ahmetb/kubectx
+
+    zinit ice from"gh" as"program" \
+            atclone"./autogen.sh; ./configure" \
+            make \
+            pick"tmux"
+    zinit light tmux/tmux
 
     zinit ice from"gh" as"program" pick"bin/xpanes"
-    zinit load greymd/tmux-xpanes
+    zinit light greymd/tmux-xpanes
+
+    zinit ice from"gh" as"program" \
+            make"CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$ZPFX install" \
+            pick"$ZPFX/bin/nvim"
+    zinit light neovim/neovim
 
     zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 fi
@@ -67,7 +96,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 autoload colors
 colors
