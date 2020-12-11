@@ -26,7 +26,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
             pick"bin/(fzf|fzf-tmux)"
     zinit light junegunn/fzf
 
-    zinit light Aloxaf/fzf-tab
+    zinit wait lucid for Aloxaf/fzf-tab
 
     zinit ice from"gh-r" as"program" mv"exa* -> exa" pick"exa"
     zinit light ogham/exa
