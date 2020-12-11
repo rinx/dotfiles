@@ -220,19 +220,23 @@ alias uuu='cd ../../../'
 alias uuuu='cd ../../../../'
 alias cdr='cd -'
 
-if ls --color > /dev/null 2>&1 ; then
-    alias ls='ls --color -F'
-    alias lsa='ls --color -F -a'
-    alias lsl='ls --color -F -l'
-    alias lsal='ls --color -F -a -l'
-else # for BSD version
-    alias lsa='ls -a'
-    alias lsl='ls -l'
-    alias lsal='ls -al'
-fi
 
-if buildin command -v exa > /dev/null 2>&1 ; then
-    alias ls=exa
+if builtin command -v exa > /dev/null 2>&1 ; then
+    alias ls='exa'
+    alias lsa='exa -a'
+    alias lsl='exa -l'
+    alias lsal='exa -a -l'
+else
+    if ls --color > /dev/null 2>&1 ; then
+            alias ls='ls --color -F'
+            alias lsa='ls --color -F -a'
+            alias lsl='ls --color -F -l'
+            alias lsal='ls --color -F -a -l'
+    else # for BSD version
+            alias lsa='ls -a'
+            alias lsl='ls -l'
+            alias lsal='ls -al'
+    fi
 fi
 
 alias vi='nvim'
