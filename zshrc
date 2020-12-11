@@ -138,14 +138,11 @@ edit_current_line() {
 zle -N edit_current_line
 bindkey '^O' edit_current_line
 
-setopt auto_cd
-setopt auto_pushd
-
-setopt correct
 setopt list_packed
 setopt nolistbeep
 
-setopt prompt_subst
+setopt auto_cd
+setopt auto_pushd
 
 setopt auto_list
 setopt auto_menu
