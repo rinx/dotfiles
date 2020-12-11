@@ -14,6 +14,9 @@ if builtin command -v git > /dev/null 2>&1 ; then
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
+    zinit ice pick"async.zsh" src"pure.zsh"
+    zinit light sindresorhus/pure
+
     zinit light zsh-users/zsh-autosuggestions
     zinit light zdharma/fast-syntax-highlighting
     zinit light hlissner/zsh-autopair
@@ -101,6 +104,7 @@ zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':prompt:pure:git:stash' show yes
 
 autoload colors
 colors
@@ -116,11 +120,11 @@ setopt share_history
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+bindkey '^P' history-beginning-search-backward-end
+bindkey '^N' history-beginning-search-forward-end
 
-bindkey "^R" history-incremental-search-backward
-bindkey "^E" history-incremental-search-forward
+bindkey '^R' history-incremental-search-backward
+bindkey '^E' history-incremental-search-forward
 
 edit_current_line() {
     local tmpfile=$(mktemp)
@@ -142,7 +146,6 @@ setopt list_packed
 setopt nolistbeep
 
 setopt prompt_subst
-setopt transient_rprompt
 
 setopt auto_list
 setopt auto_menu
@@ -152,60 +155,16 @@ setopt auto_param_keys
 
 setopt correct
 
-
-# prompt
-
-local lf=$'\n'
-
-local afterhost=''
-
-# when connected to remote host
-if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
-    local usrathn="%F{yellow}%n@$HOST%f"
-    if [ ${#HOST} -gt 10 ]; then
-        local afterhost="$lf"
-    fi
-elif [ -n "${DOCKERIZED_DEVENV}" ]; then
-    local usrathn="%F{yellow}%n@${DOCKERIZED_DEVENV}%f"
-    if [ ${#DOCKERIZED_DEVENV} -gt 12 ]; then
-        local afterhost="$lf"
-    fi
-else
-    local usrathn="%n"
-fi
-
-local plat='%(?.%F{green}[%~]%f.%F{red}[%~]%f)'
-local pbase="%F{cyan}[$usrathn%F{cyan}]%f$afterhost$plat"
-local pbase_nor="%F{red}[$usrathn%F{red}]%f$afterhost$plat"
-
-PROMPT="%5(~|$pbase$lf|$pbase)%% "
-
-# zsh vi-like keybind mode indicator
-function zle-line-init zle-keymap-select {
-case $KEYMAP in
-    vicmd)
-        PROMPT="%5(~|$pbase_nor$lf|$pbase_nor)%% "
-        ;;
-    main|viins)
-        PROMPT="%5(~|$pbase$lf|$pbase)%% "
-        ;;
-esac
-zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-# for, while, etc...
-PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> "
-
-# missing spell
-SPROMPT="%F{yellow}(っ'ヮ'c) < Did you mean %r?[n,y,a,e]:%f "
-
 function precmd() {
     if [ ! -z $TMUX ]; then
         tmux refresh-client -S
     fi
 }
+
+if [ -n "${DOCKERIZED_DEVENV}" ]; then
+    PURE_PROMPT_SYMBOL="${DOCKERIZED_DEVENV} ❯"
+    PURE_PROMPT_VICMD_SYMBOL="${DOCKERIZED_DEVENV} ❮"
+fi
 
 # aliases
 
@@ -268,66 +227,27 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         fi
     fi
 
-    fh() {
-        print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+    fzf-search-history() {
+      BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+      CURSOR=${#BUFFER}
     }
+    zle -N fzf-search-history
+    bindkey '^F' fzf-search-history
 
-    fcd() {
-        local dir
-        dir=$(find ${1:-.} -path '*/\.*' -prune \
-            -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
-    }
-
-    fcda() {
-        local dir
-        dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
-    }
-
-    fps() {
-        ps -ef | sed 1d | fzf -m
-    }
-
-    fkill() {
-        local pid
-        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-
-        if [[ "x$pid" != "x" ]] ; then
-            echo $pid | xargs kill -${1:-9}
-        fi
-    }
+    if builtin command -v fd > /dev/null 2>&1 ; then
+        fzf-select-file() {
+            dir=$(fd 2> /dev/null | fzf +m)
+            LBUFFER="${LBUFFER}${dir}"
+        }
+        zle -N fzf-select-file
+        bindkey '^K' fzf-select-file
+    fi
 
     fgbr() {
         local branches branch
         branches=$(git branch --all | grep -v HEAD)
         branch=$(echo "$branches" | fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m | sed "s/.* //" | sed "s#remotes/[^/]*/##")
         print -z "git checkout $branch"
-    }
-
-    fgshow() {
-        git log --color=always \
-            --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-            fzf --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-            --bind "ctrl-m:execute:
-        (grep -o '[a-f0-9]\{7\}' | head -1 |
-            xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-        {}
-        FZF-EOF"
-    }
-
-    fgstash() {
-        local out
-        out=$(git stash list --pretty="%gd %C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" \
-            | fzf --ansi --no-sort --query="$q" --print-query \
-            --preview 'echo {} | cut -d " " -f 1 | xargs -I % git stash show -p %')
-
-        if [[ "$out" != "" ]] ; then
-            echo $out
-            echo $out | cut -d " " -f 1 | xargs -I % git stash pop %
-        fi
-    }
-
-    fprev() {
-        fzf --preview 'head -100 {}'
     }
 
     if builtin command -v ghq > /dev/null 2>&1 ; then
@@ -384,28 +304,6 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         if [[ "$target" != "" ]]; then
             print -z "git commit --signoff -m \"$semver $target \""
         fi
-    }
-
-    tinysnip-base() {
-        namespaces=$1
-        filters=`echo $2 | jet --query '(str #jet/lit "(filter [:tags (get " (id) #jet/lit ")])")' | jet --collect --to json | jq -r '.[]' | tr '\n' ' '`
-        cat ~/.dotfiles/resources/tinysnip.edn | \
-            jet --query "[$namespaces $filters (map (str #jet/lit \"[[\" :title #jet/lit \"]] \" :body))]" --to json | \
-            jq -r '.[]' | \
-            fzf -m | \
-            sed -e 's/^\[\[.*\]\] //g'
-    }
-
-    tinysnip-gh-badge() {
-        tinysnip-base ':user :snippets' ':github :badge'
-    }
-
-    tinysnip-kaomoji() {
-        tinysnip-base ':user :snippets' ':kaomoji'
-    }
-
-    tinysnip() {
-        print -z $(echo "tinysnip-gh-badge\ntinysnip-kaomoji" | fzf -m)
     }
 fi
 
