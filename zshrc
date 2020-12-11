@@ -82,6 +82,14 @@ if builtin command -v git > /dev/null 2>&1 ; then
     # zinit light neovim/neovim
 
     zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
+
+    zinit light-mode lucid wait has"kubectl" for \
+            id-as"kubectl_completion" \
+            as"completion" \
+            atclone"kubectl completion zsh > _kubectl" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
 fi
 
 autoload -Uz compinit
@@ -358,11 +366,6 @@ if builtin command -v rlwrap > /dev/null 2>&1 ; then
 else
     alias cljdev='clojure -A:dev -r'
     alias bbrepl='bb --repl'
-fi
-
-# kube
-if builtin command -v kubectl > /dev/null 2>&1 ; then
-    source <(kubectl completion zsh)
 fi
 
 # docker
