@@ -25,7 +25,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     zinit light Aloxaf/fzf-tab
 
-    zinit ice from"gh-r" as"program" mv"exa* -> ls" pick"ls"
+    zinit ice from"gh-r" as"program" mv"exa* -> exa" pick"exa"
     zinit light ogham/exa
 
     zinit ice from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
@@ -99,8 +99,8 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 autoload colors
 colors
@@ -229,6 +229,10 @@ else # for BSD version
     alias lsa='ls -a'
     alias lsl='ls -l'
     alias lsal='ls -al'
+fi
+
+if buildin command -v exa > /dev/null 2>&1 ; then
+    alias ls=exa
 fi
 
 alias vi='nvim'
