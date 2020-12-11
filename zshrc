@@ -73,10 +73,10 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice from"gh" as"program" pick"bin/xpanes"
     zinit light greymd/tmux-xpanes
 
-    zinit ice from"gh" as"program" \
-            make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
-            pick"build/bin/nvim"
-    zinit light neovim/neovim
+    # zinit ice from"gh" as"program" \
+    #         make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
+    #         pick"build/bin/nvim"
+    # zinit light neovim/neovim
 
     zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 fi
