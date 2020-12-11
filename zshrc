@@ -74,8 +74,8 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit light greymd/tmux-xpanes
 
     zinit ice from"gh" as"program" \
-            make"CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$ZPFX install" \
-            pick"$ZPFX/bin/nvim"
+            make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
+            pick"build/bin/nvim"
     zinit light neovim/neovim
 
     zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
