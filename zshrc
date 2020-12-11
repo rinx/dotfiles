@@ -18,7 +18,11 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit light zdharma/fast-syntax-highlighting
     zinit light hlissner/zsh-autopair
 
-    zinit pack for fzf
+    zinit ice from"gh" as"program" \
+            make"install" \
+            pick"bin/(fzf|fzf-tmux)"
+    zinit light junegunn/fzf
+
     zinit light Aloxaf/fzf-tab
 
     zinit ice from"gh-r" as"program" mv"exa* -> ls" pick"ls"
@@ -475,7 +479,6 @@ devstarter() {
         -v $HOME/.kube:/root/.kube \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
-        -v $HOME/Downloads:/root/Downloads \
         -v $HOME/.zsh_history:/root/.zsh_history \
         -v $HOME/.skk-jisyo:/root/.skk-jisyo \
         $@"
