@@ -17,54 +17,60 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice pick"async.zsh" src"pure.zsh"
     zinit light sindresorhus/pure
 
-    zinit light zsh-users/zsh-autosuggestions
-    zinit light zdharma/fast-syntax-highlighting
-    zinit light hlissner/zsh-autopair
-
     zinit ice from"gh" as"program" \
             make"install" \
             pick"bin/(fzf|fzf-tmux)"
     zinit light junegunn/fzf
 
-    zinit wait lucid for Aloxaf/fzf-tab
+    zinit ice wait
+    zinit light zsh-users/zsh-autosuggestions
+
+    zinit ice wait
+    zinit light zdharma/fast-syntax-highlighting
+
+    zinit ice wait
+    zinit light hlissner/zsh-autopair
+
+    zinit ice wait
+    zinit light Aloxaf/fzf-tab
 
     zinit ice from"gh-r" as"program" mv"exa* -> exa" pick"exa"
     zinit light ogham/exa
 
-    zinit ice from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
+    zinit ice wait from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
     zinit light BurntSushi/ripgrep
 
-    zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+    zinit ice wait from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
     zinit light sharkdp/bat
 
-    zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
+    zinit ice wait from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
     zinit light sharkdp/fd
-
-    zinit ice from"gh-r" as"program" pick"bb"
-    zinit light borkdude/babashka
-
-    zinit ice from"gh-r" as"program" pick"clj-kondo"
-    zinit light borkdude/clj-kondo
 
     zinit ice from"gh-r" as"program" mv"ghq* -> ghq" pick"ghq/ghq"
     zinit light x-motemen/ghq
 
-    zinit ice from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
+    zinit ice wait"3" lucid from"gh-r" as"program" pick"bb"
+    zinit light borkdude/babashka
+
+    zinit ice wait"3" lucid from"gh-r" as"program" pick"clj-kondo"
+    zinit light borkdude/clj-kondo
+
+    zinit ice wait"1" lucid from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
     zinit light stedolan/jq
 
-    zinit ice from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
+    zinit ice wait"2" lucid from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
     zinit light stern/stern
 
-    zinit ice from"gh-r" as"program" pick"k9s"
+    zinit ice wait"1" lucid from"gh-r" as"program" pick"k9s"
     zinit light derailed/k9s
 
-    zinit ice from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
+    zinit ice wait"2" lucid from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
     zinit light roboll/helmfile
 
-    zinit ice from"gh-r" as"program" pick"kustomize"
+    zinit ice wait"1" lucid from"gh-r" as"program" pick"kustomize"
     zinit light kubernetes-sigs/kustomize
 
-    zinit ice from"gh" as"program" pick"(kubectx|kubens)"
+    zinit ice wait"1" lucid from"gh" as"program" pick"(kubectx|kubens)"
     zinit light ahmetb/kubectx
 
     zinit ice from"gh" as"program" \
@@ -73,7 +79,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
             pick"tmux"
     zinit light tmux/tmux
 
-    zinit ice from"gh" as"program" pick"bin/xpanes"
+    zinit ice wait"1" lucid from"gh" as"program" pick"bin/xpanes"
     zinit light greymd/tmux-xpanes
 
     # zinit ice from"gh" as"program" \
@@ -81,7 +87,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
     #         pick"build/bin/nvim"
     # zinit light neovim/neovim
 
-    zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
+    zinit wait atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 
     zinit light-mode lucid wait has"kubectl" for \
             id-as"kubectl_completion" \
