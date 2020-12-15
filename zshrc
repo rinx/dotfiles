@@ -239,6 +239,13 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     zle -N fzf-search-history
     bindkey '^F' fzf-search-history
 
+    fzf-git-hash() {
+        hash=$(git -c color.ui=always log --pretty=format:'%C(yellow)%h%Creset %s %C(white)- %an, %ar%Creset'| fzf --ansi +m | awk '{print $1}')
+        LBUFFER="${LBUFFER}${hash}"
+    }
+    zle -N fzf-git-hash
+    bindkey '^H' fzf-git-hash
+
     if builtin command -v fd > /dev/null 2>&1 ; then
         fzf-select-file() {
             dir=$(fd 2> /dev/null | fzf +m)
