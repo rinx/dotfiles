@@ -250,7 +250,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         LBUFFER="${LBUFFER}${hash}"
     }
     zle -N fzf-git-hash
-    bindkey '^H' fzf-git-hash
+    bindkey '^G' fzf-git-hash
 
     if builtin command -v fd > /dev/null 2>&1 ; then
         fzf-select-file() {
