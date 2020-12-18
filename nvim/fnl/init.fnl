@@ -459,6 +459,9 @@
 (bridge :MkdpEchoURL :mkdp-echo-url)
 (set nvim.g.mkdp_browserfunc "MkdpEchoURL")
 
+(augroup init-markdown
+         (autocmd :FileType :markdown "setlocal shiftwidth=4"))
+
 ;; iced
 (set nvim.g.iced_enable_default_key_mappings true)
 
@@ -490,8 +493,7 @@
          (autocmd :FileType :go "set shiftwidth=4")
          (autocmd :FileType :go "set tabstop=4")
          (autocmd :FileType :go "set softtabstop=4")
-         (autocmd :FileType :go "compiler go")
-         (autocmd :BufWritePre "*.go" ":call CocAction('runCommand', 'editor.action.organizeImport')"))
+         (autocmd :FileType :go "compiler go"))
 
 
 ;; QuickFix
