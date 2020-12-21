@@ -270,8 +270,10 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     fgbr() {
         local branches branch
         branches=$(git branch --all | grep -v HEAD)
-        branch=$(echo "$branches" | fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-        print -z "git checkout $branch"
+        branch=$(git branch --all | fzf +m | tr -d '[:space:]')
+        if [[ "$branch" != "" ]]; then
+            git checkout $branch
+        fi
     }
 
     if builtin command -v ghq > /dev/null 2>&1 ; then
