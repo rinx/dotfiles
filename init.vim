@@ -43,7 +43,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'junegunn/fzf', { 'dir': '~/.zplug/repos/junegunn/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.zinit/plugins/junegunn---fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'haya14busa/vim-asterisk'
