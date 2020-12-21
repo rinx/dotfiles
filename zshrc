@@ -46,31 +46,37 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
     zinit light sharkdp/fd
 
+    zinit ice wait"2" lucid from"gh-r" as"program" pick"sad"
+    zinit light ms-jpq/sad
+
+    zinit ice wait"2" from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
+    zinit light dandavison/delta
+
     zinit ice from"gh-r" as"program" mv"ghq* -> ghq" pick"ghq/ghq"
     zinit light x-motemen/ghq
 
-    zinit ice wait"3" lucid from"gh-r" as"program" pick"bb"
+    zinit ice wait"4" lucid from"gh-r" as"program" pick"bb"
     zinit light borkdude/babashka
 
-    zinit ice wait"3" lucid from"gh-r" as"program" pick"clj-kondo"
+    zinit ice wait"4" lucid from"gh-r" as"program" pick"clj-kondo"
     zinit light borkdude/clj-kondo
 
     zinit ice wait"1" lucid from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
     zinit light stedolan/jq
 
-    zinit ice wait"2" lucid from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
+    zinit ice wait"3" lucid from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
     zinit light stern/stern
 
     zinit ice wait"1" lucid from"gh-r" as"program" pick"k9s"
     zinit light derailed/k9s
 
-    zinit ice wait"2" lucid from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
+    zinit ice wait"3" lucid from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
     zinit light roboll/helmfile
 
-    zinit ice wait"1" lucid from"gh-r" as"program" pick"kustomize"
+    zinit ice wait"3" lucid from"gh-r" as"program" pick"kustomize"
     zinit light kubernetes-sigs/kustomize
 
-    zinit ice wait"1" lucid from"gh" as"program" pick"(kubectx|kubens)"
+    zinit ice wait"3" lucid from"gh" as"program" pick"(kubectx|kubens)"
     zinit light ahmetb/kubectx
 
     zinit ice from"gh" as"program" \

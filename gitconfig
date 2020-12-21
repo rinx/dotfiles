@@ -29,6 +29,10 @@
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes_global
     editor = nvim -u ~/.dotfiles/init.vim
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
 
 [alias]
     this  = !git init && git add . && git commit --signoff -m \"first commit\"
@@ -66,23 +70,12 @@
 
     sq    = squash
 
-    wdiff = diff --color-words --ignore-all-space
-    latexdiff = difftool -y -t latex
-
 [url "https://"]
     insteadOf = git://
 
 [credential]
     helper = store --file ~/.git-credentials
     helper = cache --timeout=360000
-
-[pager]
-    log  = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
-    show = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
-    diff = "if builtin command -v diff-highlight > /dev/null 2>&1 ; then diff-highlight | less ; else less ; fi"
-
-[difftool.latex]
-    cmd = latexdiff "$LOCAL" "$REMOTE"
 
 [pull]
     ff = only
