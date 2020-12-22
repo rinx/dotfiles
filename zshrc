@@ -4,7 +4,7 @@ OS=$(uname -s)
 export ZINIT_HOME=$HOME/.zinit
 
 if builtin command -v git > /dev/null 2>&1 ; then
-    if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ];  then
+    if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ]; then
         mkdir -p ${ZINIT_HOME}
         git clone --depth=1 https://github.com/zdharma/zinit.git ${ZINIT_HOME}/bin
     fi
@@ -99,11 +99,15 @@ if builtin command -v git > /dev/null 2>&1 ; then
             zdharma/null
 
     build-nvim() {
-        zinit ice from"gh" as"program" \
+        zinit ice wait"1" from"gh" as"program" \
                 make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
                 pick"build/bin/nvim"
         zinit light neovim/neovim
     }
+
+    if [ -f ${ZINIT_HOME}/plugins/neovim---neovim/build/bin/nvim ]; then
+        build-nvim
+    fi
 fi
 
 autoload -Uz compinit
