@@ -98,6 +98,17 @@ if builtin command -v git > /dev/null 2>&1 ; then
             run-atpull \
             zdharma/null
 
+    zinit ice wait"1" lucid from"git.zx2c4.com" as"program" \
+            atclone"cp src/completion/pass.zsh-completion _pass_completion" \
+            make"PREFIX=$ZPFX install" \
+            pick"$ZPFX/bin/pass"
+    zinit light password-store
+
+    zinit ice wait"2" lucid from"gh-r" as"program" \
+            bpick"*pass*" \
+            pick"docker-credential-pass"
+    zinit light docker/docker-credential-helpers
+
     build-nvim() {
         zinit ice wait"1" from"gh" as"program" \
                 make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
