@@ -88,11 +88,6 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait"1" lucid from"gh" as"program" pick"bin/xpanes"
     zinit light greymd/tmux-xpanes
 
-    # zinit ice from"gh" as"program" \
-    #         make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
-    #         pick"build/bin/nvim"
-    # zinit light neovim/neovim
-
     zinit wait atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 
     zinit light-mode lucid wait has"kubectl" for \
@@ -102,6 +97,13 @@ if builtin command -v git > /dev/null 2>&1 ; then
             atpull"%atclone" \
             run-atpull \
             zdharma/null
+
+    build-nvim() {
+        zinit ice from"gh" as"program" \
+                make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
+                pick"build/bin/nvim"
+        zinit light neovim/neovim
+    }
 fi
 
 autoload -Uz compinit
