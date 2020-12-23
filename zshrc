@@ -421,6 +421,7 @@ devstarter() {
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
         -v $HOME/.kube:/root/.kube \
+        -v $HOME/.gnupg:/root/.gnupg:ro \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
         -v $HOME/.zsh_history:/root/.zsh_history \
