@@ -287,6 +287,9 @@ COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
 COPY zshrc                $DOTFILES/zshrc
 
+RUN mkdir -p $HOME/.docker
+COPY docker-config.json $HOME/.docker/config.json
+
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG
 
