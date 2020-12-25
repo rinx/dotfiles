@@ -304,7 +304,7 @@ RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
 RUN ["/bin/zsh", "-c", "source ~/.zshrc"]
-RUN ["/bin/zsh", "-c", "zinit update"]
+RUN ["/bin/zsh", "-c", "zinit self-update"]
 
 RUN rm -rf /tmp/*
 
