@@ -81,6 +81,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     zinit ice from"gh" as"program" \
             atclone"./autogen.sh; ./configure" \
+            atpull"%atclone" \
             make \
             pick"tmux"
     zinit light tmux/tmux
@@ -100,6 +101,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     zinit ice wait"1" lucid from"git.zx2c4.com" as"program" \
             atclone"cp src/completion/pass.zsh-completion _pass_completion" \
+            atpull"%atclone" \
             make"PREFIX=$ZPFX install" \
             pick"$ZPFX/bin/pass"
     zinit light password-store
