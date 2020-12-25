@@ -71,8 +71,8 @@ RUN mkdir -p /out/packer \
 
 FROM ubuntu:devel AS neovim
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt update \
+    && apt install -y \
     autoconf \
     automake \
     cmake \
@@ -85,6 +85,8 @@ RUN apt-get update \
     pkg-config \
     unzip \
     upx \
+    && apt autoclean -y \
+    && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /tmp \
@@ -124,8 +126,8 @@ ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Tokyo
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt update \
+    && apt install -y \
     autoconf \
     automake \
     bison \
@@ -168,6 +170,8 @@ RUN apt-get update \
     yarn \
     zip \
     zsh \
+    && apt autoclean -y \
+    && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip neovim \
@@ -299,10 +303,7 @@ RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "h
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
-# RUN ["/bin/zsh", "-c", "source ~/.zshrc", "&&", "exit"]
-
-RUN ["/bin/zsh", "-c", "lein"]
-RUN ["/bin/zsh", "-c", "clojure -A:dev"]
+RUN ["/bin/zsh", "-c", "source ~/.zshrc && exit"]
 
 RUN rm -rf /tmp/*
 
