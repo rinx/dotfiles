@@ -303,7 +303,8 @@ RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "h
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
-RUN ["/bin/zsh", "-c", "source ~/.zshrc && exit"]
+RUN ["/bin/zsh", "-c", "source ~/.zshrc"]
+RUN ["/bin/zsh", "-c", "zinit update"]
 
 RUN rm -rf /tmp/*
 
