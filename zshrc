@@ -99,6 +99,14 @@ if builtin command -v git > /dev/null 2>&1 ; then
             run-atpull \
             zdharma/null
 
+    zinit light-mode lucid wait has"helm" for \
+            id-as"helm_completion" \
+            as"completion" \
+            atclone"helm completion zsh > _helm" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
+
     zinit ice wait"1" lucid from"git.zx2c4.com" as"program" \
             atclone"cp src/completion/pass.zsh-completion _pass_completion" \
             atpull"%atclone" \
