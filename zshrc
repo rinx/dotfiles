@@ -19,6 +19,8 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     zinit ice from"gh" as"program" \
             make"install" \
+            atclone"cp shell/completion.zsh _fzf" \
+            atpull"%atclone" \
             pick"bin/(fzf|fzf-tmux)"
     zinit light junegunn/fzf
 
@@ -37,13 +39,21 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice from"gh-r" as"program" mv"exa* -> exa" pick"exa"
     zinit light ogham/exa
 
-    zinit ice wait from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
+    zinit ice wait from"gh-r" \
+            as"program" \
+            mv"ripgrep* -> rg" \
+            pick"rg/rg" \
+            nocompletions
     zinit light BurntSushi/ripgrep
 
     zinit ice wait from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
     zinit light sharkdp/bat
 
-    zinit ice wait from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
+    zinit ice wait from"gh-r" \
+            as"program" \
+            mv"fd* -> fd" \
+            pick"fd/fd" \
+            nocompletions
     zinit light sharkdp/fd
 
     zinit ice wait"2" lucid from"gh-r" as"program" pick"sad"
@@ -103,6 +113,22 @@ if builtin command -v git > /dev/null 2>&1 ; then
             id-as"helm_completion" \
             as"completion" \
             atclone"helm completion zsh > _helm" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
+
+    zinit light-mode lucid wait has"helmfile" for \
+            id-as"helmfile_completion" \
+            as"completion" \
+            atclone"curl -s https://raw.githubusercontent.com/roboll/helmfile/master/autocomplete/helmfile_zsh_autocomplete > _helmfile" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
+
+    zinit light-mode lucid wait has"kustomize" for \
+            id-as"kustomize_completion" \
+            as"completion" \
+            atclone"kustomize completion zsh > _kustomize" \
             atpull"%atclone" \
             run-atpull \
             zdharma/null
