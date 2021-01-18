@@ -89,6 +89,9 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait"3" lucid from"gh" as"program" pick"(kubectx|kubens)"
     zinit light ahmetb/kubectx
 
+    zinit ice wait"3" lucid from"gh-r" as"program" mv"kubefwd -> kubectl-kubefwd" pick"kubectl-kubefwd"
+    zinit light txn2/kubefwd
+
     zinit ice from"gh" as"program" \
             atclone"./autogen.sh; ./configure" \
             atpull"%atclone" \
