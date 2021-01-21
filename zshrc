@@ -1,4 +1,5 @@
 OS=$(uname -s)
+export GPG_TTY=$TTY
 
 # zinit
 export ZINIT_HOME=$HOME/.zinit
