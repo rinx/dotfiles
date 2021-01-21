@@ -458,7 +458,7 @@ devstarter() {
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
         -v $HOME/.kube:/root/.kube \
-        -v $HOME/.gnupg:/root/.gnupg:ro \
+        -v $HOME/.gnupg:/root/.gnupg \
         -v $HOME/.password-store:/root/.password-store:ro \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
