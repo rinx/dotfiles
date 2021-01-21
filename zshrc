@@ -66,10 +66,10 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit light x-motemen/ghq
 
     zinit ice wait"4" lucid from"gh-r" as"program" pick"bb"
-    zinit light borkdude/babashka
+    zinit light babashka/babashka
 
     zinit ice wait"4" lucid from"gh-r" as"program" pick"clj-kondo"
-    zinit light borkdude/clj-kondo
+    zinit light clj-kondo/clj-kondo
 
     zinit ice wait"1" lucid from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
     zinit light stedolan/jq
