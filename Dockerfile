@@ -185,6 +185,9 @@ RUN npm install -g \
     fortran-language-server \
     hy
 
+RUN luarocks install fennel \
+    && luarocks install readline
+
 ENV GRAALVM_HOME /usr/lib/graalvm
 RUN cd /tmp \
     && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
