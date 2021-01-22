@@ -149,16 +149,21 @@ if builtin command -v git > /dev/null 2>&1 ; then
             pick"docker-credential-pass"
     zinit light docker/docker-credential-helpers
 
-    build-nvim() {
-        zinit ice wait"1" from"gh" as"program" \
-                make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
-                pick"build/bin/nvim"
-        zinit light neovim/neovim
-    }
-
-    if [ -f ${ZINIT_HOME}/plugins/neovim---neovim/build/bin/nvim ]; then
-        build-nvim
-    fi
+    case "$OS" in
+        Darwin)
+            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+                    mv"nvim-* -> nvim" \
+                    bpick"*macos*" \
+                    pick"nvim/bin/nvim"
+            ;;
+        *)
+            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+                    mv"nvim-* -> nvim" \
+                    bpick"*linux*" \
+                    pick"nvim/bin/nvim"
+            ;;
+        esac
+    zinit light neovim/neovim
 fi
 
 autoload -Uz compinit
