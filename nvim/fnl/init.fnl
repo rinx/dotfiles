@@ -7,7 +7,7 @@
             devicon nvim-web-devicons}
    require-macros [util.macros]})
 
-(local icontab icon.tab)
+(def icontab icon.tab)
 
 (defn- bridge [from to]
   (util.fn-bridge from :init to {:return true}))
@@ -479,6 +479,10 @@
 
 ;; fennel
 (set nvim.g.conjure#client#fennel#aniseed#aniseed_module_prefix "aniseed.")
+(defn conjure-client-fennel-stdio []
+  (set nvim.g.conjure#filetype#fennel "conjure.client.fennel.stdio"))
+(bridge :ConjureClientFennelStdio :conjure-client-fennel-stdio)
+(nvim.ex.command_ :ConjureClientFennelStdio "call ConjureClientFennelStdio()")
 
 (augroup init-fennel
          (autocmd :FileType :fennel "setlocal shiftwidth=2"))
