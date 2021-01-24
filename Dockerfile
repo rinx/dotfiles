@@ -1,7 +1,9 @@
 ARG GRAALVM_VERSION=20.3.0
 ARG GRAALVM_JAVA_VERSION=java11
 
-ARG PROTOBUF_VERSION=3.12.4
+ARG FENNEL_VERSION=0.8.0
+
+ARG PROTOBUF_VERSION=3.14.0
 ARG KOTLIN_LS_VERSION=0.7.0
 
 FROM docker:dind AS docker
@@ -118,6 +120,7 @@ FROM ubuntu:devel AS base
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
+ARG FENNEL_VERSION
 ARG PROTOBUF_VERSION
 ARG KOTLIN_LS_VERSION
 
@@ -143,10 +146,11 @@ RUN apt update \
     gnupg \
     less \
     libevent-dev \
+    liblua5.3-dev \
     libtool \
     libtool-bin \
     locales \
-    luarocks \
+    lua5.3 \
     make \
     musl-dev \
     ninja-build \
@@ -185,9 +189,6 @@ RUN npm install -g \
     fortran-language-server \
     hy
 
-RUN luarocks install fennel \
-    && luarocks install readline
-
 ENV GRAALVM_HOME /usr/lib/graalvm
 RUN cd /tmp \
     && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
@@ -199,8 +200,11 @@ RUN cd /tmp \
     && upx -9 $(find /usr/lib/graalvm -name node -type f -executable | head -1) \
     && upx -9 $(find /usr/lib/graalvm -name lli -type f -executable | head -1)
 
+RUN curl "https://fennel-lang.org/downloads/fennel-${FENNEL_VERSION}" -o /usr/local/bin/fennel \
+    && chmod a+x /usr/local/bin/fennel
+
 RUN cd /tmp \
-    && curl -OL "https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
+    && curl -OL "https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
     && unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3 \
     && upx -9 protoc3/bin/* \
     && mv protoc3/bin/* /usr/local/bin/ \
