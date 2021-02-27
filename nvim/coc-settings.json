@@ -6,6 +6,16 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     },
+    "clojure": {
+      "command": "clojure-lsp",
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj"],
+      "additionalSchemes": ["jar", "zipfile"],
+      "trace.server": "verbose",
+      "initializationOptions": {
+        "ignore-classpath-directories": true
+      }
+    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": [

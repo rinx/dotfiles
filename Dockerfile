@@ -4,6 +4,7 @@ ARG GRAALVM_JAVA_VERSION=java11
 ARG FENNEL_VERSION=0.8.0
 
 ARG PROTOBUF_VERSION=3.14.0
+ARG CLOJURE_LSP_VERSION=2021.02.26-13.58.48
 ARG KOTLIN_LS_VERSION=0.7.0
 
 FROM docker:dind AS docker
@@ -122,6 +123,7 @@ ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
 ARG FENNEL_VERSION
 ARG PROTOBUF_VERSION
+ARG CLOJURE_LSP_VERSION
 ARG KOTLIN_LS_VERSION
 
 ENV LANG en_US.UTF-8
@@ -210,6 +212,12 @@ RUN cd /tmp \
     && mv protoc3/bin/* /usr/local/bin/ \
     && mv protoc3/include/* /usr/local/include/ \
     && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
+
+RUN cd /tmp \
+    && curl -OL "https://github.com/clojure-lsp/clojure-lsp/releases/download/${CLOJURE_LSP_VERSION}/clojure-lsp-native-linux-amd64.zip" \
+    && unzip clojure-lsp-native-linux-amd64.zip \
+    && mv clojure-lsp /usr/local/bin/ \
+    && rm -rf clojure-lsp-native-linux-amd64.zip
 
 RUN cd /tmp \
     && curl -L "https://github.com/fwcd/kotlin-language-server/releases/download/${KOTLIN_LS_VERSION}/server.zip" --output kotlin-ls.zip \
