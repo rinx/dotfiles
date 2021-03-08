@@ -300,16 +300,21 @@ fi
 
 if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --height 40% --reverse --cycle --border"
+    if [ ! -z $TMUX ]; then
+        if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
+            alias fzf='fzf-tmux -p'
+        fi
+    fi
 
     fzf-search-history() {
-      BUFFER=$(history -n -r 1 | fzf-tmux -p --no-sort +m --query "$LBUFFER" --prompt="History > ")
+      BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
       CURSOR=${#BUFFER}
     }
     zle -N fzf-search-history
     bindkey '^F' fzf-search-history
 
     fzf-git-hash() {
-        hash=$(git -c color.ui=always log --pretty=format:'%C(yellow)%h%Creset %s %C(white)- %an, %ar%Creset'| fzf-tmux -p --ansi +m | awk '{print $1}')
+        hash=$(git -c color.ui=always log --pretty=format:'%C(yellow)%h%Creset %s %C(white)- %an, %ar%Creset'| fzf --ansi +m | awk '{print $1}')
         LBUFFER="${LBUFFER}${hash}"
     }
     zle -N fzf-git-hash
@@ -317,7 +322,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
 
     if builtin command -v fd > /dev/null 2>&1 ; then
         fzf-select-file() {
-            dir=$(fd 2> /dev/null | fzf-tmux -p +m)
+            dir=$(fd 2> /dev/null | fzf +m)
             LBUFFER="${LBUFFER}${dir}"
         }
         zle -N fzf-select-file
@@ -325,7 +330,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     fi
 
     fgbr() {
-        branch=$(git branch --sort=-committerdate --all | fzf-tmux -p +m | tr -d '[:space:]')
+        branch=$(git branch --sort=-committerdate --all | fzf +m | tr -d '[:space:]')
         if [[ "$branch" != "" ]]; then
             git checkout $branch
         fi
@@ -334,7 +339,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     if builtin command -v ghq > /dev/null 2>&1 ; then
         fghq() {
             local dir
-            dir=$(ghq list --vcs git | fzf-tmux -p +m)
+            dir=$(ghq list --vcs git | fzf +m)
             if [[ "$dir" != "" ]]; then
                 cd "`ghq root`/$dir"
             fi
@@ -348,7 +353,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
             current_pane=$(tmux display-message -p '#I:#P')
             current_window=$(tmux display-message -p '#I')
 
-            target=$(echo "$panes" | grep -v "$current_pane" | fzf-tmux -p +m --reverse) || return
+            target=$(echo "$panes" | grep -v "$current_pane" | fzf +m --reverse) || return
 
             target_window=$(echo $target | awk 'BEGIN{FS=":|-"} {print$1}')
             target_pane=$(echo $target | awk 'BEGIN{FS=":|-"} {print$2}' | cut -c 1)
@@ -370,7 +375,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         if [ ! -f ~/.gitmojis.json ]; then
             fgitmoji-cache
         fi
-        target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf-tmux -p -m | awk '{print $2}')
+        target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
         if [[ "$target" != "" ]]; then
             print -z "git commit --signoff -m \"$target \""
         fi
@@ -380,8 +385,8 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         if [ ! -f ~/.gitmojis.json ]; then
             fgitmoji-cache
         fi
-        semver=$(echo "[ci skip]\n[patch]\n[minor]\n[major]" | fzf-tmux -p -m)
-        target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf-tmux -p -m | awk '{print $2}')
+        semver=$(echo "[ci skip]\n[patch]\n[minor]\n[major]" | fzf -m)
+        target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
         if [[ "$target" != "" ]]; then
             print -z "git commit --signoff -m \"$semver $target \""
         fi
