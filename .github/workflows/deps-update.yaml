@@ -28,7 +28,7 @@ jobs:
 
             git add Dockerfile
 
-            git commit --signoff -m "[patch] :robot: Automatically upgrade dependencies."
+            git commit --signoff -m ":robot: Automatically upgrade dependencies."
 
             git push
           fi
