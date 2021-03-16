@@ -304,9 +304,6 @@ COPY docker-config.json $HOME/.docker/config.json
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG
 
-# babashka classpath
-RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}' -Spath)
-
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
