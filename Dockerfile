@@ -1,11 +1,22 @@
-ARG GRAALVM_VERSION=21.0.0
+## --- [{:name "GRAALVM_VERSION"
+## ---   :tx "(fn [x] (string/replace x #\"vm-\" \"\"))"
+## ---   :url "https://api.github.com/repos/graalvm/graalvm-ce-builds/tags"}
+## ---  {:name "PROTOBUF_VERSION"
+## ---   :tx "(fn [x] (string/replace x #\"v\" \"\"))"
+## ---   :url "https://api.github.com/repos/protocolbuffers/protobuf/tags"}
+## ---  {:name "CLOJURE_LSP_VERSION"
+## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
+## ---  {:name "KOTLIN_LS_VERSION"
+## ---   :url "https://api.github.com/repos/fwcd/kotlin-language-server/tags"}]
+
+ARG GRAALVM_VERSION=21.0.0.2
 ARG GRAALVM_JAVA_VERSION=java11
 
-ARG FENNEL_VERSION=0.8.0
+ARG FENNEL_VERSION=0.8.1
 
-ARG PROTOBUF_VERSION=3.14.0
-ARG CLOJURE_LSP_VERSION=2021.02.26-13.58.48
-ARG KOTLIN_LS_VERSION=0.7.0
+ARG PROTOBUF_VERSION=3.15.6
+ARG CLOJURE_LSP_VERSION=2021.03.14-23.22.46
+ARG KOTLIN_LS_VERSION=1.1.1
 
 FROM docker:dind AS docker
 
