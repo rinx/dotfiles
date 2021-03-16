@@ -487,6 +487,10 @@
 (augroup init-fennel
          (autocmd :FileType :fennel "setlocal shiftwidth=2"))
 
+;; clojure
+(augroup init-clojure
+         (autocmd :FileType :clojure "let b:coc_pairs_disabled = [\"'\"]"))
+
 ;; rust
 (augroup init-rust
          (autocmd :FileType :rust "let b:coc_pairs_disabled = [\"'\"]"))
