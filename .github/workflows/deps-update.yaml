@@ -28,7 +28,11 @@ jobs:
 
             git add Dockerfile
 
-            git commit --signoff -m ":robot: Automatically upgrade dependencies."
+            git commit --signoff -m "[patch] :robot: Automatically upgrade dependencies."
 
-            git push
+            git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push origin master
           fi
+        env:
+          GITHUB_USER: ${{ secrets.DOTFILES_USER }}
+          GITHUB_TOKEN: ${{ secrets.DOTFILES_TOKEN }}
