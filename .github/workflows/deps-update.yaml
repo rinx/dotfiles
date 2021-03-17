@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.DOTFILES_TOKEN }}
       - name: Install babashka
         run: |
           bash <(curl -s https://raw.githubusercontent.com/borkdude/babashka/master/install) $(pwd)
