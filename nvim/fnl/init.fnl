@@ -36,6 +36,8 @@
 (defn- nnoremap-silent [from to]
   (nvim.set_keymap :n from to {:noremap true
                                :silent true}))
+(defn- xmap-silent [from to]
+  (nvim.set_keymap :x from to {:silent true}))
 
 ;; basics
 (set nvim.o.viminfo "'1000,<100,f1,h,s100")
@@ -300,6 +302,8 @@
 (nmap-silent "gi" "<Plug>(coc-implementation)")
 (nmap-silent "gr" "<Plug>(coc-references)")
 (nmap-silent "<leader>rn" "<Plug>(coc-rename)")
+(xmap-silent "<Leader>c" "<Plug>(coc-codeaction-selected)")
+(nmap-silent "<Leader>c" "<Plug>(coc-codeaction-line)")
 
 (defn coc-show-documentation []
   (match nvim.bo.ft

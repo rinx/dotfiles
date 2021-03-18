@@ -86,6 +86,8 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"],
+  "codeLens.enable": true,
+  "signature.enable":true,
   "go.enable": true,
   "go.goplsPath": "/usr/local/go/bin/gopls",
   "go.goplsOptions": {
