@@ -286,7 +286,6 @@
       :coc-lists
       :coc-lua
       :coc-omni
-      :coc-rls
       :coc-rust-analyzer
       :coc-pairs
       :coc-snippets
