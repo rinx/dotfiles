@@ -300,12 +300,15 @@
 (nmap-silent "gy" "<Plug>(coc-type-definition)")
 (nmap-silent "gi" "<Plug>(coc-implementation)")
 (nmap-silent "gr" "<Plug>(coc-references)")
+
 (nmap-silent "<leader>rn" "<Plug>(coc-rename)")
+
 (xmap-silent "<Leader>c" "<Plug>(coc-codeaction-selected)")
 (nmap-silent "<Leader>c" "<Plug>(coc-codeaction-line)")
-(nmap-silent "<C-c>" "<Plug>(coc-cursors-position)")
-(nmap-silent "<C-d>" "<Plug>(coc-cursors-word)")
-(xmap-silent "<C-d>" "<Plug>(coc-cursors-range)")
+
+(nmap-silent ",cn" "<Plug>(coc-cursors-position)")
+(nmap-silent ",cm" "<Plug>(coc-cursors-word)")
+(xmap-silent ",cm" "<Plug>(coc-cursors-range)")
 (nmap "<leader>x" "<Plug>(coc-cursors-operator)")
 
 (defn coc-show-documentation []
