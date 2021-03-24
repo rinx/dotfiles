@@ -75,6 +75,9 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait"1" lucid from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
     zinit light stedolan/jq
 
+    zinit ice wait"4" lucid from"gh-r" as"program" mv"yq* -> yq" pick"yq"
+    zinit light mikefarah/yq
+
     zinit ice wait"3" lucid from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
     zinit light stern/stern
 
