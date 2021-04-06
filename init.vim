@@ -92,7 +92,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'romgrk/nvim-treesitter-context'
-Plug 'code-biscuits/nvim-biscuits'
 
 call plug#end()
 
