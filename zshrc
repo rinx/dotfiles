@@ -37,7 +37,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait
     zinit light Aloxaf/fzf-tab
 
-    zinit ice from"gh-r" as"program" mv"exa* -> exa" pick"exa"
+    zinit ice from"gh-r" as"program" pick"bin/exa"
     zinit light ogham/exa
 
     zinit ice wait from"gh-r" \
