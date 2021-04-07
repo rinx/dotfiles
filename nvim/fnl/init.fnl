@@ -542,23 +542,11 @@
 
 ;; treesitter
 (ts-cfg.setup
-  {:ensure_installed [:bash
-                      :c
-                      :clojure
-                      :cpp
-                      :fennel
-                      :go
-                      :html
-                      :java
-                      :javascript
-                      :json
-                      :lua
-                      :python
-                      :rust
-                      :toml
-                      :typescript]
+  {:ensure_installed :maintained
    :highlight {:enable true
-               :disable []}})
+               :disable []}
+   :indent {:enable true
+            :disable []}})
 
 ;; barbar.nvim
 (nnoremap-silent ",bc" ":tabe<CR>")

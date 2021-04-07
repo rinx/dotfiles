@@ -90,7 +90,7 @@ Plug 'bakpakin/fennel.vim', { 'for': ['fennel'] }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'romgrk/nvim-treesitter-context'
 
 call plug#end()
