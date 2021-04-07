@@ -302,6 +302,7 @@
 (nmap-silent "gr" "<Plug>(coc-references)")
 
 (nmap-silent "<leader>rn" "<Plug>(coc-rename)")
+(nmap-silent "<leader>rf" "<Plug>(coc-refactor)")
 
 (xmap-silent "<Leader>c" "<Plug>(coc-codeaction-selected)")
 (nmap-silent "<Leader>c" "<Plug>(coc-codeaction-line)")
