@@ -278,33 +278,60 @@
 (set nvim.g.ale_go_golangci_lint_options "--enable-all --disable=gochecknoglobals --disable=gochecknoinits --disable=typecheck --disable=lll --enable=gosec --enable=prealloc")
 
 ;; neovim LSP
-(let [lsp (require :nvim_lsp)
-      completion (require :completion)
-      diagnostic (require :diagnostic)
-      on_attach (fn [client]
-                  (completion.on_attach client)
-                  (diagnostic.on_attach client))]
-  (lsp.bashls.setup {:on_attach on_attach})
-  (lsp.dockerls.setup {:on_attach on_attach})
-  (lsp.fortls.setup {:on_attach on_attach})
-  (lsp.gopls.setup {:on_attach on_attach})
-  (lsp.jdtls.setup {:on_attach on_attach})
-  (lsp.jsonls.setup {:on_attach on_attach})
-  (lsp.kotlin_language_server.setup {:on_attach on_attach})
-  (lsp.rls.setup {:on_attach on_attach})
-  (lsp.rust_analyzer.setup {:on_attach on_attach})
-  (lsp.tsserver.setup {:on_attach on_attach})
-  (lsp.vimls.setup {:on_attach on_attach})
-  (lsp.yamlls.setup {:on_attach on_attach}))
+(let [lsp (require :lspconfig)
+      capabilities (vim.lsp.protocol.make_client_capabilities)
+      lsp-kind (require :lspkind)
+      compe (require :compe)]
+  (lsp.bashls.setup {})
+  (lsp.dockerls.setup {})
+  (lsp.fortls.setup {})
+  (lsp.gopls.setup {:capabilities capabilities})
+  (lsp.jdtls.setup {})
+  (lsp.jsonls.setup {})
+  (lsp.kotlin_language_server.setup {})
+  (lsp.rls.setup {})
+  (lsp.rust_analyzer.setup {})
+  (lsp.tsserver.setup {})
+  (lsp.vimls.setup {})
+  (lsp.yamlls.setup {})
+  (lsp-kind.init)
+  (compe.setup {:enabled true
+                :autocomplete true
+                :debug false
+                :min_length 1
+                :preselect "enable"
+                :throttle_time 80
+                :source_timeout 200
+                :incomplete_delay 400
+                :max_abbr_width 100
+                :max_kind_width 100
+                :max_menu_width 100
+                :documentation true
+                :source {:path true
+                         :treesitter true
+                         :nvim_lsp true
+                         :omni false
+                         :buffer true
+                         :tags true
+                         :spell false
+                         :calc false
+                         :ultisnips true}}))
 
 (nnoremap-silent "K" ":<C-u>lua vim.lsp.buf.hover()<CR>")
 (nnoremap-silent "gd" ":<C-u>lua vim.lsp.buf.definition()<CR>")
 (nnoremap-silent "gD" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
 (nnoremap-silent "gr" ":<C-u>lua vim.lsp.buf.references()<CR>")
 
+(nnoremap-silent "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>")
+(nnoremap-silent "<Leader>c" ":<C-u>lua vim.lsp.diagnostic.code_action()<CR>")
+
 (set nvim.g.diagnostic_enable_virtual_text 1)
 (set nvim.g.diagnostic_trimmed_virtual_text 40)
 (set nvim.g.diagnostic_insert_delay 1)
+
+;; nvim-autopairs
+(let [autopairs (require :nvim-autopairs)]
+  (autopairs.setup))
 
 ;; nvim-tree.lua
 (set nvim.g.nvim_tree_side :left)

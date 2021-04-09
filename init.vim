@@ -38,11 +38,10 @@ Plug 'tyru/eskk.vim'
 Plug 'dense-analysis/ale'
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'steelsojka/completion-buffers'
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'nvim-lua/lsp-status.nvim'
-Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'onsails/lspkind-nvim'
+
+Plug 'windwp/nvim-autopairs'
 
 Plug 'honza/vim-snippets'
 
