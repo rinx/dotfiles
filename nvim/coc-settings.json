@@ -6,6 +6,16 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     },
+    "clojure": {
+      "command": "clojure-lsp",
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj"],
+      "additionalSchemes": ["jar", "zipfile"],
+      "trace.server": "verbose",
+      "initializationOptions": {
+        "ignore-classpath-directories": true
+      }
+    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": [
@@ -76,6 +86,8 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql"],
+  "codeLens.enable": true,
+  "signature.enable":true,
   "go.enable": true,
   "go.goplsPath": "/usr/local/go/bin/gopls",
   "go.goplsOptions": {
@@ -95,7 +107,6 @@
   "go.tests": {
     "generateFlags": []
   },
-  "rust-client.updateOnStartup": true,
   "rust.unstable_features": true,
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.diagnostics.enable": true,

@@ -77,4 +77,16 @@
 (let [devicon (require :nvim-web-devicons)]
   (devicon.setup {:override {:fnl {:icon ""
                                    :color "#51a0cf"
-                                   :name "Fennel"}}}))
+                                   :name "Fennel"}
+                             :Makefile {:icon ""
+                                        :color "#6d8086"
+                                        :name "Makefile"}
+                             :markdown {:icon ""
+                                        :color "#519aba"
+                                        :name "Markdown"}
+                             :md {:icon ""
+                                  :color "#519aba"
+                                  :name "Md"}
+                             :mdx {:icon ""
+                                   :color "#519aba"
+                                   :name "Mdx"}}}))

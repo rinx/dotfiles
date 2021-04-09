@@ -1,0 +1,41 @@
+name: Update dependencies
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: 0 17 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.DOTFILES_TOKEN }}
+      - name: Install babashka
+        run: |
+          bash <(curl -s https://raw.githubusercontent.com/borkdude/babashka/master/install) $(pwd)
+          ./bb --version
+      - name: Update deps
+        run: |
+          ./bb ./.github/scripts/deps-update.clj
+      - name: Check and Push to master
+        run: |
+          if git diff --quiet --exit-code; then
+            echo "Nothing updated"
+          else
+            git config --global user.email "rintaro.okamura@gmail.com"
+            git config --global user.name "Rintaro Okamura"
+
+            git add Dockerfile
+
+            git commit --signoff -m "[patch] :robot: Automatically upgrade dependencies."
+
+            git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push origin master
+          fi
+        env:
+          GITHUB_USER: ${{ secrets.DOTFILES_USER }}
+          GITHUB_TOKEN: ${{ secrets.DOTFILES_TOKEN }}

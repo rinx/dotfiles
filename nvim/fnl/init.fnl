@@ -7,7 +7,7 @@
             devicon nvim-web-devicons}
    require-macros [util.macros]})
 
-(local icontab icon.tab)
+(def icontab icon.tab)
 
 (defn- bridge [from to]
   (util.fn-bridge from :init to {:return true}))
@@ -36,6 +36,8 @@
 (defn- nnoremap-silent [from to]
   (nvim.set_keymap :n from to {:noremap true
                                :silent true}))
+(defn- xmap-silent [from to]
+  (nvim.set_keymap :x from to {:silent true}))
 
 ;; basics
 (set nvim.o.viminfo "'1000,<100,f1,h,s100")
@@ -305,22 +307,22 @@
 (set nvim.g.diagnostic_insert_delay 1)
 
 ;; nvim-tree.lua
-(set nvim.g.lua_tree_side :left)
-(set nvim.g.lua_tree_width 30)
-(set nvim.g.lua_tree_auto_close 1)
-(set nvim.g.lua_tree_follow 1)
-(set nvim.g.lua_tree_indent_markers 1)
-(set nvim.g.lua_tree_icons {:default icontab.text
-                            :symlink icontab.symlink
-                            :git {:unstaged icontab.diff-modified
-                                  :staged icontab.check
-                                  :unmerged icontab.merge
-                                  :renamed icontab.diff-renamed
-                                  :untracked icontab.asterisk}
-                            :folder {:default icontab.folder
-                                     :open icontab.folder-open}})
+(set nvim.g.nvim_tree_side :left)
+(set nvim.g.nvim_tree_width 30)
+(set nvim.g.nvim_tree_auto_close 1)
+(set nvim.g.nvim_tree_follow 1)
+(set nvim.g.nvim_tree_indent_markers 1)
+(set nvim.g.nvim_tree_icons {:default icontab.text
+                             :symlink icontab.symlink
+                             :git {:unstaged icontab.diff-modified
+                                   :staged icontab.check
+                                   :unmerged icontab.merge
+                                   :renamed icontab.diff-renamed
+                                   :untracked icontab.asterisk}
+                             :folder {:default icontab.folder
+                                      :open icontab.folder-open}})
 
-(nnoremap-silent "<leader>t" ":<C-u>LuaTreeToggle<CR>")
+(nnoremap-silent "<leader>t" ":<C-u>NvimTreeToggle<CR>")
 
 ;; fzf.vim
 (nnoremap-silent ",ub"  ":<C-u>Buffers<CR>")
@@ -432,6 +434,9 @@
 (bridge :MkdpEchoURL :mkdp-echo-url)
 (set nvim.g.mkdp_browserfunc "MkdpEchoURL")
 
+(augroup init-markdown
+         (autocmd :FileType :markdown "setlocal shiftwidth=4"))
+
 ;; iced
 (set nvim.g.iced_enable_default_key_mappings true)
 
@@ -449,9 +454,17 @@
 
 ;; fennel
 (set nvim.g.conjure#client#fennel#aniseed#aniseed_module_prefix "aniseed.")
+(defn conjure-client-fennel-stdio []
+  (set nvim.g.conjure#filetype#fennel "conjure.client.fennel.stdio"))
+(bridge :ConjureClientFennelStdio :conjure-client-fennel-stdio)
+(nvim.ex.command_ :ConjureClientFennelStdio "call ConjureClientFennelStdio()")
 
 (augroup init-fennel
          (autocmd :FileType :fennel "setlocal shiftwidth=2"))
+
+;; clojure
+(augroup init-clojure
+         (autocmd :FileType :clojure "let b:coc_pairs_disabled = [\"'\"]"))
 
 ;; rust
 (augroup init-rust
@@ -463,8 +476,7 @@
          (autocmd :FileType :go "set shiftwidth=4")
          (autocmd :FileType :go "set tabstop=4")
          (autocmd :FileType :go "set softtabstop=4")
-         (autocmd :FileType :go "compiler go")
-         (autocmd :BufWritePre "*.go" ":call CocAction('runCommand', 'editor.action.organizeImport')"))
+         (autocmd :FileType :go "compiler go"))
 
 
 ;; QuickFix
@@ -495,23 +507,11 @@
 
 ;; treesitter
 (ts-cfg.setup
-  {:ensure_installed [:bash
-                      :c
-                      :clojure
-                      :cpp
-                      :fennel
-                      :go
-                      :html
-                      :java
-                      :javascript
-                      :json
-                      :lua
-                      :python
-                      :rust
-                      :toml
-                      :typescript]
+  {:ensure_installed :maintained
    :highlight {:enable true
-               :disable []}})
+               :disable []}
+   :indent {:enable true
+            :disable []}})
 
 ;; barbar.nvim
 (nnoremap-silent ",bc" ":tabe<CR>")

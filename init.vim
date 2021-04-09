@@ -48,7 +48,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'junegunn/fzf', { 'dir': '~/.zplug/repos/junegunn/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.zinit/plugins/junegunn---fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'haya14busa/vim-asterisk'
@@ -95,7 +95,7 @@ Plug 'bakpakin/fennel.vim', { 'for': ['fennel'] }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'romgrk/nvim-treesitter-context'
 
 call plug#end()

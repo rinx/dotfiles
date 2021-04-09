@@ -148,7 +148,7 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     'hyper-opacity',
-    'hyper-gruvbox',
+    'hyper-snazzy',
     'hyper-font-ligatures',
     'hyper-search'
   ],

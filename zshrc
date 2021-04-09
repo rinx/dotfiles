@@ -1,33 +1,200 @@
 OS=$(uname -s)
+export GPG_TTY=$TTY
 
-autoload -U compinit
+# zinit
+export ZINIT_HOME=$HOME/.zinit
+
+if builtin command -v git > /dev/null 2>&1 ; then
+    if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ]; then
+        mkdir -p ${ZINIT_HOME}
+        git clone --depth=1 https://github.com/zdharma/zinit.git ${ZINIT_HOME}/bin
+    fi
+
+    source ${ZINIT_HOME}/bin/zinit.zsh
+
+    autoload -Uz _zinit
+    (( ${+_comps} )) && _comps[zinit]=_zinit
+
+    zinit ice pick"async.zsh" src"pure.zsh"
+    zinit light sindresorhus/pure
+
+    zinit ice from"gh" as"program" \
+            make"install" \
+            atclone"cp shell/completion.zsh _fzf" \
+            atpull"%atclone" \
+            pick"bin/(fzf|fzf-tmux)"
+    zinit light junegunn/fzf
+
+    zinit ice wait
+    zinit light zsh-users/zsh-autosuggestions
+
+    zinit ice wait
+    zinit light zdharma/fast-syntax-highlighting
+
+    zinit ice wait
+    zinit light hlissner/zsh-autopair
+
+    zinit ice wait
+    zinit light Aloxaf/fzf-tab
+
+    zinit ice from"gh-r" as"program" pick"bin/exa"
+    zinit light ogham/exa
+
+    zinit ice wait from"gh-r" \
+            as"program" \
+            mv"ripgrep* -> rg" \
+            pick"rg/rg" \
+            nocompletions
+    zinit light BurntSushi/ripgrep
+
+    zinit ice wait from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+    zinit light sharkdp/bat
+
+    zinit ice wait from"gh-r" \
+            as"program" \
+            mv"fd* -> fd" \
+            pick"fd/fd" \
+            nocompletions
+    zinit light sharkdp/fd
+
+    zinit ice wait"2" lucid from"gh-r" as"program" pick"sad"
+    zinit light ms-jpq/sad
+
+    zinit ice wait"2" from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
+    zinit light dandavison/delta
+
+    zinit ice from"gh-r" as"program" mv"ghq* -> ghq" pick"ghq/ghq"
+    zinit light x-motemen/ghq
+
+    zinit ice wait"4" lucid from"gh-r" as"program" pick"bb"
+    zinit light babashka/babashka
+
+    zinit ice wait"4" lucid from"gh-r" as"program" pick"clj-kondo"
+    zinit light clj-kondo/clj-kondo
+
+    zinit ice wait"1" lucid from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
+    zinit light stedolan/jq
+
+    zinit ice wait"4" lucid from"gh-r" as"program" mv"yq* -> yq" pick"yq"
+    zinit light mikefarah/yq
+
+    zinit ice wait"3" lucid from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
+    zinit light stern/stern
+
+    zinit ice wait"1" lucid from"gh-r" as"program" pick"k9s"
+    zinit light derailed/k9s
+
+    zinit ice wait"3" lucid from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
+    zinit light roboll/helmfile
+
+    zinit ice wait"3" lucid from"gh-r" as"program" pick"kustomize"
+    zinit light kubernetes-sigs/kustomize
+
+    zinit ice wait"3" lucid from"gh" as"program" pick"(kubectx|kubens)"
+    zinit light ahmetb/kubectx
+
+    zinit ice wait"3" lucid from"gh-r" as"program" mv"kubefwd -> kubectl-kubefwd" pick"kubectl-kubefwd"
+    zinit light txn2/kubefwd
+
+    zinit ice from"gh" as"program" \
+            atclone"./autogen.sh; ./configure" \
+            atpull"%atclone" \
+            make \
+            pick"tmux"
+    zinit light tmux/tmux
+
+    zinit ice wait"1" lucid from"gh" as"program" pick"bin/xpanes"
+    zinit light greymd/tmux-xpanes
+
+    zinit wait atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
+
+    zinit light-mode lucid wait has"kubectl" for \
+            id-as"kubectl_completion" \
+            as"completion" \
+            atclone"kubectl completion zsh > _kubectl" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
+
+    zinit light-mode lucid wait has"helm" for \
+            id-as"helm_completion" \
+            as"completion" \
+            atclone"helm completion zsh > _helm" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
+
+    zinit light-mode lucid wait has"helmfile" for \
+            id-as"helmfile_completion" \
+            as"completion" \
+            atclone"curl -s https://raw.githubusercontent.com/roboll/helmfile/master/autocomplete/helmfile_zsh_autocomplete > _helmfile" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
+
+    zinit light-mode lucid wait has"kustomize" for \
+            id-as"kustomize_completion" \
+            as"completion" \
+            atclone"kustomize completion zsh > _kustomize" \
+            atpull"%atclone" \
+            run-atpull \
+            zdharma/null
+
+    zinit ice wait"1" lucid from"git.zx2c4.com" as"program" \
+            atclone"cp src/completion/pass.zsh-completion _pass_completion" \
+            atpull"%atclone" \
+            make"PREFIX=$ZPFX install" \
+            pick"$ZPFX/bin/pass"
+    zinit light password-store
+
+    zinit ice wait"2" lucid from"gh-r" as"program" \
+            bpick"*pass*" \
+            pick"docker-credential-pass"
+    zinit light docker/docker-credential-helpers
+
+    case "$OS" in
+        Darwin)
+            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+                    mv"nvim-* -> nvim" \
+                    bpick"*macos*" \
+                    pick"nvim/bin/nvim"
+            ;;
+        *)
+            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+                    mv"nvim-* -> nvim" \
+                    bpick"*linux*" \
+                    pick"nvim/bin/nvim"
+            ;;
+        esac
+    zinit light neovim/neovim
+fi
+
+autoload -Uz compinit
 compinit
 
-# highlight for completion
-zstyle ':completion:*:default' menu select=2
+zinit cdreplay -q
 
 # completion settings
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
 zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
-zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# separators for completion
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':prompt:pure:git:stash' show yes
 
 autoload colors
 colors
 
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-
-# vimlike keybind
-bindkey -v
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -38,21 +205,29 @@ setopt share_history
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+bindkey '^P' history-beginning-search-backward-end
+bindkey '^N' history-beginning-search-forward-end
 
-bindkey "^R" history-incremental-search-backward
-bindkey "^E" history-incremental-search-forward
+bindkey '^R' history-incremental-search-backward
+bindkey '^E' history-incremental-search-forward
 
-setopt auto_cd
-setopt auto_pushd
+edit_current_line() {
+    local tmpfile=$(mktemp)
+    echo "$BUFFER" > $tmpfile
+    nvim $tmpfile -c "normal $" -c "set filetype=zsh"
+    BUFFER="$(cat $tmpfile)"
+    CURSOR=${#BUFFER}
+    rm $tmpfile
+    zle reset-prompt
+}
+zle -N edit_current_line
+bindkey '^O' edit_current_line
 
-setopt correct
 setopt list_packed
 setopt nolistbeep
 
-setopt prompt_subst
-setopt transient_rprompt
+setopt auto_cd
+setopt auto_pushd
 
 setopt auto_list
 setopt auto_menu
@@ -62,110 +237,16 @@ setopt auto_param_keys
 
 setopt correct
 
-
-# prompt
-
-local lf=$'\n'
-
-local afterhost=''
-
-# when connected to remote host
-if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
-    local usrathn="%F{yellow}%n@$HOST%f"
-    if [ ${#HOST} -gt 10 ]; then
-        local afterhost="$lf"
-    fi
-elif [ -n "${DOCKERIZED_DEVENV}" ]; then
-    local usrathn="%F{yellow}%n@${DOCKERIZED_DEVENV}%f"
-    if [ ${#DOCKERIZED_DEVENV} -gt 12 ]; then
-        local afterhost="$lf"
-    fi
-else
-    local usrathn="%n"
-fi
-
-local plat='%(?.%F{green}[%~]%f.%F{red}[%~]%f)'
-local pbase="%F{cyan}[$usrathn%F{cyan}]%f$afterhost$plat"
-local pbase_nor="%F{red}[$usrathn%F{red}]%f$afterhost$plat"
-
-PROMPT="%5(~|$pbase$lf|$pbase)%% "
-
-# zsh vi-like keybind mode indicator
-function zle-line-init zle-keymap-select {
-case $KEYMAP in
-    vicmd)
-        PROMPT="%5(~|$pbase_nor$lf|$pbase_nor)%% "
-        ;;
-    main|viins)
-        PROMPT="%5(~|$pbase$lf|$pbase)%% "
-        ;;
-esac
-zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-# for, while, etc...
-PROMPT2="%5(~|$pbase$lf|$pbase)%F{yellow}%_%f> "
-
-# missing spell
-SPROMPT="%F{yellow}(っ'ヮ'c) < Did you mean %r?[n,y,a,e]:%f "
-
 function precmd() {
     if [ ! -z $TMUX ]; then
         tmux refresh-client -S
     fi
 }
 
-
-# zplug
-export ZPLUG_HOME=$HOME/.zplug
-
-if builtin command -v git > /dev/null 2>&1 ; then
-    if [ ! -f $ZPLUG_HOME/init.zsh ]; then
-        git clone https://github.com/zplug/zplug $ZPLUG_HOME
-    fi
-
-    source $ZPLUG_HOME/init.zsh
-
-    zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
-    zplug "zsh-users/zsh-autosuggestions"
-    zplug "zsh-users/zsh-completions", as:plugin, use:"src"
-    zplug "zsh-users/zsh-syntax-highlighting", defer:2
-    zplug "zsh-users/zsh-history-substring-search"
-
-    (type fzf > /dev/null 2>&1) || zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-    (type fzf-tmux > /dev/null 2>&1) || zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
-
-    if [[ "$OS" == "Darwin" ]]; then
-        (type exa > /dev/null 2>&1) && alias ls=exa || zplug "ogham/exa", as:command, from:gh-r, use:"*macos-x86_64*", rename-to:ls
-        (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:rg
-        (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:bat
-        (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*darwin*", rename-to:fd
-        (type bb > /dev/null 2>&1) || zplug "borkdude/babashka", as:command, from:gh-r, use:"*-macos-amd64*", rename-to:bb
-        (type jet > /dev/null 2>&1) || zplug "borkdude/jet", as:command, from:gh-r, use:"*-macos-amd64*", rename-to:jet
-    else
-        (type exa > /dev/null 2>&1) && alias ls=exa || zplug "ogham/exa", as:command, from:gh-r, use:"*linux-x86_64*", rename-to:ls
-        (type rg > /dev/null 2>&1) || zplug "BurntSushi/ripgrep", as:command, from:gh-r, use:"*x86_64*linux*", rename-to:rg
-        (type bat > /dev/null 2>&1) || zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:bat
-        (type fd > /dev/null 2>&1) || zplug "sharkdp/fd", as:command, from:gh-r, use:"*x86_64*linux*musl*", rename-to:fd
-        (type bb > /dev/null 2>&1) || zplug "borkdude/babashka", as:command, from:gh-r, use:"*-linux-amd64*", rename-to:bb
-        (type jet > /dev/null 2>&1) || zplug "borkdude/jet", as:command, from:gh-r, use:"*-linux-amd64*", rename-to:jet
-    fi
-
-    (type ghq > /dev/null 2>&1) || zplug "x-motemen/ghq", from:gh-r, as:command, rename-to:ghq
-    (type jq > /dev/null 2>&1) || zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
-
-    (type xpanes > /dev/null 2>&1) || zplug "greymd/tmux-xpanes"
-
-    if ! zplug check --verbose; then
-        zplug install
-    fi
-
-    zplug load
+if [ -n "${DOCKERIZED_DEVENV}" ]; then
+    PURE_PROMPT_SYMBOL="${DOCKERIZED_DEVENV} ❯"
+    PURE_PROMPT_VICMD_SYMBOL="${DOCKERIZED_DEVENV} ❮"
 fi
-
 
 # aliases
 
@@ -180,15 +261,23 @@ alias uuu='cd ../../../'
 alias uuuu='cd ../../../../'
 alias cdr='cd -'
 
-if ls --color > /dev/null 2>&1 ; then
-    alias ls='ls --color -F'
-    alias lsa='ls --color -F -a'
-    alias lsl='ls --color -F -l'
-    alias lsal='ls --color -F -a -l'
-else # for BSD version
-    alias lsa='ls -a'
-    alias lsl='ls -l'
-    alias lsal='ls -al'
+
+if builtin command -v exa > /dev/null 2>&1 ; then
+    alias ls='exa'
+    alias lsa='exa -a'
+    alias lsl='exa -l'
+    alias lsal='exa -a -l'
+else
+    if ls --color > /dev/null 2>&1 ; then
+            alias ls='ls --color -F'
+            alias lsa='ls --color -F -a'
+            alias lsl='ls --color -F -l'
+            alias lsal='ls --color -F -a -l'
+    else # for BSD version
+            alias lsa='ls -a'
+            alias lsl='ls -l'
+            alias lsal='ls -al'
+    fi
 fi
 
 alias vi='nvim'
@@ -216,70 +305,38 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --height 40% --reverse --cycle --border"
     if [ ! -z $TMUX ]; then
         if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
-            alias fzf=fzf-tmux
+            alias fzf='fzf-tmux -p'
         fi
     fi
 
-    fh() {
-        print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+    fzf-search-history() {
+      BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+      CURSOR=${#BUFFER}
     }
+    zle -N fzf-search-history
+    bindkey '^F' fzf-search-history
 
-    fcd() {
-        local dir
-        dir=$(find ${1:-.} -path '*/\.*' -prune \
-            -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+    fzf-git-hash() {
+        hash=$(git -c color.ui=always log --pretty=format:'%C(yellow)%h%Creset %s %C(white)- %an, %ar%Creset'| fzf --ansi +m | awk '{print $1}')
+        LBUFFER="${LBUFFER}${hash}"
     }
+    zle -N fzf-git-hash
+    bindkey '^G' fzf-git-hash
 
-    fcda() {
-        local dir
-        dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
-    }
-
-    fps() {
-        ps -ef | sed 1d | fzf -m
-    }
-
-    fkill() {
-        local pid
-        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-
-        if [[ "x$pid" != "x" ]] ; then
-            echo $pid | xargs kill -${1:-9}
-        fi
-    }
+    if builtin command -v fd > /dev/null 2>&1 ; then
+        fzf-select-file() {
+            dir=$(fd 2> /dev/null | fzf +m)
+            LBUFFER="${LBUFFER}${dir}"
+        }
+        zle -N fzf-select-file
+        bindkey '^K' fzf-select-file
+    fi
 
     fgbr() {
-        local branches branch
-        branches=$(git branch --all | grep -v HEAD)
-        branch=$(echo "$branches" | fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-        print -z "git checkout $branch"
-    }
-
-    fgshow() {
-        git log --color=always \
-            --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-            fzf --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-            --bind "ctrl-m:execute:
-        (grep -o '[a-f0-9]\{7\}' | head -1 |
-            xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-        {}
-        FZF-EOF"
-    }
-
-    fgstash() {
-        local out
-        out=$(git stash list --pretty="%gd %C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" \
-            | fzf --ansi --no-sort --query="$q" --print-query \
-            --preview 'echo {} | cut -d " " -f 1 | xargs -I % git stash show -p %')
-
-        if [[ "$out" != "" ]] ; then
-            echo $out
-            echo $out | cut -d " " -f 1 | xargs -I % git stash pop %
+        branch=$(git branch --sort=-committerdate --all | fzf +m | tr -d '[:space:]')
+        if [[ "$branch" != "" ]]; then
+            git checkout $branch
         fi
-    }
-
-    fprev() {
-        fzf --preview 'head -100 {}'
     }
 
     if builtin command -v ghq > /dev/null 2>&1 ; then
@@ -336,28 +393,6 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         if [[ "$target" != "" ]]; then
             print -z "git commit --signoff -m \"$semver $target \""
         fi
-    }
-
-    tinysnip-base() {
-        namespaces=$1
-        filters=`echo $2 | jet --query '(str #jet/lit "(filter [:tags (get " (id) #jet/lit ")])")' | jet --collect --to json | jq -r '.[]' | tr '\n' ' '`
-        cat ~/.dotfiles/resources/tinysnip.edn | \
-            jet --query "[$namespaces $filters (map (str #jet/lit \"[[\" :title #jet/lit \"]] \" :body))]" --to json | \
-            jq -r '.[]' | \
-            fzf -m | \
-            sed -e 's/^\[\[.*\]\] //g'
-    }
-
-    tinysnip-gh-badge() {
-        tinysnip-base ':user :snippets' ':github :badge'
-    }
-
-    tinysnip-kaomoji() {
-        tinysnip-base ':user :snippets' ':kaomoji'
-    }
-
-    tinysnip() {
-        print -z $(echo "tinysnip-gh-badge\ntinysnip-kaomoji" | fzf -m)
     }
 fi
 
@@ -417,11 +452,6 @@ else
     alias bbrepl='bb --repl'
 fi
 
-# kube
-if builtin command -v kubectl > /dev/null 2>&1 ; then
-    source <(kubectl completion zsh)
-fi
-
 # docker
 container_name='rinx-devenv'
 
@@ -437,9 +467,10 @@ devstarter() {
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
         -v $HOME/.kube:/root/.kube \
+        -v $HOME/.gnupg:/root/.gnupg \
+        -v $HOME/.password-store:/root/.password-store \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
-        -v $HOME/Downloads:/root/Downloads \
         -v $HOME/.zsh_history:/root/.zsh_history \
         -v $HOME/.skk-jisyo:/root/.skk-jisyo \
         $@"

@@ -250,7 +250,7 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
-font "Ricty Discord 9"
+font "FiraCode Nerd Font 9"
 
 #
 # Status Bar:
@@ -266,7 +266,7 @@ bar {
         urgent_workspace #ffffffcc #32323266 #ffffff
         focused_workspace #ffffffcc #689d6acc #ffffff
     }
-    font "Ricty Discord 9"
+    font "FiraCode Nerd Font 9"
     status_command i3status
 }
 

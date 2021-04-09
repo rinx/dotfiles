@@ -1,21 +1,22 @@
-ARG GRAALVM_VERSION=20.2.0
+## --- [{:name "GRAALVM_VERSION"
+## ---   :tx "(fn [x] (string/replace x #\"vm-\" \"\"))"
+## ---   :url "https://api.github.com/repos/graalvm/graalvm-ce-builds/tags"}
+## ---  {:name "PROTOBUF_VERSION"
+## ---   :tx "(fn [x] (string/replace x #\"v\" \"\"))"
+## ---   :url "https://api.github.com/repos/protocolbuffers/protobuf/tags"}
+## ---  {:name "CLOJURE_LSP_VERSION"
+## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
+## ---  {:name "KOTLIN_LS_VERSION"
+## ---   :url "https://api.github.com/repos/fwcd/kotlin-language-server/tags"}]
+
+ARG GRAALVM_VERSION=21.0.0.2
 ARG GRAALVM_JAVA_VERSION=java11
 
-ARG RIPGREP_VERSION=12.1.1
-ARG BAT_VERSION=v0.15.4
-ARG FD_VERSION=v8.1.1
+ARG FENNEL_VERSION=0.8.1
 
-ARG STERN_VERSION=1.12.1
-ARG K9S_VERSION=v0.23.7
-ARG HELMFILE_VERSION=v0.133.0
-ARG KUSTOMIZE_VERSION=v3.8.1
-
-ARG PROTOBUF_VERSION=3.12.4
-ARG KOTLIN_LS_VERSION=0.7.0
-
-ARG BABASHKA_VERSION=0.2.3
-ARG JET_VERSION=0.0.13
-ARG CLJ_KONDO_VERSION=2020.10.10
+ARG PROTOBUF_VERSION=3.16.0-rc1
+ARG CLOJURE_LSP_VERSION=2021.04.07-16.34.10
+ARG KOTLIN_LS_VERSION=1.1.1
 
 FROM docker:dind AS docker
 
@@ -36,36 +37,6 @@ FROM clojure:tools-deps-alpine AS clojure-deps
 
 FROM rust:slim AS rust
 
-FROM rust:alpine AS rust-musl
-ARG RIPGREP_VERSION
-ARG BAT_VERSION
-ARG FD_VERSION
-
-RUN apk update \
-    && apk upgrade \
-    && apk --update-cache add --no-cache \
-    curl \
-    gcc \
-    musl-dev
-
-RUN cargo install exa
-RUN curl -o ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && tar xzvf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && cp ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg /usr/local/cargo/bin/rg
-RUN curl -o bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/bat/releases/download/${BAT_VERSION}/bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && tar xzvf bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && cp bat-${BAT_VERSION}-x86_64-unknown-linux-musl/bat /usr/local/cargo/bin/bat
-RUN curl -o fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz -L https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && tar xzvf fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && cp fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /usr/local/cargo/bin/fd
-
-RUN mkdir -p /home/rust/out
-
-RUN cp /usr/local/cargo/bin/bat /home/rust/out
-RUN cp /usr/local/cargo/bin/exa /home/rust/out
-RUN cp /usr/local/cargo/bin/fd  /home/rust/out
-RUN cp /usr/local/cargo/bin/rg  /home/rust/out
-
 FROM golang:alpine AS go
 
 RUN apk update \
@@ -77,20 +48,8 @@ RUN apk update \
     musl-dev \
     wget
 
-ENV GO111MODULE on
-RUN go get -v -u \
-    github.com/davidrjenni/reftools/cmd/fillstruct \
-    github.com/fullstorydev/grpcurl/cmd/grpcurl \
-    github.com/junegunn/fzf \
-    github.com/mikefarah/yq/v3 \
-    github.com/x-motemen/ghq \
-    golang.org/x/lint/golint \
-    golang.org/x/tools/cmd/goimports \
-    golang.org/x/tools/cmd/gorename \
-    golang.org/x/tools/cmd/guru
-RUN go get \
-    golang.org/x/tools/gopls@latest \
-    github.com/sasha-s/goimpl/cmd/goimpl
+RUN go install golang.org/x/tools/cmd/goimports@latest \
+    && GO111MODULE=on go get golang.org/x/tools/gopls@latest
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
@@ -98,10 +57,6 @@ RUN cp -r /usr/local/go/bin /out/usr/local/go/bin
 RUN cp -r /go/bin /out/go/bin
 
 FROM alpine:latest AS kube
-ARG STERN_VERSION
-ARG K9S_VERSION
-ARG HELMFILE_VERSION
-ARG KUSTOMIZE_VERSION
 
 RUN apk update \
     && apk upgrade \
@@ -118,26 +73,12 @@ RUN mkdir -p /out/packer \
     && curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /out/packer/kubectl \
     && chmod a+x /out/packer/kubectl \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
-    && mv /usr/local/bin/helm /out/packer/helm \
-    && git clone --depth=1 https://github.com/ahmetb/kubectx /opt/kubectx \
-    && mv /opt/kubectx/kubectx /out/kube/kubectx \
-    && mv /opt/kubectx/kubens /out/kube/kubens \
-    && curl -L https://github.com/stern/stern/releases/download/v${STERN_VERSION}/stern_${STERN_VERSION}_linux_amd64.tar.gz -o stern.tar.gz \
-    && tar xzvf stern.tar.gz \
-    && mv stern_${STERN_VERSION}_linux_amd64/stern /out/packer/stern \
-    && curl -L https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_x86_64.tar.gz -o k9s.tar.gz \
-    && tar xzvf k9s.tar.gz \
-    && mv k9s /out/packer/k9s \
-    && curl -L https://github.com/roboll/helmfile/releases/download/${HELMFILE_VERSION}/helmfile_linux_amd64 -o /out/packer/helmfile \
-    && chmod a+x /out/packer/helmfile \
-    && curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz -o kustomize.tar.gz \
-    && tar xzvf kustomize.tar.gz \
-    && mv kustomize /out/packer/kustomize
+    && mv /usr/local/bin/helm /out/packer/helm
 
-FROM ubuntu:devel AS neovim
+FROM ubuntu:groovy AS neovim
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt update \
+    && apt install -y \
     autoconf \
     automake \
     cmake \
@@ -150,6 +91,8 @@ RUN apt-get update \
     pkg-config \
     unzip \
     upx \
+    && apt autoclean -y \
+    && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /tmp \
@@ -169,9 +112,6 @@ RUN apk update \
 COPY --from=docker /out /out/docker
 RUN upx -9 /out/docker/*
 
-COPY --from=rust-musl /home/rust/out /out/rust
-RUN upx -9 /out/rust/*
-
 COPY --from=go /out /out/go
 RUN upx -9 /out/go/usr/local/go/bin/*
 RUN upx -9 /out/go/go/bin/*
@@ -179,45 +119,53 @@ RUN upx -9 /out/go/go/bin/*
 COPY --from=kube /out/packer /out/kube
 RUN upx -9 /out/kube/*
 
-FROM ubuntu:devel AS base
+FROM ubuntu:groovy AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
+ARG FENNEL_VERSION
 ARG PROTOBUF_VERSION
+ARG CLOJURE_LSP_VERSION
 ARG KOTLIN_LS_VERSION
-ARG BABASHKA_VERSION
-ARG JET_VERSION
-ARG CLJ_KONDO_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Tokyo
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt update \
+    && apt install -y \
+    autoconf \
+    automake \
+    bison \
     cmake \
     curl \
     diffutils \
     g++ \
     gawk \
     gcc \
+    gettext \
     gfortran \
     git \
     gnupg \
-    jq \
     less \
+    libevent-dev \
+    liblua5.3-dev \
+    libtool \
+    libtool-bin \
     locales \
-    luarocks \
+    lua5.3 \
     make \
     musl-dev \
+    ninja-build \
     nodejs \
     npm \
     openssh-client \
     openssh-server \
     openssl \
     perl \
+    pkg-config \
     python3-dev \
     python3-pip \
     rlwrap \
@@ -231,6 +179,8 @@ RUN apt-get update \
     yarn \
     zip \
     zsh \
+    && apt autoclean -y \
+    && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip neovim \
@@ -255,13 +205,22 @@ RUN cd /tmp \
     && upx -9 $(find /usr/lib/graalvm -name node -type f -executable | head -1) \
     && upx -9 $(find /usr/lib/graalvm -name lli -type f -executable | head -1)
 
+RUN curl "https://fennel-lang.org/downloads/fennel-${FENNEL_VERSION}" -o /usr/local/bin/fennel \
+    && chmod a+x /usr/local/bin/fennel
+
 RUN cd /tmp \
-    && curl -OL "https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
+    && curl -OL "https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
     && unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3 \
     && upx -9 protoc3/bin/* \
     && mv protoc3/bin/* /usr/local/bin/ \
     && mv protoc3/include/* /usr/local/include/ \
     && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
+
+RUN cd /tmp \
+    && curl -OL "https://github.com/clojure-lsp/clojure-lsp/releases/download/${CLOJURE_LSP_VERSION}/clojure-lsp-native-linux-amd64.zip" \
+    && unzip clojure-lsp-native-linux-amd64.zip \
+    && mv clojure-lsp /usr/local/bin/ \
+    && rm -rf clojure-lsp-native-linux-amd64.zip
 
 RUN cd /tmp \
     && curl -L "https://github.com/fwcd/kotlin-language-server/releases/download/${KOTLIN_LS_VERSION}/server.zip" --output kotlin-ls.zip \
@@ -270,30 +229,6 @@ RUN cd /tmp \
     && mv server /usr/local/kotlin-language-server \
     && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
 
-RUN cd /tmp \
-    && curl -L "https://github.com/borkdude/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-amd64.zip" --output babashka.zip \
-    && unzip babashka.zip \
-    && rm -f babashka.zip \
-    && chmod a+x bb \
-    && upx -9 bb \
-    && mv bb /usr/local/bin/
-
-RUN cd /tmp \
-    && curl -L "https://github.com/borkdude/jet/releases/download/v${JET_VERSION}/jet-${JET_VERSION}-linux-amd64.zip" --output jet.zip \
-    && unzip jet.zip \
-    && rm -f jet.zip \
-    && chmod a+x jet \
-    && upx -9 jet \
-    && mv jet /usr/local/bin/
-
-RUN cd /tmp \
-    && curl -L "https://github.com/borkdude/clj-kondo/releases/download/v${CLJ_KONDO_VERSION}/clj-kondo-${CLJ_KONDO_VERSION}-linux-amd64.zip" --output clj-kondo.zip \
-    && unzip clj-kondo.zip \
-    && rm -f clj-kondo.zip \
-    && chmod a+x clj-kondo \
-    && upx -9 clj-kondo \
-    && mv clj-kondo /usr/local/bin/
-
 RUN curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash \
     && upx -9 /usr/local/bin/k3d
 
@@ -301,6 +236,7 @@ ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
 ENV SHELL /bin/zsh
+ENV EDITOR nvim
 
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
@@ -341,11 +277,6 @@ COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 COPY --from=rust /usr/local/cargo  $CARGO_HOME
 COPY --from=rust /usr/local/rustup $RUSTUP_HOME
 
-COPY --from=packer /out/rust/bat /usr/local/bin/bat
-COPY --from=packer /out/rust/exa /usr/local/bin/exa
-COPY --from=packer /out/rust/fd  /usr/local/bin/fd
-COPY --from=packer /out/rust/rg  /usr/local/bin/rg
-
 COPY --from=go /usr/local/go/src  $GOROOT/src
 COPY --from=go /usr/local/go/lib  $GOROOT/lib
 COPY --from=go /usr/local/go/pkg  $GOROOT/pkg
@@ -354,15 +285,8 @@ COPY --from=go /usr/local/go/misc $GOROOT/misc
 COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
 COPY --from=packer /out/go/go/bin           $GOROOT/bin
 
-COPY --from=kube /out/kube/kubectx /usr/local/bin/kubectx
-COPY --from=kube /out/kube/kubens  /usr/local/bin/kubens
-
 COPY --from=packer /out/kube/kubectl   /usr/local/bin/kubectl
 COPY --from=packer /out/kube/helm      /usr/local/bin/helm
-COPY --from=packer /out/kube/stern     /usr/local/bin/stern
-COPY --from=packer /out/kube/k9s       /usr/local/bin/k9s
-COPY --from=packer /out/kube/helmfile  /usr/local/bin/helmfile
-COPY --from=packer /out/kube/kustomize /usr/local/bin/kustomize
 
 COPY --from=neovim /usr/local/bin/nvim     /usr/local/bin/nvim
 COPY --from=neovim /usr/local/share/locale /usr/local/share/locale
@@ -385,26 +309,16 @@ COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
 COPY zshrc                $DOTFILES/zshrc
 
+RUN mkdir -p $HOME/.docker
+COPY docker-config.json $HOME/.docker/config.json
+
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG
 
-# zplug plugins
-RUN git clone https://github.com/zplug/zplug $HOME/.zplug \
-    && git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zplug/repos/zsh-users/zsh-autosuggestions \
-    && git clone https://github.com/zsh-users/zsh-completions $HOME/.zplug/repos/zsh-users/zsh-completions \
-    && git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting \
-    && git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.zplug/repos/zsh-users/zsh-history-substring-search \
-    && git clone https://github.com/greymd/tmux-xpanes $HOME/.zplug/repos/greymd/tmux-xpanes
-
-# babashka classpath
-RUN export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {limit-break {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}' -Spath)
-
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
-RUN ["/bin/bash", "-c", "make prepare-init && make neovim-init && make tmux-init"]
+RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
 
-# download dependencies
-RUN ["/bin/zsh", "-c", "lein"]
-RUN ["/bin/zsh", "-c", "clojure -A:dev"]
+# RUN ["/bin/zsh", "-c", "source ~/.zshrc && zinit self-update && zinit update --all"]
 
 RUN rm -rf /tmp/*
 
