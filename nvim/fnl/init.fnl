@@ -2,12 +2,8 @@
   {require {core aniseed.core
             nvim aniseed.nvim
             util aniseed.nvim.util
-            icon util.icon
-            ts-cfg nvim-treesitter.configs
-            devicon nvim-web-devicons}
+            packer packer}
    require-macros [util.macros]})
-
-(def icontab icon.tab)
 
 (defn- bridge [from to]
   (util.fn-bridge from :init to {:return true}))
@@ -38,6 +34,72 @@
                                :silent true}))
 (defn- xmap-silent [from to]
   (nvim.set_keymap :x from to {:silent true}))
+
+;; plugins
+
+(defn- use [...]
+  "Iterates through the arguments as pairs and calls packer's use function for
+  each of them. Works around Fennel not liking mixed associative and sequential
+  tables as well."
+  (let [pkgs [...]]
+    (packer.startup
+      (fn [use]
+        (for [i 1 (core.count pkgs) 2]
+          (let [name (. pkgs i)
+                opts (. pkgs (+ i 1))]
+            (use (core.assoc opts 1 name))))))))
+
+(use
+  :romgrk/doom-one.vim {}
+  :kyazdani42/nvim-web-devicons {}
+  :itchyny/lightline.vim {}
+  :romgrk/barbar.nvim {}
+  :tyru/eskk.vim {}
+  :dense-analysis/ale {}
+  :neoclide/coc.nvim {:branch :release}
+  :honza/vim-snippets {}
+  :kyazdani42/nvim-tree.lua {}
+  :junegunn/fzf {}
+  :junegunn/fzf.vim {}
+  :haya14busa/vim-asterisk {}
+  :haya14busa/incsearch.vim {}
+  :rhysd/clever-f.vim {}
+  :t9md/vim-quickhl {}
+  :kana/vim-submode {}
+  :kana/vim-arpeggio {}
+  :tyru/caw.vim {}
+  :kana/vim-operator-user {}
+  :kana/vim-operator-replace {}
+  :rhysd/vim-operator-surround {}
+  :kana/vim-textobj-user {}
+  :kana/vim-textobj-indent {}
+  :kana/vim-textobj-function {}
+  :kana/vim-textobj-entire {}
+  :kana/vim-textobj-line {}
+  :thinca/vim-textobj-between {}
+  :mattn/vim-textobj-url {}
+  :osyo-manga/vim-textobj-multiblock {}
+  :tpope/vim-repeat {}
+  :guns/vim-sexp {}
+  :mileszs/ack.vim {}
+  :thinca/vim-qfreplace {}
+  :liquidz/vim-iced {:ft :clojure}
+  :liquidz/vim-iced-coc-source {:ft :clojure}
+  :hylang/vim-hy {:ft :hy}
+  :udalov/kotlin-vim {:ft :kotlin}
+  :Olical/aniseed {}
+  :Olical/conjure {:ft :fennel}
+  :bakpakin/fennel.vim {:ft :fennel}
+  :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
+                                 :ft :markdown}
+  :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"}
+  :romgrk/nvim-treesitter-context {})
+
+(def icon (require :util.icon))
+(def ts-cfg (require :nvim-treesitter.configs))
+(def devicon (require :nvim-web-devicons))
+
+(def icontab icon.tab)
 
 ;; basics
 (set nvim.o.viminfo "'1000,<100,f1,h,s100")

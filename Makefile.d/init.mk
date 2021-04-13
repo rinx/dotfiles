@@ -5,9 +5,8 @@ prepare-init:
 .PHONY: neovim-init
 neovim-init:
 	@$(call red, "neovim-init")
-	@$(call blue, "--\> initialize dein for NeoVim")
-	nvim --headless +'PlugInstall --sync' +qa
-	nvim --headless +'UpdateRemotePlugins' +qa
+	@$(call blue, "--\> initialize neovim")
+	nvim +"au User PackerComplete qa" +PackerSync
 
 .PHONY: tmux-init
 tmux-init:

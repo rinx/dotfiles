@@ -12,9 +12,9 @@
 ARG GRAALVM_VERSION=21.0.0.2
 ARG GRAALVM_JAVA_VERSION=java11
 
-ARG FENNEL_VERSION=0.8.1
+ARG FENNEL_VERSION=0.9.1
 
-ARG PROTOBUF_VERSION=3.16.0-rc1
+ARG PROTOBUF_VERSION=3.15.8
 ARG CLOJURE_LSP_VERSION=2021.04.07-16.34.10
 ARG KOTLIN_LS_VERSION=1.1.1
 
@@ -300,7 +300,6 @@ COPY dotvim               $DOTFILES/dotvim
 COPY gitattributes_global $DOTFILES/gitattributes_global
 COPY gitconfig            $DOTFILES/gitconfig
 COPY gitignore            $DOTFILES/gitignore
-COPY init.vim             $DOTFILES/init.vim
 COPY nvim                 $DOTFILES/nvim
 COPY Makefile             $DOTFILES/Makefile
 COPY Makefile.d           $DOTFILES/Makefile.d
