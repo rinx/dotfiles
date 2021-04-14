@@ -2,7 +2,7 @@
 ## ---   :tx "(fn [x] (string/replace x #\"vm-\" \"\"))"
 ## ---   :url "https://api.github.com/repos/graalvm/graalvm-ce-builds/tags"}
 ## ---  {:name "PROTOBUF_VERSION"
-## ---   :tx "(fn [x] (string/replace x #\"v\" \"\"))"
+## ---   :tx "(fn [x] (-> x (string/replace #\"v\" \"\") (string/replace #\"rc\" \"rc-\")))"
 ## ---   :url "https://api.github.com/repos/protocolbuffers/protobuf/tags"}
 ## ---  {:name "CLOJURE_LSP_VERSION"
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
