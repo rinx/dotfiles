@@ -6,8 +6,8 @@ prepare-init:
 neovim-init:
 	@$(call red, "neovim-init")
 	@$(call blue, "--\> initialize neovim")
-	rm -rf $HOME/.local/share/nvim $HOME/.config/nvim/lua
-	nvim +"au User PackerComplete qa" +PackerSync
+	rm -rf ${HOME}/.local/share/nvim ${HOME}/.config/nvim/lua ${HOME}/.config/nvim/plugin/packer_compiled.vim
+	nvim --headless +'autocmd User PackerComplete qa' +PackerSync
 
 .PHONY: tmux-init
 tmux-init:
