@@ -70,6 +70,7 @@
   :kyazdani42/nvim-tree.lua {}
   :junegunn/fzf {}
   :junegunn/fzf.vim {}
+  :stsewd/fzf-checkout.vim {}
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
   :rhysd/clever-f.vim {}
@@ -442,7 +443,9 @@
   (nnoremap-silent ",us"  ":<C-u>History/<CR>")
   (nnoremap-silent ",uh"  ":<C-u>Helptags<CR>")
   (nnoremap-silent ",ut"  ":<C-u>Filetypes<CR>")
-  (nnoremap-silent ",ug"  ":call fzf#vim#grep(\"rg --column --line-number --no-heading --color=always --smart-case \".shellescape(input('Query: ')), 1, 0)<CR>")
+  (nnoremap-silent ",ug"  ":<C-u>Rg<CR>")
+  (nnoremap-silent ",ugb" ":<C-u>GBranches<CR>")
+  (nnoremap-silent ",ugt" ":<C-u>GTags<CR>")
 
   (augroup init-fzf
            (autocmd :FileType :fzf "nnoremap <buffer><silent>q :<C-u>q<CR>"))
