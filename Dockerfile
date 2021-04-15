@@ -1,9 +1,6 @@
 ## --- [{:name "GRAALVM_VERSION"
 ## ---   :tx "(fn [x] (string/replace x #\"vm-\" \"\"))"
 ## ---   :url "https://api.github.com/repos/graalvm/graalvm-ce-builds/tags"}
-## ---  {:name "PROTOBUF_VERSION"
-## ---   :tx "(fn [x] (string/replace x #\"v\" \"\"))"
-## ---   :url "https://api.github.com/repos/protocolbuffers/protobuf/tags"}
 ## ---  {:name "CLOJURE_LSP_VERSION"
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
 ## ---  {:name "KOTLIN_LS_VERSION"
@@ -14,7 +11,6 @@ ARG GRAALVM_JAVA_VERSION=java11
 
 ARG FENNEL_VERSION=0.9.1
 
-ARG PROTOBUF_VERSION=3.16.0-rc1
 ARG CLOJURE_LSP_VERSION=2021.04.13-12.47.33
 ARG KOTLIN_LS_VERSION=1.1.1
 
@@ -125,7 +121,6 @@ LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
 ARG GRAALVM_JAVA_VERSION
 ARG FENNEL_VERSION
-ARG PROTOBUF_VERSION
 ARG CLOJURE_LSP_VERSION
 ARG KOTLIN_LS_VERSION
 
@@ -212,14 +207,6 @@ RUN cd /tmp \
 
 RUN curl "https://fennel-lang.org/downloads/fennel-${FENNEL_VERSION}" -o /usr/local/bin/fennel \
     && chmod a+x /usr/local/bin/fennel
-
-RUN cd /tmp \
-    && curl -OL "https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
-    && unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3 \
-    && upx -9 protoc3/bin/* \
-    && mv protoc3/bin/* /usr/local/bin/ \
-    && mv protoc3/include/* /usr/local/include/ \
-    && rm -rf protoc-${PROTOBUF_VERSION}-linux-x86_64.zip protoc3
 
 RUN cd /tmp \
     && curl -OL "https://github.com/clojure-lsp/clojure-lsp/releases/download/${CLOJURE_LSP_VERSION}/clojure-lsp-native-linux-amd64.zip" \
