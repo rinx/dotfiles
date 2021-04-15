@@ -384,11 +384,12 @@
                   :source {:path true
                            :treesitter true
                            :nvim_lsp true
+                           :nvim_lua true
                            :omni false
                            :buffer true
                            :tags true
-                           :spell false
-                           :calc false
+                           :spell true
+                           :calc true
                            :ultisnips true}}))
 
   (nnoremap-silent "K" ":<C-u>lua vim.lsp.buf.hover()<CR>")
