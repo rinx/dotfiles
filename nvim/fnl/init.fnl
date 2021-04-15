@@ -418,7 +418,21 @@
 
   (set nvim.g.diagnostic_enable_virtual_text 1)
   (set nvim.g.diagnostic_trimmed_virtual_text 40)
+  (set nvim.g.diagnostic_show_sign 1)
   (set nvim.g.diagnostic_insert_delay 1)
+
+  (nvim.fn.sign_define :LspDiagnosticsSignError
+                       {:text icontab.times
+                        :texthl :LspDiagnosticsSignError})
+  (nvim.fn.sign_define :LspDiagnosticsSignWarning
+                       {:text icontab.exclam-tri
+                        :texthl :LspDiagnosticsSignWarning})
+  (nvim.fn.sign_define :LspDiagnosticsSignInformation
+                       {:text icontab.info
+                        :texthl :LspDiagnosticsSignInformation})
+  (nvim.fn.sign_define :LspDiagnosticsSignHint
+                       {:text icontab.circle
+                        :texthl :LspDiagnosticsSignHint})
 
   ;; nvim-tree.lua
   (set nvim.g.nvim_tree_side :left)
