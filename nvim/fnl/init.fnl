@@ -368,10 +368,8 @@
     (lsp.fortls.setup {:on_attach lsp_status.on_attach})
     (lsp.gopls.setup {:capabilities capabilities
                       :on_attach lsp_status.on_attach})
-    (lsp.jdtls.setup {:on_attach lsp_status.on_attach})
     (lsp.jsonls.setup {:on_attach lsp_status.on_attach})
     (lsp.kotlin_language_server.setup {:on_attach lsp_status.on_attach})
-    (lsp.rls.setup {:on_attach lsp_status.on_attach})
     (lsp.rust_analyzer.setup {:on_attach lsp_status.on_attach})
     (lsp.tsserver.setup {:on_attach lsp_status.on_attach})
     (lsp.vimls.setup {:on_attach lsp_status.on_attach})
