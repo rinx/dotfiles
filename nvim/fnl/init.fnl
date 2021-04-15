@@ -68,12 +68,14 @@
   :neovim/nvim-lspconfig {}
   :hrsh7th/nvim-compe {}
   :onsails/lspkind-nvim {}
-  :windwp/nvim-autopairs {}
+  :nvim-lua/lsp-status.nvim {}
+  :cohama/lexima.vim {}
   :honza/vim-snippets {}
   :kyazdani42/nvim-tree.lua {}
   :junegunn/fzf {}
   :junegunn/fzf.vim {}
   :stsewd/fzf-checkout.vim {}
+  :lambdalisue/gina.vim {}
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
   :rhysd/clever-f.vim {}
@@ -355,20 +357,25 @@
   (let [lsp (require :lspconfig)
         capabilities (vim.lsp.protocol.make_client_capabilities)
         lsp-kind (require :lspkind)
+        lsp-status (require :lsp-status)
         compe (require :compe)]
-    (lsp.bashls.setup {})
-    (lsp.dockerls.setup {})
-    (lsp.fortls.setup {})
-    (lsp.gopls.setup {:capabilities capabilities})
-    (lsp.jdtls.setup {})
-    (lsp.jsonls.setup {})
-    (lsp.kotlin_language_server.setup {})
-    (lsp.rls.setup {})
-    (lsp.rust_analyzer.setup {})
-    (lsp.tsserver.setup {})
-    (lsp.vimls.setup {})
-    (lsp.yamlls.setup {})
     (lsp-kind.init)
+    (lsp-status.register_progress)
+    (lsp-status.config {:status_symbol ""
+                        :current_function false})
+    (lsp.bashls.setup {:on_attach lsp_status.on_attach})
+    (lsp.dockerls.setup {:on_attach lsp_status.on_attach})
+    (lsp.fortls.setup {:on_attach lsp_status.on_attach})
+    (lsp.gopls.setup {:capabilities capabilities
+                      :on_attach lsp_status.on_attach})
+    (lsp.jdtls.setup {:on_attach lsp_status.on_attach})
+    (lsp.jsonls.setup {:on_attach lsp_status.on_attach})
+    (lsp.kotlin_language_server.setup {:on_attach lsp_status.on_attach})
+    (lsp.rls.setup {:on_attach lsp_status.on_attach})
+    (lsp.rust_analyzer.setup {:on_attach lsp_status.on_attach})
+    (lsp.tsserver.setup {:on_attach lsp_status.on_attach})
+    (lsp.vimls.setup {:on_attach lsp_status.on_attach})
+    (lsp.yamlls.setup {:on_attach lsp_status.on_attach})
     (compe.setup {:enabled true
                   :autocomplete true
                   :debug false
@@ -381,35 +388,31 @@
                   :max_kind_width 100
                   :max_menu_width 100
                   :documentation true
-                  :source {:path true
-                           :treesitter true
-                           :nvim_lsp true
-                           :nvim_lua true
-                           :omni false
-                           :buffer true
-                           :tags true
-                           :spell true
-                           :calc true
-                           :ultisnips true}}))
+                  :source {:path {:kind icontab.dots}
+                           :buffer {:kind icontab.document}
+                           :calc {:kind icontab.calc}
+                           :nvim_lsp {:kind icontab.cube}
+                           :nvim_lua {:kind icontab.vim}
+                           :spell {:kind icontab.pencil}
+                           :ultisnips {:kind icontab.quote-l}
+                           :emoji {:kind icontab.heart
+                                   :filetypes [:markdown]}
+                           :treesitter {:kind icontab.leaf}
+                           :conjure {:kind icontab.lua
+                                     :filetypes [:fennel]}
+                           :omni false}}))
 
   (nnoremap-silent "K" ":<C-u>lua vim.lsp.buf.hover()<CR>")
   (nnoremap-silent "gd" ":<C-u>lua vim.lsp.buf.definition()<CR>")
-  (nnoremap-silent "gD" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
+  (nnoremap-silent "gi" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
   (nnoremap-silent "gr" ":<C-u>lua vim.lsp.buf.references()<CR>")
 
   (nnoremap-silent "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>")
   (nnoremap-silent "<Leader>c" ":<C-u>lua vim.lsp.diagnostic.code_action()<CR>")
 
-  ; inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-  ; inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
   (set nvim.g.diagnostic_enable_virtual_text 1)
   (set nvim.g.diagnostic_trimmed_virtual_text 40)
   (set nvim.g.diagnostic_insert_delay 1)
-
-  ;; nvim-autopairs
-  (let [autopairs (require :nvim-autopairs)]
-    (autopairs.setup))
 
   ;; nvim-tree.lua
   (set nvim.g.nvim_tree_side :left)
@@ -569,14 +572,6 @@
   (augroup init-fennel
            (autocmd :FileType :fennel "setlocal shiftwidth=2"))
 
-  ;; clojure
-  (augroup init-clojure
-           (autocmd :FileType :clojure "let b:coc_pairs_disabled = [\"'\"]"))
-
-  ;; rust
-  (augroup init-rust
-           (autocmd :FileType :rust "let b:coc_pairs_disabled = [\"'\"]"))
-
   ;; go
   (augroup init-golang
            (autocmd :FileType :go "set noexpandtab")
@@ -666,11 +661,21 @@
   (bridge :LightlineLineinfo :lightline-lineinfo)
 
   (defn lightline-gitstatus []
-    (let [g-status (. nvim.g :coc_git_status)]
+    (let [g-status (when (loaded? :gina.vim)
+                     (nvim.fn.gina#component#repo#branch))]
       (if (and g-status (not (= g-status "")))
         (.. icontab.github " " g-status)
         "")))
-  (bridge :LightlineGitstatus :lightline-gitstatus)
+  (bridge :LightlineGitStatus :lightline-gitstatus)
+
+  (defn lightline-lsp-status []
+    (let [status (when (loaded? :lsp-status.nvim)
+                   (let [lsp-status (require :lsp-status)]
+                     (lsp-status.status)))]
+      (if status
+        status
+        "")))
+  (bridge :LightlineLspStatus :lightline-lsp-status)
 
   (defn lightline-ale-warnings []
     (let [bufnr (nvim.fn.bufnr "")
@@ -687,14 +692,14 @@
                  :tabline 0}
         :colorscheme :ayu_dark
         :active {:left [[:mode :paste :spell]
-                        [:filename :gitstatus :cocstatus]]
+                        [:filename :gitstatus :lspstatus]]
                  :right [[:lineinfo]
                          [:fileformat :fileencoding :filetype]
                          [:alewarnings]]}
         :component_function {:filename :LightlineFilename
                              :lineinfo :LightlineLineinfo
-                             :gitstatus :LightlineGitstatus
-                             :cocstatus :coc#status
+                             :gitstatus :LightlineGitStatus
+                             :lspstatus :LightlineLspStatus
                              :alewarnings :LightlineALEWarnings}
         :inactive {:left [[:filename]]
                    :right [[:filetype]]}
