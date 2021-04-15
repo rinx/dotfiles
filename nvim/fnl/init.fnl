@@ -381,7 +381,6 @@
     (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach})
     (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach})
     (lsp.tsserver.setup {:on_attach lsp-status.on_attach})
-    (lsp.vimls.setup {:on_attach lsp-status.on_attach})
     (lsp.yamlls.setup {:on_attach lsp-status.on_attach})
     (compe.setup {:enabled true
                   :autocomplete true

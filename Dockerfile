@@ -187,7 +187,6 @@ RUN npm install -g \
     dockerfile-language-server-nodejs \
     typescript \
     typescript-language-server \
-    vim-language-server \
     vscode-json-languageserver \
     yaml-language-server \
     && pip3 install \
