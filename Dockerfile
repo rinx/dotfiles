@@ -188,8 +188,13 @@ RUN pip3 install --upgrade pip neovim \
     && npm install -g neovim
 
 RUN npm install -g \
-    dockerfile-language-server-nodejs \
     bash-language-server \
+    dockerfile-language-server-nodejs \
+    typescript \
+    typescript-language-server \
+    vim-language-server \
+    vscode-json-languageserver \
+    yaml-language-server \
     && pip3 install \
     fortran-language-server \
     hy
@@ -228,6 +233,11 @@ RUN cd /tmp \
     && rm -f kotiln-ls.zip \
     && mv server /usr/local/kotlin-language-server \
     && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
+
+RUN cd /tmp \
+    && curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o /usr/local/bin/rust-analyzer \
+    && chmod a+x /usr/local/bin/rust-analyzer \
+    && upx -9 /usr/local/bin/rust-analyzer
 
 RUN curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash \
     && upx -9 /usr/local/bin/k3d
