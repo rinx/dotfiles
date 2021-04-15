@@ -23,7 +23,6 @@ $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 neovim-deploy: \
     init.lua \
     nvim-fnl \
-    coc-settings.json \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
 
@@ -40,13 +39,6 @@ $(HOME)/.config/nvim/fnl:
 	@$(call cyan, "--\> nvim/fnl directory for nvim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/nvim/fnl $(HOME)/.config/nvim/fnl
-
-.PHONY: coc-settings.json
-coc-settings.json: $(HOME)/.config/nvim/coc-settings.json
-$(HOME)/.config/nvim/coc-settings.json:
-	@$(call cyan, "--\> coc-settings.json for nvim")
-	mkdir -p $(HOME)/.config/nvim
-	ln -s $(DOTDIR)/nvim/coc-settings.json $(HOME)/.config/nvim/coc-settings.json
 
 .PHONY: skk-jisyo-large
 skk-jisyo-large: $(HOME)/.SKK-JISYO.L

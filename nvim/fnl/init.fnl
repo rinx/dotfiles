@@ -371,17 +371,18 @@
     (lsp-status.register_progress)
     (lsp-status.config {:status_symbol ""
                         :current_function false})
-    (lsp.bashls.setup {:on_attach lsp_status.on_attach})
-    (lsp.dockerls.setup {:on_attach lsp_status.on_attach})
-    (lsp.fortls.setup {:on_attach lsp_status.on_attach})
+    (lsp.bashls.setup {:on_attach lsp-status.on_attach})
+    (lsp.clojure_lsp.setup {:on_attach lsp-status.on_attach})
+    (lsp.dockerls.setup {:on_attach lsp-status.on_attach})
+    (lsp.fortls.setup {:on_attach lsp-status.on_attach})
     (lsp.gopls.setup {:capabilities capabilities
-                      :on_attach lsp_status.on_attach})
-    (lsp.jsonls.setup {:on_attach lsp_status.on_attach})
-    (lsp.kotlin_language_server.setup {:on_attach lsp_status.on_attach})
-    (lsp.rust_analyzer.setup {:on_attach lsp_status.on_attach})
-    (lsp.tsserver.setup {:on_attach lsp_status.on_attach})
-    (lsp.vimls.setup {:on_attach lsp_status.on_attach})
-    (lsp.yamlls.setup {:on_attach lsp_status.on_attach})
+                      :on_attach lsp-status.on_attach})
+    (lsp.jsonls.setup {:on_attach lsp-status.on_attach})
+    (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach})
+    (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach})
+    (lsp.tsserver.setup {:on_attach lsp-status.on_attach})
+    (lsp.vimls.setup {:on_attach lsp-status.on_attach})
+    (lsp.yamlls.setup {:on_attach lsp-status.on_attach})
     (compe.setup {:enabled true
                   :autocomplete true
                   :debug false
