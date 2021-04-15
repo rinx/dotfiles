@@ -21,18 +21,18 @@ $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
 
 .PHONY: neovim-deploy
 neovim-deploy: \
-    init.vim \
+    init.lua \
     nvim-fnl \
     coc-settings.json \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
 
-.PHONY: init.vim
-init.vim: $(HOME)/.config/nvim/init.vim
-$(HOME)/.config/nvim/init.vim:
-	@$(call cyan, "--\> init.vim")
+.PHONY: init.lua
+init.lua: $(HOME)/.config/nvim/init.lua
+$(HOME)/.config/nvim/init.lua:
+	@$(call cyan, "--\> init.lua")
 	mkdir -p $(HOME)/.config/nvim
-	ln -s $(DOTDIR)/init.vim $(HOME)/.config/nvim/init.vim
+	ln -s $(DOTDIR)/nvim/init.lua $(HOME)/.config/nvim/init.lua
 
 .PHONY: nvim-fnl
 nvim-fnl: $(HOME)/.config/nvim/fnl
