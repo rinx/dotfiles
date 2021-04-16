@@ -32,6 +32,10 @@
 (defn- nnoremap-silent [from to]
   (nvim.set_keymap :n from to {:noremap true
                                :silent true}))
+(defn- inoremap-silent-expr [from to]
+  (nvim.set_keymap :i from to {:noremap true
+                               :silent true
+                               :expr true}))
 (defn- xmap-silent [from to]
   (nvim.set_keymap :x from to {:silent true}))
 
@@ -66,11 +70,13 @@
   :tyru/eskk.vim {}
   :dense-analysis/ale {}
   :neovim/nvim-lspconfig {}
+  :hrsh7th/vim-vsnip {}
+  :hrsh7th/vim-vsnip-integ {}
   :hrsh7th/nvim-compe {}
   :onsails/lspkind-nvim {}
   :nvim-lua/lsp-status.nvim {}
   :cohama/lexima.vim {}
-  :honza/vim-snippets {}
+  :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
   :junegunn/fzf {}
   :junegunn/fzf.vim {}
@@ -394,19 +400,20 @@
                   :max_kind_width 100
                   :max_menu_width 100
                   :documentation true
-                  :source {:path {:kind icontab.dots}
-                           :buffer {:kind icontab.document}
+                  :source {:buffer {:kind icontab.document}
                            :calc {:kind icontab.calc}
-                           :nvim_lsp {:kind icontab.cube}
-                           :nvim_lua {:kind icontab.vim}
-                           :spell {:kind icontab.pencil}
-                           :ultisnips {:kind icontab.quote-l}
-                           :emoji {:kind icontab.heart
-                                   :filetypes [:markdown]}
-                           :treesitter {:kind icontab.leaf}
                            :conjure {:kind icontab.lua
                                      :filetypes [:fennel]}
-                           :omni false}}))
+                           :emoji {:kind icontab.heart
+                                   :filetypes [:markdown]}
+                           :nvim_lsp {:kind icontab.cube}
+                           :nvim_lua {:kind icontab.vim}
+                           :omni false
+                           :path {:kind icontab.dots}
+                           :spell {:kind icontab.pencil}
+                           :tag {:kind icontab.tag}
+                           :treesitter {:kind icontab.leaf}
+                           :vsnip {:kind icontab.quote-l}}}))
 
   (nnoremap-silent "K" ":<C-u>lua vim.lsp.buf.hover()<CR>")
   (nnoremap-silent "gd" ":<C-u>lua vim.lsp.buf.definition()<CR>")
@@ -422,17 +429,26 @@
   (set nvim.g.diagnostic_insert_delay 1)
 
   (nvim.fn.sign_define :LspDiagnosticsSignError
-                       {:text icontab.times
+                       {:text icontab.close-octagon
                         :texthl :LspDiagnosticsSignError})
   (nvim.fn.sign_define :LspDiagnosticsSignWarning
-                       {:text icontab.exclam-tri
+                       {:text icontab.exclam-octagon
                         :texthl :LspDiagnosticsSignWarning})
   (nvim.fn.sign_define :LspDiagnosticsSignInformation
-                       {:text icontab.info
+                       {:text icontab.info-circle
                         :texthl :LspDiagnosticsSignInformation})
   (nvim.fn.sign_define :LspDiagnosticsSignHint
-                       {:text icontab.circle
+                       {:text icontab.comment
                         :texthl :LspDiagnosticsSignHint})
+
+  (set nvim.g.lexima_no_default_rules true)
+  (nvim.fn.lexima#set_default_rules)
+
+  (inoremap-silent-expr "<C-s>" "compe#complete()")
+  (inoremap-silent-expr "<CR>"  "compe#confirm(lexima#expand('<LT>CR>', 'i'))")
+  (inoremap-silent-expr "<C-e>" "compe#close('<C-e>')")
+  (inoremap-silent-expr "<C-f>" "compe#scroll({ 'delta': +4 })")
+  (inoremap-silent-expr "<C-d>" "compe#scroll({ 'delta': -4 })")
 
   ;; nvim-tree.lua
   (set nvim.g.nvim_tree_side :left)
