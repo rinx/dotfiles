@@ -385,6 +385,7 @@
                                             :nilless true
                                             :shadow true
                                             :unusedwrite true}}})
+    (lsp.hls.setup {:on_attach lsp-status.on_attach})
     (lsp.jsonls.setup {:on_attach lsp-status.on_attach})
     (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach})
     (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach})
