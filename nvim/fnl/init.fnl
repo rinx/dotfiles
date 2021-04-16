@@ -36,8 +36,9 @@
   (nvim.set_keymap :i from to {:noremap true
                                :silent true
                                :expr true}))
-(defn- xmap-silent [from to]
-  (nvim.set_keymap :x from to {:silent true}))
+(defn- xnoremap-silent [from to]
+  (nvim.set_keymap :x from to {:noremap true
+                               :silent true}))
 
 ;; plugins
 (defn- use [...]
@@ -353,9 +354,7 @@
   (set nvim.g.ale_lint_on_text_changed :never)
   (set nvim.g.ale_lint_on_filetype_changed 1)
   (set nvim.g.ale_fix_on_save 1)
-  (set nvim.g.ale_linters {:clojure [:clj-kondo]
-                           :go [:golangci-lint]
-                           :rust [:rls]})
+  (set nvim.g.ale_linters {:clojure [:clj-kondo]})
   (set nvim.g.ale_fixers {"*" [:remove_trailing_lines :trim_whitespace]
                           :go [:goimports]
                           :rust [:rustfmt]})
@@ -365,11 +364,9 @@
   (set nvim.g.ale_sign_column_always 1)
   (set nvim.g.ale_warn_about_trailing_blank_lines 1)
   (set nvim.g.ale_warn_about_trailing_whitespace 1)
-  (set nvim.g.ale_go_golangci_lint_options "--enable-all --disable=gochecknoglobals --disable=gochecknoinits --disable=typecheck --disable=lll --enable=gosec --enable=prealloc")
 
   ;; neovim LSP
   (let [lsp (require :lspconfig)
-        capabilities (vim.lsp.protocol.make_client_capabilities)
         lsp-kind (require :lspkind)
         lsp-status (require :lsp-status)
         compe (require :compe)]
@@ -381,8 +378,13 @@
     (lsp.clojure_lsp.setup {:on_attach lsp-status.on_attach})
     (lsp.dockerls.setup {:on_attach lsp-status.on_attach})
     (lsp.fortls.setup {:on_attach lsp-status.on_attach})
-    (lsp.gopls.setup {:capabilities capabilities
-                      :on_attach lsp-status.on_attach})
+    (lsp.gopls.setup {:on_attach lsp-status.on_attach
+                      :settings {:usePlaceholders true
+                                 :analyses {:fieldalignment true
+                                            :fillstruct true
+                                            :nilless true
+                                            :shadow true
+                                            :unusedwrite true}}})
     (lsp.jsonls.setup {:on_attach lsp-status.on_attach})
     (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach})
     (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach})
@@ -417,11 +419,19 @@
 
   (nnoremap-silent "K" ":<C-u>lua vim.lsp.buf.hover()<CR>")
   (nnoremap-silent "gd" ":<C-u>lua vim.lsp.buf.definition()<CR>")
+  (nnoremap-silent "gD" ":<C-u>lua vim.lsp.buf.declaration()<CR>")
   (nnoremap-silent "gi" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
   (nnoremap-silent "gr" ":<C-u>lua vim.lsp.buf.references()<CR>")
 
   (nnoremap-silent "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>")
-  (nnoremap-silent "<Leader>c" ":<C-u>lua vim.lsp.diagnostic.code_action()<CR>")
+  (nnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.formatting()<CR>")
+  (xnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
+  (nnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>")
+  (xnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>")
+
+  (nnoremap-silent "[d" ":<C-u>lua vim.lsp.diagnostic.goto_prev()<CR>")
+  (nnoremap-silent "]d" ":<C-u>lua vim.lsp.diagnostic.goto_next()<CR>")
+  (nnoremap-silent "<Leader>d" ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
 
   (set nvim.g.diagnostic_enable_virtual_text 1)
   (set nvim.g.diagnostic_trimmed_virtual_text 40)
