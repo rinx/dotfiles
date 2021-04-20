@@ -6,7 +6,7 @@
 ## ---  {:name "KOTLIN_LS_VERSION"
 ## ---   :url "https://api.github.com/repos/fwcd/kotlin-language-server/tags"}]
 
-ARG GRAALVM_VERSION=21.0.0.2
+ARG GRAALVM_VERSION=21.1.0
 ARG GRAALVM_JAVA_VERSION=java11
 
 ARG FENNEL_VERSION=0.9.1
