@@ -54,6 +54,8 @@
    :document ""
    :dots ""
    :calc ""
+   :paste ""
+   :spellcheck "暈"
    :folder ""
    :folder-open ""
    :cursor ""

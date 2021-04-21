@@ -66,7 +66,7 @@
   :Olical/aniseed {}
   :romgrk/doom-one.vim {}
   :kyazdani42/nvim-web-devicons {}
-  :itchyny/lightline.vim {}
+  :hoob3rt/lualine.nvim {}
   :romgrk/barbar.nvim {}
   :tyru/eskk.vim {}
   :dense-analysis/ale {}
@@ -82,7 +82,6 @@
   :junegunn/fzf {}
   :junegunn/fzf.vim {}
   :stsewd/fzf-checkout.vim {}
-  :lambdalisue/gina.vim {}
   :mhinz/vim-signify {}
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
@@ -719,89 +718,83 @@
 
   (set nvim.g.bufferline {:maximum_padding 6})
 
-  ;; lightline
-  (defn lightline-filename []
-    (let [filename (nvim.fn.expand "%")
-          filename (if (= filename "")
-                     "No Name"
-                     filename)
-          extension (nvim.fn.expand "%:e")
-          icon (match nvim.bo.ft
-                 :help icontab.lock
-                 :qf icontab.lock
-                 _ (if nvim.bo.ro
-                     icontab.lock
-                     (devicon.get_icon filename extension {:default true})))
-          modified (match nvim.bo.ft
-                     :help ""
-                     :qf ""
-                     _ (if nvim.bo.modified
-                         (.. " " icontab.plus)
-                         (if nvim.bo.modifiable
-                           ""
-                           (.. " " icontab.minus))))]
-      (.. icon " " filename modified)))
-  (bridge :LightlineFilename :lightline-filename)
-
-  (defn lightline-lineinfo []
-    (let [row (nvim.fn.line ".")
-          col (nvim.fn.col ".")]
-      (.. icontab.ln row " " icontab.cn col)))
-  (bridge :LightlineLineinfo :lightline-lineinfo)
-
-  (defn lightline-gitstatus []
-    (let [g-status (when (loaded? :gina.vim)
-                     (nvim.fn.gina#component#repo#branch))]
-      (if (and g-status (not (= g-status "")))
-        (.. icontab.github " " g-status)
-        "")))
-  (bridge :LightlineGitStatus :lightline-gitstatus)
-
-  (defn lightline-lsp-status []
-    (let [status (when (loaded? :lsp-status.nvim)
-                   (let [lsp-status (require :lsp-status)]
-                     (lsp-status.status)))]
-      (if status
-        status
-        "")))
-  (bridge :LightlineLspStatus :lightline-lsp-status)
-
-  (defn lightline-ale-warnings []
-    (let [bufnr (nvim.fn.bufnr "")
-          count (nvim.fn.ale#statusline#Count bufnr)]
-      (if count
-        (let [err count.error
-              warn count.warning]
-        (.. icontab.exclam warn " " icontab.times err))
-        "")))
-  (bridge :LightlineALEWarnings :lightline-ale-warnings)
-
-  (set nvim.g.lightline
-       {:enable {:statusline 1
-                 :tabline 0}
-        :colorscheme :ayu_dark
-        :active {:left [[:mode :paste :spell]
-                        [:filename :gitstatus :lspstatus]]
-                 :right [[:lineinfo]
-                         [:fileformat :fileencoding :filetype]
-                         [:alewarnings]]}
-        :component_function {:filename :LightlineFilename
-                             :lineinfo :LightlineLineinfo
-                             :gitstatus :LightlineGitStatus
-                             :lspstatus :LightlineLspStatus
-                             :alewarnings :LightlineALEWarnings}
-        :inactive {:left [[:filename]]
-                   :right [[:filetype]]}
-        :separator {:left icontab.round-l
-                    :right icontab.round-r}
-        :mode_map {:n icontab.minus-square
-                   :i icontab.info
-                   :R icontab.arrow-r
-                   :v icontab.cursor-text
-                   :V icontab.cursor
-                   "" icontab.cursor
-                   :c icontab.chevron-r
-                   :s "S"
-                   :S "SL"
-                   "" "SB"
-                   :t icontab.terminal}}))
+  ;; lualine
+  (let [ll (require :lualine)
+        paste-fn (fn []
+                   (if vim.o.paste
+                     icontab.paste
+                     ""))
+        spell-fn (fn []
+                   (if vim.wo.spell
+                     (.. icontab.spellcheck vim.o.spelllang)
+                     ""))
+        lsp-status-fn (fn []
+                        (let [status (when (loaded? :lsp-status.nvim)
+                                       (let [lsp-status (require :lsp-status)]
+                                         (lsp-status.status)))]
+                          (if status
+                            status
+                            "")))
+        lineinfo-fn (fn []
+                      (let [row (nvim.fn.line ".")
+                            col (nvim.fn.col ".")]
+                        (.. icontab.ln row " " icontab.cn col)))]
+    (ll.setup {:options
+               {:theme :ayu_dark
+                :section_separators [icontab.round-l
+                                     icontab.round-r]
+                :component_separators ["|" "|"]
+                :icons_enabled true}
+               :sections
+               {:lualine_a [{1 :mode
+                             :upper true
+                             :format (fn [mode-name]
+                                       (let [i icontab
+                                             dict {:n i.minus-square
+                                                   :i i.info
+                                                   :v i.cursor-text
+                                                   "" i.cursor
+                                                   :V i.cursor
+                                                   :c i.chevron-r
+                                                   :no i.minus-square
+                                                   :s i.cursor-text
+                                                   :S i.cursor-text
+                                                   "" i.cursor-text
+                                                   :ic i.info
+                                                   :R i.arrow-r
+                                                   :Rv i.arrow-r
+                                                   :cv i.hashtag
+                                                   :ce i.hashtag
+                                                   :r i.chevron-r
+                                                   :rm i.chevron-r
+                                                   "r?" i.chevron-r
+                                                   "!" i.chevron-r
+                                                   :t i.chevron-r}]
+                                         (or (. dict (vim.fn.mode))
+                                             i.minus-square)))}
+                            paste-fn
+                            spell-fn]
+                :lualine_b [{1 :filename
+                             :file_status true
+                             :symbols
+                             {:modified (.. " " icontab.plus)
+                              :readonly (.. " " icontab.lock)}}
+                            {1 :branch
+                             :icon icontab.github}
+                            lsp-status-fn]
+                :lualine_c []
+                :lualine_x [{1 :diagnostics
+                             :sources [:ale]}]
+                :lualine_y [:fileformat
+                            :encoding
+                            :filetype]
+                :lualine_z [lineinfo-fn]}
+               :inactive_sections
+               {:lualine_a []
+                :lualine_b []
+                :lualine_c [:filename]
+                :lualine_x [:filetype]
+                :lualine_y []
+                :lualine_z []}
+               :extensions
+               []})))
