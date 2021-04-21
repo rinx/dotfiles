@@ -747,7 +747,6 @@
                 :icons_enabled true}
                :sections
                {:lualine_a [{1 :mode
-                             :upper true
                              :format (fn [mode-name]
                                        (let [i icontab
                                              dict {:n i.minus-square
@@ -771,7 +770,7 @@
                                                    "!" i.chevron-r
                                                    :t i.chevron-r}]
                                          (or (. dict (vim.fn.mode))
-                                             i.minus-square)))}
+                                             mode-name)))}
                             paste-fn
                             spell-fn]
                 :lualine_b [{1 :filename
