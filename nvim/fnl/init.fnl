@@ -83,6 +83,7 @@
   :junegunn/fzf.vim {}
   :stsewd/fzf-checkout.vim {}
   :lambdalisue/gina.vim {}
+  :mhinz/vim-signify {}
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
   :rhysd/clever-f.vim {}
@@ -369,28 +370,47 @@
   (let [lsp (require :lspconfig)
         lsp-kind (require :lspkind)
         lsp-status (require :lsp-status)
-        compe (require :compe)]
+        compe (require :compe)
+        capabilities (let [cap (vim.lsp.protocol.make_client_capabilities)]
+                       (set cap.textDocument.completion.completionItem.snippetSupport true)
+                       (set cap.textDocument.completion.completionItem.resolveSupport
+                            {:properties
+                             [:documentation
+                              :detail
+                              :additionalTextEdits]})
+                       cap)]
     (lsp-kind.init)
     (lsp-status.register_progress)
     (lsp-status.config {:status_symbol ""
                         :current_function false})
-    (lsp.bashls.setup {:on_attach lsp-status.on_attach})
-    (lsp.clojure_lsp.setup {:on_attach lsp-status.on_attach})
-    (lsp.dockerls.setup {:on_attach lsp-status.on_attach})
-    (lsp.fortls.setup {:on_attach lsp-status.on_attach})
+    (lsp.bashls.setup {:on_attach lsp-status.on_attach
+                       :capabilities capabilities})
+    (lsp.clojure_lsp.setup {:on_attach lsp-status.on_attach
+                            :capabilities capabilities})
+    (lsp.dockerls.setup {:on_attach lsp-status.on_attach
+                         :capabilities capabilities})
+    (lsp.fortls.setup {:on_attach lsp-status.on_attach
+                       :capabilities capabilities})
     (lsp.gopls.setup {:on_attach lsp-status.on_attach
+                      :capabilities capabilities
                       :settings {:usePlaceholders true
                                  :analyses {:fieldalignment true
                                             :fillstruct true
                                             :nilless true
                                             :shadow true
                                             :unusedwrite true}}})
-    (lsp.hls.setup {:on_attach lsp-status.on_attach})
-    (lsp.jsonls.setup {:on_attach lsp-status.on_attach})
-    (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach})
-    (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach})
-    (lsp.tsserver.setup {:on_attach lsp-status.on_attach})
-    (lsp.yamlls.setup {:on_attach lsp-status.on_attach})
+    (lsp.hls.setup {:on_attach lsp-status.on_attach
+                    :capabilities capabilities})
+    (lsp.jsonls.setup {:on_attach lsp-status.on_attach
+                       :capabilities capabilities})
+    (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach
+                                       :capabilities capabilities})
+    (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach
+                              :capabilities capabilities})
+    (lsp.tsserver.setup {:on_attach lsp-status.on_attach
+                         :capabilities capabilities})
+    (lsp.yamlls.setup {:on_attach lsp-status.on_attach
+                       :capabilities capabilities})
     (compe.setup {:enabled true
                   :autocomplete true
                   :debug false
@@ -495,6 +515,17 @@
 
   (augroup init-fzf
            (autocmd :FileType :fzf "nnoremap <buffer><silent>q :<C-u>q<CR>"))
+
+  ;; signify
+  (set nvim.g.signify_sign_add icontab.plus)
+  (set nvim.g.signify_sign_delete icontab.minus)
+  (set nvim.g.signify_sign_delete_first_line icontab.level-up)
+  (set nvim.g.signify_sign_change icontab.circle)
+  (set nvim.g.signify_sign_change_delete icontab.dots)
+
+  (nvim.ex.highlight "SignifySignAdd ctermfg=green guifg=#00ff00")
+  (nvim.ex.highlight "SignifySignDelete ctermfg=red guifg=#ff0000")
+  (nvim.ex.highlight "SignifySignChange ctermfg=yellow guifg=#ffff00")
 
   ;; asterisk
   (nvim.set_keymap "" "*" "<Plug>(asterisk-*)" {})
