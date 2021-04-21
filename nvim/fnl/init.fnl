@@ -628,6 +628,11 @@
   ;; iced
   (set nvim.g.iced_enable_default_key_mappings true)
 
+  ;; filetypes
+  (augroup init-filetype-detect
+           (autocmd "BufNewFile,BufRead" "*.nml" "setf fortran")
+           (autocmd "BufNewFile,BufRead" "*.namelist" "setf fortran"))
+
   ;; hy
   (set nvim.g.hy_enable_conceal 0)
   (set nvim.g.hy_conceal_fancy 0)
@@ -648,10 +653,16 @@
   (nvim.ex.command_ :ConjureClientFennelStdio "call ConjureClientFennelStdio()")
 
   (augroup init-fennel
-           (autocmd :FileType :fennel "setlocal shiftwidth=2"))
+           (autocmd :FileType :fennel "setlocal shiftwidth=2")
+           (autocmd :FileType :fennel "set colorcolumn=80"))
+
+  ;; clojure
+  (augroup init-clojure
+           (autocmd :FileType :clojure "set colorcolumn=80"))
 
   ;; go
   (augroup init-golang
+           (autocmd :FileType :go "set colorcolumn=80")
            (autocmd :FileType :go "set noexpandtab")
            (autocmd :FileType :go "set shiftwidth=4")
            (autocmd :FileType :go "set tabstop=4")

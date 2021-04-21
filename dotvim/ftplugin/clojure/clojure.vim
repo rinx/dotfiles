@@ -1,2 +1,0 @@
-set colorcolumn=80
-

@@ -2,23 +2,6 @@
 prepare-deploy:
 	@$(call cyan, "deploy stage")
 
-.PHONY: vim-deploy
-vim-deploy: \
-    vim-ftplugins \
-    vim-ftdetects \
-    vim-snippets \
-    vim-indents \
-    dein-vim \
-    skk-jisyo-large
-	@$(call red, "vim-deploy has been done")
-
-.PHONY: dein-vim
-dein-vim: $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim
-$(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim:
-	@$(call cyan, "--\> dein.vim")
-	mkdir -p $(HOME)/.vim/dein/repos/github.com/Shougo
-	git clone https://github.com/Shougo/dein.vim $(HOME)/.vim/dein/repos/github.com/Shougo/dein.vim > /dev/null 2>&1
-
 .PHONY: neovim-deploy
 neovim-deploy: \
     init.lua \

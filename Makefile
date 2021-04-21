@@ -39,7 +39,6 @@ help:
 ## make symbolic links to the dotfiles
 deploy: \
     prepare-deploy \
-    vim-deploy \
     neovim-deploy \
     git-deploy \
     tmux-deploy \

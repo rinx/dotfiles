@@ -291,7 +291,6 @@ RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
 
 COPY deps.edn             $DOTFILES/deps.edn
-COPY dotvim               $DOTFILES/dotvim
 COPY gitattributes_global $DOTFILES/gitattributes_global
 COPY gitconfig            $DOTFILES/gitconfig
 COPY gitignore            $DOTFILES/gitignore
