@@ -201,7 +201,6 @@ RUN cd /tmp \
     && chmod -R a+rwx ${GRAALVM_HOME} \
     && rm -rf graalvm.tar.gz \
     && upx -9 $(find /usr/lib/graalvm -name js -type f -executable | head -1) \
-    && upx -9 $(find /usr/lib/graalvm -name node -type f -executable | head -1) \
     && upx -9 $(find /usr/lib/graalvm -name lli -type f -executable | head -1)
 
 RUN curl "https://fennel-lang.org/downloads/fennel-${FENNEL_VERSION}" -o /usr/local/bin/fennel \
