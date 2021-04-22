@@ -77,6 +77,7 @@
   :hrsh7th/nvim-compe {}
   :onsails/lspkind-nvim {}
   :nvim-lua/lsp-status.nvim {}
+  :kosayoda/nvim-lightbulb {}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
@@ -406,7 +407,12 @@
     (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach
                                        :capabilities capabilities})
     (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach
-                              :capabilities capabilities})
+                              :capabilities capabilities
+                              :settings {:rust-analyzer
+                                         {:cargo {:allFeatures true}
+                                          :lens {:enable true
+                                                 :methodReferences true
+                                                 :references true}}}})
     (lsp.tsserver.setup {:on_attach lsp-status.on_attach
                          :capabilities capabilities})
     (lsp.yamlls.setup {:on_attach lsp-status.on_attach
@@ -472,14 +478,28 @@
                        {:text icontab.comment
                         :texthl :LspDiagnosticsSignHint})
 
+  ;; lexima
   (set nvim.g.lexima_no_default_rules true)
   (nvim.fn.lexima#set_default_rules)
 
+  ;; compe
   (inoremap-silent-expr "<C-s>" "compe#complete()")
   (inoremap-silent-expr "<CR>"  "compe#confirm(lexima#expand('<LT>CR>', 'i'))")
   (inoremap-silent-expr "<C-e>" "compe#close('<C-e>')")
   (inoremap-silent-expr "<C-f>" "compe#scroll({ 'delta': +4 })")
   (inoremap-silent-expr "<C-d>" "compe#scroll({ 'delta': -4 })")
+
+  ;; lightbulb
+  (when (loaded? :nvim-lightbulb)
+    (defn lightbulb-update []
+      (let [lightbulb (require :nvim-lightbulb)]
+        (lightbulb.update_lightbulb)))
+    (bridge :LightBulbUpdate :lightbulb-update)
+    (augroup init-lightbulb
+             (autocmd "CursorHold,CursorHoldI" "*" "call LightBulbUpdate()"))
+    (nvim.fn.sign_define :LightBulbSign
+                         {:text icontab.lightbulb-alt
+                          :texthl :LspDiagnosticsSignHint}))
 
   ;; nvim-tree.lua
   (set nvim.g.nvim_tree_side :left)
@@ -742,6 +762,11 @@
 
   ;; lualine
   (let [ll (require :lualine)
+        filename {1 :filename
+                  :file_status true
+                  :symbols
+                  {:modified (.. " " icontab.plus)
+                   :readonly (.. " " icontab.lock)}}
         paste-fn (fn []
                    (if vim.o.paste
                      icontab.paste
@@ -795,11 +820,7 @@
                                              mode-name)))}
                             paste-fn
                             spell-fn]
-                :lualine_b [{1 :filename
-                             :file_status true
-                             :symbols
-                             {:modified (.. " " icontab.plus)
-                              :readonly (.. " " icontab.lock)}}
+                :lualine_b [filename
                             {1 :branch
                              :icon icontab.github}
                             lsp-status-fn]
@@ -813,7 +834,7 @@
                :inactive_sections
                {:lualine_a []
                 :lualine_b []
-                :lualine_c [:filename]
+                :lualine_c [filename]
                 :lualine_x [:filetype]
                 :lualine_y []
                 :lualine_z []}
