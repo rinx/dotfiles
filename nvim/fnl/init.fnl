@@ -64,6 +64,7 @@
 (use
   :wbthomason/packer.nvim {}
   :Olical/aniseed {}
+  :nvim-lua/plenary.nvim {}
   :romgrk/doom-one.vim {}
   :kyazdani42/nvim-web-devicons {}
   :hoob3rt/lualine.nvim {}
@@ -82,7 +83,7 @@
   :junegunn/fzf {}
   :junegunn/fzf.vim {}
   :stsewd/fzf-checkout.vim {}
-  :mhinz/vim-signify {}
+  :lewis6991/gitsigns.nvim {}
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
   :rhysd/clever-f.vim {}
@@ -515,16 +516,37 @@
   (augroup init-fzf
            (autocmd :FileType :fzf "nnoremap <buffer><silent>q :<C-u>q<CR>"))
 
-  ;; signify
-  (set nvim.g.signify_sign_add icontab.plus)
-  (set nvim.g.signify_sign_delete icontab.minus)
-  (set nvim.g.signify_sign_delete_first_line icontab.level-up)
-  (set nvim.g.signify_sign_change icontab.circle)
-  (set nvim.g.signify_sign_change_delete icontab.dots)
-
-  (nvim.ex.highlight "SignifySignAdd ctermfg=green guifg=#00ff00")
-  (nvim.ex.highlight "SignifySignDelete ctermfg=red guifg=#ff0000")
-  (nvim.ex.highlight "SignifySignChange ctermfg=yellow guifg=#ffff00")
+  ;; gitsigns
+  (let [gs (require :gitsigns)]
+    (gs.setup {:signs {:add {:hl :GitSignsAdd
+                             :text icontab.plus
+                             :numhl :GitSignsAddNr
+                             :linehl :GitSignsAddLn}
+                       :change {:hl :GitSignsChange
+                                :text icontab.circle
+                                :numhl :GitSignsChangeNr
+                                :linehl :GitSignsChangeLn}
+                       :delete {:hl :GitSignsDelete
+                                :text icontab.minus
+                                :numhl :GitSignsDeleteNr
+                                :linehl :GitSignsDeleteLn}
+                       :topdelete {:hl :GitSignsDelete
+                                   :text icontab.level-up
+                                   :numhl :GitSignsDeleteNr
+                                   :linehl :GitSignsDeleteLn}
+                       :changedelete {:hl :GitSignsChange
+                                      :text icontab.dots
+                                      :numhl :GitSignsChangeNr
+                                      :linehl :GitSignsChangeLn}}
+               :numhl false
+               :linehl false
+               :watch_index {:interval 1000}
+               :current_line_blame false
+               :sign_priority 6
+               :update_debounce 100
+               :status_formatter nil
+               :use_decoration_api true
+               :use_internal_diff true}))
 
   ;; asterisk
   (nvim.set_keymap "" "*" "<Plug>(asterisk-*)" {})
