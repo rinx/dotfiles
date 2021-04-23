@@ -107,18 +107,12 @@
   :guns/vim-sexp {}
   :mileszs/ack.vim {}
   :thinca/vim-qfreplace {}
-  :liquidz/vim-iced {:ft [:clojure]
-                     :event :VimEnter}
-  :hylang/vim-hy {:ft [:hy]
-                  :event :VimEnter}
-  :udalov/kotlin-vim {:ft [:kotlin]
-                      :event :VimEnter}
-  :Olical/conjure {:ft [:fennel]
-                   :event :VimEnter}
-  :tami5/compe-conjure {:ft [:fennel]
-                        :event :VimEnter}
-  :bakpakin/fennel.vim {:ft [:fennel]
-                        :event :VimEnter}
+  :liquidz/vim-iced {:ft [:clojure]}
+  :hylang/vim-hy {:ft [:hy]}
+  :udalov/kotlin-vim {:ft [:kotlin]}
+  :Olical/conjure {:ft [:fennel]}
+  :tami5/compe-conjure {:ft [:fennel]}
+  :bakpakin/fennel.vim {:ft [:fennel]}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft :markdown
                                  :cmd "MarkdownPreview"}
