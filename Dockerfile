@@ -171,7 +171,6 @@ RUN apt update \
     unzip \
     upx \
     wget \
-    yarn \
     zip \
     zsh \
     && apt autoclean -y \
@@ -189,6 +188,7 @@ RUN npm install -g \
     typescript-language-server \
     vscode-json-languageserver \
     yaml-language-server \
+    yarn \
     && pip3 install \
     fortran-language-server \
     hy
