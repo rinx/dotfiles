@@ -77,6 +77,8 @@
   :hrsh7th/nvim-compe {}
   :onsails/lspkind-nvim {}
   :nvim-lua/lsp-status.nvim {}
+  :RishabhRD/nvim-lsputils {:requires
+                            [:RishabhRD/popfix]}
   :kosayoda/nvim-lightbulb {}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
@@ -123,7 +125,7 @@
   :Olical/conjure {:ft :fennel
                    :event "BufNewFile,BufRead *.fnl"}
   :tami5/compe-conjure {:ft :fennel
-                        :event "BufNewFile,BufRead *.fnl"}
+                        :event "InsertEnter *.fnl"}
   :bakpakin/fennel.vim {:ft :fennel
                         :event "BufNewFile,BufRead *.fnl"}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
@@ -471,6 +473,9 @@
   (set nvim.g.diagnostic_trimmed_virtual_text 40)
   (set nvim.g.diagnostic_show_sign 1)
   (set nvim.g.diagnostic_insert_delay 1)
+
+  (let [code-action (require :lsputil.codeAction)]
+    (tset vim.lsp.handlers :textDocument/codeAction code-action.code_action_handler))
 
   (nvim.fn.sign_define :LspDiagnosticsSignError
                        {:text icontab.close-octagon
