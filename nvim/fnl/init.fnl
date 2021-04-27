@@ -126,8 +126,6 @@
                    :event "BufNewFile,BufRead *.fnl"}
   :tami5/compe-conjure {:ft :fennel
                         :event "InsertEnter *.fnl"}
-  :bakpakin/fennel.vim {:ft :fennel
-                        :event "BufNewFile,BufRead *.fnl"}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft :markdown
                                  :cmd "MarkdownPreview"}
@@ -684,7 +682,8 @@
   ;; filetypes
   (augroup init-filetype-detect
            (autocmd "BufNewFile,BufRead" "*.nml" "setf fortran")
-           (autocmd "BufNewFile,BufRead" "*.namelist" "setf fortran"))
+           (autocmd "BufNewFile,BufRead" "*.namelist" "setf fortran")
+           (autocmd "BufNewFile,BufRead" "*.hy" "setf hy"))
 
   ;; hy
   (set nvim.g.hy_enable_conceal 0)
