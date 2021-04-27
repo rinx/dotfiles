@@ -69,7 +69,7 @@
   :kyazdani42/nvim-web-devicons {}
   :hoob3rt/lualine.nvim {}
   :romgrk/barbar.nvim {}
-  :tyru/eskk.vim {}
+  :tyru/eskk.vim {:event [:InsertEnter]}
   :dense-analysis/ale {}
   :neovim/nvim-lspconfig {}
   :hrsh7th/vim-vsnip {}
@@ -112,7 +112,10 @@
   :mattn/vim-textobj-url {}
   :osyo-manga/vim-textobj-multiblock {}
   :tpope/vim-repeat {}
-  :guns/vim-sexp {}
+  :guns/vim-sexp {:ft [:clojure
+                       :scheme
+                       :lisp
+                       :fennel]}
   :mileszs/ack.vim {:cmd [:Ack]}
   :liquidz/vim-iced {:ft :clojure}
   :hylang/vim-hy {:ft :hy}
