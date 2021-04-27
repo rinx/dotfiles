@@ -105,8 +105,7 @@
   :osyo-manga/vim-textobj-multiblock {}
   :tpope/vim-repeat {}
   :guns/vim-sexp {}
-  :mileszs/ack.vim {}
-  :thinca/vim-qfreplace {}
+  :mileszs/ack.vim {:cmd [:Ack]}
   :liquidz/vim-iced {:ft :clojure}
   :hylang/vim-hy {:ft :hy}
   :udalov/kotlin-vim {:ft :kotlin}
