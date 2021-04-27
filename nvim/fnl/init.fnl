@@ -82,8 +82,16 @@
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
   :junegunn/fzf {}
-  :junegunn/fzf.vim {}
-  :stsewd/fzf-checkout.vim {}
+  :junegunn/fzf.vim {:cmd [:Buffers
+                           :Files
+                           :GFiles
+                           :BLines
+                           :History
+                           :Helptags
+                           :Filetypes
+                           :Rg]}
+  :stsewd/fzf-checkout.vim {:cmd [:GBranches
+                                  :GTags]}
   :lewis6991/gitsigns.nvim {}
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
