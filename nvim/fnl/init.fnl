@@ -153,7 +153,7 @@
   (set nvim.o.wildmode "longest:full,full")
 
   (set nvim.o.shortmess "filnxtToOFc")
-  (set nvim.o.completeopt "menuone,noinsert,noselect")
+  (set nvim.o.completeopt "menuone,noselect")
 
   (nvim.ex.set :imdisable)
 
@@ -493,11 +493,11 @@
   (nvim.fn.lexima#set_default_rules)
 
   ;; compe
-  (inoremap-silent-expr "<C-s>" "compe#complete()")
-  (inoremap-silent-expr "<CR>"  "compe#confirm(lexima#expand('<LT>CR>', 'i'))")
-  (inoremap-silent-expr "<C-e>" "compe#close('<C-e>')")
-  (inoremap-silent-expr "<C-f>" "compe#scroll({ 'delta': +4 })")
-  (inoremap-silent-expr "<C-d>" "compe#scroll({ 'delta': -4 })")
+  (inoremap-silent-expr "<C-s>"  "compe#complete()")
+  (inoremap-silent-expr "<CR>"   "compe#confirm(lexima#expand('<LT>CR>', 'i'))")
+  (inoremap-silent-expr "<C-e>"  "compe#close('<C-e>')")
+  (inoremap-silent-expr "<Up>"   "compe#scroll({ 'delta': +4 })")
+  (inoremap-silent-expr "<Down>" "compe#scroll({ 'delta': -4 })")
 
   ;; lightbulb
   (when (loaded? :nvim-lightbulb)
