@@ -458,7 +458,7 @@
   (nnoremap-silent "gi" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
   (nnoremap-silent "gr" ":<C-u>lua vim.lsp.buf.references()<CR>")
 
-  (nnoremap-silent "<leader>rn" ":<C-u>call RenameByPopfix()<CR>")
+  (nnoremap-silent "<leader>rn" (.. ":<C-u>" (->viml :rename-by-popfix) "<CR>"))
   (nnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.formatting()<CR>")
   (xnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
   (nnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>")
@@ -504,7 +504,6 @@
                               "<Esc>" (fn [popup]
                                         (popup:close))}}}]
       (popfix:new opts)))
-  (bridge :RenameByPopfix :rename-by-popfix)
 
   ;; throw lsp diagnostics into quickfix
   (let [default (. vim.lsp.handlers :textDocument/publishDiagnostics)
@@ -545,9 +544,8 @@
     (defn lightbulb-update []
       (let [lightbulb (require :nvim-lightbulb)]
         (lightbulb.update_lightbulb)))
-    (bridge :LightBulbUpdate :lightbulb-update)
     (augroup init-lightbulb
-             (autocmd "CursorHold,CursorHoldI" "*" "call LightBulbUpdate()"))
+             (autocmd "CursorHold,CursorHoldI" "*" (->viml lightbulb-update)))
     (nvim.fn.sign_define :LightBulbSign
                          {:text icontab.lightbulb-alt
                           :texthl :LspDiagnosticsSignHint}))
@@ -742,8 +740,7 @@
   (set nvim.g.conjure#client#fennel#aniseed#aniseed_module_prefix "aniseed.")
   (defn conjure-client-fennel-stdio []
     (set nvim.g.conjure#filetype#fennel "conjure.client.fennel.stdio"))
-  (bridge :ConjureClientFennelStdio :conjure-client-fennel-stdio)
-  (nvim.ex.command_ :ConjureClientFennelStdio "call ConjureClientFennelStdio()")
+  (nvim.ex.command_ :ConjureClientFennelStdio (->viml :conjure-client-fennel-stdio))
 
   (augroup init-fennel
            (autocmd :FileType :fennel "setlocal shiftwidth=2")
