@@ -122,7 +122,8 @@
   :liquidz/vim-iced {:ft :clojure}
   :hylang/vim-hy {:ft :hy}
   :udalov/kotlin-vim {:ft :kotlin}
-  :Olical/conjure {:ft :fennel
+  :Olical/conjure {:ft [:fennel
+                        :hy]
                    :event "BufNewFile,BufRead *.fnl"}
   :tami5/compe-conjure {:ft :fennel
                         :event "InsertEnter *.fnl"}
