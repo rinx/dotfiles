@@ -457,7 +457,7 @@
   (nnoremap-silent "gi" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
   (nnoremap-silent "gr" ":<C-u>lua vim.lsp.buf.references()<CR>")
 
-  (nnoremap-silent "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>")
+  (nnoremap-silent "<leader>rn" ":<C-u>call RenameByPopfix()<CR>")
   (nnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.formatting()<CR>")
   (xnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
   (nnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>")
@@ -472,9 +472,6 @@
   (set nvim.g.diagnostic_show_sign 1)
   (set nvim.g.diagnostic_insert_delay 1)
 
-  (let [code-action (require :lsputil.codeAction)]
-    (tset vim.lsp.handlers :textDocument/codeAction code-action.code_action_handler))
-
   (nvim.fn.sign_define :LspDiagnosticsSignError
                        {:text icontab.close-octagon
                         :texthl :LspDiagnosticsSignError})
@@ -487,6 +484,49 @@
   (nvim.fn.sign_define :LspDiagnosticsSignHint
                        {:text icontab.comment
                         :texthl :LspDiagnosticsSignHint})
+
+  ;; rename by popfix
+  (defn rename-by-popfix []
+    (let [popfix (require :popfix)
+          callback (fn [index line]
+                     (vim.lsp.buf.rename line))
+          opts {:mode :cursor
+                :close_on_bufleave true
+                :prompt {:prompt_text :Rename
+                         :init_text (vim.fn.expand "<cword>")
+                         :border true
+                         :border_chars icon.popfix-border-chars}
+                :keymaps {:i {"<CR>" (fn [popup]
+                                       (popup:close callback))}
+                          :n {"<CR>" (fn [popup]
+                                       (popup:close callback))
+                              "<Esc>" (fn [popup]
+                                        (popup:close))}}}]
+      (popfix:new opts)))
+  (bridge :RenameByPopfix :rename-by-popfix)
+
+  ;; throw lsp diagnostics into quickfix
+  (let [default (. vim.lsp.handlers :textDocument/publishDiagnostics)
+        handler (fn [err method result client-id bufnr config]
+                  (default err method result client-id bufnr config)
+                  (let [diagnostics (vim.lsp.diagnostic.get_all)
+                        qflist []]
+                    (each [bufnr diagnostic (pairs diagnostics)]
+                      (each [i d (ipairs diagnostic)]
+                        (set d.bufnr bufnr)
+                        (set d.lnum (+ d.range.start.line 1))
+                        (set d.col (+ d.range.start.character 1))
+                        (set d.text d.message)
+                        (table.insert qflist d)))
+                    (vim.lsp.util.set_qflist qflist)))]
+    (tset vim.lsp.handlers :textDocument/publishDiagnostics handler))
+
+  ;; lsputils
+  (when (loaded? :nvim-lsputils)
+    (let [code-action (require :lsputil.codeAction)
+          override (fn [key handler]
+                     (tset vim.lsp.handlers key handler))]
+      (override :textDocument/codeAction code-action.code_action_handler)))
 
   ;; lexima
   (set nvim.g.lexima_no_default_rules true)
