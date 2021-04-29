@@ -110,6 +110,14 @@
    :BOTTOM_LEFT "└"
    :BOTTOM_RIGHT "┘"})
 
+(def popfix-border-chars-alt
+  {:TOP_LEFT "╭"
+   :TOP_RIGHT "╮"
+   :MID_HORIZONTAL "─"
+   :MID_VERTICAL "│"
+   :BOTTOM_LEFT "╰"
+   :BOTTOM_RIGHT "╯"})
+
 (let [devicon (require :nvim-web-devicons)]
   (devicon.setup {:override {:fnl {:icon ""
                                    :color "#51a0cf"

@@ -497,7 +497,7 @@
                 :prompt {:prompt_text :Rename
                          :init_text (vim.fn.expand "<cword>")
                          :border true
-                         :border_chars icon.popfix-border-chars}
+                         :border_chars icon.popfix-border-chars-alt}
                 :keymaps {:i {"<CR>" (fn [popup]
                                        (popup:close callback))}
                           :n {"<CR>" (fn [popup]
