@@ -1,8 +1,8 @@
 (module init
-  {require {core aniseed.core
-            nvim aniseed.nvim
-            util aniseed.nvim.util
-            packer packer}
+  {autoload {core aniseed.core
+             nvim aniseed.nvim
+             util aniseed.nvim.util
+             packer packer}
    require-macros [util.macros]})
 
 (defn- bridge [from to]
