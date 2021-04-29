@@ -98,7 +98,6 @@
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
   :rhysd/clever-f.vim {}
-  :t9md/vim-quickhl {}
   :kana/vim-submode {}
   :kana/vim-arpeggio {}
   :tyru/caw.vim {}
@@ -119,14 +118,16 @@
                        :lisp
                        :fennel]}
   :mileszs/ack.vim {:cmd [:Ack]}
-  :liquidz/vim-iced {:ft :clojure}
   :hylang/vim-hy {:ft :hy}
-  :udalov/kotlin-vim {:ft :kotlin}
-  :Olical/conjure {:ft [:fennel
+  :Olical/conjure {:ft [:clojure
+                        :fennel
                         :hy]
-                   :event "BufNewFile,BufRead *.fnl"}
-  :tami5/compe-conjure {:ft :fennel
-                        :event "InsertEnter *.fnl"}
+                   :event ["BufNewFile,BufRead *.clj"
+                           "BufNewFile,BufRead *.fnl"]}
+  :tami5/compe-conjure {:ft [:clojure
+                             :fennel]
+                        :event ["InsertEnter *.clj"
+                                "InsertEnter *.fnl"]}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft :markdown
                                  :cmd "MarkdownPreview"}
@@ -654,12 +655,6 @@
   (nmap "T" "<Plug>(clever-f-T)")
   (nmap "<Space>" "<Plug>(clever-f-reset)")
 
-  ;; quickhl
-  (nmap "<Space>m" "<Plug>(quickhl-manual-this)")
-  (xmap "<Space>m" "<Plug>(quickhl-manual-this)")
-  (nmap "<Space>M" "<Plug>(quickhl-manual-reset)")
-  (xmap "<Space>M" "<Plug>(quickhl-manual-reset)")
-
   ;; submode
   (nvim.ex.silent_ "call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')")
   (nvim.ex.silent_ "call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')")
@@ -714,9 +709,6 @@
 
   (augroup init-markdown
            (autocmd :FileType :markdown "setlocal shiftwidth=4"))
-
-  ;; iced
-  (set nvim.g.iced_enable_default_key_mappings true)
 
   ;; filetypes
   (augroup init-filetype-detect
