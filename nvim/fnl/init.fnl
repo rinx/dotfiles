@@ -515,8 +515,8 @@
                     (each [bufnr diagnostic (pairs diagnostics)]
                       (each [i d (ipairs diagnostic)]
                         (set d.bufnr bufnr)
-                        (set d.lnum (+ d.range.start.line 1))
-                        (set d.col (+ d.range.start.character 1))
+                        (set d.lnum (core.inc d.range.start.line))
+                        (set d.col (core.inc d.range.start.character))
                         (set d.text d.message)
                         (table.insert qflist d)))
                     (vim.lsp.util.set_qflist qflist)))]
