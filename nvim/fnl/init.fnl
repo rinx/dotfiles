@@ -690,6 +690,12 @@
   (vmap "ab" "<Plug>(textobj-multiblock-a)")
   (vmap "ib" "<Plug>(textobj-multiblock-i)")
 
+  ;; minimap
+  (when (loaded? :nvim-minimap)
+    (set nvim.g.minimap#window#height 40)
+    (augroup init-minimap
+             (autocmd :VimEnter "*" :MinimapOpen)))
+
   ;; sexp
   (set nvim.g.sexp_enable_insert_mode_mappings 0)
   (set nvim.g.sexp_insert_after_wrap 0)
