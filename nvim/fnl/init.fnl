@@ -113,6 +113,7 @@
   :mattn/vim-textobj-url {}
   :osyo-manga/vim-textobj-multiblock {}
   :tpope/vim-repeat {}
+  :rinx/nvim-minimap {}
   :guns/vim-sexp {:ft [:clojure
                        :scheme
                        :lisp
