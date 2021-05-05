@@ -379,6 +379,8 @@
 
   ;; neovim LSP
   (let [lsp (require :lspconfig)
+        configs (require :lspconfig/configs)
+        util (require :lspconfig/util)
         lsp-kind (require :lspkind)
         lsp-status (require :lsp-status)
         compe (require :compe)
@@ -394,6 +396,14 @@
     (lsp-status.register_progress)
     (lsp-status.config {:status_symbol ""
                         :current_function false})
+    (when (not lsp.unifiedls-md)
+      (tset configs :unifiedls-md
+            {:default_config
+             {:cmd [:unified-language-server
+                    "--parser=remark-parse"
+                    "--stdio"]
+              :filetypes [:markdown]
+              :root_dir (util.root_pattern ".git")}}))
     (lsp.bashls.setup {:on_attach lsp-status.on_attach
                        :capabilities capabilities})
     (lsp.clojure_lsp.setup {:on_attach lsp-status.on_attach
@@ -425,6 +435,8 @@
                                                  :references true}}}})
     (lsp.tsserver.setup {:on_attach lsp-status.on_attach
                          :capabilities capabilities})
+    (lsp.unifiedls-md.setup {:on_attach lsp-status.on_attach
+                             :capabilities capabilities})
     (lsp.yamlls.setup {:on_attach lsp-status.on_attach
                        :capabilities capabilities})
     (compe.setup {:enabled true

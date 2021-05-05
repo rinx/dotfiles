@@ -186,6 +186,7 @@ RUN npm install -g \
     dockerfile-language-server-nodejs \
     typescript \
     typescript-language-server \
+    unified-language-server \
     vscode-json-languageserver \
     yaml-language-server \
     yarn \
