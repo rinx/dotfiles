@@ -396,6 +396,12 @@
     (lsp-status.register_progress)
     (lsp-status.config {:status_symbol ""
                         :current_function false})
+    (when (not lsp.hyls)
+      (tset configs :hyls
+            {:default_config
+             {:cmd [:hyls]
+              :filetypes [:hy]
+              :root_dir (util.root_pattern ".git")}}))
     (when (not lsp.unifiedls-md)
       (tset configs :unifiedls-md
             {:default_config
@@ -422,6 +428,8 @@
                                             :unusedwrite true}}})
     (lsp.hls.setup {:on_attach lsp-status.on_attach
                     :capabilities capabilities})
+    (lsp.hyls.setup {:on_attach lsp-status.on_attach
+                     :capabilities capabilities})
     (lsp.jsonls.setup {:on_attach lsp-status.on_attach
                        :capabilities capabilities})
     (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach

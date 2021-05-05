@@ -192,7 +192,8 @@ RUN npm install -g \
     yarn \
     && pip3 install \
     fortran-language-server \
-    hy
+    hy \
+    hy-language-server
 
 ENV GRAALVM_HOME /usr/lib/graalvm
 RUN cd /tmp \
