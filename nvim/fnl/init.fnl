@@ -713,6 +713,7 @@
   ;; minimap
   (when (loaded? :nvim-minimap)
     (set nvim.g.minimap#window#height 40)
+    (nnoremap-silent "<leader>m" ":<C-u>MinimapToggle<CR>")
     (augroup init-minimap
              (autocmd :VimEnter "*" :MinimapOpen)))
 
