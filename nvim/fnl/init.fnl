@@ -115,9 +115,10 @@
   :tpope/vim-repeat {}
   :rinx/nvim-minimap {}
   :guns/vim-sexp {:ft [:clojure
-                       :scheme
+                       :fennel
+                       :hy
                        :lisp
-                       :fennel]}
+                       :scheme]}
   :mileszs/ack.vim {:cmd [:Ack]}
   :hylang/vim-hy {:ft :hy}
   :Olical/conjure {:ft [:clojure
@@ -722,7 +723,7 @@
   ;; sexp
   (set nvim.g.sexp_enable_insert_mode_mappings 0)
   (set nvim.g.sexp_insert_after_wrap 0)
-  (set nvim.g.sexp_filetypes "clojure,scheme,lisp,fennel")
+  (set nvim.g.sexp_filetypes "clojure,fennel,hy,lisp,scheme")
   (nmap ">(" "<Plug>(sexp_emit_head_element)")
   (nmap "<)" "<Plug>(sexp_emit_tail_element)")
   (nmap "<(" "<Plug>(sexp_capture_prev_element)")
