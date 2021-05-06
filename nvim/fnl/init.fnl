@@ -446,7 +446,9 @@
     (lsp.unifiedls-md.setup {:on_attach lsp-status.on_attach
                              :capabilities capabilities})
     (lsp.yamlls.setup {:on_attach lsp-status.on_attach
-                       :capabilities capabilities})
+                       :capabilities capabilities
+                       :settings {:yaml
+                                  {:schemaStore {:enable true}}}})
     (compe.setup {:enabled true
                   :autocomplete true
                   :debug false
