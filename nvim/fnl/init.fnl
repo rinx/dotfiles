@@ -757,6 +757,10 @@
   (augroup init-json
            (autocmd :FileType :json "setlocal shiftwidth=2"))
 
+  ;; julia
+  (augroup init-julia
+           (autocmd :FileType :julia "setlocal shiftwidth=4"))
+
   ;; yaml
   (augroup init-yaml
            (autocmd :FileType :yaml "setlocal shiftwidth=2"))
