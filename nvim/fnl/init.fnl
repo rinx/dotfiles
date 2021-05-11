@@ -433,6 +433,8 @@
                      :capabilities capabilities})
     (lsp.jsonls.setup {:on_attach lsp-status.on_attach
                        :capabilities capabilities})
+    (lsp.julials.setup {:on_attach lsp-status.on_attach
+                        :capabilities capabilities})
     (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach
                                        :capabilities capabilities})
     (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach
