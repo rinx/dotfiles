@@ -31,6 +31,8 @@ FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
 
+FROM julia:alpine AS julia
+
 FROM rust:slim AS rust
 
 FROM golang:alpine AS go
@@ -238,10 +240,11 @@ ENV EDITOR nvim
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
 ENV JAVA_HOME ${GRAALVM_HOME}
+ENV JULIA_HOME /usr/local/julia
 ENV RUSTUP_HOME /usr/local/rustup
 ENV CARGO_HOME /usr/local/cargo
 
-ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:$CARGO_HOME/bin:/usr/local/bin:$HOME/.config/nvim/plugged/vim-iced/bin
+ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:$JULIA_HOME/bin:$CARGO_HOME/bin:/usr/local/bin:$HOME/.config/nvim/plugged/vim-iced/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
@@ -270,6 +273,8 @@ COPY --from=clojure-lein /usr/share/java     /usr/share/java
 COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
 COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
+
+COPY --from=julia /usr/local/julia $JULIA_HOME
 
 COPY --from=rust /usr/local/cargo  $CARGO_HOME
 COPY --from=rust /usr/local/rustup $RUSTUP_HOME
@@ -312,8 +317,6 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/zsh", "-c", "make prepare-init && make neovim-init && make tmux-init"]
-
-# RUN ["/bin/zsh", "-c", "source ~/.zshrc && zinit self-update && zinit update --all"]
 
 RUN rm -rf /tmp/*
 

@@ -719,9 +719,7 @@
   ;; minimap
   (when (loaded? :nvim-minimap)
     (set nvim.g.minimap#window#height 40)
-    (nnoremap-silent "<leader>m" ":<C-u>MinimapToggle<CR>")
-    (augroup init-minimap
-             (autocmd :VimEnter "*" :MinimapOpen)))
+    (nnoremap-silent "<leader>m" ":<C-u>MinimapToggle<CR>"))
 
   ;; sexp
   (set nvim.g.sexp_enable_insert_mode_mappings 0)
@@ -748,7 +746,8 @@
   (augroup init-filetype-detect
            (autocmd "BufNewFile,BufRead" "*.nml" "setf fortran")
            (autocmd "BufNewFile,BufRead" "*.namelist" "setf fortran")
-           (autocmd "BufNewFile,BufRead" "*.hy" "setf hy"))
+           (autocmd "BufNewFile,BufRead" "*.hy" "setf hy")
+           (autocmd "BufNewFile,BufRead" "*.jl" "setf julia"))
 
   ;; hy
   (set nvim.g.hy_enable_conceal 0)
