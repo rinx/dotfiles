@@ -402,7 +402,7 @@
             {:default_config
              {:cmd [:hyls]
               :filetypes [:hy]
-              :root_dir (vim.fn.getcwd)}}))
+              :root_dir util.path.dirname}}))
     ;; will be removed once https://github.com/neovim/nvim-lspconfig/pull/880 is merged.
     (when (not lsp.unifiedls-md)
       (tset configs :unifiedls-md
@@ -411,7 +411,7 @@
                     "--parser=remark-parse"
                     "--stdio"]
               :filetypes [:markdown]
-              :root_dir (vim.fn.getcwd)}}))
+              :root_dir util.path.dirname}}))
     (lsp.bashls.setup {:on_attach lsp-status.on_attach
                        :capabilities capabilities})
     (lsp.clojure_lsp.setup {:on_attach lsp-status.on_attach
