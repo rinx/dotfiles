@@ -195,7 +195,9 @@ RUN npm install -g \
     && pip3 install \
     fortran-language-server \
     git+https://github.com/hylang/hy.git \
-    hy-language-server
+    git+https://github.com/rinx/hy-language-server.git
+    # hy \
+    # hy-language-server
 
 ENV GRAALVM_HOME /usr/lib/graalvm
 RUN cd /tmp \
