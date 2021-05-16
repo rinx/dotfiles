@@ -53,6 +53,7 @@
    :close-box-alt ""
    :close-octagon ""
    :close-octagon-alt ""
+   :bug ""
    :check ""
    :check-thin ""
    :check-circle ""

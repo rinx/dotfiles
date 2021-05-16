@@ -389,7 +389,14 @@
         lsp-signature (require :lsp_signature)
         on-attach (fn [client bufnr]
                     (lsp-status.on_attach client)
-                    (lsp-signature.on_attach))
+                    (lsp-signature.on_attach {:bind true
+                                              :doc_lines 10
+                                              :hint_enabled true
+                                              :hint_prefix (.. icontab.info " ")
+                                              :hint_scheme :String
+                                              :handler_opts
+                                              {:border :single}
+                                              :decorator {"`" "`"}}))
         compe (require :compe)
         capabilities (let [cap (vim.lsp.protocol.make_client_capabilities)]
                        (set cap.textDocument.completion.completionItem.snippetSupport true)
