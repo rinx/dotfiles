@@ -77,6 +77,7 @@
   :hrsh7th/nvim-compe {}
   :onsails/lspkind-nvim {}
   :nvim-lua/lsp-status.nvim {}
+  :ray-x/lsp_signature.nvim {}
   :RishabhRD/nvim-lsputils {:requires
                             [:RishabhRD/popfix]}
   :kosayoda/nvim-lightbulb {}
@@ -120,7 +121,8 @@
                        :lisp
                        :scheme]}
   :mileszs/ack.vim {:cmd [:Ack]}
-  :hylang/vim-hy {:ft :hy}
+  :simrat39/rust-tools.nvim {} ;; NOTE: currently cannot be lazy loaded
+  :hylang/vim-hy {:ft [:hy]}
   :Olical/conjure {:ft [:clojure
                         :fennel
                         :hy]
@@ -131,7 +133,7 @@
                         :event ["InsertEnter *.clj"
                                 "InsertEnter *.fnl"]}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
-                                 :ft :markdown
+                                 :ft [:markdown]
                                  :cmd "MarkdownPreview"}
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"}
   :romgrk/nvim-treesitter-context {})
@@ -384,6 +386,10 @@
         util (require :lspconfig/util)
         lsp-kind (require :lspkind)
         lsp-status (require :lsp-status)
+        lsp-signature (require :lsp_signature)
+        on-attach (fn [client bufnr]
+                    (lsp-status.on_attach client)
+                    (lsp-signature.on_attach))
         compe (require :compe)
         capabilities (let [cap (vim.lsp.protocol.make_client_capabilities)]
                        (set cap.textDocument.completion.completionItem.snippetSupport true)
@@ -403,7 +409,6 @@
              {:cmd [:hyls]
               :filetypes [:hy]
               :root_dir util.path.dirname}}))
-    ;; will be removed once https://github.com/neovim/nvim-lspconfig/pull/880 is merged.
     (when (not lsp.unifiedls-md)
       (tset configs :unifiedls-md
             {:default_config
@@ -412,15 +417,15 @@
                     "--stdio"]
               :filetypes [:markdown]
               :root_dir util.path.dirname}}))
-    (lsp.bashls.setup {:on_attach lsp-status.on_attach
+    (lsp.bashls.setup {:on_attach on-attach
                        :capabilities capabilities})
-    (lsp.clojure_lsp.setup {:on_attach lsp-status.on_attach
+    (lsp.clojure_lsp.setup {:on_attach on-attach
                             :capabilities capabilities})
-    (lsp.dockerls.setup {:on_attach lsp-status.on_attach
+    (lsp.dockerls.setup {:on_attach on-attach
                          :capabilities capabilities})
-    (lsp.fortls.setup {:on_attach lsp-status.on_attach
+    (lsp.fortls.setup {:on_attach on-attach
                        :capabilities capabilities})
-    (lsp.gopls.setup {:on_attach lsp-status.on_attach
+    (lsp.gopls.setup {:on_attach on-attach
                       :capabilities capabilities
                       :settings {:usePlaceholders true
                                  :analyses {:fieldalignment true
@@ -428,31 +433,41 @@
                                             :nilless true
                                             :shadow true
                                             :unusedwrite true}}})
-    (lsp.hls.setup {:on_attach lsp-status.on_attach
+    (lsp.hls.setup {:on_attach on-attach
                     :capabilities capabilities})
-    (lsp.hyls.setup {:on_attach lsp-status.on_attach
+    (lsp.hyls.setup {:on_attach on-attach
                      :capabilities capabilities})
-    (lsp.jsonls.setup {:on_attach lsp-status.on_attach
+    (lsp.jsonls.setup {:on_attach on-attach
                        :capabilities capabilities})
-    (lsp.julials.setup {:on_attach lsp-status.on_attach
+    (lsp.julials.setup {:on_attach on-attach
                         :capabilities capabilities})
-    (lsp.kotlin_language_server.setup {:on_attach lsp-status.on_attach
+    (lsp.kotlin_language_server.setup {:on_attach on-attach
                                        :capabilities capabilities})
-    (lsp.rust_analyzer.setup {:on_attach lsp-status.on_attach
-                              :capabilities capabilities
-                              :settings {:rust-analyzer
-                                         {:cargo {:allFeatures true}
-                                          :lens {:enable true
-                                                 :methodReferences true
-                                                 :references true}}}})
-    (lsp.tsserver.setup {:on_attach lsp-status.on_attach
+    (lsp.tsserver.setup {:on_attach on-attach
                          :capabilities capabilities})
-    (lsp.unifiedls-md.setup {:on_attach lsp-status.on_attach
+    (lsp.unifiedls-md.setup {:on_attach on-attach
                              :capabilities capabilities})
-    (lsp.yamlls.setup {:on_attach lsp-status.on_attach
+    (lsp.yamlls.setup {:on_attach on-attach
                        :capabilities capabilities
                        :settings {:yaml
                                   {:schemaStore {:enable true}}}})
+    ;; rust-analyzer
+    (when (loaded? :rust-tools.nvim)
+      (let [rust-tools (require :rust-tools)]
+        (rust-tools.setup {:tools
+                           {:inlay_hints
+                            {:parameter_hints_prefix (.. " "
+                                                         icontab.slash
+                                                         icontab.arrow-l)
+                             :other_hints_prefix (.. " " icontab.arrow-r)}}
+                           :server
+                           {:on_attach on-attach
+                            :capabilities capabilities
+                            :settings {:rust-analyzer
+                                       {:cargo {:allFeatures true}
+                                        :lens {:enable true
+                                               :methodReferences true
+                                               :references true}}}}})))
     (compe.setup {:enabled true
                   :autocomplete true
                   :debug false
