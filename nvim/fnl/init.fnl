@@ -255,6 +255,10 @@
   (nvim.ex.syntax :enable)
 
   (nvim.ex.highlight "Normal ctermbg=none guibg=none")
+  (nvim.ex.highlight "LineNr ctermbg=none guibg=none")
+  (nvim.ex.highlight "VertSplit ctermbg=none guibg=none")
+  (nvim.ex.highlight "NonText ctermbg=none guibg=none")
+  (nvim.ex.highlight "EndOfBuffer ctermbg=none guibg=none")
 
   ;; mappings
   (set nvim.g.mapleader :\)
