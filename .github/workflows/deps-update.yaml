@@ -16,7 +16,7 @@ jobs:
           token: ${{ secrets.DOTFILES_TOKEN }}
       - name: Install babashka
         run: |
-          bash <(curl -s https://raw.githubusercontent.com/borkdude/babashka/master/install) $(pwd)
+          bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
           ./bb --version
       - name: Update deps
         run: |
