@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term ~/.dotfiles/resources/urxvtd-c.sh
+set $term alacritty
 # Your preferred application launcher
 set $menu rofi -show run
 set $altmenu dmenu_run
@@ -24,9 +24,6 @@ set $browser chromium
 
 exec_always ~/.dotfiles/resources/wpchange.sh
 set $bgimage ~/.wallpapers/wallpaper.jpg
-
-# input method daemon
-set $imdaemon ~/.dotfiles/resources/ibus-startup.sh
 
 # names of workspace
 set $workspace1 1:fool
@@ -279,7 +276,5 @@ hide_edge_borders smart
 # for_window [class="Chromium"] move container to workspace $workspace2
 
 for_window [class=".*"] opacity $opacity
-
-# exec_always $imdaemon
 
 include /etc/sway/config.d/*
