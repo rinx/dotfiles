@@ -524,16 +524,16 @@
   (set nvim.g.diagnostic_insert_delay 1)
 
   (nvim.fn.sign_define :LspDiagnosticsSignError
-                       {:text icontab.close-octagon
+                       {:text icontab.bug
                         :texthl :LspDiagnosticsSignError})
   (nvim.fn.sign_define :LspDiagnosticsSignWarning
-                       {:text icontab.exclam-octagon
+                       {:text icontab.exclam-circle
                         :texthl :LspDiagnosticsSignWarning})
   (nvim.fn.sign_define :LspDiagnosticsSignInformation
                        {:text icontab.info-circle
                         :texthl :LspDiagnosticsSignInformation})
   (nvim.fn.sign_define :LspDiagnosticsSignHint
-                       {:text icontab.comment
+                       {:text icontab.leaf
                         :texthl :LspDiagnosticsSignHint})
 
   ;; rename by popfix
@@ -896,17 +896,17 @@
                {:lualine_a [{1 :mode
                              :format (fn [mode-name]
                                        (let [i icontab
-                                             dict {:n i.minus-square
-                                                   :i i.info
+                                             dict {:n i.meteor
+                                                   :i i.zap
                                                    :v i.cursor-text
                                                    "" i.cursor
                                                    :V i.cursor
                                                    :c i.chevron-r
-                                                   :no i.minus-square
+                                                   :no i.meteor
                                                    :s i.cursor-text
                                                    :S i.cursor-text
                                                    "" i.cursor-text
-                                                   :ic i.info
+                                                   :ic i.lightning
                                                    :R i.arrow-r
                                                    :Rv i.arrow-r
                                                    :cv i.hashtag

@@ -147,6 +147,7 @@
    :arrow-d-alt ""
    :arrow-l-alt ""
    :arrow-r-alt ""
+   :keyboard-tab ""
    :arrow-collapse-u "ﲓ"
    :arrow-collapse-d "ﲐ"
    :arrow-collapse-l "ﲑ"
