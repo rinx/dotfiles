@@ -70,7 +70,6 @@
   :hoob3rt/lualine.nvim {}
   :romgrk/barbar.nvim {}
   :tyru/eskk.vim {:event [:InsertEnter]}
-  :dense-analysis/ale {}
   :neovim/nvim-lspconfig {}
   :hrsh7th/vim-vsnip {}
   :hrsh7th/vim-vsnip-integ {}
@@ -367,23 +366,6 @@
   (set nvim.g.eskk#max_candidates 15)
   (set nvim.g.eskk#use_color_cursor 0)
 
-  ;; ale.vim
-  (set nvim.g.ale_lint_on_save 1)
-  (set nvim.g.ale_lint_on_enter 1)
-  (set nvim.g.ale_lint_on_text_changed :never)
-  (set nvim.g.ale_lint_on_filetype_changed 1)
-  (set nvim.g.ale_fix_on_save 1)
-  (set nvim.g.ale_linters {:clojure [:clj-kondo]})
-  (set nvim.g.ale_fixers {"*" [:remove_trailing_lines :trim_whitespace]
-                          :go [:goimports]
-                          :rust [:rustfmt]})
-  (set nvim.g.ale_set_quickfix 0)
-  (set nvim.g.ale_set_loclist 1)
-  (set nvim.g.ale_open_list 1)
-  (set nvim.g.ale_sign_column_always 1)
-  (set nvim.g.ale_warn_about_trailing_blank_lines 1)
-  (set nvim.g.ale_warn_about_trailing_whitespace 1)
-
   ;; neovim LSP
   (let [lsp (require :lspconfig)
         configs (require :lspconfig/configs)
@@ -412,7 +394,12 @@
                        cap)]
     (lsp-kind.init)
     (lsp-status.register_progress)
-    (lsp-status.config {:status_symbol ""
+    (lsp-status.config {:status_symbol icontab.code-braces
+                        :indicator_errors icontab.ban
+                        :indicator_warnings icontab.exclam-tri
+                        :indicator_info icontab.info
+                        :indicator_hint icontab.lightbulb
+                        :indicator_ok icontab.check
                         :current_function false})
     (when (not lsp.hyls)
       (tset configs :hyls
@@ -438,12 +425,14 @@
                        :capabilities capabilities})
     (lsp.gopls.setup {:on_attach on-attach
                       :capabilities capabilities
-                      :settings {:usePlaceholders true
-                                 :analyses {:fieldalignment true
-                                            :fillstruct true
-                                            :nilless true
-                                            :shadow true
-                                            :unusedwrite true}}})
+                      :settings {:gopls
+                                 {:usePlaceholders true
+                                  :analyses {:fieldalignment true
+                                             :fillstruct true
+                                             :nilless true
+                                             :shadow true
+                                             :unusedwrite true}
+                                  :gofumpt true}}})
     (lsp.hls.setup {:on_attach on-attach
                     :capabilities capabilities})
     (lsp.hyls.setup {:on_attach on-attach
@@ -812,8 +801,12 @@
            (autocmd :FileType :go "set shiftwidth=4")
            (autocmd :FileType :go "set tabstop=4")
            (autocmd :FileType :go "set softtabstop=4")
-           (autocmd :FileType :go "compiler go"))
+           (autocmd :FileType :go "compiler go")
+           (autocmd :BufWritePre "*.go" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
 
+  ;; rust
+  (augroup init-rust
+           (autocmd :BufWritePre "*.rs" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
 
   ;; QuickFix
   (augroup init-qf
@@ -929,8 +922,7 @@
                              :icon icontab.github}
                             lsp-status-fn]
                 :lualine_c []
-                :lualine_x [{1 :diagnostics
-                             :sources [:ale]}]
+                :lualine_x []
                 :lualine_y [:fileformat
                             :encoding
                             :filetype]
@@ -943,4 +935,5 @@
                 :lualine_y []
                 :lualine_z []}
                :extensions
-               []})))
+               [:nvim-tree
+                :quickfix]})))

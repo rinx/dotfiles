@@ -46,8 +46,7 @@ RUN apk update \
     musl-dev \
     wget
 
-RUN go install golang.org/x/tools/cmd/goimports@latest \
-    && GO111MODULE=on go get golang.org/x/tools/gopls@latest
+RUN GO111MODULE=on go get golang.org/x/tools/gopls@latest
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
