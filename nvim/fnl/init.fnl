@@ -394,11 +394,11 @@
                        cap)]
     (lsp-kind.init)
     (lsp-status.register_progress)
-    (lsp-status.config {:status_symbol icontab.code-braces
+    (lsp-status.config {:status_symbol (.. icontab.code-braces " ")
                         :indicator_errors icontab.ban
                         :indicator_warnings icontab.exclam-tri
                         :indicator_info icontab.info
-                        :indicator_hint icontab.lightbulb
+                        :indicator_hint icontab.lightbulb-alt
                         :indicator_ok icontab.check
                         :current_function false})
     (when (not lsp.hyls)
