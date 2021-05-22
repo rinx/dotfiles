@@ -80,6 +80,8 @@
   :RishabhRD/nvim-lsputils {:requires
                             [:RishabhRD/popfix]}
   :kosayoda/nvim-lightbulb {}
+  :folke/trouble.nvim {}
+  :folke/lsp-colors.nvim {}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
@@ -258,6 +260,7 @@
   (nvim.ex.highlight "VertSplit ctermbg=none guibg=none")
   (nvim.ex.highlight "NonText ctermbg=none guibg=none")
   (nvim.ex.highlight "EndOfBuffer ctermbg=none guibg=none")
+  (nvim.ex.highlight "Keyword cterm=italic gui=italic")
 
   ;; mappings
   (set nvim.g.mapleader :\)
@@ -548,28 +551,25 @@
                                         (popup:close))}}}]
       (popfix:new opts)))
 
-  ;; throw lsp diagnostics into quickfix
-  (let [default (. vim.lsp.handlers :textDocument/publishDiagnostics)
-        handler (fn [err method result client-id bufnr config]
-                  (default err method result client-id bufnr config)
-                  (let [diagnostics (vim.lsp.diagnostic.get_all)
-                        qflist []]
-                    (each [bufnr diagnostic (pairs diagnostics)]
-                      (each [i d (ipairs diagnostic)]
-                        (set d.bufnr bufnr)
-                        (set d.lnum (core.inc d.range.start.line))
-                        (set d.col (core.inc d.range.start.character))
-                        (set d.text d.message)
-                        (table.insert qflist d)))
-                    (vim.lsp.util.set_qflist qflist)))]
-    (tset vim.lsp.handlers :textDocument/publishDiagnostics handler))
-
   ;; lsputils
   (when (loaded? :nvim-lsputils)
     (let [code-action (require :lsputil.codeAction)
           override (fn [key handler]
                      (tset vim.lsp.handlers key handler))]
       (override :textDocument/codeAction code-action.code_action_handler)))
+
+  ;; trouble.nvim
+  (when (loaded? :trouble.nvim)
+    (let [trouble (require :trouble)]
+      (trouble.setup {:auto_open true
+                      :auto_close true
+                      :use_lsp_diagnostic_signs true})
+      (nnoremap-silent "<leader>xx" ":<C-u>TroubleToggle<CR>")
+      (nnoremap-silent "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>")
+      (nnoremap-silent "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>")
+      (nnoremap-silent "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>")
+      (nnoremap-silent "<leader>xl" ":<C-u>TroubleToggle loclist<CR>")
+      (nnoremap-silent "gR" ":<C-u>TroubleToggle lsp_references<CR>")))
 
   ;; lexima
   (set nvim.g.lexima_no_default_rules true)
