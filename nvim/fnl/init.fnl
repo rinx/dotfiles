@@ -277,15 +277,19 @@
 
   (hi :Keyword {:others "cterm=italic gui=italic"})
 
-  (hi :LspDiagnosticsSignError {:fg :red})
-  (hi :LspDiagnosticsSignWarning {:fg :yellow})
-  (hi :LspDiagnosticsSignInformation {:fg :green})
-  (hi :LspDiagnosticsSignHint {:fg :green})
+  (hi :LspDiagnosticsSignError {:others "ctermfg=red guifg=#f07178"})
+  (hi :LspDiagnosticsSignWarning {:others "ctermfg=yellow guifg=#ffb454"})
+  (hi :LspDiagnosticsSignInformation {:others "ctermfg=green guifg=#c2d94c"})
+  (hi :LspDiagnosticsSignHint {:others "ctermfg=blue guifg=#59c2ff"})
   (hi :LspDiagnosticsSignLightBulb {:fg :white})
-  (hi :LspDiagnosticsVirtualTextError {:fg :red :bg :black})
-  (hi :LspDiagnosticsVirtualTextWarning {:fg :yellow :bg :black})
-  (hi :LspDiagnosticsVirtualTextInformation {:fg :green :bg :black})
-  (hi :LspDiagnosticsVirtualTextHint {:fg :green :bg :black})
+  (hi :LspDiagnosticsVirtualTextError {:bg :black
+                                       :others "ctermfg=red guifg=#f07178"})
+  (hi :LspDiagnosticsVirtualTextWarning {:bg :black
+                                         :others "ctermfg=yellow guifg=#ffb454"})
+  (hi :LspDiagnosticsVirtualTextInformation {:bg :black
+                                             :others "ctermfg=green guifg=#c2d94c"})
+  (hi :LspDiagnosticsVirtualTextHint {:bg :black
+                                      :others "ctermfg=blue guifg=#59c2ff"})
 
   ;; mappings
   (set nvim.g.mapleader :\)
