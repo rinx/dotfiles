@@ -97,6 +97,7 @@
   :stsewd/fzf-checkout.vim {:cmd [:GBranches
                                   :GTags]}
   :lewis6991/gitsigns.nvim {}
+  :norcalli/nvim-colorizer.lua {}
   :haya14busa/vim-asterisk {}
   :haya14busa/incsearch.vim {}
   :rhysd/clever-f.vim {}
@@ -686,6 +687,11 @@
                :status_formatter nil
                :use_decoration_api true
                :use_internal_diff true}))
+
+  ;; nvim-colorizer
+  (when (loaded? :nvim-colorizer.lua)
+    (let [colorizer (require :colorizer)]
+      (colorizer.setup)))
 
   ;; asterisk
   (nvim.set_keymap "" "*" "<Plug>(asterisk-*)" {})
