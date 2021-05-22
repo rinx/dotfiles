@@ -255,12 +255,35 @@
   (nvim.ex.set "background=dark")
   (nvim.ex.syntax :enable)
 
-  (nvim.ex.highlight "Normal ctermbg=none guibg=none")
-  (nvim.ex.highlight "LineNr ctermbg=none guibg=none")
-  (nvim.ex.highlight "VertSplit ctermbg=none guibg=none")
-  (nvim.ex.highlight "NonText ctermbg=none guibg=none")
-  (nvim.ex.highlight "EndOfBuffer ctermbg=none guibg=none")
-  (nvim.ex.highlight "Keyword cterm=italic gui=italic")
+  (defn hi [name opts]
+    (let [fg (match (core.get opts :fg)
+               res (.. " ctermfg=" res " guifg=" res)
+               _ "")
+          bg (match (core.get opts :bg)
+               res (.. " ctermbg=" res " guibg=" res)
+               _ "")
+          others (match (core.get opts :others)
+                   res (.. " " res)
+                   _ "")]
+      (-> (.. name fg bg others)
+          (nvim.ex.highlight))))
+
+  (hi :Normal {:bg :none})
+  (hi :LineNr {:bg :none})
+  (hi :VertSplit {:bg :none})
+  (hi :NonText {:bg :none})
+  (hi :EndOfBuffer {:bg :none})
+
+  (hi :Keyword {:others "cterm=italic gui=italic"})
+
+  (hi :LspDiagnosticsSignError {:fg :red})
+  (hi :LspDiagnosticsSignWarning {:fg :yellow})
+  (hi :LspDiagnosticsSignInformation {:fg :green})
+  (hi :LspDiagnosticsSignHint {:fg :green})
+  (hi :LspDiagnosticsVirtualTextError {:fg :red :bg :black})
+  (hi :LspDiagnosticsVirtualTextWarning {:fg :yellow :bg :black})
+  (hi :LspDiagnosticsVirtualTextInformation {:fg :green :bg :black})
+  (hi :LspDiagnosticsVirtualTextHint {:fg :green :bg :black})
 
   ;; mappings
   (set nvim.g.mapleader :\)
@@ -400,8 +423,8 @@
     (lsp-status.config {:status_symbol (.. icontab.code-braces " ")
                         :indicator_errors icontab.ban
                         :indicator_warnings icontab.exclam-tri
-                        :indicator_info icontab.info
-                        :indicator_hint icontab.lightbulb-alt
+                        :indicator_info icontab.info-circle
+                        :indicator_hint icontab.leaf
                         :indicator_ok icontab.check
                         :current_function false})
     (when (not lsp.hyls)
