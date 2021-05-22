@@ -280,6 +280,7 @@
   (hi :LspDiagnosticsSignWarning {:fg :yellow})
   (hi :LspDiagnosticsSignInformation {:fg :green})
   (hi :LspDiagnosticsSignHint {:fg :green})
+  (hi :LspDiagnosticsSignLightBulb {:fg :white})
   (hi :LspDiagnosticsVirtualTextError {:fg :red :bg :black})
   (hi :LspDiagnosticsVirtualTextWarning {:fg :yellow :bg :black})
   (hi :LspDiagnosticsVirtualTextInformation {:fg :green :bg :black})
@@ -484,8 +485,11 @@
                            {:inlay_hints
                             {:parameter_hints_prefix (.. " "
                                                          icontab.slash
-                                                         icontab.arrow-l)
-                             :other_hints_prefix (.. " " icontab.arrow-r)}}
+                                                         icontab.arrow-l
+                                                         " ")
+                             :other_hints_prefix (.. " "
+                                                     icontab.arrow-r
+                                                     " ")}}
                            :server
                            {:on_attach on-attach
                             :capabilities capabilities
@@ -614,7 +618,7 @@
              (autocmd "CursorHold,CursorHoldI" "*" (->viml lightbulb-update)))
     (nvim.fn.sign_define :LightBulbSign
                          {:text icontab.lightbulb-alt
-                          :texthl :LspDiagnosticsSignHint}))
+                          :texthl :LspDiagnosticsSignLightBulb}))
 
   ;; nvim-tree.lua
   (set nvim.g.nvim_tree_side :left)
