@@ -959,4 +959,7 @@
                 :lualine_z []}
                :extensions
                [:nvim-tree
-                :quickfix]})))
+                :quickfix
+                {:sections {:lualine_a [(fn []
+                                          (.. icontab.alarm-light " Trouble"))]}
+                 :filetypes [:Trouble]}]})))

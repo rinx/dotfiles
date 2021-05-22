@@ -88,6 +88,7 @@
    :cube ""
    :cubes ""
    :comment ""
+   :alarm-light "ﲍ"
    :lightbulb ""
    :lightbulb-alt ""
    :lightbulb-on "ﯦ"
