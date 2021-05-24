@@ -93,6 +93,7 @@ $(HOME)/.zshrc:
 .PHONY: others-deploy
 others-deploy: \
     alacritty.yml \
+    kitty.conf \
     Xdefaults \
     sway-config \
     i3status-config \
@@ -106,6 +107,13 @@ alacritty.yml: $(HOME)/.alacritty.yml
 $(HOME)/.alacritty.yml:
 	@$(call cyan, "--\> alacritty.yml")
 	ln -s $(DOTDIR)/alacritty.yml $(HOME)/.alacritty.yml
+
+.PHONY: kitty.conf
+kitty.conf: $(HOME)/.config/kitty/kitty.conf
+$(HOME)/.config/kitty/kitty.conf:
+	@$(call cyan, "--\> kitty.conf")
+	mkdir -p $(HOME)/.config/kitty
+	ln -s $(DOTDIR)/kitty.conf $(HOME)/.config/kitty/kitty.conf
 
 .PHONY: Xdefaults
 Xdefaults: $(HOME)/.Xdefaults
