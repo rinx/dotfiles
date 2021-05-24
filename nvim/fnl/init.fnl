@@ -82,6 +82,8 @@
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
+  :rcarriga/nvim-dap-ui {:requires
+                         [:mfussenegger/nvim-dap]}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
@@ -256,7 +258,7 @@
   (nvim.ex.set "background=dark")
   (nvim.ex.syntax :enable)
 
-  (defn hi [name opts]
+  (defn- hi [name opts]
     (let [fg (match (core.get opts :fg)
                res (.. " ctermfg=" res " guifg=" res)
                _ "")
@@ -517,8 +519,9 @@
                   :documentation true
                   :source {:buffer {:kind icontab.document}
                            :calc {:kind icontab.calc}
-                           :conjure {:kind icontab.lua
-                                     :filetypes [:fennel]}
+                           :conjure {:filetypes [:clojure
+                                                 :fennel
+                                                 :hy]}
                            :emoji {:kind icontab.heart
                                    :filetypes [:markdown]}
                            :nvim_lsp {:kind icontab.cube}
@@ -602,6 +605,53 @@
       (nnoremap-silent "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>")
       (nnoremap-silent "<leader>xl" ":<C-u>TroubleToggle loclist<CR>")
       (nnoremap-silent "gR" ":<C-u>TroubleToggle lsp_references<CR>")))
+
+  ;; dap
+  (when (and (loaded? :nvim-dap)
+             (loaded? :nvim-dap-ui))
+    (let [dap (require :dap)
+          dapui (require :dapui)]
+      ;; go
+      (when (= (nvim.fn.executable :dlv) 1)
+        (let [vscode-go-path (.. (vim.fn.stdpath :data) :/dap/vscode-go)
+              debug-adapter-path (.. vscode-go-path :/dist/debugAdapter.js)]
+
+          (defn dap-install-go-adapter []
+            (when (vim.fn.empty (vim.fn.glob vscode-go-path))
+              (vim.cmd
+                (string.format
+                  (.. "silent "
+                      "!git clone --depth 1 "
+                      "http://github.com/golang/vscode-go %s; "
+                      "cd %s; "
+                      "npm install; "
+                      "npm run compile")
+                  vscode-go-path
+                  vscode-go-path))))
+          (nvim.ex.command_ :DapInstallGoAdapter (->viml :dap-install-go-adapter))
+
+          (set dap.adapters.go
+               {:type :executable
+                :command :node
+                :args [debug-adapter-path]})
+          (set dap.configurations.go
+               [{:type :go
+                 :name :Debug
+                 :request :launch
+                 :showLog false
+                 :program "${file}"
+                 :dlvToolPath (vim.fn.exepath :dlv)}])))
+
+      (dapui.setup {:icons
+                    {:expanded icontab.fold-open
+                     :collapsed icontab.fold-closed}})
+      (nvim.ex.command_ :DapToggleBreakpoint "lua require('dap').toggle_breakpoint()")
+      (nvim.ex.command_ :DapContinue "lua require('dap').continue()")
+      (nvim.ex.command_ :DapStepOver "lua require('dap').step_over()")
+      (nvim.ex.command_ :DapStepInto "lua require('dap').step_into()")
+      (nvim.ex.command_ :DapUIOpen "lua require('dapui').open()")
+      (nvim.ex.command_ :DapUIClose "lua require('dapui').close()")
+      (nvim.ex.command_ :DapUIToggle "lua require('dapui').toggle()")))
 
   ;; lexima
   (set nvim.g.lexima_no_default_rules true)

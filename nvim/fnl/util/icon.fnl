@@ -157,6 +157,8 @@
    :arrow-expand-d "ﲔ"
    :arrow-expand-l "ﲕ"
    :arrow-expand-r "ﲖ"
+   :fold-open ""
+   :fold-closed ""
    :chevron-u ""
    :chevron-d ""
    :chevron-l ""
