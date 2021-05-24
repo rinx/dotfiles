@@ -279,6 +279,14 @@
 
   (hi :Keyword {:others "cterm=italic gui=italic"})
 
+  (hi :LspDiagnosticsUnderlineError
+      {:others "cterm=undercurl gui=undercurl guisp=#f07178"})
+  (hi :LspDiagnosticsUnderlineWarning
+      {:others "cterm=undercurl gui=undercurl guisp=#ffb454"})
+  (hi :LspDiagnosticsUnderlineInformation
+      {:others "cterm=undercurl gui=undercurl guisp=#c2d94c"})
+  (hi :LspDiagnosticsUnderlineHint
+      {:others "cterm=undercurl gui=undercurl guisp=#59c2ff"})
   (hi :LspDiagnosticsSignError {:others "ctermfg=red guifg=#f07178"})
   (hi :LspDiagnosticsSignWarning {:others "ctermfg=yellow guifg=#ffb454"})
   (hi :LspDiagnosticsSignInformation {:others "ctermfg=green guifg=#c2d94c"})
@@ -605,6 +613,14 @@
       (nnoremap-silent "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>")
       (nnoremap-silent "<leader>xl" ":<C-u>TroubleToggle loclist<CR>")
       (nnoremap-silent "gR" ":<C-u>TroubleToggle lsp_references<CR>")))
+
+  ;; lsp-colors.nvim
+  (when (loaded? :lsp-colors.nvim)
+    (let [colors (require :lsp-colors)]
+      (colors.setup {:Error :#f07178
+                     :Warning :#ffb454
+                     :Information :#c2d94c
+                     :Hint :#59c2ff})))
 
   ;; dap
   (when (and (loaded? :nvim-dap)
