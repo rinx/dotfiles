@@ -626,6 +626,7 @@
   (when (and (loaded? :nvim-dap)
              (loaded? :nvim-dap-ui))
     (let [dap (require :dap)
+          dap-ext-vscode (require :dap.ext.vscode)
           dapui (require :dapui)]
       ;; go
       (when (= (nvim.fn.executable :dlv) 1)
@@ -652,22 +653,52 @@
                 :args [debug-adapter-path]})
           (set dap.configurations.go
                [{:type :go
-                 :name :Debug
+                 :name "Launch file"
                  :request :launch
-                 :showLog false
+                 :showLog true
                  :program "${file}"
+                 :dlvToolPath (vim.fn.exepath :dlv)}
+                {:type :go
+                 :name "Launch test file"
+                 :request :launch
+                 :mode :test
+                 :showLog true
+                 :program "${file}"
+                 :args ["-test.v"]
                  :dlvToolPath (vim.fn.exepath :dlv)}])))
+
+      ;; loading .vscode/launch.js
+      (pcall dap-ext-vscode.load_launchjs)
 
       (dapui.setup {:icons
                     {:expanded icontab.fold-open
                      :collapsed icontab.fold-closed}})
+      (hi :DapBreakpoint {:others "ctermfg=red guifg=#f07178"})
+      (hi :DapLogPoint {:others "ctermfg=yellow guifg=#ffb454"})
+      (hi :DapStopped {:others "ctermfg=blue guifg=#59c2ff"})
+      (nvim.fn.sign_define :DapBreakpoint
+                           {:text icontab.circle
+                            :texthl :DapBreakpoint})
+      (nvim.fn.sign_define :DapLogPoint
+                           {:text icontab.comment
+                            :texthl :DapLogPoint})
+      (nvim.fn.sign_define :DapStopped
+                           {:text icontab.arrow-r
+                            :texthl :DapStopped})
+
       (nvim.ex.command_ :DapToggleBreakpoint "lua require('dap').toggle_breakpoint()")
       (nvim.ex.command_ :DapContinue "lua require('dap').continue()")
       (nvim.ex.command_ :DapStepOver "lua require('dap').step_over()")
       (nvim.ex.command_ :DapStepInto "lua require('dap').step_into()")
+      (nvim.ex.command_ :DapStepOut "lua require('dap').step_out()")
       (nvim.ex.command_ :DapUIOpen "lua require('dapui').open()")
       (nvim.ex.command_ :DapUIClose "lua require('dapui').close()")
-      (nvim.ex.command_ :DapUIToggle "lua require('dapui').toggle()")))
+      (nvim.ex.command_ :DapUIToggle "lua require('dapui').toggle()")
+
+      (nnoremap-silent "<F5>" ":<C-u>DapContinue<CR>")
+      (nnoremap-silent "<F10>" ":<C-u>DapStepOver<CR>")
+      (nnoremap-silent "<F11>" ":<C-u>DapStepInto<CR>")
+      (nnoremap-silent "<F12>" ":<C-u>DapStepOut<CR>")))
 
   ;; lexima
   (set nvim.g.lexima_no_default_rules true)
@@ -976,12 +1007,18 @@
                      (.. icontab.spellcheck vim.o.spelllang)
                      ""))
         lsp-status-fn (fn []
-                        (let [status (when (loaded? :lsp-status.nvim)
-                                       (let [lsp-status (require :lsp-status)]
-                                         (lsp-status.status)))]
-                          (if status
-                            status
-                            "")))
+                        (match (when (loaded? :lsp-status.nvim)
+                                 (let [lsp-status (require :lsp-status)]
+                                   (lsp-status.status)))
+                          status status
+                          _ ""))
+        dap-status-fn (fn []
+                        (match (when (loaded? :nvim-dap)
+                                 (let [dap (require :dap)]
+                                   (dap.status)))
+                          "" " "
+                          status (.. icontab.play-circle" " status)
+                          _ ""))
         lineinfo-fn (fn []
                       (let [row (nvim.fn.line ".")
                             col (nvim.fn.col ".")]
@@ -1025,7 +1062,7 @@
                              :icon icontab.github}
                             lsp-status-fn]
                 :lualine_c []
-                :lualine_x []
+                :lualine_x [dap-status-fn]
                 :lualine_y [:fileformat
                             :encoding
                             :filetype]
