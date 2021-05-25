@@ -630,7 +630,8 @@
           dapui (require :dapui)]
       ;; go
       (when (= (nvim.fn.executable :dlv) 1)
-        (let [vscode-go-path (.. (vim.fn.stdpath :data) :/dap/vscode-go)
+        (let [dlv-path (vim.fn.exepath :dlv)
+              vscode-go-path (.. (vim.fn.stdpath :data) :/dap/vscode-go)
               debug-adapter-path (.. vscode-go-path :/dist/debugAdapter.js)]
 
           (defn dap-install-go-adapter []
@@ -657,7 +658,7 @@
                  :request :launch
                  :showLog true
                  :program "${file}"
-                 :dlvToolPath (vim.fn.exepath :dlv)}
+                 :dlvToolPath dlv-path}
                 {:type :go
                  :name "Launch test file"
                  :request :launch
@@ -665,7 +666,24 @@
                  :showLog true
                  :program "${file}"
                  :args ["-test.v"]
-                 :dlvToolPath (vim.fn.exepath :dlv)}])))
+                 :dlvToolPath dlv-path}])))
+
+      ;; rust
+      (when (= (nvim.fn.executable :lldb-vscode) 1)
+        (set dap.adapters.rust
+             {:name :lldb
+              :type :executable
+              :command :lldb-vscode
+              :attach {:pidProperty :pid
+                       :pidSelect :ask}
+              :env {:LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY :YES}})
+        (set dap.configurations.rust
+             [{:type :rust
+               :name :Debug
+               :request :launch
+               :cwd (vim.fn.getcwd)
+               :program (.. :target/debug/
+                            (vim.fn.fnamemodify (vim.fn.getcwd) ":t"))}]))
 
       ;; loading .vscode/launch.js
       (pcall dap-ext-vscode.load_launchjs)
@@ -695,6 +713,7 @@
       (nvim.ex.command_ :DapUIClose "lua require('dapui').close()")
       (nvim.ex.command_ :DapUIToggle "lua require('dapui').toggle()")
 
+      (nnoremap-silent "<F4>" ":<C-u>DapToggleBreakpoint<CR>")
       (nnoremap-silent "<F5>" ":<C-u>DapContinue<CR>")
       (nnoremap-silent "<F10>" ":<C-u>DapStepOver<CR>")
       (nnoremap-silent "<F11>" ":<C-u>DapStepInto<CR>")
