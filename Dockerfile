@@ -5,6 +5,8 @@
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
 ## ---  {:name "KOTLIN_LS_VERSION"
 ## ---   :url "https://api.github.com/repos/fwcd/kotlin-language-server/tags"}]
+## ---  {:name "RUST_ANALYZER_VERSION"
+## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"}]
 
 ARG GRAALVM_VERSION=21.1.0
 ARG GRAALVM_JAVA_VERSION=java11
@@ -13,6 +15,7 @@ ARG FENNEL_VERSION=0.9.2
 
 ARG CLOJURE_LSP_VERSION=2021.05.22-16.50.45
 ARG KOTLIN_LS_VERSION=1.1.1
+ARG RUST_ANALYZER_VERSION=nightly
 
 FROM docker:dind AS docker
 
@@ -125,6 +128,7 @@ ARG GRAALVM_JAVA_VERSION
 ARG FENNEL_VERSION
 ARG CLOJURE_LSP_VERSION
 ARG KOTLIN_LS_VERSION
+ARG RUST_ANALYZER_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -226,7 +230,9 @@ RUN cd /tmp \
     && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
 
 RUN cd /tmp \
-    && curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o /usr/local/bin/rust-analyzer \
+    && curl -L https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-x86_64-unknown-linux-gnu.gz --output rust-analyzer.gz \
+    && gunzip rust-analyzer.gz \
+    && mv rust-analyzer /usr/local/bin/rust-analyzer \
     && chmod a+x /usr/local/bin/rust-analyzer \
     && upx -9 /usr/local/bin/rust-analyzer
 
