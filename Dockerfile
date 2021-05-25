@@ -46,7 +46,8 @@ RUN apk update \
     musl-dev \
     wget
 
-RUN GO111MODULE=on go get golang.org/x/tools/gopls@latest
+RUN GO111MODULE=on go get golang.org/x/tools/gopls@latest \
+    && go install github.com/go-delve/delve/cmd/dlv@latest
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
