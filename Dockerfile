@@ -7,6 +7,8 @@
 ## ---   :url "https://api.github.com/repos/fwcd/kotlin-language-server/tags"}]
 ## ---  {:name "RUST_ANALYZER_VERSION"
 ## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"}]
+## ---  {:name "BUF_VERSION"
+## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
 ARG GRAALVM_VERSION=21.1.0
 ARG GRAALVM_JAVA_VERSION=java11
@@ -16,6 +18,7 @@ ARG FENNEL_VERSION=0.9.2
 ARG CLOJURE_LSP_VERSION=2021.05.22-16.50.45
 ARG KOTLIN_LS_VERSION=1.1.1
 ARG RUST_ANALYZER_VERSION=nightly
+ARG BUF_VERSION=v0.42.1
 
 FROM docker:dind AS docker
 
@@ -132,6 +135,7 @@ ARG FENNEL_VERSION
 ARG CLOJURE_LSP_VERSION
 ARG KOTLIN_LS_VERSION
 ARG RUST_ANALYZER_VERSION
+ARG BUF_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -245,6 +249,12 @@ RUN cd /tmp \
     && mv rust-analyzer /usr/local/bin/rust-analyzer \
     && chmod a+x /usr/local/bin/rust-analyzer \
     && upx -9 /usr/local/bin/rust-analyzer
+
+RUN cd /tmp \
+    && curl -L https://github.com/bufbuild/buf/releases/download/${BUF_VERSION}/buf-Linux-x86_64 --output buf \
+    && mv buf /usr/local/bin/buf \
+    && chmod a+x /usr/local/bin/buf \
+    && upx -9 /usr/local/bin/buf
 
 RUN curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash \
     && upx -9 /usr/local/bin/k3d

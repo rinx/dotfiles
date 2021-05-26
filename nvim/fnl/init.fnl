@@ -457,7 +457,8 @@
                          :capabilities capabilities})
     (lsp.efm.setup {:on_attach on-attach
                     :capabilities capabilities
-                    :filetypes [:markdown]
+                    :filetypes [:markdown
+                                :proto]
                     :init_options {:documentFormatting true}
                     :settings
                     {:languages
@@ -468,7 +469,9 @@
                         :lintStdin true
                         :lintFormats ["%f:%l %m"
                                       "%f:%l:%c %m"
-                                      "%f: %l: %m"]}]}}})
+                                      "%f: %l: %m"]}]
+                      :proto
+                      [{:lintCommand "buf lint --path"}]}}})
     (lsp.fortls.setup {:on_attach on-attach
                        :capabilities capabilities})
     (lsp.gopls.setup {:on_attach on-attach
@@ -709,6 +712,7 @@
                             :texthl :DapStopped})
 
       (nvim.ex.command_ :DapToggleBreakpoint "lua require('dap').toggle_breakpoint()")
+      (nvim.ex.command_ :DapListBreakpoints "lua require('dap').list_breakpoints()")
       (nvim.ex.command_ :DapContinue "lua require('dap').continue()")
       (nvim.ex.command_ :DapStepOver "lua require('dap').step_over()")
       (nvim.ex.command_ :DapStepInto "lua require('dap').step_into()")
@@ -717,8 +721,8 @@
       (nvim.ex.command_ :DapUIClose "lua require('dapui').close()")
       (nvim.ex.command_ :DapUIToggle "lua require('dapui').toggle()")
 
-      (nnoremap-silent "<F4>" ":<C-u>DapToggleBreakpoint<CR>")
       (nnoremap-silent "<F5>" ":<C-u>DapContinue<CR>")
+      (nnoremap-silent "<F9>" ":<C-u>DapToggleBreakpoint<CR>")
       (nnoremap-silent "<F10>" ":<C-u>DapStepOver<CR>")
       (nnoremap-silent "<F11>" ":<C-u>DapStepInto<CR>")
       (nnoremap-silent "<F12>" ":<C-u>DapStepOut<CR>")))
@@ -1101,5 +1105,8 @@
                [:nvim-tree
                 :quickfix
                 {:sections {:lualine_a [(fn []
-                                          (.. icontab.alarm-light " Trouble"))]}
+                                          (.. icontab.alarm-light " Trouble"))]
+                            :lualine_b [(fn [] 
+                                          (let [tc (require :trouble.config)]
+                                            tc.options.mode))]}
                  :filetypes [:Trouble]}]})))
