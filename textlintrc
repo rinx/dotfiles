@@ -14,6 +14,7 @@
       "ja-space-around-code": true
     },
     "preset-ja-technical-writing": true,
+    "preset-jtf-style": true,
     "spellcheck-tech-word": true,
     "write-good": {
       "passive": false,
