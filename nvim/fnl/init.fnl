@@ -449,20 +449,26 @@
              {:cmd [:hyls]
               :filetypes [:hy]
               :root_dir util.path.dirname}}))
-    (when (not lsp.unifiedls-md)
-      (tset configs :unifiedls-md
-            {:default_config
-             {:cmd [:unified-language-server
-                    "--parser=remark-parse"
-                    "--stdio"]
-              :filetypes [:markdown]
-              :root_dir util.path.dirname}}))
     (lsp.bashls.setup {:on_attach on-attach
                        :capabilities capabilities})
     (lsp.clojure_lsp.setup {:on_attach on-attach
                             :capabilities capabilities})
     (lsp.dockerls.setup {:on_attach on-attach
                          :capabilities capabilities})
+    (lsp.efm.setup {:on_attach on-attach
+                    :capabilities capabilities
+                    :filetypes [:markdown]
+                    :init_options {:documentFormatting true}
+                    :settings
+                    {:languages
+                     {:markdown
+                      [{:lintCommand "textlint --format unix ${INPUT}"
+                        :lintFormats ["%f:%l:%n: %m"]}
+                       {:lintCommand "markdownlint -s -c %USERPROFILE%.markdownlintrc"
+                        :lintStdin true
+                        :lintFormats ["%f:%l %m"
+                                      "%f:%l:%c %m"
+                                      "%f: %l: %m"]}]}}})
     (lsp.fortls.setup {:on_attach on-attach
                        :capabilities capabilities})
     (lsp.gopls.setup {:on_attach on-attach
@@ -487,8 +493,6 @@
                                        :capabilities capabilities})
     (lsp.tsserver.setup {:on_attach on-attach
                          :capabilities capabilities})
-    (lsp.unifiedls-md.setup {:on_attach on-attach
-                             :capabilities capabilities})
     (lsp.yamlls.setup {:on_attach on-attach
                        :capabilities capabilities
                        :settings {:yaml

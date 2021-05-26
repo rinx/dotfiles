@@ -49,7 +49,10 @@ RUN apk update \
     musl-dev \
     wget
 
-RUN GO111MODULE=on go get golang.org/x/tools/gopls@latest \
+RUN GO111MODULE=on \
+    go get \
+    golang.org/x/tools/gopls@latest \
+    github.com/mattn/efm-langserver \
     && go install github.com/go-delve/delve/cmd/dlv@latest
 
 RUN mkdir -p /out/usr/local/go
@@ -190,9 +193,16 @@ RUN pip3 install --upgrade pip neovim \
 RUN npm install -g \
     bash-language-server \
     dockerfile-language-server-nodejs \
+    markdownlint \
+    markdownlint-cli \
+    textlint \
+    textlint-rule-en-spell \
+    textlint-rule-preset-ja-spacing \
+    textlint-rule-preset-ja-technical-writing \
+    textlint-rule-spellcheck-tech-word \
+    textlint-rule-write-good \
     typescript \
     typescript-language-server \
-    unified-language-server \
     vscode-json-languageserver \
     yaml-language-server \
     yarn \

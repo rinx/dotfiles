@@ -1,0 +1,23 @@
+{
+  "filters": {},
+  "rules": {
+    "en-spell": true,
+    "preset-ja-spacing": {
+      "ja-nakaguro-or-halfwidth-space-between-katakana": true,
+      "ja-no-space-around-parentheses": true,
+      "ja-no-space-between-full-width": true,
+      "ja-space-between-half-and-full-width": {
+        "space": "always"
+      },
+      "ja-space-after-exclamation": true,
+      "ja-space-after-question": true,
+      "ja-space-around-code": true
+    },
+    "preset-ja-technical-writing": true,
+    "spellcheck-tech-word": true,
+    "write-good": {
+      "passive": false,
+      "thereIs": false
+    }
+  }
+}

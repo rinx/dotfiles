@@ -99,6 +99,8 @@ others-deploy: \
     i3status-config \
     lein-profile \
     deps-edn \
+    textlintrc \
+    markdownlintrc \
     hyper
 	@$(call red, "others-deploy")
 
@@ -209,6 +211,16 @@ deps-edn: $(HOME)/.clojure/deps.edn
 $(HOME)/.clojure/deps.edn:
 	mkdir -p $(HOME)/.clojure
 	ln -s $(DOTDIR)/deps.edn $(HOME)/.clojure/deps.edn
+
+.PHONY: markdownlintrc
+markdownlintrc: $(HOME)/.markdownlintrc
+$(HOME)/.markdownlintrc:
+	ln -s $(DOTDIR)/markdownlintrc $(HOME)/.markdownlintrc
+
+.PHONY: textlintrc
+textlintrc: $(HOME)/.textlintrc
+$(HOME)/.textlintrc:
+	ln -s $(DOTDIR)/textlintrc $(HOME)/.textlintrc
 
 .PHONY: hyper
 hyper: $(HOME)/.hyper.js
