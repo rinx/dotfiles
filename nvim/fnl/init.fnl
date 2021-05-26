@@ -1104,9 +1104,29 @@
                :extensions
                [:nvim-tree
                 :quickfix
-                {:sections {:lualine_a [(fn []
-                                          (.. icontab.alarm-light " Trouble"))]
-                            :lualine_b [(fn [] 
-                                          (let [tc (require :trouble.config)]
-                                            tc.options.mode))]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.alarm-light " Trouble"))]
+                            :lualine_b
+                            [(fn [] 
+                               (let [tc (require :trouble.config)
+                                     mode tc.options.mode]
+                                 (match mode
+                                   :quickfix
+                                   (let [title (core.get
+                                                 (vim.fn.getqflist {:title 1})
+                                                 :title)]
+                                     (if (> (string.len title) 0)
+                                       (.. mode " | " title)
+                                       mode))
+                                   :loclist
+                                   (let [title (core.get
+                                                 (vim.fn.getloclist
+                                                   (vim.fn.winnr)
+                                                   {:title 1})
+                                                 :title)]
+                                     (if (> (string.len title) 0)
+                                       (.. mode " | " title)
+                                       mode))
+                                   _ mode)))]}
                  :filetypes [:Trouble]}]})))
