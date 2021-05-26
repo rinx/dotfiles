@@ -656,7 +656,8 @@
           (nvim.ex.command_ :DapInstallGoAdapter (->viml :dap-install-go-adapter))
 
           (set dap.adapters.go
-               {:type :executable
+               {:name :dlv
+                :type :executable
                 :command :node
                 :args [debug-adapter-path]})
           (set dap.configurations.go
@@ -691,6 +692,13 @@
                :cwd (vim.fn.getcwd)
                :program (.. :target/debug/
                             (vim.fn.fnamemodify (vim.fn.getcwd) ":t"))}]))
+
+      ;; kotlin
+      (when (= (nvim.fn.executable :kotlin-debug-adapter) 1)
+        (set dap.adapters.kotlin
+             {:name :kotlin-debug-adapter
+              :type :executable
+              :command :kotlin-debug-adapter}))
 
       ;; loading .vscode/launch.js
       (pcall dap-ext-vscode.load_launchjs)
