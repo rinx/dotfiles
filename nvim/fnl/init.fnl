@@ -483,6 +483,7 @@
                                              :nilless true
                                              :shadow true
                                              :unusedwrite true}
+                                  :staticcheck true
                                   :gofumpt true}}})
     (lsp.hls.setup {:on_attach on-attach
                     :capabilities capabilities})
