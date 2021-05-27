@@ -52,11 +52,9 @@ RUN apk update \
     musl-dev \
     wget
 
-RUN GO111MODULE=on \
-    go get \
-    golang.org/x/tools/gopls@latest \
-    github.com/mattn/efm-langserver \
-    && go install github.com/go-delve/delve/cmd/dlv@latest
+RUN go install github.com/go-delve/delve/cmd/dlv@latest \
+    && go install github.com/mattn/efm-langserver@latest \
+    && go install golang.org/x/tools/gopls@latest
 
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
