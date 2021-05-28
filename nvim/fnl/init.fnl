@@ -459,7 +459,11 @@
                     :capabilities capabilities
                     :filetypes [:markdown
                                 :proto]
-                    :init_options {:documentFormatting true}
+                    :init_options {:codeAction true
+                                   :completion true
+                                   :documentFormatting true
+                                   :documentSymbol true
+                                   :hover true}
                     :settings
                     {:languages
                      {:markdown
@@ -469,9 +473,12 @@
                         :lintStdin true
                         :lintFormats ["%f:%l %m"
                                       "%f:%l:%c %m"
-                                      "%f: %l: %m"]}]
+                                      "%f: %l: %m"]}
+                       {:hoverCommand :excitetranslate
+                        :hoverStdin true}]
                       :proto
-                      [{:lintCommand "buf lint --path"}]}}})
+                      [{:lintCommand "buf lint --path"}]}
+                     :lintDebounce 500}})
     (lsp.fortls.setup {:on_attach on-attach
                        :capabilities capabilities})
     (lsp.gopls.setup {:on_attach on-attach
@@ -925,7 +932,7 @@
   (set nvim.g.mkdp_browserfunc "MkdpEchoURL")
 
   (augroup init-markdown
-           (autocmd :FileType :markdown "setlocal shiftwidth=4"))
+           (autocmd :FileType :markdown "setl shiftwidth=4"))
 
   ;; filetypes
   (augroup init-filetype-detect
@@ -940,15 +947,15 @@
 
   ;; json
   (augroup init-json
-           (autocmd :FileType :json "setlocal shiftwidth=2"))
+           (autocmd :FileType :json "setl shiftwidth=2"))
 
   ;; julia
   (augroup init-julia
-           (autocmd :FileType :julia "setlocal shiftwidth=4"))
+           (autocmd :FileType :julia "setl shiftwidth=4"))
 
   ;; yaml
   (augroup init-yaml
-           (autocmd :FileType :yaml "setlocal shiftwidth=2"))
+           (autocmd :FileType :yaml "setl shiftwidth=2"))
 
   ;; fennel
   (set nvim.g.conjure#client#fennel#aniseed#aniseed_module_prefix "aniseed.")
@@ -957,20 +964,25 @@
   (nvim.ex.command_ :ConjureClientFennelStdio (->viml :conjure-client-fennel-stdio))
 
   (augroup init-fennel
-           (autocmd :FileType :fennel "setlocal shiftwidth=2")
-           (autocmd :FileType :fennel "set colorcolumn=80"))
+           (autocmd :FileType :fennel "setl shiftwidth=2")
+           (autocmd :FileType :fennel "setl colorcolumn=80"))
+
+  ;; lua
+  (augroup init-lua
+           (autocmd :FileType :lua "setl shiftwidth=2"))
+
 
   ;; clojure
   (augroup init-clojure
-           (autocmd :FileType :clojure "set colorcolumn=80"))
+           (autocmd :FileType :clojure "setl colorcolumn=80"))
 
   ;; go
   (augroup init-golang
-           (autocmd :FileType :go "set colorcolumn=80")
-           (autocmd :FileType :go "set noexpandtab")
-           (autocmd :FileType :go "set shiftwidth=4")
-           (autocmd :FileType :go "set tabstop=4")
-           (autocmd :FileType :go "set softtabstop=4")
+           (autocmd :FileType :go "setl colorcolumn=80")
+           (autocmd :FileType :go "setl noexpandtab")
+           (autocmd :FileType :go "setl shiftwidth=4")
+           (autocmd :FileType :go "setl tabstop=4")
+           (autocmd :FileType :go "setl softtabstop=4")
            (autocmd :FileType :go "compiler go")
            (autocmd :BufWritePre "*.go" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
 

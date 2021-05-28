@@ -54,6 +54,7 @@ RUN apk update \
 
 RUN go install github.com/go-delve/delve/cmd/dlv@latest \
     && go install github.com/mattn/efm-langserver@latest \
+    && go install github.com/mattn/excitetranslate@latest \
     && go install golang.org/x/tools/gopls@latest
 
 RUN mkdir -p /out/usr/local/go
