@@ -77,8 +77,7 @@
   :onsails/lspkind-nvim {}
   :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
-  :RishabhRD/nvim-lsputils {:requires
-                            [:RishabhRD/popfix]}
+  :glepnir/lspsaga.nvim {}
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
@@ -554,21 +553,35 @@
                            :treesitter {:kind icontab.leaf}
                            :vsnip {:kind icontab.quote-l}}}))
 
-  (nnoremap-silent "K" ":<C-u>lua vim.lsp.buf.hover()<CR>")
-  (nnoremap-silent "gd" ":<C-u>lua vim.lsp.buf.definition()<CR>")
-  (nnoremap-silent "gD" ":<C-u>lua vim.lsp.buf.declaration()<CR>")
-  (nnoremap-silent "gi" ":<C-u>lua vim.lsp.buf.implementation()<CR>")
-  (nnoremap-silent "gr" ":<C-u>lua vim.lsp.buf.references()<CR>")
+  (nnoremap-silent :K ":<C-u>lua vim.lsp.buf.hover()<CR>")
+  (nnoremap-silent :gd ":<C-u>lua vim.lsp.buf.definition()<CR>")
+  (nnoremap-silent :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>")
+  (nnoremap-silent :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>")
+  (nnoremap-silent :gr ":<C-u>lua vim.lsp.buf.references()<CR>")
 
-  (nnoremap-silent "<leader>rn" (.. ":<C-u>" (->viml :rename-by-popfix) "<CR>"))
   (nnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.formatting()<CR>")
   (xnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
-  (nnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>")
-  (xnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>")
 
-  (nnoremap-silent "[d" ":<C-u>lua vim.lsp.diagnostic.goto_prev()<CR>")
-  (nnoremap-silent "]d" ":<C-u>lua vim.lsp.diagnostic.goto_next()<CR>")
-  (nnoremap-silent "<Leader>d" ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
+  ;; lspsaga
+  (if (loaded? :lspsaga.nvim)
+    (do
+      (let [saga (require :lspsaga)]
+        (saga.init_lsp_saga))
+      (nnoremap-silent :gh ":<C-u>Lspsaga lsp_finder<CR>")
+      (nnoremap-silent :gs ":<C-u>Lspsaga signature_help<CR>")
+      (nnoremap-silent "<leader>rn" ":<C-u>Lspsaga rename<CR>")
+      (nnoremap-silent "<Leader>a" ":<C-u>Lspsaga code_action<CR>")
+      (xnoremap-silent "<Leader>a" ":<C-u>Lspsaga range_code_action<CR>")
+      (nnoremap-silent "<Leader>d" ":<C-u>Lspsaga show_line_diagnostics<CR>")
+      (nnoremap-silent "[d" ":<C-u>Lspsaga diagnostic_jump_prev<CR>")
+      (nnoremap-silent "]d" ":<C-u>Lspsaga diagnostic_jump_next<CR>"))
+    (do
+      (nnoremap-silent "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>")
+      (nnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>")
+      (xnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>")
+      (nnoremap-silent "<Leader>d" ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
+      (nnoremap-silent "[d" ":<C-u>lua vim.lsp.diagnostic.goto_prev()<CR>")
+      (nnoremap-silent "]d" ":<C-u>lua vim.lsp.diagnostic.goto_next()<CR>")))
 
   (set nvim.g.diagnostic_enable_virtual_text 1)
   (set nvim.g.diagnostic_trimmed_virtual_text 40)
@@ -587,32 +600,6 @@
   (nvim.fn.sign_define :LspDiagnosticsSignHint
                        {:text icontab.leaf
                         :texthl :LspDiagnosticsSignHint})
-
-  ;; rename by popfix
-  (defn rename-by-popfix []
-    (let [popfix (require :popfix)
-          callback (fn [index line]
-                     (vim.lsp.buf.rename line))
-          opts {:mode :cursor
-                :close_on_bufleave true
-                :prompt {:prompt_text :Rename
-                         :init_text (vim.fn.expand "<cword>")
-                         :border true
-                         :border_chars icon.popfix-border-chars-alt}
-                :keymaps {:i {"<CR>" (fn [popup]
-                                       (popup:close callback))}
-                          :n {"<CR>" (fn [popup]
-                                       (popup:close callback))
-                              "<Esc>" (fn [popup]
-                                        (popup:close))}}}]
-      (popfix:new opts)))
-
-  ;; lsputils
-  (when (loaded? :nvim-lsputils)
-    (let [code-action (require :lsputil.codeAction)
-          override (fn [key handler]
-                     (tset vim.lsp.handlers key handler))]
-      (override :textDocument/codeAction code-action.code_action_handler)))
 
   ;; trouble.nvim
   (when (loaded? :trouble.nvim)
