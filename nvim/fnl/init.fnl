@@ -100,8 +100,6 @@
                                   :GTags]}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
-  :haya14busa/vim-asterisk {}
-  :haya14busa/incsearch.vim {}
   :rhysd/clever-f.vim {}
   :kana/vim-submode {}
   :kana/vim-arpeggio {}
@@ -836,21 +834,6 @@
   (when (loaded? :nvim-colorizer.lua)
     (let [colorizer (require :colorizer)]
       (colorizer.setup)))
-
-  ;; asterisk
-  (nvim.set_keymap "" "*" "<Plug>(asterisk-*)" {})
-  (nvim.set_keymap "" "#" "<Plug>(asterisk-#)" {})
-  (nvim.set_keymap "" "g*" "<Plug>(asterisk-g*)" {})
-  (nvim.set_keymap "" "g#" "<Plug>(asterisk-g#)" {})
-  (nvim.set_keymap "" "z*" "<Plug>(asterisk-z*)" {})
-  (nvim.set_keymap "" "gz*" "<Plug>(asterisk-gz*)" {})
-  (nvim.set_keymap "" "z#" "<Plug>(asterisk-z#)" {})
-  (nvim.set_keymap "" "gz#" "<Plug>(asterisk-gz#)" {})
-
-  ;; incsearch
-  (nvim.set_keymap "" "<buffer>/" "<Plug>(incsearch-forward)" {})
-  (nvim.set_keymap "" "<buffer>?" "<Plug>(incsearch-backward)" {})
-  (nvim.set_keymap "" "<buffer>g/" "<Plug>(incsearch-stay)" {})
 
   ;; clever-f
   (set nvim.g.clever_f_not_overwrites_standard_mappings 1)
