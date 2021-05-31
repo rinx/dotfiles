@@ -288,7 +288,7 @@
   (hi :LspDiagnosticsSignWarning {:others "ctermfg=yellow guifg=#ffb454"})
   (hi :LspDiagnosticsSignInformation {:others "ctermfg=green guifg=#c2d94c"})
   (hi :LspDiagnosticsSignHint {:others "ctermfg=blue guifg=#59c2ff"})
-  (hi :LspDiagnosticsSignLightBulb {:fg :white})
+  (hi :LspDiagnosticsSignLightBulb {:others "ctermfg=yellow guifg=#ffb454"})
   (hi :LspDiagnosticsVirtualTextError {:bg :black
                                        :others "ctermfg=red guifg=#f07178"})
   (hi :LspDiagnosticsVirtualTextWarning {:bg :black
@@ -566,7 +566,31 @@
   (if (loaded? :lspsaga.nvim)
     (do
       (let [saga (require :lspsaga)]
-        (saga.init_lsp_saga))
+        (saga.init_lsp_saga
+          {:error_sign icontab.bug
+           :warn_sign icontab.exclam-circle
+           :infor_sign icontab.info-circle
+           :hint_sign icontab.leaf
+           :dianostic_header_icon (.. icontab.search " ")
+           :code_action_icon (.. icontab.lightbulb " ")
+           :code_action_prompt {:enable true
+                                :sign false
+                                :sign_priority 20
+                                :virtual_text false}
+           :finder_definition_icon (.. icontab.star-alt " ")
+           :finder_reference_icon (.. icontab.star-alt " ")
+           :max_preview_lines 12
+           :finder_action_keys {:open :o
+                                :vsplit :v
+                                :split :s
+                                :quit :q
+                                :scroll_down "<C-f>"
+                                :scroll_up "<C-b>"}
+           :code_action_keys {:quit :q :exec "<CR>"}
+           :rename_action_keys {:quit "<C-c>" :exec "<CR>"}
+           :definition_preview_icon (.. icontab.compas " ")
+           :border_style :round
+           :rename_prompt_prefix icontab.chevron-r}))
       (nnoremap-silent :gh ":<C-u>Lspsaga lsp_finder<CR>")
       (nnoremap-silent :gs ":<C-u>Lspsaga signature_help<CR>")
       (nnoremap-silent "<leader>rn" ":<C-u>Lspsaga rename<CR>")
@@ -747,7 +771,7 @@
     (augroup init-lightbulb
              (autocmd "CursorHold,CursorHoldI" "*" (->viml lightbulb-update)))
     (nvim.fn.sign_define :LightBulbSign
-                         {:text icontab.lightbulb-alt
+                         {:text icontab.lightbulb
                           :texthl :LspDiagnosticsSignLightBulb}))
 
   ;; nvim-tree.lua
