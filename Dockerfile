@@ -203,6 +203,7 @@ RUN npm install -g \
     textlint-rule-preset-ja-spacing \
     textlint-rule-preset-ja-technical-writing \
     textlint-rule-preset-jtf-style \
+    textlint-rule-prh \
     textlint-rule-spellcheck-tech-word \
     textlint-rule-write-good \
     typescript \

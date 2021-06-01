@@ -15,6 +15,11 @@
     },
     "preset-ja-technical-writing": true,
     "preset-jtf-style": true,
+    "prh": {
+      "rulePaths": [
+        "/usr/local/lib/node_modules/textlint-rule-prh/node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml"
+      ]
+    },
     "spellcheck-tech-word": true,
     "write-good": {
       "passive": false,
