@@ -938,6 +938,7 @@
   ;; hy
   (set nvim.g.hy_enable_conceal 0)
   (set nvim.g.hy_conceal_fancy 0)
+  (set nvim.g.conjure#client#hy#stdio#command "hy --repl-output-fn=hy.core.hy-repr.hy-repr")
 
   ;; json
   (augroup init-json
