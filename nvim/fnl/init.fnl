@@ -475,7 +475,7 @@
                         :hoverStdin true}]
                       :proto
                       [{:lintCommand "buf lint --path"}]}
-                     :lintDebounce 500}})
+                     :lintDebounce 3000000000}})
     (lsp.fortls.setup {:on_attach on-attach
                        :capabilities capabilities})
     (lsp.gopls.setup {:on_attach on-attach
