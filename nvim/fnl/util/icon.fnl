@@ -238,6 +238,9 @@
   (devicon.setup {:override {:fnl {:icon ""
                                    :color "#51a0cf"
                                    :name "Fennel"}
+                             :hy {:icon ""
+                                  :color "#519aba"
+                                  :name "Hy"}
                              :Makefile {:icon ""
                                         :color "#6d8086"
                                         :name "Makefile"}
