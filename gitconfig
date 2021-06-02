@@ -47,11 +47,11 @@
 
     ad    = add
 
-    ci    = commit --signoff
-    cm    = commit --signoff -m
-    cv    = commit --signoff -v
     ca    = commit --signoff --amend --no-edit
     cae   = commit --signoff --amend
+
+    fixup = commit --signoff --fixup
+    rasq  = rebase -i --autosquash
 
     ps    = push
     psa   = push --all
@@ -62,16 +62,7 @@
 
     br    = branch
 
-    dm    = diff master
-    dw    = diff --color-words
-    dc    = diff --staged
-
     sb    = show-branch
-
-    mg    = merge --signoff
-    mgn   = merge --no-commit
-
-    sq    = squash
 
 [url "https://"]
     insteadOf = git://
