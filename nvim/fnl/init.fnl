@@ -180,8 +180,7 @@
 
   (set nvim.o.mouse "a")
 
-  (set nvim.o.foldmethod :expr)
-  (set nvim.o.foldexpr "nvim_treesitter#foldexpr()")
+  (set nvim.o.foldmethod :marker)
   (set nvim.o.foldlevel 99)
 
   (set nvim.o.virtualedit "block")
@@ -665,24 +664,26 @@
 
           (defn dap-sync-go-adapter []
             (if (vim.fn.empty (vim.fn.glob vscode-go-path))
-              (vim.cmd
-                (string.format
-                  (.. "silent "
-                      "!git clone --depth 1 "
-                      "http://github.com/golang/vscode-go %s; "
-                      "cd %s; "
-                      "npm install; "
-                      "npm run compile")
-                  vscode-go-path
-                  vscode-go-path))
-              (vim.cmd
-                (string.format
-                  (.. "silent "
-                      "!cd %s; "
-                      "git pull origin master; "
-                      "npm install; "
-                      "npm run compile")
-                  vscode-go-path))))
+              (do
+                (vim.cmd
+                  (string.format
+                    (.. "!git clone --depth 1 "
+                        "http://github.com/golang/vscode-go %s; "
+                        "cd %s; "
+                        "npm install; "
+                        "npm run compile")
+                    vscode-go-path
+                    vscode-go-path))
+                (print "finished to install Go adapter."))
+              (do
+                (vim.cmd
+                  (string.format
+                    (.. "!cd %s; "
+                        "git pull origin master; "
+                        "npm install; "
+                        "npm run compile")
+                    vscode-go-path))
+                (print "finished to update Go adapter."))))
           (nvim.ex.command_ :DapSyncGoAdapter (->viml :dap-sync-go-adapter))
 
           (set dap.adapters.go
@@ -706,15 +707,43 @@
                  :args ["-test.v"]
                  :dlvToolPath dlv-path}])))
 
-      ;; rust
-      (when (= (nvim.fn.executable :lldb-vscode) 1)
+      ;; lldb
+      (let [adapter-path (.. (vim.fn.stdpath :data) :/dap/codelldb)
+            codelldb-path (.. adapter-path :/extension/adapter/codelldb)
+            codelldb-url (if (= (vim.fn.has :unix) 1)
+                           "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-linux.vsix"
+                           "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-darwin.vsix")]
+        (defn dap-sync-lldb-adapter []
+          (if (vim.fn.empty (vim.fn.glob adapter-path))
+            (do
+              (vim.cmd
+                (string.format
+                  (.. "!curl -L %s --output /tmp/codelldb.zip; "
+                      "unzip /tmp/codelldb.zip -d %s; "
+                      "rm -rf /tmp/codelldb.zip")
+                  codelldb-url
+                  adapter-path))
+              (print "finished to install codelldb."))
+            (do
+              (print "codelldb already installed."))))
+        (nvim.ex.command_ :DapSyncLLDBAdapter (->viml :dap-sync-lldb-adapter))
         (set dap.adapters.rust
-             {:name :lldb
-              :type :executable
-              :command :lldb-vscode
-              :attach {:pidProperty :pid
-                       :pidSelect :ask}
-              :env {:LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY :YES}})
+             (fn [callback config]
+               (let [port (math.random 30000 40000)
+                     (handle pid-or-err)
+                     (vim.loop.spawn
+                       codelldb-path
+                       {:args ["--port" (string.format "%d" port)]
+                        :detached true}
+                       (fn [code]
+                         (handle:close)
+                         (print "codelldb exited with code: " code)))]
+                 (vim.defer_fn
+                   (fn []
+                     (callback {:type :server
+                                :host "127.0.0.1"
+                                :port port}))
+                   500))))
         (set dap.configurations.rust
              [{:type :rust
                :name :Debug
@@ -724,11 +753,28 @@
                             (vim.fn.fnamemodify (vim.fn.getcwd) ":t"))}]))
 
       ;; kotlin
-      (when (= (nvim.fn.executable :kotlin-debug-adapter) 1)
+      (let [adapter-path (.. (vim.fn.stdpath :data) :/dap/kotlin)
+            bin-path (.. adapter-path
+                         :/adapter/build/install/adapter/bin/kotlin-debug-adapter)]
+        (defn dap-sync-kotlin-adapter []
+          (if (vim.fn.empty (vim.fn.glob adapter-path))
+            (do
+              (vim.cmd
+                (string.format
+                  (.. "!git clone --depth 1 "
+                      "https://github.com/fwcd/kotlin-debug-adapter %s; "
+                      "cd %s; "
+                      "./gradlew :adapter:installDist")
+                  adapter-path
+                  adapter-path))
+              (print "finished to install kotlin-debug-adapter"))
+            (do
+              (print "kotlin-debug-adapter already installed."))))
+        (nvim.ex.command_ :DapSyncKotlinAdapter (->viml :dap-sync-kotlin-adapter))
         (set dap.adapters.kotlin
              {:name :kotlin-debug-adapter
               :type :executable
-              :command :kotlin-debug-adapter}))
+              :command bin-path}))
 
       ;; loading .vscode/launch.js
       (pcall dap-ext-vscode.load_launchjs)
