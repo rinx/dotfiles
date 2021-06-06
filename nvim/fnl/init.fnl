@@ -128,11 +128,14 @@
                         :fennel
                         :hy]
                    :event ["BufNewFile,BufRead *.clj"
-                           "BufNewFile,BufRead *.fnl"]}
+                           "BufNewFile,BufRead *.fnl"
+                           "BufNewFile,BufRead *.hy"]}
   :tami5/compe-conjure {:ft [:clojure
-                             :fennel]
+                             :fennel
+                             :hy]
                         :event ["InsertEnter *.clj"
-                                "InsertEnter *.fnl"]}
+                                "InsertEnter *.fnl"
+                                "InsertEnter *.hy"]}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft [:markdown]
                                  :cmd "MarkdownPreview"}
@@ -142,7 +145,6 @@
 (when (and (loaded? :nvim-web-devicons)
            (loaded? :nvim-treesitter))
   (def icon (require :util.icon))
-  (def ts-cfg (require :nvim-treesitter.configs))
   (def devicon (require :nvim-web-devicons))
 
   (def icontab icon.tab)
@@ -178,7 +180,9 @@
 
   (set nvim.o.mouse "a")
 
-  (set nvim.o.foldmethod "marker")
+  (set nvim.o.foldmethod :expr)
+  (set nvim.o.foldexpr "nvim_treesitter#foldexpr()")
+  (set nvim.o.foldlevel 99)
 
   (set nvim.o.virtualedit "block")
 
@@ -545,7 +549,8 @@
                            :emoji {:kind icontab.heart
                                    :filetypes [:markdown]}
                            :nvim_lsp {:kind icontab.cube}
-                           :nvim_lua {:kind icontab.vim}
+                           :nvim_lua {:kind icontab.vim
+                                      :filetypes [:lua]}
                            :omni false
                            :path {:kind icontab.dots}
                            :spell {:kind icontab.pencil}
@@ -658,8 +663,8 @@
               vscode-go-path (.. (vim.fn.stdpath :data) :/dap/vscode-go)
               debug-adapter-path (.. vscode-go-path :/dist/debugAdapter.js)]
 
-          (defn dap-install-go-adapter []
-            (when (vim.fn.empty (vim.fn.glob vscode-go-path))
+          (defn dap-sync-go-adapter []
+            (if (vim.fn.empty (vim.fn.glob vscode-go-path))
               (vim.cmd
                 (string.format
                   (.. "silent "
@@ -669,8 +674,16 @@
                       "npm install; "
                       "npm run compile")
                   vscode-go-path
+                  vscode-go-path))
+              (vim.cmd
+                (string.format
+                  (.. "silent "
+                      "!cd %s; "
+                      "git pull origin master; "
+                      "npm install; "
+                      "npm run compile")
                   vscode-go-path))))
-          (nvim.ex.command_ :DapInstallGoAdapter (->viml :dap-install-go-adapter))
+          (nvim.ex.command_ :DapSyncGoAdapter (->viml :dap-sync-go-adapter))
 
           (set dap.adapters.go
                {:name :dlv
@@ -1012,12 +1025,13 @@
            (autocmd :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif"))
 
   ;; treesitter
-  (ts-cfg.setup
-    {:ensure_installed :maintained
-     :highlight {:enable true
-                 :disable []}
-     :indent {:enable true
-              :disable []}})
+  (let [ts-cfg (require :nvim-treesitter.configs)]
+    (ts-cfg.setup
+      {:ensure_installed :maintained
+       :highlight {:enable true
+                   :disable []}
+       :indent {:enable true
+                :disable []}}))
 
   ;; barbar.nvim
   (nnoremap-silent ",bc" ":tabe<CR>")
