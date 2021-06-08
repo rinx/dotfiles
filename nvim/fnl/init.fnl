@@ -1205,4 +1205,24 @@
                                        (.. mode " | " title)
                                        mode))
                                    _ mode)))]}
-                 :filetypes [:Trouble]}]})))
+                 :filetypes [:Trouble]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.chevron-r " REPL"))]}
+                 :filetypes [:dap-repl]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.glasses " Watches"))]}
+                 :filetypes [:dapui_watches]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.stackoverflow " Stacks"))]}
+                 :filetypes [:dapui_stacks]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.tags " Breakpoints"))]}
+                 :filetypes [:dapui_breakpoints]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.scope " Scopes"))]}
+                 :filetypes [:dapui_scopes]}]})))
