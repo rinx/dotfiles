@@ -905,6 +905,10 @@
                        :DiffviewClose
                        :DiffviewOpen
                        :DiffviewRefresh
+                       :LspInfo
+                       :LspRestart
+                       :LspStart
+                       :LspStop
                        :MarkdownPreview
                        :MinimapToggle
                        :NvimTreeRefresh
