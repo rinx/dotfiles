@@ -902,9 +902,25 @@
                        :DapUIClose
                        :DapUIOpen
                        :DapUIToggle
+                       :DiffviewClose
+                       :DiffviewOpen
+                       :DiffviewRefresh
                        :MarkdownPreview
                        :MinimapToggle
-                       :NvimTreeToggle]
+                       :NvimTreeRefresh
+                       :NvimTreeToggle
+                       :PackerClean
+                       :PackerCompile
+                       :PackerInstall
+                       :PackerStatus
+                       :PackerSync
+                       :PackerUpdate
+                       :TroubleToggle
+                       "TroubleToggle loclist"
+                       "TroubleToggle lsp_document_diagnostics"
+                       "TroubleToggle lsp_references"
+                       "TroubleToggle lsp_workspace_diagnostics"
+                       "TroubleToggle quickfix"]
           actions (collect [_ v (ipairs action-cmds)]
                     (values v v))
           snap (require :snap)
