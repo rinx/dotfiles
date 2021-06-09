@@ -1072,6 +1072,8 @@
 
   ;; sexp
   (set nvim.g.sexp_enable_insert_mode_mappings 0)
+  (set nvim.g.sexp_mappings {:sexp_insert_at_list_head ""
+                             :sexp_insert_at_list_tail ""})
   (set nvim.g.sexp_insert_after_wrap 0)
   (set nvim.g.sexp_filetypes "clojure,fennel,hy,lisp,scheme")
   (nmap ">(" "<Plug>(sexp_emit_head_element)")
