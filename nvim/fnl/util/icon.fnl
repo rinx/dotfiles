@@ -247,13 +247,4 @@
                                   :name "Hy"}
                              :Makefile {:icon ""
                                         :color "#6d8086"
-                                        :name "Makefile"}
-                             :markdown {:icon ""
-                                        :color "#519aba"
-                                        :name "Markdown"}
-                             :md {:icon ""
-                                  :color "#519aba"
-                                  :name "Md"}
-                             :mdx {:icon ""
-                                   :color "#519aba"
-                                   :name "Mdx"}}}))
+                                        :name "Makefile"}}}))

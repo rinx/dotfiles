@@ -86,6 +86,7 @@
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
+  :sindrets/diffview.nvim {}
   :junegunn/fzf {}
   :junegunn/fzf.vim {:cmd [:Buffers
                            :Files
@@ -851,6 +852,14 @@
 
   (nnoremap-silent "<leader>t" ":<C-u>NvimTreeToggle<CR>")
 
+  ;; diffview.nvim
+  (when (loaded? :diffview.nvim)
+    (let [dv (require :diffview)]
+      (dv.setup {:diff_binaries false
+                 :file_panel {:width 35
+                              :use_icons true}
+                 :key_bindings {:disable_defaults false}})))
+
   ;; fzf.vim
   (nnoremap-silent ",ub"  ":<C-u>Buffers<CR>")
   (nnoremap-silent ",uf"  ":<C-u>Files<CR>")
@@ -1225,4 +1234,6 @@
                 {:sections {:lualine_a
                             [(fn []
                                (.. icontab.scope " Scopes"))]}
-                 :filetypes [:dapui_scopes]}]})))
+                 :filetypes [:dapui_scopes]}
+                {:sections {:lualine_a [filename]}
+                 :filetypes [:DiffviewFiles]}]})))
