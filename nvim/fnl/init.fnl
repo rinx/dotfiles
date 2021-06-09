@@ -271,6 +271,8 @@
                    _ "")]
       (-> (.. name fg bg others)
           (nvim.ex.highlight))))
+  (defn hi-link [from to]
+    (nvim.ex.highlight_ :link from to))
 
   (hi :Normal {:bg :none})
   (hi :LineNr {:bg :none})
@@ -279,6 +281,16 @@
   (hi :EndOfBuffer {:bg :none})
 
   (hi :Keyword {:others "cterm=italic gui=italic"})
+
+  (hi :DiffAdded {:fg :black
+                  :others "ctermbg=green guibg=#c2d94c"})
+  (hi :DiffModified {:fg :black
+                     :others "ctermbg=blue guibg=#59c2ff"})
+  (hi :DiffRemoved {:fg :black
+                    :others "ctermbg=red guibg=#f07178"})
+  (hi-link :DiffAdd :DiffAdded)
+  (hi-link :DiffChanged :DiffModified)
+  (hi-link :DiffDelete :DiffRemoved)
 
   (hi :LspDiagnosticsUnderlineError
       {:others "cterm=undercurl gui=undercurl guisp=#f07178"})
