@@ -98,6 +98,7 @@
                            :Rg]}
   :stsewd/fzf-checkout.vim {:cmd [:GBranches
                                   :GTags]}
+  :camspiers/snap {}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
   :rhysd/clever-f.vim {}
@@ -873,21 +874,103 @@
                  :key_bindings {:disable_defaults false}})))
 
   ;; fzf.vim
-  (nnoremap-silent ",ub"  ":<C-u>Buffers<CR>")
-  (nnoremap-silent ",uf"  ":<C-u>Files<CR>")
-  (nnoremap-silent ",ugf" ":<C-u>GFiles<CR>")
   (nnoremap-silent ",u/"  ":<C-u>BLines<CR>")
   (nnoremap-silent ",ur"  ":<C-u>History<CR>")
   (nnoremap-silent ",uc"  ":<C-u>History:<CR>")
   (nnoremap-silent ",us"  ":<C-u>History/<CR>")
   (nnoremap-silent ",uh"  ":<C-u>Helptags<CR>")
   (nnoremap-silent ",ut"  ":<C-u>Filetypes<CR>")
-  (nnoremap-silent ",ug"  ":<C-u>Rg<CR>")
   (nnoremap-silent ",ugb" ":<C-u>GBranches<CR>")
   (nnoremap-silent ",ugt" ":<C-u>GTags<CR>")
 
   (augroup init-fzf
            (autocmd :FileType :fzf "nnoremap <buffer><silent>q :<C-u>q<CR>"))
+
+  ;; snap
+  (when (loaded? :snap)
+    (let [action-cmds [:ConjureConnect
+                       :ConjureLogSplit
+                       :DapContinue
+                       :DapListBreakpoints
+                       :DapStepInto
+                       :DapStepOut
+                       :DapStepOver
+                       :DapSyncGoAdapter
+                       :DapSyncKotlinAdapter
+                       :DapSyncLLDBAdapter
+                       :DapToggleBreakpoint
+                       :DapUIClose
+                       :DapUIOpen
+                       :DapUIToggle
+                       :MarkdownPreview
+                       :MinimapToggle
+                       :NvimTreeToggle]
+          actions (collect [_ v (ipairs action-cmds)]
+                    (values v v))
+          snap (require :snap)
+          fzf (snap.get :consumer.fzf)
+          cache (snap.get :consumer.cache)
+          limit (snap.get :consumer.limit)
+          producer-file (snap.get :producer.ripgrep.file)
+          producer-git (snap.get :producer.git.file)
+          producer-vimgrep (snap.get :producer.ripgrep.vimgrep)
+          producer-buffer (snap.get :producer.vim.buffer)
+          select-file (snap.get :select.file)
+          select-vimgrep (snap.get :select.vimgrep)
+          preview-file (snap.get :preview.file)
+          preview-vimgrep (snap.get :preview.vimgrep)]
+      (snap.register.map
+        [:n]
+        [",uf"]
+        (fn []
+          (snap.run {:prompt :Files
+                     :producer (fzf producer-file)
+                     :select select-file.select
+                     :multiselect select-file.multiselect
+                     :views [preview-file]})))
+      (snap.register.map
+        [:n]
+        [",ugf"]
+        (fn []
+          (snap.run {:prompt :GitFiles
+                     :producer (fzf producer-git)
+                     :select select-file.select
+                     :multiselect select-file.multiselect
+                     :views [preview-file]})))
+      (snap.register.map
+        [:n]
+        [",ug"]
+        (fn []
+          (snap.run {:prompt :Grep
+                     :producer (limit 10000 producer-vimgrep)
+                     :select select-vimgrep.select
+                     :multiselect select-vimgrep.multiselect
+                     :views [preview-vimgrep]})))
+      (snap.register.map
+        [:n]
+        [",ub"]
+        (fn []
+          (snap.run {:prompt :Buffers
+                     :producer (fzf producer-buffer)
+                     :select select-file.select
+                     :multiselect select-file.multiselect
+                     :views [preview-file]})))
+      (snap.register.map
+        [:n]
+        [:<Leader>h]
+        (fn []
+          (snap.run {:prompt :Action
+                     :producer (fzf
+                                 (cache
+                                   (fn []
+                                     (vim.tbl_keys actions))))
+                     :select (fn [action]
+                               (let [action (. actions (tostring action))
+                                     f (if (core.string? action)
+                                         (fn []
+                                           (nvim.ex.silent_ action))
+                                         action)]
+                                 (vim.schedule f)))})))))
 
   ;; gitsigns
   (let [gs (require :gitsigns)]
