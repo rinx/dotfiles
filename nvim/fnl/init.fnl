@@ -81,6 +81,7 @@
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
+  :folke/todo-comments.nvim {}
   :rcarriga/nvim-dap-ui {:requires
                          [:mfussenegger/nvim-dap]}
   :cohama/lexima.vim {}
@@ -664,6 +665,30 @@
                      :Information :#c2d94c
                      :Hint :#59c2ff})))
 
+  (when (loaded? :todo-comments.nvim)
+    (let [tdc (require :todo-comments)]
+      (tdc.setup {:signs true
+                  :keywords {:FIX {:icon icontab.bug
+                                   :color :error
+                                   :alt [:FIXME :BUG :FIXIT :FIX :ISSUE]}
+                             :TODO {:icon icontab.check
+                                    :color :info}
+                             :HACK {:icon icontab.fire
+                                    :color :warning}
+                             :WARN {:icon icontab.excram-tri
+                                    :color :warning}
+                             :PERF {:icon icontab.watch
+                                    :color :default
+                                    :alt [:OPTIM :PERFORMANCE :OPTIMIZE]}
+                             :NOTE {:icon icontab.comment-alt
+                                    :color :hint
+                                    :alt [:INFO]}}
+                  :colors {:error [:LspDiagnosticsSignError ]
+                           :warning [:LspDiagnosticsSignWarning]
+                           :info [:LspDiagnosticsSignInformation]
+                           :hint [:LspDiagnosticsSignHint]
+                           :default [:#a37acc]}})))
+
   ;; dap
   (when (and (loaded? :nvim-dap)
              (loaded? :nvim-dap-ui))
@@ -919,6 +944,7 @@
                        :PackerStatus
                        :PackerSync
                        :PackerUpdate
+                       :TodoTrouble
                        :TroubleToggle
                        "TroubleToggle loclist"
                        "TroubleToggle lsp_document_diagnostics"
@@ -1353,4 +1379,4 @@
                                (.. icontab.scope " Scopes"))]}
                  :filetypes [:dapui_scopes]}
                 {:sections {:lualine_a [filename]}
-                 :filetypes [:DiffviewFiles]}]})))
+                 :filetypes [:packer :DiffviewFiles]}]})))
