@@ -40,6 +40,13 @@
   (nvim.set_keymap :x from to {:noremap true
                                :silent true}))
 
+(def colors
+  {:error :#f07178
+   :warn :#ffb454
+   :info :#c2d94c
+   :hint :#59c2ff
+   :purple :#a37acc})
+
 ;; plugins
 (defn- use [...]
   "Iterates through the arguments as pairs and calls packer's use function for
@@ -285,36 +292,45 @@
   (hi :Keyword {:others "cterm=italic gui=italic"})
 
   (hi :DiffAdded {:fg :black
-                  :others "ctermbg=green guibg=#c2d94c"})
+                  :others (.. "ctermbg=green guibg=" colors.info)})
   (hi :DiffModified {:fg :black
-                     :others "ctermbg=blue guibg=#59c2ff"})
+                     :others (.. "ctermbg=blue guibg=" colors.hint)})
   (hi :DiffRemoved {:fg :black
-                    :others "ctermbg=red guibg=#f07178"})
+                    :others (.. "ctermbg=red guibg=" colors.error)})
   (hi-link :DiffAdd :DiffAdded)
   (hi-link :DiffChanged :DiffModified)
   (hi-link :DiffDelete :DiffRemoved)
 
   (hi :LspDiagnosticsUnderlineError
-      {:others "cterm=undercurl gui=undercurl guisp=#f07178"})
+      {:others (.. "cterm=undercurl gui=undercurl guisp=" colors.error)})
   (hi :LspDiagnosticsUnderlineWarning
-      {:others "cterm=undercurl gui=undercurl guisp=#ffb454"})
+      {:others (.. "cterm=undercurl gui=undercurl guisp=" colors.warn)})
   (hi :LspDiagnosticsUnderlineInformation
-      {:others "cterm=undercurl gui=undercurl guisp=#c2d94c"})
+      {:others (.. "cterm=undercurl gui=undercurl guisp=" colors.info)})
   (hi :LspDiagnosticsUnderlineHint
-      {:others "cterm=undercurl gui=undercurl guisp=#59c2ff"})
-  (hi :LspDiagnosticsSignError {:others "ctermfg=red guifg=#f07178"})
-  (hi :LspDiagnosticsSignWarning {:others "ctermfg=yellow guifg=#ffb454"})
-  (hi :LspDiagnosticsSignInformation {:others "ctermfg=green guifg=#c2d94c"})
-  (hi :LspDiagnosticsSignHint {:others "ctermfg=blue guifg=#59c2ff"})
-  (hi :LspDiagnosticsSignLightBulb {:others "ctermfg=yellow guifg=#ffb454"})
-  (hi :LspDiagnosticsVirtualTextError {:bg :black
-                                       :others "ctermfg=red guifg=#f07178"})
-  (hi :LspDiagnosticsVirtualTextWarning {:bg :black
-                                         :others "ctermfg=yellow guifg=#ffb454"})
-  (hi :LspDiagnosticsVirtualTextInformation {:bg :black
-                                             :others "ctermfg=green guifg=#c2d94c"})
-  (hi :LspDiagnosticsVirtualTextHint {:bg :black
-                                      :others "ctermfg=blue guifg=#59c2ff"})
+      {:others (.. "cterm=undercurl gui=undercurl guisp=" colors.hint)})
+  (hi :LspDiagnosticsSignError
+      {:others (.. "ctermfg=red guifg=" colors.error)})
+  (hi :LspDiagnosticsSignWarning
+      {:others (.. "ctermfg=yellow guifg=" colors.warn)})
+  (hi :LspDiagnosticsSignInformation
+      {:others (.. "ctermfg=green guifg=" colors.info)})
+  (hi :LspDiagnosticsSignHint
+      {:others (.. "ctermfg=blue guifg=" colors.hint)})
+  (hi :LspDiagnosticsSignLightBulb
+      {:others (.. "ctermfg=yellow guifg=" colors.warn)})
+  (hi :LspDiagnosticsVirtualTextError
+      {:bg :black
+       :others (.. "ctermfg=red guifg=" colors.error)})
+(hi :LspDiagnosticsVirtualTextWarning
+      {:bg :black
+       :others (.. "ctermfg=yellow guifg=" colors.warn)})
+  (hi :LspDiagnosticsVirtualTextInformation
+      {:bg :black
+       :others (.. "ctermfg=green guifg=" colors.info)})
+(hi :LspDiagnosticsVirtualTextHint
+      {:bg :black
+       :others (.. "ctermfg=blue guifg=" colors.hint)})
 
   ;; mappings
   (set nvim.g.mapleader :\)
@@ -660,10 +676,10 @@
   ;; lsp-colors.nvim
   (when (loaded? :lsp-colors.nvim)
     (let [colors (require :lsp-colors)]
-      (colors.setup {:Error :#f07178
-                     :Warning :#ffb454
-                     :Information :#c2d94c
-                     :Hint :#59c2ff})))
+      (colors.setup {:Error colors.error
+                     :Warning colors.warn
+                     :Information colors.info
+                     :Hint colors.hint})))
 
   (when (loaded? :todo-comments.nvim)
     (let [tdc (require :todo-comments)]
@@ -683,11 +699,11 @@
                              :NOTE {:icon icontab.comment-alt
                                     :color :hint
                                     :alt [:INFO]}}
-                  :colors {:error [:LspDiagnosticsSignError ]
+                  :colors {:error [:LspDiagnosticsSignError]
                            :warning [:LspDiagnosticsSignWarning]
                            :info [:LspDiagnosticsSignInformation]
                            :hint [:LspDiagnosticsSignHint]
-                           :default [:#a37acc]}})))
+                           :default [colors.purple]}})))
 
   ;; dap
   (when (and (loaded? :nvim-dap)
@@ -821,9 +837,9 @@
       (dapui.setup {:icons
                     {:expanded icontab.fold-open
                      :collapsed icontab.fold-closed}})
-      (hi :DapBreakpoint {:others "ctermfg=red guifg=#f07178"})
-      (hi :DapLogPoint {:others "ctermfg=yellow guifg=#ffb454"})
-      (hi :DapStopped {:others "ctermfg=blue guifg=#59c2ff"})
+      (hi :DapBreakpoint {:others (.. "ctermfg=red guifg=" colors.error)})
+      (hi :DapLogPoint {:others (.. "ctermfg=yellow guifg=" colors.warn)})
+      (hi :DapStopped {:others (.. "ctermfg=blue guifg=" colors.hint)})
       (nvim.fn.sign_define :DapBreakpoint
                            {:text icontab.circle
                             :texthl :DapBreakpoint})
