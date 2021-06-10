@@ -273,7 +273,7 @@ ENV JULIA_HOME /usr/local/julia
 ENV RUSTUP_HOME /usr/local/rustup
 ENV CARGO_HOME /usr/local/cargo
 
-ENV PATH $PATH:$JAVA_HOME/bin:$GOPATH/bin:$GOROOT/bin:$JULIA_HOME/bin:$CARGO_HOME/bin:/usr/local/bin:$HOME/.config/nvim/plugged/vim-iced/bin
+ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin:$JULIA_HOME/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1
