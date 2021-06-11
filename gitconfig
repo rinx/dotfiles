@@ -88,3 +88,6 @@
 
 [init]
 	defaultBranch = main
+
+[commit]
+	template = /root/.commit_template

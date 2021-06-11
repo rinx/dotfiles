@@ -34,7 +34,8 @@ git-deploy: \
     gitconfig \
     gitconfig-local \
     gitignore \
-    gitattributes
+    gitattributes \
+    commit_template
 	@$(call red, "git-deploy")
 
 .PHONY: gitconfig
@@ -60,6 +61,12 @@ gitattributes: $(HOME)/.gitattributes_global
 $(HOME)/.gitattributes_global:
 	@$(call cyan, "--\> gitattributes_global")
 	ln -s $(DOTDIR)/gitattributes_global $(HOME)/.gitattributes_global
+
+.PHONY: commit_template
+commit_template: $(HOME)/.commit_template
+$(HOME)/.commit_template:
+	@$(call cyan, "--\> .commit_template")
+	ln -s $(DOTDIR)/.commit_template $(HOME)/.commit_template
 
 .PHONY: tmux-deploy
 tmux-deploy: \

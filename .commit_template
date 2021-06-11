@@ -1,0 +1,62 @@
+
+# === Devmojis
+#
+# feat: ✨ :sparkles: a new feature
+# fix: 🐛 :bug: a bug fix
+# docs: 📚 :books: documentation only changes
+# style: 🎨 :art: changes that do not affect the meaning of the code
+# refactor: ♻️ :recycle: a code change that neither fixes a bug nor adds a feature
+# perf: ⚡ :zap: a code change that improves performance
+# test: 🚨 :rotating_light: adding missing or correcting existing tests
+# chore: 🔧 :wrench: changes to the build process or auxiliary tools and libraries such as documentation generation
+# chore-release: 🚀 :rocket: code deployment or publishing to external repositories
+# chore-deps: 🔗 :link: add or delete dependencies
+# build: 📦 :package: changes related to build processes
+# ci: 👷 :construction_worker: updates to the continuous integration system
+# release: 🚀 :rocket: code deployment or publishing to external repositories
+# security: 🔒 :lock: Fixing security issues
+# i18n: 🌐 :globe_with_meridians: Internationalization and localization
+# breaking: 💥 :boom: Introducing breaking changes
+# config: ⚙️ :gear: Changing configuration files.
+# add: ➕ :heavy_plus_sign: add something
+# remove: ➖ :heavy_minus_sign: remove something
+#
+#
+# === Conventional Commits 1.0.0
+#
+# https://www.conventionalcommits.org/en/v1.0.0/
+# https://www.conventionalcommits.org/ja/v1.0.0/
+#
+# The commit message should be structured as follows:
+#
+# ```
+# <type>[optional scope]: <description>
+#
+# [optional body]
+#
+# [optional footer(s)]
+# ```
+#
+# The commit contains the following structural elements,
+# to communicate intent to the consumers of your library:
+#
+#     1. fix: a commit of the type fix patches a bug in your codebase
+#        (this correlates with PATCH in Semantic Versioning).
+#     2. feat: a commit of the type feat introduces a new feature to
+#        the codebase (this correlates with MINOR in Semantic Versioning).
+#     3. BREAKING CHANGE: a commit that has a footer BREAKING CHANGE:,
+#        or appends a ! after the type/scope, introduces a breaking API
+#        change (correlating with MAJOR in Semantic Versioning).
+#        A BREAKING CHANGE can be part of commits of any type.
+#     4. types other than fix: and feat: are allowed, for example
+#        @commitlint/config-conventional (based on the the Angular convention)
+#        recommends build:, chore:, ci:, docs:, style:, refactor:,
+#        perf:, test:, and others.
+#     5. footers other than BREAKING CHANGE: <description> may be provided
+#        and follow a convention similar to git trailer format.
+#
+# Additional types are not mandated by the Conventional Commits specification,
+# and have no implicit effect in Semantic Versioning (unless they include a
+# BREAKING CHANGE). A scope may be provided to a commit’s type, to provide
+# additional contextual information and is contained within parenthesis,
+# e.g., feat(parser): add ability to parse arrays.
