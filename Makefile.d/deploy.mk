@@ -35,7 +35,8 @@ git-deploy: \
     gitconfig-local \
     gitignore \
     gitattributes \
-    commit_template
+    commit_template \
+    devmojis
 	@$(call red, "git-deploy")
 
 .PHONY: gitconfig
@@ -67,6 +68,12 @@ commit_template: $(HOME)/.commit_template
 $(HOME)/.commit_template:
 	@$(call cyan, "--\> .commit_template")
 	ln -s $(DOTDIR)/.commit_template $(HOME)/.commit_template
+
+.PHONY: devmojis
+devmojis: $(HOME)/.devmojis
+$(HOME)/.devmojis:
+	@$(call cyan, "--\> devmojis")
+	ln -s $(DOTDIR)/resources/devmojis $(HOME)/.devmojis
 
 .PHONY: tmux-deploy
 tmux-deploy: \

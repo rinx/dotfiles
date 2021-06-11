@@ -371,7 +371,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     fi
 
     devmoji() {
-        target=$(cat ~/.dotfiles/resources/devmojis | fzf -m | awk '{print $1,$3}')
+        target=$(cat ~/.devmojis | fzf -m | awk '{print $1,$3}')
         if [[ "$target" != "" ]]; then
             print -z "git commit --signoff -m \"$target \""
         fi
