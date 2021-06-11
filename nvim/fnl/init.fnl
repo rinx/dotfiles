@@ -577,7 +577,8 @@
                                                  :fennel
                                                  :hy]}
                            :emoji {:kind icontab.heart
-                                   :filetypes [:markdown]}
+                                   :filetypes [:gitcommit
+                                               :markdown]}
                            :nvim_lsp {:kind icontab.cube}
                            :nvim_lua {:kind icontab.vim
                                       :filetypes [:lua]}
