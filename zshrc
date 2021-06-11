@@ -370,28 +370,10 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         }
     fi
 
-    fgitmoji-cache() {
-        curl -o ~/.gitmojis.json --silent 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json'
-    }
-
-    fgitmoji() {
-        if [ ! -f ~/.gitmojis.json ]; then
-            fgitmoji-cache
-        fi
-        target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
+    devmoji() {
+        target=$(cat ~/.dotfiles/resources/devmojis | fzf -m | awk '{print $1,$3}')
         if [[ "$target" != "" ]]; then
             print -z "git commit --signoff -m \"$target \""
-        fi
-    }
-
-    fgitmoji-prefix() {
-        if [ ! -f ~/.gitmojis.json ]; then
-            fgitmoji-cache
-        fi
-        semver=$(echo "[ci skip]\n[patch]\n[minor]\n[major]" | fzf -m)
-        target=$(cat ~/.gitmojis.json | jq -r '.gitmojis[] | "\(.emoji) \(.code) \(.description)"' | fzf -m | awk '{print $2}')
-        if [[ "$target" != "" ]]; then
-            print -z "git commit --signoff -m \"$semver $target \""
         fi
     }
 fi

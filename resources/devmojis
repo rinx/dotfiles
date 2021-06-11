@@ -1,0 +1,19 @@
+feat: ✨ :sparkles: a new feature
+fix: 🐛 :bug: a bug fix
+docs: 📚 :books: documentation only changes
+style: 🎨 :art: changes that do not affect the meaning of the code
+refactor: ♻️ :recycle: a code change that neither fixes a bug nor adds a feature
+perf: ⚡ :zap: a code change that improves performance
+test: 🚨 :rotating_light: adding missing or correcting existing tests
+chore: 🔧 :wrench: changes to the build process or auxiliary tools and libraries such as documentation generation
+chore-release: 🚀 :rocket: code deployment or publishing to external repositories
+chore-deps: 🔗 :link: add or delete dependencies
+build: 📦 :package: changes related to build processes
+ci: 👷 :construction_worker: updates to the continuous integration system
+release: 🚀 :rocket: code deployment or publishing to external repositories
+security: 🔒 :lock: Fixing security issues
+i18n: 🌐 :globe_with_meridians: Internationalization and localization
+breaking: 💥 :boom: Introducing breaking changes
+config: ⚙️ :gear: Changing configuration files.
+add: ➕ :heavy_plus_sign: add something
+remove: ➖ :heavy_minus_sign: remove something
