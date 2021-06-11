@@ -89,6 +89,7 @@
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
   :folke/todo-comments.nvim {}
+  :simrat39/symbols-outline.nvim {}
   :rcarriga/nvim-dap-ui {:requires
                          [:mfussenegger/nvim-dap]}
   :cohama/lexima.vim {}
@@ -706,6 +707,20 @@
                            :hint [:LspDiagnosticsSignHint]
                            :default [colors.purple]}})))
 
+  ;; symbols-outline
+  (when (loaded? :symbols-outline.nvim)
+    (set nvim.g.symbols_outline {:highlight_hovered_item true
+                                 :show_guides true
+                                 :auto_preview true
+                                 :position :right
+                                 :keymaps {:close :<Esc>
+                                           :goto_location :<CR>
+                                           :focus_location :o
+                                           :hover_symbol :<Space>
+                                           :rename_symbol :r
+                                           :code_actions :a}
+                                 :lsp_blacklist {}}))
+
   ;; dap
   (when (and (loaded? :nvim-dap)
              (loaded? :nvim-dap-ui))
@@ -961,6 +976,7 @@
                        :PackerStatus
                        :PackerSync
                        :PackerUpdate
+                       :SymbolsOutline
                        :TodoTrouble
                        :TroubleToggle
                        "TroubleToggle loclist"
@@ -1396,4 +1412,4 @@
                                (.. icontab.scope " Scopes"))]}
                  :filetypes [:dapui_scopes]}
                 {:sections {:lualine_a [filename]}
-                 :filetypes [:packer :DiffviewFiles]}]})))
+                 :filetypes [:packer :DiffviewFiles :Outline]}]})))
