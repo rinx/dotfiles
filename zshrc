@@ -332,7 +332,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         bindkey '^K' fzf-select-file
     fi
 
-    fgbr() {
+    gbr() {
         branch=$(git branch --sort=-committerdate --all | fzf +m | tr -d '[:space:]')
         if [[ "$branch" != "" ]]; then
             git checkout $branch
@@ -340,32 +340,17 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     }
 
     if builtin command -v ghq > /dev/null 2>&1 ; then
-        fghq() {
+        ghq-list() {
+            local groot
+            groot=$(ghq root)
+            fd --exact-depth 3 -t d . $groot | sed -e "s#$groot/##g"
+        }
+
+        gq() {
             local dir
-            dir=$(ghq list --vcs git | fzf +m)
+            dir=$(ghq-list | fzf +m)
             if [[ "$dir" != "" ]]; then
                 cd "`ghq root`/$dir"
-            fi
-        }
-    fi
-
-    if [ ! -z $TMUX ] ; then
-        ftp() {
-            local panes current_window current_pane target target_window target_pane
-            panes=$(tmux list-panes -s -F '#I:#P - #{window_name} #{pane_current_path} #{pane_current_command}')
-            current_pane=$(tmux display-message -p '#I:#P')
-            current_window=$(tmux display-message -p '#I')
-
-            target=$(echo "$panes" | grep -v "$current_pane" | fzf +m --reverse) || return
-
-            target_window=$(echo $target | awk 'BEGIN{FS=":|-"} {print$1}')
-            target_pane=$(echo $target | awk 'BEGIN{FS=":|-"} {print$2}' | cut -c 1)
-
-            if [[ $current_window -eq $target_window ]]; then
-                tmux select-pane -t ${target_window}.${target_pane}
-            else
-                tmux select-pane -t ${target_window}.${target_pane} &&
-                    tmux select-window -t $target_window
             fi
         }
     fi
@@ -386,17 +371,6 @@ fi
 
 # git aliases
 alias gst='git status -s -b'
-
-gbr () {
-    if [ $# -eq 0 ]; then
-        git branch
-    elif [ $# -eq 1 ]; then
-        git checkout `git branch | sed "s/\*//g" | sed "s/^\ *//g" | awk "NR==$1"`
-    else
-        echo "invalid arguments"
-    fi
-}
-
 alias gtl='git l'
 
 # extract
