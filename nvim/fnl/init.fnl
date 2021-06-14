@@ -96,17 +96,6 @@
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
   :sindrets/diffview.nvim {}
-  :junegunn/fzf {}
-  :junegunn/fzf.vim {:cmd [:Buffers
-                           :Files
-                           :GFiles
-                           :BLines
-                           :History
-                           :Helptags
-                           :Filetypes
-                           :Rg]}
-  :stsewd/fzf-checkout.vim {:cmd [:GBranches
-                                  :GTags]}
   :camspiers/snap {}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
@@ -930,19 +919,6 @@
                               :use_icons true}
                  :key_bindings {:disable_defaults false}})))
 
-  ;; fzf.vim
-  (nnoremap-silent ",u/"  ":<C-u>BLines<CR>")
-  (nnoremap-silent ",ur"  ":<C-u>History<CR>")
-  (nnoremap-silent ",uc"  ":<C-u>History:<CR>")
-  (nnoremap-silent ",us"  ":<C-u>History/<CR>")
-  (nnoremap-silent ",uh"  ":<C-u>Helptags<CR>")
-  (nnoremap-silent ",ut"  ":<C-u>Filetypes<CR>")
-  (nnoremap-silent ",ugb" ":<C-u>GBranches<CR>")
-  (nnoremap-silent ",ugt" ":<C-u>GTags<CR>")
-
-  (augroup init-fzf
-           (autocmd :FileType :fzf "nnoremap <buffer><silent>q :<C-u>q<CR>"))
-
   ;; snap
   (when (loaded? :snap)
     (let [action-cmds [:ConjureConnect
@@ -1034,6 +1010,43 @@
                      :select select-file.select
                      :multiselect select-file.multiselect
                      :views [preview-file]})))
+      (snap.register.map
+        [:n]
+        [",ut"]
+        (fn []
+          (snap.run {:prompt :Filetypes
+                     :producer (fzf
+                                 (cache
+                                   (fn []
+                                     (snap.sync
+                                       (fn []
+                                         (-> nvim.o.rtp
+                                             (nvim.fn.globpath :syntax/*.vim)
+                                             (nvim.fn.split "\n")
+                                             (nvim.fn.map
+                                               "fnamemodify(v:val, \":t:r\")")
+                                             (nvim.fn.sort)))))))
+                     :select (fn [ft]
+                               (let [ft (tostring ft)]
+                                 (when (= (nvim.fn.empty ft) 0)
+                                   (nvim.ex.setf ft))))})))
+      (snap.register.map
+        [:n]
+        [",uc"]
+        (fn []
+          (snap.run {:prompt :History
+                     :producer (fzf
+                                 (fn []
+                                   (snap.sync
+                                     (fn []
+                                       (-> (nvim.fn.range 1 1000)
+                                           (nvim.fn.map
+                                             "histget(\":\", - v:val)")
+                                           (nvim.fn.filter
+                                             "!empty(v:val)"))))))
+                     :select (fn [cmd]
+                               (let [cmd (tostring cmd)]
+                                 (nvim.ex.silent_ cmd)))})))
       (snap.register.map
         [:n]
         [:<Leader>h]
