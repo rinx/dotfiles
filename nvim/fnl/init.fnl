@@ -75,7 +75,7 @@
   :romgrk/doom-one.vim {}
   :kyazdani42/nvim-web-devicons {}
   :hoob3rt/lualine.nvim {}
-  :romgrk/barbar.nvim {}
+  :akinsho/nvim-bufferline.lua {}
   :tyru/eskk.vim {:event [:InsertEnter]}
   :neovim/nvim-lspconfig {}
   :hrsh7th/vim-vsnip {}
@@ -1264,20 +1264,191 @@
        :indent {:enable true
                 :disable []}}))
 
-  ;; barbar.nvim
-  (nnoremap-silent ",bc" ":tabe<CR>")
-  (nnoremap-silent ",bd" ":BufferClose<CR>")
-  (nnoremap-silent ",bb" ":BufferPick<CR>")
-  (nnoremap-silent ",bo" ":BufferOrderByDirectory<CR>")
-  (nnoremap-silent ",bl" ":BufferOrderByLanguage<CR>")
-  (nnoremap-silent ",bn" ":BufferNext<CR>")
-  (nnoremap-silent ",bp" ":BufferPrevious<CR>")
-  (nnoremap-silent ",bN" ":BufferMoveNext<CR>")
-  (nnoremap-silent ",bP" ":BufferMovePrevious<CR>")
-  (nnoremap-silent "gt"  ":BufferNext<CR>")
-  (nnoremap-silent "gT"  ":BufferPrevious<CR>")
-
-  (set nvim.g.bufferline {:maximum_padding 6})
+  ;; nvim-bufferline.lua
+  (when (loaded? :nvim-bufferline.lua)
+    (let [bl (require :bufferline)]
+      (bl.setup {:highlights {
+                              :fill
+                              {:guibg :none}
+                              :background
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :tab
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :tab_selected
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :tab_close
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :buffer_selected
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :buffer_visible
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :close_button
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :close_button_visible
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :close_button_selected
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :diagnostic
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :diagnostic_visible
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :diagnostic_selected
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :info
+                              {:guifg colors.info
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :info_visible
+                              {:guifg colors.info
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :info_selected
+                              {:guifg colors.info
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}
+                               :gui :bolditalic}
+                              :info_diagnostic
+                              {:guifg colors.info
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :info_diagnostic_visible
+                              {:guifg colors.info
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :info_diagnostic_selected
+                              {:guifg colors.info
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}
+                               :gui :bolditalic}
+                              :warning
+                              {:guifg colors.warn
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :warning_visible
+                              {:guifg colors.warn
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :warning_selected
+                              {:guifg colors.warn
+                               :gui :bolditalic
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :warning_diagnostic
+                              {:guifg colors.warn
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :warning_diagnostic_visible
+                              {:guifg colors.warn
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :warning_diagnostic_selected
+                              {:guifg colors.warn
+                               :gui :bolditalic
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :error
+                              {:guifg colors.error
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :error_visible
+                              {:guifg colors.error
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :error_selected
+                              {:guifg colors.error
+                               :gui :bolditalic
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :error_diagnostic
+                              {:guifg colors.error
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :error_diagnostic_visible
+                              {:guifg colors.error
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :error_diagnostic_selected
+                              {:guifg colors.error
+                               :gui :bolditalic
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :duplicate
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :duplicate_selected
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :duplicate_visible
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :modified
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :modified_selected
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :modified_visible
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :separator
+                              {:guifg {:attribute :bg
+                                       :highlight :Pmenu}
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :separator_selected
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :separator_visible
+                              {:guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :indicator_selected
+                              {:guifg colors.hint
+                               :guibg {:attribute :bg
+                                       :highlight :Pmenu}}
+                              :pick
+                              {:guifg colors.warn}
+                              :pick_selected
+                              {:guifg colors.error}
+                              :pick_visible
+                              {:guifg colors.error}}
+                 :options {:numbers :none
+                           :mappings false
+                           :max_name_length 18
+                           :max_prefix_length 15
+                           :tab_size 18
+                           :diagnostics :nvim_lsp
+                           :diagnostics_indicator
+                           (fn [count level dict ctx]
+                             (if (ctx.buffer:current)
+                               ""
+                               (.. " " icontab.exclam-circle count)))
+                           :show_tab_indicators false
+                           :separator_style :thin
+                           :always_show_bufferline true
+                           :sort_by :extension}}))
+    (nnoremap-silent ",bc" ":tabe<CR>")
+    (nnoremap-silent ",bd" ":bd<CR>")
+    (nnoremap-silent ",bb" ":BufferLinePick<CR>")
+    (nnoremap-silent ",bo" ":BufferLineSortByDirectory<CR>")
+    (nnoremap-silent ",be" ":BufferLineSortByExtension<CR>")
+    (nnoremap-silent ",bn" ":BufferLineCycleNext<CR>")
+    (nnoremap-silent ",bp" ":BufferLineCyclePrev<CR>")
+    (nnoremap-silent ",bN" ":BufferLineMoveNext<CR>")
+    (nnoremap-silent ",bP" ":BufferLineMovePrev<CR>")
+    (nnoremap-silent :gt  ":BufferLineCycleNext<CR>")
+    (nnoremap-silent :gT  ":BufferLineCyclePrev<CR>"))
 
   ;; lualine
   (let [ll (require :lualine)
