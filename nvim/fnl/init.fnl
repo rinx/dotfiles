@@ -1081,6 +1081,19 @@
                                  (nvim.ex.silent_ cmd)))})))
       (snap.register.map
         [:n]
+        [:<Leader><Leader>]
+        (fn []
+          (snap.run {:prompt :Command
+                     :producer (fzf
+                                 (fn []
+                                   (snap.sync
+                                     (fn []
+                                       (nvim.fn.getcompletion "" :command)))))
+                     :select (fn [cmd]
+                               (let [cmd (tostring cmd)]
+                                 (nvim.ex.silent_ cmd)))})))
+      (snap.register.map
+        [:n]
         [:<Leader>h]
         (fn []
           (snap.run {:prompt :Action
