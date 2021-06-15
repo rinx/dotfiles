@@ -1303,115 +1303,114 @@
   ;; nvim-bufferline.lua
   (when (loaded? :nvim-bufferline.lua)
     (let [bl (require :bufferline)]
-      (bl.setup {:highlights {
-                              :fill
-                              {:guibg :none}
+      (bl.setup {:highlights {:fill
+                              {:guibg colors.color2}
                               :background
-                              {:guibg colors.color2}
-                              :tab
-                              {:guibg colors.color2}
-                              :tab_selected
                               {:guibg colors.color5}
+                              :tab
+                              {:guibg colors.color5}
+                              :tab_selected
+                              {:guibg colors.color9}
                               :tab_close
                               {:guibg colors.color2}
                               :buffer_selected
-                              {:guibg colors.color5}
+                              {:guibg colors.color9}
                               :buffer_visible
-                              {:guibg colors.color2}
+                              {:guibg colors.color5}
                               :close_button
-                              {:guibg colors.color2}
+                              {:guibg colors.color5}
                               :close_button_visible
-                              {:guibg colors.color2}
+                              {:guibg colors.color5}
                               :close_button_selected
-                              {:guibg colors.color5}
+                              {:guibg colors.color9}
                               :diagnostic
-                              {:guibg colors.color2}
-                              :diagnostic_visible
-                              {:guibg colors.color2}
-                              :diagnostic_selected
                               {:guibg colors.color5}
+                              :diagnostic_visible
+                              {:guibg colors.color5}
+                              :diagnostic_selected
+                              {:guibg colors.color9}
                               :info
                               {:guifg colors.info
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :info_visible
                               {:guifg colors.info
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :info_selected
                               {:guifg colors.info
-                               :guibg colors.color5
+                               :guibg colors.color9
                                :gui :bolditalic}
                               :info_diagnostic
                               {:guifg colors.info
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :info_diagnostic_visible
                               {:guifg colors.info
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :info_diagnostic_selected
                               {:guifg colors.info
-                               :guibg colors.color5
+                               :guibg colors.color9
                                :gui :bolditalic}
                               :warning
                               {:guifg colors.warn
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :warning_visible
                               {:guifg colors.warn
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :warning_selected
                               {:guifg colors.warn
                                :gui :bolditalic
-                               :guibg colors.color5}
+                               :guibg colors.color9}
                               :warning_diagnostic
                               {:guifg colors.warn
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :warning_diagnostic_visible
                               {:guifg colors.warn
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :warning_diagnostic_selected
                               {:guifg colors.warn
                                :gui :bolditalic
-                               :guibg colors.color5}
+                               :guibg colors.color9}
                               :error
                               {:guifg colors.error
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :error_visible
                               {:guifg colors.error
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :error_selected
                               {:guifg colors.error
                                :gui :bolditalic
-                               :guibg colors.color5}
+                               :guibg colors.color9}
                               :error_diagnostic
                               {:guifg colors.error
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :error_diagnostic_visible
                               {:guifg colors.error
-                               :guibg colors.color2}
+                               :guibg colors.color5}
                               :error_diagnostic_selected
                               {:guifg colors.error
                                :gui :bolditalic
-                               :guibg colors.color5}
+                               :guibg colors.color9}
                               :duplicate
-                              {:guibg colors.color2}
+                              {:guibg colors.color5}
                               :duplicate_selected
-                              {:guibg colors.color5}
+                              {:guibg colors.color9}
                               :duplicate_visible
-                              {:guibg colors.color2}
+                              {:guibg colors.color5}
                               :modified
-                              {:guibg colors.color2}
+                              {:guibg colors.color5}
                               :modified_selected
-                              {:guibg colors.color5}
+                              {:guibg colors.color9}
                               :modified_visible
-                              {:guibg colors.color2}
-                              :separator
-                              {:guifg colors.color2
-                               :guibg colors.color2}
-                              :separator_selected
                               {:guibg colors.color5}
+                              :separator
+                              {:guifg colors.color5
+                               :guibg colors.color5}
+                              :separator_selected
+                              {:guibg colors.color9}
                               :separator_visible
-                              {:guibg colors.color2}
+                              {:guibg colors.color5}
                               :indicator_selected
                               {:guifg colors.hint
-                               :guibg colors.color5}
+                               :guibg colors.color9}
                               :pick
                               {:guifg colors.warn}
                               :pick_selected
