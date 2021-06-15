@@ -1087,7 +1087,8 @@
                                              "!empty(v:val)"))))))
                      :select (fn [cmd]
                                (let [cmd (tostring cmd)]
-                                 (nvim.ex.silent_ cmd)))})))
+                                 (when (= (nvim.fn.empty cmd) 0)
+                                   (nvim.ex.silent_ cmd))))})))
       (snap.register.map
         [:n]
         [:<Leader><Leader>]
@@ -1100,7 +1101,8 @@
                                        (nvim.fn.getcompletion "" :command)))))
                      :select (fn [cmd]
                                (let [cmd (tostring cmd)]
-                                 (nvim.ex.silent_ cmd)))})))
+                                 (when (= (nvim.fn.empty cmd) 0)
+                                   (nvim.ex.silent_ cmd))))})))
       (snap.register.map
         [:n]
         [:<Leader>h]
