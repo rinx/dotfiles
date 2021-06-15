@@ -320,12 +320,31 @@
       {:others (.. "ctermfg=yellow guifg=" colors.warn)})
   (hi :LspDiagnosticsVirtualTextError
       {:others (.. "ctermfg=red guifg=" colors.error " guibg=" colors.color5)})
-(hi :LspDiagnosticsVirtualTextWarning
+  (hi :LspDiagnosticsVirtualTextWarning
       {:others (.. "ctermfg=yellow guifg=" colors.warn " guibg=" colors.color5)})
   (hi :LspDiagnosticsVirtualTextInformation
       {:others (.. "ctermfg=green guifg=" colors.info " guibg=" colors.color5)})
-(hi :LspDiagnosticsVirtualTextHint
+  (hi :LspDiagnosticsVirtualTextHint
       {:others (.. "ctermfg=blue guifg=" colors.hint " guibg=" colors.color5)})
+  (hi :LspDiagnosticsDefaultError
+      {:others (.. "ctermfg=red guifg=" colors.color8 " guibg=" colors.color5)})
+  (hi :LspDiagnosticsFloatingError
+      {:others (.. "ctermfg=red guifg=" colors.color8 " guibg=" colors.color5)})
+  (hi :LspDiagnosticsDefaultWarning
+      {:others (.. "ctermfg=yellow guifg=" colors.warn " guibg=" colors.color5)})
+  (hi :LspDiagnosticsFloatingWarning
+      {:others (.. "ctermfg=yellow guifg=" colors.warn " guibg=" colors.color5)})
+  (hi :LspDiagnosticsDefaultHint
+      {:others (.. "ctermfg=blue guifg=" colors.color10 " guibg=" colors.color5)})
+  (hi :LspDiagnosticsFloatingHint
+      {:others (.. "ctermfg=blue guifg=" colors.color10 " guibg=" colors.color5)})
+  (hi :LspDiagnosticsDefaultInformation
+      {:others (.. "ctermfg=green guifg=" colors.color13 " guibg=" colors.color5)})
+  (hi :LspDiagnosticsFloatingInformation
+      {:others (.. "ctermfg=green guifg=" colors.color13 " guibg=" colors.color5)})
+  (hi :LspCodeLens
+      {:others (.. "gui=bold,italic,underline guifg=" colors.color2
+                   " guibg=" colors.color10)})
 
   ;; mappings
   (set nvim.g.mapleader :\)
@@ -405,6 +424,7 @@
   (nnoremap-silent "<Leader>r" ":setl relativenumber!<CR>")
   (nnoremap-silent "<Leader>s" ":setl spell!<CR>")
 
+  (nnoremap :MM :zz)
   (nnoremap :ZZ :<Nop>)
   (nnoremap :ZQ :<Nop>)
   (nnoremap :Q :<Nop>)
@@ -591,8 +611,14 @@
   (nnoremap-silent :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>")
   (nnoremap-silent :gr ":<C-u>lua vim.lsp.buf.references()<CR>")
 
-  (nnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.formatting()<CR>")
-  (xnoremap-silent "<leader>f" ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
+  (nnoremap-silent :<leader>f ":<C-u>lua vim.lsp.buf.formatting()<CR>")
+  (xnoremap-silent :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
+
+  (nnoremap-silent :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>")
+  (augroup init-lsp-codelens
+           (autocmd "CursorHold,CursorHoldI"
+                    "*"
+                    "lua vim.lsp.codelens.refresh()"))
 
   ;; lspsaga
   (if (loaded? :lspsaga.nvim)
