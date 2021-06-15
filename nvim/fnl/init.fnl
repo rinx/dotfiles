@@ -1017,6 +1017,15 @@
                      :views [preview-file]})))
       (snap.register.map
         [:n]
+        [",uaf"]
+        (fn []
+          (snap.run {:prompt :AllFiles
+                     :producer (fzf producer-file.hidden)
+                     :select select-file.select
+                     :multiselect select-file.multiselect
+                     :views [preview-file]})))
+      (snap.register.map
+        [:n]
         [",ugf"]
         (fn []
           (snap.run {:prompt :GitFiles
