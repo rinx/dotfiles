@@ -45,7 +45,16 @@
    :warn :#ffb454
    :info :#c2d94c
    :hint :#59c2ff
-   :purple :#a37acc})
+   :purple :#a37acc
+
+   :color2 :#0f1419
+   :color3 :#ffee99
+   :color4 :#e6e1cf
+   :color5 :#14191f
+   :color13 :#b8cc52
+   :color10 :#36a3d9
+   :color8 :#f07178
+   :color9 :#3e4b59})
 
 ;; plugins
 (defn- use [...]
@@ -99,7 +108,7 @@
   :camspiers/snap {}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
-  :rhysd/clever-f.vim {}
+  :ggandor/lightspeed.nvim {}
   :kana/vim-submode {}
   :kana/vim-arpeggio {}
   :tyru/caw.vim {}
@@ -310,17 +319,13 @@
   (hi :LspDiagnosticsSignLightBulb
       {:others (.. "ctermfg=yellow guifg=" colors.warn)})
   (hi :LspDiagnosticsVirtualTextError
-      {:bg :black
-       :others (.. "ctermfg=red guifg=" colors.error)})
+      {:others (.. "ctermfg=red guifg=" colors.error " guibg=" colors.color5)})
 (hi :LspDiagnosticsVirtualTextWarning
-      {:bg :black
-       :others (.. "ctermfg=yellow guifg=" colors.warn)})
+      {:others (.. "ctermfg=yellow guifg=" colors.warn " guibg=" colors.color5)})
   (hi :LspDiagnosticsVirtualTextInformation
-      {:bg :black
-       :others (.. "ctermfg=green guifg=" colors.info)})
+      {:others (.. "ctermfg=green guifg=" colors.info " guibg=" colors.color5)})
 (hi :LspDiagnosticsVirtualTextHint
-      {:bg :black
-       :others (.. "ctermfg=blue guifg=" colors.hint)})
+      {:others (.. "ctermfg=blue guifg=" colors.hint " guibg=" colors.color5)})
 
   ;; mappings
   (set nvim.g.mapleader :\)
@@ -376,7 +381,8 @@
   (nvim.set_keymap :t "<ESC>" "<C-\\><C-n>" {:noremap true
                                              :silent true})
 
-  (nnoremap "s" "<Nop>")
+  (nnoremap :s :<Nop>)
+  (nnoremap :S :<Nop>)
   (nnoremap-silent "sj" "<C-w>j")
   (nnoremap-silent "sk" "<C-w>k")
   (nnoremap-silent "sl" "<C-w>l")
@@ -399,9 +405,9 @@
   (nnoremap-silent "<Leader>r" ":setl relativenumber!<CR>")
   (nnoremap-silent "<Leader>s" ":setl spell!<CR>")
 
-  (nnoremap "ZZ" "<Nop>")
-  (nnoremap "ZQ" "<Nop>")
-  (nnoremap "Q" "<Nop>")
+  (nnoremap :ZZ :<Nop>)
+  (nnoremap :ZQ :<Nop>)
+  (nnoremap :Q :<Nop>)
 
   ;; grep
   (if (= (nvim.fn.executable "rg") 1)
@@ -1101,27 +1107,18 @@
     (let [colorizer (require :colorizer)]
       (colorizer.setup)))
 
-  ;; clever-f
-  (set nvim.g.clever_f_not_overwrites_standard_mappings 1)
-  (set nvim.g.clever_f_across_no_line 0)
-  (set nvim.g.clever_f_ignore_case 0)
-  (set nvim.g.clever_f_smart_case 0)
-  (set nvim.g.clever_f_use_migemo 0)
-  (set nvim.g.clever_f_fix_key_direction 0)
-  (set nvim.g.clever_f_show_prompt 0)
-  (set nvim.g.clever_f_chars_match_any_signs "")
-  (set nvim.g.clever_f_mark_cursor 1)
-  (set nvim.g.clever_f_mark_cursor_color "Cursor")
-  (set nvim.g.clever_f_hide_cursor_on_cmdline 1)
-  (set nvim.g.clever_f_timeout_ms 0)
-  (set nvim.g.clever_f_mark_char 1)
-  (set nvim.g.clever_f_mark_char_color "CleverFDefaultLabel")
-  (set nvim.g.clever_f_repeat_last_char_inputs ["\r"])
-  (nmap "f" "<Plug>(clever-f-f)")
-  (nmap "F" "<Plug>(clever-f-F)")
-  (nmap "t" "<Plug>(clever-f-t)")
-  (nmap "T" "<Plug>(clever-f-T)")
-  (nmap "<Space>" "<Plug>(clever-f-reset)")
+  ;; lightspeed.nvim
+  (when (loaded? :lightspeed.nvim)
+    (let [lightspeed (require :lightspeed)]
+      (lightspeed.setup {:jump_to_first_match true
+                         :jump_on_partial_input_safety_timeout 400
+                         :highlight_unique_chars false
+                         :grey_out_search_area true
+                         :match_only_the_start_of_same_char_seqs true
+                         :limit_ft_matches 5
+                         :full_inclusive_prefix_key :<C-x>}))
+    (nmap :z :<Plug>Lightspeed_s)
+    (nmap :Z :<Plug>Lightspeed_S))
 
   ;; submode
   (nvim.ex.silent_ "call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')")
@@ -1284,152 +1281,111 @@
                               :fill
                               {:guibg :none}
                               :background
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :tab
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :tab_selected
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color5}
                               :tab_close
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :buffer_selected
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color5}
                               :buffer_visible
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :close_button
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :close_button_visible
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :close_button_selected
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color5}
                               :diagnostic
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :diagnostic_visible
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :diagnostic_selected
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color5}
                               :info
                               {:guifg colors.info
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :info_visible
                               {:guifg colors.info
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :info_selected
                               {:guifg colors.info
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}
+                               :guibg colors.color5
                                :gui :bolditalic}
                               :info_diagnostic
                               {:guifg colors.info
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :info_diagnostic_visible
                               {:guifg colors.info
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :info_diagnostic_selected
                               {:guifg colors.info
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}
+                               :guibg colors.color5
                                :gui :bolditalic}
                               :warning
                               {:guifg colors.warn
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :warning_visible
                               {:guifg colors.warn
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :warning_selected
                               {:guifg colors.warn
                                :gui :bolditalic
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color5}
                               :warning_diagnostic
                               {:guifg colors.warn
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :warning_diagnostic_visible
                               {:guifg colors.warn
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :warning_diagnostic_selected
                               {:guifg colors.warn
                                :gui :bolditalic
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color5}
                               :error
                               {:guifg colors.error
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :error_visible
                               {:guifg colors.error
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :error_selected
                               {:guifg colors.error
                                :gui :bolditalic
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color5}
                               :error_diagnostic
                               {:guifg colors.error
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :error_diagnostic_visible
                               {:guifg colors.error
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color2}
                               :error_diagnostic_selected
                               {:guifg colors.error
                                :gui :bolditalic
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color5}
                               :duplicate
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :duplicate_selected
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color5}
                               :duplicate_visible
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :modified
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :modified_selected
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color5}
                               :modified_visible
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :separator
-                              {:guifg {:attribute :bg
-                                       :highlight :Pmenu}
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guifg colors.color2
+                               :guibg colors.color2}
                               :separator_selected
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color5}
                               :separator_visible
-                              {:guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                              {:guibg colors.color2}
                               :indicator_selected
                               {:guifg colors.hint
-                               :guibg {:attribute :bg
-                                       :highlight :Pmenu}}
+                               :guibg colors.color5}
                               :pick
                               {:guifg colors.warn}
                               :pick_selected
