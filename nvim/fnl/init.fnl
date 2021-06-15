@@ -920,7 +920,7 @@
       (let [lightbulb (require :nvim-lightbulb)]
         (lightbulb.update_lightbulb)))
     (augroup init-lightbulb
-             (autocmd "CursorHold,CursorHoldI" "*" (->viml lightbulb-update)))
+             (autocmd "CursorHold,CursorHoldI" "*" (->viml :lightbulb-update)))
     (nvim.fn.sign_define :LightBulbSign
                          {:text icontab.lightbulb
                           :texthl :LspDiagnosticsSignLightBulb}))
@@ -1006,119 +1006,120 @@
           select-vimgrep (snap.get :select.vimgrep)
           preview-file (snap.get :preview.file)
           preview-vimgrep (snap.get :preview.vimgrep)]
-      (snap.register.map
-        [:n]
-        [",uf"]
-        (fn []
-          (snap.run {:prompt :Files
-                     :producer (fzf producer-file)
-                     :select select-file.select
-                     :multiselect select-file.multiselect
-                     :views [preview-file]})))
-      (snap.register.map
-        [:n]
-        [",uaf"]
-        (fn []
-          (snap.run {:prompt :AllFiles
-                     :producer (fzf producer-file.hidden)
-                     :select select-file.select
-                     :multiselect select-file.multiselect
-                     :views [preview-file]})))
-      (snap.register.map
-        [:n]
-        [",ugf"]
-        (fn []
-          (snap.run {:prompt :GitFiles
-                     :producer (fzf producer-git)
-                     :select select-file.select
-                     :multiselect select-file.multiselect
-                     :views [preview-file]})))
-      (snap.register.map
-        [:n]
-        [",ug"]
-        (fn []
-          (snap.run {:prompt :Grep
-                     :producer (limit 10000 producer-vimgrep)
-                     :select select-vimgrep.select
-                     :multiselect select-vimgrep.multiselect
-                     :views [preview-vimgrep]})))
-      (snap.register.map
-        [:n]
-        [",ub"]
-        (fn []
-          (snap.run {:prompt :Buffers
-                     :producer (fzf producer-buffer)
-                     :select select-file.select
-                     :multiselect select-file.multiselect
-                     :views [preview-file]})))
-      (snap.register.map
-        [:n]
-        [",ut"]
-        (fn []
-          (snap.run {:prompt :Filetypes
-                     :producer (fzf
-                                 (cache
-                                   (fn []
-                                     (snap.sync
-                                       (fn []
-                                         (-> nvim.o.rtp
-                                             (nvim.fn.globpath :syntax/*.vim)
-                                             (nvim.fn.split "\n")
-                                             (nvim.fn.map
-                                               "fnamemodify(v:val, \":t:r\")")
-                                             (nvim.fn.sort)))))))
-                     :select (fn [ft]
-                               (let [ft (tostring ft)]
-                                 (when (= (nvim.fn.empty ft) 0)
-                                   (nvim.ex.setf ft))))})))
-      (snap.register.map
-        [:n]
-        [",uc"]
-        (fn []
-          (snap.run {:prompt :History
-                     :producer (fzf
+      (defn snap-files []
+        (snap.run
+          {:prompt :Files
+           :producer (fzf producer-file)
+           :select select-file.select
+           :multiselect select-file.multiselect
+           :views [preview-file]}))
+      (nvim.ex.command_ :SnapFiles (->viml :snap-files))
+      (defn snap-all-files []
+        (snap.run
+          {:prompt :AllFiles
+           :producer (fzf producer-file.hidden)
+           :select select-file.select
+           :multiselect select-file.multiselect
+           :views [preview-file]}))
+      (nvim.ex.command_ :SnapAllFiles (->viml :snap-all-files))
+      (defn snap-git-files []
+        (snap.run
+          {:prompt :GitFiles
+           :producer (fzf producer-git)
+           :select select-file.select
+           :multiselect select-file.multiselect
+           :views [preview-file]}))
+      (nvim.ex.command_ :SnapGitFiles (->viml :snap-git-files))
+      (defn snap-grep []
+        (snap.run
+          {:prompt :Grep
+           :producer (limit 10000 producer-vimgrep)
+           :select select-vimgrep.select
+           :multiselect select-vimgrep.multiselect
+           :views [preview-vimgrep]}))
+      (nvim.ex.command_ :SnapGrep (->viml :snap-grep))
+      (defn snap-buffers []
+          (snap.run
+            {:prompt :Buffers
+             :producer (fzf producer-buffer)
+             :select select-file.select
+             :multiselect select-file.multiselect
+             :views [preview-file]}))
+      (nvim.ex.command_ :SnapBuffers (->viml :snap-buffers))
+      (defn snap-filetypes []
+        (snap.run
+          {:prompt :Filetypes
+           :producer (fzf
+                       (cache
+                         (fn []
+                           (snap.sync
+                             (fn []
+                               (-> nvim.o.rtp
+                                   (nvim.fn.globpath :syntax/*.vim)
+                                   (nvim.fn.split "\n")
+                                   (nvim.fn.map
+                                     "fnamemodify(v:val, \":t:r\")")
+                                   (nvim.fn.sort)))))))
+           :select (fn [ft]
+                     (let [ft (tostring ft)]
+                       (when (= (nvim.fn.empty ft) 0)
+                         (nvim.ex.setf ft))))}))
+      (nvim.ex.command_ :SnapFiletypes (->viml :snap-filetypes))
+      (defn snap-history-command []
+          (snap.run
+            {:prompt :History
+             :producer (fzf
+                         (fn []
+                           (snap.sync
+                             (fn []
+                               (-> (nvim.fn.range 1 1000)
+                                   (nvim.fn.map
+                                     "histget(\":\", - v:val)")
+                                   (nvim.fn.filter
+                                     "!empty(v:val)"))))))
+             :select (fn [cmd]
+                       (let [cmd (tostring cmd)]
+                         (when (= (nvim.fn.empty cmd) 0)
+                           (nvim.ex.silent_ cmd))))}))
+      (nvim.ex.command_ :SnapHistoryCommand (->viml :snap-history-command))
+      (defn snap-command []
+          (snap.run
+            {:prompt :Command
+             :producer (fzf
+                         (fn []
+                           (snap.sync
+                             (fn []
+                               (nvim.fn.getcompletion "" :command)))))
+             :select (fn [cmd]
+                       (let [cmd (tostring cmd)]
+                         (when (= (nvim.fn.empty cmd) 0)
+                           (nvim.ex.silent_ cmd))))}))
+      (nvim.ex.command_ :SnapCommand (->viml :snap-command))
+      (defn snap-action []
+          (snap.run
+            {:prompt :Action
+             :producer (fzf
+                         (cache
+                           (fn []
+                             (vim.tbl_keys actions))))
+             :select (fn [action]
+                       (let [action (. actions (tostring action))
+                             f (if (core.string? action)
                                  (fn []
-                                   (snap.sync
-                                     (fn []
-                                       (-> (nvim.fn.range 1 1000)
-                                           (nvim.fn.map
-                                             "histget(\":\", - v:val)")
-                                           (nvim.fn.filter
-                                             "!empty(v:val)"))))))
-                     :select (fn [cmd]
-                               (let [cmd (tostring cmd)]
-                                 (when (= (nvim.fn.empty cmd) 0)
-                                   (nvim.ex.silent_ cmd))))})))
-      (snap.register.map
-        [:n]
-        [:<Leader><Leader>]
-        (fn []
-          (snap.run {:prompt :Command
-                     :producer (fzf
-                                 (fn []
-                                   (snap.sync
-                                     (fn []
-                                       (nvim.fn.getcompletion "" :command)))))
-                     :select (fn [cmd]
-                               (let [cmd (tostring cmd)]
-                                 (when (= (nvim.fn.empty cmd) 0)
-                                   (nvim.ex.silent_ cmd))))})))
-      (snap.register.map
-        [:n]
-        [:<Leader>h]
-        (fn []
-          (snap.run {:prompt :Action
-                     :producer (fzf
-                                 (cache
-                                   (fn []
-                                     (vim.tbl_keys actions))))
-                     :select (fn [action]
-                               (let [action (. actions (tostring action))
-                                     f (if (core.string? action)
-                                         (fn []
-                                           (nvim.ex.silent_ action))
-                                         action)]
-                                 (vim.schedule f)))})))))
+                                   (nvim.ex.silent_ action))
+                                 action)]
+                         (vim.schedule f)))}))
+      (nvim.ex.command_ :SnapAction (->viml :snap-action))
+
+      (nnoremap-silent ",uf" ":<C-u>SnapFiles<CR>")
+      (nnoremap-silent ",uaf" ":<C-u>SnapAllFiles<CR>")
+      (nnoremap-silent ",ugf" ":<C-u>SnapGitFiles<CR>")
+      (nnoremap-silent ",ug" ":<C-u>SnapGrep<CR>")
+      (nnoremap-silent ",ub" ":<C-u>SnapBuffers<CR>")
+      (nnoremap-silent ",ut" ":<C-u>SnapFiletypes<CR>")
+      (nnoremap-silent ",uc" ":<C-u>SnapHistoryCommand<CR>")
+      (nnoremap-silent :<Leader><Leader> ":<C-u>SnapCommand<CR>")
+      (nnoremap-silent :<Leader>h ":<C-u>SnapAction<CR>")))
 
   ;; gitsigns
   (let [gs (require :gitsigns)]
