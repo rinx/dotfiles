@@ -95,6 +95,8 @@
    :enumerated " "
    :level-down ""
    :level-up ""
+   :subdirectory-arrow-left "﬋"
+   :subdirectory-arrow-right "﬌"
    :terminal " "
    :package " "
    :package-opened " "

@@ -238,7 +238,12 @@
       (nvim.fn.mkdir swapdir :p)))
 
   (nvim.ex.set :list)
-  (set nvim.o.listchars "eol:¬,tab:▸ ,extends:>,precedes:<,trail:-")
+  (set nvim.o.listchars
+       (.. "eol:" icontab.subdirectory-arrow-left ","
+           "tab:" icontab.keyboard-tab ","
+           "extends:>" ","
+           "precedes:<" ","
+           "trail:-"))
 
   (nvim.ex.set :noautochdir)
   (nvim.ex.set :autoread)
@@ -288,7 +293,7 @@
   (hi :NonText {:bg :none})
   (hi :EndOfBuffer {:bg :none})
 
-  (hi :Keyword {:others "cterm=italic gui=italic"})
+  (hi :Keyword {:others "cterm=bold,italic gui=bold,italic"})
 
   (hi :LspDiagnosticsUnderlineError
       {:others (.. "cterm=undercurl gui=undercurl guisp=" colors.error)})
