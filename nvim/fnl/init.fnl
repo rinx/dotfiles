@@ -104,7 +104,6 @@
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
-  :sindrets/diffview.nvim {}
   :camspiers/snap {}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
@@ -967,9 +966,6 @@
                        :DapUIClose
                        :DapUIOpen
                        :DapUIToggle
-                       :DiffviewClose
-                       :DiffviewOpen
-                       :DiffviewRefresh
                        :LspInfo
                        :LspRestart
                        :LspStart
@@ -1602,4 +1598,4 @@
                                (.. icontab.scope " Scopes"))]}
                  :filetypes [:dapui_scopes]}
                 {:sections {:lualine_a [filename]}
-                 :filetypes [:packer :DiffviewFiles :Outline]}]})))
+                 :filetypes [:packer :Outline]}]})))
