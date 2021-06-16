@@ -290,16 +290,6 @@
 
   (hi :Keyword {:others "cterm=italic gui=italic"})
 
-  (hi :DiffAdded {:fg :black
-                  :others (.. "ctermbg=green guibg=" colors.info)})
-  (hi :DiffModified {:fg :black
-                     :others (.. "ctermbg=blue guibg=" colors.hint)})
-  (hi :DiffRemoved {:fg :black
-                    :others (.. "ctermbg=red guibg=" colors.error)})
-  (hi-link :DiffAdd :DiffAdded)
-  (hi-link :DiffChanged :DiffModified)
-  (hi-link :DiffDelete :DiffRemoved)
-
   (hi :LspDiagnosticsUnderlineError
       {:others (.. "cterm=undercurl gui=undercurl guisp=" colors.error)})
   (hi :LspDiagnosticsUnderlineWarning
