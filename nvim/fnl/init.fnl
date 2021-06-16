@@ -81,7 +81,7 @@
   :wbthomason/packer.nvim {}
   :Olical/aniseed {}
   :nvim-lua/plenary.nvim {}
-  :romgrk/doom-one.vim {}
+  :folke/tokyonight.nvim {}
   :kyazdani42/nvim-web-devicons {}
   :hoob3rt/lualine.nvim {}
   :akinsho/nvim-bufferline.lua {}
@@ -262,7 +262,8 @@
   (nvim.ex.filetype :off)
   (nvim.ex.filetype "plugin indent on")
 
-  (nvim.ex.silent_ "colorscheme doom-one")
+  (set nvim.g.tokyonight_transparent true)
+  (nvim.ex.silent_ "colorscheme tokyonight")
   (nvim.ex.set "background=dark")
   (nvim.ex.syntax :enable)
 
@@ -1426,18 +1427,23 @@
                               {:guifg colors.color5
                                :guibg colors.color5}
                               :separator_selected
-                              {:guibg colors.color9}
+                              {:guifg colors.color9
+                               :guibg colors.color9}
                               :separator_visible
-                              {:guibg colors.color5}
+                              {:guifg colors.color5
+                               :guibg colors.color5}
                               :indicator_selected
                               {:guifg colors.hint
                                :guibg colors.color9}
                               :pick
-                              {:guifg colors.warn}
+                              {:guibg colors.color5
+                               :guifg colors.warn}
                               :pick_selected
-                              {:guifg colors.error}
+                              {:guibg colors.color9
+                               :guifg colors.error}
                               :pick_visible
-                              {:guifg colors.error}}
+                              {:guibg colors.color5
+                               :guifg colors.error}}
                  :options {:numbers :none
                            :mappings false
                            :max_name_length 18
