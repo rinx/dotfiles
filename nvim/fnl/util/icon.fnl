@@ -29,6 +29,8 @@
    :meteor " "
    :zap ""
    :lightning " "
+   :tree " "
+   :tree-alt " "
    :info ""
    :info-circle " "
    :leaf " "

@@ -85,6 +85,7 @@
   :kyazdani42/nvim-web-devicons {}
   :hoob3rt/lualine.nvim {}
   :akinsho/nvim-bufferline.lua {}
+  :akinsho/nvim-toggleterm.lua {}
   :tyru/eskk.vim {:event [:InsertEnter]}
   :neovim/nvim-lspconfig {}
   :hrsh7th/vim-vsnip {}
@@ -267,7 +268,16 @@
   (nvim.ex.filetype :off)
   (nvim.ex.filetype "plugin indent on")
 
+  (set nvim.g.tokyonight_style :storm)
   (set nvim.g.tokyonight_transparent true)
+  (set nvim.g.tokyonight_dark_sidebar true)
+  (set nvim.g.tokyonight_sidebars [:dapui_breakpoints
+                                   :dapui_scopes
+                                   :dapui_stacks
+                                   :dapui_watches
+                                   :NvimTree
+                                   :Outline
+                                   :packer])
   (nvim.ex.silent_ "colorscheme tokyonight")
   (nvim.ex.set "background=dark")
   (nvim.ex.syntax :enable)
@@ -735,7 +745,8 @@
                                            :hover_symbol :<Space>
                                            :rename_symbol :r
                                            :code_actions :a}
-                                 :lsp_blacklist {}}))
+                                 :lsp_blacklist {}})
+    (nnoremap-silent :<leader>o ":<C-u>SymbolsOutline<CR>"))
 
   ;; dap
   (when (and (loaded? :nvim-dap)
@@ -936,7 +947,7 @@
                                :folder {:default icontab.folder
                                         :open icontab.folder-open}})
 
-  (nnoremap-silent "<leader>t" ":<C-u>NvimTreeToggle<CR>")
+  (nnoremap-silent :<leader>t ":<C-u>NvimTreeToggle<CR>")
 
   ;; diffview.nvim
   (when (loaded? :diffview.nvim)
@@ -977,6 +988,9 @@
                        :PackerSync
                        :PackerUpdate
                        :SymbolsOutline
+                       :ToggleTerm
+                       :ToggleTermCloseAll
+                       :ToggleTermOpenAll
                        :TodoTrouble
                        :TroubleToggle
                        "TroubleToggle loclist"
@@ -1137,6 +1151,7 @@
                                       :linehl :GitSignsChangeLn}}
                :numhl false
                :linehl false
+               :keymaps {}
                :watch_index {:interval 1000}
                :current_line_blame false
                :sign_priority 6
@@ -1455,16 +1470,26 @@
                            :always_show_bufferline true
                            :sort_by :extension}}))
     (nnoremap-silent ",bc" ":tabe<CR>")
-    (nnoremap-silent ",bd" ":bd<CR>")
-    (nnoremap-silent ",bb" ":BufferLinePick<CR>")
-    (nnoremap-silent ",bo" ":BufferLineSortByDirectory<CR>")
-    (nnoremap-silent ",be" ":BufferLineSortByExtension<CR>")
-    (nnoremap-silent ",bn" ":BufferLineCycleNext<CR>")
-    (nnoremap-silent ",bp" ":BufferLineCyclePrev<CR>")
-    (nnoremap-silent ",bN" ":BufferLineMoveNext<CR>")
-    (nnoremap-silent ",bP" ":BufferLineMovePrev<CR>")
-    (nnoremap-silent :gt  ":BufferLineCycleNext<CR>")
-    (nnoremap-silent :gT  ":BufferLineCyclePrev<CR>"))
+    (nnoremap-silent ",bb" ":<C-u>BufferLinePick<CR>")
+    (nnoremap-silent ",bo" ":<C-u>BufferLineSortByDirectory<CR>")
+    (nnoremap-silent ",be" ":<C-u>BufferLineSortByExtension<CR>")
+    (nnoremap-silent ",bn" ":<C-u>BufferLineCycleNext<CR>")
+    (nnoremap-silent ",bp" ":<C-u>BufferLineCyclePrev<CR>")
+    (nnoremap-silent ",bN" ":<C-u>BufferLineMoveNext<CR>")
+    (nnoremap-silent ",bP" ":<C-u>BufferLineMovePrev<CR>")
+    (nnoremap-silent :gt  ":<C-u>BufferLineCycleNext<CR>")
+    (nnoremap-silent :gT  ":<C-u>BufferLineCyclePrev<CR>")
+    (defn buffer-close []
+      ;; TODO: avoid to close window
+      (nvim.ex.silent_ (.. "bdelete " (nvim.fn.bufnr :%))))
+    (nvim.ex.command_ :BufferClose (->viml :buffer-close))
+    (nnoremap-silent ",bd" ":<C-u>BufferClose<CR>"))
+
+  ;; toggleterm
+  (when (loaded? :nvim-toggleterm.lua)
+    (let [tt (require :toggleterm)]
+      (tt.setup {}))
+    (nnoremap-silent :<leader>w ":<C-u>ToggleTerm<CR>"))
 
   ;; lualine
   (let [ll (require :lualine)
@@ -1473,6 +1498,31 @@
                   :symbols
                   {:modified (.. " " icontab.plus)
                    :readonly (.. " " icontab.lock)}}
+        mode {1 :mode
+              :format (fn [mode-name]
+                        (let [i icontab
+                              dict {:n i.meteor
+                                    :i i.zap
+                                    :v i.cursor-text
+                                    "" i.cursor
+                                    :V i.cursor
+                                    :c i.chevron-r
+                                    :no i.meteor
+                                    :s i.cursor-text
+                                    :S i.cursor-text
+                                    "" i.cursor-text
+                                    :ic i.lightning
+                                    :R i.arrow-r
+                                    :Rv i.arrow-r
+                                    :cv i.hashtag
+                                    :ce i.hashtag
+                                    :r i.chevron-r
+                                    :rm i.chevron-r
+                                    "r?" i.chevron-r
+                                    "!" i.chevron-r
+                                    :t i.chevron-r}]
+                          (or (. dict (vim.fn.mode))
+                              mode-name)))}
         paste-fn (fn []
                    (if vim.o.paste
                      icontab.paste
@@ -1505,31 +1555,7 @@
                 :component_separators ["|" "|"]
                 :icons_enabled true}
                :sections
-               {:lualine_a [{1 :mode
-                             :format (fn [mode-name]
-                                       (let [i icontab
-                                             dict {:n i.meteor
-                                                   :i i.zap
-                                                   :v i.cursor-text
-                                                   "" i.cursor
-                                                   :V i.cursor
-                                                   :c i.chevron-r
-                                                   :no i.meteor
-                                                   :s i.cursor-text
-                                                   :S i.cursor-text
-                                                   "" i.cursor-text
-                                                   :ic i.lightning
-                                                   :R i.arrow-r
-                                                   :Rv i.arrow-r
-                                                   :cv i.hashtag
-                                                   :ce i.hashtag
-                                                   :r i.chevron-r
-                                                   :rm i.chevron-r
-                                                   "r?" i.chevron-r
-                                                   "!" i.chevron-r
-                                                   :t i.chevron-r}]
-                                         (or (. dict (vim.fn.mode))
-                                             mode-name)))}
+               {:lualine_a [mode
                             paste-fn
                             spell-fn]
                 :lualine_b [filename
@@ -1550,8 +1576,7 @@
                 :lualine_y []
                 :lualine_z []}
                :extensions
-               [:nvim-tree
-                :quickfix
+               [:quickfix
                 {:sections {:lualine_a
                             [(fn []
                                (.. icontab.alarm-light " Trouble"))]
@@ -1598,5 +1623,21 @@
                             [(fn []
                                (.. icontab.scope " Scopes"))]}
                  :filetypes [:dapui_scopes]}
-                {:sections {:lualine_a [filename]}
-                 :filetypes [:packer :Outline]}]})))
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.terminal
+                                   " Term "
+                                   nvim.b.toggle_number))]}
+                 :filetypes [:toggleterm]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.package-alt " Packer"))]}
+                 :filetypes [:packer]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.tree " NvimTree"))]}
+                 :filetypes [:NvimTree]}
+                {:sections {:lualine_a
+                            [(fn []
+                               (.. icontab.hierarchy " Outline"))]}
+                 :filetypes [:Outline]}]})))
