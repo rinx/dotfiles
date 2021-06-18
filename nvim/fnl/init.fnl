@@ -107,6 +107,7 @@
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
   :nvim-telescope/telescope.nvim {}
+  :nvim-telescope/telescope-fzy-native.nvim {}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
   :ggandor/lightspeed.nvim {}
@@ -1009,9 +1010,8 @@
                        "TroubleToggle quickfix"]]
       (telescope.setup {:defaults
                         {:prompt_prefix (.. icontab.search " ")
-                         :sorting_strategy :ascending
-                         :file_sorter sorters.get_fzy_sorter
-                         :generic_sorter sorters.get_fzy_sorter}})
+                         :sorting_strategy :ascending}})
+      (telescope.load_extension :fzy_native)
 
       (defn telescope-actions []
         (let [p (pickers.new
