@@ -81,7 +81,7 @@ RUN mkdir -p /out/packer \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm
 
-FROM ubuntu:groovy AS neovim
+FROM ubuntu:devel AS neovim
 
 RUN apt update \
     && apt install -y \
@@ -125,7 +125,7 @@ RUN upx -9 /out/go/go/bin/*
 COPY --from=kube /out/packer /out/kube
 RUN upx -9 /out/kube/*
 
-FROM ubuntu:groovy AS base
+FROM ubuntu:devel AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
