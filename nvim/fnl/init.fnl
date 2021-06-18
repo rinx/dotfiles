@@ -81,6 +81,7 @@
   :wbthomason/packer.nvim {}
   :Olical/aniseed {}
   :nvim-lua/plenary.nvim {}
+  :nvim-lua/popup.nvim {}
   :folke/tokyonight.nvim {}
   :kyazdani42/nvim-web-devicons {}
   :hoob3rt/lualine.nvim {}
@@ -105,7 +106,7 @@
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
-  :camspiers/snap {}
+  :nvim-telescope/telescope.nvim {}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
   :ggandor/lightspeed.nvim {}
@@ -957,9 +958,15 @@
                               :use_icons true}
                  :key_bindings {:disable_defaults false}})))
 
-  ;; snap
-  (when (loaded? :snap)
-    (let [action-cmds [:ConjureConnect
+  ;; telescope
+  (when (loaded? :telescope.nvim)
+    (let [telescope (require :telescope)
+          actions (require :telescope.actions)
+          finders (require :telescope.finders)
+          pickers (require :telescope.pickers)
+          previewers (require :telescope.previewers)
+          sorters (require :telescope.sorters)
+          action-cmds [:ConjureConnect
                        :ConjureLogSplit
                        :DapContinue
                        :DapListBreakpoints
@@ -997,135 +1004,35 @@
                        "TroubleToggle lsp_document_diagnostics"
                        "TroubleToggle lsp_references"
                        "TroubleToggle lsp_workspace_diagnostics"
-                       "TroubleToggle quickfix"]
-          actions (collect [_ v (ipairs action-cmds)]
-                    (values v v))
-          snap (require :snap)
-          fzf (snap.get :consumer.fzf)
-          cache (snap.get :consumer.cache)
-          limit (snap.get :consumer.limit)
-          producer-file (snap.get :producer.ripgrep.file)
-          producer-git (snap.get :producer.git.file)
-          producer-vimgrep (snap.get :producer.ripgrep.vimgrep)
-          producer-buffer (snap.get :producer.vim.buffer)
-          select-file (snap.get :select.file)
-          select-vimgrep (snap.get :select.vimgrep)
-          preview-file (snap.get :preview.file)
-          preview-vimgrep (snap.get :preview.vimgrep)]
-      (defn snap-files []
-        (snap.run
-          {:prompt :Files
-           :producer (fzf producer-file)
-           :select select-file.select
-           :multiselect select-file.multiselect
-           :views [preview-file]}))
-      (nvim.ex.command_ :SnapFiles (->viml :snap-files))
-      (defn snap-all-files []
-        (snap.run
-          {:prompt :AllFiles
-           :producer (fzf producer-file.hidden)
-           :select select-file.select
-           :multiselect select-file.multiselect
-           :views [preview-file]}))
-      (nvim.ex.command_ :SnapAllFiles (->viml :snap-all-files))
-      (defn snap-git-files []
-        (snap.run
-          {:prompt :GitFiles
-           :producer (fzf producer-git)
-           :select select-file.select
-           :multiselect select-file.multiselect
-           :views [preview-file]}))
-      (nvim.ex.command_ :SnapGitFiles (->viml :snap-git-files))
-      (defn snap-grep []
-        (snap.run
-          {:prompt :Grep
-           :producer (limit 10000 producer-vimgrep)
-           :select select-vimgrep.select
-           :multiselect select-vimgrep.multiselect
-           :views [preview-vimgrep]}))
-      (nvim.ex.command_ :SnapGrep (->viml :snap-grep))
-      (defn snap-buffers []
-          (snap.run
-            {:prompt :Buffers
-             :producer (fzf producer-buffer)
-             :select select-file.select
-             :multiselect select-file.multiselect
-             :views [preview-file]}))
-      (nvim.ex.command_ :SnapBuffers (->viml :snap-buffers))
-      (defn snap-filetypes []
-        (snap.run
-          {:prompt :Filetypes
-           :producer (fzf
-                       (cache
-                         (fn []
-                           (snap.sync
-                             (fn []
-                               (-> nvim.o.rtp
-                                   (nvim.fn.globpath :syntax/*.vim)
-                                   (nvim.fn.split "\n")
-                                   (nvim.fn.map
-                                     "fnamemodify(v:val, \":t:r\")")
-                                   (nvim.fn.sort)))))))
-           :select (fn [ft]
-                     (let [ft (tostring ft)]
-                       (when (= (nvim.fn.empty ft) 0)
-                         (nvim.ex.setf ft))))}))
-      (nvim.ex.command_ :SnapFiletypes (->viml :snap-filetypes))
-      (defn snap-history-command []
-          (snap.run
-            {:prompt :History
-             :producer (fzf
-                         (fn []
-                           (snap.sync
-                             (fn []
-                               (-> (nvim.fn.range 1 1000)
-                                   (nvim.fn.map
-                                     "histget(\":\", - v:val)")
-                                   (nvim.fn.filter
-                                     "!empty(v:val)"))))))
-             :select (fn [cmd]
-                       (let [cmd (tostring cmd)]
-                         (when (= (nvim.fn.empty cmd) 0)
-                           (nvim.ex.silent_ cmd))))}))
-      (nvim.ex.command_ :SnapHistoryCommand (->viml :snap-history-command))
-      (defn snap-command []
-          (snap.run
-            {:prompt :Command
-             :producer (fzf
-                         (fn []
-                           (snap.sync
-                             (fn []
-                               (nvim.fn.getcompletion "" :command)))))
-             :select (fn [cmd]
-                       (let [cmd (tostring cmd)]
-                         (when (= (nvim.fn.empty cmd) 0)
-                           (nvim.ex.silent_ cmd))))}))
-      (nvim.ex.command_ :SnapCommand (->viml :snap-command))
-      (defn snap-action []
-          (snap.run
-            {:prompt :Action
-             :producer (fzf
-                         (cache
-                           (fn []
-                             (vim.tbl_keys actions))))
-             :select (fn [action]
-                       (let [action (. actions (tostring action))
-                             f (if (core.string? action)
-                                 (fn []
-                                   (nvim.ex.silent_ action))
-                                 action)]
-                         (vim.schedule f)))}))
-      (nvim.ex.command_ :SnapAction (->viml :snap-action))
+                       "TroubleToggle quickfix"]]
+      (telescope.setup {:defaults
+                        {:sorting_strategy :ascending
+                         :file_sorter sorters.get_fzy_sorter
+                         :generic_sorter sorters.get_fzy_sorter}})
+      (defn telescope-actions []
+        (let [p (pickers.new
+                  {:prompt_title :Actions
+                   :finder (finders.new_table {:results action-cmds})
+                   :sorter (sorters.get_fzy_sorter)
+                   :attach_mappings (fn [_ map]
+                                      (map :i :<CR> actions.set_command_line)
+                                      true)})]
+          (p:find)))
+      (nvim.ex.command_ :TelescopeActions (->viml :telescope-actions))
 
-      (nnoremap-silent ",uf" ":<C-u>SnapFiles<CR>")
-      (nnoremap-silent ",uaf" ":<C-u>SnapAllFiles<CR>")
-      (nnoremap-silent ",ugf" ":<C-u>SnapGitFiles<CR>")
-      (nnoremap-silent ",ug" ":<C-u>SnapGrep<CR>")
-      (nnoremap-silent ",ub" ":<C-u>SnapBuffers<CR>")
-      (nnoremap-silent ",ut" ":<C-u>SnapFiletypes<CR>")
-      (nnoremap-silent ",uc" ":<C-u>SnapHistoryCommand<CR>")
-      (nnoremap-silent :<Leader><Leader> ":<C-u>SnapCommand<CR>")
-      (nnoremap-silent :<Leader>h ":<C-u>SnapAction<CR>")))
+      (nnoremap-silent ",uf" ":<C-u>Telescope find_files<CR>")
+      (nnoremap-silent ",uof" ":<C-u>Telescope oldfiles<CR>")
+      (nnoremap-silent ",ugf" ":<C-u>Telescope git_files<CR>")
+      (nnoremap-silent ",ugb" ":<C-u>Telescope git_branches<CR>")
+      (nnoremap-silent ",ugc" ":<C-u>Telescope git_commits<CR>")
+      (nnoremap-silent ",ug" ":<C-u>Telescope live_grep<CR>")
+      (nnoremap-silent ",u/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>")
+      (nnoremap-silent ",ub" ":<C-u>Telescope buffers<CR>")
+      (nnoremap-silent ",ut" ":<C-u>Telescope filetypes<CR>")
+      (nnoremap-silent ",uc" ":<C-u>Telescope command_history<CR>")
+      (nnoremap-silent ",uh" ":<C-u>Telescope help_tags<CR>")
+      (nnoremap-silent :<Leader><Leader> ":<C-u>Telescope commands<CR>")
+      (nnoremap-silent :<Leader>h ":<C-u>TelescopeActions<CR>")))
 
   ;; gitsigns
   (let [gs (require :gitsigns)]
