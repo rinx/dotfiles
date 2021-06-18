@@ -1480,8 +1480,12 @@
     (nnoremap-silent :gt  ":<C-u>BufferLineCycleNext<CR>")
     (nnoremap-silent :gT  ":<C-u>BufferLineCyclePrev<CR>")
     (defn buffer-close []
-      ;; TODO: avoid to close window
-      (nvim.ex.silent_ (.. "bdelete " (nvim.fn.bufnr :%))))
+      (let [bn (nvim.fn.bufnr :%)
+            abn (nvim.fn.bufnr :#)]
+        (if (not (= abn -1))
+          (nvim.ex.silent_ :bnext)
+          (nvim.ex.silent_ :enew))
+        (nvim.ex.silent_ (.. "bdelete " bn))))
     (nvim.ex.command_ :BufferClose (->viml :buffer-close))
     (nnoremap-silent ",bd" ":<C-u>BufferClose<CR>"))
 
