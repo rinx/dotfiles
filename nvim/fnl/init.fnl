@@ -1006,9 +1006,11 @@
                        "TroubleToggle lsp_workspace_diagnostics"
                        "TroubleToggle quickfix"]]
       (telescope.setup {:defaults
-                        {:sorting_strategy :ascending
+                        {:prompt_prefix (.. icontab.search " ")
+                         :sorting_strategy :ascending
                          :file_sorter sorters.get_fzy_sorter
                          :generic_sorter sorters.get_fzy_sorter}})
+
       (defn telescope-actions []
         (let [p (pickers.new
                   {:prompt_title :Actions
@@ -1032,6 +1034,7 @@
       (nnoremap-silent ",uc" ":<C-u>Telescope command_history<CR>")
       (nnoremap-silent ",uh" ":<C-u>Telescope help_tags<CR>")
       (nnoremap-silent :<Leader><Leader> ":<C-u>Telescope commands<CR>")
+      (nnoremap-silent :<C-\> ":<C-u>Telescope<CR>")
       (nnoremap-silent :<Leader>h ":<C-u>TelescopeActions<CR>")))
 
   ;; gitsigns
