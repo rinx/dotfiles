@@ -962,10 +962,12 @@
   (when (loaded? :telescope.nvim)
     (let [telescope (require :telescope)
           actions (require :telescope.actions)
+          builtin (require :telescope.builtin)
           finders (require :telescope.finders)
           pickers (require :telescope.pickers)
           previewers (require :telescope.previewers)
           sorters (require :telescope.sorters)
+          themes (require :telescope.themes)
           action-cmds [:ConjureConnect
                        :ConjureLogSplit
                        :DapContinue
@@ -1013,6 +1015,7 @@
 
       (defn telescope-actions []
         (let [p (pickers.new
+                  (themes.get_dropdown {})
                   {:prompt_title :Actions
                    :finder (finders.new_table {:results action-cmds})
                    :sorter (sorters.get_fzy_sorter)
@@ -1022,7 +1025,9 @@
           (p:find)))
       (nvim.ex.command_ :TelescopeActions (->viml :telescope-actions))
 
-      (nnoremap-silent ",uf" ":<C-u>Telescope find_files<CR>")
+      (nnoremap-silent ",uf" ":<C-u>Telescope fd<CR>")
+      (nnoremap-silent ",uaf"
+                       ":<C-u>Telescope find_files find_command=fd,--hidden<CR>")
       (nnoremap-silent ",uof" ":<C-u>Telescope oldfiles<CR>")
       (nnoremap-silent ",ugf" ":<C-u>Telescope git_files<CR>")
       (nnoremap-silent ",ugb" ":<C-u>Telescope git_branches<CR>")
@@ -1033,8 +1038,9 @@
       (nnoremap-silent ",ut" ":<C-u>Telescope filetypes<CR>")
       (nnoremap-silent ",uc" ":<C-u>Telescope command_history<CR>")
       (nnoremap-silent ",uh" ":<C-u>Telescope help_tags<CR>")
-      (nnoremap-silent :<Leader><Leader> ":<C-u>Telescope commands<CR>")
-      (nnoremap-silent :<C-\> ":<C-u>Telescope<CR>")
+      (nnoremap-silent :<Leader><Leader>
+                       ":<C-u>Telescope commands theme=get_dropdown<CR>")
+      (nnoremap-silent :<C-\> ":<C-u>Telescope builtin<CR>")
       (nnoremap-silent :<Leader>h ":<C-u>TelescopeActions<CR>")))
 
   ;; gitsigns
