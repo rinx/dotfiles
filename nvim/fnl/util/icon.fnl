@@ -183,6 +183,7 @@
    :arrow-expand-r "ﲖ"
    :fold-open ""
    :fold-closed ""
+   :rquot "❯"
    :chevron-u " "
    :chevron-d " "
    :chevron-l ""

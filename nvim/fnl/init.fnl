@@ -1010,8 +1010,12 @@
                        "TroubleToggle quickfix"]]
       (telescope.setup {:defaults
                         {:prompt_prefix (.. icontab.search " ")
-                         :sorting_strategy :ascending}})
-      (telescope.load_extension :fzy_native)
+                         :selection_caret (.. icontab.rquot " ")
+                         :sorting_strategy :ascending
+                         :scroll_strategy :cycle}})
+
+      (when (loaded? :telescope-fzy-native.nvim)
+        (telescope.load_extension :fzy_native))
 
       (defn telescope-actions []
         (let [p (pickers.new
