@@ -107,6 +107,7 @@
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
   :nvim-telescope/telescope.nvim {}
+  :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
   :lewis6991/gitsigns.nvim {}
   :norcalli/nvim-colorizer.lua {}
@@ -1013,6 +1014,9 @@
                          :selection_caret (.. icontab.rquot " ")
                          :sorting_strategy :ascending
                          :scroll_strategy :cycle}})
+
+      (when (loaded? :telescope-dap.nvim)
+        (telescope.load_extension :dap))
 
       (when (loaded? :telescope-fzy-native.nvim)
         (telescope.load_extension :fzy_native))
