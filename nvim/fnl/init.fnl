@@ -128,6 +128,7 @@
   :osyo-manga/vim-textobj-multiblock {}
   :tpope/vim-repeat {}
   :rinx/nvim-minimap {}
+  :jbyuki/venn.nvim {}
   :guns/vim-sexp {:ft [:clojure
                        :fennel
                        :hy
