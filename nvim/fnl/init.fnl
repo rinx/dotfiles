@@ -1145,7 +1145,27 @@
   ;; sexp
   (set nvim.g.sexp_enable_insert_mode_mappings 0)
   (set nvim.g.sexp_mappings {:sexp_insert_at_list_head ""
-                             :sexp_insert_at_list_tail ""})
+                             :sexp_insert_at_list_tail ""
+                             :sexp_round_head_wrap_element ""
+                             :sexp_round_tail_wrap_element ""
+                             :sexp_round_head_wrap_list ""
+                             :sexp_round_tail_wrap_list ""
+                             :sexp_square_head_wrap_list ""
+                             :sexp_square_tail_wrap_list ""
+                             :sexp_curly_head_wrap_list ""
+                             :sexp_curly_tail_wrap_list ""
+                             :sexp_round_head_wrap_element ""
+                             :sexp_round_tail_wrap_element ""
+                             :sexp_square_head_wrap_element ""
+                             :sexp_square_tail_wrap_element ""
+                             :sexp_curly_head_wrap_element ""
+                             :sexp_curly_tail_wrap_element ""
+                             :sexp_insert_at_list_head ""
+                             :sexp_insert_at_list_tail ""
+                             :sexp_splice_list ""
+                             :sexp_convolute ""
+                             :sexp_raise_list ""
+                             :sexp_raise_element ""})
   (set nvim.g.sexp_insert_after_wrap 0)
   (set nvim.g.sexp_filetypes "clojure,fennel,hy,lisp,scheme")
   (nmap ">(" "<Plug>(sexp_emit_head_element)")
@@ -1171,6 +1191,9 @@
            (autocmd "BufNewFile,BufRead" "*.namelist" "setf fortran")
            (autocmd "BufNewFile,BufRead" "*.hy" "setf hy")
            (autocmd "BufNewFile,BufRead" "*.jl" "setf julia"))
+
+  (augroup init-git-files
+           (autocmd :FileType "gitcommit,gitrebase" "set bufhidden=delete"))
 
   ;; hy
   (set nvim.g.hy_enable_conceal 0)
