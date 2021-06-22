@@ -1014,13 +1014,27 @@
                         {:prompt_prefix (.. icontab.search " ")
                          :selection_caret (.. icontab.rquot " ")
                          :sorting_strategy :ascending
-                         :scroll_strategy :cycle}})
+                         :scroll_strategy :cycle}
+                        :extensions
+                        {:fzy_native
+                         {:override_generic_sorter false
+                          :override_file_sorter true}}})
 
       (when (loaded? :telescope-dap.nvim)
         (telescope.load_extension :dap))
 
       (when (loaded? :telescope-fzy-native.nvim)
         (telescope.load_extension :fzy_native))
+
+      (defn telescope-git-status []
+        (builtin.git_status
+          {:previewer (previewers.new_termopen_previewer
+                        {:get_command
+                         (fn [entry]
+                           [:git :-c :core.pager=delta
+                            :-c :delta.side-by-side=false :diff
+                            entry.value])})}))
+      (nvim.ex.command_ :TelescopeGitStatus (->viml :telescope-git-status))
 
       (defn telescope-actions []
         (let [p (pickers.new
@@ -1034,6 +1048,12 @@
           (p:find)))
       (nvim.ex.command_ :TelescopeActions (->viml :telescope-actions))
 
+      (hi :TelescopeBorder
+          {:bg :none
+           :others (.. "blend=0 ctermfg=blue guifg=" colors.color10)})
+      (hi :TelescopePromptPrefix
+          {:others (.. "ctermfg=blue guifg=" colors.color10)})
+
       (nnoremap-silent ",uf" ":<C-u>Telescope fd<CR>")
       (nnoremap-silent ",uaf"
                        ":<C-u>Telescope find_files find_command=fd,--hidden<CR>")
@@ -1041,6 +1061,7 @@
       (nnoremap-silent ",ugf" ":<C-u>Telescope git_files<CR>")
       (nnoremap-silent ",ugb" ":<C-u>Telescope git_branches<CR>")
       (nnoremap-silent ",ugc" ":<C-u>Telescope git_commits<CR>")
+      (nnoremap-silent ",ugs" ":<C-u>TelescopeGitStatus<CR>")
       (nnoremap-silent ",ug" ":<C-u>Telescope live_grep<CR>")
       (nnoremap-silent ",u/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>")
       (nnoremap-silent ",ub" ":<C-u>Telescope buffers<CR>")
