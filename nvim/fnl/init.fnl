@@ -176,7 +176,7 @@
   (set nvim.o.wildmode "longest:full,full")
 
   (set nvim.o.shortmess "filnxtToOFc")
-  (set nvim.o.completeopt "menuone,noselect")
+  (set vim.opt.completeopt [:menu :menuone :noselect])
 
   (nvim.ex.set :imdisable)
 
@@ -244,12 +244,13 @@
       (nvim.fn.mkdir swapdir :p)))
 
   (nvim.ex.set :list)
-  (set nvim.o.listchars
-       (.. "eol:" icontab.subdirectory-arrow-left ","
-           "tab:" icontab.keyboard-tab ","
-           "extends:>" ","
-           "precedes:<" ","
-           "trail:-"))
+  (set vim.opt.listchars
+       {:eol icontab.subdirectory-arrow-left
+        :extends icontab.extends
+        :nbsp icontab.nbsp
+        :precedes icontab.precedes
+        :tab icontab.keyboard-tab
+        :trail icontab.trail})
 
   (nvim.ex.set :noautochdir)
   (nvim.ex.set :autoread)
