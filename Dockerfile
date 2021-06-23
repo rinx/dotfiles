@@ -46,6 +46,7 @@ FROM golang:alpine AS go
 RUN apk update \
     && apk upgrade \
     && apk --update-cache add --no-cache \
+    make \
     git \
     curl \
     gcc \
