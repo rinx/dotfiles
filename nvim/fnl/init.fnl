@@ -127,6 +127,7 @@
   :mattn/vim-textobj-url {}
   :osyo-manga/vim-textobj-multiblock {}
   :tpope/vim-repeat {}
+  :pwntester/octo.nvim {}
   :rinx/nvim-minimap {}
   :jbyuki/venn.nvim {}
   :guns/vim-sexp {:ft [:clojure
@@ -439,7 +440,7 @@
   (nnoremap :Q :<Nop>)
 
   ;; grep
-  (if (= (nvim.fn.executable "rg") 1)
+  (if (= (nvim.fn.executable :rg) 1)
     (do
       (set nvim.o.grepprg "rg --vimgrep --no-heading")
       (set nvim.o.grepformat "%f:%l:%c:%m,%f:%l:%m")
@@ -1157,6 +1158,11 @@
   (omap "ib" "<Plug>(textobj-multiblock-i)")
   (vmap "ab" "<Plug>(textobj-multiblock-a)")
   (vmap "ib" "<Plug>(textobj-multiblock-i)")
+
+  ;; octo.nvim
+  (when (and (loaded? :octo.nvim) (= (nvim.fn.executable :gh) 1))
+    (let [octo (require :octo)]
+      (octo.setup {})))
 
   ;; minimap
   (when (loaded? :nvim-minimap)

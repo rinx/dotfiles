@@ -57,6 +57,11 @@ RUN go install github.com/go-delve/delve/cmd/dlv@latest \
     && go install github.com/mattn/excitetranslate@latest \
     && go install golang.org/x/tools/gopls@latest
 
+RUN git clone --depth 1 https://github.com/cli/cli.git /tmp/gh-cli \
+    && cd /tmp/gh-cli \
+    && make \
+    && mv bin/gh /usr/local/go/bin
+
 RUN mkdir -p /out/usr/local/go
 RUN mkdir -p /out/go
 RUN cp -r /usr/local/go/bin /out/usr/local/go/bin
