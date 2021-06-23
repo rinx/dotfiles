@@ -101,8 +101,8 @@
   :folke/lsp-colors.nvim {}
   :folke/todo-comments.nvim {}
   :simrat39/symbols-outline.nvim {}
-  :rcarriga/nvim-dap-ui {:requires
-                         [:mfussenegger/nvim-dap]}
+  :mfussenegger/nvim-dap {}
+  :rcarriga/nvim-dap-ui {}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {}
