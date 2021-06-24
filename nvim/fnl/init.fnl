@@ -1068,7 +1068,8 @@
       (nnoremap-silent ",u/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>")
       (nnoremap-silent ",ub" ":<C-u>Telescope buffers<CR>")
       (nnoremap-silent ",ut" ":<C-u>Telescope filetypes<CR>")
-      (nnoremap-silent ",uc" ":<C-u>Telescope command_history<CR>")
+      (nnoremap-silent ",uc"
+                       ":<C-u>Telescope command_history theme=get_dropdown<CR>")
       (nnoremap-silent ",uh" ":<C-u>Telescope help_tags<CR>")
       (nnoremap-silent :<Leader><Leader>
                        ":<C-u>Telescope commands theme=get_dropdown<CR>")
