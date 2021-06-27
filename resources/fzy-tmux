@@ -1,0 +1,24 @@
+#!/bin/bash
+
+## fzy-tmux
+## launches fzy as a tmux popup window
+
+set -eu
+
+stdin=$(cat)
+opts="$@"
+
+fzy="echo \"$stdin\" | fzy --lines=20 --prompt=\"❯\" $opts"
+
+if [[ -z "$TMUX" ]]; then
+    $fzy $opts
+    exit $?
+fi
+
+result=$(mktemp "/tmp/${0##*/}.tmp.XXXXXX")
+
+tmux popup -E -d $PWD "$fzy > $result" > /dev/null 2>&1
+
+cat $result
+
+rm -rf $result
