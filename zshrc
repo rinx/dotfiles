@@ -189,6 +189,7 @@ zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' popup-pad 30 5
 zstyle ':prompt:pure:git:stash' show yes
 
 autoload colors
@@ -310,7 +311,7 @@ if builtin command -v bat > /dev/null 2>&1 ; then
 fi
 
 if builtin command -v fzf > /dev/null 2>&1 ; then
-    export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --height 40% --reverse --cycle --border"
+    export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --reverse --cycle"
     if [ ! -z $TMUX ]; then
         if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
             alias fzf='fzf-tmux -p'
