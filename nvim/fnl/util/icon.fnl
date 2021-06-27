@@ -37,6 +37,7 @@
    :fire " "
    :heart " "
    :heart-o " "
+   :sparkles " "
    :ban " "
    :circle "●"
    :asterisk " "
@@ -100,6 +101,8 @@
    :subdirectory-arrow-left "﬋"
    :subdirectory-arrow-right "﬌"
    :terminal " "
+   :terminal-alt " "
+   :terminal-alt2 " "
    :package " "
    :package-opened " "
    :package-alt " "
@@ -255,11 +258,11 @@
 
 (let [devicon (require :nvim-web-devicons)]
   (devicon.setup {:override {:fnl {:icon ""
-                                   :color "#51a0cf"
-                                   :name "Fennel"}
+                                   :color :#c2d94c
+                                   :name :Fennel}
                              :hy {:icon ""
-                                  :color "#519aba"
-                                  :name "Hy"}
-                             :Makefile {:icon ""
-                                        :color "#6d8086"
-                                        :name "Makefile"}}}))
+                                  :color :#519aba
+                                  :name :Hy}
+                             :Makefile {:icon " "
+                                        :color :#6d8086
+                                        :name :Makefile}}}))

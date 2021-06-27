@@ -1606,7 +1606,7 @@
                  :filetypes [:dapui_scopes]}
                 {:sections {:lualine_a
                             [(fn []
-                               (.. icontab.terminal
+                               (.. icontab.terminal-alt
                                    " Term "
                                    nvim.b.toggle_number))]}
                  :filetypes [:toggleterm]}
