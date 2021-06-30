@@ -379,8 +379,8 @@ if builtin command -v xsel > /dev/null 2>&1 ; then
 fi
 
 # git aliases
-alias gst='git status -s -b'
-alias gtl='git l'
+alias gs='git status'
+alias gl='git l'
 
 # extract
 extract () {
