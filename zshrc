@@ -285,11 +285,12 @@ alias vi='nvim'
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
     export EDITOR='nvr'
+    export GIT_EDITOR="$EDITOR -cc split --remote-wait"
 else
     export EDITOR='nvim'
+    export GIT_EDITOR="$EDITOR"
 fi
 
-export GIT_EDITOR="$EDITOR -cc split --remote-wait"
 export VISUAL="$EDITOR"
 
 alias q='exit'
