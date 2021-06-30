@@ -1058,21 +1058,21 @@
       (hi :TelescopePromptPrefix
           {:others (.. "ctermfg=blue guifg=" colors.color10)})
 
-      (nnoremap-silent ",uf" ":<C-u>Telescope fd<CR>")
-      (nnoremap-silent ",uaf"
+      (nnoremap-silent ",f" ":<C-u>Telescope fd<CR>")
+      (nnoremap-silent ",af"
                        ":<C-u>Telescope find_files find_command=fd,--hidden<CR>")
-      (nnoremap-silent ",uof" ":<C-u>Telescope oldfiles<CR>")
-      (nnoremap-silent ",ugf" ":<C-u>Telescope git_files<CR>")
-      (nnoremap-silent ",ugb" ":<C-u>Telescope git_branches<CR>")
-      (nnoremap-silent ",ugc" ":<C-u>Telescope git_commits<CR>")
-      (nnoremap-silent ",ugs" ":<C-u>TelescopeGitStatus<CR>")
-      (nnoremap-silent ",ug" ":<C-u>Telescope live_grep<CR>")
-      (nnoremap-silent ",u/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>")
-      (nnoremap-silent ",ub" ":<C-u>Telescope buffers<CR>")
-      (nnoremap-silent ",ut" ":<C-u>Telescope filetypes<CR>")
-      (nnoremap-silent ",uc"
+      (nnoremap-silent ",of" ":<C-u>Telescope oldfiles<CR>")
+      (nnoremap-silent ",gf" ":<C-u>Telescope git_files<CR>")
+      (nnoremap-silent ",gb" ":<C-u>Telescope git_branches<CR>")
+      (nnoremap-silent ",gc" ":<C-u>Telescope git_commits<CR>")
+      (nnoremap-silent ",gs" ":<C-u>TelescopeGitStatus<CR>")
+      (nnoremap-silent ",g" ":<C-u>Telescope live_grep<CR>")
+      (nnoremap-silent ",/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>")
+      (nnoremap-silent ",b" ":<C-u>Telescope buffers<CR>")
+      (nnoremap-silent ",t" ":<C-u>Telescope filetypes<CR>")
+      (nnoremap-silent ",c"
                        ":<C-u>Telescope command_history theme=get_dropdown<CR>")
-      (nnoremap-silent ",uh" ":<C-u>Telescope help_tags<CR>")
+      (nnoremap-silent ",h" ":<C-u>Telescope help_tags<CR>")
       (nnoremap-silent :<Leader><Leader>
                        ":<C-u>Telescope commands theme=get_dropdown<CR>")
       (nnoremap-silent :<C-\> ":<C-u>Telescope builtin<CR>")
