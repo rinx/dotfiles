@@ -2,7 +2,7 @@ name: Update dependencies
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: 0 17 * * *
 
@@ -21,7 +21,7 @@ jobs:
       - name: Update deps
         run: |
           ./bb ./.github/scripts/deps-update.clj
-      - name: Check and Push to master
+      - name: Check and Push to main
         run: |
           if git diff --quiet --exit-code; then
             echo "Nothing updated"
@@ -34,7 +34,7 @@ jobs:
             git commit --signoff -m "[patch] :robot: Automatically upgrade dependencies."
 
             git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-            git push origin master
+            git push origin main
           fi
         env:
           GITHUB_USER: ${{ secrets.DOTFILES_USER }}

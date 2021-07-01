@@ -2,7 +2,7 @@ name: Build docker image
 on:
   push:
     branches:
-      - master
+      - main
     tags:
       - '*.*.*'
       - 'v*.*.*'
@@ -39,8 +39,8 @@ jobs:
           registry: ghcr.io
           username: ${{ secrets.DOTFILES_USER }}
           password: ${{ secrets.DOTFILES_TOKEN }}
-      - name: Determine tag name (master)
-        if: github.ref == 'refs/heads/master'
+      - name: Determine tag name (main)
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "PRIMARY_TAG=nightly" >> $GITHUB_ENV
       - name: Determine tag name (pull request)
@@ -95,8 +95,8 @@ jobs:
           registry: ghcr.io
           username: ${{ secrets.DOTFILES_USER }}
           password: ${{ secrets.DOTFILES_TOKEN }}
-      - name: Determine tag name (master)
-        if: github.ref == 'refs/heads/master'
+      - name: Determine tag name (main)
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "PRIMARY_TAG=nightly-java8" >> $GITHUB_ENV
       - name: Determine tag name (pull request)
