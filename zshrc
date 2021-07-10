@@ -374,7 +374,9 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
 fi
 
 if builtin command -v fzy > /dev/null 2>&1 ; then
-    alias fzy=fzy-tmux
+    if builtin command -v fzy-tmux > /dev/null 2>&1 ; then
+        alias fzy=fzy-tmux
+    fi
 fi
 
 # xsel (linux only)
