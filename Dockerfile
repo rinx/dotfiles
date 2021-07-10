@@ -55,7 +55,6 @@ RUN apk update \
 
 RUN go install github.com/go-delve/delve/cmd/dlv@latest \
     && go install github.com/mattn/efm-langserver@latest \
-    && go install github.com/mattn/excitetranslate@latest \
     && go install golang.org/x/tools/gopls@latest
 
 RUN git clone --depth 1 https://github.com/cli/cli.git /tmp/gh-cli \
@@ -281,7 +280,7 @@ ENV JULIA_HOME /usr/local/julia
 ENV RUSTUP_HOME /usr/local/rustup
 ENV CARGO_HOME /usr/local/cargo
 
-ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin:$JULIA_HOME/bin
+ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin:$JULIA_HOME/bin:$DOTFILES/bin
 
 ENV GO111MODULE auto
 ENV DOCKER_BUILDKIT 1

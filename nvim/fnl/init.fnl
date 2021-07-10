@@ -532,7 +532,7 @@
                         :lintFormats ["%f:%l %m"
                                       "%f:%l:%c %m"
                                       "%f: %l: %m"]}
-                       {:hoverCommand :excitetranslate
+                       {:hoverCommand :excitetranslate.clj
                         :hoverStdin true}]
                       :proto
                       [{:lintCommand "buf lint --path"}]}
