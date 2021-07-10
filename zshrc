@@ -1,6 +1,8 @@
 OS=$(uname -s)
 export GPG_TTY=$TTY
 
+export DOTDIR=$HOME/.dotfiles
+
 # zinit
 export ZINIT_HOME=$HOME/.zinit
 
@@ -371,6 +373,10 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
             print -z "git commit --signoff -m \"$target \""
         fi
     }
+fi
+
+if builtin command -v fzy > /dev/null 2>&1 ; then
+    alias fzy=${DOTDIR}/resources/fzy-tmux
 fi
 
 # xsel (linux only)

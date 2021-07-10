@@ -3,17 +3,17 @@
 ## fzy-tmux
 ## launches fzy as a tmux popup window
 
-set -eu
+set -e
 
 stdin=$(cat)
 opts="$@"
 
-fzy="echo \"$stdin\" | fzy --lines=20 --prompt=\"❯\" $opts"
-
 if [[ -z "$TMUX" ]]; then
-    $fzy $opts
+    echo "$stdin" | fzy --lines=20 --prompt="❯" $opts
     exit $?
 fi
+
+fzy="echo \"$stdin\" | fzy --lines=20 --prompt=\"❯\" $opts"
 
 result=$(mktemp "/tmp/${0##*/}.tmp.XXXXXX")
 
