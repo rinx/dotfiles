@@ -374,7 +374,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
 fi
 
 if builtin command -v fzy > /dev/null 2>&1 ; then
-    alias fzy=${DOTFILES}/resources/fzy-tmux
+    alias fzy=fzy-tmux
 fi
 
 # xsel (linux only)
