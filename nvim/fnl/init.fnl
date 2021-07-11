@@ -180,11 +180,9 @@
 
   (nvim.ex.set :imdisable)
 
-  (nvim.ex.set :incsearch)
   (nvim.ex.set :ignorecase)
   (nvim.ex.set :smartcase)
 
-  (nvim.ex.set :autoindent)
   (nvim.ex.set :smartindent)
   (nvim.ex.set :breakindent)
 
@@ -268,7 +266,6 @@
   (set nvim.o.laststatus 2)
   (set nvim.o.showtabline 2)
 
-  (nvim.ex.set :hlsearch)
   (nvim.ex.set :termguicolors)
   (nvim.ex.syntax :on)
   (nvim.ex.filetype :off)
@@ -285,7 +282,6 @@
                                    :Outline
                                    :packer])
   (nvim.ex.silent_ "colorscheme tokyonight")
-  (nvim.ex.set "background=dark")
   (nvim.ex.syntax :enable)
 
   (defn- hi [name opts]
