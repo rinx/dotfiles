@@ -24,7 +24,7 @@
   :nvim-lua/plenary.nvim {}
   :nvim-lua/popup.nvim {}
   :folke/tokyonight.nvim {}
-  :kyazdani42/nvim-web-devicons {}
+  :kyazdani42/nvim-web-devicons {:mod :devicons}
   :hoob3rt/lualine.nvim {:mod :lualine}
   :akinsho/nvim-bufferline.lua {:mod :bufferline}
   :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
