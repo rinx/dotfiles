@@ -14,4 +14,7 @@ end
 ensure("wbthomason", "packer.nvim")
 ensure("Olical", "aniseed")
 
-vim.g["aniseed#env"] = true
+vim.g["aniseed#env"] = {
+  module = "dotfiles.init",
+  compile = true,
+}
