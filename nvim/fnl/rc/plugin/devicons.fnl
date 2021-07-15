@@ -1,4 +1,4 @@
-(module dotfiles.plugin.devicons
+(module rc.plugin.devicons
   {autoload {devicon nvim-web-devicons}})
 
 (devicon.setup

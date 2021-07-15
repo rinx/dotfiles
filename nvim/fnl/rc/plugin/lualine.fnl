@@ -1,8 +1,8 @@
-(module dotfiles.plugin.lualine
+(module rc.plugin.lualine
   {autoload {core aniseed.core
              nvim aniseed.nvim
-             icon dotfiles.icon
-             util dotfiles.util
+             icon rc.icon
+             util rc.util
              lualine lualine}})
 
 (def- icontab icon.tab)

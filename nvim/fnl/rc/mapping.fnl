@@ -1,7 +1,7 @@
-(module dotfiles.mapping
+(module rc.mapping
   {autoload {core aniseed.core
              nvim aniseed.nvim
-             util dotfiles.util}})
+             util rc.util}})
 
 (def- nmap util.nmap)
 (def- imap util.imap)

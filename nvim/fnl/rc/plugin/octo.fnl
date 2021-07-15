@@ -1,4 +1,4 @@
-(module dotfiles.plugin.octo
+(module rc.plugin.octo
   {autoload {nvim aniseed.nvim
              octo octo}})
 

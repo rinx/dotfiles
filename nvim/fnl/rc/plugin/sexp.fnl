@@ -1,6 +1,6 @@
-(module dotfiles.plugin.sexp
+(module rc.plugin.sexp
   {autoload {nvim aniseed.nvim
-             util dotfiles.util}})
+             util rc.util}})
 
 (def- nmap util.nmap)
 

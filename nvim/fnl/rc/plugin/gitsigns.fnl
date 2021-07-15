@@ -1,5 +1,5 @@
-(module dotfiles.plugin.gitsigns
-  {autoload {icon dotfiles.icon
+(module rc.plugin.gitsigns
+  {autoload {icon rc.icon
              gitsigns gitsigns}})
 
 (def- icontab icon.tab)

@@ -1,8 +1,8 @@
-(module dotfiles.plugin.lsp
+(module rc.plugin.lsp
   {autoload {nvim aniseed.nvim
-             color dotfiles.color
-             icon dotfiles.icon
-             util dotfiles.util
+             color rc.color
+             icon rc.icon
+             util rc.util
              compe compe
              lsp lspconfig
              lsp-configs lspconfig/configs
@@ -10,7 +10,7 @@
              lsp-signature lsp_signature
              lsp-status lsp-status
              lsputil lspconfig/util}
-   require-macros [dotfiles.macros]})
+   require-macros [rc.macros]})
 
 (def- colors color.colors)
 (def- icontab icon.tab)

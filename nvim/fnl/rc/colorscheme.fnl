@@ -1,7 +1,7 @@
-(module dotfiles.colorscheme
+(module rc.colorscheme
   {autoload {nvim aniseed.nvim
-             color dotfiles.color
-             util dotfiles.util}})
+             color rc.color
+             util rc.util}})
 
 (def- colors color.colors)
 (def- hi util.hi)

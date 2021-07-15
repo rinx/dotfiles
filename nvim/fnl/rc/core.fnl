@@ -1,9 +1,9 @@
-(module dotfiles.core
+(module rc.core
   {autoload {core aniseed.core
              nvim aniseed.nvim
-             color dotfiles.color
-             icon dotfiles.icon
-             util dotfiles.util}})
+             color rc.color
+             icon rc.icon
+             util rc.util}})
 
 (def- icontab icon.tab)
 

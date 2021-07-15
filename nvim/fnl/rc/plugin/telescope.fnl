@@ -1,8 +1,8 @@
-(module dotfiles.plugin.telescope
+(module rc.plugin.telescope
   {autoload {nvim aniseed.nvim
-             color dotfiles.color
-             icon dotfiles.icon
-             util dotfiles.util
+             color rc.color
+             icon rc.icon
+             util rc.util
              telescope telescope
              actions telescope.actions
              builtin telescope.builtin
@@ -11,7 +11,7 @@
              previewers telescope.previewers
              sorters telescope.sorters
              themes telescope.themes}
-   require-macros [dotfiles.macros]})
+   require-macros [rc.macros]})
 
 (def- colors color.colors)
 (def- icontab icon.tab)

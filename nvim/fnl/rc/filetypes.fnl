@@ -1,10 +1,10 @@
-(module dotfiles.filetypes
+(module rc.filetypes
   {autoload {nvim aniseed.nvim
              util aniseed.nvim.util}
-   require-macros [dotfiles.macros]})
+   require-macros [rc.macros]})
 
 (defn- bridge [from to]
-  (util.fn-bridge from :dotfiles.filetypes to {:return true}))
+  (util.fn-bridge from :rc.filetypes to {:return true}))
 
 ;; markdown
 (set nvim.g.mkdp_open_to_the_world 1)

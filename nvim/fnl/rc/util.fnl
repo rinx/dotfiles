@@ -1,4 +1,4 @@
-(module dotfiles.util
+(module rc.util
   {autoload {core aniseed.core
              nvim aniseed.nvim}})
 

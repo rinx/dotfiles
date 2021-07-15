@@ -1,7 +1,7 @@
-(module dotfiles.plugin.nvim-tree
+(module rc.plugin.nvim-tree
   {autoload {nvim aniseed.nvim
-             icon dotfiles.icon
-             util dotfiles.util}})
+             icon rc.icon
+             util rc.util}})
 
 (def- icontab icon.tab)
 (def- nnoremap-silent util.nnoremap-silent)

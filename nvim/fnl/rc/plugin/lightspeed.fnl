@@ -1,5 +1,5 @@
-(module dotfiles.plugin.lightspeed
-  {autoload {util dotfiles.util
+(module rc.plugin.lightspeed
+  {autoload {util rc.util
              lightspeed lightspeed}})
 
 (def- nmap util.nmap)

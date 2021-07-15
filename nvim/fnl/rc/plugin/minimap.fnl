@@ -1,6 +1,6 @@
-(module dotfiles.plugin.minimap
+(module rc.plugin.minimap
   {autoload {nvim aniseed.nvim
-             util dotfiles.util}})
+             util rc.util}})
 
 (def- nnoremap-silent util.nnoremap-silent)
 

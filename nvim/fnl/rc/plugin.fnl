@@ -1,12 +1,12 @@
-(module dotfiles.plugin
+(module rc.plugin
   {autoload {core aniseed.core
              packer packer}})
 
 (defn safe-require-plugin-config [name]
   (let [(ok? val-or-err) (pcall require
-                                (.. :dotfiles.plugin. name))]
+                                (.. :rc.plugin. name))]
     (when (not ok?)
-      (print (.. "dotfiles error: " val-or-err)))))
+      (print (.. "rc error: " val-or-err)))))
 
 (defn- use [...]
   (let [pkgs [...]]

@@ -1,5 +1,5 @@
-(module dotfiles.plugin.toggleterm
-  {autoload {util dotfiles.util
+(module rc.plugin.toggleterm
+  {autoload {util rc.util
              toggleterm toggleterm}})
 
 (def- nnoremap-silent util.nnoremap-silent)

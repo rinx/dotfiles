@@ -1,4 +1,4 @@
-(module dotfiles.plugin.eskk
+(module rc.plugin.eskk
   {autoload {nvim aniseed.nvim}})
 
 (set nvim.g.eskk#dictionary

@@ -1,4 +1,4 @@
-(module dotfiles.color)
+(module rc.color)
 
 (def colors
   {:error :#f07178

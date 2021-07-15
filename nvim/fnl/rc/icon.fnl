@@ -1,4 +1,4 @@
-(module dotfiles.icon
+(module rc.icon
   {autoload {core aniseed.core}})
 
 (def tab
