@@ -113,7 +113,7 @@
                     :capabilities capabilities})
 (lsp.kotlin_language_server.setup {:on_attach on-attach
                                    :capabilities capabilities})
-(lsp.pyls.setup {:on_attach on-attach
+(lsp.pylsp.setup {:on_attach on-attach
                  :capabilities capabilities})
 (lsp.tsserver.setup {:on_attach on-attach
                      :capabilities capabilities})
