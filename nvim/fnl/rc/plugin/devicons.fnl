@@ -1,13 +1,14 @@
 (module rc.plugin.devicons
-  {autoload {devicon nvim-web-devicons}})
+  {autoload {icon rc.icon
+             devicon nvim-web-devicons}})
 
 (devicon.setup
-  {:override {:fnl {:icon ""
+  {:override {:fnl {:icon icon.tab.lua
                     :color :#c2d94c
                     :name :Fennel}
-              :hy {:icon ""
+              :hy {:icon icon.tab.python
                    :color :#519aba
                    :name :Hy}
-              :Makefile {:icon " "
+              :Makefile {:icon icon.tab.large-m
                          :color :#6d8086
                          :name :Makefile}}})

@@ -7,6 +7,8 @@
    :clojure " "
    :clojure-alt ""
    :lua " "
+   :python ""
+   :large-m " "
    :lock ""
    :code-braces " "
    :code-brackets " "
