@@ -60,3 +60,5 @@
         (when plugin
           (core.get plugin :loaded))))))
 
+(defn headless? []
+  (core.empty? (nvim.list_uis)))

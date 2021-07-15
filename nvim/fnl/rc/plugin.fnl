@@ -2,7 +2,10 @@
   {autoload {core aniseed.core
              packer packer}})
 
-(defn safe-require-plugin-config [name]
+(defn- load-plugin-configs? []
+  (core.nil? vim.env.NVIM_SKIP_PLUGIN_CONFIGS))
+
+(defn- safe-require-plugin-config [name]
   (let [(ok? val-or-err) (pcall require
                                 (.. :rc.plugin. name))]
     (when (not ok?)
@@ -15,7 +18,8 @@
         (for [i 1 (core.count pkgs) 2]
           (let [name (. pkgs i)
                 opts (. pkgs (+ i 1))]
-            (-?> (. opts :mod) (safe-require-plugin-config))
+            (when (load-plugin-configs?)
+              (-?> (. opts :mod) (safe-require-plugin-config)))
             (use (core.assoc opts 1 name))))))))
 
 (use
