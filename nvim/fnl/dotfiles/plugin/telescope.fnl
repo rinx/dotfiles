@@ -11,7 +11,7 @@
              previewers telescope.previewers
              sorters telescope.sorters
              themes telescope.themes}
-   require-macros [dotfiles.util.macros]})
+   require-macros [dotfiles.macros]})
 
 (def- colors color.colors)
 (def- icontab icon.tab)

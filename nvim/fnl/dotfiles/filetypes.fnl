@@ -1,7 +1,7 @@
 (module dotfiles.filetypes
   {autoload {nvim aniseed.nvim
              util aniseed.nvim.util}
-   require-macros [dotfiles.util.macros]})
+   require-macros [dotfiles.macros]})
 
 (defn- bridge [from to]
   (util.fn-bridge from :dotfiles.filetypes to {:return true}))

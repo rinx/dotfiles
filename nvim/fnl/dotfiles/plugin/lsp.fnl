@@ -10,7 +10,7 @@
              lsp-signature lsp_signature
              lsp-status lsp-status
              lsputil lspconfig/util}
-   require-macros [dotfiles.util.macros]})
+   require-macros [dotfiles.macros]})
 
 (def- colors color.colors)
 (def- icontab icon.tab)

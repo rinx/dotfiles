@@ -4,7 +4,7 @@
              icon dotfiles.icon
              util dotfiles.util
              bufferline bufferline}
-   require-macros [dotfiles.util.macros]})
+   require-macros [dotfiles.macros]})
 
 (def- colors color.colors)
 (def- icontab icon.tab)
