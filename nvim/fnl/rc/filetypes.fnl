@@ -61,7 +61,8 @@
 
 ;; clojure
 (augroup init-clojure
-         (autocmd :FileType :clojure "setl colorcolumn=80"))
+         (autocmd :FileType :clojure "setl colorcolumn=80")
+         (autocmd :BufWritePre "*.clj,*.cljc,*.cljs" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
 
 ;; go
 (augroup init-golang
@@ -79,7 +80,7 @@
 
 ;; kotlin
 (augroup init-kotlin
-         (autocmd :BufWritePre "*.kt" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+         (autocmd :BufWritePre "*.kt,*.kts" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
 
 ;; typescript
 (augroup init-typescript
