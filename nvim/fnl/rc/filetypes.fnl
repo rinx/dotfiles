@@ -81,6 +81,10 @@
 (augroup init-kotlin
          (autocmd :BufWritePre "*.kt" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
 
+;; typescript
+(augroup init-typescript
+         (autocmd :BufWritePre "*.ts" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+
 ;; QuickFix
 (augroup init-qf
          (autocmd :FileType :qf "nnoremap <buffer> j j")
