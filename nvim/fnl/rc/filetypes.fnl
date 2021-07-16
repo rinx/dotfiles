@@ -59,7 +59,6 @@
 (augroup init-lua
          (autocmd :FileType :lua "setl shiftwidth=2"))
 
-
 ;; clojure
 (augroup init-clojure
          (autocmd :FileType :clojure "setl colorcolumn=80"))
@@ -77,6 +76,10 @@
 ;; rust
 (augroup init-rust
          (autocmd :BufWritePre "*.rs" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+
+;; kotlin
+(augroup init-kotlin
+         (autocmd :BufWritePre "*.kt" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
 
 ;; QuickFix
 (augroup init-qf
