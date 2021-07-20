@@ -62,7 +62,10 @@
 
 (telescope.setup
   {:defaults
-   {:prompt_prefix (.. icontab.search " ")
+   {:mappings
+    {:i {:<Up> actions.cycle_history_prev
+         :<Down> actions.cycle_history_next}}
+    :prompt_prefix (.. icontab.search " ")
     :selection_caret (.. icontab.rquot " ")
     :sorting_strategy :ascending
     :scroll_strategy :cycle}

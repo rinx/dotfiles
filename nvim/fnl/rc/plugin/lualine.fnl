@@ -19,13 +19,13 @@
   {1 :mode
    :format (fn [mode-name]
              (let [i icontab
-                   dict {:n i.meteor
-                         :i i.zap
+                   dict {:n i.hashtag
+                         :i i.text
                          :v i.cursor-text
                          "" i.cursor
                          :V i.cursor
                          :c i.chevron-r
-                         :no i.meteor
+                         :no i.hashtag
                          :s i.cursor-text
                          :S i.cursor-text
                          "" i.cursor-text
