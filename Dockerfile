@@ -219,9 +219,9 @@ RUN npm install -g \
     yaml-language-server \
     yarn \
     && pip3 install \
-    fortran-language-server \
-    git+https://github.com/hylang/hy.git \
-    git+https://github.com/rinx/hy-language-server.git
+    fortran-language-server
+    # git+https://github.com/hylang/hy.git \
+    # git+https://github.com/rinx/hy-language-server.git
     # hy \
     # hy-language-server
 
