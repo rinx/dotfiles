@@ -64,6 +64,8 @@
                    :capabilities capabilities})
 (lsp.clojure_lsp.setup {:on_attach on-attach
                         :capabilities capabilities})
+(lsp.cssls.setup {:on_attach on-attach
+                  :capabilities capabilities})
 (lsp.dockerls.setup {:on_attach on-attach
                      :capabilities capabilities})
 (lsp.efm.setup {:on_attach on-attach
@@ -105,6 +107,8 @@
                               :gofumpt true}}})
 (lsp.hls.setup {:on_attach on-attach
                 :capabilities capabilities})
+(lsp.html.setup {:on_attach on-attach
+                 :capabilities capabilities})
 (lsp.hyls.setup {:on_attach on-attach
                  :capabilities capabilities})
 (lsp.jsonls.setup {:on_attach on-attach

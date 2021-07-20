@@ -215,7 +215,7 @@ RUN npm install -g \
     textlint-rule-write-good \
     typescript \
     typescript-language-server \
-    vscode-json-languageserver \
+    vscode-langservers-extracted \
     yaml-language-server \
     yarn \
     && pip3 install \
