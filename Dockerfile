@@ -1,5 +1,5 @@
 ## --- [{:name "GRAALVM_VERSION"
-## ---   :tx "(fn [x] (string/replace x #\"vm-\" \"\"))"
+## ---   :tx "(fn [x] (-> x (string/replace #\"vm-\" \"\") (string/replace #\"ce-\" \"\")))"
 ## ---   :url "https://api.github.com/repos/graalvm/graalvm-ce-builds/tags"}
 ## ---  {:name "CLOJURE_LSP_VERSION"
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
@@ -10,7 +10,7 @@
 ## ---  {:name "BUF_VERSION"
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
-ARG GRAALVM_VERSION=ce-21.2.0
+ARG GRAALVM_VERSION=21.2.0
 ARG GRAALVM_JAVA_VERSION=java11
 
 ARG FENNEL_VERSION=0.9.2
