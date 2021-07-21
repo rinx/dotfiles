@@ -11,7 +11,6 @@
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
 ARG GRAALVM_VERSION=21.2.0
-ARG GRAALVM_JAVA_VERSION=java11
 
 ARG FENNEL_VERSION=0.9.2
 
@@ -134,7 +133,6 @@ FROM ubuntu:devel AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
-ARG GRAALVM_JAVA_VERSION
 ARG FENNEL_VERSION
 ARG CLOJURE_LSP_VERSION
 ARG KOTLIN_LS_VERSION
@@ -227,7 +225,7 @@ RUN npm install -g \
 
 ENV GRAALVM_HOME /usr/lib/graalvm
 RUN cd /tmp \
-    && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${GRAALVM_JAVA_VERSION}-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
+    && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-java11-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
     && mkdir -p ${GRAALVM_HOME} \
     && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
     && chmod -R a+rwx ${GRAALVM_HOME} \
