@@ -30,6 +30,9 @@
 # config: ⚙️ :gear: Changing configuration files.
 # add: ➕ :heavy_plus_sign: add something
 # remove: ➖ :heavy_minus_sign: remove something
+# init: 🎉 :tada: Begin a project
+# chore-deps: ⬆️ :arrow_up: Upgrade dependencies
+# chore-deps: ⬇️ :arrow_down: Downgrade dependencies
 #
 #
 # === Conventional Commits 1.0.0
