@@ -73,3 +73,9 @@
 (hi :LspCodeLens
     {:others (.. "gui=bold,italic,underline guifg=" colors.color2
                  " guibg=" colors.color10)})
+
+(hi :TelescopeBorder
+    {:bg :none
+     :others (.. "blend=0 ctermfg=blue guifg=" colors.color10)})
+(hi :TelescopePromptPrefix
+    {:others (.. "ctermfg=blue guifg=" colors.color10)})

@@ -1,15 +1,13 @@
 (module rc.plugin
   {autoload {core aniseed.core
+             nvim aniseed.nvim
              packer packer}})
 
 (defn- load-plugin-configs? []
   (core.nil? vim.env.NVIM_SKIP_PLUGIN_CONFIGS))
 
-(defn- safe-require-plugin-config [name]
-  (let [(ok? val-or-err) (pcall require
-                                (.. :rc.plugin. name))]
-    (when (not ok?)
-      (print (.. "rc error: " val-or-err)))))
+(defn- config-require-str [name]
+  (.. "require('rc.plugin." name "')"))
 
 (defn- use [...]
   (let [pkgs [...]]
@@ -18,9 +16,12 @@
         (for [i 1 (core.count pkgs) 2]
           (let [name (. pkgs i)
                 opts (. pkgs (+ i 1))]
-            (when (load-plugin-configs?)
-              (-?> (. opts :mod) (safe-require-plugin-config)))
-            (use (core.assoc opts 1 name))))))))
+            (if (and (load-plugin-configs?) (. opts :mod))
+              (use (core.assoc
+                     opts
+                     1 name
+                     :config (config-require-str (. opts :mod))))
+              (use (core.assoc opts 1 name)))))))))
 
 (use
   :wbthomason/packer.nvim {}
@@ -51,16 +52,13 @@
   :rcarriga/nvim-dap-ui {}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
-  :kyazdani42/nvim-tree.lua {:cmd [:NvimTreeOpen
-                                   :NvimTreeToggle]
-                             :mod :nvim-tree}
+  :kyazdani42/nvim-tree.lua {:mod :nvim-tree}
   :nvim-telescope/telescope.nvim {:mod :telescope}
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
   :lewis6991/gitsigns.nvim {:mod :gitsigns}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
-  :lukas-reineke/indent-blankline.nvim {:event [:BufRead]
-                                        :mod :indent-blankline}
+  :lukas-reineke/indent-blankline.nvim {:mod :indent-blankline}
   :ggandor/lightspeed.nvim {:mod :lightspeed}
   :kana/vim-submode {}
   :kana/vim-arpeggio {}
@@ -77,11 +75,11 @@
   :mattn/vim-textobj-url {}
   :osyo-manga/vim-textobj-multiblock {}
   :tpope/vim-repeat {}
-  :pwntester/octo.nvim {:mod :octo}
+  :pwntester/octo.nvim {:cmd [:Octo]
+                        :mod :octo}
   :rinx/nvim-minimap {:cmd [:MinimapOpen
-                            :MinimapToggle] 
+                            :MinimapToggle]
                       :mod :minimap}
-  :jbyuki/venn.nvim {}
   :guns/vim-sexp {:ft [:clojure
                        :fennel
                        :hy

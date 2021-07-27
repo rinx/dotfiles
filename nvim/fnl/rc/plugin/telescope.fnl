@@ -1,6 +1,5 @@
 (module rc.plugin.telescope
   {autoload {nvim aniseed.nvim
-             color rc.color
              icon rc.icon
              util rc.util
              telescope telescope
@@ -13,9 +12,7 @@
              themes telescope.themes}
    require-macros [rc.macros]})
 
-(def- colors color.colors)
 (def- icontab icon.tab)
-(def- hi util.hi)
 (def- nnoremap-silent util.nnoremap-silent)
 (def- loaded? util.loaded?)
 
@@ -101,12 +98,6 @@
                                 true)})]
     (p:find)))
 (nvim.ex.command_ :TelescopeActions (->viml :telescope-actions))
-
-(hi :TelescopeBorder
-    {:bg :none
-     :others (.. "blend=0 ctermfg=blue guifg=" colors.color10)})
-(hi :TelescopePromptPrefix
-    {:others (.. "ctermfg=blue guifg=" colors.color10)})
 
 (nnoremap-silent ",f" ":<C-u>Telescope fd<CR>")
 (nnoremap-silent ",af"
