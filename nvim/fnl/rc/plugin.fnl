@@ -57,6 +57,7 @@
   :nvim-telescope/telescope-fzy-native.nvim {}
   :lewis6991/gitsigns.nvim {:mod :gitsigns}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
+  :lukas-reineke/indent-blankline.nvim {:mod :indent-blankline}
   :ggandor/lightspeed.nvim {:mod :lightspeed}
   :kana/vim-submode {}
   :kana/vim-arpeggio {}
