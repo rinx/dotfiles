@@ -52,28 +52,32 @@
   :rcarriga/nvim-dap-ui {}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
-  :kyazdani42/nvim-tree.lua {:mod :nvim-tree}
+  :kyazdani42/nvim-tree.lua {:event [:BufRead]
+                             :mod :nvim-tree}
   :nvim-telescope/telescope.nvim {:mod :telescope}
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
-  :lewis6991/gitsigns.nvim {:mod :gitsigns}
+  :lewis6991/gitsigns.nvim {:event [:BufRead]
+                            :mod :gitsigns}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
-  :lukas-reineke/indent-blankline.nvim {:mod :indent-blankline}
-  :ggandor/lightspeed.nvim {:mod :lightspeed}
-  :kana/vim-submode {}
+  :lukas-reineke/indent-blankline.nvim {:event [:BufRead]
+                                        :mod :indent-blankline}
+  :ggandor/lightspeed.nvim {:event [:BufRead]
+                            :mod :lightspeed}
+  :kana/vim-submode {:event [:BufRead]}
   :kana/vim-arpeggio {}
-  :tyru/caw.vim {}
+  :tyru/caw.vim {:event [:BufRead]}
   :kana/vim-operator-user {}
-  :kana/vim-operator-replace {}
-  :rhysd/vim-operator-surround {}
+  :kana/vim-operator-replace {:event [:BufRead]}
+  :rhysd/vim-operator-surround {:event [:BufRead]}
   :kana/vim-textobj-user {}
-  :kana/vim-textobj-indent {}
-  :kana/vim-textobj-function {}
-  :kana/vim-textobj-entire {}
-  :kana/vim-textobj-line {}
-  :thinca/vim-textobj-between {}
-  :mattn/vim-textobj-url {}
-  :osyo-manga/vim-textobj-multiblock {}
+  :kana/vim-textobj-indent {:event [:BufRead]}
+  :kana/vim-textobj-function {:event [:BufRead]}
+  :kana/vim-textobj-entire {:event [:BufRead]}
+  :kana/vim-textobj-line {:event [:BufRead]}
+  :thinca/vim-textobj-between {:event [:BufRead]}
+  :mattn/vim-textobj-url {:event [:BufRead]}
+  :osyo-manga/vim-textobj-multiblock {:event [:BufRead]}
   :tpope/vim-repeat {}
   :pwntester/octo.nvim {:cmd [:Octo]
                         :mod :octo}
