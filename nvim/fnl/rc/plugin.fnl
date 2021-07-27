@@ -51,13 +51,16 @@
   :rcarriga/nvim-dap-ui {}
   :cohama/lexima.vim {}
   :rafamadriz/friendly-snippets {}
-  :kyazdani42/nvim-tree.lua {:mod :nvim-tree}
+  :kyazdani42/nvim-tree.lua {:cmd [:NvimTreeOpen
+                                   :NvimTreeToggle]
+                             :mod :nvim-tree}
   :nvim-telescope/telescope.nvim {:mod :telescope}
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
   :lewis6991/gitsigns.nvim {:mod :gitsigns}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
-  :lukas-reineke/indent-blankline.nvim {:mod :indent-blankline}
+  :lukas-reineke/indent-blankline.nvim {:event [:BufRead]
+                                        :mod :indent-blankline}
   :ggandor/lightspeed.nvim {:mod :lightspeed}
   :kana/vim-submode {}
   :kana/vim-arpeggio {}
@@ -75,7 +78,9 @@
   :osyo-manga/vim-textobj-multiblock {}
   :tpope/vim-repeat {}
   :pwntester/octo.nvim {:mod :octo}
-  :rinx/nvim-minimap {:mod :minimap}
+  :rinx/nvim-minimap {:cmd [:MinimapOpen
+                            :MinimapToggle] 
+                      :mod :minimap}
   :jbyuki/venn.nvim {}
   :guns/vim-sexp {:ft [:clojure
                        :fennel
@@ -100,7 +105,7 @@
                                 "InsertEnter *.hy"]}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft [:markdown]
-                                 :cmd "MarkdownPreview"}
+                                 :cmd [:MarkdownPreview]}
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {})
