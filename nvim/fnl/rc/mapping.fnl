@@ -116,9 +116,6 @@
 ;; operator
 (set nvim.g.caw_no_default_keymappings 1)
 (nvim.ex.silent_ "Arpeggio map or <Plug>(operator-replace)")
-(nvim.ex.silent_ "Arpeggio map oc <Plug>(caw:hatpos:toggle:operator)")
-(nvim.ex.silent_ "Arpeggio map od <Plug>(caw:hatpos:uncomment:operator)")
-(nvim.ex.silent_ "Arpeggio map oe <Plug>(caw:zeropos:toggle:operator)")
 (nvim.set_keymap "" "Sa" "<Plug>(operator-surround-append)" {})
 (nvim.set_keymap "" "Sd" "<Plug>(operator-surround-delete)" {})
 (nvim.set_keymap "" "Sr" "<Plug>(operator-surround-replace)" {})
