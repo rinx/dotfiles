@@ -36,11 +36,13 @@
   :tyru/eskk.vim {:event [:InsertEnter]
                   :mod :eskk}
   :neovim/nvim-lspconfig {:mod :lsp}
-  :hrsh7th/nvim-compe {:mod :compe}
-  :hrsh7th/vim-vsnip {}
-  :hrsh7th/vim-vsnip-integ {}
-  :rafamadriz/friendly-snippets {}
-  :windwp/nvim-autopairs {:mod :autopairs}
+  :hrsh7th/nvim-compe {:event [:InsertEnter]
+                       :mod :compe}
+  :hrsh7th/vim-vsnip {:after :nvim-compe}
+  :hrsh7th/vim-vsnip-integ {:after :nvim-compe}
+  :rafamadriz/friendly-snippets {:after :nvim-compe}
+  :windwp/nvim-autopairs {:after :nvim-compe
+                          :mod :autopairs}
   :onsails/lspkind-nvim {}
   :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
@@ -52,32 +54,32 @@
   :simrat39/symbols-outline.nvim {}
   :mfussenegger/nvim-dap {:mod :dap}
   :rcarriga/nvim-dap-ui {}
-  :kyazdani42/nvim-tree.lua {:event [:BufRead]
+  :kyazdani42/nvim-tree.lua {:event [:BufEnter]
                              :mod :nvim-tree}
   :nvim-telescope/telescope.nvim {:mod :telescope}
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
-  :lewis6991/gitsigns.nvim {:event [:BufRead]
+  :lewis6991/gitsigns.nvim {:event [:BufEnter]
                             :mod :gitsigns}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
-  :lukas-reineke/indent-blankline.nvim {:event [:BufRead]
+  :lukas-reineke/indent-blankline.nvim {:event [:BufEnter]
                                         :mod :indent-blankline}
-  :ggandor/lightspeed.nvim {:event [:BufRead]
+  :ggandor/lightspeed.nvim {:event [:BufEnter]
                             :mod :lightspeed}
-  :kana/vim-submode {:event [:BufRead]}
+  :kana/vim-submode {:event [:BufEnter]}
   :kana/vim-arpeggio {}
-  :tyru/caw.vim {:event [:BufRead]}
-  :kana/vim-operator-user {}
-  :kana/vim-operator-replace {:event [:BufRead]}
-  :rhysd/vim-operator-surround {:event [:BufRead]}
-  :kana/vim-textobj-user {}
-  :kana/vim-textobj-indent {:event [:BufRead]}
-  :kana/vim-textobj-function {:event [:BufRead]}
-  :kana/vim-textobj-entire {:event [:BufRead]}
-  :kana/vim-textobj-line {:event [:BufRead]}
-  :thinca/vim-textobj-between {:event [:BufRead]}
-  :mattn/vim-textobj-url {:event [:BufRead]}
-  :osyo-manga/vim-textobj-multiblock {:event [:BufRead]}
+  :tyru/caw.vim {:event [:BufEnter]}
+  :kana/vim-operator-user {:event [:BufEnter]}
+  :kana/vim-operator-replace {:after :vim-operator-user}
+  :rhysd/vim-operator-surround {:after :vim-operator-user}
+  :kana/vim-textobj-user {:event [:BufEnter]}
+  :kana/vim-textobj-indent {:after :vim-textobj-user}
+  :kana/vim-textobj-function {:after :vim-textobj-user}
+  :kana/vim-textobj-entire {:after :vim-textobj-user}
+  :kana/vim-textobj-line {:after :vim-textobj-user}
+  :thinca/vim-textobj-between {:after :vim-textobj-user}
+  :mattn/vim-textobj-url {:after :vim-textobj-user}
+  :osyo-manga/vim-textobj-multiblock {:after :vim-textobj-user}
   :tpope/vim-repeat {}
   :pwntester/octo.nvim {:cmd [:Octo]
                         :mod :octo}
