@@ -83,9 +83,6 @@
   :tpope/vim-repeat {}
   :pwntester/octo.nvim {:cmd [:Octo]
                         :mod :octo}
-  :rinx/nvim-minimap {:cmd [:MinimapOpen
-                            :MinimapToggle]
-                      :mod :minimap}
   :guns/vim-sexp {:ft [:clojure
                        :fennel
                        :hy

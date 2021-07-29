@@ -36,7 +36,6 @@
    :LspStart
    :LspStop
    :MarkdownPreview
-   :MinimapToggle
    :NvimTreeRefresh
    :NvimTreeToggle
    :PackerClean
