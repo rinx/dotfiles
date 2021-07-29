@@ -13,10 +13,14 @@
 (def- hi util.hi)
 (def- nnoremap-silent util.nnoremap-silent)
 
+(def- adapters-dir (.. (vim.fn.stdpath :data) :/dap))
+(when (not (= (nvim.fn.isdirectory adapters-dir) 1))
+  (nvim.fn.mkdir adapters-dir :p))
+
 ;; go
 (when (= (nvim.fn.executable :dlv) 1)
   (let [dlv-path (vim.fn.exepath :dlv)
-        vscode-go-path (.. (vim.fn.stdpath :data) :/dap/vscode-go)
+        vscode-go-path (.. adapters-dir :/vscode-go)
         debug-adapter-path (.. vscode-go-path :/dist/debugAdapter.js)]
 
     (defn dap-sync-go-adapter []
@@ -65,7 +69,7 @@
            :dlvToolPath dlv-path}])))
 
 ;; lldb
-(let [adapter-path (.. (vim.fn.stdpath :data) :/dap/codelldb)
+(let [adapter-path (.. adapters-dir :/codelldb)
       codelldb-path (.. adapter-path :/extension/adapter/codelldb)
       codelldb-url (if (= (vim.fn.has :unix) 1)
                      "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-linux.vsix"
@@ -102,15 +106,17 @@
                           :port port}))
              500))))
   (set dap.configurations.rust
-       [{:type :rust
-         :name :Debug
-         :request :launch
-         :cwd (vim.fn.getcwd)
-         :program (.. :target/debug/
-                      (vim.fn.fnamemodify (vim.fn.getcwd) ":t"))}]))
+       (let [cwd (vim.fn.getcwd)
+             pkg-name (vim.fn.fnamemodify (vim.fn.getcwd) ":t")]
+         [{:type :rust
+           :name "Debug executable"
+           :request :launch
+           :args []
+           :cwd cwd
+           :program (.. :target/debug/ pkg-name)}])))
 
 ;; kotlin
-(let [adapter-path (.. (vim.fn.stdpath :data) :/dap/kotlin)
+(let [adapter-path (.. adapters-dir :/kotlin)
       bin-path (.. adapter-path
                    :/adapter/build/install/adapter/bin/kotlin-debug-adapter)]
   (defn dap-sync-kotlin-adapter []

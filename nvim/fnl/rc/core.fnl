@@ -78,11 +78,11 @@
   (set nvim.o.undodir undodir)
   (set nvim.o.directory swapdir)
 
-  (if (not (= (nvim.fn.isdirectory backupdir) 1))
+  (when (not (= (nvim.fn.isdirectory backupdir) 1))
     (nvim.fn.mkdir backupdir :p))
-  (if (not (= (nvim.fn.isdirectory undodir) 1))
+  (when (not (= (nvim.fn.isdirectory undodir) 1))
     (nvim.fn.mkdir undodir :p))
-  (if (not (= (nvim.fn.isdirectory swapdir) 1))
+  (when (not (= (nvim.fn.isdirectory swapdir) 1))
     (nvim.fn.mkdir swapdir :p)))
 
 (nvim.ex.set :list)
