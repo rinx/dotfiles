@@ -3,7 +3,6 @@
              color rc.color
              icon rc.icon
              util rc.util
-             compe compe
              lsp lspconfig
              lsp-configs lspconfig/configs
              lsp-kind lspkind
@@ -18,7 +17,6 @@
 
 (def- nnoremap-silent util.nnoremap-silent)
 (def- xnoremap-silent util.xnoremap-silent)
-(def- inoremap-silent-expr util.inoremap-silent-expr)
 
 (defn- on-attach [client bufnr]
   (lsp-status.on_attach client)
@@ -147,36 +145,7 @@
                            :methodReferences true
                            :references true}}}}})))
 
-(compe.setup
-  {:enabled true
-   :autocomplete true
-   :debug false
-   :min_length 1
-   :preselect "enable"
-   :throttle_time 80
-   :source_timeout 200
-   :incomplete_delay 400
-   :max_abbr_width 100
-   :max_kind_width 100
-   :max_menu_width 100
-   :documentation true
-   :source {:buffer {:kind icontab.document}
-            :calc {:kind icontab.calc}
-            :conjure {:filetypes [:clojure
-                                  :fennel
-                                  :hy]}
-            :emoji {:kind icontab.heart
-                    :filetypes [:gitcommit
-                                :markdown]}
-            :nvim_lsp {:kind icontab.cube}
-            :nvim_lua {:kind icontab.vim
-                       :filetypes [:lua]}
-            :omni false
-            :path {:kind icontab.dots}
-            :spell {:kind icontab.pencil}
-            :tag {:kind icontab.tag}
-            :treesitter {:kind icontab.leaf}
-            :vsnip {:kind icontab.quote-l}}})
+
 
 (nnoremap-silent :K ":<C-u>lua vim.lsp.buf.hover()<CR>")
 (nnoremap-silent :gd ":<C-u>lua vim.lsp.buf.definition()<CR>")
@@ -318,23 +287,10 @@
 
 ;; lightbulb
 (when (loaded? :nvim-lightbulb)
-  (defn lightbulb-update []
-    (let [lightbulb (require :nvim-lightbulb)]
-      (lightbulb.update_lightbulb)))
   (augroup init-lightbulb
-           (autocmd "CursorHold,CursorHoldI" "*" (->viml :lightbulb-update)))
+           (autocmd "CursorHold,CursorHoldI"
+                    "*"
+                    "lua require'nvim-lightbulb'.update_lightbulb()"))
   (nvim.fn.sign_define :LightBulbSign
                        {:text icontab.lightbulb
                         :texthl :LspDiagnosticsSignLightBulb}))
-
-;; lexima
-(set nvim.g.lexima_no_default_rules true)
-(nvim.fn.lexima#set_default_rules)
-
-;; compe
-(inoremap-silent-expr "<C-s>"  "compe#complete()")
-(inoremap-silent-expr "<CR>"   "compe#confirm(lexima#expand('<LT>CR>', 'i'))")
-(inoremap-silent-expr "<C-e>"  "compe#close('<C-e>')")
-(inoremap-silent-expr "<Up>"   "compe#scroll({ 'delta': +4 })")
-(inoremap-silent-expr "<Down>" "compe#scroll({ 'delta': -4 })")
-

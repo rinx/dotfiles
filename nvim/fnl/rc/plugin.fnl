@@ -36,9 +36,11 @@
   :tyru/eskk.vim {:event [:InsertEnter]
                   :mod :eskk}
   :neovim/nvim-lspconfig {:mod :lsp}
+  :hrsh7th/nvim-compe {:mod :compe}
   :hrsh7th/vim-vsnip {}
   :hrsh7th/vim-vsnip-integ {}
-  :hrsh7th/nvim-compe {}
+  :rafamadriz/friendly-snippets {}
+  :windwp/nvim-autopairs {:mod :autopairs}
   :onsails/lspkind-nvim {}
   :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
@@ -50,8 +52,6 @@
   :simrat39/symbols-outline.nvim {}
   :mfussenegger/nvim-dap {:mod :dap}
   :rcarriga/nvim-dap-ui {}
-  :cohama/lexima.vim {}
-  :rafamadriz/friendly-snippets {}
   :kyazdani42/nvim-tree.lua {:event [:BufRead]
                              :mod :nvim-tree}
   :nvim-telescope/telescope.nvim {:mod :telescope}
