@@ -68,8 +68,8 @@
                             :mod :lightspeed}
   :terrortylor/nvim-comment {:event [:BufEnter]
                              :mod :comment}
-  :kana/vim-submode {:event [:BufEnter]}
-  :kana/vim-arpeggio {}
+  :kana/vim-submode {:event [:BufEnter]
+                     :mod :submode}
   :kana/vim-operator-user {:event [:BufEnter]}
   :kana/vim-operator-replace {:after :vim-operator-user}
   :rhysd/vim-operator-surround {:after :vim-operator-user}

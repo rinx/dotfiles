@@ -2,6 +2,8 @@
   {autoload {core aniseed.core
              nvim aniseed.nvim}})
 
+(defn _map [from to]
+  (nvim.set_keymap "" from to {}))
 (defn nmap [from to]
   (nvim.set_keymap :n from to {}))
 (defn imap [from to]
