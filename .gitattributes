@@ -1,3 +1,0 @@
-## temporarily detect fennel files as clojure
-*.fnl linguist-language=clojure
-*.fnl linguist-detectable=true
