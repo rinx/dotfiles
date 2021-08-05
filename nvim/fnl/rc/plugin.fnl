@@ -61,6 +61,7 @@
   :nvim-telescope/telescope-fzy-native.nvim {}
   :lewis6991/gitsigns.nvim {:event [:BufEnter]
                             :mod :gitsigns}
+  :rcarriga/nvim-notify {:mod :notify}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
   :lukas-reineke/indent-blankline.nvim {:event [:BufEnter]
                                         :mod :indent-blankline}

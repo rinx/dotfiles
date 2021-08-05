@@ -79,3 +79,24 @@
      :others (.. "blend=0 ctermfg=blue guifg=" colors.color10)})
 (hi :TelescopePromptPrefix
     {:others (.. "ctermfg=blue guifg=" colors.color10)})
+
+(hi :NotifyERROR
+    {:others (.. "ctermfg=red guifg=" colors.error)})
+(hi :NotifyWARN
+    {:others (.. "ctermfg=yellow guifg=" colors.warn)})
+(hi :NotifyINFO
+    {:others (.. "ctermfg=green guifg=" colors.info)})
+(hi :NotifyDEBUG
+    {:others (.. "ctermfg=blue guifg=" colors.hint)})
+(hi :NotifyTRACE
+    {:others (.. "ctermfg=blue guifg=" colors.hint)})
+(hi :NotifyERRORTitle
+    {:others (.. "ctermfg=red guifg=" colors.error)})
+(hi :NotifyWARNTitle
+    {:others (.. "ctermfg=yellow guifg=" colors.warn)})
+(hi :NotifyINFOTitle
+    {:others (.. "ctermfg=green guifg=" colors.info)})
+(hi :NotifyDEBUGTitle
+    {:others (.. "ctermfg=blue guifg=" colors.hint)})
+(hi :NotifyTRACETitle
+    {:others (.. "ctermfg=blue guifg=" colors.hint)})
