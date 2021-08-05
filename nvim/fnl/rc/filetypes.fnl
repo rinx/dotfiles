@@ -12,7 +12,11 @@
     vim.lsp.log_levels.INFO
     {:title :lsp-formatting})
   (let [(ok? val-or-err) (pcall vim.lsp.buf.formatting_seq_sync)]
-    (when (not ok?)
+    (if ok?
+      (vim.notify
+        "formatting finished."
+        vim.lsp.log_levels.INFO
+        {:title :lsp-formatting})
       (vim.notify
         (.. "error occurred: " val-or-err)
         vim.lsp.log_levels.WARN
