@@ -160,8 +160,21 @@
         :type :executable
         :command bin-path}))
 
-;; loading .vscode/launch.js
-(pcall dap-ext-vscode.load_launchjs)
+;; loading .vscode/launch.json
+(defn load-launch-js []
+  (let [cwd (vim.fn.getcwd)
+        path (.. cwd :/.vscode/launch.json)]
+    (when (vim.loop.fs_stat path)
+      (vim.notify
+        "loading .vscode/launch.json..."
+        vim.lsp.log_levels.INFO
+        {:title :dap-load-launch-js})
+      (pcall dap-ext-vscode.load_launchjs)
+      (vim.notify
+        "finished to load .vscode/launch.json."
+        vim.lsp.log_levels.INFO
+        {:title :dap-load-launch-js}))))
+(nvim.ex.command_ :DapLoadLaunchJSON (->viml :load-launch-js))
 
 (dapui.setup {:icons
               {:expanded icontab.fold-open

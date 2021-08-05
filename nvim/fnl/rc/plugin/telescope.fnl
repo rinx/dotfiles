@@ -21,6 +21,7 @@
    :ConjureLogSplit
    :DapContinue
    :DapListBreakpoints
+   :DapLoadLaunchJSON
    :DapStepInto
    :DapStepOut
    :DapStepOver

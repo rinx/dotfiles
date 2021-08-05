@@ -145,8 +145,6 @@
                            :methodReferences true
                            :references true}}}}})))
 
-
-
 (nnoremap-silent :K ":<C-u>lua vim.lsp.buf.hover()<CR>")
 (nnoremap-silent :gd ":<C-u>lua vim.lsp.buf.definition()<CR>")
 (nnoremap-silent :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>")
