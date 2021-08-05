@@ -35,7 +35,10 @@
                   "npm run compile")
               vscode-go-path
               vscode-go-path))
-          (print "finished to install Go adapter."))
+          (vim.notify
+            "finished to install Go adapter."
+            vim.lsp.log_levels.INFO
+            {:title :dap-sync-go-adapter}))
         (do
           (vim.cmd
             (string.format
@@ -44,7 +47,10 @@
                   "npm install; "
                   "npm run compile")
               vscode-go-path))
-          (print "finished to update Go adapter."))))
+          (vim.notify
+            "finished to update Go adapter."
+            vim.lsp.log_levels.WARN
+            {:title :dap-sync-go-adapter}))))
     (nvim.ex.command_ :DapSyncGoAdapter (->viml :dap-sync-go-adapter))
 
     (set dap.adapters.go
@@ -84,9 +90,15 @@
                 "rm -rf /tmp/codelldb.zip")
             codelldb-url
             adapter-path))
-        (print "finished to install codelldb."))
+        (vim.notify
+          "finished to install codelldb."
+          vim.lsp.log_levels.INFO
+          {:title :dap-sync-lldb-adapter}))
       (do
-        (print "codelldb already installed."))))
+        (vim.notify
+          "codelldb already installed."
+          vim.lsp.log_levels.WARN
+          {:title :dap-sync-lldb-adapter}))))
   (nvim.ex.command_ :DapSyncLLDBAdapter (->viml :dap-sync-lldb-adapter))
   (set dap.adapters.rust
        (fn [callback config]
@@ -98,7 +110,10 @@
                   :detached true}
                  (fn [code]
                    (handle:close)
-                   (print "codelldb exited with code: " code)))]
+                   (vim.notify
+                     (.. "codelldb exited with code: " code)
+                     vim.lsp.log_levels.ERROR
+                     {:title :dap-adapters-rust})))]
            (vim.defer_fn
              (fn []
                (callback {:type :server
@@ -130,9 +145,15 @@
                 "./gradlew :adapter:installDist")
             adapter-path
             adapter-path))
-        (print "finished to install kotlin-debug-adapter"))
+        (vim.notify
+          "finished to install kotlin-debug-adapter"
+          vim.lsp.log_levels.INFO
+          {:title :dap-sync-kotlin-adapter}))
       (do
-        (print "kotlin-debug-adapter already installed."))))
+        (vim.notify
+          "kotlin-debug-adapter already installed."
+          vim.lsp.log_levels.WARN
+          {:title :dap-sync-kotlin-adapter}))))
   (nvim.ex.command_ :DapSyncKotlinAdapter (->viml :dap-sync-kotlin-adapter))
   (set dap.adapters.kotlin
        {:name :kotlin-debug-adapter
