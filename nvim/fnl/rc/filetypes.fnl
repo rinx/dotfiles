@@ -6,14 +6,29 @@
 (defn- bridge [from to]
   (util.fn-bridge from :rc.filetypes to {:return true}))
 
+(defn lsp-formatting []
+  (vim.notify
+    "formatting..."
+    vim.lsp.log_levels.INFO
+    {:title :lsp-formatting})
+  (let [(ok? val-or-err) (pcall vim.lsp.buf.formatting_seq_sync)]
+    (when (not ok?)
+      (vim.notify
+        (.. "error occurred: " val-or-err)
+        vim.lsp.log_levels.WARN
+        {:title :lsp-formatting}))))
+
 ;; markdown
 (set nvim.g.mkdp_open_to_the_world 1)
 (set nvim.g.mkdp_open_ip "0.0.0.0")
 (set nvim.g.mkdp_port "8000")
 (defn mkdp-echo-url [url]
-  (nvim.ex.echo (.. "'" url "'")))
+  (vim.notify
+    (.. "preview started: '" url "'")
+    vim.lsp.log_levels.INFO
+    {:title :markdown-preview}))
 (bridge :MkdpEchoURL :mkdp-echo-url)
-(set nvim.g.mkdp_browserfunc "MkdpEchoURL")
+(set nvim.g.mkdp_browserfunc :MkdpEchoURL)
 
 (augroup init-markdown
          (autocmd :FileType :markdown "setl shiftwidth=4"))
@@ -62,7 +77,7 @@
 ;; clojure
 (augroup init-clojure
          (autocmd :FileType :clojure "setl colorcolumn=80")
-         (autocmd :BufWritePre "*.clj,*.cljc,*.cljs" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+         (autocmd :BufWritePre "*.clj,*.cljc,*.cljs" (->viml :lsp-formatting)))
 
 ;; go
 (augroup init-golang
@@ -72,19 +87,19 @@
          (autocmd :FileType :go "setl tabstop=4")
          (autocmd :FileType :go "setl softtabstop=4")
          (autocmd :FileType :go "compiler go")
-         (autocmd :BufWritePre "*.go" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+         (autocmd :BufWritePre "*.go" (->viml :lsp-formatting)))
 
 ;; rust
 (augroup init-rust
-         (autocmd :BufWritePre "*.rs" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+         (autocmd :BufWritePre "*.rs" (->viml :lsp-formatting)))
 
 ;; kotlin
 (augroup init-kotlin
-         (autocmd :BufWritePre "*.kt,*.kts" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+         (autocmd :BufWritePre "*.kt,*.kts" (->viml :lsp-formatting)))
 
 ;; typescript
 (augroup init-typescript
-         (autocmd :BufWritePre "*.ts" "lua vim.lsp.buf.formatting_sync(nil, 1000)"))
+         (autocmd :BufWritePre "*.ts" (->viml :lsp-formatting)))
 
 ;; QuickFix
 (augroup init-qf
