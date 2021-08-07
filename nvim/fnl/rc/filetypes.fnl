@@ -14,7 +14,7 @@
   (let [(ok? val-or-err) (pcall vim.lsp.buf.formatting_seq_sync)]
     (if ok?
       (vim.notify
-        "formatting finished."
+        "finished."
         vim.lsp.log_levels.INFO
         {:title :lsp-formatting})
       (vim.notify
