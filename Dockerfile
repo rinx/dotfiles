@@ -23,9 +23,6 @@ FROM docker:dind AS docker
 
 RUN mkdir -p /out
 
-RUN cp /usr/local/bin/containerd      /out
-RUN cp /usr/local/bin/containerd-shim /out
-RUN cp /usr/local/bin/ctr             /out
 RUN cp /usr/local/bin/docker          /out
 RUN cp /usr/local/bin/docker-init     /out
 RUN cp /usr/local/bin/docker-proxy    /out
@@ -291,10 +288,10 @@ RUN mkdir -p $HOME/.ssh \
 COPY --from=docker /usr/local/bin/docker-entrypoint.sh /usr/bin/docker-entrypoint
 COPY --from=docker /usr/local/bin/dind                 /usr/bin/dind
 COPY --from=docker /usr/local/bin/modprobe             /usr/bin/modprobe
+COPY --from=docker /usr/local/bin/containerd           /usr/bin/docker-containerd
+COPY --from=docker /usr/local/bin/containerd-shim      /usr/bin/docker-containerd-shim
+COPY --from=docker /usr/local/bin/ctr                  /usr/bin/docker-containerd-ctr
 
-COPY --from=packer /out/docker/containerd      /usr/bin/docker-containerd
-COPY --from=packer /out/docker/containerd-shim /usr/bin/docker-containerd-shim
-COPY --from=packer /out/docker/ctr             /usr/bin/docker-containerd-ctr
 COPY --from=packer /out/docker/docker          /usr/bin/docker
 COPY --from=packer /out/docker/docker-init     /usr/bin/docker-init
 COPY --from=packer /out/docker/docker-proxy    /usr/bin/docker-proxy
