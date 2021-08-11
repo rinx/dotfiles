@@ -1,7 +1,7 @@
 #!/usr/bin/env bb
 
-(require '[babashka.curl :as curl])
-(require '[clojure.string :as string])
+(require '[babashka.curl :as curl]
+         '[clojure.string :as string])
 
 (def endpoint
   "https://www.excite.co.jp/world/english_japanese/")
