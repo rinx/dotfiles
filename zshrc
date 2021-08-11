@@ -441,6 +441,7 @@ devstarter() {
         -v $HOME/.dotfiles:/root/.dotfiles:delegated \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
+        -v $HOME/.git-profiles.edn:/root/.git-profiles.edn:ro \
         -v $HOME/.config/gh:/root/.config/gh \
         -v $HOME/.kube:/root/.kube \
         -v $HOME/.gnupg:/root/.gnupg \
