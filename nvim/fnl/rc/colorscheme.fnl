@@ -27,6 +27,11 @@
 (hi :NonText {:bg :none})
 (hi :EndOfBuffer {:bg :none})
 
+(hi :NormalFloat {:bg :none
+                  :others "blend=0"})
+(hi :LspFloatWinNormal {:bg :none
+                        :others "blend=0"})
+
 (hi :Keyword {:others "cterm=bold,italic gui=bold,italic"})
 
 (hi :LspDiagnosticsUnderlineError
