@@ -115,6 +115,8 @@
 (nvim.ex.filetype :off)
 (nvim.ex.filetype "plugin indent on")
 
+(nvim.ex.set :modeline)
+
 ;; grep
 (if (= (nvim.fn.executable :rg) 1)
   (do

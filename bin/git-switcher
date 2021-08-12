@@ -42,3 +42,5 @@
       (keyword)
       profiles
       (set-config)))
+
+;; vim: set ft=clojure:
