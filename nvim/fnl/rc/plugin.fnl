@@ -36,14 +36,16 @@
   :tyru/eskk.vim {:event [:InsertEnter]
                   :mod :eskk}
   :neovim/nvim-lspconfig {:mod :lsp}
-  :hrsh7th/nvim-compe {:event [:InsertEnter]
-                       :mod :compe}
-  :hrsh7th/vim-vsnip {:after :nvim-compe}
-  :hrsh7th/vim-vsnip-integ {:after :nvim-compe}
-  :rafamadriz/friendly-snippets {:after :nvim-compe}
-  :windwp/nvim-autopairs {:after :nvim-compe
-                          :mod :autopairs}
-  :onsails/lspkind-nvim {}
+  :hrsh7th/nvim-cmp {:mod :cmp}
+  :hrsh7th/cmp-buffer {:after :nvim-cmp}
+  :hrsh7th/cmp-calc {:after :nvim-cmp}
+  :hrsh7th/cmp-emoji {:after :nvim-cmp}
+  :hrsh7th/cmp-nvim-lsp {:after :nvim-cmp}
+  :hrsh7th/cmp-path {:after :nvim-cmp}
+  :hrsh7th/cmp-vsnip {:after :nvim-cmp}
+  :hrsh7th/vim-vsnip {:after :nvim-cmp}
+  :rafamadriz/friendly-snippets {:after :nvim-cmp}
+  :windwp/nvim-autopairs {:mod :autopairs}
   :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
   :glepnir/lspsaga.nvim {}
@@ -100,12 +102,12 @@
                    :event ["BufNewFile,BufRead *.clj"
                            "BufNewFile,BufRead *.fnl"
                            "BufNewFile,BufRead *.hy"]}
-  :tami5/compe-conjure {:ft [:clojure
-                             :fennel
-                             :hy]
-                        :event ["InsertEnter *.clj"
-                                "InsertEnter *.fnl"
-                                "InsertEnter *.hy"]}
+  :PaterJason/cmp-conjure {:ft [:clojure
+                                :fennel
+                                :hy]
+                           :event ["InsertEnter *.clj"
+                                   "InsertEnter *.fnl"
+                                   "InsertEnter *.hy"]}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft [:markdown]
                                  :cmd [:MarkdownPreview]}

@@ -5,7 +5,6 @@
              util rc.util
              lsp lspconfig
              lsp-configs lspconfig/configs
-             lsp-kind lspkind
              lsp-signature lsp_signature
              lsp-status lsp-status
              lsputil lspconfig/util}
@@ -33,14 +32,18 @@
 (def- capabilities
   (let [cap (vim.lsp.protocol.make_client_capabilities)]
     (set cap.textDocument.completion.completionItem.snippetSupport true)
+    (set cap.textDocument.completion.completionItem.preselectSupport true)
+    (set cap.textDocument.completion.completionItem.insertReplaceSupport true)
+    (set cap.textDocument.completion.completionItem.deprecatedSupport true)
+    (set cap.textDocument.completion.completionItem.commitCharactersSupport true)
+    (set cap.textDocument.completion.completionItem.tagSupport
+         {:valueSet [1]})
     (set cap.textDocument.completion.completionItem.resolveSupport
          {:properties
           [:documentation
            :detail
            :additionalTextEdits]})
     cap))
-
-(lsp-kind.init)
 
 (lsp-status.register_progress)
 (lsp-status.config
