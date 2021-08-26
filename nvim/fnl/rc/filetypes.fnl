@@ -7,14 +7,10 @@
   (util.fn-bridge from :rc.filetypes to {:return true}))
 
 (defn lsp-formatting []
-  (vim.notify
-    "formatting..."
-    vim.lsp.log_levels.INFO
-    {:title :lsp-formatting})
   (let [(ok? val-or-err) (pcall vim.lsp.buf.formatting_seq_sync)]
     (if ok?
       (vim.notify
-        "finished."
+        "formatted."
         vim.lsp.log_levels.INFO
         {:title :lsp-formatting})
       (vim.notify

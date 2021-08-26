@@ -7,31 +7,31 @@
 
 (def- icontab icon.tab)
 (def- cmp-kinds
-  {:Class icontab.lsp-class
-   :Color icontab.lsp-color
-   :Constant icontab.lsp-constant
-   :Constructor icontab.lsp-constructor
-   :Enum icontab.lsp-enum
-   :EnumMember icontab.lsp-enummember
-   :Field icontab.lsp-field
-   :File icontab.lsp-file
-   :Folder icontab.lsp-folder
-   :Function icontab.lsp-function
-   :Interface icontab.lsp-interface
-   :Keyword icontab.lsp-keyword
-   :Method icontab.lsp-method
-   :Module icontab.lsp-module
-   :Property icontab.lsp-property
-   :Snippet icontab.lsp-snippet
-   :Struct icontab.lsp-struct
-   :Reference icontab.lsp-reference
-   :Text icontab.lsp-text
-   :Unit icontab.lsp-unit
-   :Value icontab.lsp-value
-   :Variable icontab.lsp-variable
-   :Operator icontab.lsp-operator
-   :Event icontab.lsp-event
-   :TypeParameter icontab.lsp-typeparameter})
+  {:Class icontab.class
+   :Color icontab.color
+   :Constant icontab.pi
+   :Constructor icontab.tools
+   :Enum icontab.enum
+   :EnumMember icontab.atoz
+   :Field icontab.buffer
+   :File icontab.document-alt
+   :Folder icontab.folder-open-alt
+   :Function icontab.function-alt
+   :Interface icontab.structure
+   :Keyword icontab.key
+   :Method icontab.function
+   :Module icontab.cubes
+   :Property icontab.property
+   :Snippet icontab.code-braces
+   :Struct icontab.struct
+   :Reference icontab.reference
+   :Text icontab.text
+   :Unit icontab.unit
+   :Value icontab.one-two-three
+   :Variable icontab.cube
+   :Operator icontab.plus-minus
+   :Event icontab.zap
+   :TypeParameter icontab.package})
 
 (def- default-sources
   [{:name :buffer}
