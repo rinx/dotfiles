@@ -36,7 +36,6 @@
 (def- default-sources
   [{:name :buffer}
    {:name :calc}
-   {:name :conjure}
    {:name :emoji}
    {:name :nvim_lsp}
    {:name :path}
@@ -63,3 +62,16 @@
    {:expand (fn [args]
               (vim.fn.vsnip#anonymous args.body))}
    :sources default-sources})
+
+;; conjure
+(defn append-cmp-conjure []
+  (let [ss []]
+    (each [_ v (ipairs default-sources)]
+      (table.insert ss v))
+    (table.insert ss {:name :conjure})
+    (cmp.setup.buffer
+      {:sources ss})))
+(augroup init-cmp-conjure
+         (autocmd :FileType :clojure (->viml :append-cmp-conjure))
+         (autocmd :FileType :fennel (->viml :append-cmp-conjure))
+         (autocmd :FileType :hy (->viml :append-cmp-conjure)))
