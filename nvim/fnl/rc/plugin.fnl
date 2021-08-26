@@ -45,6 +45,7 @@
   :hrsh7th/cmp-path {:after :nvim-cmp}
   :hrsh7th/cmp-vsnip {:after :nvim-cmp}
   :hrsh7th/vim-vsnip {:after :nvim-cmp}
+  :PaterJason/cmp-conjure {:after :nvim-cmp}
   :rafamadriz/friendly-snippets {:after :nvim-cmp}
   :windwp/nvim-autopairs {:mod :autopairs}
   :nvim-lua/lsp-status.nvim {}
@@ -103,12 +104,6 @@
                    :event ["BufNewFile,BufRead *.clj"
                            "BufNewFile,BufRead *.fnl"
                            "BufNewFile,BufRead *.hy"]}
-  :PaterJason/cmp-conjure {:ft [:clojure
-                                :fennel
-                                :hy]
-                           :event ["InsertEnter *.clj"
-                                   "InsertEnter *.fnl"
-                                   "InsertEnter *.hy"]}
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft [:markdown]
                                  :cmd [:MarkdownPreview]}
