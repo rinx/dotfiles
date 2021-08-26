@@ -36,7 +36,8 @@
   :tyru/eskk.vim {:event [:InsertEnter]
                   :mod :eskk}
   :neovim/nvim-lspconfig {:mod :lsp}
-  :hrsh7th/nvim-cmp {:mod :cmp}
+  :hrsh7th/nvim-cmp {:event [:InsertEnter]
+                     :mod :cmp}
   :hrsh7th/cmp-buffer {:after :nvim-cmp}
   :hrsh7th/cmp-calc {:after :nvim-cmp}
   :hrsh7th/cmp-emoji {:after :nvim-cmp}
