@@ -45,7 +45,7 @@
   :hrsh7th/cmp-path {:after :nvim-cmp}
   :hrsh7th/cmp-vsnip {:after :nvim-cmp}
   :hrsh7th/vim-vsnip {:after :nvim-cmp}
-  :PaterJason/cmp-conjure {:after :nvim-cmp}
+  :PaterJason/cmp-conjure {:after [:nvim-cmp :conjure]}
   :rafamadriz/friendly-snippets {:after :nvim-cmp}
   :windwp/nvim-autopairs {:mod :autopairs}
   :nvim-lua/lsp-status.nvim {}
