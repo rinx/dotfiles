@@ -131,7 +131,6 @@
 {:guibg colors.color5
  :guifg colors.error}}
 :options {:numbers :none
-          :mappings false
           :max_name_length 18
           :max_prefix_length 15
           :tab_size 18
