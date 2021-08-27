@@ -33,20 +33,30 @@
    :Event icontab.zap
    :TypeParameter icontab.package})
 
+(def- cmp-srcs
+  {:buffer "[Buffer]"
+   :calc "[Calc]"
+   :conjure "[Conjure]"
+   :emoji "[Emoji]"
+   :nvim_lsp "[LSP]"
+   :path "[Path]"
+   :vsnip "[VSnip]"})
+
 (def- default-sources
-  [{:name :buffer}
-   {:name :calc}
-   {:name :emoji}
-   {:name :nvim_lsp}
+  [{:name :nvim_lsp}
+   {:name :buffer}
+   {:name :vsnip}
    {:name :path}
-   {:name :vsnip}])
+   {:name :calc}
+   {:name :emoji}])
 
 (cmp.setup
   {:formatting
-   {:format (fn [_ item]
+   {:format (fn [entry item]
               (set item.kind
                    (.. (or (core.get cmp-kinds item.kind) "")
                        " " item.kind))
+              (set item.menu (or (core.get cmp-srcs entry.source.name) ""))
               item)}
    :mapping
    {:<C-p> (cmp.mapping.select_prev_item)
