@@ -96,7 +96,7 @@
                        :lisp
                        :scheme]
                   :mod :sexp}
-  :mileszs/ack.vim {:cmd [:Ack]}
+  :yukimemi/dps-asyngrep {}
   :simrat39/rust-tools.nvim {} ;; NOTE: currently cannot be lazy loaded
   :hylang/vim-hy {:ft [:hy]}
   :Olical/conjure {:ft [:clojure
