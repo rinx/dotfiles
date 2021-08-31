@@ -36,7 +36,6 @@
   :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
   :tyru/eskk.vim {:event [:InsertEnter]
                   :mod :eskk}
-  ; :kuuote/denops-skkeleton.vim {:mod :skkeleton}
   :neovim/nvim-lspconfig {:mod :lsp}
   :hrsh7th/nvim-cmp {:event [:InsertEnter]
                      :mod :cmp}
