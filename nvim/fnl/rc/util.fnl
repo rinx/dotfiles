@@ -8,6 +8,8 @@
   (nvim.set_keymap :n from to {}))
 (defn imap [from to]
   (nvim.set_keymap :i from to {}))
+(defn cmap [from to]
+  (nvim.set_keymap :c from to {}))
 (defn xmap [from to]
   (nvim.set_keymap :x from to {}))
 (defn vmap [from to]

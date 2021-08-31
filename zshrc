@@ -155,6 +155,10 @@ if builtin command -v git > /dev/null 2>&1 ; then
             pick"docker-credential-pass"
     zinit light docker/docker-credential-helpers
 
+    zinit ice wait"2" lucid from"gh-r" as"program" \
+            pick"deno"
+    zinit light denoland/deno
+
     case "$OS" in
         Darwin)
             zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
