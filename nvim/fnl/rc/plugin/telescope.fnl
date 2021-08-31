@@ -85,7 +85,7 @@
                      [:git :-c :core.pager=delta
                       :-c :delta.side-by-side=false :diff
                       entry.value])})}))
-(nvim.ex.command_ :TelescopeGitStatus (->viml :telescope-git-status))
+(nvim.ex.command_ :TelescopeGitStatus (->viml! :telescope-git-status))
 
 (defn telescope-actions []
   (let [p (pickers.new
@@ -97,7 +97,7 @@
                                 (map :i :<CR> actions.set_command_line)
                                 true)})]
     (p:find)))
-(nvim.ex.command_ :TelescopeActions (->viml :telescope-actions))
+(nvim.ex.command_ :TelescopeActions (->viml! :telescope-actions))
 
 (nnoremap-silent ",f" ":<C-u>Telescope fd<CR>")
 (nnoremap-silent ",af"

@@ -121,7 +121,7 @@
 (lsp.kotlin_language_server.setup {:on_attach on-attach
                                    :capabilities capabilities})
 (lsp.pylsp.setup {:on_attach on-attach
-                 :capabilities capabilities})
+                  :capabilities capabilities})
 (lsp.tsserver.setup {:on_attach on-attach
                      :capabilities capabilities})
 (lsp.yamlls.setup {:on_attach on-attach
@@ -160,10 +160,10 @@
 (xnoremap-silent :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
 
 (nnoremap-silent :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>")
-(augroup init-lsp-codelens
-         (autocmd "CursorHold,CursorHoldI"
-                  "*"
-                  "lua vim.lsp.codelens.refresh()"))
+(augroup! init-lsp-codelens
+          (autocmd! "CursorHold,CursorHoldI"
+                    "*"
+                    "lua vim.lsp.codelens.refresh()"))
 
 ;; lspsaga
 (if (loaded? :lspsaga.nvim)
@@ -290,10 +290,10 @@
 
 ;; lightbulb
 (when (loaded? :nvim-lightbulb)
-  (augroup init-lightbulb
-           (autocmd "CursorHold,CursorHoldI"
-                    "*"
-                    "lua require'nvim-lightbulb'.update_lightbulb()"))
+  (augroup! init-lightbulb
+            (autocmd! "CursorHold,CursorHoldI"
+                      "*"
+                      "lua require'nvim-lightbulb'.update_lightbulb()"))
   (nvim.fn.sign_define :LightBulbSign
                        {:text icontab.lightbulb
                         :texthl :LspDiagnosticsSignLightBulb}))

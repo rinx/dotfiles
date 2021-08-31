@@ -163,5 +163,5 @@
       (nvim.ex.silent_ :bnext)
       (nvim.ex.silent_ :enew))
     (nvim.ex.silent_ (.. "bdelete " bn))))
-(nvim.ex.command_ :BufferClose (->viml :buffer-close))
+(nvim.ex.command_ :BufferClose (->viml! :buffer-close))
 (nnoremap-silent ",bd" ":<C-u>BufferClose<CR>")

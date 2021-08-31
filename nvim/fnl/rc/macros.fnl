@@ -1,16 +1,17 @@
-{:autocmd
- (fn [...]
-   `(nvim.ex.autocmd ,...))
+(fn autocmd! [...]
+  `(nvim.ex.autocmd ,...))
 
- :augroup
- (fn [name ...]
-   `(do
-      (nvim.ex.augroup ,(tostring name))
-      (nvim.ex.autocmd_)
-      (do
-        ,...)
-      (nvim.ex.augroup :END)))
+(fn augroup! [name ...]
+  `(do
+     (nvim.ex.augroup ,(tostring name))
+     (nvim.ex.autocmd_)
+     (do
+       ,...)
+     (nvim.ex.augroup :END)))
 
- :->viml
- (fn [name]
-   `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))}
+(fn ->viml! [name]
+  `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))
+
+{: autocmd!
+ : augroup!
+ : ->viml!}

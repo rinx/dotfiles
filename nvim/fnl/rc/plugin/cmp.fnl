@@ -81,7 +81,7 @@
     (table.insert ss {:name :conjure})
     (cmp.setup.buffer
       {:sources ss})))
-(augroup init-cmp-conjure
-         (autocmd :FileType :clojure (->viml :append-cmp-conjure))
-         (autocmd :FileType :fennel (->viml :append-cmp-conjure))
-         (autocmd :FileType :hy (->viml :append-cmp-conjure)))
+(augroup! init-cmp-conjure
+          (autocmd! :FileType :clojure (->viml! :append-cmp-conjure))
+          (autocmd! :FileType :fennel (->viml! :append-cmp-conjure))
+          (autocmd! :FileType :hy (->viml! :append-cmp-conjure)))

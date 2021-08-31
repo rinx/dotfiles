@@ -51,7 +51,7 @@
             "finished to update Go adapter."
             vim.lsp.log_levels.WARN
             {:title :dap-sync-go-adapter}))))
-    (nvim.ex.command_ :DapSyncGoAdapter (->viml :dap-sync-go-adapter))
+    (nvim.ex.command_ :DapSyncGoAdapter (->viml! :dap-sync-go-adapter))
 
     (set dap.adapters.go
          {:name :dlv
@@ -99,7 +99,7 @@
           "codelldb already installed."
           vim.lsp.log_levels.WARN
           {:title :dap-sync-lldb-adapter}))))
-  (nvim.ex.command_ :DapSyncLLDBAdapter (->viml :dap-sync-lldb-adapter))
+  (nvim.ex.command_ :DapSyncLLDBAdapter (->viml! :dap-sync-lldb-adapter))
   (set dap.adapters.rust
        (fn [callback config]
          (let [port (math.random 30000 40000)
@@ -154,7 +154,7 @@
           "kotlin-debug-adapter already installed."
           vim.lsp.log_levels.WARN
           {:title :dap-sync-kotlin-adapter}))))
-  (nvim.ex.command_ :DapSyncKotlinAdapter (->viml :dap-sync-kotlin-adapter))
+  (nvim.ex.command_ :DapSyncKotlinAdapter (->viml! :dap-sync-kotlin-adapter))
   (set dap.adapters.kotlin
        {:name :kotlin-debug-adapter
         :type :executable
@@ -174,7 +174,7 @@
         "finished to load .vscode/launch.json."
         vim.lsp.log_levels.INFO
         {:title :dap-load-launch-js}))))
-(nvim.ex.command_ :DapLoadLaunchJSON (->viml :load-launch-js))
+(nvim.ex.command_ :DapLoadLaunchJSON (->viml! :load-launch-js))
 
 (dapui.setup {:icons
               {:expanded icontab.fold-open
