@@ -67,6 +67,9 @@
                         :capabilities capabilities})
 (lsp.cssls.setup {:on_attach on-attach
                   :capabilities capabilities})
+(lsp.denols.setup {:on_attach on-attach
+                   :capabilities capabilities
+                   :autostart false})
 (lsp.dockerls.setup {:on_attach on-attach
                      :capabilities capabilities})
 (lsp.efm.setup {:on_attach on-attach
@@ -123,7 +126,8 @@
 (lsp.pylsp.setup {:on_attach on-attach
                   :capabilities capabilities})
 (lsp.tsserver.setup {:on_attach on-attach
-                     :capabilities capabilities})
+                     :capabilities capabilities
+                     :autostart false})
 (lsp.yamlls.setup {:on_attach on-attach
                    :capabilities capabilities
                    :settings {:yaml
