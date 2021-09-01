@@ -1,10 +1,9 @@
 (module rc.plugin.nvim-tree
   {autoload {nvim aniseed.nvim
-             icon rc.icon
-             util rc.util}})
+             icon rc.icon}
+   require-macros [rc.macros]})
 
 (def- icontab icon.tab)
-(def- nnoremap-silent util.nnoremap-silent)
 
 ;; nvim-tree.lua
 (set nvim.g.nvim_tree_side :left)
@@ -22,5 +21,4 @@
                              :folder {:default icontab.folder
                                       :open icontab.folder-open}})
 
-(nnoremap-silent :<leader>t ":<C-u>NvimTreeToggle<CR>")
-
+(noremap! [:n] :<leader>t ":<C-u>NvimTreeToggle<CR>" :silent)

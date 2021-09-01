@@ -11,7 +11,6 @@
 (def- colors color.colors)
 (def- icontab icon.tab)
 (def- hi util.hi)
-(def- nnoremap-silent util.nnoremap-silent)
 
 (def- adapters-dir (.. (vim.fn.stdpath :data) :/dap))
 (when (not (= (nvim.fn.isdirectory adapters-dir) 1))
@@ -204,8 +203,8 @@
 (nvim.ex.command_ :DapUIClose "lua require('dapui').close()")
 (nvim.ex.command_ :DapUIToggle "lua require('dapui').toggle()")
 
-(nnoremap-silent "<F5>" ":<C-u>DapContinue<CR>")
-(nnoremap-silent "<F9>" ":<C-u>DapToggleBreakpoint<CR>")
-(nnoremap-silent "<F10>" ":<C-u>DapStepOver<CR>")
-(nnoremap-silent "<F11>" ":<C-u>DapStepInto<CR>")
-(nnoremap-silent "<F12>" ":<C-u>DapStepOut<CR>")
+(noremap! [:n] "<F5>" ":<C-u>DapContinue<CR>" :silent)
+(noremap! [:n] "<F9>" ":<C-u>DapToggleBreakpoint<CR>" :silent)
+(noremap! [:n] "<F10>" ":<C-u>DapStepOver<CR>" :silent)
+(noremap! [:n] "<F11>" ":<C-u>DapStepInto<CR>" :silent)
+(noremap! [:n] "<F12>" ":<C-u>DapStepOut<CR>" :silent)

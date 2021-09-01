@@ -13,7 +13,6 @@
    require-macros [rc.macros]})
 
 (def- icontab icon.tab)
-(def- nnoremap-silent util.nnoremap-silent)
 (def- loaded? util.loaded?)
 
 (def- action-cmds
@@ -99,22 +98,28 @@
     (p:find)))
 (nvim.ex.command_ :TelescopeActions (->viml! :telescope-actions))
 
-(nnoremap-silent ",f" ":<C-u>Telescope fd<CR>")
-(nnoremap-silent ",af"
-                 ":<C-u>Telescope find_files find_command=fd,--hidden<CR>")
-(nnoremap-silent ",of" ":<C-u>Telescope oldfiles<CR>")
-(nnoremap-silent ",gf" ":<C-u>Telescope git_files<CR>")
-(nnoremap-silent ",gb" ":<C-u>Telescope git_branches<CR>")
-(nnoremap-silent ",gc" ":<C-u>Telescope git_commits<CR>")
-(nnoremap-silent ",gs" ":<C-u>TelescopeGitStatus<CR>")
-(nnoremap-silent ",g" ":<C-u>Telescope live_grep<CR>")
-(nnoremap-silent ",/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>")
-(nnoremap-silent ",b" ":<C-u>Telescope buffers<CR>")
-(nnoremap-silent ",t" ":<C-u>Telescope filetypes<CR>")
-(nnoremap-silent ",c"
-                 ":<C-u>Telescope command_history theme=get_dropdown<CR>")
-(nnoremap-silent ",h" ":<C-u>Telescope help_tags<CR>")
-(nnoremap-silent :<Leader><Leader>
-                 ":<C-u>Telescope commands theme=get_dropdown<CR>")
-(nnoremap-silent :<C-\> ":<C-u>Telescope builtin<CR>")
-(nnoremap-silent :<Leader>h ":<C-u>TelescopeActions<CR>")
+(noremap! [:n] ",f" ":<C-u>Telescope fd<CR>" :silent)
+(noremap! [:n]
+          ",af"
+          ":<C-u>Telescope find_files find_command=fd,--hidden<CR>"
+          :silent)
+(noremap! [:n] ",of" ":<C-u>Telescope oldfiles<CR>" :silent)
+(noremap! [:n] ",gf" ":<C-u>Telescope git_files<CR>" :silent)
+(noremap! [:n] ",gb" ":<C-u>Telescope git_branches<CR>" :silent)
+(noremap! [:n] ",gc" ":<C-u>Telescope git_commits<CR>" :silent)
+(noremap! [:n] ",gs" ":<C-u>TelescopeGitStatus<CR>" :silent)
+(noremap! [:n] ",g" ":<C-u>Telescope live_grep<CR>" :silent)
+(noremap! [:n] ",/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>" :silent)
+(noremap! [:n] ",b" ":<C-u>Telescope buffers<CR>" :silent)
+(noremap! [:n] ",t" ":<C-u>Telescope filetypes<CR>" :silent)
+(noremap! [:n]
+          ",c"
+          ":<C-u>Telescope command_history theme=get_dropdown<CR>"
+          :silent)
+(noremap! [:n] ",h" ":<C-u>Telescope help_tags<CR>" :silent)
+(noremap! [:n]
+          :<Leader><Leader>
+          ":<C-u>Telescope commands theme=get_dropdown<CR>"
+          :silent)
+(noremap! [:n] :<C-\> ":<C-u>Telescope builtin<CR>" :silent)
+(noremap! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" :silent)

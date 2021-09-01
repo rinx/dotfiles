@@ -1,8 +1,7 @@
 (module rc.plugin.lightspeed
-  {autoload {util rc.util
-             lightspeed lightspeed}})
-
-(def- nmap util.nmap)
+  {autoload {nvim aniseed.nvim
+             lightspeed lightspeed}
+   require-macros [rc.macros]})
 
 (lightspeed.setup
   {:jump_to_first_match true
@@ -13,5 +12,5 @@
    :limit_ft_matches 5
    :full_inclusive_prefix_key :<C-x>})
 
-(nmap :z :<Plug>Lightspeed_s)
-(nmap :Z :<Plug>Lightspeed_S)
+(map! [:n] :z :<Plug>Lightspeed_s)
+(map! [:n] :Z :<Plug>Lightspeed_S)

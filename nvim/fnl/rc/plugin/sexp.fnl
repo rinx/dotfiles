@@ -1,8 +1,6 @@
 (module rc.plugin.sexp
-  {autoload {nvim aniseed.nvim
-             util rc.util}})
-
-(def- nmap util.nmap)
+  {autoload {nvim aniseed.nvim}
+   require-macros [rc.macros]})
 
 (set nvim.g.sexp_enable_insert_mode_mappings 0)
 (set nvim.g.sexp_mappings {:sexp_insert_at_list_head ""
@@ -30,7 +28,7 @@
 (set nvim.g.sexp_insert_after_wrap 0)
 (set nvim.g.sexp_filetypes "clojure,fennel,hy,lisp,scheme")
 
-(nmap ">(" "<Plug>(sexp_emit_head_element)")
-(nmap "<)" "<Plug>(sexp_emit_tail_element)")
-(nmap "<(" "<Plug>(sexp_capture_prev_element)")
-(nmap ">)" "<Plug>(sexp_capture_next_element)")
+(map! [:n] ">(" "<Plug>(sexp_emit_head_element)")
+(map! [:n] "<)" "<Plug>(sexp_emit_tail_element)")
+(map! [:n] "<(" "<Plug>(sexp_capture_prev_element)")
+(map! [:n] ">)" "<Plug>(sexp_capture_next_element)")

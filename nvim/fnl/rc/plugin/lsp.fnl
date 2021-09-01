@@ -1,5 +1,6 @@
 (module rc.plugin.lsp
-  {autoload {nvim aniseed.nvim
+  {autoload {core aniseed.core
+             nvim aniseed.nvim
              color rc.color
              icon rc.icon
              util rc.util
@@ -13,9 +14,6 @@
 (def- colors color.colors)
 (def- icontab icon.tab)
 (def- loaded? util.loaded?)
-
-(def- nnoremap-silent util.nnoremap-silent)
-(def- xnoremap-silent util.xnoremap-silent)
 
 (defn- on-attach [client bufnr]
   (lsp-status.on_attach client)
@@ -45,6 +43,10 @@
            :additionalTextEdits]})
     cap))
 
+(def- default-options
+  {:on_attach on-attach
+   :capabilities capabilities})
+
 (lsp-status.register_progress)
 (lsp-status.config
   {:status_symbol (.. icontab.code-braces " ")
@@ -61,77 +63,62 @@
          {:cmd [:hyls]
           :filetypes [:hy]
           :root_dir lsputil.path.dirname}}))
-(lsp.bashls.setup {:on_attach on-attach
-                   :capabilities capabilities})
-(lsp.clojure_lsp.setup {:on_attach on-attach
-                        :capabilities capabilities})
-(lsp.cssls.setup {:on_attach on-attach
-                  :capabilities capabilities})
-(lsp.denols.setup {:on_attach on-attach
-                   :capabilities capabilities
-                   :autostart false})
-(lsp.dockerls.setup {:on_attach on-attach
-                     :capabilities capabilities})
-(lsp.efm.setup {:on_attach on-attach
-                :capabilities capabilities
-                :filetypes [:markdown
-                            :proto]
-                :init_options {:codeAction true
-                               :completion true
-                               :documentFormatting true
-                               :documentSymbol true
-                               :hover true}
-                :settings
-                {:languages
-                 {:markdown
-                  [{:lintCommand "textlint --format unix ${INPUT}"
-                    :lintFormats ["%f:%l:%n: %m"]}
-                   {:lintCommand "markdownlint -s -c %USERPROFILE%.markdownlintrc"
-                    :lintStdin true
-                    :lintFormats ["%f:%l %m"
-                                  "%f:%l:%c %m"
-                                  "%f: %l: %m"]}
-                   {:hoverCommand :excitetranslate.clj
-                    :hoverStdin true}]
-                  :proto
-                  [{:lintCommand "buf lint --path"}]}
-                 :lintDebounce 3000000000}})
-(lsp.erlangls.setup {:on_attach on-attach
-                     :capabilities capabilities})
-(lsp.fortls.setup {:on_attach on-attach
-                   :capabilities capabilities})
-(lsp.gopls.setup {:on_attach on-attach
-                  :capabilities capabilities
-                  :settings {:gopls
-                             {:usePlaceholders true
-                              :analyses {:fieldalignment true
-                                         :fillstruct true
-                                         :nilless true
-                                         :shadow true
-                                         :unusedwrite true}
-                              :staticcheck true
-                              :gofumpt true}}})
-(lsp.hls.setup {:on_attach on-attach
-                :capabilities capabilities})
-(lsp.html.setup {:on_attach on-attach
-                 :capabilities capabilities})
-(lsp.hyls.setup {:on_attach on-attach
-                 :capabilities capabilities})
-(lsp.jsonls.setup {:on_attach on-attach
-                   :capabilities capabilities})
-(lsp.julials.setup {:on_attach on-attach
-                    :capabilities capabilities})
-(lsp.kotlin_language_server.setup {:on_attach on-attach
-                                   :capabilities capabilities})
-(lsp.pylsp.setup {:on_attach on-attach
-                  :capabilities capabilities})
-(lsp.tsserver.setup {:on_attach on-attach
-                     :capabilities capabilities
-                     :autostart false})
-(lsp.yamlls.setup {:on_attach on-attach
-                   :capabilities capabilities
-                   :settings {:yaml
-                              {:schemaStore {:enable true}}}})
+(lsp.bashls.setup (core.merge default-options {}))
+(lsp.clojure_lsp.setup (core.merge default-options {}))
+(lsp.cssls.setup (core.merge default-options {}))
+(lsp.denols.setup (core.merge default-options {:autostart false}))
+(lsp.dockerls.setup (core.merge default-options {}))
+(lsp.efm.setup (core.merge
+                 default-options
+                 {:filetypes [:markdown
+                              :proto]
+                  :init_options {:codeAction true
+                                 :completion true
+                                 :documentFormatting true
+                                 :documentSymbol true
+                                 :hover true}
+                  :settings
+                  {:languages
+                   {:markdown
+                    [{:lintCommand "textlint --format unix ${INPUT}"
+                      :lintFormats ["%f:%l:%n: %m"]}
+                     {:lintCommand "markdownlint -s -c %USERPROFILE%.markdownlintrc"
+                      :lintStdin true
+                      :lintFormats ["%f:%l %m"
+                                    "%f:%l:%c %m"
+                                    "%f: %l: %m"]}
+                     {:hoverCommand :excitetranslate.clj
+                      :hoverStdin true}]
+                    :proto
+                    [{:lintCommand "buf lint --path"}]}
+                   :lintDebounce 3000000000}}))
+(lsp.erlangls.setup (core.merge default-options {}))
+(lsp.fortls.setup (core.merge default-options {}))
+(lsp.gopls.setup (core.merge
+                   default-options
+                   {:settings
+                    {:gopls
+                     {:usePlaceholders true
+                      :analyses {:fieldalignment true
+                                 :fillstruct true
+                                 :nilless true
+                                 :shadow true
+                                 :unusedwrite true}
+                      :staticcheck true
+                      :gofumpt true}}}))
+(lsp.hls.setup (core.merge default-options {}))
+(lsp.html.setup (core.merge default-options {}))
+(lsp.hyls.setup (core.merge default-options {}))
+(lsp.jsonls.setup (core.merge default-options {}))
+(lsp.julials.setup (core.merge default-options {}))
+(lsp.kotlin_language_server.setup (core.merge default-options {}))
+(lsp.pylsp.setup (core.merge default-options {}))
+(lsp.tsserver.setup (core.merge default-options {:autostart false}))
+(lsp.yamlls.setup (core.merge
+                    default-options
+                    {:settings
+                     {:yaml
+                      {:schemaStore {:enable true}}}}))
 ;; rust-analyzer
 (when (loaded? :rust-tools.nvim)
   (let [rust-tools (require :rust-tools)]
@@ -154,16 +141,16 @@
                            :methodReferences true
                            :references true}}}}})))
 
-(nnoremap-silent :K ":<C-u>lua vim.lsp.buf.hover()<CR>")
-(nnoremap-silent :gd ":<C-u>lua vim.lsp.buf.definition()<CR>")
-(nnoremap-silent :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>")
-(nnoremap-silent :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>")
-(nnoremap-silent :gr ":<C-u>lua vim.lsp.buf.references()<CR>")
+(noremap! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" :silent)
+(noremap! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" :silent)
+(noremap! [:n] :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>" :silent)
+(noremap! [:n] :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>" :silent)
+(noremap! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" :silent)
 
-(nnoremap-silent :<leader>f ":<C-u>lua vim.lsp.buf.formatting()<CR>")
-(xnoremap-silent :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>")
+(noremap! [:n] :<leader>f ":<C-u>lua vim.lsp.buf.formatting()<CR>" :silent)
+(noremap! [:x] :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>" :silent)
 
-(nnoremap-silent :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>")
+(noremap! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" :silent)
 (augroup! init-lsp-codelens
           (autocmd! "CursorHold,CursorHoldI"
                     "*"
@@ -198,21 +185,21 @@
          :definition_preview_icon (.. icontab.compas " ")
          :border_style :round
          :rename_prompt_prefix icontab.chevron-r}))
-    (nnoremap-silent :gh ":<C-u>Lspsaga lsp_finder<CR>")
-    (nnoremap-silent :gs ":<C-u>Lspsaga signature_help<CR>")
-    (nnoremap-silent "<leader>rn" ":<C-u>Lspsaga rename<CR>")
-    (nnoremap-silent "<Leader>a" ":<C-u>Lspsaga code_action<CR>")
-    (xnoremap-silent "<Leader>a" ":<C-u>Lspsaga range_code_action<CR>")
-    (nnoremap-silent "<Leader>d" ":<C-u>Lspsaga show_line_diagnostics<CR>")
-    (nnoremap-silent "[d" ":<C-u>Lspsaga diagnostic_jump_prev<CR>")
-    (nnoremap-silent "]d" ":<C-u>Lspsaga diagnostic_jump_next<CR>"))
+    (noremap! [:n] :gh ":<C-u>Lspsaga lsp_finder<CR>" :silent)
+    (noremap! [:n] :gs ":<C-u>Lspsaga signature_help<CR>" :silent)
+    (noremap! [:n] "<leader>rn" ":<C-u>Lspsaga rename<CR>" :silent)
+    (noremap! [:n] "<Leader>a" ":<C-u>Lspsaga code_action<CR>" :silent)
+    (noremap! [:x] "<Leader>a" ":<C-u>Lspsaga range_code_action<CR>" :silent)
+    (noremap! [:n] "<Leader>d" ":<C-u>Lspsaga show_line_diagnostics<CR>" :silent)
+    (noremap! [:n] "[d" ":<C-u>Lspsaga diagnostic_jump_prev<CR>" :silent)
+    (noremap! [:n] "]d" ":<C-u>Lspsaga diagnostic_jump_next<CR>" :silent))
   (do
-    (nnoremap-silent "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>")
-    (nnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>")
-    (xnoremap-silent "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>")
-    (nnoremap-silent "<Leader>d" ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-    (nnoremap-silent "[d" ":<C-u>lua vim.lsp.diagnostic.goto_prev()<CR>")
-    (nnoremap-silent "]d" ":<C-u>lua vim.lsp.diagnostic.goto_next()<CR>")))
+    (noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
+    (noremap! [:n] "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>" :silent)
+    (noremap! [:x] "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>" :silent)
+    (noremap! [:n] "<Leader>d" ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>" :silent)
+    (noremap! [:n] "[d" ":<C-u>lua vim.lsp.diagnostic.goto_prev()<CR>" :silent)
+    (noremap! [:n] "]d" ":<C-u>lua vim.lsp.diagnostic.goto_next()<CR>" :silent)))
 
 (set nvim.g.diagnostic_enable_virtual_text 1)
 (set nvim.g.diagnostic_trimmed_virtual_text 40)
@@ -238,12 +225,12 @@
     (trouble.setup {:auto_open true
                     :auto_close true
                     :use_lsp_diagnostic_signs true})
-    (nnoremap-silent "<leader>xx" ":<C-u>TroubleToggle<CR>")
-    (nnoremap-silent "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>")
-    (nnoremap-silent "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>")
-    (nnoremap-silent "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>")
-    (nnoremap-silent "<leader>xl" ":<C-u>TroubleToggle loclist<CR>")
-    (nnoremap-silent "gR" ":<C-u>TroubleToggle lsp_references<CR>")))
+    (noremap! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" :silent)
+    (noremap! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" :silent)
+    (noremap! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" :silent)
+    (noremap! [:n] "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>" :silent)
+    (noremap! [:n] "<leader>xl" ":<C-u>TroubleToggle loclist<CR>" :silent)
+    (noremap! [:n] "gR" ":<C-u>TroubleToggle lsp_references<CR>" :silent)))
 
 ;; lsp-colors.nvim
 (when (loaded? :lsp-colors.nvim)
@@ -290,7 +277,7 @@
                                          :rename_symbol :r
                                          :code_actions :a}
                                :lsp_blacklist {}})
-  (nnoremap-silent :<leader>o ":<C-u>SymbolsOutline<CR>"))
+  (noremap! [:n] :<leader>o ":<C-u>SymbolsOutline<CR>" :silent))
 
 ;; lightbulb
 (when (loaded? :nvim-lightbulb)
