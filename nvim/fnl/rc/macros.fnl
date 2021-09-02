@@ -25,8 +25,20 @@
 (fn noremap! [modes from to ...]
   `(map! ,modes ,from ,to :noremap ,...))
 
+(fn hi! [name opts]
+  (let [args (accumulate
+               [args name
+                k v (pairs opts)]
+               (.. args
+                   " "
+                   (.. (tostring k)
+                       "="
+                       (tostring v))))]
+    `(nvim.ex.highlight ,args)))
+
 {: autocmd!
  : augroup!
  : ->viml!
  : map!
- : noremap!}
+ : noremap!
+ : hi!}
