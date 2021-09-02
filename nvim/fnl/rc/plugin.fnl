@@ -90,6 +90,11 @@
   :tpope/vim-repeat {}
   :pwntester/octo.nvim {:cmd [:Octo]
                         :mod :octo}
+  :gpanders/nvim-parinfer {:ft [:clojure
+                                :fennel
+                                :hy
+                                :lisp
+                                :scheme]}
   :guns/vim-sexp {:ft [:clojure
                        :fennel
                        :hy
