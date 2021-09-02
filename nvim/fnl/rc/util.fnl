@@ -5,22 +5,6 @@
 (defn _map [from to]
   (nvim.set_keymap "" from to {}))
 
-(defn hi [name opts]
-  (let [fg (match (core.get opts :fg)
-             res (.. " ctermfg=" res " guifg=" res)
-             _ "")
-        bg (match (core.get opts :bg)
-             res (.. " ctermbg=" res " guibg=" res)
-             _ "")
-        others (match (core.get opts :others)
-                 res (.. " " res)
-                 _ "")]
-    (-> (.. name fg bg others)
-        (nvim.ex.highlight))))
-
-(defn hi-link [from to]
-  (nvim.ex.highlight_ :link from to))
-
 (defn loaded? [name]
   "Checks if the plugin is loaded."
   (let [plugins (core.get _G :packer_plugins)]

@@ -26,14 +26,18 @@
   `(map! ,modes ,from ,to :noremap ,...))
 
 (fn hi! [name opts]
-  (let [args (accumulate
+  (let [f (fn [k v]
+            (if (= k :fg)
+                (let [fg (. opts :fg)]
+                  `(.. "ctermfg=" ,fg " guifg=" ,fg))
+                (= k :bg)
+                (let [bg (. opts :bg)]
+                  `(.. "ctermbg=" ,bg " guibg=" ,bg))
+                `(.. ,(tostring k) "=" ,v)))
+        args (accumulate
                [args name
                 k v (pairs opts)]
-               (.. args
-                   " "
-                   (.. (tostring k)
-                       "="
-                       (tostring v))))]
+               `(.. ,args " " ,(f k v)))]
     `(nvim.ex.highlight ,args)))
 
 {: autocmd!

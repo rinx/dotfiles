@@ -2,7 +2,6 @@
   {autoload {nvim aniseed.nvim
              color rc.color
              icon rc.icon
-             util rc.util
              dap dap
              dap-ext-vscode dap.ext.vscode
              dapui dapui}
@@ -10,7 +9,6 @@
 
 (def- colors color.colors)
 (def- icontab icon.tab)
-(def- hi util.hi)
 
 (def- adapters-dir (.. (vim.fn.stdpath :data) :/dap))
 (when (not (= (nvim.fn.isdirectory adapters-dir) 1))
@@ -179,9 +177,9 @@
               {:expanded icontab.fold-open
                :collapsed icontab.fold-closed}})
 
-(hi :DapBreakpoint {:others (.. "ctermfg=red guifg=" colors.error)})
-(hi :DapLogPoint {:others (.. "ctermfg=yellow guifg=" colors.warn)})
-(hi :DapStopped {:others (.. "ctermfg=blue guifg=" colors.hint)})
+(hi! :DapBreakpoint {:ctermfg :red :guifg colors.error})
+(hi! :DapLogPoint {:ctermfg :yellow :guifg colors.warn})
+(hi! :DapStopped {:ctermfg :blue :guifg colors.hint})
 
 (nvim.fn.sign_define :DapBreakpoint
                      {:text icontab.circle
