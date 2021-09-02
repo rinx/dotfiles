@@ -30,50 +30,88 @@
 (hi! :LspFloatWinNormal {:bg :none
                          :blend :0})
 
-(hi! :Keyword {:cterm "bold,italic" :gui "bold,italic"})
+(hi! :Keyword {:cterm "bold,italic"
+               :gui "bold,italic"})
 
 (hi! :LspDiagnosticsUnderlineError
-     {:cterm :undercurl :gui :undercurl :guisp colors.error})
+     {:cterm :undercurl
+      :gui :undercurl
+      :guisp colors.error})
 (hi! :LspDiagnosticsUnderlineWarning
-     {:cterm :undercurl :gui :undercurl :guisp colors.warn})
+     {:cterm :undercurl
+      :gui :undercurl
+      :guisp colors.warn})
 (hi! :LspDiagnosticsUnderlineInformation
-     {:cterm :undercurl :gui :undercurl :guisp colors.info})
+     {:cterm :undercurl
+      :gui :undercurl
+      :guisp colors.info})
 (hi! :LspDiagnosticsUnderlineHint
-     {:cterm :undercurl :gui :undercurl :guisp colors.hint})
+     {:cterm :undercurl
+      :gui :undercurl
+      :guisp colors.hint})
 (hi! :LspDiagnosticsSignError
-     {:ctermfg :red :guifg colors.error})
+     {:ctermfg :red
+      :guifg colors.error})
 (hi! :LspDiagnosticsSignWarning
-     {:ctermfg :yellow :guifg colors.warn})
+     {:ctermfg :yellow
+      :guifg colors.warn})
 (hi! :LspDiagnosticsSignInformation
-     {:ctermfg :green :guifg colors.info})
+     {:ctermfg :green
+      :guifg colors.info})
 (hi! :LspDiagnosticsSignHint
-     {:ctermfg :blue :guifg colors.hint})
+     {:ctermfg :blue
+      :guifg colors.hint})
 (hi! :LspDiagnosticsSignLightBulb
-     {:ctermfg :yellow :guifg colors.warn})
+     {:ctermfg :yellow
+      :guifg colors.warn})
 (hi! :LspDiagnosticsVirtualTextError
-     {:ctermfg :red :guifg colors.error :guibg colors.color5})
+     {:ctermfg :red
+      :guifg colors.error
+      :guibg colors.color5})
 (hi! :LspDiagnosticsVirtualTextWarning
-     {:ctermfg :yellow :guifg colors.warn :guibg colors.color5})
+     {:ctermfg :yellow
+      :guifg colors.warn
+      :guibg colors.color5})
 (hi! :LspDiagnosticsVirtualTextInformation
-     {:ctermfg :green :guifg colors.info :guibg colors.color5})
+     {:ctermfg :green
+      :guifg colors.info
+      :guibg colors.color5})
 (hi! :LspDiagnosticsVirtualTextHint
-     {:ctermfg :blue :guifg colors.hint :guibg colors.color5})
+     {:ctermfg :blue
+      :guifg colors.hint
+      :guibg colors.color5})
 (hi! :LspDiagnosticsDefaultError
-     {:ctermfg :red :guifg colors.color8 :guibg colors.color5})
+     {:ctermfg :red
+      :guifg colors.color8
+      :guibg colors.color5})
 (hi! :LspDiagnosticsFloatingError
-     {:ctermfg :red :guifg colors.color8 :guibg colors.color5})
+     {:ctermfg :red
+      :guifg colors.color8
+      :guibg colors.color5})
 (hi! :LspDiagnosticsDefaultWarning
-     {:ctermfg :yellow :guifg colors.warn :guibg colors.color5})
+     {:ctermfg :yellow
+      :guifg colors.warn
+      :guibg colors.color5})
 (hi! :LspDiagnosticsFloatingWarning
-     {:ctermfg :yellow :guifg colors.warn :guibg colors.color5})
+     {:ctermfg :yellow
+      :guifg colors.warn
+      :guibg colors.color5})
 (hi! :LspDiagnosticsDefaultHint
-     {:ctermfg :blue :guifg colors.color10 :guibg colors.color5})
+     {:ctermfg :blue
+      :guifg colors.color10
+      :guibg colors.color5})
 (hi! :LspDiagnosticsFloatingHint
-     {:ctermfg :blue :guifg colors.color10 :guibg colors.color5})
+     {:ctermfg :blue
+      :guifg colors.color10
+      :guibg colors.color5})
 (hi! :LspDiagnosticsDefaultInformation
-     {:ctermfg :green :guifg colors.color13 :guibg colors.color5})
+     {:ctermfg :green
+      :guifg colors.color13
+      :guibg colors.color5})
 (hi! :LspDiagnosticsFloatingInformation
-     {:ctermfg :green :guifg colors.color13 :guibg colors.color5})
+     {:ctermfg :green
+      :guifg colors.color13
+      :guibg colors.color5})
 (hi! :LspCodeLens
      {:gui "bold,italic,underline"
       :guifg colors.color2
@@ -89,22 +127,32 @@
       :guifg colors.color10})
 
 (hi! :NotifyERROR
-    {:ctermfg :red :guifg colors.error})
+     {:ctermfg :red
+      :guifg colors.error})
 (hi! :NotifyWARN
-    {:ctermfg :yellow :guifg colors.warn})
+     {:ctermfg :yellow
+      :guifg colors.warn})
 (hi! :NotifyINFO
-    {:ctermfg :green :guifg colors.info})
+     {:ctermfg :green
+      :guifg colors.info})
 (hi! :NotifyDEBUG
-    {:ctermfg :blue :guifg colors.hint})
+     {:ctermfg :blue
+      :guifg colors.hint})
 (hi! :NotifyTRACE
-    {:ctermfg :blue :guifg colors.hint})
+     {:ctermfg :blue
+      :guifg colors.hint})
 (hi! :NotifyERRORTitle
-    {:ctermfg :red :guifg colors.error})
+     {:ctermfg :red
+      :guifg colors.error})
 (hi! :NotifyWARNTitle
-    {:ctermfg :yellow :guifg colors.warn})
+     {:ctermfg :yellow
+      :guifg colors.warn})
 (hi! :NotifyINFOTitle
-    {:ctermfg :green :guifg colors.info})
+     {:ctermfg :green
+      :guifg colors.info})
 (hi! :NotifyDEBUGTitle
-    {:ctermfg :blue :guifg colors.hint})
+     {:ctermfg :blue
+      :guifg colors.hint})
 (hi! :NotifyTRACETitle
-    {:ctermfg :blue :guifg colors.hint})
+     {:ctermfg :blue
+      :guifg colors.hint})
