@@ -34,6 +34,8 @@
    :LspInfo
    :LspRestart
    :LspStart
+   "LspStart denols"
+   "LspStart tsserver"
    :LspStop
    :MarkdownPreview
    :NvimTreeRefresh
