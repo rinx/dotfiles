@@ -89,6 +89,7 @@ RUN apt update \
     autoconf \
     automake \
     cmake \
+    curl \
     g++ \
     gettext \
     git \
