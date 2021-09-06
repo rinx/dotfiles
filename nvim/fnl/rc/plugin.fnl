@@ -114,6 +114,7 @@
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft [:markdown]
                                  :cmd [:MarkdownPreview]}
+  :gamoutatsumi/dps-ghosttext.vim {}
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {})
