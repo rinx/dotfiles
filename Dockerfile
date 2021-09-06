@@ -99,7 +99,7 @@ RUN upx -9 /out/go/go/bin/*
 COPY --from=kube /out/packer /out/kube
 RUN upx -9 /out/kube/*
 
-FROM ubuntu:devel AS base
+FROM ubuntu:hirsute AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
