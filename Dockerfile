@@ -112,10 +112,10 @@ ARG BUF_VERSION
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Tokyo
-ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update \
-    && apt install -y \
+    && DEBIAN_FRONTEND=noninteractive \
+    apt install -y \
     autoconf \
     automake \
     bison \
