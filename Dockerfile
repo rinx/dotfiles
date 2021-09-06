@@ -137,7 +137,6 @@ RUN apt update \
     libtool-bin \
     locales \
     lua5.3 \
-    luarocks \
     make \
     musl-dev \
     neovim \
