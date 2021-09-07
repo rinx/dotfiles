@@ -30,7 +30,7 @@ deploy: \
 ## initialize all configures
 init: \
     prepare-init \
-    vim-init \
+    tmux-init \
     neovim-init
 	@$(call green, "initialize stage has been done")
 
