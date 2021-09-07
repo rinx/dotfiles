@@ -82,6 +82,34 @@ RUN mkdir -p /out/packer \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm
 
+FROM ubuntu:devel AS neovim
+
+RUN apt update \
+    && apt install -y \
+    autoconf \
+    automake \
+    cmake \
+    curl \
+    g++ \
+    gettext \
+    git \
+    libtool \
+    libtool-bin \
+    ninja-build \
+    pkg-config \
+    unzip \
+    upx \
+    && apt autoclean -y \
+    && apt autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN cd /tmp \
+    && git clone --depth 1 https://github.com/neovim/neovim \
+    && cd /tmp/neovim \
+    && make CMAKE_BUILD_TYPE=RelWithDebInfo \
+    && make install \
+    && upx -9 /usr/local/bin/nvim
+
 FROM alpine:latest AS packer
 
 RUN apk update \
@@ -140,7 +168,6 @@ RUN apt update \
     luarocks \
     make \
     musl-dev \
-    neovim \
     ninja-build \
     nodejs \
     npm \
@@ -294,6 +321,10 @@ COPY --from=packer /out/go/go/bin           $GOROOT/bin
 
 COPY --from=packer /out/kube/kubectl   /usr/local/bin/kubectl
 COPY --from=packer /out/kube/helm      /usr/local/bin/helm
+
+COPY --from=neovim /usr/local/bin/nvim     /usr/local/bin/nvim
+COPY --from=neovim /usr/local/share/locale /usr/local/share/locale
+COPY --from=neovim /usr/local/share/nvim   /usr/local/share/nvim
 
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
