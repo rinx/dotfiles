@@ -82,7 +82,7 @@ RUN mkdir -p /out/packer \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && mv /usr/local/bin/helm /out/packer/helm
 
-FROM ubuntu:devel AS neovim
+FROM ubuntu:hirsute AS neovim
 
 RUN apt update \
     && apt install -y \
