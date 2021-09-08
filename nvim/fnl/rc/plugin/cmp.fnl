@@ -40,13 +40,17 @@
    :emoji "[Emoji]"
    :nvim_lsp "[LSP]"
    :path "[Path]"
+   :spell "[Spell]"
+   :treesitter "[TS]"
    :vsnip "[VSnip]"})
 
 (def- default-sources
   [{:name :nvim_lsp}
    {:name :buffer}
    {:name :vsnip}
+   {:name :treesitter}
    {:name :path}
+   {:name :spell}
    {:name :calc}
    {:name :emoji}])
 

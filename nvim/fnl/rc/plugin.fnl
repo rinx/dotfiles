@@ -47,6 +47,8 @@
   :hrsh7th/cmp-path {:after :nvim-cmp}
   :hrsh7th/cmp-vsnip {:after :nvim-cmp}
   :hrsh7th/vim-vsnip {:after :nvim-cmp}
+  :f3fora/cmp-spell {:after :nvim-cmp}
+  :ray-x/cmp-treesitter {:after [:nvim-cmp :nvim-treesitter]}
   :PaterJason/cmp-conjure {:after [:nvim-cmp :conjure]}
   :rafamadriz/friendly-snippets {:after :nvim-cmp}
   :windwp/nvim-autopairs {:mod :autopairs}
