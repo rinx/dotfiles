@@ -117,6 +117,7 @@
                                  :ft [:markdown]
                                  :cmd [:MarkdownPreview]}
   :gamoutatsumi/dps-ghosttext.vim {}
+  :rinx/dps-dpresence {}
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {})

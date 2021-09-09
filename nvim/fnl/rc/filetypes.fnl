@@ -99,6 +99,7 @@
 
 ;; typescript
 (augroup! init-typescript
+          (autocmd! :FileType :typescript "setl shiftwidth=2")
           (autocmd! :BufWritePre "*.ts" (->viml! :lsp-formatting)))
 
 ;; QuickFix
