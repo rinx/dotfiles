@@ -33,4 +33,4 @@
    :sign_priority 6
    :update_debounce 100
    :status_formatter nil
-   :use_internal_diff true})
+   :diff_opts {:internal true}})
