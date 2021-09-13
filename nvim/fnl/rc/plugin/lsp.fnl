@@ -120,6 +120,7 @@
                     {:settings
                      {:yaml
                       {:schemaStore {:enable true}}}}))
+(lsp.zeta_note.setup (core.merge default-optsion {:cmd [:zeta-note]}))
 ;; rust-analyzer
 (when (loaded? :rust-tools.nvim)
   (let [rust-tools (require :rust-tools)]
