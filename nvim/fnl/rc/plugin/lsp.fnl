@@ -113,6 +113,7 @@
 (lsp.julials.setup (core.merge default-options {}))
 (lsp.kotlin_language_server.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
+(lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
 (lsp.tsserver.setup (core.merge default-options {:autostart false}))
 (lsp.yamlls.setup (core.merge
                     default-options
