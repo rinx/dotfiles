@@ -31,6 +31,7 @@
    :DapUIClose
    :DapUIOpen
    :DapUIToggle
+   :GhostStart
    :LspInfo
    :LspRestart
    :LspStart
