@@ -162,9 +162,20 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait"5" lucid from"gh-r" as"program" mv"zeta-* -> zeta-note" pick"zeta-note"
     zinit light artempyanykh/zeta-note
 
-    zinit ice wait"1" from"gh" as"program" \
-            make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
-            pick"build/bin/nvim"
+    case "$OS" in
+        Darwin)
+            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+                    mv"nvim-* -> nvim" \
+                    bpick"*macos*" \
+                    pick"nvim/bin/nvim"
+            ;;
+        *)
+            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+                    mv"nvim-* -> nvim" \
+                    bpick"*linux*" \
+                    pick"nvim/bin/nvim"
+            ;;
+        esac
     zinit light neovim/neovim
 fi
 
