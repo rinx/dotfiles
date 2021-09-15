@@ -59,6 +59,8 @@
     pl    = pull
 
     co    = checkout
+    sw    = switch
+    rs    = restore
 
     br    = branch
 
