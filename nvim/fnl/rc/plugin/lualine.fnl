@@ -86,6 +86,12 @@
     :lualine_b [filename
                 {1 :branch
                  :icon icontab.github}
+                {1 :diff
+                 :colored true
+                 :symbols
+                 {:added icontab.diff-add
+                  :modified icontab.diff-modified
+                  :removed icontab.diff-removed}}
                 lsp-status]
     :lualine_c []
     :lualine_x [dap-status]
