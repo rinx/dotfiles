@@ -54,7 +54,7 @@
   :windwp/nvim-autopairs {:mod :autopairs}
   :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
-  :glepnir/lspsaga.nvim {}
+  :rinx/lspsaga.nvim {}
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
