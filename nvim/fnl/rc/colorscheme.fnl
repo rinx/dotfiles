@@ -18,8 +18,8 @@
 (nvim.ex.silent_ "colorscheme tokyonight")
 (nvim.ex.syntax :enable)
 
-; (hi! :Normal {:bg :none
-;               :blend :0})
+(hi! :Normal {:bg :none
+              :blend :0})
 (hi! :LineNr {:bg :none})
 (hi! :VertSplit {:bg :none})
 (hi! :NonText {:bg :none})
