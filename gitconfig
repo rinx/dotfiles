@@ -47,6 +47,7 @@
 
     ad    = add
 
+    cm    = commit --signoff
     ca    = commit --signoff --amend --no-edit
     cae   = commit --signoff --amend
 
