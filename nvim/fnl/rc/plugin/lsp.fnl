@@ -143,11 +143,19 @@
                            :methodReferences true
                            :references true}}}}})))
 
+(tset vim.lsp.handlers
+      :textDocument/hover
+      (vim.lsp.with vim.lsp.handlers.hover {:border :rounded}))
+(tset vim.lsp.handlers
+      :textDocument/signatureHelp
+      (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
+
 (noremap! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" :silent)
 (noremap! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" :silent)
 (noremap! [:n] :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>" :silent)
 (noremap! [:n] :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>" :silent)
 (noremap! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" :silent)
+(noremap! [:n] :gs ":<C-u>lua vim.lsp.buf.signature_help()<CR>" :silent)
 
 (noremap! [:n] :<leader>f ":<C-u>lua vim.lsp.buf.formatting()<CR>" :silent)
 (noremap! [:x] :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>" :silent)
@@ -188,7 +196,6 @@
          :border_style :round
          :rename_prompt_prefix icontab.chevron-r}))
     (noremap! [:n] :gh ":<C-u>Lspsaga lsp_finder<CR>" :silent)
-    (noremap! [:n] :gs ":<C-u>Lspsaga signature_help<CR>" :silent)
     (noremap! [:n] "<leader>rn" ":<C-u>Lspsaga rename<CR>" :silent)
     (noremap! [:n] "<Leader>a" ":<C-u>Lspsaga code_action<CR>" :silent)
     (noremap! [:x] "<Leader>a" ":<C-u>Lspsaga range_code_action<CR>" :silent)
