@@ -190,6 +190,9 @@
 (nvim.fn.sign_define :DapStopped
                      {:text icontab.arrow-r
                       :texthl :DapStopped})
+(nvim.fn.sign_define :DapBreakpointRejected
+                     {:text icontab.times
+                      :texthl :DapBreakpoint})
 
 (nvim.ex.command_ :DapToggleBreakpoint "lua require('dap').toggle_breakpoint()")
 (nvim.ex.command_ :DapListBreakpoints "lua require('dap').list_breakpoints()")
