@@ -17,30 +17,30 @@
 
 (def- mode
   {1 :mode
-   :format (fn [mode-name]
-             (let [i icontab
-                   dict {:n i.hashtag
-                         :i i.text
-                         :v i.cursor-text
-                         "" i.cursor
-                         :V i.cursor
-                         :c i.chevron-r
-                         :no i.hashtag
-                         :s i.cursor-text
-                         :S i.cursor-text
-                         "" i.cursor-text
-                         :ic i.lightning
-                         :R i.arrow-r
-                         :Rv i.arrow-r
-                         :cv i.hashtag
-                         :ce i.hashtag
-                         :r i.chevron-r
-                         :rm i.chevron-r
-                         "r?" i.chevron-r
-                         "!" i.chevron-r
-                         :t i.chevron-r}]
-               (or (. dict (vim.fn.mode))
-                   mode-name)))})
+   :fmt (fn [mode-name]
+          (let [i icontab
+                dict {:n i.hashtag
+                      :i i.text
+                      :v i.cursor-text
+                      "" i.cursor
+                      :V i.cursor
+                      :c i.chevron-r
+                      :no i.hashtag
+                      :s i.cursor-text
+                      :S i.cursor-text
+                      "" i.cursor-text
+                      :ic i.lightning
+                      :R i.arrow-r
+                      :Rv i.arrow-r
+                      :cv i.hashtag
+                      :ce i.hashtag
+                      :r i.chevron-r
+                      :rm i.chevron-r
+                      "r?" i.chevron-r
+                      "!" i.chevron-r
+                      :t i.chevron-r}]
+            (or (. dict (vim.fn.mode))
+                mode-name)))})
 
 (defn- paste []
   (if vim.o.paste
@@ -75,9 +75,10 @@
 (lualine.setup
   {:options
    {:theme :ayu_dark
-    :section_separators [icontab.round-l
-                         icontab.round-r]
-    :component_separators ["|" "|"]
+    :section_separators {:left icontab.round-l
+                         :right icontab.round-r}
+    :component_separators {:left "|"
+                           :right "|"}
     :icons_enabled true}
    :sections
    {:lualine_a [mode
