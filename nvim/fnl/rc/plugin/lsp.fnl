@@ -7,7 +7,6 @@
              lsp lspconfig
              lsp-configs lspconfig/configs
              lsp-signature lsp_signature
-             lsp-status lsp-status
              lsputil lspconfig/util}
    require-macros [rc.macros]})
 
@@ -16,7 +15,6 @@
 (def- loaded? util.loaded?)
 
 (defn- on-attach [client bufnr]
-  (lsp-status.on_attach client)
   (lsp-signature.on_attach
     {:bind true
      :doc_lines 10
@@ -46,16 +44,6 @@
 (def- default-options
   {:on_attach on-attach
    :capabilities capabilities})
-
-(lsp-status.register_progress)
-(lsp-status.config
-  {:status_symbol (.. icontab.code-braces " ")
-   :indicator_errors icontab.ban
-   :indicator_warnings icontab.exclam-tri
-   :indicator_info icontab.info-circle
-   :indicator_hint icontab.leaf
-   :indicator_ok icontab.check
-   :current_function false})
 
 (when (not lsp.hyls)
   (tset lsp-configs :hyls

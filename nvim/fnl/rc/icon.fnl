@@ -148,6 +148,7 @@
    :struct " "
    :reference " "
    :unit "塞"
+   :server " "
    :number-0 " "
    :number-1 " "
    :number-2 " "

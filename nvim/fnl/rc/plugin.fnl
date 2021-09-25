@@ -31,7 +31,7 @@
   :nvim-lua/popup.nvim {}
   :folke/tokyonight.nvim {}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
-  :shadmansaleh/lualine.nvim {:mod :lualine}
+  :famiu/feline.nvim {:mod :feline}
   :akinsho/nvim-bufferline.lua {:mod :bufferline}
   :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
   ; :tyru/eskk.vim {:event [:InsertEnter]
@@ -52,7 +52,6 @@
   :PaterJason/cmp-conjure {:after [:nvim-cmp :conjure]}
   :rafamadriz/friendly-snippets {:after :nvim-cmp}
   :windwp/nvim-autopairs {:mod :autopairs}
-  :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
   :rinx/lspsaga.nvim {}
   :kosayoda/nvim-lightbulb {}
