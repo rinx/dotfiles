@@ -175,7 +175,10 @@ if builtin command -v git > /dev/null 2>&1 ; then
                     bpick"*linux*" \
                     pick"nvim/bin/nvim"
             ;;
-        esac
+    esac
+    # zinit ice wait"1" from"gh" as"program" \
+    #     make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
+    #     pick"build/bin/nvim"
     zinit light neovim/neovim
 fi
 
