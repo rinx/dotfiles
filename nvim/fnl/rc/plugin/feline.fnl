@@ -140,19 +140,20 @@
                   :icon icontab.diff-removed
                   :left_sep space}}})
 
-(def- properties
-  {:force_inactive
-   {:filetypes [:Trouble
-                :dap-repl
-                :dapui_watches
-                :dapui_stacks
-                :dapui_breakpoints
-                :dapui_scopes
-                :packer
-                :NvimTree
-                :Outline]
-    :buftypes [:terminal]
-    :bufnames []}})
+(def- force-inactive
+  {:filetypes [:^Trouble$
+               :^qf$
+               :^help$
+               :^dap-repl$
+               :^dapui_watches$
+               :^dapui_stacks$
+               :^dapui_breakpoints$
+               :^dapui_scopes$
+               :^packer$
+               :^NvimTree$
+               :^Outline$]
+   :buftypes [:^terminal$]
+   :bufnames []})
 
 (def- components
   {:active [[comps.vimode
@@ -189,6 +190,6 @@
   {:default_bg colors.color2
    :default_fg colors.color4
    :components components
-   :properties properties
    :custom_providers providers
-   :vi_mode_colors vi-mode-colors})
+   :vi_mode_colors vi-mode-colors
+   :force_inactive force-inactive})
