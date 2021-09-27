@@ -141,7 +141,7 @@
                   :left_sep space}}})
 
 (def- properties
-  {:force-inactive
+  {:force_inactive
    {:filetypes [:Trouble
                 :dap-repl
                 :dapui_watches
