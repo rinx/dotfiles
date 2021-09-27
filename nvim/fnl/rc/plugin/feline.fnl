@@ -77,7 +77,10 @@
                      :left_sep space
                      :hl {:fg colors.purple
                           :style :bold}}
-          :type {:provider :file_type}}
+          :type {:provider :file_type
+                 :left_sep space
+                 :hl {:fg colors.hint
+                      :style :bold}}}
    :scrollbar {:provider :scroll_bar
                :left_sep space
                :hl {:fg colors.hint
@@ -121,7 +124,8 @@
    :dap {:provider :dap_status
          :enabled (fn [] (loaded? :nvim-dap))
          :left_sep space
-         :hl {:fg colors.color4}}
+         :hl {:fg colors.color4}
+         :icon icontab.play-circle}
    :git {:branch {:provider :git_branch
                   :icon icontab.github
                   :left_sep space
@@ -179,12 +183,8 @@
 
 (def- providers
   {:dap_status (fn []
-                (match (when (loaded? :nvim-dap)
-                         (let [dap (require :dap)]
-                           (dap.status)))
-                  "" ""
-                  status (.. icontab.play-circle space status)
-                  _ ""))})
+                (let [dap (require :dap)]
+                  (or (dap.status) "")))})
 
 (feline.setup
   {:default_bg colors.color2
