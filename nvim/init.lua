@@ -14,6 +14,9 @@ end
 ensure("wbthomason", "packer.nvim")
 ensure("Olical", "aniseed")
 
+-- For nathom/filetype.nvim
+vim.g.did_load_filetypes = 1
+
 vim.g["aniseed#env"] = {
   module = "rc.init",
   compile = true,

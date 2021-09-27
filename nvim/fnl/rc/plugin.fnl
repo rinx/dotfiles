@@ -29,6 +29,7 @@
   :vim-denops/denops.vim {}
   :nvim-lua/plenary.nvim {}
   :nvim-lua/popup.nvim {}
+  :nathom/filetype.nvim {}
   :folke/tokyonight.nvim {}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :famiu/feline.nvim {:mod :feline}
