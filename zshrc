@@ -37,6 +37,9 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait
     zinit light Aloxaf/fzf-tab
 
+    zinit ice wait
+    zinit light mollifier/cd-gitroot
+
     zinit ice from"gh-r" as"program" pick"bin/exa"
     zinit light ogham/exa
 
@@ -274,7 +277,7 @@ alias uu='cd ../../'
 alias uuu='cd ../../../'
 alias uuuu='cd ../../../../'
 alias cdr='cd -'
-
+alias cdg='cd-gitroot'
 
 if builtin command -v exa > /dev/null 2>&1 ; then
     alias ls='exa'
