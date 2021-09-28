@@ -50,6 +50,7 @@
   :ray-x/cmp-treesitter {:after [:nvim-cmp :nvim-treesitter]}
   :PaterJason/cmp-conjure {:after [:nvim-cmp :conjure]}
   :rafamadriz/friendly-snippets {:after :nvim-cmp}
+  :rinx/cmp-skkeleton {:after [:nvim-cmp :denops-skkeleton.vim]}
   :windwp/nvim-autopairs {:mod :autopairs}
   :ray-x/lsp_signature.nvim {}
   :rinx/lspsaga.nvim {}

@@ -40,6 +40,7 @@
    :emoji "[Emoji]"
    :nvim_lsp "[LSP]"
    :path "[Path]"
+   :skkeleton "[skkeleton]"
    :spell "[Spell]"
    :treesitter "[TS]"
    :vsnip "[VSnip]"})
@@ -50,6 +51,7 @@
    {:name :vsnip}
    {:name :treesitter}
    {:name :path}
+   {:name :skkeleton}
    {:name :spell}
    {:name :calc}
    {:name :emoji}])
