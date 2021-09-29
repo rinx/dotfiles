@@ -126,6 +126,11 @@
          :left_sep space
          :hl {:fg colors.color4}
          :icon icontab.play-circle}
+   :skkeleton {:provider :skkeleton_status
+               :enabled (fn [] (vim.fn.skkeleton#is_enabled))
+               :left_sep space
+               :hl {:fg colors.color10}
+               :icon icontab.cursor-text}
    :git {:branch {:provider :git_branch
                   :icon icontab.github
                   :left_sep space
@@ -167,7 +172,8 @@
              comps.diagnostics.warn
              comps.diagnostics.info
              comps.diagnostics.hint]
-            [comps.dap]
+            [comps.dap
+             comps.skkeleton]
             [comps.git.add
              comps.git.change
              comps.git.remove
@@ -184,7 +190,10 @@
 (def- providers
   {:dap_status (fn []
                 (let [dap (require :dap)]
-                  (or (dap.status) "")))})
+                  (or (dap.status) "")))
+   :skkeleton_status (fn []
+                       (when (loaded? :denops-skkeleton.vim)
+                         (vim.fn.skkeleton#mode)))})
 
 (feline.setup
   {:default_bg colors.color2
