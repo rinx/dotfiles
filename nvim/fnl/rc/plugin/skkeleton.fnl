@@ -11,8 +11,11 @@
    :globalJisyo (nvim.fn.expand "~/.SKK-JISYO.L")
    :globalJisyoEncoding :euc-jp
    :immediatelyJisyoRW true
+   :registerConvertResult false
+   :keepState true
    :selectCandidateKeys :asdfjkl
    :setUndoPoint true
    :showCandidatesCount 4
+   :tabCompletion true
    :usePopup true
    :userJisyo (nvim.fn.expand "~/.skk-jisyo")})
