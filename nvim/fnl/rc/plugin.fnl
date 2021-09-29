@@ -53,7 +53,7 @@
   :rinx/cmp-skkeleton {:after [:nvim-cmp :denops-skkeleton.vim]}
   :windwp/nvim-autopairs {:mod :autopairs}
   :ray-x/lsp_signature.nvim {}
-  :rinx/lspsaga.nvim {}
+  :tami5/lspsaga.nvim {}
   :weilbith/nvim-code-action-menu {:cmd [:CodeActionMenu]}
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
