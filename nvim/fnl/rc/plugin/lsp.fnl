@@ -242,18 +242,17 @@
          :rename_prompt_prefix icontab.chevron-r}))
     (noremap! [:n] :gh ":<C-u>Lspsaga lsp_finder<CR>" :silent)
     (noremap! [:n] "<leader>rn" ":<C-u>Lspsaga rename<CR>" :silent)
-    (noremap! [:n] "<Leader>a" ":<C-u>Lspsaga code_action<CR>" :silent)
-    (noremap! [:x] "<Leader>a" ":<C-u>Lspsaga range_code_action<CR>" :silent)
     (noremap! [:n] "<Leader>d" ":<C-u>Lspsaga show_line_diagnostics<CR>" :silent)
     (noremap! [:n] "[d" ":<C-u>Lspsaga diagnostic_jump_prev<CR>" :silent)
     (noremap! [:n] "]d" ":<C-u>Lspsaga diagnostic_jump_next<CR>" :silent))
   (do
     (noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
-    (noremap! [:n] "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>" :silent)
-    (noremap! [:x] "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>" :silent)
     (noremap! [:n] "<Leader>d" ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>" :silent)
     (noremap! [:n] "[d" ":<C-u>lua vim.lsp.diagnostic.goto_prev()<CR>" :silent)
     (noremap! [:n] "]d" ":<C-u>lua vim.lsp.diagnostic.goto_next()<CR>" :silent)))
+
+(noremap! [:n] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)
+(noremap! [:x] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)
 
 (set nvim.g.diagnostic_enable_virtual_text 1)
 (set nvim.g.diagnostic_trimmed_virtual_text 40)

@@ -54,6 +54,7 @@
   :windwp/nvim-autopairs {:mod :autopairs}
   :ray-x/lsp_signature.nvim {}
   :rinx/lspsaga.nvim {}
+  :weilbith/nvim-code-action-menu {:cmd [:CodeActionMenu]}
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
