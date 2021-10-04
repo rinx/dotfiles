@@ -35,7 +35,7 @@
   :famiu/feline.nvim {:mod :feline}
   :akinsho/nvim-bufferline.lua {:mod :bufferline}
   :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
-  :vim-skk/denops-skkeleton.vim {:mod :skkeleton}
+  :vim-skk/skkeleton {:mod :skkeleton}
   :neovim/nvim-lspconfig {:mod :lsp}
   :hrsh7th/nvim-cmp {:event [:InsertEnter]
                      :mod :cmp}
@@ -50,7 +50,7 @@
   :ray-x/cmp-treesitter {:after [:nvim-cmp :nvim-treesitter]}
   :PaterJason/cmp-conjure {:after [:nvim-cmp :conjure]}
   :rafamadriz/friendly-snippets {:after :nvim-cmp}
-  :rinx/cmp-skkeleton {:after [:nvim-cmp :denops-skkeleton.vim]}
+  :rinx/cmp-skkeleton {:after [:nvim-cmp :skkeleton]}
   :windwp/nvim-autopairs {:mod :autopairs}
   :ray-x/lsp_signature.nvim {}
   :tami5/lspsaga.nvim {}

@@ -127,7 +127,10 @@
          :hl {:fg colors.color4}
          :icon icontab.play-circle}
    :skkeleton {:provider :skkeleton_status
-               :enabled (fn [] (vim.fn.skkeleton#is_enabled))
+               :enabled (fn []
+                          (and
+                            (loaded? :skkeleton)
+                            (vim.fn.skkeleton#is_enabled)))
                :left_sep space
                :hl {:fg colors.color10}
                :icon icontab.cursor-text}
@@ -192,8 +195,7 @@
                 (let [dap (require :dap)]
                   (or (dap.status) "")))
    :skkeleton_status (fn []
-                       (when (loaded? :denops-skkeleton.vim)
-                         (vim.fn.skkeleton#mode)))})
+                       (or (vim.fn.skkeleton#mode) ""))})
 
 (feline.setup
   {:default_bg colors.color2
