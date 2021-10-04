@@ -195,7 +195,10 @@
                 (let [dap (require :dap)]
                   (or (dap.status) "")))
    :skkeleton_status (fn []
-                       (or (vim.fn.skkeleton#mode) ""))})
+                       (match (vim.fn.skkeleton#mode)
+                         :hira "あ"
+                         :kata "ア"
+                         _ ""))})
 
 (feline.setup
   {:default_bg colors.color2
