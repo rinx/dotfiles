@@ -1,6 +1,7 @@
 (module rc.plugin.nvim-tree
   {autoload {nvim aniseed.nvim
              icon rc.icon
+             tree nvim-tree
              config nvim-tree.config}
    require-macros [rc.macros]})
 
@@ -58,3 +59,7 @@
       {:key :g? :cb (cb :toggle_help)}])
 
 (noremap! [:n] :<leader>t ":<C-u>NvimTreeToggle<CR>" :silent)
+
+(tree.setup
+  {:disable_netrw true
+   :hijack_netrw true})
