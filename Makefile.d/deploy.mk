@@ -27,7 +27,7 @@ $(HOME)/.config/nvim/fnl:
 skk-jisyo-large: $(HOME)/.SKK-JISYO.L
 $(HOME)/.SKK-JISYO.L:
 	@$(call cyan, "--\> download SKK-JISYO.L")
-	wget -O $(HOME)/.SKK-JISYO.L https://raw.githubusercontent.com/skk-users-jp/dic-mirror/gh-pages/SKK-JISYO.L
+	curl -sL https://raw.githubusercontent.com/skk-users-jp/dic-mirror/gh-pages/SKK-JISYO.L --output $(HOME)/.SKK-JISYO.L
 
 .PHONY: git-deploy
 git-deploy: \
@@ -146,66 +146,42 @@ $(HOME)/.config/sway/config:
 
 .PHONY: wallpapers
 wallpapers: \
-    $(HOME)/.wallpapers/lavender.jpg \
-    $(HOME)/.wallpapers/yosemite.jpg \
-    $(HOME)/.wallpapers/elcapitan.jpg \
-    $(HOME)/.wallpapers/sierra.jpg \
-    $(HOME)/.wallpapers/highsierra.jpg \
-    $(HOME)/.wallpapers/mojave-day.jpg \
-    $(HOME)/.wallpapers/mojave-night.jpg \
-    $(HOME)/.wallpapers/modis-cuba.jpg \
-    $(HOME)/.wallpapers/UjK4eUF.jpg \
-    $(HOME)/.wallpapers/ZZOuSd4.jpg \
-    $(HOME)/.wallpapers/8YbJNGx.jpg \
-    $(HOME)/.wallpapers/yf2IHMV.jpg \
-    $(HOME)/.wallpapers/yDpuXU0.jpg \
-    $(HOME)/.wallpapers/rnKPcCe.jpg \
-    $(HOME)/.wallpapers/rain-night-girl.jpg
-$(HOME)/.wallpapers/lavender.jpg:
+    $(HOME)/.wallpapers/pexels-photo-15286.jpg \
+    $(HOME)/.wallpapers/pexels-photo-2559941.jpg \
+    $(HOME)/.wallpapers/pexels-photo-417074.jpg \
+    $(HOME)/.wallpapers/pexels-photo-167699.jpg \
+    $(HOME)/.wallpapers/pexels-photo-531321.jpg \
+    $(HOME)/.wallpapers/pexels-photo-460621.jpg \
+    $(HOME)/.wallpapers/pexels-photo-2049422.jpg \
+    $(HOME)/.wallpapers/pexels-photo-635279.jpg \
+    $(HOME)/.wallpapers/pexels-photo-1933239.jpg
+$(HOME)/.wallpapers/pexels-photo-15286.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget https://yese69.com/wp-content/uploads/data/2018/1/6/download-free-lavender-wallpape-WTG30615244.jpg -O $(HOME)/.wallpapers/lavender.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/yosemite.jpg:
+	curl -sL https://images.pexels.com/photos/15286/pexels-photo.jpg --output $(HOME)/.wallpapers/pexels-photo-15286.jpg
+$(HOME)/.wallpapers/pexels-photo-2559941.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget http://512pixels.net/downloads/macos-wallpapers/10-10.jpg -O $(HOME)/.wallpapers/yosemite.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/elcapitan.jpg:
+	curl -sL https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg --output $(HOME)/.wallpapers/pexels-photo-2559941.jpg
+$(HOME)/.wallpapers/pexels-photo-417074.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget http://512pixels.net/downloads/macos-wallpapers/10-11.jpg -O $(HOME)/.wallpapers/elcapitan.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/sierra.jpg:
+	curl -sL https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg --output $(HOME)/.wallpapers/pexels-photo-417074.jpg
+$(HOME)/.wallpapers/pexels-photo-167699.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget http://512pixels.net/downloads/macos-wallpapers/10-12.jpg -O $(HOME)/.wallpapers/sierra.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/highsierra.jpg:
+	curl -sL https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg --output $(HOME)/.wallpapers/pexels-photo-167699.jpg
+$(HOME)/.wallpapers/pexels-photo-531321.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget http://512pixels.net/downloads/macos-wallpapers/10-13.jpg -O $(HOME)/.wallpapers/highsierra.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/mojave-day.jpg:
+	curl -sL https://images.pexels.com/photos/531321/pexels-photo-531321.jpeg --output $(HOME)/.wallpapers/pexels-photo-531321.jpg
+$(HOME)/.wallpapers/pexels-photo-460621.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget http://512pixels.net/downloads/macos-wallpapers/10-14-Day.jpg -O $(HOME)/.wallpapers/mojave-day.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/mojave-night.jpg:
+	curl -sL https://images.pexels.com/photos/460621/pexels-photo-460621.jpeg --output $(HOME)/.wallpapers/pexels-photo-460621.jpg
+$(HOME)/.wallpapers/pexels-photo-2049422.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget http://512pixels.net/downloads/macos-wallpapers/10-14-Night.jpg -O $(HOME)/.wallpapers/mojave-night.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/modis-cuba.jpg:
+	curl -sL https://images.pexels.com/photos/2049422/pexels-photo-2049422.jpeg --output $(HOME)/.wallpapers/pexels-photo-2049422.jpg
+$(HOME)/.wallpapers/pexels-photo-635279.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget https://eoimages.gsfc.nasa.gov/images/imagerecords/64000/64374/Cuba.A2003021.1600.250m.jpg -O $(HOME)/.wallpapers/modis-cuba.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/UjK4eUF.jpg:
+	curl -sL https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg --output $(HOME)/.wallpapers/pexels-photo-635279.jpg
+$(HOME)/.wallpapers/pexels-photo-1933239.jpg:
 	mkdir -p $(HOME)/.wallpapers
-	wget https://i.imgur.com/UjK4eUF.jpg -O $(HOME)/.wallpapers/UjK4eUF.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/ZZOuSd4.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	wget https://i.imgur.com/ZZOuSd4.jpg -O $(HOME)/.wallpapers/ZZOuSd4.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/8YbJNGx.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	wget https://i.imgur.com/8YbJNGx.jpg -O $(HOME)/.wallpapers/8YbJNGx.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/yf2IHMV.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	wget https://i.imgur.com/yf2IHMV.jpg -O $(HOME)/.wallpapers/yf2IHMV.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/yDpuXU0.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	wget https://i.imgur.com/yDpuXU0.jpg -O $(HOME)/.wallpapers/yDpuXU0.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/rnKPcCe.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	wget https://i.imgur.com/rnKPcCe.jpg -O $(HOME)/.wallpapers/rnKPcCe.jpg > /dev/null 2>&1
-$(HOME)/.wallpapers/rain-night-girl.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	wget https://www.grayscale-wallpapers.com/grayscale/rain-night-manga-anime-girl-sad.jpg -O $(HOME)/.wallpapers/rain-night-girl.jpg > /dev/null 2>&1
+	curl -sL https://images.pexels.com/photos/1933239/pexels-photo-1933239.jpeg --output $(HOME)/.wallpapers/pexels-photo-1933239.jpg
 
 .PHONY: i3status-config
 i3status-config: \

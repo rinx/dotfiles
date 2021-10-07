@@ -27,16 +27,16 @@ exec_always ~/.dotfiles/resources/wpchange.sh
 set $bgimage ~/.wallpapers/wallpaper.jpg
 
 # names of workspace
-set $workspace1 1:fool
-set $workspace2 2:magician
-set $workspace3 3:highpriestess
-set $workspace4 4:empress
-set $workspace5 5:hierophant
-set $workspace6 6:lovers
-set $workspace7 7:chariot
-set $workspace8 8:strength
-set $workspace9 9:hermit
-set $workspace10 10:wheel
+set $workspace1 01
+set $workspace2 02
+set $workspace3 03
+set $workspace4 04
+set $workspace5 05
+set $workspace6 06
+set $workspace7 07
+set $workspace8 08
+set $workspace9 09
+set $workspace10 10
 
 set $opacity 0.92
 
