@@ -120,4 +120,5 @@
   :rinx/dps-dpresence {}
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
-  :romgrk/nvim-treesitter-context {})
+  :romgrk/nvim-treesitter-context {}
+  :JoosepAlviste/nvim-ts-context-commentstring {})

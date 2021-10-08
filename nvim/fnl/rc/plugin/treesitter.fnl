@@ -6,4 +6,6 @@
    :highlight {:enable true
                :disable []}
    :indent {:enable true
-            :disable []}})
+            :disable []}
+   :context_commentstring {:enable true
+                           :enable_autocmd false}})
