@@ -40,7 +40,7 @@
    :emoji "[Emoji]"
    :nvim_lsp "[LSP]"
    :path "[Path]"
-   :skkeleton "[skkeleton]"
+   :skkeleton "[SKK]"
    :spell "[Spell]"
    :treesitter "[TS]"
    :vsnip "[VSnip]"})
