@@ -200,6 +200,9 @@
                          :kata "ア"
                          _ ""))})
 
+;; enforce to set &termguicolors
+(nvim.ex.set :termguicolors)
+
 (feline.setup
   {:default_bg colors.color2
    :default_fg colors.color4
