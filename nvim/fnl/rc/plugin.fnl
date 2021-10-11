@@ -26,7 +26,6 @@
 (use
   :wbthomason/packer.nvim {}
   :Olical/aniseed {}
-  :vim-denops/denops.vim {}
   :nvim-lua/plenary.nvim {}
   :nvim-lua/popup.nvim {}
   :nathom/filetype.nvim {}
@@ -35,7 +34,6 @@
   :famiu/feline.nvim {:mod :feline}
   :akinsho/nvim-bufferline.lua {:mod :bufferline}
   :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
-  :vim-skk/skkeleton {:mod :skkeleton}
   :neovim/nvim-lspconfig {:mod :lsp}
   :hrsh7th/nvim-cmp {:event [:InsertEnter]
                      :mod :cmp}
@@ -77,6 +75,16 @@
                             :mod :lightspeed}
   :terrortylor/nvim-comment {:event [:BufEnter]
                              :mod :comment}
+  :vim-denops/denops.vim {}
+  :vim-skk/skkeleton {:mod :skkeleton
+                      :after [:denops.vim]
+                      :rtp ""}
+  :yukimemi/dps-asyngrep {:after [:denops.vim]
+                          :rtp ""}
+  :gamoutatsumi/dps-ghosttext.vim {:after [:denops.vim]
+                                   :rtp ""}
+  :rinx/dps-dpresence {:after [:denops.vim]
+                       :rtp ""}
   :kana/vim-submode {:event [:BufEnter]
                      :mod :submode}
   :kana/vim-operator-user {:event [:BufEnter]}
@@ -104,7 +112,6 @@
                        :lisp
                        :scheme]
                   :mod :sexp}
-  :yukimemi/dps-asyngrep {}
   :simrat39/rust-tools.nvim {} ;; NOTE: currently cannot be lazy loaded
   :hylang/vim-hy {:ft [:hy]}
   :Olical/conjure {:ft [:clojure
@@ -116,8 +123,6 @@
   :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
                                  :ft [:markdown]
                                  :cmd [:MarkdownPreview]}
-  :gamoutatsumi/dps-ghosttext.vim {}
-  :rinx/dps-dpresence {}
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {}

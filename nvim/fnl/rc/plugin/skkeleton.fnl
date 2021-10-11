@@ -3,12 +3,12 @@
              nvim aniseed.nvim}
    require-macros [rc.macros]})
 
-(map! [:i] :<C-j> "<Plug>(skkeleton-enable)")
-(map! [:c] :<C-j> "<Plug>(skkeleton-enable)")
+(map! [:i] :<C-j> "<Plug>(skkeleton-toggle)")
+(map! [:c] :<C-j> "<Plug>(skkeleton-toggle)")
 
 (vim.fn.skkeleton#config
   {:eggLikeNewline false
-   :globalJisyo (nvim.fn.expand "~/.SKK-JISYO.L")
+   :globalJisyo "~/.SKK-JISYO.L"
    :globalJisyoEncoding :euc-jp
    :immediatelyJisyoRW true
    :registerConvertResult false
@@ -18,4 +18,4 @@
    :showCandidatesCount 4
    :tabCompletion true
    :usePopup true
-   :userJisyo (nvim.fn.expand "~/.skk-jisyo")})
+   :userJisyo "~/.skk-jisyo"})

@@ -149,6 +149,7 @@
    :reference " "
    :unit "塞"
    :server " "
+   :opensuse " "
    :number-0 " "
    :number-1 " "
    :number-2 " "

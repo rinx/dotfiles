@@ -126,6 +126,11 @@
          :left_sep space
          :hl {:fg colors.color4}
          :icon icontab.play-circle}
+   :denops {:provider :denops_status
+            :enabled (fn []
+                       (loaded? :denops.vim))
+            :left_sep space
+            :hl {:fg colors.purple}}
    :skkeleton {:provider :skkeleton_status
                :enabled (fn []
                           (and
@@ -171,6 +176,7 @@
   {:active [[comps.vimode
              comps.file.info
              comps.lsp
+             comps.denops
              comps.diagnostics.error
              comps.diagnostics.warn
              comps.diagnostics.info
@@ -197,7 +203,12 @@
                        (match (vim.fn.skkeleton#mode)
                          :hira "あ"
                          :kata "ア"
-                         _ ""))})
+                         _ ""))
+   :denops_status (fn []
+                    (match (vim.fn.denops#server#status)
+                      ;; TODO: will be replaced by deno icon
+                      :running icontab.opensuse
+                      _ ""))})
 
 ;; enforce to set &termguicolors
 (nvim.ex.set :termguicolors)
