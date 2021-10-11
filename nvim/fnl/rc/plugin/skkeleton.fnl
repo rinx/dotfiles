@@ -16,6 +16,6 @@
    :selectCandidateKeys :asdfjkl
    :setUndoPoint true
    :showCandidatesCount 4
-   :tabCompletion true
+   :tabCompletion false
    :usePopup true
    :userJisyo "~/.skk-jisyo"})

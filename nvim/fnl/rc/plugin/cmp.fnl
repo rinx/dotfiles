@@ -34,16 +34,16 @@
    :TypeParameter icontab.package})
 
 (def- cmp-srcs
-  {:buffer "[Buffer]"
-   :calc "[Calc]"
-   :conjure "[Conjure]"
-   :emoji "[Emoji]"
-   :nvim_lsp "[LSP]"
-   :path "[Path]"
-   :skkeleton "[SKK]"
-   :spell "[Spell]"
-   :treesitter "[TS]"
-   :vsnip "[VSnip]"})
+  {:buffer :Buffer
+   :calc :Calc
+   :conjure :Conjur
+   :emoji :Emoji
+   :nvim_lsp :LSP
+   :path :Path
+   :skkeleton :SKK
+   :spell :Spell
+   :treesitter :TS
+   :vsnip :VSnip})
 
 (def- default-sources
   [{:name :nvim_lsp}
@@ -65,15 +65,19 @@
               (set item.menu (or (core.get cmp-srcs entry.source.name) ""))
               item)}
    :mapping
-   {:<C-p> (cmp.mapping.select_prev_item)
-    :<C-n> (cmp.mapping.select_next_item)
+   {:<C-p> (cmp.mapping.select_prev_item {:behavior cmp.SelectBehavior.Insert})
+    :<C-n> (cmp.mapping.select_next_item {:behavior cmp.SelectBehavior.Insert})
     :<Up> (cmp.mapping.scroll_docs -4)
     :<Down> (cmp.mapping.scroll_docs 4)
     :<C-s> (cmp.mapping.complete)
     :<C-e> (cmp.mapping.close)
     :<CR> (cmp.mapping.confirm
-            {:behavior cmp.ConfirmBehavior.Insert
-             :select true})}
+            {:behavior cmp.ConfirmBehavior.Replace
+             :select true})
+    :<Tab> (fn [fallback]
+             (if (cmp.visible)
+               (cmp.select_next_item)
+               (fallback)))}
    :snippet
    {:expand (fn [args]
               (vim.fn.vsnip#anonymous args.body))}
