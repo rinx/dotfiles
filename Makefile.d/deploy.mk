@@ -109,6 +109,7 @@ others-deploy: \
     alacritty.yml \
     kitty.conf \
     Xdefaults \
+    rofi-config \
     sway-config \
     i3status-config \
     lein-profile \
@@ -136,6 +137,13 @@ Xdefaults: $(HOME)/.Xdefaults
 $(HOME)/.Xdefaults:
 	@$(call cyan, "--\> Xdefaults")
 	ln -s $(DOTDIR)/Xdefaults $(HOME)/.Xdefaults
+
+.PHONY: rofi-config
+rofi-config: \
+	$(HOME)/.config/rofi/config.rasi
+$(HOME)/.config/rofi/config.rasi:
+	mkdir -p $(HOME)/.config/rofi
+	ln -s $(DOTDIR)/resources/config.rasi $(HOME)/.config/rofi/config.rasi
 
 .PHONY: sway-config
 sway-config: \
