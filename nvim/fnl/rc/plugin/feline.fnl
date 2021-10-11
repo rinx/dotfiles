@@ -185,8 +185,7 @@
              comps.paste
              comps.spell
              comps.scrollbar]]
-   :inactive [[comps.vimode
-               comps.file.info]
+   :inactive [[comps.file.info]
               []
               []]})
 
