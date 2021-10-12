@@ -30,6 +30,7 @@
     (set cap.textDocument.completion.completionItem.snippetSupport true)
     (set cap.textDocument.completion.completionItem.preselectSupport true)
     (set cap.textDocument.completion.completionItem.insertReplaceSupport true)
+    (set cap.textDocument.completion.completionItem.labelDetailsSupport true)
     (set cap.textDocument.completion.completionItem.deprecatedSupport true)
     (set cap.textDocument.completion.completionItem.commitCharactersSupport true)
     (set cap.textDocument.completion.completionItem.tagSupport
