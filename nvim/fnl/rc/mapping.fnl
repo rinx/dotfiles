@@ -5,7 +5,7 @@
 
 (def- _map util._map)
 
-(set nvim.g.mapleader :\)
+(set nvim.g.mapleader :\ )
 
 (noremap! [:n :v] ";" ":")
 (noremap! [:n :v] ":" ";")
