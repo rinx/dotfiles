@@ -150,6 +150,7 @@
    :unit "塞"
    :server " "
    :opensuse " "
+   :dinosaur "🦕"
    :number-0 " "
    :number-1 " "
    :number-2 " "
@@ -262,9 +263,9 @@
 ;               [1 2])
 (defn pos->braille [...]
   (let [->idx (fn [[x y]]
+                (* (^ 2 y) (^ 16 x)))]
                 ; returns an index to enable specified place (x, y) of braille.
                 ; x: [0-1], y: [0-3]"
-                (* (^ 2 y) (^ 16 x)))]
     (->> [...]
          (core.map ->idx)
          (core.reduce (fn [acc x]

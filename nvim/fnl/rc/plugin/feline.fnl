@@ -206,8 +206,7 @@
                          _ ""))
    :denops_status (fn []
                     (match (vim.fn.denops#server#status)
-                      ;; TODO: will be replaced by deno icon
-                      :running icontab.opensuse
+                      :running icontab.dinosaur
                       _ ""))})
 
 ;; enforce to set &termguicolors
