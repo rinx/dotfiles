@@ -176,7 +176,6 @@
   {:active [[comps.vimode
              comps.file.info
              comps.lsp
-             comps.denops
              comps.diagnostics.error
              comps.diagnostics.warn
              comps.diagnostics.info
@@ -188,6 +187,7 @@
              comps.git.remove
              comps.git.branch
              comps.file.encoding
+             comps.denops
              comps.paste
              comps.spell
              comps.scrollbar]]
