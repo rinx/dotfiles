@@ -39,6 +39,7 @@
    "LspStart tsserver"
    :LspStop
    :MarkdownPreview
+   :Notifications
    :NvimTreeRefresh
    :NvimTreeToggle
    :PackerClean
