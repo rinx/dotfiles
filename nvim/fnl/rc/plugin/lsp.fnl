@@ -278,7 +278,11 @@
   (let [trouble (require :trouble)]
     (trouble.setup {:auto_open true
                     :auto_close true
-                    :use_lsp_diagnostic_signs true})
+                    :signs {:error icontab.bug
+                            :warning icontab.exclam-circle
+                            :hint icontab.leaf
+                            :information icontab.info-circle
+                            :other icontab.comment-alt}})
     (noremap! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" :silent)
     (noremap! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" :silent)
     (noremap! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" :silent)
