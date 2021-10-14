@@ -221,7 +221,7 @@
          :warn_sign icontab.exclam-circle
          :infor_sign icontab.info-circle
          :hint_sign icontab.leaf
-         :dianostic_header_icon (.. icontab.search " ")
+         :diagnostic_header_icon (.. icontab.search " ")
          :code_action_icon (.. icontab.lightbulb " ")
          :code_action_prompt {:enable true
                               :sign false
