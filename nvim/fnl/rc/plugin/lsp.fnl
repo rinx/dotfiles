@@ -248,9 +248,9 @@
     (noremap! [:n] "]d" ":<C-u>Lspsaga diagnostic_jump_next<CR>" :silent))
   (do
     (noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
-    (noremap! [:n] "<Leader>d" ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>" :silent)
-    (noremap! [:n] "[d" ":<C-u>lua vim.lsp.diagnostic.goto_prev()<CR>" :silent)
-    (noremap! [:n] "]d" ":<C-u>lua vim.lsp.diagnostic.goto_next()<CR>" :silent)))
+    (noremap! [:n] "<Leader>d" ":<C-u>lua vim.diagnostic.show_line_diagnostics()<CR>" :silent)
+    (noremap! [:n] "[d" ":<C-u>lua vim.diagnostic.goto_prev()<CR>" :silent)
+    (noremap! [:n] "]d" ":<C-u>lua vim.diagnostic.goto_next()<CR>" :silent)))
 
 (noremap! [:n] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)
 (noremap! [:x] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)
@@ -260,16 +260,16 @@
 (set nvim.g.diagnostic_show_sign 1)
 (set nvim.g.diagnostic_insert_delay 1)
 
-(nvim.fn.sign_define :LspDiagnosticsSignError
+(nvim.fn.sign_define :DiagnosticSignError
                      {:text icontab.bug
                       :texthl :LspDiagnosticsSignError})
-(nvim.fn.sign_define :LspDiagnosticsSignWarning
+(nvim.fn.sign_define :DiagnosticSignWarning
                      {:text icontab.exclam-circle
                       :texthl :LspDiagnosticsSignWarning})
-(nvim.fn.sign_define :LspDiagnosticsSignInformation
+(nvim.fn.sign_define :DiagnosticSignInformation
                      {:text icontab.info-circle
                       :texthl :LspDiagnosticsSignInformation})
-(nvim.fn.sign_define :LspDiagnosticsSignHint
+(nvim.fn.sign_define :DiagnosticSignHint
                      {:text icontab.leaf
                       :texthl :LspDiagnosticsSignHint})
 
