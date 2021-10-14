@@ -19,16 +19,15 @@
         {:title :lsp-formatting}))))
 
 ;; markdown
-(set nvim.g.mkdp_open_to_the_world 1)
-(set nvim.g.mkdp_open_ip "0.0.0.0")
-(set nvim.g.mkdp_port "8000")
-(defn mkdp-echo-url [url]
-  (vim.notify
-    (.. "preview started: '" url "'")
-    vim.lsp.log_levels.INFO
-    {:title :markdown-preview}))
-(bridge :MkdpEchoURL :mkdp-echo-url)
-(set nvim.g.mkdp_browserfunc :MkdpEchoURL)
+(set nvim.g.bufpreview_server_host "0.0.0.0")
+(set nvim.g.bufpreview_server_port 8000)
+; (defn mkdp-echo-url [url]
+;   (vim.notify
+;     (.. "preview started: '" url "'")
+;     vim.lsp.log_levels.INFO
+;     {:title :markdown-preview}))
+; (bridge :MkdpEchoURL :mkdp-echo-url)
+; (set nvim.g.mkdp_browserfunc :MkdpEchoURL)
 
 (augroup! init-markdown
           (autocmd! :FileType :markdown "setl shiftwidth=4"))

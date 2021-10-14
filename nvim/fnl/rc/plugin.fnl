@@ -85,6 +85,9 @@
                                    :rtp ""}
   :rinx/dps-dpresence {:after [:denops.vim]
                        :rtp ""}
+  :kat0h/bufpreview.vim {:after [:denops.vim]
+                         :rtp ""
+                         :ft [:markdown]}
   :kana/vim-submode {:event [:BufEnter]
                      :mod :submode}
   :kana/vim-operator-user {:event [:BufEnter]}
@@ -120,9 +123,6 @@
                    :event ["BufNewFile,BufRead *.clj"
                            "BufNewFile,BufRead *.fnl"
                            "BufNewFile,BufRead *.hy"]}
-  :iamcco/markdown-preview.nvim {:run "cd app && yarn install"
-                                 :ft [:markdown]
-                                 :cmd [:MarkdownPreview]}
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {}
