@@ -38,7 +38,7 @@
    "LspStart denols"
    "LspStart tsserver"
    :LspStop
-   :MarkdownPreview
+   :PreviewMarkdownToggle
    :Notifications
    :NvimTreeRefresh
    :NvimTreeToggle

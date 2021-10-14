@@ -21,13 +21,13 @@
 ;; markdown
 (set nvim.g.bufpreview_server_host "0.0.0.0")
 (set nvim.g.bufpreview_server_port 8000)
-; (defn mkdp-echo-url [url]
-;   (vim.notify
-;     (.. "preview started: '" url "'")
-;     vim.lsp.log_levels.INFO
-;     {:title :markdown-preview}))
-; (bridge :MkdpEchoURL :mkdp-echo-url)
-; (set nvim.g.mkdp_browserfunc :MkdpEchoURL)
+(defn bufpreview-echo-url [url]
+  (vim.notify
+    (.. "preview started: '" url "'")
+    vim.lsp.log_levels.INFO
+    {:title :bufpreview.vim}))
+(bridge :BufpreviewEchoURL :bufpreview-echo-url)
+(set nvim.g.bufpreview_open_browser_fn :BufpreviewEchoURL)
 
 (augroup! init-markdown
           (autocmd! :FileType :markdown "setl shiftwidth=4"))
