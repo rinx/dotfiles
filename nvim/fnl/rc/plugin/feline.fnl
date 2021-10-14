@@ -203,6 +203,10 @@
                        (match (vim.fn.skkeleton#mode)
                          :hira "あ"
                          :kata "ア"
+                         :hankata "ｧｱ"
+                         :ascii "aA"
+                         :zenei "ａ"
+                         :abbrev "aあ"
                          _ ""))
    :denops_status (fn []
                     (match (vim.fn.denops#server#status)
