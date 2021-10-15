@@ -151,6 +151,7 @@
    :server " "
    :opensuse " "
    :dinosaur "🦕"
+   :ghost "👻" 
    :number-0 " "
    :number-1 " "
    :number-2 " "
@@ -257,15 +258,15 @@
    "⢰" "⢱" "⢲" "⢳" "⢴" "⢵" "⢶" "⢷" "⣰" "⣱" "⣲" "⣳" "⣴" "⣵" "⣶" "⣷"
    "⢸" "⢹" "⢺" "⢻" "⢼" "⢽" "⢾" "⢿" "⣸" "⣹" "⣺" "⣻" "⣼" "⣽" "⣾" "⣿"])
 
-; ; => "⠱"
-; (pos->braille [0 0]
-;               [1 1]
-;               [1 2])
+;; ; => "⠱"
+;; (pos->braille [0 0]
+;;               [1 1]
+;;               [1 2])
 (defn pos->braille [...]
   (let [->idx (fn [[x y]]
                 (* (^ 2 y) (^ 16 x)))]
-                ; returns an index to enable specified place (x, y) of braille.
-                ; x: [0-1], y: [0-3]"
+                ;; returns an index to enable specified place (x, y) of braille.
+                ;; x: [0-1], y: [0-3]"
     (->> [...]
          (core.map ->idx)
          (core.reduce (fn [acc x]

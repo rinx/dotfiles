@@ -129,8 +129,7 @@
    :denops {:provider :denops_status
             :enabled (fn []
                        (loaded? :denops.vim))
-            :left_sep space
-            :hl {:fg colors.purple}}
+            :left_sep space}
    :skkeleton {:provider :skkeleton_status
                :enabled (fn []
                           (and
@@ -139,6 +138,10 @@
                :left_sep space
                :hl {:fg colors.color10}
                :icon icontab.cursor-text}
+   :ghosttext {:provider :ghosttext_status
+               :enabled (fn []
+                          (loaded? :dps-ghosttext.vim))
+               :left_sep space}
    :git {:branch {:provider :git_branch
                   :icon icontab.github
                   :left_sep space
@@ -181,7 +184,8 @@
              comps.diagnostics.info
              comps.diagnostics.hint]
             [comps.dap
-             comps.skkeleton]
+             comps.skkeleton
+             comps.ghosttext]
             [comps.git.add
              comps.git.change
              comps.git.remove
@@ -199,6 +203,10 @@
   {:dap_status (fn []
                 (let [dap (require :dap)]
                   (or (dap.status) "")))
+   :denops_status (fn []
+                    (match (vim.fn.denops#server#status)
+                      :running icontab.dinosaur
+                      _ ""))
    :skkeleton_status (fn []
                        (match (vim.fn.skkeleton#mode)
                          :hira "あ"
@@ -208,10 +216,11 @@
                          :zenei "ａ"
                          :abbrev "aあ"
                          _ ""))
-   :denops_status (fn []
-                    (match (vim.fn.denops#server#status)
-                      :running icontab.dinosaur
-                      _ ""))})
+   :ghosttext_status (fn []
+                       ;; TODO: wait for implementing status function
+                       (if nvim.g.dps_ghosttext#init
+                         icontab.ghost
+                         ""))})
 
 ;; enforce to set &termguicolors
 (nvim.ex.set :termguicolors)
