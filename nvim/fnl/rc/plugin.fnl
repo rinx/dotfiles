@@ -34,7 +34,36 @@
   :famiu/feline.nvim {:mod :feline}
   :akinsho/nvim-bufferline.lua {:mod :bufferline}
   :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
+  :windwp/nvim-autopairs {:mod :autopairs}
+  :kyazdani42/nvim-tree.lua {:event [:BufEnter]
+                             :mod :nvim-tree}
+  :lewis6991/gitsigns.nvim {:event [:BufEnter]
+                            :mod :gitsigns}
+  :rcarriga/nvim-notify {:mod :notify}
+  :norcalli/nvim-colorizer.lua {:mod :colorizer}
+  :lukas-reineke/indent-blankline.nvim {:event [:BufEnter]
+                                        :mod :indent-blankline}
+  :ggandor/lightspeed.nvim {:event [:BufEnter]
+                            :mod :lightspeed}
+  :terrortylor/nvim-comment {:event [:BufEnter]
+                             :mod :comment}
+  :kana/vim-submode {:event [:BufEnter]
+                     :mod :submode}
+  :pwntester/octo.nvim {:cmd [:Octo]
+                        :mod :octo}
+
+  ;; lsp
   :neovim/nvim-lspconfig {:mod :lsp}
+  :ray-x/lsp_signature.nvim {}
+  :tami5/lspsaga.nvim {}
+  :weilbith/nvim-code-action-menu {:cmd [:CodeActionMenu]}
+  :kosayoda/nvim-lightbulb {}
+  :folke/trouble.nvim {}
+  :folke/lsp-colors.nvim {}
+  :folke/todo-comments.nvim {}
+  :simrat39/symbols-outline.nvim {}
+
+  ;; cmp
   :hrsh7th/nvim-cmp {:event [:InsertEnter]
                      :mod :cmp}
   :hrsh7th/cmp-buffer {:after :nvim-cmp}
@@ -49,47 +78,27 @@
   :PaterJason/cmp-conjure {:after [:nvim-cmp :conjure]}
   :rafamadriz/friendly-snippets {:after :nvim-cmp}
   :rinx/cmp-skkeleton {:after [:nvim-cmp :skkeleton]}
-  :windwp/nvim-autopairs {:mod :autopairs}
-  :ray-x/lsp_signature.nvim {}
-  :tami5/lspsaga.nvim {}
-  :weilbith/nvim-code-action-menu {:cmd [:CodeActionMenu]}
-  :kosayoda/nvim-lightbulb {}
-  :folke/trouble.nvim {}
-  :folke/lsp-colors.nvim {}
-  :folke/todo-comments.nvim {}
-  :simrat39/symbols-outline.nvim {}
+
+  ;; dap
   :mfussenegger/nvim-dap {:mod :dap}
   :rcarriga/nvim-dap-ui {}
-  :kyazdani42/nvim-tree.lua {:event [:BufEnter]
-                             :mod :nvim-tree}
+
+  ;; telescope
   :nvim-telescope/telescope.nvim {:mod :telescope}
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
-  :lewis6991/gitsigns.nvim {:event [:BufEnter]
-                            :mod :gitsigns}
-  :rcarriga/nvim-notify {:mod :notify}
-  :norcalli/nvim-colorizer.lua {:mod :colorizer}
-  :lukas-reineke/indent-blankline.nvim {:event [:BufEnter]
-                                        :mod :indent-blankline}
-  :ggandor/lightspeed.nvim {:event [:BufEnter]
-                            :mod :lightspeed}
-  :terrortylor/nvim-comment {:event [:BufEnter]
-                             :mod :comment}
+
+  ;; denops.vim
   :vim-denops/denops.vim {}
   :vim-skk/skkeleton {:mod :skkeleton
-                      :after [:denops.vim]
                       :rtp ""}
-  :yukimemi/dps-asyngrep {:after [:denops.vim]
-                          :rtp ""}
-  :gamoutatsumi/dps-ghosttext.vim {:after [:denops.vim]
-                                   :rtp ""}
-  :rinx/dps-dpresence {:after [:denops.vim]
-                       :rtp ""}
-  :kat0h/bufpreview.vim {:after [:denops.vim]
-                         :rtp ""
+  :yukimemi/dps-asyngrep {:rtp ""}
+  :gamoutatsumi/dps-ghosttext.vim {:rtp ""}
+  :rinx/dps-dpresence {:rtp ""}
+  :kat0h/bufpreview.vim {:rtp ""
                          :ft [:markdown]}
-  :kana/vim-submode {:event [:BufEnter]
-                     :mod :submode}
+
+  ;; operator/textobj
   :kana/vim-operator-user {:event [:BufEnter]}
   :kana/vim-operator-replace {:after :vim-operator-user}
   :rhysd/vim-operator-surround {:after :vim-operator-user}
@@ -101,9 +110,8 @@
   :thinca/vim-textobj-between {:after :vim-textobj-user}
   :mattn/vim-textobj-url {:after :vim-textobj-user}
   :osyo-manga/vim-textobj-multiblock {:after :vim-textobj-user}
-  :tpope/vim-repeat {}
-  :pwntester/octo.nvim {:cmd [:Octo]
-                        :mod :octo}
+
+  ;; languages
   :gpanders/nvim-parinfer {:ft [:clojure
                                 :fennel
                                 :hy
@@ -123,6 +131,8 @@
                    :event ["BufNewFile,BufRead *.clj"
                            "BufNewFile,BufRead *.fnl"
                            "BufNewFile,BufRead *.hy"]}
+
+  ;; treesitter
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {}
