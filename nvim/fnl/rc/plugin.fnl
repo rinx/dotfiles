@@ -90,13 +90,11 @@
 
   ;; denops.vim
   :vim-denops/denops.vim {}
-  :vim-skk/skkeleton {:mod :skkeleton
-                      :rtp ""}
-  :yukimemi/dps-asyngrep {:rtp ""}
-  :gamoutatsumi/dps-ghosttext.vim {:rtp ""}
-  :rinx/dps-dpresence {:rtp ""}
-  :kat0h/bufpreview.vim {:rtp ""
-                         :ft [:markdown]}
+  :vim-skk/skkeleton {:mod :skkeleton}
+  :yukimemi/dps-asyngrep {}
+  :gamoutatsumi/dps-ghosttext.vim {}
+  :rinx/dps-dpresence {}
+  :kat0h/bufpreview.vim {:ft [:markdown]}
 
   ;; operator/textobj
   :kana/vim-operator-user {:event [:BufEnter]}
