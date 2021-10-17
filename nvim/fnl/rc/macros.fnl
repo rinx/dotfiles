@@ -9,11 +9,8 @@
        ,...)
      (nvim.ex.augroup :END)))
 
-(fn ->viml! [name ...]
-  (let [opts (icollect [_ opt (ipairs [...])]
-               (tostring opt))
-        args (table.concat opts ", ")]
-    `(.. "lua require('" *module-name* "')['" ,(tostring name) "'](" ,args ")")))
+(fn ->viml! [name]
+  `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))
 
 (fn map! [modes from to ...]
   (let [opts (collect [_ opt (ipairs [...])]
