@@ -47,6 +47,7 @@
                             :mod :lightspeed}
   :terrortylor/nvim-comment {:event [:BufEnter]
                              :mod :comment}
+  :rinx/nvim-ripgrep {:mod :rg}
   :kana/vim-submode {:event [:BufEnter]
                      :mod :submode}
   :pwntester/octo.nvim {:cmd [:Octo]
@@ -91,7 +92,6 @@
   ;; denops.vim
   :vim-denops/denops.vim {}
   :vim-skk/skkeleton {:mod :skkeleton}
-  :yukimemi/dps-asyngrep {}
   :gamoutatsumi/dps-ghosttext.vim {}
   :rinx/dps-dpresence {}
   :kat0h/bufpreview.vim {:ft [:markdown]}
