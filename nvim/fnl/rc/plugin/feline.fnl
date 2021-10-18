@@ -217,10 +217,9 @@
                          :abbrev "aあ"
                          _ ""))
    :ghosttext_status (fn []
-                       ;; TODO: wait for implementing status function
-                       (if nvim.g.dps_ghosttext#init
-                         icontab.ghost
-                         ""))})
+                       (match (nvim.fn.ghosttext#status)
+                         :running icontab.ghost
+                         _ ""))})
 
 ;; enforce to set &termguicolors
 (nvim.ex.set :termguicolors)

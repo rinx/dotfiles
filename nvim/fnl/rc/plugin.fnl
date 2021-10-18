@@ -92,7 +92,8 @@
   ;; denops.vim
   :vim-denops/denops.vim {}
   :vim-skk/skkeleton {:mod :skkeleton}
-  :gamoutatsumi/dps-ghosttext.vim {}
+  ; :gamoutatsumi/dps-ghosttext.vim {}
+  :rinx/dps-ghosttext.vim {:branch :feature/add-status-function}
   :rinx/dps-dpresence {}
   :kat0h/bufpreview.vim {:ft [:markdown]}
 
