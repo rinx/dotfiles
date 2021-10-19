@@ -126,3 +126,8 @@
           (autocmd! :FileType :help "nnoremap <buffer> g$ g$")
           (autocmd! :FileType :help "nnoremap <buffer><silent>q :<C-u>q<CR>")
           (autocmd! :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif"))
+
+;; Ghosttext.vim
+(set nvim.g.dps_ghosttext#ftmap
+     {:github.com :markdown
+      :mail.google.com :html})

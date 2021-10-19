@@ -184,14 +184,14 @@
              comps.diagnostics.info
              comps.diagnostics.hint]
             [comps.dap
-             comps.skkeleton
-             comps.ghosttext]
+             comps.skkeleton]
             [comps.git.add
              comps.git.change
              comps.git.remove
              comps.git.branch
              comps.file.encoding
              comps.denops
+             comps.ghosttext
              comps.paste
              comps.spell
              comps.scrollbar]]
