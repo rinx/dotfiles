@@ -80,6 +80,9 @@
 (when (loaded? :telescope-fzy-native.nvim)
   (telescope.load_extension :fzy_native))
 
+(when (loaded? :nvim-notify)
+  (telescope.load_extension :notify))
+
 (defn telescope-git-status []
   (builtin.git_status
     {:previewer (previewers.new_termopen_previewer
