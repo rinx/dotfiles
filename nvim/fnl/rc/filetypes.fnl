@@ -75,6 +75,8 @@
 
 ;; clojure
 (augroup! init-clojure
+          (autocmd! :FileType :clojure
+                    "nnoremap <buffer><silent> <leader>K :<C-u>lua vim.lsp.buf.hover()<CR>")
           (autocmd! :FileType :clojure "setl colorcolumn=80")
           (autocmd! :BufWritePre "*.clj,*.cljc,*.cljs" (->viml! :lsp-formatting)))
 
