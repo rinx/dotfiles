@@ -162,9 +162,6 @@ if builtin command -v git > /dev/null 2>&1 ; then
             pick"deno"
     zinit light denoland/deno
 
-    zinit ice wait"5" lucid from"gh-r" as"program" mv"zeta-* -> zeta-note" pick"zeta-note"
-    zinit light artempyanykh/zeta-note
-
     case "$OS" in
         Darwin)
             zinit ice wait"1" from"gh-r" ver"nightly" as"program" \

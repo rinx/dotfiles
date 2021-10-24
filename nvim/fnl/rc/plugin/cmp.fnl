@@ -2,6 +2,7 @@
   {autoload {core aniseed.core
              nvim aniseed.nvim
              icon rc.icon
+             util rc.util
              cmp cmp}
    require-macros [rc.macros]})
 
@@ -36,8 +37,9 @@
 (def- cmp-srcs
   {:buffer :Buffer
    :calc :Calc
-   :conjure :Conjur
+   :conjure :Conjure
    :emoji :Emoji
+   :neorg :Neorg
    :nvim_lsp :LSP
    :path :Path
    :skkeleton :SKK
@@ -95,3 +97,21 @@
           (autocmd! :FileType :clojure (->viml! :append-cmp-conjure))
           (autocmd! :FileType :fennel (->viml! :append-cmp-conjure))
           (autocmd! :FileType :hy (->viml! :append-cmp-conjure)))
+
+;; neorg
+(defn append-cmp-neorg []
+  (let [ss []]
+    (each [_ v (ipairs default-sources)]
+      (table.insert ss v))
+    (table.insert ss {:name :neorg})
+    (cmp.setup.buffer
+      {:sources ss})))
+(augroup! init-cmp-neorg
+          (autocmd! :FileType :norg (->viml! :append-cmp-neorg)))
+
+;; autopairs
+(when (util.loaded? :nvim-autopairs)
+  (let [autopairs-cmp (require :nvim-autopairs.completion.cmp)]
+    (autopairs-cmp.setup
+      {:map_cr true
+       :map_complete true})))

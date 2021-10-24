@@ -65,8 +65,7 @@
   :simrat39/symbols-outline.nvim {}
 
   ;; cmp
-  :hrsh7th/nvim-cmp {:event [:InsertEnter]
-                     :mod :cmp}
+  :hrsh7th/nvim-cmp {:mod :cmp}
   :hrsh7th/cmp-buffer {:after :nvim-cmp}
   :hrsh7th/cmp-calc {:after :nvim-cmp}
   :hrsh7th/cmp-emoji {:after :nvim-cmp}
@@ -129,6 +128,8 @@
                    :event ["BufNewFile,BufRead *.clj"
                            "BufNewFile,BufRead *.fnl"
                            "BufNewFile,BufRead *.hy"]}
+  :nvim-neorg/neorg {:mod :neorg
+                     :requires [:nvim-neorg/neorg-telescope]}
 
   ;; treesitter
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
