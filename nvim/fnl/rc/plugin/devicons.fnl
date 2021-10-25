@@ -11,4 +11,7 @@
                    :name :Hy}
               :Makefile {:icon icon.tab.large-m
                          :color :#6d8086
-                         :name :Makefile}}})
+                         :name :Makefile}
+              :norg {:icon icon.tab.sticky-note
+                     :color :#36a3d9
+                     :name :norg}}})

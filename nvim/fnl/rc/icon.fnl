@@ -148,6 +148,7 @@
    :struct " "
    :reference " "
    :unit "塞"
+   :sticky-note " "
    :server " "
    :opensuse " "
    :dinosaur "🦕"
