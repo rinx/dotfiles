@@ -39,4 +39,5 @@
 (augroup! init-skkeleton
           (autocmd! :User :skkeleton-initialize-pre (->viml! :initialize))
           (autocmd! :User :skkeleton-enable-pre (->viml! :enable-pre))
-          (autocmd! :User :skkeleton-disable-pre (->viml! :disable-pre)))
+          (autocmd! :User :skkeleton-disable-pre (->viml! :disable-pre))
+          (autocmd! :User :skkeleton-mode-changed :redrawstatus))
