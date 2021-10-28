@@ -21,8 +21,7 @@
                              :level_5 {:icon (.. "    " icontab.number-5-mult)}
                              :level_6 {:icon (.. "     " icontab.number-6-mult)}}
                             :todo
-                            {:done {:icon ""}
-                             :undone {:enabled false}}}}}
+                            {:undone {:enabled false}}}}}
     :core.norg.dirman {:config
                        {:workspaces
                         {:default "~/neorg"}
@@ -51,6 +50,12 @@
           (autocmd!
             :FileType :norg
             "nnoremap <buffer><silent> <Leader>d :<C-u>Neorg keybind norg core.norg.qol.todo_items.todo.task_cycle<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> <Up> :<C-u>Neorg keybind norg core.norg.manoeuvre.item_up<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> <Down> :<C-u>Neorg keybind norg core.norg.manoeuvre.item_down<CR>")
           (autocmd!
             :FileType :norg
             "nnoremap <buffer><silent> <Leader>l :<C-u>Neorg keybind norg core.integrations.telescope.insert_link<CR>")
