@@ -37,6 +37,7 @@
 (def- cmp-srcs
   {:buffer :Buffer
    :calc :Calc
+   :cmdline :CMD
    :conjure :Conjure
    :emoji :Emoji
    :neorg :Neorg
@@ -67,12 +68,18 @@
               (set item.menu (or (core.get cmp-srcs entry.source.name) ""))
               item)}
    :mapping
-   {:<C-p> (cmp.mapping.select_prev_item {:behavior cmp.SelectBehavior.Insert})
-    :<C-n> (cmp.mapping.select_next_item {:behavior cmp.SelectBehavior.Insert})
-    :<Up> (cmp.mapping.scroll_docs -4)
-    :<Down> (cmp.mapping.scroll_docs 4)
-    :<C-s> (cmp.mapping.complete)
-    :<C-e> (cmp.mapping.close)
+   {:<C-p> (cmp.mapping
+             (cmp.mapping.select_prev_item
+               {:behavior cmp.SelectBehavior.Insert})
+             [:i :c])
+    :<C-n> (cmp.mapping
+             (cmp.mapping.select_next_item
+               {:behavior cmp.SelectBehavior.Insert})
+             [:i :c])
+    :<Up> (cmp.mapping (cmp.mapping.scroll_docs -4) [:i :c])
+    :<Down> (cmp.mapping (cmp.mapping.scroll_docs 4) [:i :c])
+    :<C-s> (cmp.mapping (cmp.mapping.complete) [:i :c])
+    :<C-e> (cmp.mapping (cmp.mapping.close) [:i :c])
     :<CR> (cmp.mapping.confirm
             {:behavior cmp.ConfirmBehavior.Replace
              :select true})
@@ -84,6 +91,14 @@
    {:expand (fn [args]
               (vim.fn.vsnip#anonymous args.body))}
    :sources default-sources})
+
+;; cmdline completions
+(cmp.setup.cmdline :/ {:sources [{:name :buffer}]})
+(cmp.setup.cmdline ":" {:sources
+                        (cmp.config.sources
+                          [{:name :path}]
+                          [{:name :cmdline}])})
+
 
 ;; conjure
 (defn append-cmp-conjure []
