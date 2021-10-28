@@ -136,4 +136,5 @@
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {}
-  :JoosepAlviste/nvim-ts-context-commentstring {})
+  :JoosepAlviste/nvim-ts-context-commentstring {}
+  :danymat/neogen {:mod :neogen})
