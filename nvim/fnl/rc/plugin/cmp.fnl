@@ -128,9 +128,7 @@
 ;; autopairs
 (when (util.loaded? :nvim-autopairs)
   (let [autopairs-cmp (require :nvim-autopairs.completion.cmp)]
-    (autopairs-cmp.setup
-      {:map_cr true
-       :map_complete true})))
+    (cmp.event:on :confirm_done (autopairs-cmp.on_confirm_done))))
 
 ;; cmp-git
 (defn append-cmp-git []

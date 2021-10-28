@@ -126,10 +126,7 @@
   :hylang/vim-hy {:ft [:hy]}
   :Olical/conjure {:ft [:clojure
                         :fennel
-                        :hy]
-                   :event ["BufNewFile,BufRead *.clj"
-                           "BufNewFile,BufRead *.fnl"
-                           "BufNewFile,BufRead *.hy"]}
+                        :hy]}
   :nvim-neorg/neorg {:mod :neorg
                      :requires [:nvim-neorg/neorg-telescope]}
 
