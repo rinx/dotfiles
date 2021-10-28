@@ -38,6 +38,7 @@
   {:buffer :Buffer
    :calc :Calc
    :cmdline :CMD
+   :cmp_git :Git
    :conjure :Conjure
    :emoji :Emoji
    :neorg :Neorg
@@ -130,3 +131,17 @@
     (autopairs-cmp.setup
       {:map_cr true
        :map_complete true})))
+
+;; cmp-git
+(defn append-cmp-git []
+  (when (util.loaded? :cmp-git)
+    (let [cmp-git (require :cmp_git)]
+      (cmp-git.setup {})))
+  (let [ss []]
+    (each [_ v (ipairs default-sources)]
+      (table.insert ss v))
+    (table.insert ss {:name :cmp_git})
+    (cmp.setup.buffer
+      {:sources ss})))
+(augroup! init-cmp-git
+          (autocmd! :FileType :gitcommit (->viml! :append-cmp-git)))
