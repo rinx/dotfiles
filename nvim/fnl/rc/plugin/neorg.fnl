@@ -32,4 +32,28 @@
 
 ;; norg
 (augroup! init-norg
-          (autocmd! :FileType :norg "setl shiftwidth=2"))
+          (autocmd! :FileType :norg "setl shiftwidth=2")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> <Leader>n :<C-u>Neorg keybind norg core.norg.dirman.new.note<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> [d :<C-u>Neorg keybind norg core.integrations.treesitter.previous.heading<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> ]d :<C-u>Neorg keybind norg core.integrations.treesitter.next.heading<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> K :<C-u>Neorg keybind norg core.norg.esupports.goto_link<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> gd :<C-u>Neorg keybind norg core.norg.esupports.goto_link<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> <Leader>d :<C-u>Neorg keybind norg core.norg.qol.todo_items.todo.task_cycle<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer><silent> <Leader>l :<C-u>Neorg keybind norg core.integrations.telescope.insert_link<CR>")
+          (autocmd!
+            :FileType :norg
+            "nnoremap <buffer> <Leader>f :<C-u>Neorg keybind norg core.integrations.telescope.find_linkable<CR>"))
