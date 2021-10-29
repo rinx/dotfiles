@@ -50,7 +50,7 @@
            [:<Up> :core.norg.manoeuvre.item_up]
            [:<Down> :core.norg.manoeuvre.item_down]
            [:<Leader>f :core.integrations.telescope.find_linkable]]
-       :i [[:<Leader>l :core.integrations.telescope.insert_link]]}
+       :i [[:<C-l> :core.integrations.telescope.insert_link]]}
       {:silent true
        :noremap true})))
 
