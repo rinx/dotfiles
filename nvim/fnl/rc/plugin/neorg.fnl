@@ -1,7 +1,8 @@
 (module rc.plugin.neorg
   {autoload {nvim aniseed.nvim
              icon rc.icon
-             neorg neorg}
+             neorg neorg
+             callbacks neorg.callbacks}
    require-macros [rc.macros]})
 
 (def- icontab icon.tab)
@@ -27,38 +28,32 @@
                         {:default "~/neorg"}
                         :autodetect true
                         :autochdir true}}
+    :core.gtd.base {}
+    :core.gtd.queries {}
+    :core.gtd.ui {}
     :core.integrations.telescope {}}})
+
+(callbacks.on_event
+  :core.keybinds.events.enable_keybinds
+  (fn [_ keybinds]
+    (keybinds.map_event_to_mode
+      :norg
+      {:n [[:<Leader>n :core.norg.dirman.new.note]
+           [:<Leader>c :core.gtd.base.capture]
+           [:<Leader>e :core.gtd.base.edit]
+           [:<Leader>v :core.gtd.base.views]
+           ["[d" :core.integrations.treesitter.previous.heading]
+           ["]d" :core.integrations.treesitter.next.heading]
+           [:K :core.norg.esupports.goto_link]
+           [:gd :core.norg.esupports.goto_link]
+           [:<Leader>d :core.norg.qol.todo_items.todo.task_cycle]
+           [:<Up> :core.norg.manoeuvre.item_up]
+           [:<Down> :core.norg.manoeuvre.item_down]
+           [:<Leader>f :core.integrations.telescope.find_linkable]]
+       :i [[:<Leader>l :core.integrations.telescope.insert_link]]}
+      {:silent true
+       :noremap true})))
 
 ;; norg
 (augroup! init-norg
-          (autocmd! :FileType :norg "setl shiftwidth=2")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> <Leader>n :<C-u>Neorg keybind norg core.norg.dirman.new.note<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> [d :<C-u>Neorg keybind norg core.integrations.treesitter.previous.heading<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> ]d :<C-u>Neorg keybind norg core.integrations.treesitter.next.heading<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> K :<C-u>Neorg keybind norg core.norg.esupports.goto_link<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> gd :<C-u>Neorg keybind norg core.norg.esupports.goto_link<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> <Leader>d :<C-u>Neorg keybind norg core.norg.qol.todo_items.todo.task_cycle<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> <Up> :<C-u>Neorg keybind norg core.norg.manoeuvre.item_up<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> <Down> :<C-u>Neorg keybind norg core.norg.manoeuvre.item_down<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer><silent> <Leader>l :<C-u>Neorg keybind norg core.integrations.telescope.insert_link<CR>")
-          (autocmd!
-            :FileType :norg
-            "nnoremap <buffer> <Leader>f :<C-u>Neorg keybind norg core.integrations.telescope.find_linkable<CR>"))
+          (autocmd! :FileType :norg "setl shiftwidth=2"))
