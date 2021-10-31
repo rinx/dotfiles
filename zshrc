@@ -7,7 +7,7 @@ export ZINIT_HOME=$HOME/.zinit
 if builtin command -v git > /dev/null 2>&1 ; then
     if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ]; then
         mkdir -p ${ZINIT_HOME}
-        git clone --depth=1 https://github.com/zdharma/zinit.git ${ZINIT_HOME}/bin
+        git clone --depth=1 https://github.com/zdharma-continuum/zinit.git ${ZINIT_HOME}/bin
     fi
 
     source ${ZINIT_HOME}/bin/zinit.zsh
@@ -29,7 +29,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit light zsh-users/zsh-autosuggestions
 
     zinit ice wait
-    zinit light zdharma/fast-syntax-highlighting
+    zinit light zdharma-continuum/fast-syntax-highlighting
 
     zinit ice wait
     zinit light hlissner/zsh-autopair
@@ -120,7 +120,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
             atclone"kubectl completion zsh > _kubectl" \
             atpull"%atclone" \
             run-atpull \
-            zdharma/null
+            pbar1/null
 
     zinit light-mode lucid wait has"helm" for \
             id-as"helm_completion" \
@@ -128,7 +128,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
             atclone"helm completion zsh > _helm" \
             atpull"%atclone" \
             run-atpull \
-            zdharma/null
+            pbar1/null
 
     zinit light-mode lucid wait has"helmfile" for \
             id-as"helmfile_completion" \
@@ -136,7 +136,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
             atclone"curl -s https://raw.githubusercontent.com/roboll/helmfile/master/autocomplete/helmfile_zsh_autocomplete > _helmfile" \
             atpull"%atclone" \
             run-atpull \
-            zdharma/null
+            pbar1/null
 
     zinit light-mode lucid wait has"kustomize" for \
             id-as"kustomize_completion" \
@@ -144,7 +144,7 @@ if builtin command -v git > /dev/null 2>&1 ; then
             atclone"kustomize completion zsh > _kustomize" \
             atpull"%atclone" \
             run-atpull \
-            zdharma/null
+            pbar1/null
 
     zinit ice wait"1" lucid from"git.zx2c4.com" as"program" \
             atclone"cp src/completion/pass.zsh-completion _pass_completion" \
