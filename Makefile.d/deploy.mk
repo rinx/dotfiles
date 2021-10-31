@@ -95,7 +95,8 @@ $(HOME)/.tmux/plugins/tpm:
 
 .PHONY: zsh-deploy
 zsh-deploy: \
-    zshrc
+    zshrc \
+    p10k.zsh
 	@$(call red, "zsh-deploy has been done")
 
 .PHONY: zshrc
@@ -103,6 +104,12 @@ zshrc: $(HOME)/.zshrc
 $(HOME)/.zshrc:
 	@$(call cyan, "--\> zshrc")
 	ln -s $(DOTDIR)/zshrc $(HOME)/.zshrc
+
+.PHONY: p10k.zsh
+p10k.zsh: $(HOME)/.p10k.zsh
+$(HOME)/.p10k.zsh:
+	@$(call cyan, "--\> p10k.zsh")
+	ln -s $(DOTDIR)/p10k.zsh $(HOME)/.p10k.zsh
 
 .PHONY: others-deploy
 others-deploy: \

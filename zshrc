@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 OS=$(uname -s)
 export GPG_TTY=$TTY
 
@@ -15,8 +22,8 @@ if builtin command -v git > /dev/null 2>&1 ; then
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
-    zinit ice pick"async.zsh" src"pure.zsh"
-    zinit light sindresorhus/pure
+    zinit ice depth=1
+    zinit light romkatv/powerlevel10k
 
     zinit ice from"gh" as"program" \
             make"install" \
@@ -257,9 +264,12 @@ function precmd() {
     fi
 }
 
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 if [ -n "${DOCKERIZED_DEVENV}" ]; then
-    PURE_PROMPT_SYMBOL="${DOCKERIZED_DEVENV} ❯"
-    PURE_PROMPT_VICMD_SYMBOL="${DOCKERIZED_DEVENV} ❮"
+    typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION="${DOCKERIZED_DEVENV} ❯"
+    typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION="${DOCKERIZED_DEVENV} ❮"
+    typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION="${DOCKERIZED_DEVENV} ❮"
 fi
 
 # aliases
