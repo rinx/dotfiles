@@ -39,6 +39,9 @@
    "LspStart tsserver"
    :LspStop
    :PreviewMarkdownToggle
+   :NeorgStart
+   "Neorg gtd capture"
+   "Neorg gtd views"
    :Notifications
    :NvimTreeRefresh
    :NvimTreeToggle
