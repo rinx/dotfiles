@@ -25,7 +25,8 @@
                             {:undone {:enabled false}}}}}
     :core.norg.dirman {:config
                        {:workspaces
-                        {:default "~/works/neorg"}
+                        {:default "~/works/neorg/notes"
+                         :gtd "~/works/neorg/gtd"}
                         :autodetect true
                         :autochdir true}}
     :core.gtd.base {}
