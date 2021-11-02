@@ -42,6 +42,8 @@
    :NeorgStart
    "Neorg gtd capture"
    "Neorg gtd views"
+   "Neorg workspace gtd"
+   "Neorg workspace notes"
    :Notifications
    :NvimTreeRefresh
    :NvimTreeToggle
