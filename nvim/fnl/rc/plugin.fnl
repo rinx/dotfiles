@@ -94,7 +94,6 @@
   :vim-denops/denops.vim {}
   :vim-skk/skkeleton {:mod :skkeleton}
   :gamoutatsumi/dps-ghosttext.vim {}
-  :rinx/dps-dpresence {}
   :kat0h/bufpreview.vim {:ft [:markdown]}
 
   ;; operator/textobj
