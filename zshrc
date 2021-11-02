@@ -468,6 +468,7 @@ devstarter() {
         -v $HOME/.password-store:/root/.password-store \
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
+        -v $HOME/local/src:/root/local/src:delegated \
         -v $HOME/.zsh_history:/root/.zsh_history \
         -v $HOME/.skk-jisyo:/root/.skk-jisyo \
         $@"
@@ -477,7 +478,6 @@ devstarter() {
             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
             ;;
         Linux)
-            opts="$opts -v $HOME/local/src:/root/local/src:delegated"
             opts="--net=host $opts"
             if [[ -n "${SSH_AUTH_SOCK}" ]]; then
                 opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
