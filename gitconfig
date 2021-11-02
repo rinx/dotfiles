@@ -93,4 +93,4 @@
 	defaultBranch = main
 
 [commit]
-	template = /root/.commit_template
+	template = ~/.commit_template
