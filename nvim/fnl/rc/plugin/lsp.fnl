@@ -212,45 +212,29 @@
                     "*"
                     "lua vim.lsp.codelens.refresh()"))
 
-;; lspsaga
-(if (loaded? :lspsaga.nvim)
+(noremap!
+  [:n]
+  "<Leader>d"
+  ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics({border = 'rounded'})<CR>"
+  :silent)
+(noremap!
+  [:n]
+  "[d"
+  ":<C-u>lua vim.diagnostic.goto_prev({float = {border = 'rounded'}})<CR>" :silent)
+(noremap!
+  [:n]
+  "]d"
+  ":<C-u>lua vim.diagnostic.goto_next({float = {border = 'rounded'}})<CR>" :silent)
+
+(if (loaded? :renamer.nvim)
+  (let [renamer (require :renamer)]
+    (renamer.setup {})
+    (noremap! [:n :i] "<F2>"
+              "<cmd>lua require('renamer').rename()<CR>" :silent)
+    (noremap! [:n :v] "<leader>rn"
+              "<cmd>lua require('renamer').rename()<CR>" :silent))
   (do
-    (let [saga (require :lspsaga)]
-      (saga.init_lsp_saga
-        {:error_sign icontab.bug
-         :warn_sign icontab.exclam-circle
-         :infor_sign icontab.info-circle
-         :hint_sign icontab.leaf
-         :diagnostic_header_icon (.. icontab.search " ")
-         :code_action_icon (.. icontab.lightbulb " ")
-         :code_action_prompt {:enable true
-                              :sign false
-                              :sign_priority 20
-                              :virtual_text false}
-         :finder_definition_icon (.. icontab.star-alt " ")
-         :finder_reference_icon (.. icontab.star-alt " ")
-         :max_preview_lines 12
-         :finder_action_keys {:open :o
-                              :vsplit :v
-                              :split :s
-                              :quit :q
-                              :scroll_down "<C-f>"
-                              :scroll_up "<C-b>"}
-         :code_action_keys {:quit :q :exec "<CR>"}
-         :rename_action_keys {:quit "<C-c>" :exec "<CR>"}
-         :definition_preview_icon (.. icontab.compas " ")
-         :border_style :round
-         :rename_prompt_prefix icontab.chevron-r}))
-    (noremap! [:n] :gh ":<C-u>Lspsaga lsp_finder<CR>" :silent)
-    (noremap! [:n] "<leader>rn" ":<C-u>Lspsaga rename<CR>" :silent)
-    (noremap! [:n] "<Leader>d" ":<C-u>Lspsaga show_line_diagnostics<CR>" :silent)
-    (noremap! [:n] "[d" ":<C-u>Lspsaga diagnostic_jump_prev<CR>" :silent)
-    (noremap! [:n] "]d" ":<C-u>Lspsaga diagnostic_jump_next<CR>" :silent))
-  (do
-    (noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
-    (noremap! [:n] "<Leader>d" ":<C-u>lua vim.diagnostic.show_line_diagnostics()<CR>" :silent)
-    (noremap! [:n] "[d" ":<C-u>lua vim.diagnostic.goto_prev()<CR>" :silent)
-    (noremap! [:n] "]d" ":<C-u>lua vim.diagnostic.goto_next()<CR>" :silent)))
+    (noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)))
 
 (noremap! [:n] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)
 (noremap! [:x] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)

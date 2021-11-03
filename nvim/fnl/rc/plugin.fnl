@@ -56,7 +56,7 @@
   ;; lsp
   :neovim/nvim-lspconfig {:mod :lsp}
   :ray-x/lsp_signature.nvim {}
-  :tami5/lspsaga.nvim {}
+  :filipdutescu/renamer.nvim {}
   :weilbith/nvim-code-action-menu {:cmd [:CodeActionMenu]}
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
