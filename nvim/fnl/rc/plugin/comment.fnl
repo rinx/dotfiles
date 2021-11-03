@@ -1,19 +1,14 @@
 (module rc.plugin.comment
   {autoload {util rc.util
-             ncm nvim_comment}})
+             cm Comment}})
 
 (def- loaded? util.loaded?)
 
 (defn hook-fn []
   (when (loaded? :nvim-ts-context-commentstring)
     (let [ts-commentstring (require :ts_context_commentstring.internal)]
-      (fn []
-        (ts-commentstring.update_commentstring)))))
+      (fn [ctx]
+        (ts-commentstring.calculate_commentstring)))))
 
-(ncm.setup
-  {:marker_padding true
-   :comment_empty true
-   :create_mappings true
-   :line_mapping :gcc
-   :operator_mapping :gc
-   :hook (hook-fn)})
+(cm.setup
+  {:pre_hook (hook-fn)})

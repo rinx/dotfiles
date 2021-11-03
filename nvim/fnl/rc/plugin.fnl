@@ -45,8 +45,8 @@
                                         :mod :indent-blankline}
   :ggandor/lightspeed.nvim {:event [:BufEnter]
                             :mod :lightspeed}
-  :terrortylor/nvim-comment {:event [:BufEnter]
-                             :mod :comment}
+  :numToStr/Comment.nvim {:event [:BufEnter]
+                          :mod :comment}
   :rinx/nvim-ripgrep {:mod :rg}
   :kana/vim-submode {:event [:BufEnter]
                      :mod :submode}
