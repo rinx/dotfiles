@@ -42,6 +42,8 @@
    :NeorgStart
    "Neorg gtd capture"
    "Neorg gtd views"
+   "Neorg mode gtd-displays"
+   "Neorg mode norg"
    "Neorg workspace gtd"
    "Neorg workspace notes"
    :Notifications
