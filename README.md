@@ -19,7 +19,6 @@ alias devstart='docker run \
     --cap-add=ALL \
     --privileged=false \
     --name rinx-devenv \
-    -v /var/run/docker.sock:/var/run/docker.sock \
     -v $HOME/.ssh:/root/.ssh \
     -v $HOME/.gitconfig.local:/root/.gitconfig.local \
     -v $HOME/local:/root/local \

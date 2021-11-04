@@ -21,14 +21,6 @@ ARG BUF_VERSION=v1.0.0-rc2
 
 FROM docker:dind AS docker
 
-RUN mkdir -p /out
-
-RUN cp /usr/local/bin/docker          /out
-RUN cp /usr/local/bin/docker-init     /out
-RUN cp /usr/local/bin/docker-proxy    /out
-RUN cp /usr/local/bin/dockerd         /out
-RUN cp /usr/local/bin/runc            /out
-
 FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
@@ -116,9 +108,6 @@ RUN apk update \
     && apk upgrade \
     && apk --update-cache add --no-cache \
     upx
-
-COPY --from=docker /out /out/docker
-RUN upx -9 /out/docker/*
 
 COPY --from=go /out /out/go
 RUN upx -9 /out/go/usr/local/go/bin/*
@@ -279,25 +268,12 @@ ENV CARGO_HOME /usr/local/cargo
 ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin:$JULIA_HOME/bin:$DOTFILES/bin
 
 ENV GO111MODULE auto
-ENV DOCKER_BUILDKIT 1
-ENV DOCKER_CLI_EXPERIMENTAL "enabled"
 ENV DOCKERIZED_DEVENV rinx/devenv
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
 COPY --from=docker /usr/local/bin/docker-entrypoint.sh /usr/bin/docker-entrypoint
-COPY --from=docker /usr/local/bin/dind                 /usr/bin/dind
-COPY --from=docker /usr/local/bin/modprobe             /usr/bin/modprobe
-COPY --from=docker /usr/local/bin/containerd           /usr/bin/docker-containerd
-COPY --from=docker /usr/local/bin/containerd-shim      /usr/bin/docker-containerd-shim
-COPY --from=docker /usr/local/bin/ctr                  /usr/bin/docker-containerd-ctr
-
-COPY --from=packer /out/docker/docker          /usr/bin/docker
-COPY --from=packer /out/docker/docker-init     /usr/bin/docker-init
-COPY --from=packer /out/docker/docker-proxy    /usr/bin/docker-proxy
-COPY --from=packer /out/docker/dockerd         /usr/bin/dockerd
-COPY --from=packer /out/docker/runc            /usr/bin/docker-runc
 
 COPY --from=clojure-lein /usr/local/bin/lein /usr/local/bin/lein
 COPY --from=clojure-lein /usr/share/java     /usr/share/java
@@ -340,9 +316,6 @@ COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
 COPY zshrc                $DOTFILES/zshrc
-
-RUN mkdir -p $HOME/.docker
-COPY docker-config.json $HOME/.docker/config.json
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG

@@ -457,7 +457,6 @@ devstarter() {
         --cap-add=ALL \
         --privileged=false \
         --name $container_name \
-        -v /var/run/docker.sock:/var/run/docker.sock \
         -v $HOME/.dotfiles:/root/.dotfiles:delegated \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
