@@ -455,6 +455,7 @@ devstarter() {
     shift
     opts="\
         --cap-add=ALL \
+        --net=host \
         --privileged=false \
         --name $container_name \
         -v $HOME/.dotfiles:/root/.dotfiles:delegated \
@@ -477,7 +478,6 @@ devstarter() {
             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
             ;;
         Linux)
-            opts="--net=host $opts"
             if [[ -n "${SSH_AUTH_SOCK}" ]]; then
                 opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
             fi
