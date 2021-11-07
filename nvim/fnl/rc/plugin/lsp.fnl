@@ -102,6 +102,13 @@
 (lsp.julials.setup (core.merge default-options {}))
 (lsp.kotlin_language_server.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
+(lsp.terraformls.setup (core.merge
+                         default-options
+                         {:filetypes [:terraform :tf]
+                          :settings
+                          {:terraform-ls
+                           {:experimentalFeatures {:validateOnSave true
+                                                   :prefillRequiredFields true}}}}))
 (lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
 (lsp.tsserver.setup (core.merge default-options {:autostart false}))
 (lsp.yamlls.setup (core.merge
@@ -109,7 +116,6 @@
                     {:settings
                      {:yaml
                       {:schemaStore {:enable true}}}}))
-(lsp.zeta_note.setup (core.merge default-optsion {:cmd [:zeta-note]}))
 ;; rust-analyzer
 (when (loaded? :rust-tools.nvim)
   (let [rust-tools (require :rust-tools)]

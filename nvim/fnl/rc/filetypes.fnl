@@ -98,6 +98,12 @@
 (augroup! init-kotlin
           (autocmd! :BufWritePre "*.kt,*.kts" (->viml! :lsp-formatting)))
 
+;; terraform
+(augroup! init-terraform
+          (autocmd! :FileType :terraform "setl shiftwidth=2")
+          (autocmd! :FileType :tf "setl shiftwidth=2")
+          (autocmd! :BufWritePre "*.tf" (->viml! :lsp-formatting)))
+
 ;; typescript
 (augroup! init-typescript
           (autocmd! :FileType :typescript "setl shiftwidth=2")
