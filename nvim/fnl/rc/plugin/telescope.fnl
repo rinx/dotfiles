@@ -41,6 +41,7 @@
    :PreviewMarkdownToggle
    :NeorgStart
    "Neorg gtd capture"
+   "Neorg gtd edit"
    "Neorg gtd views"
    "Neorg mode gtd-displays"
    "Neorg mode norg"
@@ -49,6 +50,8 @@
    :Notifications
    :NvimTreeRefresh
    :NvimTreeToggle
+   "Octo pr list"
+   "Octo issue list"
    :PackerClean
    :PackerCompile
    :PackerInstall
