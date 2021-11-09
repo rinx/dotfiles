@@ -6,7 +6,8 @@
 ;; {:default {:name "Rintaro Okamura"
 ;;            :email "xxx@gmail.com"}
 ;;  :alt {:name "rinx"
-;;        :email "xxx@example.jp"}}
+;;        :email "xxx@example.jp"
+;;        :signingkey "XXXX"}}
 
 (require '[babashka.process :as p]
          '[clojure.edn :as edn]
@@ -29,6 +30,8 @@
   (when profile
     (sh "git" "config" "user.name" (:name profile))
     (sh "git" "config" "user.email" (:email profile))
+    (when (:signingkey profile)
+      (sh "git" "config" "user.signingkey" (:signingkey profile)))
     (print (str "switched to " (:name profile) " (" (:email profile) ")"))))
 
 (let [profiles (-> (slurp git-profiles-edn)
