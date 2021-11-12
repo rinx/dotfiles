@@ -123,3 +123,16 @@
     (set nvim.o.grepprg "rg --vimgrep --no-heading")
     (set nvim.o.grepformat "%f:%l:%c:%m,%f:%l:%m")
     (set nvim.g.ackprg "rg --vimgrep --no-heading")))
+
+;; nvui
+(when (= nvim.g.nvui 1)
+  (set nvim.o.guifont "FiraCode Nerd Font:h12,JetBrainsMono Nerd Font:h12")
+
+  (nvim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.85)
+  (nvim.fn.rpcnotify 1 :NVUI_FRAMELESS true)
+
+  (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_FAMILY "JetBrainsMono Nerd Font")
+  (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_SIZE 10)
+
+  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 5)
+  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 5))
