@@ -187,6 +187,10 @@ if builtin command -v git > /dev/null 2>&1 ; then
     #     make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
     #     pick"build/bin/nvim"
     zinit light neovim/neovim
+
+    zinit ice wait"5" lucid from"gh-r" as"program" \
+            pick"bin/nvui"
+    zinit light rohit-px2/nvui
 fi
 
 autoload -Uz compinit
