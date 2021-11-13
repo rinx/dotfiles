@@ -126,7 +126,16 @@
 
 ;; nvui
 (when (= nvim.g.nvui 1)
-  (set nvim.o.guifont "FiraCode Nerd Font:h14,JetBrainsMono Nerd Font:h14,HackGenNerd:h14")
+  (let [fonts ["FiraCode Nerd Font"
+               "JetBrainsMono Nerd Font"
+               "HackGenNerd"]
+        size (if (= (nvim.fn.has :mac) 1)
+               "h14"
+               "h12")]
+    (-> (core.map (fn [font]
+                    (.. font ":" size)) fonts)
+      (table.concat ",")
+      (->> (set nvim.o.guifont))))
 
   (nvim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.80)
   (nvim.fn.rpcnotify 1 :NVUI_FRAMELESS false)
