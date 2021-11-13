@@ -30,8 +30,13 @@
   (when profile
     (sh "git" "config" "user.name" (:name profile))
     (sh "git" "config" "user.email" (:email profile))
-    (when (:signingkey profile)
-      (sh "git" "config" "user.signingkey" (:signingkey profile)))
+    (if (:signingkey profile)
+      (do
+        (sh "git" "config" "user.signingkey" (:signingkey profile))
+        (sh "git" "config" "commit.gpgsign" "true"))
+      (do
+        (sh "git" "config" "--unset" "user.signingkey")
+        (sh "git" "config" "--unset" "commit.gpgsign")))
     (print (str "switched to " (:name profile) " (" (:email profile) ")"))))
 
 (let [profiles (-> (slurp git-profiles-edn)
