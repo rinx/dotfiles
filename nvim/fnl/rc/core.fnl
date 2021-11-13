@@ -126,13 +126,15 @@
 
 ;; nvui
 (when (= nvim.g.nvui 1)
-  (set nvim.o.guifont "FiraCode Nerd Font:h12,JetBrainsMono Nerd Font:h12")
+  (set nvim.o.guifont "FiraCode Nerd Font:h14,JetBrainsMono Nerd Font:h14,HackGenNerd:h14")
 
-  (nvim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.85)
-  (nvim.fn.rpcnotify 1 :NVUI_FRAMELESS true)
+  (nvim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.80)
+  (nvim.fn.rpcnotify 1 :NVUI_FRAMELESS false)
 
   (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_FAMILY "JetBrainsMono Nerd Font")
   (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_SIZE 10)
+
+  (nvim.fn.rpcnotify 1 :NVUI_IME_SET false)
 
   (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 5)
   (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 5))
