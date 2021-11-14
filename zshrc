@@ -480,8 +480,6 @@ devstarter() {
     case "$(uname -s)" in
         Darwin)
             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
-            opts="-e DISPLAY=$(hostname):0 $opts"
-            opts="-v $HOME/.Xauthority:/root/.Xauthority $opts"
             opts="-v $HOME/Library/Fonts:/root/.fonts:ro $opts"
             ;;
         Linux)
