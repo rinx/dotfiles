@@ -475,7 +475,6 @@ devstarter() {
         -v $HOME/local/src:/root/local/src:delegated \
         -v $HOME/.zsh_history:/root/.zsh_history \
         -v $HOME/.skk-jisyo:/root/.skk-jisyo \
-        -v $HOME/.fonts:/root/.fonts:ro \
         $@"
 
     case "$(uname -s)" in
@@ -483,11 +482,13 @@ devstarter() {
             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
             opts="-e DISPLAY=$(hostname):0 $opts"
             opts="-v $HOME/.Xauthority:/root/.Xauthority $opts"
+            opts="-v $HOME/Library/Fonts:/root/.fonts:ro $opts"
             ;;
         Linux)
             opts="--net=host $opts"
             opts="-e DISPLAY=$DISPLAY $opts"
             opts="-v /tmp/.X11-unix:/tmp/.X11-unix $opts"
+            opts="-v $HOME/.fonts:/root/.fonts:ro $opts"
             if [[ -n "${SSH_AUTH_SOCK}" ]]; then
                 opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
             fi
