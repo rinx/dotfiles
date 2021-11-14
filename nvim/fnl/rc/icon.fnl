@@ -153,6 +153,7 @@
    :opensuse " "
    :dinosaur "🦕"
    :ghost "👻" 
+   :whale "🐋"
    :ruby " "
    :number-0 " "
    :number-1 " "

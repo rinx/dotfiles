@@ -142,6 +142,10 @@
                :enabled (fn []
                           (loaded? :dps-ghosttext.vim))
                :left_sep space}
+   :devenv {:provider :devenv_status
+            :enabled (fn []
+                       (= nvim.g.nvui 1))
+            :left_sep space}
    :git {:branch {:provider :git_branch
                   :icon icontab.github
                   :left_sep space
@@ -190,6 +194,7 @@
              comps.git.remove
              comps.git.branch
              comps.file.encoding
+             comps.devenv
              comps.denops
              comps.ghosttext
              comps.paste
@@ -207,6 +212,10 @@
                     (match (vim.fn.denops#server#status)
                       :running icontab.dinosaur
                       _ ""))
+   :devenv_status (fn []
+                    (if (not (= vim.NIL (nvim.fn.getenv :DOCKERIZED_DEVENV)))
+                      icontab.whale
+                      ""))
    :skkeleton_status (fn []
                        (match (vim.fn.skkeleton#mode)
                          :hira "あ"
