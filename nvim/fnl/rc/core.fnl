@@ -128,7 +128,8 @@
 (when (= nvim.g.nvui 1)
   (let [fonts ["FiraCode Nerd Font"
                "JetBrainsMono Nerd Font"
-               "HackGenNerd"]
+               "HackGenNerd"
+               "Noto Color Emoji"]
         size (if (= (nvim.fn.has :mac) 1)
                "h14"
                "h12")]
