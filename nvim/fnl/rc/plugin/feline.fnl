@@ -143,8 +143,6 @@
                           (loaded? :dps-ghosttext.vim))
                :left_sep space}
    :devenv {:provider :devenv_status
-            :enabled (fn []
-                       (= nvim.g.nvui 1))
             :left_sep space}
    :git {:branch {:provider :git_branch
                   :icon icontab.github
