@@ -124,20 +124,21 @@
     (set nvim.o.grepformat "%f:%l:%c:%m,%f:%l:%m")
     (set nvim.g.ackprg "rg --vimgrep --no-heading")))
 
+;; guis
+(let [fonts ["FiraCode Nerd Font"
+             "JetBrainsMono Nerd Font"
+             "HackGenNerd"
+             "Noto Color Emoji"]
+      size (if (= (nvim.fn.has :mac) 1)
+             "h14"
+             "h12")]
+  (-> (core.map (fn [font]
+                  (.. font ":" size)) fonts)
+    (table.concat ",")
+    (->> (set nvim.o.guifont))))
+
 ;; nvui
 (when (= nvim.g.nvui 1)
-  (let [fonts ["FiraCode Nerd Font"
-               "JetBrainsMono Nerd Font"
-               "HackGenNerd"
-               "Noto Color Emoji"]
-        size (if (= (nvim.fn.has :mac) 1)
-               "h14"
-               "h12")]
-    (-> (core.map (fn [font]
-                    (.. font ":" size)) fonts)
-      (table.concat ",")
-      (->> (set nvim.o.guifont))))
-
   (nvim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.80)
   (nvim.fn.rpcnotify 1 :NVUI_FRAMELESS false)
 
