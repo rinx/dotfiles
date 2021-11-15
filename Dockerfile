@@ -19,13 +19,9 @@ ARG KOTLIN_LS_VERSION=1.1.2
 ARG RUST_ANALYZER_VERSION=nightly
 ARG BUF_VERSION=v1.0.0-rc6
 
-FROM docker:dind AS docker
-
 FROM clojure:lein-alpine AS clojure-lein
 
 FROM clojure:tools-deps-alpine AS clojure-deps
-
-FROM julia:alpine AS julia
 
 FROM rust:slim AS rust
 
@@ -249,8 +245,12 @@ RUN cd /tmp \
     && chmod a+x /usr/local/bin/buf \
     && upx -9 /usr/local/bin/buf
 
-RUN curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash \
-    && upx -9 /usr/local/bin/k3d
+RUN cd /tmp \
+    && curl -L https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip --output deno.zip \
+    && unzip deno.zip \
+    && rm -f deno.zip \
+    && mv deno /usr/local/bin/deno \
+    && chmod a+x /usr/local/bin/deno
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
@@ -261,11 +261,10 @@ ENV EDITOR nvim
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
 ENV JAVA_HOME ${GRAALVM_HOME}
-ENV JULIA_HOME /usr/local/julia
 ENV RUSTUP_HOME /usr/local/rustup
 ENV CARGO_HOME /usr/local/cargo
 
-ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin:$JULIA_HOME/bin:$DOTFILES/bin
+ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin:$DOTFILES/bin
 
 ENV GO111MODULE auto
 ENV DOCKERIZED_DEVENV rinx/devenv
@@ -273,16 +272,12 @@ ENV DOCKERIZED_DEVENV rinx/devenv
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 
-COPY --from=docker /usr/local/bin/docker-entrypoint.sh /usr/bin/docker-entrypoint
-
 COPY --from=clojure-lein /usr/local/bin/lein /usr/local/bin/lein
 COPY --from=clojure-lein /usr/share/java     /usr/share/java
 
 COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
 COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
 COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
-
-COPY --from=julia /usr/local/julia $JULIA_HOME
 
 COPY --from=rust /usr/local/cargo  $CARGO_HOME
 COPY --from=rust /usr/local/rustup $RUSTUP_HOME
@@ -321,11 +316,11 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
-RUN ["/bin/zsh", "-c", "make prepare-init && make tmux-init"]
+RUN ["/bin/bash", "-c", "make prepare-init && make tmux-init"]
 
 RUN rm -rf /tmp/*
 
 WORKDIR $HOME
 
-ENTRYPOINT ["docker-entrypoint"]
-CMD ["zsh"]
+ENTRYPOINT ["nvim"]
+CMD ["--headless", "--listen", "127.0.0.1:16666"]

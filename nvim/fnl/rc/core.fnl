@@ -149,3 +149,9 @@
 
   (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 5)
   (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 5))
+
+;; neovide
+(when nvim.g.neovide
+  (set nvim.g.neovide_transparency 0.8)
+  (set nvim.g.neovide_cursor_animation_length 0.1)
+  (set nvim.g.neovide_cursor_trail_length 0.01))
