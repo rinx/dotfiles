@@ -459,9 +459,8 @@ devstarter() {
     image_name=$1
     shift
     opts="\
-        --cap-add=ALL \
-        --privileged=false \
         --name $container_name \
+        --restart always \
         -v $HOME/.dotfiles:/root/.dotfiles:delegated \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
@@ -481,6 +480,7 @@ devstarter() {
         Darwin)
             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
             opts="-v $HOME/Library/Fonts:/root/.fonts:ro $opts"
+            opts="-p 16666:16666 $opts"
             ;;
         Linux)
             opts="--net=host $opts"

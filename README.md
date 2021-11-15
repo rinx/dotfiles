@@ -8,35 +8,30 @@ Pull the latest stable image `ghcr.io/rinx/devenv:stable`, that is built from [t
 (or `ghcr.io/rinx/devenv:nightly` = the image built from the latest main branch is also available.
 [please see here](https://github.com/users/rinx/packages/container/package/devenv))
 
-    $ docker pull ghcr.io/rinx/devenv:stable
+## Usage
 
-Add aliases to your shell (they're already described in `zshrc` in this repository).
+Start container.
 
 ```sh
-# docker
-alias devstart='docker run \
-    --network host \
-    --cap-add=ALL \
-    --privileged=false \
-    --name rinx-devenv \
-    -v $HOME/.ssh:/root/.ssh \
-    -v $HOME/.gitconfig.local:/root/.gitconfig.local \
+docker run \
+    --name devenv \
+    --restart always \
     -v $HOME/local:/root/local \
     -v $HOME/works:/root/works \
-    -v $HOME/Downloads:/root/Downloads \
-    -dit ghcr.io/rinx/devenv:stable'
-alias devattach='docker exec -it rinx-devenv /bin/zsh'
-alias devstop='docker stop rinx-devenv && docker rm rinx-devenv'
+    -p 16666:16666 \
+    -dit ghcr.io/rinx/devenv:stable
 ```
 
-Start your `devenv`.
+Attach your Neovim frontend to 16666 port.
+e.g. Neovide
 
-    $ devstart
+```sh
+neovide --remote-tcp localhost:16666
+```
 
-And attach to it.
+After finished your work, stop and remove the container.
 
-    $ devattach
-
-After finished your work, stop the environment.
-
-    $ devstop
+```sh
+docker stop devenv
+docker rm devenv
+```
