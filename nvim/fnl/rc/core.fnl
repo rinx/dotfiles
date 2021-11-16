@@ -152,6 +152,7 @@
 
 ;; neovide
 (when nvim.g.neovide
+  (set nvim.g.neovide_floating_blur 0)
   (set nvim.g.neovide_transparency 0.8)
   (set nvim.g.neovide_cursor_animation_length 0.1)
   (set nvim.g.neovide_cursor_trail_length 0.01))

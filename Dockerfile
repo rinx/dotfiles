@@ -323,4 +323,4 @@ RUN rm -rf /tmp/*
 WORKDIR $HOME
 
 ENTRYPOINT ["nvim"]
-CMD ["--headless", "--listen", "127.0.0.1:16666"]
+CMD ["--headless", "--listen", "0.0.0.0:16666"]
