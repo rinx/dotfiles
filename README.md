@@ -10,7 +10,23 @@ Pull the latest stable image `ghcr.io/rinx/devenv:stable`, that is built from [t
 
 ## Usage
 
-Start container.
+
+### Deploy
+
+To deploy assets in the home directory, put this repository into `~/.dotfiles` and run `make deploy`.
+
+```sh
+git clone https://github.com/rinx/dotfiles.git ~/.dotfiles
+```
+
+```sh
+cd ~/.dotfiles
+make deploy
+```
+
+### Devcontainer
+
+To run dev container, 
 
 ```sh
 docker run \
@@ -22,12 +38,17 @@ docker run \
     -dit ghcr.io/rinx/devenv:stable
 ```
 
-Attach your Neovim frontend to 16666 port.
-e.g. Neovide
+After that, attach your Neovim frontend to 16666 port.
+
+e.g.) Neovide
 
 ```sh
 neovide --remote-tcp localhost:16666
 ```
+
+It works like [VSCode Remote Container](https://code.visualstudio.com/docs/remote/containers) extension.
+
+![diagram](https://user-images.githubusercontent.com/1588935/141971200-aa5ad698-78c0-4ea2-8b2b-73840777fea7.png)
 
 After finished your work, stop and remove the container.
 
