@@ -40,7 +40,7 @@ docker run \
 
 After that, attach your Neovim frontend to 16666 port.
 
-e.g.) Neovide
+e.g.) [Neovide](https://github.com/neovide/neovide)
 
 ```sh
 neovide --remote-tcp localhost:16666
@@ -48,7 +48,11 @@ neovide --remote-tcp localhost:16666
 
 It works like [VSCode Remote Container](https://code.visualstudio.com/docs/remote/containers) extension.
 
-![diagram](https://user-images.githubusercontent.com/1588935/141971200-aa5ad698-78c0-4ea2-8b2b-73840777fea7.png)
+<div align="center">
+<a href="https://user-images.githubusercontent.com/1588935/141971200-aa5ad698-78c0-4ea2-8b2b-73840777fea7.png">
+<img src="https://user-images.githubusercontent.com/1588935/141971200-aa5ad698-78c0-4ea2-8b2b-73840777fea7.png" width="100%">
+</a>
+</div>
 
 After finished your work, stop and remove the container.
 
