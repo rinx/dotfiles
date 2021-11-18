@@ -462,9 +462,7 @@ devstarter() {
         --name $container_name \
         --restart always \
         -v $HOME/.dotfiles:/root/.dotfiles:delegated \
-        -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
-        -v $HOME/.git-credentials:/root/.git-credentials:ro \
-        -v $HOME/.git-profiles.edn:/root/.git-profiles.edn:ro \
+        -v $HOME/.dotfiles.local:/root/.dotfiles.local:ro \
         -v $HOME/.config/gh:/root/.config/gh \
         -v $HOME/.kube:/root/.kube \
         -v $HOME/.gnupg:/root/.gnupg \
@@ -472,8 +470,6 @@ devstarter() {
         -v $HOME/tmp:/root/tmp \
         -v $HOME/works:/root/works \
         -v $HOME/local/src:/root/local/src:delegated \
-        -v $HOME/.zsh_history:/root/.zsh_history \
-        -v $HOME/.skk-jisyo:/root/.skk-jisyo \
         $@"
 
     case "$(uname -s)" in

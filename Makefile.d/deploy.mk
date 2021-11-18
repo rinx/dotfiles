@@ -32,7 +32,6 @@ $(HOME)/.SKK-JISYO.L:
 .PHONY: git-deploy
 git-deploy: \
     gitconfig \
-    gitconfig-local \
     gitignore \
     gitattributes \
     commit_template \
@@ -44,12 +43,6 @@ gitconfig: $(HOME)/.gitconfig
 $(HOME)/.gitconfig:
 	@$(call cyan, "--\> gitconfig")
 	ln -s $(DOTDIR)/gitconfig $(HOME)/.gitconfig
-
-.PHONY: gitconfig-local
-gitconfig-local: $(HOME)/.gitconfig.local
-$(HOME)/.gitconfig.local:
-	@$(call cyan, "--\> gitconfig.local")
-	touch $(HOME)/.gitconfig.local
 
 .PHONY: gitignore
 gitignore: $(HOME)/.gitignore
@@ -123,7 +116,8 @@ others-deploy: \
     deps-edn \
     textlintrc \
     markdownlintrc \
-    hyper
+    hyper \
+    dotfiles-local
 	@$(call red, "others-deploy")
 
 .PHONY: alacritty.yml
@@ -231,3 +225,30 @@ $(HOME)/.textlintrc:
 hyper: $(HOME)/.hyper.js
 $(HOME)/.hyper.js:
 	ln -s $(DOTDIR)/hyper.js $(HOME)/.hyper.js
+
+.PHONY: dotfiles-local
+dotfiles-local: \
+	$(HOME)/.dotfiles.local \
+	$(HOME)/.gitconfig.local \
+	$(HOME)/.git-profiles.edn \
+	$(HOME)/.skk-jisyo \
+	$(HOME)/.zsh_history
+
+$(HOME)/.dotfiles.local:
+	mkdir -p $(HOME)/.dotfiles.local
+
+$(HOME)/.gitconfig.local:
+	touch $(HOME)/.dotfiles.local/gitconfig.local
+	ln -s $(HOME)/.dotfiles.local/gitconfig.local $(HOME)/.gitconfig.local
+
+$(HOME)/.git-profiles.edn:
+	touch $(HOME)/.dotfiles.local/git-profiles.edn
+	ln -s $(HOME)/.dotfiles.local/git-profiles.edn $(HOME)/.git-profiles.edn
+
+$(HOME)/.skk-jisyo:
+	touch $(HOME)/.dotfiles.local/skk-jisyo
+	ln -s $(HOME)/.dotfiles.local/skk-jisyo $(HOME)/.skk-jisyo
+
+$(HOME)/.zsh_history:
+	touch $(HOME)/.dotfiles.local/zsh_history
+	ln -s $(HOME)/.dotfiles.local/zsh_history $(HOME)/.zsh_history
