@@ -258,10 +258,10 @@ RUN cd /tmp \
     && chmod a+x /usr/local/bin/deno
 
 RUN cd /tmp \
-    && curl -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && tar -xf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && curl -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz --output rg.tar.gz \
+    && tar -xf rg.tar.gz \
     && mv ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg /usr/local/bin/ \
-    && rm -rf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz
+    && rm -rf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl rg.tar.gz
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
