@@ -136,4 +136,5 @@
                                     :mod :treesitter}
   :romgrk/nvim-treesitter-context {}
   :JoosepAlviste/nvim-ts-context-commentstring {}
-  :danymat/neogen {:mod :neogen})
+  :danymat/neogen {:mod :neogen
+                   :event [:UIEnter]})
