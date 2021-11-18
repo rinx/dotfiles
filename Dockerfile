@@ -9,6 +9,8 @@
 ## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"}]
 ## ---  {:name "BUF_VERSION"
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
+## ---  {:name "RIPGREP_VERSION"
+## ---   :url "https://api.github.com/repos/BurntSushi/ripgrep/releases"}]
 
 ARG GRAALVM_VERSION=21.2.0
 
@@ -18,6 +20,7 @@ ARG CLOJURE_LSP_VERSION=2021.11.16-16.52.14
 ARG KOTLIN_LS_VERSION=1.2.0
 ARG RUST_ANALYZER_VERSION=nightly
 ARG BUF_VERSION=v1.0.0-rc6
+ARG RIPGREP_VERSION=13.0.0
 
 FROM clojure:lein-alpine AS clojure-lein
 
@@ -39,7 +42,8 @@ RUN apk update \
 
 RUN go install github.com/go-delve/delve/cmd/dlv@latest \
     && go install github.com/mattn/efm-langserver@latest \
-    && go install golang.org/x/tools/gopls@latest
+    && go install golang.org/x/tools/gopls@latest \
+    && go install github.com/x-motemen/ghq@latest
 
 RUN git clone --depth 1 https://github.com/cli/cli.git /tmp/gh-cli \
     && cd /tmp/gh-cli \
@@ -121,6 +125,7 @@ ARG CLOJURE_LSP_VERSION
 ARG KOTLIN_LS_VERSION
 ARG RUST_ANALYZER_VERSION
 ARG BUF_VERSION
+ARG RIPGREP_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -251,6 +256,12 @@ RUN cd /tmp \
     && rm -f deno.zip \
     && mv deno /usr/local/bin/deno \
     && chmod a+x /usr/local/bin/deno
+
+RUN cd /tmp \
+    && curl -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && tar -xf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && mv ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg /usr/local/bin/ \
+    && rm -rf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz
 
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
