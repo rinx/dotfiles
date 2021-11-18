@@ -16,7 +16,8 @@
 (def- loaded? util.loaded?)
 
 (def- action-cmds
-  [:ConjureConnect
+  ["cd %:p:h"
+   :ConjureConnect
    :ConjureLogSplit
    :DapContinue
    :DapListBreakpoints
