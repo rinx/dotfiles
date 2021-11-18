@@ -59,6 +59,8 @@
    :PackerSync
    :PackerUpdate
    :SymbolsOutline
+   "Telescope dap list_breakpoints"
+   "Telescope ghq list"
    :ToggleTerm
    :ToggleTermCloseAll
    :ToggleTermOpenAll
@@ -89,6 +91,9 @@
 
 (when (loaded? :telescope-fzy-native.nvim)
   (telescope.load_extension :fzy_native))
+
+(when (loaded? :telescope-ghq.nvim)
+  (telescope.load_extension :ghq))
 
 (when (loaded? :nvim-notify)
   (telescope.load_extension :notify))
