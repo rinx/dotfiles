@@ -231,8 +231,7 @@ dotfiles-local: \
 	$(HOME)/.dotfiles.local \
 	$(HOME)/.gitconfig.local \
 	$(HOME)/.git-profiles.edn \
-	$(HOME)/.skk-jisyo \
-	$(HOME)/.zsh_history
+	$(HOME)/.skk-jisyo
 
 $(HOME)/.dotfiles.local:
 	mkdir -p $(HOME)/.dotfiles.local
@@ -248,7 +247,3 @@ $(HOME)/.git-profiles.edn:
 $(HOME)/.skk-jisyo:
 	touch $(HOME)/.dotfiles.local/skk-jisyo
 	ln -s $(HOME)/.dotfiles.local/skk-jisyo $(HOME)/.skk-jisyo
-
-$(HOME)/.zsh_history:
-	touch $(HOME)/.dotfiles.local/zsh_history
-	ln -s $(HOME)/.dotfiles.local/zsh_history $(HOME)/.zsh_history
