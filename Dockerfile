@@ -1,6 +1,3 @@
-## --- [{:name "GRAALVM_VERSION"
-## ---   :tx "(fn [x] (-> x (string/replace #\"vm-\" \"\") (string/replace #\"ce-\" \"\")))"
-## ---   :url "https://api.github.com/repos/graalvm/graalvm-ce-builds/tags"}
 ## ---  {:name "CLOJURE_LSP_VERSION"
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
 ## ---  {:name "RUST_ANALYZER_VERSION"
@@ -10,16 +7,10 @@
 ## ---  {:name "RIPGREP_VERSION"
 ## ---   :url "https://api.github.com/repos/BurntSushi/ripgrep/releases"}]
 
-ARG GRAALVM_VERSION=21.2.0
-
 ARG CLOJURE_LSP_VERSION=2021.11.16-16.52.14
 ARG RUST_ANALYZER_VERSION=2021-11-22
 ARG BUF_VERSION=v1.0.0-rc6
 ARG RIPGREP_VERSION=13.0.0
-
-FROM clojure:lein-alpine AS clojure-lein
-
-FROM clojure:tools-deps-alpine AS clojure-deps
 
 FROM rust:slim AS rust
 
@@ -114,7 +105,6 @@ RUN upx -9 /out/kube/*
 FROM ubuntu:rolling AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
-ARG GRAALVM_VERSION
 ARG CLOJURE_LSP_VERSION
 ARG RUST_ANALYZER_VERSION
 ARG BUF_VERSION
@@ -204,16 +194,6 @@ RUN npm install -g \
     # hy \
     # hy-language-server
 
-ENV GRAALVM_HOME /usr/lib/graalvm
-RUN cd /tmp \
-    && curl -sL "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-java11-linux-amd64-${GRAALVM_VERSION}.tar.gz" --output graalvm.tar.gz \
-    && mkdir -p ${GRAALVM_HOME} \
-    && tar -xf graalvm.tar.gz -C ${GRAALVM_HOME} --strip-components=1 \
-    && chmod -R a+rwx ${GRAALVM_HOME} \
-    && rm -rf graalvm.tar.gz \
-    && upx -9 $(find /usr/lib/graalvm -name js -type f -executable | head -1) \
-    && upx -9 $(find /usr/lib/graalvm -name lli -type f -executable | head -1)
-
 RUN cd /tmp \
     && curl -OL "https://github.com/clojure-lsp/clojure-lsp/releases/download/${CLOJURE_LSP_VERSION}/clojure-lsp-native-linux-amd64.zip" \
     && unzip clojure-lsp-native-linux-amd64.zip \
@@ -254,24 +234,16 @@ ENV EDITOR nvim
 
 ENV GOPATH $HOME/local
 ENV GOROOT /usr/local/go
-ENV JAVA_HOME ${GRAALVM_HOME}
 ENV RUSTUP_HOME /usr/local/rustup
 ENV CARGO_HOME /usr/local/cargo
 
-ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin:$DOTFILES/bin
+ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$GOROOT/bin:$GOPATH/bin:$DOTFILES/bin
 
 ENV GO111MODULE auto
 ENV DOCKERIZED_DEVENV rinx/devenv
 
 RUN mkdir -p $HOME/.ssh \
     && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-
-COPY --from=clojure-lein /usr/local/bin/lein /usr/local/bin/lein
-COPY --from=clojure-lein /usr/share/java     /usr/share/java
-
-COPY --from=clojure-deps /usr/local/bin/clojure /usr/local/bin/clojure
-COPY --from=clojure-deps /usr/local/bin/clj     /usr/local/bin/clj
-COPY --from=clojure-deps /usr/local/lib/clojure /usr/local/lib/clojure
 
 COPY --from=rust /usr/local/cargo  $CARGO_HOME
 COPY --from=rust /usr/local/rustup $RUSTUP_HOME
