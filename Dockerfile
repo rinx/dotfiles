@@ -310,7 +310,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
-RUN ["/bin/bash", "-c", "make prepare-init && make tmux-init"]
+RUN ["/bin/bash", "-c", "make prepare-init && make tmux-init && make neovim-init"]
 
 RUN rm -rf /tmp/*
 
