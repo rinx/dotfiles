@@ -12,8 +12,6 @@
 
 ARG GRAALVM_VERSION=21.2.0
 
-ARG FENNEL_VERSION=1.0.0
-
 ARG CLOJURE_LSP_VERSION=2021.11.16-16.52.14
 ARG RUST_ANALYZER_VERSION=nightly
 ARG BUF_VERSION=v1.0.0-rc6
@@ -117,7 +115,6 @@ FROM ubuntu:rolling AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
-ARG FENNEL_VERSION
 ARG CLOJURE_LSP_VERSION
 ARG RUST_ANALYZER_VERSION
 ARG BUF_VERSION
@@ -216,9 +213,6 @@ RUN cd /tmp \
     && rm -rf graalvm.tar.gz \
     && upx -9 $(find /usr/lib/graalvm -name js -type f -executable | head -1) \
     && upx -9 $(find /usr/lib/graalvm -name lli -type f -executable | head -1)
-
-RUN curl "https://fennel-lang.org/downloads/fennel-${FENNEL_VERSION}" -o /usr/local/bin/fennel \
-    && chmod a+x /usr/local/bin/fennel
 
 RUN cd /tmp \
     && curl -OL "https://github.com/clojure-lsp/clojure-lsp/releases/download/${CLOJURE_LSP_VERSION}/clojure-lsp-native-linux-amd64.zip" \
