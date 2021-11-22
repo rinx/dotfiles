@@ -442,16 +442,6 @@ extract () {
     fi
 }
 
-# clojure
-# (please refer `deps.edn`)
-if builtin command -v rlwrap > /dev/null 2>&1 ; then
-    alias cljdev='clj -A:dev -r'
-    alias bbrepl='rlwrap bb --repl'
-else
-    alias cljdev='clojure -A:dev -r'
-    alias bbrepl='bb --repl'
-fi
-
 # docker
 container_name='rinx-devenv'
 
