@@ -294,7 +294,6 @@ COPY --from=neovim /usr/local/share/nvim   /usr/local/share/nvim
 RUN mkdir $DOTFILES
 WORKDIR $DOTFILES
 
-COPY deps.edn             $DOTFILES/deps.edn
 COPY gitattributes_global $DOTFILES/gitattributes_global
 COPY gitconfig            $DOTFILES/gitconfig
 COPY gitignore            $DOTFILES/gitignore
