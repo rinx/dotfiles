@@ -3,8 +3,6 @@
 ## ---   :url "https://api.github.com/repos/graalvm/graalvm-ce-builds/tags"}
 ## ---  {:name "CLOJURE_LSP_VERSION"
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
-## ---  {:name "KOTLIN_LS_VERSION"
-## ---   :url "https://api.github.com/repos/fwcd/kotlin-language-server/tags"}]
 ## ---  {:name "RUST_ANALYZER_VERSION"
 ## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"}]
 ## ---  {:name "BUF_VERSION"
@@ -17,7 +15,6 @@ ARG GRAALVM_VERSION=21.2.0
 ARG FENNEL_VERSION=1.0.0
 
 ARG CLOJURE_LSP_VERSION=2021.11.16-16.52.14
-ARG KOTLIN_LS_VERSION=1.2.0
 ARG RUST_ANALYZER_VERSION=nightly
 ARG BUF_VERSION=v1.0.0-rc6
 ARG RIPGREP_VERSION=13.0.0
@@ -122,7 +119,6 @@ LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG GRAALVM_VERSION
 ARG FENNEL_VERSION
 ARG CLOJURE_LSP_VERSION
-ARG KOTLIN_LS_VERSION
 ARG RUST_ANALYZER_VERSION
 ARG BUF_VERSION
 ARG RIPGREP_VERSION
@@ -229,13 +225,6 @@ RUN cd /tmp \
     && unzip clojure-lsp-native-linux-amd64.zip \
     && mv clojure-lsp /usr/local/bin/ \
     && rm -rf clojure-lsp-native-linux-amd64.zip
-
-RUN cd /tmp \
-    && curl -L "https://github.com/fwcd/kotlin-language-server/releases/download/${KOTLIN_LS_VERSION}/server.zip" --output kotlin-ls.zip \
-    && unzip kotlin-ls.zip \
-    && rm -f kotiln-ls.zip \
-    && mv server /usr/local/kotlin-language-server \
-    && ln -sf /usr/local/kotlin-language-server/bin/kotlin-language-server /usr/local/bin/kotlin-language-server
 
 RUN cd /tmp \
     && curl -L https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-x86_64-unknown-linux-gnu.gz --output rust-analyzer.gz \
