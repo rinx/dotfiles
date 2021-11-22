@@ -17,3 +17,6 @@ cd /tmp \
 ## leiningen
 curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > /usr/local/bin/lein
 chmod a+x /usr/local/bin/lein
+
+echo "export JAVA_HOME=${GRAALVM_HOME}"
+echo "export PATH=\$PATH:\$JAVA_HOME/bin"
