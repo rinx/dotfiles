@@ -153,6 +153,14 @@ if builtin command -v git > /dev/null 2>&1 ; then
             run-atpull \
             pbar1/null
 
+    zinit light-mode lucid wait has"gh" for \
+            id-as"gh_completion" \
+            as"completion" \
+            atclone"gh completion -s zsh > _gh" \
+            atpull"%atclone" \
+            run-atpull \
+            pbar1/null
+
     zinit ice wait"1" lucid from"git.zx2c4.com" as"program" \
             atclone"cp src/completion/pass.zsh-completion _pass_completion" \
             atpull"%atclone" \
