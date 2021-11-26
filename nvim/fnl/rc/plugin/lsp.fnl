@@ -46,12 +46,6 @@
   {:on_attach on-attach
    :capabilities capabilities})
 
-(when (not lsp.hyls)
-  (tset lsp-configs :hyls
-        {:default_config
-         {:cmd [:hyls]
-          :filetypes [:hy]
-          :root_dir lsputil.path.dirname}}))
 (lsp.bashls.setup (core.merge default-options {}))
 (lsp.clojure_lsp.setup (core.merge default-options {}))
 (lsp.cssls.setup (core.merge default-options {}))
@@ -97,7 +91,6 @@
                       :gofumpt true}}}))
 (lsp.hls.setup (core.merge default-options {}))
 (lsp.html.setup (core.merge default-options {}))
-(lsp.hyls.setup (core.merge default-options {}))
 (lsp.jsonls.setup (core.merge default-options {}))
 (lsp.julials.setup (core.merge default-options {}))
 (lsp.kotlin_language_server.setup (core.merge default-options {}))

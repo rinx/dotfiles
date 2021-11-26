@@ -189,10 +189,6 @@ RUN npm install -g \
     yarn \
     && pip3 install \
     fortran-language-server
-    # git+https://github.com/hylang/hy.git \
-    # git+https://github.com/rinx/hy-language-server.git
-    # hy \
-    # hy-language-server
 
 RUN cd /tmp \
     && curl -OL "https://github.com/clojure-lsp/clojure-lsp/releases/download/${CLOJURE_LSP_VERSION}/clojure-lsp-native-linux-amd64.zip" \
