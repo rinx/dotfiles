@@ -49,7 +49,6 @@
    "Neorg mode norg"
    "Neorg workspace gtd"
    "Neorg workspace notes"
-   :Notifications
    :NvimTreeRefresh
    :NvimTreeToggle
    "Octo pr list"
@@ -63,6 +62,7 @@
    :SymbolsOutline
    "Telescope dap list_breakpoints"
    "Telescope ghq list"
+   "Telescope notify"
    :ToggleTerm
    :ToggleTermCloseAll
    :ToggleTermOpenAll
