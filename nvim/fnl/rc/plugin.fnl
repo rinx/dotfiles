@@ -39,6 +39,7 @@
                              :mod :nvim-tree}
   :lewis6991/gitsigns.nvim {:event [:BufEnter]
                             :mod :gitsigns}
+  :APZelos/blamer.nvim {:event [:BufEnter]}
   :rcarriga/nvim-notify {:mod :notify}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
   :lukas-reineke/indent-blankline.nvim {:event [:BufEnter]
