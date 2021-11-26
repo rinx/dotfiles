@@ -349,7 +349,7 @@ fi
 
 if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --reverse --cycle"
-    if [ ! -z $TMUX ]; then
+    if [ ! -z $TMUX ] && [ -z $VIMRUNTIME ]; then
         if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
             alias fzf='fzf-tmux -p'
         fi
