@@ -141,9 +141,12 @@
 (when (= nvim.g.nvui 1)
   (nvim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.80)
   (nvim.fn.rpcnotify 1 :NVUI_FRAMELESS false)
+  (nvim.fn.rpcnotify 1 :NVUI_CURSOR_HIDE_TYPE false)
 
   (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_FAMILY "JetBrainsMono Nerd Font")
   (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_SIZE 10)
+
+  (nvim.fn.rpcnotify 1 :NVUI_ANIMATIONS_ENABLED true)
 
   (nvim.fn.rpcnotify 1 :NVUI_IME_SET false)
 

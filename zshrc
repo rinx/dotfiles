@@ -317,7 +317,7 @@ else
 fi
 
 alias vi='nvim'
-alias nvui='nvui --ext_multigrid --detached --titlebar'
+alias nvui='nvui --ext_multigrid --detached'
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
     export EDITOR='nvr'
