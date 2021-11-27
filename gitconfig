@@ -33,13 +33,7 @@
 [core]
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes_global
-    editor = nvim
-
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+    pager = delta
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
@@ -48,6 +42,18 @@
     features = decorations
     line-numbers = true
     side-by-side = true
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
 
 [alias]
     st    = status -s -b
