@@ -321,7 +321,7 @@ alias nvui='nvui --ext_multigrid --detached'
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
     export EDITOR='nvr'
-    export GIT_EDITOR="$EDITOR -cc split --remote-wait"
+    export GIT_EDITOR="$EDITOR -cc vsplit --remote-wait"
 else
     export EDITOR='nvim'
     export GIT_EDITOR="$EDITOR"
