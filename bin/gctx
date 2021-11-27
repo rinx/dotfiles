@@ -30,7 +30,7 @@
 
 (defn set-config [n]
   (when n
-    (sh "gcloud" "config" "configurations" "activate")
+    (sh "gcloud" "config" "configurations" "activate" n)
     (print (str "switched to " n))))
 
 (defn ->entry [values]
