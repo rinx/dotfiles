@@ -224,9 +224,13 @@
                          :abbrev "aあ"
                          _ ""))
    :ghosttext_status (fn []
-                       (match (nvim.fn.ghosttext#status)
-                         :running icontab.ghost
-                         _ ""))})
+                       (if nvim.g.ghosttext_started
+                         icontab.ghost
+                         (match (nvim.fn.ghosttext#status)
+                           :running (do
+                                      (set nvim.g.ghosttext_started true)
+                                      icontab.ghost)
+                           _ "")))})
 
 ;; enforce to set &termguicolors
 (nvim.ex.set :termguicolors)
