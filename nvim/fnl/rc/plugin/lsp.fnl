@@ -104,11 +104,16 @@
                                                    :prefillRequiredFields true}}}}))
 (lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
 (lsp.tsserver.setup (core.merge default-options {:autostart false}))
-(lsp.yamlls.setup (core.merge
-                    default-options
-                    {:settings
-                     {:yaml
-                      {:schemaStore {:enable true}}}}))
+(lsp.yamlls.setup
+  (core.merge
+    default-options
+    {:settings
+     {:yaml
+      {:schemas
+       {"http://json.schemastore.org/kustomization" "kustomization.yaml"
+        "https://json.schemastore.org/github-workflow.json" "/.github/workflows/*"
+        "https://json.schemastore.org/circleciconfig.json" "/.circleci/*"}
+       :validate true}}}))
 ;; rust-analyzer
 (when (loaded? :rust-tools.nvim)
   (let [rust-tools (require :rust-tools)]
