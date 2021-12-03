@@ -113,7 +113,8 @@
        {"http://json.schemastore.org/kustomization" "kustomization.yaml"
         "https://json.schemastore.org/github-workflow.json" "/.github/workflows/*"
         "https://json.schemastore.org/circleciconfig.json" "/.circleci/*"}
-       :validate true}}}))
+       :validate true}
+      :single_file_support true}}))
 ;; rust-analyzer
 (when (loaded? :rust-tools.nvim)
   (let [rust-tools (require :rust-tools)]
