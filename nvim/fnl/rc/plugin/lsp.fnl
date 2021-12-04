@@ -231,18 +231,17 @@
   "]d"
   ":<C-u>lua vim.diagnostic.goto_next({float = {border = 'rounded'}})<CR>" :silent)
 
-(if (loaded? :renamer.nvim)
-  (let [renamer (require :renamer)]
-    (renamer.setup {})
-    (noremap! [:n :i] "<F2>"
-              "<cmd>lua require('renamer').rename()<CR>" :silent)
-    (noremap! [:n :v] "<leader>rn"
-              "<cmd>lua require('renamer').rename()<CR>" :silent))
-  (do
-    (noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)))
+(noremap! [:n :i] "<F2>" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
+(noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
 
-(noremap! [:n] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)
-(noremap! [:x] "<Leader>a" ":<C-u>CodeActionMenu<CR>" :silent)
+(noremap! [:n] "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>" :silent)
+(noremap! [:x] "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>" :silent)
+
+(when (loaded? :dressing.nvim)
+  (let [dressing (require :dressing)]
+    (dressing.setup
+      {:input
+       {:default_prompt icontab.rquot}})))
 
 (set nvim.g.diagnostic_enable_virtual_text 1)
 (set nvim.g.diagnostic_trimmed_virtual_text 40)
