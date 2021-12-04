@@ -91,7 +91,15 @@
                       :gofumpt true}}}))
 (lsp.hls.setup (core.merge default-options {}))
 (lsp.html.setup (core.merge default-options {}))
-(lsp.jsonls.setup (core.merge default-options {}))
+(lsp.jsonls.setup
+  (core.merge
+    default-options
+    (if (loaded? :schemastore.nvim)
+      (let [schemastore (require :schemastore)]
+        {:settings
+         {:json
+          {:schemas (schemastore.json.schemas)}}})
+      {})))
 (lsp.julials.setup (core.merge default-options {}))
 (lsp.kotlin_language_server.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
@@ -110,9 +118,37 @@
     {:settings
      {:yaml
       {:schemas
-       {"http://json.schemastore.org/kustomization" "kustomization.yaml"
-        "https://json.schemastore.org/github-workflow.json" "/.github/workflows/*"
-        "https://json.schemastore.org/circleciconfig.json" "/.circleci/*"}
+       (let [k8s-prefix "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone"
+             ->k8s (fn [x]
+                     (table.concat [k8s-prefix x] :/))]
+         {(->k8s "all.json") "k8s/**/*.yaml"
+          (->k8s "clusterrole.json") "clusterrole.yaml"
+          (->k8s "clusterrolebinding.json") "clusterrolebinding.yaml"
+          (->k8s "configmap.json") "configmap.yaml"
+          (->k8s "cronjob.json") "cronjob.yaml"
+          (->k8s "daemonset.json") "daemonset.yaml"
+          (->k8s "deployment.json") "deployment.yaml"
+          (->k8s "horizontalpodautoscaler.json") "hpa.yaml"
+          (->k8s "ingress.json") "ingress.yaml"
+          (->k8s "ingressclass.json") "ingressclass.yaml"
+          (->k8s "job.json") "job.yaml"
+          (->k8s "namespace.json") "namespace.yaml"
+          (->k8s "networkpolicy.json") "networkpolicy.yaml"
+          (->k8s "poddisruptionbudget.json") "pdb.yaml"
+          (->k8s "podsecuritycontext.json") "podsecuritycontext.yaml"
+          (->k8s "podsecuritypolicy.json") ["podsecuritypolicy.yaml" "psp.yaml"]
+          (->k8s "priorityclass.json") "priorityclass.yaml"
+          (->k8s "secret.json") "secret.yaml"
+          (->k8s "securitycontext.json") "securitycontext.yaml"
+          (->k8s "service.json") ["service.yaml" "svc.yaml"]
+          (->k8s "serviceaccount.json") "serviceaccount.yaml"
+          (->k8s "statefulset.json") "statefulset.yaml"
+          (->k8s "storageclass.json") "storageclass.yaml"
+          "http://json.schemastore.org/kustomization" "kustomization.yaml"
+          "https://json.schemastore.org/helmfile.json" "helmfile.yaml"
+          "https://json.schemastore.org/github-workflow.json" "/.github/workflows/*"
+          "https://json.schemastore.org/circleciconfig.json" "/.circleci/*"
+          "https://json.schemastore.org/golangci-lint.json" ".golangci.yml"})
        :validate true}
       :single_file_support true}}))
 ;; rust-analyzer

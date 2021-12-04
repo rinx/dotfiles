@@ -63,6 +63,7 @@
   :folke/lsp-colors.nvim {}
   :folke/todo-comments.nvim {}
   :simrat39/symbols-outline.nvim {}
+  :b0o/schemastore.nvim {}
 
   ;; cmp
   :hrsh7th/nvim-cmp {:mod :cmp}
