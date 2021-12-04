@@ -502,6 +502,7 @@ devstart() {
     devstarter ghcr.io/rinx/devenv:nightly $@
 }
 
+alias devnvim='neovide --multigrid --remote-tcp localhost:16666'
 alias devattach="docker exec -it $container_name /bin/zsh"
 alias devstop="docker stop $container_name && docker rm $container_name"
 
