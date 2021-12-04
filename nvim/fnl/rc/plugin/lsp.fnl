@@ -250,16 +250,16 @@
 
 (nvim.fn.sign_define :DiagnosticSignError
                      {:text icontab.bug
-                      :texthl :LspDiagnosticsSignError})
-(nvim.fn.sign_define :DiagnosticSignWarning
+                      :texthl :DiagnosticSignError})
+(nvim.fn.sign_define :DiagnosticSignWarn
                      {:text icontab.exclam-circle
-                      :texthl :LspDiagnosticsSignWarning})
-(nvim.fn.sign_define :DiagnosticSignInformation
+                      :texthl :DiagnosticSignWarn})
+(nvim.fn.sign_define :DiagnosticSignInfo
                      {:text icontab.info-circle
-                      :texthl :LspDiagnosticsSignInformation})
+                      :texthl :DiagnosticSignInfo})
 (nvim.fn.sign_define :DiagnosticSignHint
                      {:text icontab.leaf
-                      :texthl :LspDiagnosticsSignHint})
+                      :texthl :DiagnosticSignHint})
 
 ;; trouble.nvim
 (when (loaded? :trouble.nvim)
@@ -304,10 +304,10 @@
                            :NOTE {:icon icontab.comment-alt
                                   :color :hint
                                   :alt [:INFO]}}
-                :colors {:error [:LspDiagnosticsSignError]
-                         :warning [:LspDiagnosticsSignWarning]
-                         :info [:LspDiagnosticsSignInformation]
-                         :hint [:LspDiagnosticsSignHint]
+                :colors {:error [:DiagnosticSignError]
+                         :warning [:DiagnosticSignWarn]
+                         :info [:DiagnosticSignInfo]
+                         :hint [:DiagnosticSignHint]
                          :default [colors.purple]}})))
 
 ;; symbols-outline
@@ -333,4 +333,4 @@
                       "lua require'nvim-lightbulb'.update_lightbulb()"))
   (nvim.fn.sign_define :LightBulbSign
                        {:text icontab.lightbulb
-                        :texthl :LspDiagnosticsSignLightBulb}))
+                        :texthl :DiagnosticSignLightBulb}))
