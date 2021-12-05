@@ -118,9 +118,16 @@
     {:settings
      {:yaml
       {:schemas
-       (let [k8s-prefix "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone"
+       (let [k8s-prefix (table.concat ["https://raw.githubusercontent.com/"
+                                       "yannh/"
+                                       "kubernetes-json-schema/"
+                                       "master/"
+                                       "v1.22.4-standalone"])
              ->k8s (fn [x]
-                     (table.concat [k8s-prefix x] :/))]
+                     (table.concat [k8s-prefix x] :/))
+             schemastore-prefix "https://json.schemastore.org"
+             ->schemastore (fn [x]
+                             (table.concat [schemastore-prefix x] :/))]
          {(->k8s "all.json") "k8s/**/*.yaml"
           (->k8s "clusterrole.json") "clusterrole.yaml"
           (->k8s "clusterrolebinding.json") "clusterrolebinding.yaml"
@@ -144,11 +151,11 @@
           (->k8s "serviceaccount.json") "serviceaccount.yaml"
           (->k8s "statefulset.json") "statefulset.yaml"
           (->k8s "storageclass.json") "storageclass.yaml"
-          "http://json.schemastore.org/kustomization" "kustomization.yaml"
-          "https://json.schemastore.org/helmfile.json" "helmfile.yaml"
-          "https://json.schemastore.org/github-workflow.json" "/.github/workflows/*"
-          "https://json.schemastore.org/circleciconfig.json" "/.circleci/*"
-          "https://json.schemastore.org/golangci-lint.json" ".golangci.yml"})
+          (->schemastore "kustomization") "kustomization.yaml"
+          (->schemastore "helmfile.json") "helmfile.yaml"
+          (->schemastore "github-workflow.json") "/.github/workflows/*"
+          (->schemastore "circleciconfig.json") "/.circleci/*"
+          (->schemastore "golangci-lint.json") ".golangci.yml"})
        :validate true}
       :single_file_support true}}))
 ;; rust-analyzer
