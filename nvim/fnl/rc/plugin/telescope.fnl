@@ -40,7 +40,6 @@
    "LspStart denols"
    "LspStart tsserver"
    :LspStop
-   :PreviewMarkdownToggle
    :NeorgStart
    "Neorg gtd capture"
    "Neorg gtd edit"
