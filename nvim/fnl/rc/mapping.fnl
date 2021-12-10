@@ -17,15 +17,15 @@
 
 (noremap! [:n] :<C-t> :<Nop>)
 
-(noremap! [:n :v :o] :j :gj)
-(noremap! [:n :v :o] :k :gk)
-(noremap! [:n] :0 :g0)
-(noremap! [:n] :$ :g$)
+(noremap! [:n :v :o] :j :gj :silent)
+(noremap! [:n :v :o] :k :gk :silent)
+(noremap! [:n] :0 :g0 :silent)
+(noremap! [:n] :$ :g$ :silent)
 
-(noremap! [:n :v :o] :gj :j)
-(noremap! [:n :v :o] :gk :k)
-(noremap! [:n] :g0 :0)
-(noremap! [:n] :g$ :$)
+(noremap! [:n :v :o] :gj :j :silent)
+(noremap! [:n :v :o] :gk :k :silent)
+(noremap! [:n] :g0 :0 :silent)
+(noremap! [:n] :g$ :$ :silent)
 
 (noremap! [:n] :Y :y$)
 
