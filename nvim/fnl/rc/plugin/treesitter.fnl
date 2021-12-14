@@ -7,9 +7,19 @@
        {:install_info
         {:url "https://github.com/nvim-neorg/tree-sitter-norg"
          :files [:src/parser.c :src/scanner.cc]
+         :branch :main}})
+  (set parser-configs.norg_meta
+       {:install_info
+        {:url "https://github.com/nvim-neorg/tree-sitter-norg-meta"
+         :files [:src/parser.c]
+         :branch :main}})
+  (set parser-configs.norg_table
+       {:install_info
+        {:url "https://github.com/nvim-neorg/tree-sitter-norg-table"
+         :files [:src/parser.c]
          :branch :main}}))
 
-(configs.setup {:ensure_installed [:norg]})
+(configs.setup {:ensure_installed [:norg :norg_meta :norg_table]})
 
 (configs.setup
   {:ensure_installed :maintained
