@@ -129,7 +129,6 @@
                         :fennel
                         :hy]}
   :nvim-neorg/neorg {:mod :neorg
-                     :branch :unstable
                      :requires [:nvim-neorg/neorg-telescope]}
 
   ;; treesitter
