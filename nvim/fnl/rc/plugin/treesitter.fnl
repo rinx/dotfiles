@@ -3,11 +3,6 @@
              parsers nvim-treesitter.parsers}})
 
 (let [parser-configs (parsers.get_parser_configs)]
-  (set parser-configs.markdown
-       {:install_info
-        {:url "https://github.com/MDeiml/tree-sitter-markdown"
-         :files [:src/parser.c :src/scanner.cc]
-         :branch :main}})
   (set parser-configs.norg
        {:install_info
         {:url "https://github.com/nvim-neorg/tree-sitter-norg"
@@ -24,14 +19,64 @@
          :files [:src/parser.c]
          :branch :main}}))
 
-(configs.setup
-  {:ensure_installed [:markdown
-                      :norg
-                      :norg_meta
-                      :norg_table]})
+(def- languages
+  [:bash
+   :bibtex
+   :c
+   :clojure
+   :cmake
+   :comment
+   :commonlisp
+   :cpp
+   :css
+   :dockerfile
+   :elixir
+   :elm
+   :erlang
+   :fennel
+   :fortran
+   :go
+   :gomod
+   :graphql
+   :hcl
+   :hjson
+   :html
+   :http
+   :java
+   :javascript
+   :jsdoc
+   :json
+   :json5
+   :jsonc
+   :julia
+   :kotlin
+   :latex
+   :llvm
+   :lua
+   :make
+   :markdown
+   :norg
+   :norg_meta
+   :norg_table
+   :python
+   :ql
+   :query
+   :r
+   :regex
+   :rst
+   :rust
+   :scss
+   :sparql
+   :tlaplus
+   :toml
+   :tsx
+   :typescript
+   :vim
+   :vue
+   :yaml])
 
 (configs.setup
-  {:ensure_installed :maintained
+  {:ensure_installed languages
    :highlight {:enable true
                :disable []}
    :indent {:enable true
