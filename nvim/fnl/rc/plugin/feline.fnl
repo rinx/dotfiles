@@ -43,8 +43,8 @@
 
 (defn- lsp-diagnostics-info []
   {:error (lsp-providers.get_diagnostics_count :Error)
-   :warn (lsp-providers.get_diagnostics_count :Warning)
-   :info (lsp-providers.get_diagnostics_count :Information)
+   :warn (lsp-providers.get_diagnostics_count :Warn)
+   :info (lsp-providers.get_diagnostics_count :Info)
    :hint (lsp-providers.get_diagnostics_count :Hint)})
 
 (defn- diagnostics-enable [f s]
