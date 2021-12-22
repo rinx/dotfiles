@@ -31,7 +31,7 @@
   :nathom/filetype.nvim {}
   :folke/tokyonight.nvim {}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
-  :famiu/feline.nvim {:mod :feline}
+  :feline-nvim/feline.nvim {:mod :feline}
   :akinsho/nvim-bufferline.lua {:mod :bufferline}
   :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
   :windwp/nvim-autopairs {:mod :autopairs}
