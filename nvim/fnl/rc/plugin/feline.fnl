@@ -58,6 +58,34 @@
           ic (core.get lsp-icons s)]
       (.. ic diag))))
 
+(defn- nc [...]
+  (accumulate [str ""
+               _ v (ipairs [...])]
+    (if v
+      (.. str v)
+      str)))
+
+(defn- lsp-statusline []
+  (let [lsp-status (require :lsp-status)
+        buf-messages (lsp-status.messages)
+        msgs {}]
+    (each [_ msg (ipairs buf-messages)]
+      (table.insert
+        msgs
+        (nc "" " "
+          (if msg.progress
+            (nc
+              (when msg.spinner
+                (.. (. icon.spinners
+                      (+ 1 (% msg.spinner
+                              (length icon.spinners)))) " "))
+              msg.title
+              (nc " " msg.message)
+              (when msg.percentage
+                (string.format " (%.0f%%%%)" msg.percentage)))
+            msg.content))))
+    (or (table.concat msgs " ") "")))
+
 (def- comps
   {:vimode {:provider fill
             :hl vimode-hl
@@ -121,6 +149,8 @@
          :left_sep space
          :icon icontab.server
          :hl {:fg colors.color13}}
+   :lsp-status {:provider :lsp_status
+                :hl {:fg colors.color13}}
    :dap {:provider :dap_status
          :enabled (fn [] (loaded? :nvim-dap))
          :left_sep space
@@ -181,6 +211,7 @@
   {:active [[comps.vimode
              comps.file.info
              comps.lsp
+             comps.lsp-status
              comps.diagnostics.error
              comps.diagnostics.warn
              comps.diagnostics.info
@@ -214,6 +245,8 @@
                     (if (not (= vim.NIL (nvim.fn.getenv :DOCKERIZED_DEVENV)))
                       icontab.whale
                       ""))
+   :lsp_status (fn []
+                 (lsp-statusline))
    :skkeleton_status (fn []
                        (match (vim.fn.skkeleton#mode)
                          :hira "あ"

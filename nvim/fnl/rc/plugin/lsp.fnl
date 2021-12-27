@@ -6,6 +6,7 @@
              util rc.util
              lsp lspconfig
              lsp-configs lspconfig/configs
+             lsp-status lsp-status
              lsp-signature lsp_signature
              lsputil lspconfig/util}
    require-macros [rc.macros]})
@@ -15,6 +16,7 @@
 (def- loaded? util.loaded?)
 
 (defn- on-attach [client bufnr]
+  (lsp-status.on_attach client)
   (lsp-signature.on_attach
     {:bind true
      :doc_lines 10
@@ -187,62 +189,12 @@
       :textDocument/signatureHelp
       (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
 
-(def- lsp-progress-msgs {})
-(tset vim.lsp.handlers
-      :$/progress
-      (fn [_ msg ctx]
-        (let [client-id ctx.client_id
-              val msg.value]
-          (when (not (core.get lsp-progress-msgs client-id))
-            (tset lsp-progress-msgs client-id {}))
-          (when (and val.kind (or val.message val.title))
-            (match val.kind
-              :begin (do
-                       (tset (core.get lsp-progress-msgs client-id)
-                             msg.token
-                             {:title val.title
-                              :message val.message
-                              :percentage val.percentage
-                              :done false})
-                       (vim.notify
-                         (or val.message val.title)
-                         vim.lsp.log_levels.INFO
-                         {:title (.. "LSP progress: " (or val.title ""))
-                          :on_open (fn []
-                                     (let [timer (vim.loop.new_timer)]
-                                       (timer:start
-                                         30000 0
-                                         (fn []
-                                           (tset (core.get-in
-                                                   lsp-progress-msgs
-                                                   [client-id msg.token])
-                                                 :done
-                                                 true)))))
-                          :keep (fn []
-                                  (not
-                                    (core.get-in
-                                      lsp-progress-msgs
-                                      [client-id msg.token :done])))}))
-              :report (let [m (core.get-in lsp-progress-msgs
-                                           [client-id msg.token])]
-                        ;; TODO: show these informations
-                        (tset m :message val.message)
-                        (tset m :percentage val.percentage))
-              :end (if (core.get-in lsp-progress-msgs [client-id msg.token])
-                     (let [m (core.get-in lsp-progress-msgs
-                                          [client-id msg.token])]
-                       (tset m :done true)
-                       (vim.notify
-                         (or val.message "")
-                         vim.lsp.log_levels.INFO
-                         {:title (.. "LSP progress done: " (or m.title ""))}))
-                     (vim.notify
-                       (.. "Received `end` messages with "
-                           "no corresponding `begin` from client-id: "
-                           client-id "!")
-                       vim.lsp.log_levels.ERROR
-                       {:title "LSP progress"}))
-              _ nil)))))
+(lsp-status.config
+  {:status_symbol " "
+   :current_function false
+   :show_filename false
+   :diagnostics false})
+(lsp-status.register_progress)
 
 (noremap! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" :silent)
 (noremap! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" :silent)

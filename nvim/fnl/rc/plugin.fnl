@@ -56,6 +56,7 @@
 
   ;; lsp
   :neovim/nvim-lspconfig {:mod :lsp}
+  :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
   :stevearc/dressing.nvim {}
   :kosayoda/nvim-lightbulb {}
