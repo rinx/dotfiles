@@ -150,6 +150,8 @@
 
   (nvim.fn.rpcnotify 1 :NVUI_IME_SET false)
 
+  (nvim.fn.rpcnotify 1 :NVUI_EXT_POPUPMENU true)
+
   (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 10)
   (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 10))
 
