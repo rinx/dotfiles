@@ -94,9 +94,6 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait"1" lucid from"gh-r" as"program" pick"k9s"
     zinit light derailed/k9s
 
-    zinit ice wait"1" lucid from"gh-r" as"program" pick"kdash"
-    zinit light kdash-rs/kdash
-
     zinit ice wait"3" lucid from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
     zinit light roboll/helmfile
 
@@ -106,8 +103,8 @@ if builtin command -v git > /dev/null 2>&1 ; then
     zinit ice wait"3" lucid from"gh" as"program" pick"(kubectx|kubens)"
     zinit light ahmetb/kubectx
 
-    zinit ice wait"3" lucid from"gh-r" as"program" mv"kubefwd -> kubectl-kubefwd" pick"kubectl-kubefwd"
-    zinit light txn2/kubefwd
+    zinit ice wait"3" lucid from"gh-r" as"program" pick"kubectl-trace"
+    zinit light iovisor/kubectl-trace
 
     zinit ice from"gh" as"program" \
             atclone"./autogen.sh; ./configure" \
