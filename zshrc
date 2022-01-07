@@ -176,13 +176,13 @@ if builtin command -v git > /dev/null 2>&1 ; then
 
     case "$OS" in
         Darwin)
-            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+            zinit ice wait"1" from"gh-r" ver"v0.6.1" as"program" \
                     mv"nvim-* -> nvim" \
                     bpick"*macos*" \
                     pick"nvim/bin/nvim"
             ;;
         *)
-            zinit ice wait"1" from"gh-r" ver"nightly" as"program" \
+            zinit ice wait"1" from"gh-r" ver"v0.6.1" as"program" \
                     mv"nvim-* -> nvim" \
                     bpick"*linux*" \
                     pick"nvim/bin/nvim"
