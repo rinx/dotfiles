@@ -82,7 +82,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /tmp \
-    && git clone --depth 1 https://github.com/neovim/neovim \
+    && git clone https://github.com/neovim/neovim \
     && cd /tmp/neovim \
     && git checkout stable \
     && make CMAKE_BUILD_TYPE=RelWithDebInfo \
