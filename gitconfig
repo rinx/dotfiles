@@ -67,9 +67,6 @@
     ca    = commit --signoff --amend --no-edit
     cae   = commit --signoff --amend
 
-    fixup = commit --signoff --fixup
-    rasq  = rebase -i --autosquash
-
     ps    = push
     psa   = push --all
 
@@ -110,3 +107,6 @@
 
 [commit]
 	template = ~/.commit_template
+
+[rebase]
+    autosquash = true
