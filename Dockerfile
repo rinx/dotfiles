@@ -84,6 +84,7 @@ RUN apt update \
 RUN cd /tmp \
     && git clone --depth 1 https://github.com/neovim/neovim \
     && cd /tmp/neovim \
+    && git checkout stable \
     && make CMAKE_BUILD_TYPE=RelWithDebInfo \
     && make install \
     && upx -9 /usr/local/bin/nvim
