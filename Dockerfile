@@ -176,13 +176,9 @@ RUN npm install -g \
     markdownlint \
     markdownlint-cli \
     textlint \
-    textlint-rule-en-spell \
     textlint-rule-preset-ja-spacing \
     textlint-rule-preset-ja-technical-writing \
-    textlint-rule-preset-jtf-style \
-    textlint-rule-prh \
-    textlint-rule-spellcheck-tech-word \
-    textlint-rule-write-good \
+    @proofdict/textlint-rule-proofdict \
     typescript \
     typescript-language-server \
     vscode-langservers-extracted \
