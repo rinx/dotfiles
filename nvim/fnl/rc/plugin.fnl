@@ -56,9 +56,9 @@
 
   ;; lsp
   :neovim/nvim-lspconfig {:mod :lsp}
-  :nvim-lua/lsp-status.nvim {}
   :ray-x/lsp_signature.nvim {}
   :stevearc/dressing.nvim {}
+  :j-hui/fidget.nvim {}
   :kosayoda/nvim-lightbulb {}
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}

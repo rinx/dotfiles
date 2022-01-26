@@ -156,3 +156,10 @@
 (hi! :NotifyTRACETitle
      {:ctermfg :blue
       :guifg colors.hint})
+
+(hi! :FidgetTitle
+     {:ctermfg :green
+      :guifg colors.info})
+(hi! :FidgetTask
+     {:ctermfg :blue
+      :guifg colors.hint})

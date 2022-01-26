@@ -6,7 +6,6 @@
              util rc.util
              lsp lspconfig
              lsp-configs lspconfig/configs
-             lsp-status lsp-status
              lsp-signature lsp_signature
              lsputil lspconfig/util}
    require-macros [rc.macros]})
@@ -16,7 +15,6 @@
 (def- loaded? util.loaded?)
 
 (defn- on-attach [client bufnr]
-  (lsp-status.on_attach client)
   (lsp-signature.on_attach
     {:bind true
      :doc_lines 10
@@ -189,13 +187,6 @@
       :textDocument/signatureHelp
       (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
 
-(lsp-status.config
-  {:status_symbol " "
-   :current_function false
-   :show_filename false
-   :diagnostics false})
-(lsp-status.register_progress)
-
 (noremap! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" :silent)
 (noremap! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" :silent)
 (noremap! [:n] :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>" :silent)
@@ -329,3 +320,9 @@
   (nvim.fn.sign_define :LightBulbSign
                        {:text icontab.lightbulb
                         :texthl :DiagnosticSignLightBulb}))
+
+(when (loaded? :fidget.nvim)
+  (let [fidget (require :fidget)]
+    (fidget.setup
+      {:text {:spinner icon.spinners
+              :done icontab.check}})))
