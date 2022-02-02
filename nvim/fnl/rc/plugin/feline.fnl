@@ -180,7 +180,7 @@
                :^dapui_scopes$
                :^packer$
                :^NvimTree$
-               :^Outline$]
+               :^SidebarNvim$]
    :buftypes [:^terminal$]
    :bufnames []})
 

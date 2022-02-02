@@ -37,6 +37,7 @@
   :windwp/nvim-autopairs {:mod :autopairs}
   :kyazdani42/nvim-tree.lua {:event [:BufEnter]
                              :mod :nvim-tree}
+  :sidebar-nvim/sidebar.nvim {:mod :sidebar}
   :lewis6991/gitsigns.nvim {:event [:BufEnter]
                             :mod :gitsigns}
   :APZelos/blamer.nvim {:event [:BufEnter]}
@@ -63,7 +64,6 @@
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
   :folke/todo-comments.nvim {}
-  :simrat39/symbols-outline.nvim {}
   :b0o/schemastore.nvim {}
 
   ;; cmp

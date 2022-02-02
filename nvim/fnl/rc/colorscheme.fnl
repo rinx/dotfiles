@@ -13,7 +13,6 @@
                                  :dapui_stacks
                                  :dapui_watches
                                  :NvimTree
-                                 :Outline
                                  :packer])
 (nvim.ex.silent_ "colorscheme tokyonight")
 (nvim.ex.syntax :enable)

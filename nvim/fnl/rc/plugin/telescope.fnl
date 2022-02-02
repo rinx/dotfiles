@@ -58,7 +58,7 @@
    :PackerStatus
    :PackerSync
    :PackerUpdate
-   :SymbolsOutline
+   :SidebarNvimToggle
    "Telescope dap list_breakpoints"
    "Telescope ghq list"
    "Telescope notify"
