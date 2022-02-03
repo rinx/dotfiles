@@ -224,7 +224,7 @@ RUN cd /tmp \
     && rm -rf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl rg.tar.gz
 
 RUN cd /tmp \
-    && curl -L https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz --outpu fd.tar.gz \
+    && curl -L https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz --output fd.tar.gz \
     && tar -xf fd.tar.gz \
     && mv fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /usr/local/bin/ \
     && rm -rf fd-${FD_VERSION}-x86_64-unknown-linux-musl fd.tar.gz
