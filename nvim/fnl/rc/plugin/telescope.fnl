@@ -60,7 +60,7 @@
    :PackerUpdate
    :SidebarNvimToggle
    "Telescope dap list_breakpoints"
-   "Telescope ghq list"
+   "Telescope repo list"
    "Telescope notify"
    "Telescope projects"
    :ToggleTerm
@@ -94,14 +94,14 @@
 (when (loaded? :telescope-fzy-native.nvim)
   (telescope.load_extension :fzy_native))
 
-(when (loaded? :telescope-ghq.nvim)
-  (telescope.load_extension :ghq))
-
 (when (loaded? :nvim-notify)
   (telescope.load_extension :notify))
 
 (when (loaded? :project.nvim)
   (telescope.load_extension :projects))
+
+(when (loaded? :telescope-repo.nvim)
+  (telescope.load_extension :repo))
 
 (defn telescope-git-status []
   (builtin.git_status

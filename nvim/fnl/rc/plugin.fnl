@@ -92,7 +92,7 @@
   :nvim-telescope/telescope.nvim {:mod :telescope}
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
-  :nvim-telescope/telescope-ghq.nvim {}
+  :cljoly/telescope-repo.nvim {}
 
   ;; denops.vim
   :vim-denops/denops.vim {}
