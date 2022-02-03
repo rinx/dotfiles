@@ -18,6 +18,7 @@
                                    :untracked icontab.asterisk}
                              :folder {:default icontab.folder
                                       :open icontab.folder-open}})
+(set nvim.g.nvim_tree_respect_buf_cwd 1)
 
 (def- mappings
   [{:key [:<CR> :o :<2-LeftMouse>] :cb (cb :edit)}
@@ -59,6 +60,8 @@
    :hijack_netrw true
    :auto_close true
    :update_cwd true
+   :update_focused_file {:enable true
+                         :update_cwd true}
    :view {:width 30
           :side :left
           :mappings {:custom_only true

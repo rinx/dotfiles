@@ -52,6 +52,7 @@
   :rinx/nvim-ripgrep {:mod :rg}
   :kana/vim-submode {:event [:BufEnter]
                      :mod :submode}
+  :ahmedkhalf/project.nvim {:mod :project}
   :pwntester/octo.nvim {:cmd [:Octo]
                         :mod :octo}
 

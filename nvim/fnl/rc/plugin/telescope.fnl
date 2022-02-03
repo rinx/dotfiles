@@ -62,6 +62,7 @@
    "Telescope dap list_breakpoints"
    "Telescope ghq list"
    "Telescope notify"
+   "Telescope projects"
    :ToggleTerm
    :ToggleTermCloseAll
    :ToggleTermOpenAll
@@ -98,6 +99,9 @@
 
 (when (loaded? :nvim-notify)
   (telescope.load_extension :notify))
+
+(when (loaded? :project.nvim)
+  (telescope.load_extension :projects))
 
 (defn telescope-git-status []
   (builtin.git_status
