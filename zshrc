@@ -447,6 +447,10 @@ extract () {
     fi
 }
 
+# kitty aliases
+alias icat='kitty +kitten icat'
+alias vdiff="kitty +kitten diff"
+
 # docker
 container_name='rinx-devenv'
 
