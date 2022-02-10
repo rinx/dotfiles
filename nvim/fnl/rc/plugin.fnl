@@ -93,6 +93,7 @@
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
   :cljoly/telescope-repo.nvim {}
+  "https://git.sr.ht/~havi/telescope-toggleterm.nvim" {}
 
   ;; denops.vim
   :vim-denops/denops.vim {}

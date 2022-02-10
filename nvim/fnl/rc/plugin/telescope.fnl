@@ -63,6 +63,7 @@
    "Telescope repo list"
    "Telescope notify"
    "Telescope projects"
+   "Telescope toggleterm"
    :ToggleTerm
    :ToggleTermCloseAll
    :ToggleTermOpenAll
@@ -102,6 +103,12 @@
 
 (when (loaded? :telescope-repo.nvim)
   (telescope.load_extension :repo))
+
+(when (loaded? :telescope-toggleterm.nvim)
+  (telescope.load_extension :toggleterm)
+  (let [tt (require :telescope-toggleterm)]
+    (tt.setup {:telescope_mappings
+               {:<C-c> actions.close}})))
 
 (defn telescope-git-status []
   (builtin.git_status
