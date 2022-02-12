@@ -26,15 +26,15 @@
   (when (util.loaded? :nvim-cmp)
     (let [cmp (require :cmp)]
       (cmp.setup.buffer
-        {:experimental
-         {:native_menu true}}))))
+        {:view
+         {:entries :native}}))))
 
 (defn disable-pre []
   (when (util.loaded? :nvim-cmp)
     (let [cmp (require :cmp)]
       (cmp.setup.buffer
-        {:experimental
-         {:native_menu false}}))))
+        {:view
+         {:entries :custom}}))))
 
 (augroup! init-skkeleton
           (autocmd! :User :skkeleton-initialize-pre (->viml! :initialize))
