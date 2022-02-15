@@ -49,7 +49,7 @@
                             :mod :lightspeed}
   :numToStr/Comment.nvim {:event [:BufEnter]
                           :mod :comment}
-  :rinx/nvim-ripgrep {:mod :rg}
+  :mhinz/vim-grepper {:mod :grep}
   :kana/vim-submode {:event [:BufEnter]
                      :mod :submode}
   :ahmedkhalf/project.nvim {:mod :project}
