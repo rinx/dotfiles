@@ -34,6 +34,7 @@
    :DapUIOpen
    :DapUIToggle
    :GhostStart
+   :Ghq
    :LspInfo
    :LspRestart
    :LspStart
@@ -102,7 +103,11 @@
   (telescope.load_extension :projects))
 
 (when (loaded? :telescope-repo.nvim)
-  (telescope.load_extension :repo))
+  (telescope.load_extension :repo)
+  (defn telescope-ghq []
+    (telescope.extensions.repo.list
+      {:search_dirs ["~/local/src"]}))
+  (nvim.ex.command_ :Ghq (->viml! :telescope-ghq)))
 
 (when (loaded? :telescope-toggleterm.nvim)
   (telescope.load_extension :toggleterm)
