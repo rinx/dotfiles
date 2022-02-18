@@ -10,10 +10,11 @@ pink   = /bin/echo -e "\x1b[35m\#\# $1\x1b[0m"
 cyan   = /bin/echo -e "\x1b[36m\#\# $1\x1b[0m"
 
 .PHONY: all
-## deploy -> init -> test -> check
+## deploy -> init -> install
 all: \
     deploy \
-    init
+    init \
+    install
 
 .PHONY: deploy
 ## make symbolic links to the dotfiles
@@ -24,7 +25,7 @@ deploy: \
     tmux-deploy \
     zsh-deploy \
     others-deploy
-	@$(call cyan, "deploy stage has been done")
+	@$(call cyan, "Done: deploy")
 
 .PHONY: init
 ## initialize all configures
@@ -32,6 +33,12 @@ init: \
     prepare-init \
     tmux-init \
     neovim-init
-	@$(call green, "initialize stage has been done")
+	@$(call cyan, "Done: initialize")
+
+.PHONY: install
+## install binaries
+install: \
+	install-bins
+	@$(call cyan, "Done: install")
 
 include Makefile.d/*.mk
