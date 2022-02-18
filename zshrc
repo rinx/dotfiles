@@ -7,230 +7,104 @@ fi
 
 OS=$(uname -s)
 export GPG_TTY=$TTY
-
-# zinit
-export ZINIT_HOME=$HOME/.zinit
-
-if builtin command -v git > /dev/null 2>&1 ; then
-    if [ ! -f ${ZINIT_HOME}/bin/zinit.zsh ]; then
-        mkdir -p ${ZINIT_HOME}
-        git clone --depth=1 https://github.com/zdharma-continuum/zinit.git ${ZINIT_HOME}/bin
-    fi
-
-    source ${ZINIT_HOME}/bin/zinit.zsh
-
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
-
-    zinit ice depth=1
-    zinit light romkatv/powerlevel10k
-
-    zinit ice from"gh" as"program" \
-            make"install" \
-            atclone"cp shell/completion.zsh _fzf" \
-            atpull"%atclone" \
-            pick"bin/(fzf|fzf-tmux)"
-    zinit light junegunn/fzf
-
-    zinit ice wait
-    zinit light zsh-users/zsh-autosuggestions
-
-    zinit ice wait
-    zinit light zdharma-continuum/fast-syntax-highlighting
-
-    zinit ice wait
-    zinit light hlissner/zsh-autopair
-
-    zinit ice wait
-    zinit light Aloxaf/fzf-tab
-
-    zinit ice wait
-    zinit light mollifier/cd-gitroot
-
-    zinit ice from"gh-r" as"program" pick"bin/exa"
-    zinit light ogham/exa
-
-    zinit ice wait from"gh-r" \
-            as"program" \
-            mv"ripgrep* -> rg" \
-            pick"rg/rg" \
-            nocompletions
-    zinit light BurntSushi/ripgrep
-
-    zinit ice wait from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
-    zinit light sharkdp/bat
-
-    zinit ice wait from"gh-r" \
-            as"program" \
-            mv"fd* -> fd" \
-            pick"fd/fd" \
-            nocompletions
-    zinit light sharkdp/fd
-
-    zinit ice wait"2" lucid from"gh-r" as"program" pick"sad"
-    zinit light ms-jpq/sad
-
-    zinit ice wait"2" from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
-    zinit light dandavison/delta
-
-    zinit ice from"gh-r" as"program" mv"ghq* -> ghq" pick"ghq/ghq"
-    zinit light x-motemen/ghq
-
-    zinit ice wait"4" lucid from"gh-r" as"program" pick"bb"
-    zinit light babashka/babashka
-
-    zinit ice wait"4" lucid from"gh-r" as"program" pick"clj-kondo"
-    zinit light clj-kondo/clj-kondo
-
-    zinit ice wait"1" lucid from"gh-r" as"program" mv"jq-* -> jq" pick"jq"
-    zinit light stedolan/jq
-
-    zinit ice wait"4" lucid from"gh-r" as"program" mv"yq* -> yq" pick"yq"
-    zinit light mikefarah/yq
-
-    zinit ice wait"3" lucid from"gh-r" as"program" mv"stern* -> stern" pick"stern/stern"
-    zinit light stern/stern
-
-    zinit ice wait"1" lucid from"gh-r" as"program" pick"k9s"
-    zinit light derailed/k9s
-
-    zinit ice wait"3" lucid from"gh-r" as"program" mv"helmfile* -> helmfile" pick"helmfile"
-    zinit light roboll/helmfile
-
-    zinit ice wait"3" lucid from"gh-r" as"program" pick"kustomize"
-    zinit light kubernetes-sigs/kustomize
-
-    zinit ice wait"3" lucid from"gh" as"program" pick"(kubectx|kubens)"
-    zinit light ahmetb/kubectx
-
-    zinit ice wait"3" lucid from"gh-r" as"program" pick"kubectl-trace"
-    zinit light iovisor/kubectl-trace
-
-    zinit ice from"gh" as"program" \
-            atclone"./autogen.sh; ./configure" \
-            atpull"%atclone" \
-            make \
-            pick"tmux"
-    zinit light tmux/tmux
-
-    zinit ice wait"1" lucid from"gh" as"program" pick"bin/xpanes"
-    zinit light greymd/tmux-xpanes
-
-    zinit wait atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
-
-    zinit light-mode lucid wait has"kubectl" for \
-            id-as"kubectl_completion" \
-            as"completion" \
-            atclone"kubectl completion zsh > _kubectl" \
-            atpull"%atclone" \
-            run-atpull \
-            pbar1/null
-
-    zinit light-mode lucid wait has"helm" for \
-            id-as"helm_completion" \
-            as"completion" \
-            atclone"helm completion zsh > _helm" \
-            atpull"%atclone" \
-            run-atpull \
-            pbar1/null
-
-    zinit light-mode lucid wait has"helmfile" for \
-            id-as"helmfile_completion" \
-            as"completion" \
-            atclone"curl -s https://raw.githubusercontent.com/roboll/helmfile/master/autocomplete/helmfile_zsh_autocomplete > _helmfile" \
-            atpull"%atclone" \
-            run-atpull \
-            pbar1/null
-
-    zinit light-mode lucid wait has"kustomize" for \
-            id-as"kustomize_completion" \
-            as"completion" \
-            atclone"kustomize completion zsh > _kustomize" \
-            atpull"%atclone" \
-            run-atpull \
-            pbar1/null
-
-    zinit light-mode lucid wait has"gh" for \
-            id-as"gh_completion" \
-            as"completion" \
-            atclone"gh completion -s zsh > _gh" \
-            atpull"%atclone" \
-            run-atpull \
-            pbar1/null
-
-    zinit ice wait"1" lucid from"git.zx2c4.com" as"program" \
-            atclone"cp src/completion/pass.zsh-completion _pass_completion" \
-            atpull"%atclone" \
-            make"PREFIX=$ZPFX install" \
-            pick"$ZPFX/bin/pass"
-    zinit light password-store
-
-    zinit ice wait"2" lucid from"gh-r" as"program" \
-            bpick"*pass*" \
-            pick"docker-credential-pass"
-    zinit light docker/docker-credential-helpers
-
-    zinit ice wait"2" lucid from"gh-r" as"program" \
-            pick"deno"
-    zinit light denoland/deno
-
-    case "$OS" in
-        Darwin)
-            zinit ice wait"1" from"gh-r" ver"v0.6.1" as"program" \
-                    mv"nvim-* -> nvim" \
-                    bpick"*macos*" \
-                    pick"nvim/bin/nvim"
-            ;;
-        *)
-            zinit ice wait"1" from"gh-r" ver"v0.6.1" as"program" \
-                    mv"nvim-* -> nvim" \
-                    bpick"*linux*" \
-                    pick"nvim/bin/nvim"
-            ;;
-    esac
-    # zinit ice wait"1" from"gh" as"program" \
-    #     make"CMAKE_BUILD_TYPE=RelWithDebInfo" \
-    #     pick"build/bin/nvim"
-    zinit light neovim/neovim
-
-    zinit ice wait"5" lucid from"gh-r" as"program" \
-            pick"bin/nvui"
-    zinit light rohit-px2/nvui
-fi
-
-autoload -Uz compinit
-compinit
-
-zinit cdreplay -q
-
-# completion settings
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-zstyle ':completion:*:default' menu select=2
-zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
-zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-separator '-->'
-zstyle ':completion:*:manuals' separate-sections true
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:cd:*' popup-pad 30 5
-zstyle ':prompt:pure:git:stash' show yes
-
-autoload colors
-colors
-
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 HISTFILE=~/.dotfiles.local/zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-setopt hist_ignore_dups
-setopt share_history
+
+export PATH=$PATH:~/.bin
+
+## https://github.com/mattmc3/zsh_unplugged
+## clone a plugin, identify its init file, source it, and add it to your fpath
+function plugin-load() {
+  local repo plugin_name plugin_dir initfile initfiles
+  ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+  for repo in $@; do
+    plugin_name=${repo:t}
+    plugin_dir=$ZPLUGINDIR/$plugin_name
+    initfile=$plugin_dir/$plugin_name.plugin.zsh
+    if [[ ! -d $plugin_dir ]]; then
+      echo "Cloning $repo"
+      git clone -q --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugin_dir
+    fi
+    if [[ ! -e $initfile ]]; then
+      initfiles=($plugin_dir/*.plugin.{z,}sh(N) $plugin_dir/*.{z,}sh{-theme,}(N))
+      [[ ${#initfiles[@]} -gt 0 ]] || { echo >&2 "Plugin has no init file '$repo'." && continue }
+      ln -sf "${initfiles[1]}" "$initfile"
+    fi
+    fpath+=$plugin_dir
+    (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
+  done
+}
+
+function plugin-compile() {
+  ZPLUGINDIR=${ZPLUGINDIR:-$HOME/.config/zsh/plugins}
+  autoload -U zrecompile
+  local f
+  for f in $ZPLUGINDIR/**/*.zsh{,-theme}(N); do
+    zrecompile -pq "$f"
+  done
+}
+
+
+plugins=(
+    romkatv/powerlevel10k
+    romkatv/zsh-defer
+
+    zshzoo/history
+    zshzoo/zstyle-completions
+    zsh-users/zsh-autosuggestions
+    zsh-users/zsh-completions
+    hlissner/zsh-autopair
+    mollifier/cd-gitroot
+
+    zshzoo/compinit
+    zdharma-continuum/fast-syntax-highlighting
+)
+
+plugin-load $plugins
+
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushd_minus
+
+setopt always_to_end
+setopt auto_list
+setopt auto_menu
+setopt auto_param_slash
+setopt complete_in_word
+setopt no_menu_complete
+
+setopt extended_glob
+setopt glob_dots
+
+setopt no_clobber
+setopt no_correct
+setopt no_correct_all
+setopt no_flow_control
+setopt interactive_comments
+setopt no_mail_warning
+setopt path_dirs
+setopt rc_quotes
+setopt no_rm_star_silent
+
+setopt auto_resume
+setopt no_bg_nice
+setopt no_check_jobs
+setopt no_hup
+setopt long_list_jobs
+setopt notify
+
+setopt prompt_subst
+
+setopt no_beep
+setopt combining_chars
+setopt vi
+
+autoload colors
+colors
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -252,20 +126,6 @@ edit_current_line() {
 }
 zle -N edit_current_line
 bindkey '^O' edit_current_line
-
-setopt list_packed
-setopt nolistbeep
-
-setopt auto_cd
-setopt auto_pushd
-
-setopt auto_list
-setopt auto_menu
-
-setopt auto_param_slash
-setopt auto_param_keys
-
-setopt correct
 
 function precmd() {
     if [ ! -z $TMUX ]; then

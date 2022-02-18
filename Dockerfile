@@ -4,16 +4,10 @@
 ## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"}]
 ## ---  {:name "BUF_VERSION"
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
-## ---  {:name "RIPGREP_VERSION"
-## ---   :url "https://api.github.com/repos/BurntSushi/ripgrep/releases"}]
-## ---  {:name "FD_VERSION"
-## ---   :url "https://api.github.com/repos/sharkdp/fd/releases"}]
 
 ARG CLOJURE_LSP_VERSION=2021.11.16-16.52.14
 ARG RUST_ANALYZER_VERSION=2021-11-22
 ARG BUF_VERSION=v1.0.0-rc6
-ARG RIPGREP_VERSION=13.0.0
-ARG FD_VERSION=v8.3.2
 
 FROM rust:slim AS rust
 
@@ -112,8 +106,6 @@ LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG CLOJURE_LSP_VERSION
 ARG RUST_ANALYZER_VERSION
 ARG BUF_VERSION
-ARG RIPGREP_VERSION
-ARG FD_VERSION
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
@@ -217,18 +209,6 @@ RUN cd /tmp \
     && mv deno /usr/local/bin/deno \
     && chmod a+x /usr/local/bin/deno
 
-RUN cd /tmp \
-    && curl -L https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz --output rg.tar.gz \
-    && tar -xf rg.tar.gz \
-    && mv ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg /usr/local/bin/ \
-    && rm -rf ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl rg.tar.gz
-
-RUN cd /tmp \
-    && curl -L https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz --output fd.tar.gz \
-    && tar -xf fd.tar.gz \
-    && mv fd-${FD_VERSION}-x86_64-unknown-linux-musl/fd /usr/local/bin/ \
-    && rm -rf fd-${FD_VERSION}-x86_64-unknown-linux-musl fd.tar.gz
-
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
@@ -286,6 +266,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
 RUN ["/bin/bash", "-c", "make prepare-init && make tmux-init && make neovim-init"]
+RUN ["/bin/bash", "-c", "make -j4 install"]
 
 RUN rm -rf /tmp/*
 
