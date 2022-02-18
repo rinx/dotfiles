@@ -202,6 +202,13 @@ RUN cd /tmp \
     && chmod a+x /usr/local/bin/buf \
     && upx -9 /usr/local/bin/buf
 
+RUN cd /tmp \
+    && curl -L https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip --output deno.zip \
+    && unzip deno.zip \
+    && rm -f deno.zip \
+    && mv deno /usr/local/bin/deno \
+    && chmod a+x /usr/local/bin/deno
+
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
