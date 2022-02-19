@@ -152,8 +152,8 @@
 
   (nvim.fn.rpcnotify 1 :NVUI_EXT_POPUPMENU true)
 
-  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 10)
-  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 10))
+  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 20)
+  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 20))
 
 ;; neovide
 (set nvim.g.neovide_floating_blur 0)
