@@ -1,6 +1,8 @@
 BINDIR := \
     ~/.bin
 
+UNAME := $(eval UNAME := $(shell uname))$(UNAME)
+
 BAT_VERSION   := v0.19.0
 BB_VERSION    := 0.7.5
 DELTA_VERSION := 0.12.0
@@ -118,9 +120,9 @@ endif
 
 $(BINDIR)/fzf:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/fzf.tar.gz https://github.com/junegunn/fzf/releases/download/$(FZF_VERSION)/fzf-$(FZF_VERSION)-darwin_amd64.tar.gz
-	tar xzvf /tmp/fzf.tar.gz -C $(BINDIR)
-	rm -rf /tmp/fzf.tar.gz
+	curl -sL -o /tmp/fzf.zip https://github.com/junegunn/fzf/releases/download/$(FZF_VERSION)/fzf-$(FZF_VERSION)-darwin_amd64.zip
+	unzip -o /tmp/fzf.zip -d $(BINDIR)
+	rm -rf /tmp/fzf.zip
 else
 	curl -sL -o /tmp/fzf.tar.gz https://github.com/junegunn/fzf/releases/download/$(FZF_VERSION)/fzf-$(FZF_VERSION)-linux_amd64.tar.gz
 	tar xzvf /tmp/fzf.tar.gz -C $(BINDIR)
