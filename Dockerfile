@@ -202,13 +202,6 @@ RUN cd /tmp \
     && chmod a+x /usr/local/bin/buf \
     && upx -9 /usr/local/bin/buf
 
-RUN cd /tmp \
-    && curl -L https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip --output deno.zip \
-    && unzip deno.zip \
-    && rm -f deno.zip \
-    && mv deno /usr/local/bin/deno \
-    && chmod a+x /usr/local/bin/deno
-
 ENV HOME /root
 ENV DOTFILES $HOME/.dotfiles
 
@@ -220,7 +213,7 @@ ENV GOROOT /usr/local/go
 ENV RUSTUP_HOME /usr/local/rustup
 ENV CARGO_HOME /usr/local/cargo
 
-ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$GOROOT/bin:$GOPATH/bin:$DOTFILES/bin
+ENV PATH $PATH:/usr/local/bin:$CARGO_HOME/bin:$GOROOT/bin:$GOPATH/bin:$DOTFILES/bin:$HOME/.bin
 
 ENV GO111MODULE auto
 ENV DOCKERIZED_DEVENV rinx/devenv
@@ -265,8 +258,8 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && locale-gen --purge $LANG
 
 RUN ["/bin/bash", "-c", "make -j4 deploy"]
-RUN ["/bin/bash", "-c", "make prepare-init && make tmux-init && make neovim-init"]
 RUN ["/bin/bash", "-c", "make -j4 install"]
+RUN ["/bin/bash", "-c", "make prepare-init && make tmux-init && make neovim-init"]
 
 RUN rm -rf /tmp/*
 
