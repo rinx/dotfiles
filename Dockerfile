@@ -252,6 +252,7 @@ COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
 COPY zshrc                $DOTFILES/zshrc
+COPY zshrc.d              $DOTFILES/zshrc.d
 COPY p10k.zsh             $DOTFILES/p10k.zsh
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
