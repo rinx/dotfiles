@@ -7,3 +7,5 @@ Session.vim
 # clojure-lsp cache
 .cpcache
 .lsp
+
+.nrepl-port

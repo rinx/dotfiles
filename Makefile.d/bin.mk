@@ -1,16 +1,36 @@
+## --- [{:name "BAT_VERSION"
+## ---   :url "https://api.github.com/repos/sharkdp/bat/releases"}
+## ---  {:name "BB_VERSION"
+## ---   :url "https://api.github.com/repos/babashka/babashka/releases"
+## ---   :tx "(fn [x] (-> x (string/replace #\"v\" \"\")))"}
+## ---  {:name "DELTA_VERSION"
+## ---   :url "https://api.github.com/repos/dandavison/delta/releases"}
+## ---  {:name "EXA_VERSION"
+## ---   :url "https://api.github.com/repos/ogham/exa/releases"
+## ---   :tx "(fn [x] (-> x (string/replace #\"exa \" \"\")))"}
+## ---  {:name "FD_VERSION"
+## ---   :url "https://api.github.com/repos/sharkdp/fd/releases"}
+## ---  {:name "FZF_VERSION"
+## ---   :url "https://api.github.com/repos/junegunn/fzf/releases"}
+## ---  {:name "RG_VERSION"
+## ---   :url "https://api.github.com/repos/BurntSushi/ripgrep/releases"}
+## ---  {:name "SAD_VERSION"
+## ---   :url "https://api.github.com/repos/ms-jpq/sad/releases"
+## ---   :tx "(fn [x] (-> x (string/replace #\"ci_\" \"v\") (string/replace #\"_.*\" \"\")))"}]
+
 BINDIR := \
     ~/.bin
 
 UNAME := $(eval UNAME := $(shell uname))$(UNAME)
 
-BAT_VERSION   := v0.19.0
-BB_VERSION    := 0.7.5
+BAT_VERSION := v0.19.0
+BB_VERSION := 0.7.5
 DELTA_VERSION := 0.12.0
-EXA_VERSION   := v0.10.1
-FD_VERSION    := v8.3.2
-FZF_VERSION   := 0.29.0
-RG_VERSION    := 13.0.0
-SAD_VERSION   := v0.4.20
+EXA_VERSION := v0.10.1
+FD_VERSION := v8.3.2
+FZF_VERSION := 0.29.0
+RG_VERSION := 13.0.0
+SAD_VERSION := v0.4.20
 
 .PHONY: install-bins
 install-bins: \
