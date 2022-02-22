@@ -106,7 +106,6 @@ $(HOME)/.p10k.zsh:
 
 .PHONY: others-deploy
 others-deploy: \
-    alacritty.yml \
     kitty.conf \
     Xdefaults \
     rofi-config \
@@ -116,15 +115,8 @@ others-deploy: \
     deps-edn \
     textlintrc \
     markdownlintrc \
-    hyper \
     dotfiles-local
 	@$(call red, "others-deploy")
-
-.PHONY: alacritty.yml
-alacritty.yml: $(HOME)/.alacritty.yml
-$(HOME)/.alacritty.yml:
-	@$(call cyan, "--\> alacritty.yml")
-	ln -s $(DOTDIR)/alacritty.yml $(HOME)/.alacritty.yml
 
 .PHONY: kitty.conf
 kitty.conf: $(HOME)/.config/kitty/kitty.conf
@@ -220,11 +212,6 @@ $(HOME)/.markdownlintrc:
 textlintrc: $(HOME)/.textlintrc
 $(HOME)/.textlintrc:
 	ln -s $(DOTDIR)/textlintrc $(HOME)/.textlintrc
-
-.PHONY: hyper
-hyper: $(HOME)/.hyper.js
-$(HOME)/.hyper.js:
-	ln -s $(DOTDIR)/hyper.js $(HOME)/.hyper.js
 
 .PHONY: dotfiles-local
 dotfiles-local: \
