@@ -27,16 +27,16 @@ exec_always ~/.dotfiles/resources/wpchange.sh
 set $bgimage ~/.wallpapers/wallpaper.jpg
 
 # names of workspace
-set $workspace1 01
-set $workspace2 02
-set $workspace3 03
-set $workspace4 04
-set $workspace5 05
-set $workspace6 06
-set $workspace7 07
-set $workspace8 08
-set $workspace9 09
-set $workspace10 10
+set $workspace1 I
+set $workspace2 II
+set $workspace3 III
+set $workspace4 IV
+set $workspace5 V
+set $workspace6 VI
+set $workspace7 VII
+set $workspace8 VIII
+set $workspace9 IX
+set $workspace10 X
 
 set $opacity 0.92
 
@@ -267,6 +267,8 @@ bar {
     font "FiraCode Nerd Font 9"
     status_command i3status
 }
+
+default_border pixel 2
 
 gaps outer 0
 gaps inner 10
