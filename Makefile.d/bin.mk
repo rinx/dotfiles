@@ -21,8 +21,6 @@
 BINDIR := \
     ~/.bin
 
-UNAME := $(eval UNAME := $(shell uname))$(UNAME)
-
 BAT_VERSION := v0.19.0
 BB_VERSION := 0.7.5
 DELTA_VERSION := 0.12.0

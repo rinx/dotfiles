@@ -115,7 +115,8 @@ others-deploy: \
     deps-edn \
     textlintrc \
     markdownlintrc \
-    dotfiles-local
+    dotfiles-local \
+    macos
 	@$(call red, "others-deploy")
 
 .PHONY: kitty.conf
@@ -234,3 +235,27 @@ $(HOME)/.git-profiles.edn:
 $(HOME)/.skk-jisyo:
 	touch $(HOME)/.dotfiles.local/skk-jisyo
 	ln -s $(HOME)/.dotfiles.local/skk-jisyo $(HOME)/.skk-jisyo
+
+ifeq ($(UNAME),Darwin)
+.PHONY: macos
+macos: \
+	yabairc \
+	skhdrc
+	@$(call green, "macos-deploy")
+else
+.PHONY: macos
+macos:
+	@$(call green, "macos: nothing to do")
+endif
+
+.PHONY: yabairc
+yabairc: $(HOME)/.yabairc
+$(HOME)/.yabairc:
+	@$(call cyan, "--\> .yabairc")
+	ln -s $(DOTDIR)/macos/yabairc $(HOME)/.yabairc
+
+.PHONY: skhdrc
+skhdrc: $(HOME)/.skhdrc
+$(HOME)/.skhdrc:
+	@$(call cyan, "--\> .skhdrc")
+	ln -s $(DOTDIR)/macos/skhdrc $(HOME)/.skhdrc
