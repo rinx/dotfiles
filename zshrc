@@ -80,7 +80,6 @@ setopt no_menu_complete
 setopt extended_glob
 setopt glob_dots
 
-setopt no_clobber
 setopt no_correct
 setopt no_correct_all
 setopt no_flow_control
