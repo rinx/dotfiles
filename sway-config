@@ -265,7 +265,7 @@ bar {
         focused_workspace #ffffffcc #689d6acc #ffffff
     }
     font "FiraCode Nerd Font 9"
-    status_command i3status
+    status_command $HOME/.bin/barista
 }
 
 default_border pixel 2

@@ -1,6 +1,9 @@
 DOTDIR := \
     ~/.dotfiles
 
+BINDIR := \
+    ~/.bin
+
 UNAME := $(eval UNAME := $(shell uname))$(UNAME)
 
 # color palletes

@@ -110,7 +110,6 @@ others-deploy: \
     Xdefaults \
     rofi-config \
     sway-config \
-    i3status-config \
     lein-profile \
     deps-edn \
     textlintrc \
@@ -139,12 +138,22 @@ $(HOME)/.config/rofi/config.rasi:
 	mkdir -p $(HOME)/.config/rofi
 	ln -s $(DOTDIR)/resources/config.rasi $(HOME)/.config/rofi/config.rasi
 
+ifeq ($(UNAME),Darwin)
 .PHONY: sway-config
 sway-config: \
-    $(HOME)/.config/sway/config
+	@$(call green, "sway-config: nothing to do")
+else
+.PHONY: sway-config
+sway-config: \
+    $(HOME)/.config/sway/config \
+    $(BINDIR)/barista
 $(HOME)/.config/sway/config:
 	mkdir -p $(HOME)/.config/sway
 	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
+
+$(BINDIR)/barista:
+	(cd barista && go build -o $(BINDIR)/barista)
+endif
 
 .PHONY: wallpapers
 wallpapers: \

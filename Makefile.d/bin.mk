@@ -18,9 +18,6 @@
 ## ---   :url "https://api.github.com/repos/ms-jpq/sad/releases"
 ## ---   :tx "(fn [x] (-> x (string/replace #\"ci_\" \"v\") (string/replace #\"_.*\" \"\")))"}]
 
-BINDIR := \
-    ~/.bin
-
 BAT_VERSION := v0.19.0
 BB_VERSION := 0.7.6
 DELTA_VERSION := 0.12.0
