@@ -145,14 +145,10 @@ sway-config: \
 else
 .PHONY: sway-config
 sway-config: \
-    $(HOME)/.config/sway/config \
-    $(BINDIR)/barista
+    $(HOME)/.config/sway/config
 $(HOME)/.config/sway/config:
 	mkdir -p $(HOME)/.config/sway
 	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
-
-$(BINDIR)/barista:
-	(cd barista && go build -o $(BINDIR)/barista)
 endif
 
 .PHONY: wallpapers
