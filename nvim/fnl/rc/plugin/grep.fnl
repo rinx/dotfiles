@@ -6,9 +6,8 @@
 
 (def- icontab icon.tab)
 
-(defn rg [query]
-  (vim.api.nvim_command
-    (.. "Grepper -noprompt -tool rg -query " query)))
+(defn rg [args]
+  (vim.fn.ripgrep#search args))
 
 (defn callback [query]
   (when query
