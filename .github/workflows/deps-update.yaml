@@ -21,6 +21,7 @@ jobs:
       - name: Update deps
         run: |
           ./bb ./.github/scripts/deps-update.clj
+          rm -f ./bb
       - name: Check and Push to main
         run: |
           if git diff --quiet --exit-code; then
@@ -29,7 +30,7 @@ jobs:
             git config --global user.email "rintaro.okamura@gmail.com"
             git config --global user.name "Rintaro Okamura"
 
-            git add Dockerfile
+            git add Dockerfile Makefile.d/bin.mk
 
             git commit --signoff -m "[patch] :robot: Automatically upgrade dependencies."
 
