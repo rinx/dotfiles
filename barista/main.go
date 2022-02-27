@@ -280,7 +280,7 @@ func main() {
 		// First segment shown in summary mode only.
 		out.Append(outputs.Pango(
 			pango.Icon("nf-wifi").Alpha(0.6).Color(colors.Scheme("good")),
-			pango.Text(truncate(i.SSID, -9)),
+			pango.Text(truncate(i.SSID, -15)),
 		).OnClick(click.Left(func() {
 			mainModalController.Toggle("network")
 		})))
