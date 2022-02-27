@@ -36,7 +36,6 @@ import (
 	"barista.run/outputs"
 	"barista.run/pango"
 
-	colorful "github.com/lucasb-eyer/go-colorful"
 	"github.com/martinlindhe/unit"
 )
 
@@ -182,23 +181,16 @@ func threshold(out *bar.Segment, urgent bool, color ...bool) *bar.Segment {
 func main() {
 	loadIcons()
 
-	colors.LoadBarConfig()
-	bg := colors.Scheme("background")
-	fg := colors.Scheme("statusline")
-	if fg != nil && bg != nil {
-		_, _, v := fg.Colorful().Hsv()
-		if v < 0.3 {
-			v = 0.3
-		}
-		colors.Set("bad", colorful.Hcl(40, 1.0, v).Clamped())
-		colors.Set("degraded", colorful.Hcl(90, 1.0, v).Clamped())
-		colors.Set("good", colorful.Hcl(120, 1.0, v).Clamped())
-	}
+	colors.LoadFromMap(map[string]string{
+		"bad":      "#f07178",
+		"degraded": "#ffb454",
+		"good":     "#c2d94c",
+	})
 
 	localdate := clock.Local().
 		Output(time.Second, func(now time.Time) bar.Output {
 			return outputs.Pango(
-				pango.Icon("nf-today").Alpha(0.6),
+				pango.Icon("nf-today").Alpha(0.6).Color(colors.Hex("#36a3d9")),
 				now.Format("Mon Jan 2"),
 			).OnClick(click.RunLeft("gsimplecal"))
 		})
@@ -241,14 +233,14 @@ func main() {
 		out := outputs.Group()
 		// First segment will be used in summary mode.
 		out.Append(outputs.Pango(
-			pango.Icon("nf-"+iconName).Alpha(0.6),
+			pango.Icon("nf-"+iconName).Alpha(0.6).Color(colors.Hex("#b8cc52")),
 			pango.Textf("%d:%02d", int(rem.Hours()), int(rem.Minutes())%60),
 		).OnClick(click.Left(func() {
 			mainModalController.Toggle("battery")
 		})))
 		// Others in detail mode.
 		out.Append(outputs.Pango(
-			pango.Icon("nf-"+iconName).Alpha(0.6),
+			pango.Icon("nf-"+iconName).Alpha(0.6).Color(colors.Hex("#b8cc52")),
 			pango.Textf("%d%%", i.RemainingPct()),
 			spacer,
 			pango.Textf("(%d:%02d)", int(rem.Hours()), int(rem.Minutes())%60),
@@ -287,19 +279,19 @@ func main() {
 		out := outputs.Group()
 		// First segment shown in summary mode only.
 		out.Append(outputs.Pango(
-			pango.Icon("nf-wifi").Alpha(0.6),
+			pango.Icon("nf-wifi").Alpha(0.6).Color(colors.Scheme("good")),
 			pango.Text(truncate(i.SSID, -9)),
 		).OnClick(click.Left(func() {
 			mainModalController.Toggle("network")
 		})))
 		// Full name, frequency, bssid in detail mode
 		out.Append(outputs.Pango(
-			pango.Icon("nf-wifi").Alpha(0.6),
+			pango.Icon("nf-wifi").Alpha(0.6).Color(colors.Scheme("good")),
 			pango.Text(i.SSID),
 		))
 		out.Append(outputs.Textf("%2.1fG", i.Frequency.Gigahertz()))
 		out.Append(outputs.Pango(
-			pango.Icon("nf-access-point").Alpha(0.8),
+			pango.Icon("nf-access-point").Alpha(0.8).Color(colors.Scheme("good")),
 			pango.Text(i.AccessPointMAC).Small(),
 		))
 		return out
@@ -319,7 +311,7 @@ func main() {
 			iconName = "down"
 		}
 		return outputs.Pango(
-			pango.Icon("nf-volume-"+iconName).Alpha(0.6),
+			pango.Icon("nf-volume-"+iconName).Alpha(0.6).Color(colors.Hex("#a37acc")),
 			spacer,
 			pango.Textf("%2d%%", pct),
 		)
@@ -327,7 +319,7 @@ func main() {
 
 	loadAvg := sysinfo.New().Output(func(s sysinfo.Info) bar.Output {
 		out := outputs.Pango(
-			pango.Icon("nf-desktop-tower").Alpha(0.6),
+			pango.Icon("nf-desktop-tower").Alpha(0.6).Color(colors.Hex("#ffb454")),
 			pango.Textf("%0.2f", s.Loads[0]),
 		)
 		// Load averages are unusually high for a few minutes after boot.
@@ -365,7 +357,7 @@ func main() {
 
 	freeMem := meminfo.New().Output(func(m meminfo.Info) bar.Output {
 		out := outputs.Pango(
-			pango.Icon("nf-memory").Alpha(0.8),
+			pango.Icon("nf-memory").Alpha(0.8).Color(colors.Hex("#ffb454")),
 			format.IBytesize(m.Available()),
 		)
 		freeGigs := m.Available().Gigabytes()
