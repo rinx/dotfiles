@@ -140,7 +140,7 @@ $(HOME)/.config/rofi/config.rasi:
 
 ifeq ($(UNAME),Darwin)
 .PHONY: sway-config
-sway-config: \
+sway-config:
 	@$(call green, "sway-config: nothing to do")
 else
 .PHONY: sway-config
