@@ -125,7 +125,8 @@
     (set nvim.g.ackprg "rg --vimgrep --no-heading")))
 
 ;; guis
-(let [fonts ["FiraCode Nerd Font"
+(let [fonts ["VictorMono Nerd Font"
+             "FiraCode Nerd Font"
              "JetBrainsMono Nerd Font"
              "HackGenNerd"
              "Noto Color Emoji"]
