@@ -5,7 +5,7 @@ import "barista.run/pango/icons"
 func loadIcons() {
 	nf := icons.NewProvider("nf")
 
-	nf.Font("FiraCode Nerd Font")
+	nf.Font("JetBrainsMono Nerd Font")
 
 	nf.Symbol("music", " ")
 	nf.Symbol("music-box", " ")
