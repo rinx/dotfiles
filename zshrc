@@ -51,14 +51,12 @@ plugins=(
     romkatv/powerlevel10k
     romkatv/zsh-defer
 
-    zshzoo/zstyle-completions
     zsh-users/zsh-autosuggestions
     zsh-users/zsh-completions
     hlissner/zsh-autopair
     mollifier/cd-gitroot
     peterhurford/up.zsh
 
-    zshzoo/compinit
     zdharma-continuum/fast-syntax-highlighting
 )
 
@@ -165,7 +163,9 @@ if [ -n "${DOCKERIZED_DEVENV}" ]; then
 fi
 
 zsh-defer source $HOME/.dotfiles/zshrc.d/aliases.zsh
+zsh-defer source $HOME/.dotfiles/zshrc.d/compinit.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/docker.zsh
+zsh-defer source $HOME/.dotfiles/zshrc.d/zstyle-completions.zsh
 
 if [ ! -f "$HOME/.zshrc.zwc" -o "$HOME/.zshrc" -nt "$HOME/.zshrc.zwc" ]; then
     zcompile $HOME/.zshrc
