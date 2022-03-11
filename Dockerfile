@@ -172,7 +172,6 @@ RUN npm install -g \
     markdownlint \
     markdownlint-cli \
     textlint \
-    textlint-rule-preset-ja-spacing \
     textlint-rule-preset-ja-technical-writing \
     @proofdict/textlint-rule-proofdict \
     typescript \
