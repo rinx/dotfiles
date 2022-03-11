@@ -3,11 +3,6 @@
              parsers nvim-treesitter.parsers}})
 
 (let [parser-configs (parsers.get_parser_configs)]
-  (set parser-configs.norg
-       {:install_info
-        {:url "https://github.com/nvim-neorg/tree-sitter-norg"
-         :files [:src/parser.c :src/scanner.cc]
-         :branch :main}})
   (set parser-configs.norg_meta
        {:install_info
         {:url "https://github.com/nvim-neorg/tree-sitter-norg-meta"
