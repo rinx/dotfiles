@@ -29,10 +29,21 @@
                          :gtd "~/works/neorg/gtd"}
                         :autodetect true
                         :autochdir true}}
-    :core.gtd.base {}
-    :core.gtd.queries {}
-    :core.gtd.ui {}
-    :core.integrations.telescope {}}})
+    :core.norg.esupports {}
+    :core.norg.esupports.metagen {:config
+                                  {:type :auto}}
+    :core.norg.journal {}
+    :core.norg.qol.toc {}
+    :core.autocommands {}
+    :core.gtd.base {:config
+                    {:workspace :gtd}}
+    :core.highlights {}
+    :core.keybinds {}
+    :core.mode {}
+    :core.neorgcmd {}
+    :core.ui {}
+    :core.integrations.telescope {}
+    :core.integrations.treesitter {}}})
 
 (callbacks.on_event
   :core.keybinds.events.enable_keybinds
