@@ -206,7 +206,7 @@
 (noremap!
   [:n]
   "<Leader>d"
-  ":<C-u>lua vim.lsp.diagnostic.show_line_diagnostics({border = 'rounded'})<CR>"
+  ":<C-u>lua vim.diagnostic.open_float({border = 'rounded'})<CR>"
   :silent)
 (noremap!
   [:n]
