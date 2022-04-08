@@ -32,8 +32,8 @@
   :folke/tokyonight.nvim {}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :feline-nvim/feline.nvim {:mod :feline}
-  :akinsho/nvim-bufferline.lua {:mod :bufferline}
-  :akinsho/nvim-toggleterm.lua {:mod :toggleterm}
+  :akinsho/bufferline.nvim {:mod :bufferline}
+  :akinsho/toggleterm.nvim {:mod :toggleterm}
   :windwp/nvim-autopairs {:mod :autopairs}
   :kyazdani42/nvim-tree.lua {:event [:BufEnter]
                              :mod :nvim-tree}
