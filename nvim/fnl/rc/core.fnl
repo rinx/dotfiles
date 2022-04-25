@@ -107,7 +107,7 @@
 
 (nvim.ex.set :hidden)
 
-(set nvim.o.laststatus 2)
+(set nvim.o.laststatus 3)
 (set nvim.o.showtabline 2)
 
 (nvim.ex.set :termguicolors)
