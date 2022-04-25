@@ -38,7 +38,7 @@
   {:buffer :Buffer
    :calc :Calc
    :cmdline :CMD
-   :cmp_git :Git
+   :git :Git
    :conjure :Conjure
    :emoji :Emoji
    :neorg :Neorg
@@ -138,7 +138,7 @@
   (let [ss []]
     (each [_ v (ipairs default-sources)]
       (table.insert ss v))
-    (table.insert ss {:name :cmp_git})
+    (table.insert ss {:name :git})
     (cmp.setup.buffer
       {:sources ss})))
 (augroup! init-cmp-git
