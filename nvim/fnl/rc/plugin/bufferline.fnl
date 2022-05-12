@@ -45,7 +45,7 @@
     :info_selected
     {:guifg colors.info
      :guibg colors.color9
-     :gui :bolditalic}
+     :gui "bold,italic"}
     :info_diagnostic
     {:guifg colors.info
      :guibg colors.color5}
@@ -55,7 +55,7 @@
     :info_diagnostic_selected
     {:guifg colors.info
      :guibg colors.color9
-     :gui :bolditalic}
+     :gui "bold,italic"}
     :warning
     {:guifg colors.warn
      :guibg colors.color5}
@@ -64,7 +64,7 @@
      :guibg colors.color5}
     :warning_selected
     {:guifg colors.warn
-     :gui :bolditalic
+     :gui "bold,italic"
      :guibg colors.color9}
     :warning_diagnostic
     {:guifg colors.warn
@@ -74,7 +74,7 @@
      :guibg colors.color5}
     :warning_diagnostic_selected
     {:guifg colors.warn
-     :gui :bolditalic
+     :gui "bold,italic"
      :guibg colors.color9}
     :error
     {:guifg colors.error
@@ -84,7 +84,7 @@
      :guibg colors.color5}
     :error_selected
     {:guifg colors.error
-     :gui :bolditalic
+     :gui "bold,italic"
      :guibg colors.color9}
     :error_diagnostic
     {:guifg colors.error
@@ -94,7 +94,7 @@
      :guibg colors.color5}
     :error_diagnostic_selected
     {:guifg colors.error
-     :gui :bolditalic
+     :gui "bold,italic"
      :guibg colors.color9}
     :duplicate
     {:guibg colors.color5}
@@ -129,20 +129,20 @@
     :pick_visible
     {:guibg colors.color5
      :guifg colors.error}}
-  :options {:numbers :none
-            :max_name_length 18
-            :max_prefix_length 15
-            :tab_size 18
-            :diagnostics :nvim_lsp
-            :diagnostics_indicator
-            (fn [count level dict ctx]
-              (if (ctx.buffer:current)
-                ""
-                (.. " " icontab.exclam-circle count)))
-            :show_tab_indicators false
-            :separator_style :thin
-            :always_show_bufferline true
-            :sort_by :extension}})
+   :options {:numbers :none
+             :max_name_length 18
+             :max_prefix_length 15
+             :tab_size 18
+             :diagnostics :nvim_lsp
+             :diagnostics_indicator
+             (fn [count level dict ctx]
+               (if (ctx.buffer:current)
+                 ""
+                 (.. " " icontab.exclam-circle count)))
+             :show_tab_indicators false
+             :separator_style :thin
+             :always_show_bufferline true
+             :sort_by :extension}})
 
 (noremap! [:n] ",bc" ":tabe<CR>" :silent)
 (noremap! [:n] ",bb" ":<C-u>BufferLinePick<CR>" :silent)
