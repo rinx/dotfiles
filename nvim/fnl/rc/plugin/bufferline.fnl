@@ -152,8 +152,6 @@
 (noremap! [:n] ",bp" ":<C-u>BufferLineCyclePrev<CR>" :silent)
 (noremap! [:n] ",bN" ":<C-u>BufferLineMoveNext<CR>" :silent)
 (noremap! [:n] ",bP" ":<C-u>BufferLineMovePrev<CR>" :silent)
-(noremap! [:n] :gt  ":<C-u>BufferLineCycleNext<CR>" :silent)
-(noremap! [:n] :gT  ":<C-u>BufferLineCyclePrev<CR>" :silent)
 
 (defn buffer-close []
   (let [bn (nvim.fn.bufnr :%)

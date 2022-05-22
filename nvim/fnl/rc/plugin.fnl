@@ -55,6 +55,7 @@
   :ahmedkhalf/project.nvim {:mod :project}
   :pwntester/octo.nvim {:cmd [:Octo]
                         :mod :octo}
+  :ghillb/cybu.nvim {:mod :cybu}
 
   ;; lsp
   :neovim/nvim-lspconfig {:mod :lsp}
