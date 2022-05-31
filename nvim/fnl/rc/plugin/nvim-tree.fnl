@@ -9,16 +9,16 @@
 (def- cb config.nvim_tree_callback)
 
 ;; nvim-tree.lua
-(set nvim.g.nvim_tree_icons {:default icontab.text
-                             :symlink icontab.symlink
-                             :git {:unstaged icontab.diff-modified
-                                   :staged icontab.check
-                                   :unmerged icontab.merge
-                                   :renamed icontab.diff-renamed
-                                   :untracked icontab.asterisk}
-                             :folder {:default icontab.folder
-                                      :open icontab.folder-open}})
-(set nvim.g.nvim_tree_respect_buf_cwd 1)
+(def- icons {:glyphs
+             {:default icontab.text
+              :symlink icontab.symlink
+              :git {:unstaged icontab.diff-modified
+                    :staged icontab.check
+                    :unmerged icontab.merge
+                    :renamed icontab.diff-renamed
+                    :untracked icontab.asterisk}
+              :folder {:default icontab.folder
+                       :open icontab.folder-open}}})
 
 (def- mappings
   [{:key [:<CR> :o :<2-LeftMouse>] :cb (cb :edit)}
@@ -61,6 +61,8 @@
    :update_cwd true
    :update_focused_file {:enable true
                          :update_cwd true}
+   :renderer {:icons icons}
+   :respect_buf_cwd true
    :view {:width 30
           :side :left
           :mappings {:custom_only true
