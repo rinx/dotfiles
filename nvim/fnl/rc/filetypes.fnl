@@ -34,6 +34,7 @@
 
 ;; filetypes
 (augroup! init-filetype-detect
+          (autocmd! "BufNewFile,BufRead" "*.cue" "setf cue")
           (autocmd! "BufNewFile,BufRead" "*.nml" "setf fortran")
           (autocmd! "BufNewFile,BufRead" "*.namelist" "setf fortran")
           (autocmd! "BufNewFile,BufRead" "*.hy" "setf hy")
