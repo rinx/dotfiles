@@ -7,6 +7,7 @@
              lsp lspconfig
              lsp-configs lspconfig/configs
              lsp-signature lsp_signature
+             lsp-lines lsp_lines
              lsputil lspconfig/util}
    require-macros [rc.macros]})
 
@@ -229,10 +230,13 @@
       {:input
        {:default_prompt icontab.rquot}})))
 
-(set nvim.g.diagnostic_enable_virtual_text 1)
-(set nvim.g.diagnostic_trimmed_virtual_text 40)
-(set nvim.g.diagnostic_show_sign 1)
-(set nvim.g.diagnostic_insert_delay 1)
+(lsp-lines.register_lsp_virtual_lines)
+
+(vim.diagnostic.config
+  {:virtual_text false
+   :virtual_lines true
+   :underline true
+   :signs true})
 
 (nvim.fn.sign_define :DiagnosticSignError
                      {:text icontab.bug

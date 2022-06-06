@@ -65,18 +65,22 @@
       :guifg colors.warn})
 (hi! :DiagnosticVirtualTextError
      {:ctermfg :red
+      :gui :italic
       :guifg colors.error
       :guibg colors.color5})
 (hi! :DiagnosticVirtualTextWarn
      {:ctermfg :yellow
+      :gui :italic
       :guifg colors.warn
       :guibg colors.color5})
 (hi! :DiagnosticVirtualTextInfo
      {:ctermfg :green
+      :gui :italic
       :guifg colors.info
       :guibg colors.color5})
 (hi! :DiagnosticVirtualTextHint
      {:ctermfg :blue
+      :gui :italic
       :guifg colors.hint
       :guibg colors.color5})
 (hi! :DiagnosticError
