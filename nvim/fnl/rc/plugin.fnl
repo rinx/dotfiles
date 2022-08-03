@@ -67,7 +67,7 @@
   :folke/lsp-colors.nvim {}
   :folke/todo-comments.nvim {}
   :b0o/schemastore.nvim {}
-  :Maan2003/lsp_lines.nvim {}
+  "https://git.sr.ht/~whynothugo/lsp_lines.nvim" {}
 
   ;; cmp
   :hrsh7th/nvim-cmp {:mod :cmp}
