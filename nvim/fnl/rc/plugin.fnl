@@ -57,6 +57,8 @@
                         :mod :octo}
   :ghillb/cybu.nvim {:mod :cybu}
 
+  :stevearc/profile.nvim {:mod :profile}
+
   ;; lsp
   :neovim/nvim-lspconfig {:mod :lsp}
   :ray-x/lsp_signature.nvim {}
