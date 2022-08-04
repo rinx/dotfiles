@@ -96,7 +96,7 @@
   :nvim-telescope/telescope.nvim {:mod :telescope}
   :nvim-telescope/telescope-dap.nvim {}
   :nvim-telescope/telescope-fzy-native.nvim {}
-  :cljoly/telescope-repo.nvim {:branch :dev} ;; NOTE: search_dirs option is currently only in dev branch
+  :cljoly/telescope-repo.nvim {}
   "https://git.sr.ht/~havi/telescope-toggleterm.nvim" {}
 
   ;; denops.vim
