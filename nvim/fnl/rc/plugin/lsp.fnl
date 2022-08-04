@@ -55,7 +55,8 @@
 (lsp.efm.setup (core.merge
                  default-options
                  {:filetypes [:markdown
-                              :proto]
+                              :proto
+                              :vcl]
                   :init_options {:codeAction true
                                  :completion true
                                  :documentFormatting true
@@ -74,7 +75,16 @@
                      {:hoverCommand :excitetranslate.clj
                       :hoverStdin true}]
                     :proto
-                    [{:lintCommand "buf lint --path"}]}
+                    [{:lintCommand "buf lint --path"}]
+                    :vcl
+                    [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
+                      :lintIgnoreExitCode true
+                      :lintFormats ["%E💥 %m"
+                                    "%E🔥 [ERROR] %m"
+                                    "%W❗️ [WARNING] %m"
+                                    "%I🔈 [INFO] %m"
+                                    "%Zin %f at line %l, position %c"
+                                    "%-G%.%#"]}]}
                    :lintDebounce 3000000000}}))
 (lsp.erlangls.setup (core.merge default-options {}))
 (lsp.fortls.setup (core.merge default-options {}))
