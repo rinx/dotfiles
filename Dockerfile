@@ -163,7 +163,7 @@ RUN apt update \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --upgrade pip neovim neovim-remote \
+RUN pip3 install --upgrade pip neovim \
     && npm config set user root \
     && npm install -g neovim
 

@@ -144,14 +144,8 @@ function precmd() {
     fi
 }
 
-if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
-    export EDITOR='nvr'
-    export GIT_EDITOR="$EDITOR -cc vsplit --remote-wait"
-else
-    export EDITOR='nvim'
-    export GIT_EDITOR="$EDITOR"
-fi
-
+export EDITOR='nvim'
+export GIT_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
