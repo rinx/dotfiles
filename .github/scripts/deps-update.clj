@@ -15,7 +15,9 @@
             version (:version v)
             pattern (pattern-fn name)
             replaced (string/replace file pattern (replacer-fn name version))]
-        (recur replaced (rest versions)))
+        (if version
+          (recur replaced (rest versions))
+          file))
       file)))
 
 (defn do-update [filename pattern-fn replacer-fn]

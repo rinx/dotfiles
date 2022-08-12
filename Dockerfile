@@ -1,12 +1,13 @@
 ## --- [{:name "CLOJURE_LSP_VERSION"
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
 ## ---  {:name "RUST_ANALYZER_VERSION"
-## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"}
+## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"
+## ---   :tx "(fn [v] (if (not (= v \"nightly\")) v))"}
 ## ---  {:name "BUF_VERSION"
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
 ARG CLOJURE_LSP_VERSION=2022.07.24-18.25.43
-ARG RUST_ANALYZER_VERSION=nightly
+ARG RUST_ANALYZER_VERSION=2022-08-08
 ARG BUF_VERSION=v1.7.0
 
 FROM rust:slim AS rust
