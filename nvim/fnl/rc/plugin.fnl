@@ -104,6 +104,7 @@
   :vim-skk/skkeleton {:mod :skkeleton}
   :gamoutatsumi/dps-ghosttext.vim {}
   :kat0h/bufpreview.vim {:ft [:markdown]}
+  :lambdalisue/guise.vim {:mod :guise}
 
   ;; operator/textobj
   :kana/vim-operator-user {:event [:BufEnter]}
