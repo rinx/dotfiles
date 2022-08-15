@@ -11,124 +11,130 @@
 (bufferline.setup
   {:highlights
    {:fill
-    {:guibg colors.color2}
+    {:bg colors.color2}
     :background
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :tab
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :tab_selected
-    {:guibg colors.color9}
+    {:bg colors.color9}
     :tab_close
-    {:guibg colors.color2}
+    {:bg colors.color2}
     :buffer_selected
-    {:guibg colors.color9}
+    {:bg colors.color9}
     :buffer_visible
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :close_button
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :close_button_visible
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :close_button_selected
-    {:guibg colors.color9}
+    {:bg colors.color9}
     :diagnostic
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :diagnostic_visible
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :diagnostic_selected
-    {:guibg colors.color9}
+    {:bg colors.color9}
     :info
-    {:guifg colors.info
-     :guibg colors.color5}
+    {:fg colors.info
+     :bg colors.color5}
     :info_visible
-    {:guifg colors.info
-     :guibg colors.color5}
+    {:fg colors.info
+     :bg colors.color5}
     :info_selected
-    {:guifg colors.info
-     :guibg colors.color9
-     :gui "bold,italic"}
+    {:fg colors.info
+     :bg colors.color9
+     :bold true
+     :italic true}
     :info_diagnostic
-    {:guifg colors.info
-     :guibg colors.color5}
+    {:fg colors.info
+     :bg colors.color5}
     :info_diagnostic_visible
-    {:guifg colors.info
-     :guibg colors.color5}
+    {:fg colors.info
+     :bg colors.color5}
     :info_diagnostic_selected
-    {:guifg colors.info
-     :guibg colors.color9
-     :gui "bold,italic"}
+    {:fg colors.info
+     :bg colors.color9
+     :bold true
+     :italic true}
     :warning
-    {:guifg colors.warn
-     :guibg colors.color5}
+    {:fg colors.warn
+     :bg colors.color5}
     :warning_visible
-    {:guifg colors.warn
-     :guibg colors.color5}
+    {:fg colors.warn
+     :bg colors.color5}
     :warning_selected
-    {:guifg colors.warn
-     :gui "bold,italic"
-     :guibg colors.color9}
+    {:fg colors.warn
+     :bg colors.color9
+     :bold true
+     :italic true}
     :warning_diagnostic
-    {:guifg colors.warn
-     :guibg colors.color5}
+    {:fg colors.warn
+     :bg colors.color5}
     :warning_diagnostic_visible
-    {:guifg colors.warn
-     :guibg colors.color5}
+    {:fg colors.warn
+     :bg colors.color5}
     :warning_diagnostic_selected
-    {:guifg colors.warn
-     :gui "bold,italic"
-     :guibg colors.color9}
+    {:fg colors.warn
+     :bg colors.color9
+     :bold true
+     :italic true}
     :error
-    {:guifg colors.error
-     :guibg colors.color5}
+    {:fg colors.error
+     :bg colors.color5}
     :error_visible
-    {:guifg colors.error
-     :guibg colors.color5}
+    {:fg colors.error
+     :bg colors.color5}
     :error_selected
-    {:guifg colors.error
-     :gui "bold,italic"
-     :guibg colors.color9}
+    {:fg colors.error
+     :bg colors.color9
+     :bold true
+     :italic true}
     :error_diagnostic
-    {:guifg colors.error
-     :guibg colors.color5}
+    {:fg colors.error
+     :bg colors.color5}
     :error_diagnostic_visible
-    {:guifg colors.error
-     :guibg colors.color5}
+    {:fg colors.error
+     :bg colors.color5}
     :error_diagnostic_selected
-    {:guifg colors.error
-     :gui "bold,italic"
-     :guibg colors.color9}
+    {:fg colors.error
+     :bg colors.color9
+     :bold true
+     :italic true}
     :duplicate
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :duplicate_selected
-    {:guibg colors.color9}
+    {:bg colors.color9}
     :duplicate_visible
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :modified
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :modified_selected
-    {:guibg colors.color9}
+    {:bg colors.color9}
     :modified_visible
-    {:guibg colors.color5}
+    {:bg colors.color5}
     :separator
-    {:guifg colors.color5
-     :guibg colors.color5}
+    {:fg colors.color5
+     :bg colors.color5}
     :separator_selected
-    {:guifg colors.color9
-     :guibg colors.color9}
+    {:fg colors.color9
+     :bg colors.color9}
     :separator_visible
-    {:guifg colors.color5
-     :guibg colors.color5}
+    {:fg colors.color5
+     :bg colors.color5}
     :indicator_selected
-    {:guifg colors.hint
-     :guibg colors.color9}
+    {:fg colors.hint
+     :bg colors.color9}
     :pick
-    {:guibg colors.color5
-     :guifg colors.warn}
+    {:bg colors.color5
+     :fg colors.warn}
     :pick_selected
-    {:guibg colors.color9
-     :guifg colors.error}
+    {:bg colors.color9
+     :fg colors.error}
     :pick_visible
-    {:guibg colors.color5
-     :guifg colors.error}}
+    {:bg colors.color5
+     :fg colors.error}}
    :options {:numbers :none
              :max_name_length 18
              :max_prefix_length 15
