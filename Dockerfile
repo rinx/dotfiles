@@ -24,7 +24,8 @@ RUN apk update \
     musl-dev \
     wget
 
-RUN go install github.com/dagger/cuelsp/cmd/cuelsp@latest \
+RUN go install github.com/bufbuild/buf-language-server/cmd/bufls@latest \
+    && go install github.com/dagger/cuelsp/cmd/cuelsp@latest \
     && go install github.com/go-delve/delve/cmd/dlv@latest \
     && go install github.com/mattn/efm-langserver@latest \
     && go install golang.org/x/tools/gopls@latest \

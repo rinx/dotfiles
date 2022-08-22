@@ -48,6 +48,7 @@
    :capabilities capabilities})
 
 (lsp.bashls.setup (core.merge default-options {}))
+(lsp.bufls.setup (core.merge default-options {}))
 (lsp.clojure_lsp.setup (core.merge default-options {}))
 (lsp.cssls.setup (core.merge default-options {}))
 (lsp.dagger.setup (core.merge default-options {}))
