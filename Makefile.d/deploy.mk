@@ -34,8 +34,7 @@ git-deploy: \
     gitconfig \
     gitignore \
     gitattributes \
-    commit_template \
-    devmojis
+    commit_template
 	@$(call red, "git-deploy")
 
 .PHONY: gitconfig
@@ -61,12 +60,6 @@ commit_template: $(HOME)/.commit_template
 $(HOME)/.commit_template:
 	@$(call cyan, "--\> .commit_template")
 	ln -s $(DOTDIR)/.commit_template $(HOME)/.commit_template
-
-.PHONY: devmojis
-devmojis: $(HOME)/.devmojis
-$(HOME)/.devmojis:
-	@$(call cyan, "--\> devmojis")
-	ln -s $(DOTDIR)/resources/devmojis $(HOME)/.devmojis
 
 .PHONY: tmux-deploy
 tmux-deploy: \
@@ -110,8 +103,6 @@ others-deploy: \
     Xdefaults \
     rofi-config \
     sway-config \
-    lein-profile \
-    deps-edn \
     textlintrc \
     markdownlintrc \
     dotfiles-local \
@@ -196,18 +187,6 @@ i3status-config: \
 $(HOME)/.config/i3status/config:
 	mkdir -p $(HOME)/.config/i3status
 	ln -s $(DOTDIR)/i3status-config $(HOME)/.config/i3status/config
-
-.PHONY: lein-profile
-lein-profile: $(HOME)/.lein/profiles.clj
-$(HOME)/.lein/profiles.clj:
-	mkdir -p $(HOME)/.lein
-	ln -s $(DOTDIR)/profiles.clj $(HOME)/.lein/profiles.clj
-
-.PHONY: deps-edn
-deps-edn: $(HOME)/.clojure/deps.edn
-$(HOME)/.clojure/deps.edn:
-	mkdir -p $(HOME)/.clojure
-	ln -s $(DOTDIR)/deps.edn $(HOME)/.clojure/deps.edn
 
 .PHONY: markdownlintrc
 markdownlintrc: $(HOME)/.markdownlintrc
