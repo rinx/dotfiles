@@ -250,7 +250,6 @@ COPY gitignore            $DOTFILES/gitignore
 COPY nvim                 $DOTFILES/nvim
 COPY Makefile             $DOTFILES/Makefile
 COPY Makefile.d           $DOTFILES/Makefile.d
-COPY profiles.clj         $DOTFILES/profiles.clj
 COPY resources            $DOTFILES/resources
 COPY tmux.conf            $DOTFILES/tmux.conf
 COPY zshrc                $DOTFILES/zshrc
