@@ -52,7 +52,17 @@
 (lsp.clojure_lsp.setup (core.merge default-options {}))
 (lsp.cssls.setup (core.merge default-options {}))
 (lsp.dagger.setup (core.merge default-options {}))
-(lsp.denols.setup (core.merge default-options {:autostart false}))
+(lsp.denols.setup (core.merge
+                    default-options
+                    {:init_options {:lint true
+                                    :unstable true
+                                    :suggest
+                                    {:imports
+                                     {:hosts
+                                      {"https://deno.land" true
+                                       "https://cdn.nest.land" true
+                                       "https://crux.land" true}}}}
+                     :root_dir (lsputil.root_pattern "deno.json")}))
 (lsp.dockerls.setup (core.merge default-options {}))
 (lsp.efm.setup (core.merge
                  default-options
@@ -124,7 +134,9 @@
                            {:experimentalFeatures {:validateOnSave true
                                                    :prefillRequiredFields true}}}}))
 (lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
-(lsp.tsserver.setup (core.merge default-options {:autostart false}))
+(lsp.tsserver.setup (core.merge
+                      default-options
+                      {:root_dir (lsputil.root_pattern "package.json")}))
 (lsp.yamlls.setup
   (core.merge
     default-options
