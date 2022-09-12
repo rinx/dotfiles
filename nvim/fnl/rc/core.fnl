@@ -157,7 +157,12 @@
   (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 20))
 
 ;; neovide
-(set nvim.g.neovide_floating_blur 0)
-(set nvim.g.neovide_transparency 0.8)
-(set nvim.g.neovide_cursor_animation_length 0.1)
-(set nvim.g.neovide_cursor_trail_length 0.01)
+(when  nvim.g.neovide
+  (set nvim.g.neovide_floating_blur 0)
+  (set nvim.g.neovide_transparency 0.8)
+  (set nvim.g.neovide_cursor_animation_length 0.1)
+  (set nvim.g.neovide_cursor_trail_size 0.01)
+  (set nvim.g.neovide_cursor_vfx_mode :ripple)
+  (set nvim.g.neovide_refresh_rate 60)
+  (set nvim.g.neovide_refresh_rate_idle 5)
+  (set nvim.g.neovide_underline_automatic_scaling true))
