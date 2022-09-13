@@ -1,36 +1,30 @@
 (module rc.colorscheme
   {autoload {nvim aniseed.nvim
+             core aniseed.core
+             util rc.util
              color rc.color}
    require-macros [rc.macros]})
 
 (def- colors color.colors)
+(def- loaded? util.loaded?)
 
-(set nvim.g.tokyonight_style :storm)
-(set nvim.g.tokyonight_transparent true)
-(set nvim.g.tokyonight_dark_sidebar true)
-(set nvim.g.tokyonight_sidebars [:dapui_breakpoints
-                                 :dapui_scopes
-                                 :dapui_stacks
-                                 :dapui_watches
-                                 :NvimTree
-                                 :packer])
-(nvim.ex.silent_ "colorscheme tokyonight")
+(when (loaded? :nightfox.nvim)
+  (let [nightfox (require :nightfox)]
+    (nightfox.setup
+      {:options
+       {:compile_path (nvim.fn.expand
+                        "~/.config/nvim/tmp/cache/nightfox")
+        :compile_file_suffix :_compiled
+        :transparent true
+        :terminal_colors true
+        :dim_inactive false
+        :styles
+        {:comments :italic
+         :keywords "bold,italic"
+         :functions :italic
+         :types :bold}}}))
+  (nvim.ex.silent_ "colorscheme nightfox"))
 (nvim.ex.syntax :enable)
-
-(hi! :Normal {:bg :none
-              :blend :0})
-(hi! :LineNr {:bg :none})
-(hi! :VertSplit {:bg :none})
-(hi! :NonText {:bg :none})
-(hi! :EndOfBuffer {:bg :none})
-
-(hi! :NormalFloat {:bg :none
-                   :blend :0})
-(hi! :LspFloatWinNormal {:bg :none
-                         :blend :0})
-
-(hi! :Keyword {:cterm "bold,italic"
-               :gui "bold,italic"})
 
 (hi! :DiagnosticUnderlineError
      {:cterm :undercurl
