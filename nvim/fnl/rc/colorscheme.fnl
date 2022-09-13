@@ -21,9 +21,9 @@
         :styles
         {:comments :italic
          :keywords "bold,italic"
-         :functions :italic
-         :types :bold}}}))
-  (nvim.ex.silent_ "colorscheme nightfox"))
+         :functions :bold
+         :types :italic}}}))
+  (nvim.ex.silent_ "colorscheme duskfox"))
 (nvim.ex.syntax :enable)
 
 (hi! :DiagnosticUnderlineError
