@@ -103,7 +103,7 @@
 (augroup! init-terraform
           (autocmd! :FileType :terraform "setl shiftwidth=2")
           (autocmd! :FileType :tf "setl shiftwidth=2")
-          (autocmd! "BufNewFile,BufRead" "*.tf" "setf terraform")
+          (autocmd! "BufNewFile,BufRead" "*.tf" "setl ft=terraform")
           (autocmd! :BufWritePre "*.tf" (->viml! :lsp-formatting)))
 
 ;; typescript

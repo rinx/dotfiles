@@ -133,6 +133,7 @@
                           {:terraform-ls
                            {:experimentalFeatures {:validateOnSave true
                                                    :prefillRequiredFields true}}}}))
+(lsp.tflint.setup {})
 (lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
 (lsp.tsserver.setup (core.merge
                       default-options

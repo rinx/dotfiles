@@ -27,9 +27,11 @@ RUN apk update \
 RUN go install github.com/bufbuild/buf-language-server/cmd/bufls@latest \
     && go install github.com/dagger/cuelsp/cmd/cuelsp@latest \
     && go install github.com/go-delve/delve/cmd/dlv@latest \
+    && go install github.com/hashicorp/terraform-ls@latest \
     && go install github.com/mattn/efm-langserver@latest \
     && go install golang.org/x/tools/gopls@latest \
-    && go install github.com/x-motemen/ghq@latest
+    && go install github.com/x-motemen/ghq@latest \
+    && go install github.com/terraform-linters/tflint@latest
 
 RUN git clone --depth 1 https://github.com/cli/cli.git /tmp/gh-cli \
     && cd /tmp/gh-cli \
