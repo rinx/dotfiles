@@ -7,7 +7,7 @@
   (util.fn-bridge from :rc.filetypes to {:return true}))
 
 (defn lsp-formatting []
-  (let [(ok? val-or-err) (pcall vim.lsp.buf.formatting_seq_sync)]
+  (let [(ok? val-or-err) (pcall vim.lsp.buf.format)]
     (if ok?
       (vim.notify
         "formatted."
