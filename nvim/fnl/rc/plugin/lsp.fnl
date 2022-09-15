@@ -128,8 +128,7 @@
 (lsp.pylsp.setup (core.merge default-options {}))
 (lsp.terraformls.setup (core.merge
                          default-options
-                         {:filetypes [:terraform :tf]
-                          :settings
+                         {:settings
                           {:terraform-ls
                            {:experimentalFeatures {:validateOnSave true
                                                    :prefillRequiredFields true}}}}))

@@ -34,11 +34,12 @@
 
 ;; filetypes
 (augroup! init-filetype-detect
-          (autocmd! "BufNewFile,BufRead" "*.cue" "setf cue")
-          (autocmd! "BufNewFile,BufRead" "*.nml" "setf fortran")
-          (autocmd! "BufNewFile,BufRead" "*.namelist" "setf fortran")
-          (autocmd! "BufNewFile,BufRead" "*.hy" "setf hy")
-          (autocmd! "BufNewFile,BufRead" "*.jl" "setf julia"))
+          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.cue" "setf cue")
+          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.nml" "setf fortran")
+          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.namelist" "setf fortran")
+          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.hy" "setf hy")
+          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.jl" "setf julia")
+          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.tf,*.tfvars" "setf terraform"))
 
 (augroup! init-git-files
           (autocmd! :FileType "gitcommit,gitrebase" "set bufhidden=delete"))
@@ -102,9 +103,7 @@
 ;; terraform
 (augroup! init-terraform
           (autocmd! :FileType :terraform "setl shiftwidth=2")
-          (autocmd! :FileType :tf "setl shiftwidth=2")
-          (autocmd! "BufNewFile,BufRead" "*.tf" "setl ft=terraform")
-          (autocmd! :BufWritePre "*.tf" (->viml! :lsp-formatting)))
+          (autocmd! :BufWritePre "*.tf,*tfvars" (->viml! :lsp-formatting)))
 
 ;; typescript
 (augroup! init-typescript
