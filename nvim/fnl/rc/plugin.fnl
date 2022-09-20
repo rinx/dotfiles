@@ -103,7 +103,6 @@
   :vim-denops/denops.vim {}
   :vim-skk/skkeleton {:mod :skkeleton}
   :gamoutatsumi/dps-ghosttext.vim {}
-  :kat0h/bufpreview.vim {:ft [:markdown]}
   :lambdalisue/guise.vim {:mod :guise}
 
   ;; operator/textobj

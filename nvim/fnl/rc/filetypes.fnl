@@ -18,20 +18,6 @@
         vim.lsp.log_levels.WARN
         {:title :lsp-formatting}))))
 
-;; markdown
-(set nvim.g.bufpreview_server_host "0.0.0.0")
-(set nvim.g.bufpreview_server_port 8000)
-(defn bufpreview-echo-url [url]
-  (vim.notify
-    (.. "preview started: '" url "'")
-    vim.lsp.log_levels.INFO
-    {:title :bufpreview.vim}))
-(bridge :BufpreviewEchoURL :bufpreview-echo-url)
-(set nvim.g.bufpreview_open_browser_fn :BufpreviewEchoURL)
-
-(augroup! init-markdown
-          (autocmd! :FileType :markdown "setl shiftwidth=4"))
-
 ;; filetypes
 (augroup! init-filetype-detect
           (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.cue" "setf cue")
@@ -43,6 +29,10 @@
 
 (augroup! init-git-files
           (autocmd! :FileType "gitcommit,gitrebase" "set bufhidden=delete"))
+
+;; markdown
+(augroup! init-markdown
+          (autocmd! :FileType :markdown "setl shiftwidth=4"))
 
 ;; hy
 (set nvim.g.hy_enable_conceal 0)
