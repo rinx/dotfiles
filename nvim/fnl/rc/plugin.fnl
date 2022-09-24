@@ -135,8 +135,6 @@
   :Olical/conjure {:ft [:clojure
                         :fennel
                         :hy]}
-  :nvim-neorg/neorg {:mod :neorg
-                     :requires [:nvim-neorg/neorg-telescope]}
 
   ;; treesitter
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
