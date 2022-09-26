@@ -28,7 +28,6 @@
   :Olical/aniseed {}
   :nvim-lua/plenary.nvim {}
   :nvim-lua/popup.nvim {}
-  :nathom/filetype.nvim {}
   :EdenEast/nightfox.nvim {:run ":NightfoxCompile"}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :feline-nvim/feline.nvim {:mod :feline}
