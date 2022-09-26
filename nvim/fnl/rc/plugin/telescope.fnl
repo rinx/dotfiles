@@ -41,19 +41,6 @@
    "LspStart denols"
    "LspStart tsserver"
    :LspStop
-   :NeorgStart
-   "Neorg gtd capture"
-   "Neorg gtd edit"
-   "Neorg gtd views"
-   "Neorg inject-metadata"
-   "Neorg journal today"
-   "Neorg journal tomorrow"
-   "Neorg journal yesterday"
-   "Neorg mode gtd-displays"
-   "Neorg mode norg"
-   "Neorg toc inline"
-   "Neorg workspace gtd"
-   "Neorg workspace notes"
    :NvimTreeRefresh
    :NvimTreeToggle
    "Octo pr list"
