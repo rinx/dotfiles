@@ -1,10 +1,6 @@
 (module rc.filetypes
-  {autoload {nvim aniseed.nvim
-             util aniseed.nvim.util}
+  {autoload {nvim aniseed.nvim}
    require-macros [rc.macros]})
-
-(defn- bridge [from to]
-  (util.fn-bridge from :rc.filetypes to {:return true}))
 
 (defn lsp-formatting []
   (let [(ok? val-or-err) (pcall vim.lsp.buf.format)]

@@ -135,6 +135,8 @@
   :Olical/conjure {:ft [:clojure
                         :fennel
                         :hy]}
+  :jbyuki/md-prev.nvim {:ft [:markdown]
+                        :mod :md-prev}
 
   ;; treesitter
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
