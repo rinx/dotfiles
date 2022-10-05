@@ -28,7 +28,6 @@
   :Olical/aniseed {}
   :nvim-lua/plenary.nvim {}
   :nvim-lua/popup.nvim {}
-  :MunifTanjim/nui.nvim {}
   :EdenEast/nightfox.nvim {:run ":NightfoxCompile"}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :feline-nvim/feline.nvim {:mod :feline}
@@ -42,7 +41,6 @@
                             :mod :gitsigns}
   :APZelos/blamer.nvim {:event [:BufEnter]}
   :rcarriga/nvim-notify {:mod :notify}
-  :folke/noice.nvim {:mod :noice}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
   :lukas-reineke/indent-blankline.nvim {:event [:BufEnter]
                                         :mod :indent-blankline}
