@@ -28,6 +28,7 @@
   :Olical/aniseed {}
   :nvim-lua/plenary.nvim {}
   :nvim-lua/popup.nvim {}
+  :MunifTanjim/nui.nvim {}
   :EdenEast/nightfox.nvim {:run ":NightfoxCompile"}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :feline-nvim/feline.nvim {:mod :feline}
@@ -64,6 +65,7 @@
   :stevearc/dressing.nvim {}
   :j-hui/fidget.nvim {}
   :kosayoda/nvim-lightbulb {}
+  :aznhe21/actions-preview.nvim {}
   :folke/trouble.nvim {}
   :folke/lsp-colors.nvim {}
   :folke/todo-comments.nvim {}

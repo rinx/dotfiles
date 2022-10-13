@@ -255,6 +255,16 @@
       {:input
        {:default_prompt icontab.rquot}})))
 
+(when (loaded? :actions-preview.nvim)
+  (let [actions-preview (require :actions-preview)]
+    (actions-preview.setup
+      {:backend [:nui :telescope]
+       :nui {:dir :row}}))
+  (noremap! [:n :v]
+            "<Leader>A"
+            ":<C-u>lua require'actions-preview'.code_actions()<CR>"
+            :silent))
+
 (lsp-lines.setup)
 
 (vim.diagnostic.config
