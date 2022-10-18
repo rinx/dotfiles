@@ -10,10 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Generate github token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.GH_APP_ID }}
+          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ secrets.DOTFILES_TOKEN }}
+          token: ${{ steps.generate_token.outputs.token }}
       - name: Install babashka
         run: |
           bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
@@ -27,16 +33,12 @@ jobs:
           if git diff --quiet --exit-code; then
             echo "Nothing updated"
           else
-            git config --global user.email "rintaro.okamura@gmail.com"
-            git config --global user.name "Rintaro Okamura"
+            git config --global user.email "116073707+rinx-app[bot]@users.noreply.github.com"
+            git config --global user.name "rinx-app[bot]"
 
             git add Dockerfile Makefile.d/bin.mk
 
             git commit --signoff -m "[patch] :robot: Automatically upgrade dependencies."
 
-            git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
             git push origin main
           fi
-        env:
-          GITHUB_USER: ${{ secrets.DOTFILES_USER }}
-          GITHUB_TOKEN: ${{ secrets.DOTFILES_TOKEN }}
