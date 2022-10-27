@@ -105,6 +105,7 @@
   :vim-skk/skkeleton {:mod :skkeleton}
   :gamoutatsumi/dps-ghosttext.vim {}
   :lambdalisue/guise.vim {:mod :guise}
+  :skanehira/denops-silicon.vim {}
 
   ;; operator/textobj
   :kana/vim-operator-user {:event [:BufEnter]}
