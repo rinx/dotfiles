@@ -17,6 +17,7 @@
 
 (def- action-cmds
   ["cd %:p:h"
+   :Adoclive
    :BlamerToggle
    :ConjureConnect
    :ConjureLogSplit

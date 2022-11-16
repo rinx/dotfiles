@@ -106,6 +106,8 @@
   :gamoutatsumi/dps-ghosttext.vim {}
   :lambdalisue/guise.vim {:mod :guise}
   :skanehira/denops-silicon.vim {}
+  :rinx/adoclive.vim {:ft [:asciidoc
+                           :markdown]}
 
   ;; operator/textobj
   :kana/vim-operator-user {:event [:BufEnter]}
@@ -137,8 +139,6 @@
   :Olical/conjure {:ft [:clojure
                         :fennel
                         :hy]}
-  :jbyuki/md-prev.nvim {:ft [:markdown]
-                        :mod :md-prev}
 
   ;; treesitter
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
