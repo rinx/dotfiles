@@ -25,6 +25,7 @@
 
 (use
   :wbthomason/packer.nvim {}
+  :lewis6991/impatient.nvim {}
   :Olical/aniseed {}
   :nvim-lua/plenary.nvim {}
   :nvim-lua/popup.nvim {}
