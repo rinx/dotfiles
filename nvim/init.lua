@@ -12,10 +12,10 @@ function ensure (user, repo)
 end
 
 ensure("wbthomason", "packer.nvim")
+ensure("lewis6991", "impatient.nvim")
 ensure("Olical", "aniseed")
 
--- For nathom/filetype.nvim
-vim.g.did_load_filetypes = 1
+require("impatient")
 
 vim.g["aniseed#env"] = {
   module = "rc.init",
