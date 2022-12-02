@@ -2,10 +2,10 @@
 
 (ns deps-update
   (:require
-    [clojure.string :as string]
-    [clojure.edn :as edn]
-    [babashka.curl :as curl]
-    [cheshire.core :as json]))
+   [clojure.string :as string]
+   [clojure.edn :as edn]
+   [babashka.curl :as curl]
+   [cheshire.core :as json]))
 
 (defn replace-with [file versions pattern-fn replacer-fn]
   (loop [file file
@@ -35,24 +35,24 @@
                                                  :body
                                                  (json/parse-string)
                                                  (first)
-                                                 (get "name")))
+                                                 (get "tag_name")))
                                    version (if tx
                                              ((eval (read-string tx)) version)
                                              version)]
-                                 {:name name :version version}))))
+                               {:name name :version version}))))
         replaced (replace-with body versions pattern-fn replacer-fn)]
     (spit filename replaced)))
 
 (do-update
-  "Dockerfile"
-  (fn [name]
-    (re-pattern (str "ARG " name "=.*")))
-  (fn [name version]
-    (str "ARG " name "=" version)))
+ "Dockerfile"
+ (fn [name]
+   (re-pattern (str "ARG " name "=.*")))
+ (fn [name version]
+   (str "ARG " name "=" version)))
 
 (do-update
-  "Makefile.d/bin.mk"
-  (fn [name]
-    (re-pattern (str name " := .*")))
-  (fn [name version]
-    (str name " := " version)))
+ "Makefile.d/bin.mk"
+ (fn [name]
+   (re-pattern (str name " := .*")))
+ (fn [name version]
+   (str name " := " version)))
