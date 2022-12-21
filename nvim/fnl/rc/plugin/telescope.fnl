@@ -1,7 +1,6 @@
 (module rc.plugin.telescope
   {autoload {nvim aniseed.nvim
              icon rc.icon
-             util rc.util
              telescope telescope
              actions telescope.actions
              builtin telescope.builtin
@@ -9,11 +8,11 @@
              pickers telescope.pickers
              previewers telescope.previewers
              sorters telescope.sorters
-             themes telescope.themes}
+             themes telescope.themes
+             toggleterm telescope-toggleterm}
    require-macros [rc.macros]})
 
 (def- icontab icon.tab)
-(def- loaded? util.loaded?)
 
 (def- action-cmds
   ["cd %:p:h"
@@ -83,30 +82,19 @@
     {:override_generic_sorter true
      :override_file_sorter true}}})
 
-(when (loaded? :telescope-dap.nvim)
-  (telescope.load_extension :dap))
+(telescope.load_extension :dap)
+(telescope.load_extension :notify)
+(telescope.load_extension :projects)
+(telescope.load_extension :repo)
+(telescope.load_extension :toggleterm)
 
-(when (loaded? :telescope-fzy-native.nvim)
-  (telescope.load_extension :fzy_native))
+(defn telescope-ghq []
+  (telescope.extensions.repo.list
+    {:search_dirs ["~/local/src"]}))
+(nvim.ex.command_ :Ghq (->viml! :telescope-ghq))
 
-(when (loaded? :nvim-notify)
-  (telescope.load_extension :notify))
-
-(when (loaded? :project.nvim)
-  (telescope.load_extension :projects))
-
-(when (loaded? :telescope-repo.nvim)
-  (telescope.load_extension :repo)
-  (defn telescope-ghq []
-    (telescope.extensions.repo.list
-      {:search_dirs ["~/local/src"]}))
-  (nvim.ex.command_ :Ghq (->viml! :telescope-ghq)))
-
-(when (loaded? :telescope-toggleterm.nvim)
-  (telescope.load_extension :toggleterm)
-  (let [tt (require :telescope-toggleterm)]
-    (tt.setup {:telescope_mappings
-               {:<C-c> actions.close}})))
+(toggleterm.setup {:telescope_mappings
+                    {:<C-c> actions.close}})
 
 (defn telescope-git-status []
   (builtin.git_status

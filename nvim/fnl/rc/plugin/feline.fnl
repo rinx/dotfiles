@@ -3,14 +3,12 @@
              nvim aniseed.nvim
              color rc.color
              icon rc.icon
-             util rc.util
              feline feline
              vimode-providers feline.providers.vi_mode
              lsp-providers feline.providers.lsp}})
 
 (def- colors color.colors)
 (def- icontab icon.tab)
-(def- loaded? util.loaded?)
 
 (def- space " ")
 (def- fill "▊")
@@ -129,25 +127,18 @@
          :icon icontab.server
          :hl {:fg colors.color13}}
    :dap {:provider :dap_status
-         :enabled (fn [] (loaded? :nvim-dap))
          :left_sep space
          :hl {:fg colors.color4}
          :icon icontab.play-circle}
    :denops {:provider :denops_status
-            :enabled (fn []
-                       (loaded? :denops.vim))
             :left_sep space}
    :skkeleton {:provider :skkeleton_status
                :enabled (fn []
-                          (and
-                            (loaded? :skkeleton)
-                            (vim.fn.skkeleton#is_enabled)))
+                          (vim.fn.skkeleton#is_enabled))
                :left_sep space
                :hl {:fg colors.color10}
                :icon icontab.cursor-text}
    :ghosttext {:provider :ghosttext_status
-               :enabled (fn []
-                          (loaded? :dps-ghosttext.vim))
                :left_sep space}
    :devenv {:provider :devenv_status
             :left_sep space}

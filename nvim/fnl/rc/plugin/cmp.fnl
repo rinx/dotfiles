@@ -3,7 +3,9 @@
              nvim aniseed.nvim
              icon rc.icon
              util rc.util
-             cmp cmp}
+             cmp cmp
+             autopairs-cmp nvim-autopairs.completion.cmp
+             cmp-git cmp_git}
    require-macros [rc.macros]})
 
 (def- icontab icon.tab)
@@ -126,15 +128,11 @@
           (autocmd! :FileType :norg (->viml! :append-cmp-neorg)))
 
 ;; autopairs
-(when (util.loaded? :nvim-autopairs)
-  (let [autopairs-cmp (require :nvim-autopairs.completion.cmp)]
-    (cmp.event:on :confirm_done (autopairs-cmp.on_confirm_done))))
+(cmp.event:on :confirm_done (autopairs-cmp.on_confirm_done))
 
 ;; cmp-git
 (defn append-cmp-git []
-  (when (util.loaded? :cmp-git)
-    (let [cmp-git (require :cmp_git)]
-      (cmp-git.setup {})))
+  (cmp-git.setup {})
   (let [ss []]
     (each [_ v (ipairs default-sources)]
       (table.insert ss v))

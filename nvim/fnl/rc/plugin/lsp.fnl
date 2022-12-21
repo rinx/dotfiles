@@ -3,17 +3,23 @@
              nvim aniseed.nvim
              color rc.color
              icon rc.icon
-             util rc.util
              lsp lspconfig
              lsp-configs lspconfig/configs
              lsp-signature lsp_signature
              lsp-lines lsp_lines
-             lsputil lspconfig/util}
+             lsputil lspconfig/util
+             schemastore schemastore
+             rust-tools rust-tools
+             dressing dressing
+             actions-preview actions-preview
+             trouble trouble
+             lsp-colors lsp-colors
+             tdc todo-comments
+             fidget fidget}
    require-macros [rc.macros]})
 
 (def- colors color.colors)
 (def- icontab icon.tab)
-(def- loaded? util.loaded?)
 
 (defn- on-attach [client bufnr]
   (lsp-signature.on_attach
@@ -117,12 +123,9 @@
 (lsp.jsonls.setup
   (core.merge
     default-options
-    (if (loaded? :schemastore.nvim)
-      (let [schemastore (require :schemastore)]
-        {:settings
-         {:json
-          {:schemas (schemastore.json.schemas)}}})
-      {})))
+    {:settings
+     {:json
+      {:schemas (schemastore.json.schemas)}}}))
 (lsp.julials.setup (core.merge default-options {}))
 (lsp.kotlin_language_server.setup (core.merge default-options {}))
 (lsp.marksman.setup (core.merge default-options {}))
@@ -185,26 +188,24 @@
        :validate true}
       :single_file_support true}}))
 ;; rust-analyzer
-(when (loaded? :rust-tools.nvim)
-  (let [rust-tools (require :rust-tools)]
-    (rust-tools.setup
-      {:tools
-       {:inlay_hints
-        {:parameter_hints_prefix (.. " "
-                                     icontab.slash
-                                     icontab.arrow-l
-                                     " ")
-         :other_hints_prefix (.. " "
-                                 icontab.arrow-r
-                                 " ")}}
-       :server
-       {:on_attach on-attach
-        :capabilities capabilities
-        :settings {:rust-analyzer
-                   {:cargo {:allFeatures true}
-                    :lens {:enable true
-                           :methodReferences true
-                           :references true}}}}})))
+(rust-tools.setup
+  {:tools
+   {:inlay_hints
+    {:parameter_hints_prefix (.. " "
+                                 icontab.slash
+                                 icontab.arrow-l
+                                 " ")
+     :other_hints_prefix (.. " "
+                             icontab.arrow-r
+                             " ")}}
+   :server
+   {:on_attach on-attach
+    :capabilities capabilities
+    :settings {:rust-analyzer
+               {:cargo {:allFeatures true}
+                :lens {:enable true
+                       :methodReferences true
+                       :references true}}}}})
 
 (tset vim.lsp.handlers
       :textDocument/hover
@@ -249,17 +250,13 @@
 (noremap! [:n] "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>" :silent)
 (noremap! [:x] "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>" :silent)
 
-(when (loaded? :dressing.nvim)
-  (let [dressing (require :dressing)]
-    (dressing.setup
-      {:input
-       {:default_prompt icontab.rquot}})))
+(dressing.setup
+  {:input
+   {:default_prompt icontab.rquot}})
 
-(when (loaded? :actions-preview.nvim)
-  (let [actions-preview (require :actions-preview)]
-    (actions-preview.setup
-      {:backend [:nui :telescope]
-       :nui {:dir :row}}))
+(actions-preview.setup
+  {:backend [:nui :telescope]
+   :nui {:dir :row}}
   (noremap! [:n :v]
             "<Leader>A"
             ":<C-u>lua require'actions-preview'.code_actions()<CR>"
@@ -287,66 +284,57 @@
                       :texthl :DiagnosticSignHint})
 
 ;; trouble.nvim
-(when (loaded? :trouble.nvim)
-  (let [trouble (require :trouble)]
-    (trouble.setup {:auto_open true
-                    :auto_close true
-                    :signs {:error icontab.bug
-                            :warning icontab.exclam-circle
-                            :hint icontab.leaf
-                            :information icontab.info-circle
-                            :other icontab.comment-alt}})
-    (noremap! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" :silent)
-    (noremap! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" :silent)
-    (noremap! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" :silent)
-    (noremap! [:n] "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>" :silent)
-    (noremap! [:n] "<leader>xl" ":<C-u>TroubleToggle loclist<CR>" :silent)
-    (noremap! [:n] "gR" ":<C-u>TroubleToggle lsp_references<CR>" :silent)))
+(trouble.setup {:auto_open true
+                :auto_close true
+                :signs {:error icontab.bug
+                        :warning icontab.exclam-circle
+                        :hint icontab.leaf
+                        :information icontab.info-circle
+                        :other icontab.comment-alt}}
+  (noremap! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" :silent)
+  (noremap! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" :silent)
+  (noremap! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" :silent)
+  (noremap! [:n] "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>" :silent)
+  (noremap! [:n] "<leader>xl" ":<C-u>TroubleToggle loclist<CR>" :silent)
+  (noremap! [:n] "gR" ":<C-u>TroubleToggle lsp_references<CR>" :silent))
 
 ;; lsp-colors.nvim
-(when (loaded? :lsp-colors.nvim)
-  (let [colors (require :lsp-colors)]
-    (colors.setup {:Error colors.error
+(lsp-colors.setup {:Error colors.error
                    :Warning colors.warn
                    :Information colors.info
-                   :Hint colors.hint})))
+                   :Hint colors.hint})
 
-(when (loaded? :todo-comments.nvim)
-  (let [tdc (require :todo-comments)]
-    (tdc.setup {:signs true
-                :keywords {:FIX {:icon icontab.bug
-                                 :color :error
-                                 :alt [:FIXME :BUG :FIXIT :FIX :ISSUE]}
-                           :TODO {:icon icontab.check
-                                  :color :info}
-                           :HACK {:icon icontab.fire
-                                  :color :warning}
-                           :WARN {:icon icontab.excram-tri
-                                  :color :warning}
-                           :PERF {:icon icontab.watch
-                                  :color :default
-                                  :alt [:OPTIM :PERFORMANCE :OPTIMIZE]}
-                           :NOTE {:icon icontab.comment-alt
-                                  :color :hint
-                                  :alt [:INFO]}}
-                :colors {:error [:DiagnosticSignError]
-                         :warning [:DiagnosticSignWarn]
-                         :info [:DiagnosticSignInfo]
-                         :hint [:DiagnosticSignHint]
-                         :default [colors.purple]}})))
+(tdc.setup {:signs true
+            :keywords {:FIX {:icon icontab.bug
+                             :color :error
+                             :alt [:FIXME :BUG :FIXIT :FIX :ISSUE]}
+                       :TODO {:icon icontab.check
+                              :color :info}
+                       :HACK {:icon icontab.fire
+                              :color :warning}
+                       :WARN {:icon icontab.excram-tri
+                              :color :warning}
+                       :PERF {:icon icontab.watch
+                              :color :default
+                              :alt [:OPTIM :PERFORMANCE :OPTIMIZE]}
+                       :NOTE {:icon icontab.comment-alt
+                              :color :hint
+                              :alt [:INFO]}}
+            :colors {:error [:DiagnosticSignError]
+                     :warning [:DiagnosticSignWarn]
+                     :info [:DiagnosticSignInfo]
+                     :hint [:DiagnosticSignHint]
+                     :default [colors.purple]}})
 
 ;; lightbulb
-(when (loaded? :nvim-lightbulb)
-  (augroup! init-lightbulb
-            (autocmd! "CursorHold,CursorHoldI"
-                      "*"
-                      "lua require'nvim-lightbulb'.update_lightbulb()"))
-  (nvim.fn.sign_define :LightBulbSign
-                       {:text icontab.lightbulb
-                        :texthl :DiagnosticSignLightBulb}))
+(augroup! init-lightbulb
+          (autocmd! "CursorHold,CursorHoldI"
+                    "*"
+                    "lua require'nvim-lightbulb'.update_lightbulb()"))
+(nvim.fn.sign_define :LightBulbSign
+                     {:text icontab.lightbulb
+                      :texthl :DiagnosticSignLightBulb})
 
-(when (loaded? :fidget.nvim)
-  (let [fidget (require :fidget)]
-    (fidget.setup
-      {:text {:spinner icon.spinners
-              :done icontab.check}})))
+(fidget.setup
+  {:text {:spinner icon.spinners
+          :done icontab.check}})

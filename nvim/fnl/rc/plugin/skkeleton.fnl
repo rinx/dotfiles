@@ -1,7 +1,7 @@
 (module rc.plugin.skkeleton
   {autoload {core aniseed.core
              nvim aniseed.nvim
-             util rc.util}
+             cmp cmp}
    require-macros [rc.macros]})
 
 (map! [:i] :<C-j> "<Plug>(skkeleton-toggle)")
@@ -22,18 +22,14 @@
      :userJisyo "~/.skk-jisyo"}))
 
 (defn enable-pre []
-  (when (util.loaded? :nvim-cmp)
-    (let [cmp (require :cmp)]
-      (cmp.setup.buffer
-        {:view
-         {:entries :native}}))))
+  (cmp.setup.buffer
+    {:view
+     {:entries :native}}))
 
 (defn disable-pre []
-  (when (util.loaded? :nvim-cmp)
-    (let [cmp (require :cmp)]
-      (cmp.setup.buffer
-        {:view
-         {:entries :custom}}))))
+  (cmp.setup.buffer
+    {:view
+     {:entries :custom}}))
 
 (augroup! init-skkeleton
           (autocmd! :User :skkeleton-initialize-pre (->viml! :initialize))

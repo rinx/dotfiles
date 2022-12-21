@@ -2,6 +2,6 @@
 
 (require :rc.core)
 (require :rc.mapping)
-(require :rc.colorscheme)
 (require :rc.plugin)
+(require :rc.colorscheme)
 (require :rc.filetypes)

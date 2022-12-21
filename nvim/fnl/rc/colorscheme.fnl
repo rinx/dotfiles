@@ -1,29 +1,26 @@
 (module rc.colorscheme
   {autoload {nvim aniseed.nvim
              core aniseed.core
-             util rc.util
-             color rc.color}
+             color rc.color
+             nightfox nightfox}
    require-macros [rc.macros]})
 
 (def- colors color.colors)
-(def- loaded? util.loaded?)
 
-(when (loaded? :nightfox.nvim)
-  (let [nightfox (require :nightfox)]
-    (nightfox.setup
-      {:options
-       {:compile_path (nvim.fn.expand
-                        "~/.config/nvim/tmp/cache/nightfox")
-        :compile_file_suffix :_compiled
-        :transparent true
-        :terminal_colors true
-        :dim_inactive false
-        :styles
-        {:comments :italic
-         :keywords "bold,italic"
-         :functions :bold
-         :types :italic}}}))
-  (nvim.ex.silent_ "colorscheme duskfox"))
+(nightfox.setup
+  {:options
+   {:compile_path (nvim.fn.expand
+                    "~/.config/nvim/tmp/cache/nightfox")
+    :compile_file_suffix :_compiled
+    :transparent true
+    :terminal_colors true
+    :dim_inactive false
+    :styles
+    {:comments :italic
+     :keywords "bold,italic"
+     :functions :bold
+     :types :italic}}})
+(nvim.ex.silent_ "colorscheme duskfox")
 (nvim.ex.syntax :enable)
 
 (hi! :DiagnosticUnderlineError

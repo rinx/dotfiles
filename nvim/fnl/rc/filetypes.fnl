@@ -19,7 +19,6 @@
           (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.cue" "setf cue")
           (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.nml" "setf fortran")
           (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.namelist" "setf fortran")
-          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.hy" "setf hy")
           (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.jl" "setf julia")
           (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.tf,*.tfvars" "setf terraform"))
 
@@ -29,11 +28,6 @@
 ;; markdown
 (augroup! init-markdown
           (autocmd! :FileType :markdown "setl shiftwidth=4"))
-
-;; hy
-(set nvim.g.hy_enable_conceal 0)
-(set nvim.g.hy_conceal_fancy 0)
-(set nvim.g.conjure#client#hy#stdio#command "hy --repl-output-fn=hy.core.hy-repr.hy-repr")
 
 ;; json
 (augroup! init-json
