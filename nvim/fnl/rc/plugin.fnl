@@ -39,7 +39,8 @@
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
-   :EdenEast/nightfox.nvim {:build (cmd->fn :NightfoxCompile)}
+   :EdenEast/nightfox.nvim {:build (cmd->fn :NightfoxCompile)
+                            :lazy true}
    :kyazdani42/nvim-web-devicons {:config (mod :devicons)}
    :feline-nvim/feline.nvim {:config (mod :feline)}
    :akinsho/bufferline.nvim {:config (mod :bufferline)}
