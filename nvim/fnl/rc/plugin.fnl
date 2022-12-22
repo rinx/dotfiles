@@ -34,8 +34,8 @@
           :zipPlugin]}}})))
 
 (use
-  {:folke/lazy.nvim {}
-   :Olical/aniseed {}
+  {:folke/lazy.nvim {:lazy true}
+   :Olical/aniseed {:lazy true}
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
@@ -45,28 +45,28 @@
    :feline-nvim/feline.nvim {:config (mod :feline)}
    :akinsho/bufferline.nvim {:config (mod :bufferline)}
    :akinsho/toggleterm.nvim {:config (mod :toggleterm)
-                             :event [:BufEnter]}
+                             :event [:VeryLazy]}
    :windwp/nvim-autopairs {:config (mod :autopairs)
                            :event [:InsertEnter]}
-   :kyazdani42/nvim-tree.lua {:event [:BufEnter]
+   :kyazdani42/nvim-tree.lua {:event [:VeryLazy]
                               :config (mod :nvim-tree)}
    :sidebar-nvim/sidebar.nvim {:config (mod :sidebar)
-                               :event [:BufEnter]}
-   :lewis6991/gitsigns.nvim {:event [:BufEnter]
+                               :event [:VeryLazy]}
+   :lewis6991/gitsigns.nvim {:event [:VeryLazy]
                              :config (mod :gitsigns)}
-   :APZelos/blamer.nvim {:event [:BufEnter]}
+   :APZelos/blamer.nvim {:event [:VeryLazy]}
    :rcarriga/nvim-notify {:config (mod :notify)
                           :event [:BufEnter]}
    :norcalli/nvim-colorizer.lua {:config (mod :colorizer)
                                  :event [:BufEnter]}
-   :lukas-reineke/indent-blankline.nvim {:event [:BufEnter]
+   :lukas-reineke/indent-blankline.nvim {:event [:VeryLazy]
                                          :config (mod :indent-blankline)}
    :ggandor/lightspeed.nvim {:event [:BufEnter]
                              :config (mod :lightspeed)}
    :numToStr/Comment.nvim {:event [:BufEnter]
                            :config (mod :comment)}
    :kyoh86/vim-ripgrep {:config (mod :grep)
-                        :event [:BufEnter]}
+                        :event [:VeryLazy]}
    :kana/vim-submode {:event [:BufEnter]
                       :config (mod :submode)}
    :ahmedkhalf/project.nvim {:config (mod :project)
@@ -74,14 +74,14 @@
    :pwntester/octo.nvim {:cmd [:Octo]
                          :config (mod :octo)}
    :ghillb/cybu.nvim {:config (mod :cybu)
-                      :event [:BufEnter]}
+                      :event [:VeryLazy]}
 
    ;; :stevearc/profile.nvim {:config (mod :profile)}
 
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)}
    :ray-x/lsp_signature.nvim {}
-   :stevearc/dressing.nvim {}
+   :stevearc/dressing.nvim {:event [:VeryLazy]}
    :j-hui/fidget.nvim {}
    :kosayoda/nvim-lightbulb {}
    :aznhe21/actions-preview.nvim {}
@@ -89,7 +89,7 @@
    :folke/lsp-colors.nvim {}
    :folke/todo-comments.nvim {}
    :b0o/schemastore.nvim {}
-   :whynothugo/lsp_linew.nvim {:url "https://git.sr.ht/~whynothugo/lsp_lines.nvim"}
+   :whynothugo/lsp_lines.nvim {:url "https://git.sr.ht/~whynothugo/lsp_lines.nvim"}
 
    ;; cmp
    :hrsh7th/nvim-cmp {:config (mod :cmp)
@@ -111,7 +111,7 @@
 
    ;; dap
    :mfussenegger/nvim-dap {:config (mod :dap)
-                           :event [:UIEnter]
+                           :event [:VeryLazy]
                            :dependencies [:rcarriga/nvim-dap-ui]}
 
    ;; telescope
@@ -128,16 +128,16 @@
                        :event [:BufEnter]}
    :gamoutatsumi/dps-ghosttext.vim {:event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)
-                           :event [:BufEnter]}
-   :skanehira/denops-silicon.vim {:event [:BufEnter]}
+                           :event [:VeryLazy]}
+   :skanehira/denops-silicon.vim {:cmd [:Silicon]}
    :rinx/adoclive.vim {:ft [:asciidoc
                             :markdown]}
 
    ;; operator/textobj
-   :kana/vim-operator-user {:event [:BufEnter]
+   :kana/vim-operator-user {:event [:VeryLazy]
                             :dependencies [:kana/vim-operator-replace
                                            :rhysd/vim-operator-surround]}
-   :kana/vim-textobj-user {:event [:BufEnter]
+   :kana/vim-textobj-user {:event [:VeryLazy]
                            :dependencies [:kana/vim-textobj-indent
                                           :kana/vim-textobj-function
                                           :kana/vim-textobj-entire
@@ -162,4 +162,4 @@
                                      :dependencies [:romgrk/nvim-treesitter-context
                                                     :JoosepAlviste/nvim-ts-context-commentstring]}
    :danymat/neogen {:config (mod :neogen)
-                    :event [:UIEnter]}})
+                    :event [:VeryLazy]}})
