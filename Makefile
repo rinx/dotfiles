@@ -36,8 +36,7 @@ deploy: \
 ## initialize all configures
 init: \
     prepare-init \
-    tmux-init \
-    neovim-init
+    tmux-init
 	@$(call cyan, "Done: initialize")
 
 .PHONY: install

@@ -2,14 +2,6 @@
 prepare-init:
 	@$(call green, "initialize stage")
 
-.PHONY: neovim-init
-neovim-init:
-	@$(call red, "neovim-init")
-	@$(call blue, "--\> initialize neovim")
-	rm -rf ${HOME}/.local/share/nvim ${HOME}/.config/nvim/lua ${HOME}/.config/nvim/plugin/packer_compiled.vim
-	NVIM_SKIP_PLUGIN_CONFIGS=1 nvim --headless +'autocmd User PackerComplete qa' +PackerSync
-	NVIM_SKIP_PLUGIN_CONFIGS=1 nvim --headless +'autocmd User PackerCompileDone qa' +PackerCompile
-
 .PHONY: tmux-init
 tmux-init:
 	@$(call red, "tmux-init")
