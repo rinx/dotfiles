@@ -127,8 +127,7 @@
    :vim-skk/skkeleton {:config (mod :skkeleton)
                        :event [:BufEnter]}
    :gamoutatsumi/dps-ghosttext.vim {:event [:BufEnter]}
-   :lambdalisue/guise.vim {:config (mod :guise)
-                           :event [:VeryLazy]}
+   :lambdalisue/guise.vim {:config (mod :guise)}
    :skanehira/denops-silicon.vim {:cmd [:Silicon]}
    :rinx/adoclive.vim {:ft [:asciidoc
                             :markdown]}
