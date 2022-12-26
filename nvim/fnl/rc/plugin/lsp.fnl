@@ -83,9 +83,11 @@
                   :settings
                   {:languages
                    {:markdown
-                    [{:lintCommand "textlint --format unix ${INPUT}"
+                    [{:lintCommand "deno run --allow-env --allow-read --allow-sys ~/.dotfiles/resources/textlint/textlint.ts ${INPUT}"
+                      :lintIgnoreExitCode true
                       :lintFormats ["%f:%l:%n: %m"]}
-                     {:lintCommand "markdownlint -s -c %USERPROFILE%.markdownlintrc"
+                     {:lintCommand "deno run --allow-env --allow-read --allow-sys npm:markdownlint-cli@latest -s -c %USERPROFILE%.markdownlintrc"
+                      :lintIgnoreExitCode true
                       :lintStdin true
                       :lintFormats ["%f:%l %m"
                                     "%f:%l:%c %m"

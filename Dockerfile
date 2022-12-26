@@ -174,11 +174,6 @@ RUN pip3 install --upgrade pip neovim \
 RUN npm install -g \
     bash-language-server \
     dockerfile-language-server-nodejs \
-    markdownlint \
-    markdownlint-cli \
-    textlint \
-    textlint-rule-preset-ja-technical-writing \
-    @proofdict/textlint-rule-proofdict \
     typescript \
     typescript-language-server \
     vscode-langservers-extracted \
