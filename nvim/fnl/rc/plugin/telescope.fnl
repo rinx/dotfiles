@@ -35,6 +35,10 @@
    :DapUIToggle
    :GhostStart
    :Ghq
+   :Lazy
+   "Lazy check"
+   "Lazy update"
+   "Lazy profile"
    :LspInfo
    :LspRestart
    :LspStart
@@ -45,12 +49,6 @@
    :NvimTreeToggle
    "Octo pr list"
    "Octo issue list"
-   :PackerClean
-   :PackerCompile
-   :PackerInstall
-   :PackerStatus
-   :PackerSync
-   :PackerUpdate
    :SidebarNvimToggle
    "Telescope dap list_breakpoints"
    "Telescope repo list"
