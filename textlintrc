@@ -4,6 +4,9 @@
     "preset-ja-technical-writing": {
       "ja-no-weak-phrase": false,
       "no-exclamation-question-mark": false
+    },
+    "@proofdict/proofdict": {
+      "dictURL": "https://azu.github.io/proof-dictionary/"
     }
   }
 }
