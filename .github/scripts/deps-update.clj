@@ -28,10 +28,15 @@
                   (map #(string/replace % #"^## --- " ""))
                   (string/join "\n")
                   (edn/read-string))
+        opts (let [token (System/getenv "GITHUB_TOKEN")]
+               (if (not (empty? token))
+                 {:headers
+                  {"Authorization" (string/join \space ["Bearer" token])}}
+                 {}))
         versions (->> deps
                       (map (fn [{:keys [name url tx]}]
                              (let [version (when (not-empty url)
-                                             (-> (curl/get url)
+                                             (-> (curl/get url opts)
                                                  :body
                                                  (json/parse-string)
                                                  (first)

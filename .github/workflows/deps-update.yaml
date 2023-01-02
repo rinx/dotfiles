@@ -25,6 +25,8 @@ jobs:
           bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
           ./bb --version
       - name: Update deps
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
           ./bb ./.github/scripts/deps-update.clj
           rm -f ./bb
