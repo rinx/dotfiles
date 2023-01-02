@@ -129,8 +129,8 @@
    :gamoutatsumi/dps-ghosttext.vim {:event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)}
    :skanehira/denops-silicon.vim {:cmd [:Silicon]}
-   :rinx/adoclive.vim {:ft [:asciidoc
-                            :markdown]}
+   :tani/glance-vim {:ft [:asciidoc
+                          :markdown]}
 
    ;; operator/textobj
    :kana/vim-operator-user {:event [:VeryLazy]

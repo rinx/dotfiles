@@ -16,7 +16,6 @@
 
 (def- action-cmds
   ["cd %:p:h"
-   :Adoclive
    :BlamerToggle
    :ConjureConnect
    :ConjureLogSplit
@@ -35,6 +34,7 @@
    :DapUIToggle
    :GhostStart
    :Ghq
+   :Glance
    :Lazy
    "Lazy check"
    "Lazy update"
