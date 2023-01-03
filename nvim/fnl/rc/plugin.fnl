@@ -3,6 +3,31 @@
              nvim aniseed.nvim
              lazy lazy}})
 
+(def- ui-icons
+      {:loaded "●"
+       :not_loaded "○"
+       :cmd " "
+       :config ""
+       :event ""
+       :ft " "
+       :init " "
+       :keys " "
+       :plugin " "
+       :runtime " "
+       :source " "
+       :start " "
+       :task " "
+       :lazy "鈴"
+       :list ["●" "➜" "★" "‒"]})
+
+(def- rtp-disabled-plugins
+      [:gzip
+       :netrwPlugin
+       :tarPlugin
+       :tohtml
+       :tutor
+       :zipPlugin])
+
 (defn- config-require-str [name]
   (.. "require('rc.plugin." name "')"))
 
@@ -23,15 +48,11 @@
                   (core.assoc opts 1 name))]
     (lazy.setup
       plugins
-      {:performance
+      {:ui
+       {:icons ui-icons}
+       :performance
        {:rtp
-        {:disabled_plugins
-         [:gzip
-          :netrwPlugin
-          :tarPlugin
-          :tohtml
-          :tutor
-          :zipPlugin]}}})))
+        {:disabled_plugins rtp-disabled-plugins}}})))
 
 (use
   {:folke/lazy.nvim {:lazy true}
@@ -40,7 +61,8 @@
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
    :EdenEast/nightfox.nvim {:build (cmd->fn :NightfoxCompile)
-                            :lazy true}
+                            :lazy true
+                            :priority 1000}
    :kyazdani42/nvim-web-devicons {:config (mod :devicons)}
    :feline-nvim/feline.nvim {:config (mod :feline)}
    :akinsho/bufferline.nvim {:config (mod :bufferline)}
