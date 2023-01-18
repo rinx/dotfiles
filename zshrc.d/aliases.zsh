@@ -86,6 +86,11 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
         fi
     }
 
+    ghco() {
+        id="$(gh pr list | fzf | cut -f1)"
+        [ -n "$id" ] && gh pr checkout "$id"
+    }
+
     if builtin command -v ghq > /dev/null 2>&1 ; then
         ghq-list() {
             local groot
