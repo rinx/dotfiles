@@ -18,12 +18,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate github token
-        id: generate_token
-        uses: tibdex/github-app-token@v1
-        with:
-          app_id: ${{ secrets.GH_APP_ID }}
-          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v3
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v2
@@ -43,8 +37,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: rinx-app
-          password: ${{ steps.generate_token.outputs.token }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Determine tag name (main)
         if: github.ref == 'refs/heads/main'
         run: |
