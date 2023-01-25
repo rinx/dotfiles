@@ -31,11 +31,13 @@ jobs:
           ./bb ./.github/scripts/deps-update.clj
           rm -f ./bb
       - name: Check and Push to main
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
           if git diff --quiet --exit-code; then
             echo "Nothing updated"
           else
-            git config --global user.email "116073707+rinx-app[bot]@users.noreply.github.com"
+            git config --global user.email "$(gh api -q .id "users/${NAME}")+rinx-app[bot]@users.noreply.github.com"
             git config --global user.name "rinx-app[bot]"
 
             git add Dockerfile Makefile.d/bin.mk
