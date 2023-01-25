@@ -43,8 +43,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: rinx
-          password: ${{ secrets.GH_PACKAGES_TOKEN }}
+          username: rinx-app
+          password: ${{ steps.generate_token.outputs.token }}
       - name: Determine tag name (main)
         if: github.ref == 'refs/heads/main'
         run: |
