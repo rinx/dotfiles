@@ -33,11 +33,14 @@ jobs:
       - name: Check and Push to main
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          NAME: rinx-app[bot]
         run: |
           if git diff --quiet --exit-code; then
             echo "Nothing updated"
           else
-            git config --global user.email "$(gh api -q .id "users/${NAME}")+rinx-app[bot]@users.noreply.github.com"
+            ID=$(gh api -q .id "users/${NAME}")
+
+            git config --global user.email "${ID}+${NAME}@users.noreply.github.com"
             git config --global user.name "rinx-app[bot]"
 
             git add Dockerfile Makefile.d/bin.mk
