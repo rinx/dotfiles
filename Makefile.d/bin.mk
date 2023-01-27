@@ -163,12 +163,12 @@ endif
 
 $(BINDIR)/k9s:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Darwin_x86_64.tar.gz
+	curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Darwin_amd64.tar.gz
 	tar xzvf /tmp/k9s.tar.gz -C /tmp
 	mv -f /tmp/k9s $(BINDIR)/k9s
 	rm -rf /tmp/k9s.tar.gz /tmp/LICENSE /tmp/README.md
 else
-	curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_x86_64.tar.gz
+	curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz
 	tar xzvf /tmp/k9s.tar.gz -C /tmp
 	mv -f /tmp/k9s $(BINDIR)/k9s
 	rm -rf /tmp/k9s.tar.gz /tmp/LICENSE /tmp/README.md
