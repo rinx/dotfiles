@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1674825962796,
+  "lastUpdate": 1674826285050,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -67,6 +67,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 2996.7896395,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b50c52b9b65df3d5da6e8d750243b61e81f84742",
+          "message": "fix: fix neovim plugin install script\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-01-27T22:28:21+09:00",
+          "tree_id": "ad01051a500d6324a933eb5883e884604cccb248",
+          "url": "https://github.com/rinx/dotfiles/commit/b50c52b9b65df3d5da6e8d750243b61e81f84742"
+        },
+        "date": 1674826283839,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 112.2439684,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 2558.0796122,
             "unit": "ms"
           }
         ]
