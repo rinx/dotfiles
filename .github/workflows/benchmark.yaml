@@ -22,6 +22,8 @@ jobs:
           bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
           brew install neovim
+          brew install deno
+
           nvim --version
       - name: Install babashka
         run: |
@@ -35,7 +37,7 @@ jobs:
           zsh -i -c exit
       - name: Install neovim plugins
         run: |
-          nvim --headless -c 'Lazy! restore' -c 'qall'
+          nvim --headless -c '+Lazy! sync' -c 'qall'
       - name: Run benchmark
         run: |
           ./bb ./.github/scripts/benchmark.clj > result.json
