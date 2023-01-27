@@ -3,6 +3,7 @@
 [![release](https://img.shields.io/github/v/release/rinx/dotfiles?style=flat-square)](https://github.com/rinx/dotfiles/releases)
 [![DockerHub](https://img.shields.io/docker/pulls/rinx/devenv?label=rinx%2Fdevenv&logo=docker&style=flat-square)](https://hub.docker.com/r/rinx/devenv)
 [![ghcr.io](https://img.shields.io/badge/ghcr.io-rinx%2Fdevenv-brightgreen?logo=docker&style=flat-square)](https://github.com/users/rinx/packages/container/package/devenv)
+[![benchmark](https://img.shields.io/badge/benchmark-nvim%2Fzsh-brightgreen)](https://rinx.github.io/dotfiles/dev/bench/)
 
 Pull the latest stable image `ghcr.io/rinx/devenv:stable`, that is built from [the latest release](https://github.com/rinx/dotfiles/releases).
 (or `ghcr.io/rinx/devenv:nightly` = the image built from the latest main branch is also available.
@@ -60,7 +61,3 @@ After finished your work, stop and remove the container.
 docker stop devenv
 docker rm devenv
 ```
-
-## Benchmark
-
-[result](https://rinx.github.io/dotfiles/dev/bench/index.html)
