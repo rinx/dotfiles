@@ -32,7 +32,6 @@ jobs:
           make DOTDIR=$(pwd) deploy
       - name: Install zsh plugins
         run: |
-          sudo rm ${HOME}/.zcompdump
           zsh -i -c exit
       - name: Install neovim plugins
         run: |
