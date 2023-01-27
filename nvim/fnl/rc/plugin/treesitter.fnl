@@ -1,6 +1,8 @@
 (module rc.plugin.treesitter
-  {autoload {configs nvim-treesitter.configs
-             parsers nvim-treesitter.parsers}})
+  {autoload {nvim aniseed.nvim
+             configs nvim-treesitter.configs
+             parsers nvim-treesitter.parsers}
+   require-macros [rc.macros]})
 
 (let [parser-configs (parsers.get_parser_configs)]
   (set parser-configs.cue
@@ -96,3 +98,8 @@
                "silent !wget -O %s %s"
                cue-highlight-scm
                "https://raw.githubusercontent.com/eonpatapon/tree-sitter-cue/main/queries/highlights.scm"))))
+
+(defn ensure-installed []
+  (each [_ lang (ipairs languages)]
+    (vim.cmd (string.format "TSInstallSync! %s" lang))))
+(nvim.ex.command_ :TSInstallEnsure (->viml! :ensure-installed))
