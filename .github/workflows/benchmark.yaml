@@ -38,7 +38,7 @@ jobs:
       - name: Install neovim plugins
         run: |
           nvim --headless -c 'qall'
-          nvim --headless -c 'Lazy! sync' -c 'qall'
+          nvim --headless -c 'Lazy! sync' -c 'TSInstall all' -c 'qall'
       - name: Run benchmark
         run: |
           ./bb ./.github/scripts/benchmark.clj > result.json
