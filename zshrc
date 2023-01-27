@@ -164,7 +164,3 @@ zsh-defer source $HOME/.dotfiles/zshrc.d/zstyle-completions.zsh
 if [ ! -f "$HOME/.zshrc.zwc" -o "$HOME/.zshrc" -nt "$HOME/.zshrc.zwc" ]; then
     zcompile $HOME/.zshrc
 fi
-
-if [ ! -f "$HOME/.zcompdump.zwc" -o "$HOME/.zcompdump" -nt "$HOME/.zcompdump.zwc" ]; then
-    zcompile $HOME/.zcompdump
-fi
