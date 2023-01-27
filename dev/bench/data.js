@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1674832764782,
+  "lastUpdate": 1674833832392,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -101,6 +101,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 387.64910210000005,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d2f169556fe1bbe7236760b8b65761b262e6ea2e",
+          "message": "ci: add workflow_dispatch trigger\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-01-28T00:30:34+09:00",
+          "tree_id": "84fad0ef01b3e07e9b94f189f286baaef2d1d4f9",
+          "url": "https://github.com/rinx/dotfiles/commit/d2f169556fe1bbe7236760b8b65761b262e6ea2e"
+        },
+        "date": 1674833831293,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 97.8959182,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 425.38828799999993,
             "unit": "ms"
           }
         ]
