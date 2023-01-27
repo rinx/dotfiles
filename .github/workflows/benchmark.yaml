@@ -1,0 +1,50 @@
+name: benchmark
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  benchmark:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - name: Generate github token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.GH_APP_ID }}
+          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v3
+      - name: Install neovim
+        run: |
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+          brew install neovim
+          nvim --version
+      - name: Install babashka
+        run: |
+          bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
+          ./bb --version
+      - name: Setup dotfiles
+        run: |
+          make DOTDIR=$(pwd) deploy
+      - name: Run benchmark
+        run: |
+          ./bb ./.github/scripts/benchmark.clj > result.json
+      - name: Dump
+        run: |
+          cat result.json
+      - name: Upload benchmark
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: customSmallerIsBetter
+          output-file-path: result.json
+          gh-pages-branch: gh-pages
+          github-token: ${{ steps.generate_token.outputs.token }}
+          auto-push: true
+          comment-on-alert: true
+          fail-on-alert: false
+          alert-threshold: '150%'
+          alert-comment-cc-users: '@rinx'
