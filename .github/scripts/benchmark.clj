@@ -9,7 +9,7 @@
   "zsh -i -c exit")
 
 (def nvim
-  "nvim --headless -c \"qall\"")
+  "nvim --headless -c 'qall'")
 
 (defmacro time'
   "Returns the time expr took in ms.
