@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1674826554791,
+  "lastUpdate": 1674827572904,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -135,6 +135,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 5176.8064144,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "52864a4a8af5a7b520e96b31f9b2366258d59e5d",
+          "message": "ci: add tsinstall-all\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-01-27T22:48:39+09:00",
+          "tree_id": "bb96f0a193d2a31eafb3016bcefeaf7fc017c51d",
+          "url": "https://github.com/rinx/dotfiles/commit/52864a4a8af5a7b520e96b31f9b2366258d59e5d"
+        },
+        "date": 1674827571421,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 139.6684178,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 4704.6621448000005,
             "unit": "ms"
           }
         ]
