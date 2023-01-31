@@ -48,6 +48,7 @@ yabai -m config external_bar main:20:0
 # rules
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^システム環境設定$" manage=off
+yabai -m rule --add app="^システム設定$" manage=off
 
 yabai -m rule --add app="^Citrix Viewer$" manage=off
 
