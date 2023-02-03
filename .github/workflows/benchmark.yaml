@@ -30,6 +30,9 @@ jobs:
         run: |
           bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
           ./bb --version
+      - name: Install vim-startuptime
+        run: |
+          go install github.com/rhysd/vim-startuptime@latest
       - name: Setup dotfiles
         run: |
           make DOTDIR=$(pwd) deploy

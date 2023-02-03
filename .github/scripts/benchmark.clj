@@ -2,6 +2,7 @@
 
 (ns benchmark
   (:require
+   [clojure.string :as str]
    [babashka.process :as process :refer [shell]]
    [cheshire.core :as json]))
 
@@ -27,6 +28,17 @@
 (defn avg [coll]
   (/ (reduce + coll) (count coll)))
 
+(defn nvim-startuptime [n]
+  (-> (shell {:out :string}
+             "vim-startuptime" "-vimpath" "nvim" "-count" n)
+      :out
+      (str/split-lines)
+      (->> (some #(when
+                    (str/includes? % "Total Average") %))
+           (re-matches #"Total Average: (\d+.\d+) msec"))
+      (second)
+      (Float/parseFloat)))
+
 (print
   (json/generate-string
     [{:name "zsh load time"
@@ -34,7 +46,10 @@
       :value (avg (bench 10 zsh))}
      {:name "neovim load time"
       :unit "ms"
-      :value (avg (bench 10 nvim))}]))
+      :value (avg (bench 10 nvim))}
+     {:name "neovim startup time"
+      :unit "ms"
+      :value (nvim-startuptime 10)}]))
 
 (comment
   (time' (shell zsh))
@@ -44,4 +59,6 @@
   (bench 3 nvim)
 
   (avg (bench 3 zsh))
-  (avg (bench 3 nvim)))
+  (avg (bench 3 nvim))
+
+  (nvim-startuptime 3))
