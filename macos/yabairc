@@ -52,4 +52,6 @@ yabai -m rule --add app="^システム設定$" manage=off
 
 yabai -m rule --add app="^Citrix Viewer$" manage=off
 
+yabai -m rule --add app="^Microsoft Teams Notification$" manage=off
+
 echo "yabai configuration loaded.."
