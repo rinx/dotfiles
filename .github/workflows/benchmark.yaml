@@ -45,6 +45,8 @@ jobs:
           nvim --headless -c 'Lazy! sync' -c 'TSInstallEnsure' -c 'qall'
       - name: Run benchmark
         run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
+
           ./bb ./.github/scripts/benchmark.clj > result.json
       - name: Dump
         run: |
