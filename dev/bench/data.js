@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1675387664583,
+  "lastUpdate": 1675406160278,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -269,6 +269,38 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 360.5499292,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Rintaro Okamura",
+            "username": "rinx",
+            "email": "rintaro.okamura@gmail.com"
+          },
+          "committer": {
+            "name": "Rintaro Okamura",
+            "username": "rinx",
+            "email": "rintaro.okamura@gmail.com"
+          },
+          "id": "8deb59ce693b237c0f6cb71532c489aa70403dca",
+          "message": "config(yabai): add ignore rule for teams notifications\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-02-03T01:21:29Z",
+          "url": "https://github.com/rinx/dotfiles/commit/8deb59ce693b237c0f6cb71532c489aa70403dca"
+        },
+        "date": 1675406159142,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 60.74119999999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 317.88663729999996,
             "unit": "ms"
           }
         ]
