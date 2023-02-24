@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1676912808845,
+  "lastUpdate": 1677201216946,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -574,6 +574,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 260.254,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c5590594a894025274f6142594b3265057e8b54f",
+          "message": "[patch] chore(deps): Bump golang.org/x/text from 0.3.6 to 0.3.8 in /barista (#43)\n\nBumps [golang.org/x/text](https://github.com/golang/text) from 0.3.6 to 0.3.8.\r\n- [Release notes](https://github.com/golang/text/releases)\r\n- [Commits](https://github.com/golang/text/compare/v0.3.6...v0.3.8)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: golang.org/x/text\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2023-02-24T10:07:47+09:00",
+          "tree_id": "61f6fe85ae26078ec753a08336a8e471b5ba4290",
+          "url": "https://github.com/rinx/dotfiles/commit/c5590594a894025274f6142594b3265057e8b54f"
+        },
+        "date": 1677201216038,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 93.1017869,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 260.99919620000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 218.2186,
             "unit": "ms"
           }
         ]
