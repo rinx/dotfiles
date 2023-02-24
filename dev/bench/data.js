@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1677201216946,
+  "lastUpdate": 1677205141318,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -613,6 +613,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 218.2186,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1e9910dce752d6c0bfca6b29deb2b2d9b9881c7a",
+          "message": "chore-deps(barista): upgrade mods\n\n- Closes #44\n- Closes #45\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-02-24T11:10:55+09:00",
+          "tree_id": "8261fa4f582ee8ab80710c9ff17e284077cb7f7b",
+          "url": "https://github.com/rinx/dotfiles/commit/1e9910dce752d6c0bfca6b29deb2b2d9b9881c7a"
+        },
+        "date": 1677205139764,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 134.1629256,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 588.584965,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 234.581,
             "unit": "ms"
           }
         ]
