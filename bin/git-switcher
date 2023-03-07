@@ -26,6 +26,14 @@
     (string/trim-newline
      (:out @proc))))
 
+(defn fzf [ss]
+  (let [proc (p/process ["fzf" "-m"]
+                        {:in (->> ss
+                                  (string/join "\n"))
+                         :err :inherit
+                         :out :string})]
+    (:out @proc)))
+
 (defn set-config [profile]
   (when profile
     (sh "git" "config" "user.name" (:name profile))
@@ -44,7 +52,7 @@
   (-> profiles
       (->> (map (fn [[k v]]
                   (str (name k) " - " (:name v) " (" (:email v) ")"))))
-      (fzy)
+      (fzf)
       (string/split #"\s")
       (first)
       (keyword)

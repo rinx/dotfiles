@@ -28,6 +28,14 @@
     (string/trim-newline
      (:out @proc))))
 
+(defn fzf [ss]
+  (let [proc (p/process ["fzf" "-m"]
+                        {:in (->> ss
+                                  (string/join "\n"))
+                         :err :inherit
+                         :out :string})]
+    (:out @proc)))
+
 (defn set-config [n]
   (when n
     (sh "gcloud" "config" "configurations" "activate" n)
@@ -60,7 +68,7 @@
     (-> entries
         (->> (map (fn [e]
                     (str (:name e) " - " (:project e) " (" (:account e) ")"))))
-        (fzy)
+        (fzf)
         (string/split #"\s")
         (first)
         (set-config))))
