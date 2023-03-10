@@ -33,25 +33,33 @@
    :cpp
    :css
    :cue
+   :diff
    :dockerfile
    :elixir
    :elm
    :erlang
    :fennel
    :fortran
+   :git_rebase
+   :gitattributes
+   :gitcommit
+   :gitignore
    :go
    :gomod
    :graphql
    :hcl
+   :help
    :hjson
    :html
    :http
    :java
    :javascript
+   :jq
    :jsdoc
    :json
    :json5
    :jsonc
+   :jsonnet
    :julia
    :kotlin
    :latex
@@ -59,19 +67,25 @@
    :lua
    :make
    :markdown
+   :mermaid
    :norg
    :norg_meta
    :norg_table
+   :passwd
+   :proto
    :python
    :ql
    :query
    :r
    :regex
+   :rego
    :rst
    :rust
    :scss
    :sparql
-   :tlaplus
+   :sql
+   :teal
+   :terraform
    :toml
    :tsx
    :typescript
