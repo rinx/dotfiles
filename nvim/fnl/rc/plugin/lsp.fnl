@@ -4,10 +4,10 @@
              color rc.color
              icon rc.icon
              lsp lspconfig
-             lsp-configs lspconfig/configs
+             lsp-configs lspconfig.configs
              lsp-signature lsp_signature
              lsp-lines lsp_lines
-             lsputil lspconfig/util
+             lsputil lspconfig.util
              schemastore schemastore
              rust-tools rust-tools
              dressing dressing
@@ -52,6 +52,16 @@
 (def- default-options
   {:on_attach on-attach
    :capabilities capabilities})
+
+(when (not lsp-configs.regols)
+  (tset lsp-configs
+        :regols
+        {:default_config
+         {:cmd [:regols]
+          :filetypes [:rego]
+          :root_dir (lsputil.root_pattern ".git")
+          :init_options {:command [:regols]}}}))
+(lsp.regols.setup (core.merge default-options {}))
 
 (lsp.bashls.setup (core.merge default-options {}))
 (lsp.bufls.setup (core.merge default-options {}))
