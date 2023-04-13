@@ -224,6 +224,7 @@ ifeq ($(UNAME),Darwin)
 .PHONY: macos
 macos: \
 	yabairc \
+	sketchybar \
 	skhdrc
 	@$(call green, "macos-deploy")
 else
@@ -237,6 +238,12 @@ yabairc: $(HOME)/.yabairc
 $(HOME)/.yabairc:
 	@$(call cyan, "--\> .yabairc")
 	ln -s $(DOTDIR)/macos/yabairc $(HOME)/.yabairc
+
+.PHONY: sketchybar
+sketchybar: $(HOME)/.config/sketchybar
+$(HOME)/.config/sketchybar:
+	@$(call cyan, "--\> $(HOME)/.config/sketchybar")
+	ln -s $(DOTDIR)/macos/sketchybar $(HOME)/.config/sketchybar
 
 .PHONY: skhdrc
 skhdrc: $(HOME)/.skhdrc

@@ -1,0 +1,69 @@
+source "$HOME/.config/sketchybar/colors.sh"
+source "$HOME/.config/sketchybar/icons.sh"
+
+ITEM_DIR="$HOME/.config/sketchybar/items"
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+FONT="JetBrainsMono Nerd Font"
+SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null"
+
+PADDINGS=3
+
+POPUP_BORDER_WIDTH=1
+POPUP_CORNER_RADIUS=5
+
+SHADOW=off
+
+sketchybar \
+    --bar \
+    height=28 \
+    color=$BAR_COLOR \
+    shadow=$SHADOW \
+    position=top \
+    sticky=on \
+    y_offset=8 \
+    padding_right=21 \
+    padding_left=21 \
+    corner_radius=5 \
+    margin=28 \
+    blur_radius=0 \
+    notch_width=0 \
+    \
+    --default \
+    updates=when_shown \
+    icon.font="$FONT:Bold:14.0" \
+    icon.color=$ICON_COLOR \
+    icon.padding_left=$PADDINGS \
+    icon.padding_right=$PADDINGS \
+    label.font="$FONT:Semibold:13.0" \
+    label.color=$LABEL_COLOR \
+    label.padding_left=$PADDINGS \
+    label.padding_right=$PADDINGS \
+    background.padding_right=$PADDINGS \
+    background.padding_left=$PADDINGS \
+    popup.background.border_width=$POPUP_BORDER_WIDTH \
+    popup.background.corner_radius=$POPUP_CORNER_RADIUS \
+    popup.background.border_color=$POPUP_BORDER_COLOR \
+    popup.background.color=$POPUP_BACKGROUND_COLOR \
+    popup.background.shadow.drawing=$SHADOW
+
+# Left
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/front_app.sh"
+
+# Center
+
+# Right
+source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/mic.sh"
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/net.sh"
+source "$ITEM_DIR/network.sh"
+source "$ITEM_DIR/kubectx.sh"
+source "$ITEM_DIR/gcloud.sh"
+source "$ITEM_DIR/github.sh"
+
+sketchybar --update
+
+# vim: set ft=bash:
