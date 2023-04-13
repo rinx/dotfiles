@@ -21,7 +21,7 @@ sketchybar \
     shadow=$SHADOW \
     position=top \
     sticky=on \
-    y_offset=8 \
+    y_offset=5 \
     padding_right=21 \
     padding_left=21 \
     corner_radius=5 \
