@@ -25,7 +25,7 @@ sketchybar \
     padding_right=21 \
     padding_left=21 \
     corner_radius=5 \
-    margin=28 \
+    margin=14 \
     blur_radius=0 \
     notch_width=0 \
     \
