@@ -13,9 +13,11 @@ if [ "$AIRPORT" = "Off" ]; then
                             label.padding_right=2
 elif [ -z "$LABEL" ]; then
     sketchybar -m --set net icon=$WIFI_DISCONNECTED \
+                            icon.color=$ORANGE \
                             label.padding_right=2
 else
     sketchybar -m --set net icon=$WIFI_CONNECTED \
+                            icon.color=$CREAM \
                             label.padding_right=4
 fi
 

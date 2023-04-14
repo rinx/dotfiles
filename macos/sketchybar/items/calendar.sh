@@ -5,12 +5,12 @@ sketchybar \
     --set time update_freq=2 \
     icon.padding_right=0 \
     label.padding_left=0 \
-    label.color=$WHITE \
+    label.color=$CREAM \
     script="$PLUGIN_DIR/time.sh" \
     \
     --add item date right \
     --set date update_freq=60 \
-    background.color=$WHITE \
+    background.color=$CREAM \
     label.color=$BLACK \
     label.font="$FONT:Medium:12.0" \
     icon.padding_right=0 \

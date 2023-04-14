@@ -6,7 +6,7 @@ sketchybar \
     update_freq=5 \
     label.font="$FONT:Regular:12.0" \
     icon.font="$FONT:Medium:14.0" \
-    label.color=$WHITE \
-    icon.color=$WHITE \
+    label.color=$CREAM \
+    icon.color=$CREAM \
     label.padding_right=8 \
     --subscribe battery system_woke

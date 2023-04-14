@@ -8,7 +8,7 @@ sketchybar \
     label.drawing=off \
     icon.width=30 \
     icon=$YABAI_GRID \
-    icon.color=$WHITE \
+    icon.color=$CREAM \
     icon.padding_left=10 \
     updates=on \
     associated_display=active \
@@ -20,6 +20,6 @@ sketchybar \
     background.padding_left=0 \
     background.padding_right=10 \
     label.font="$FONT:Bold:13.0" \
-    label.color=$WHITE \
+    label.color=$CREAM \
     associated_display=active \
     --subscribe front_app front_app_switched

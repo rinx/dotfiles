@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+source "$HOME/.config/sketchybar/colors.sh"
 source "$HOME/.config/sketchybar/icons.sh"
 
 NOTIFICATIONS="$(gh api notifications)"
@@ -17,7 +18,7 @@ fi
 args+=(--remove '/github.notification\.*/')
 
 COUNT=0
-COLOR=0xffe1e3e4
+COLOR=$CREAM
 args+=(--set github.bell icon.color=$COLOR)
 
 while read -r repo url type title 
