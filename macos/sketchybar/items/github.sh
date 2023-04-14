@@ -7,5 +7,6 @@ sketchybar \
     icon=$GITHUB_ICON \
     icon.font="$FONT:Medium:18.0" \
     label=$LOADING \
+    label.font="$FONT:Medium:12.0" \
     script="$PLUGIN_DIR/github_notifications.sh" \
     click_script="sketchybar --set \$NAME popup.drawing=toggle"

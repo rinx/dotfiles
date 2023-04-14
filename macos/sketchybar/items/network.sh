@@ -3,6 +3,7 @@
 sketchybar \
     --add item network right \
     --set network label.font="$FONT:Medium:12.0" \
+    label.font="$FONT:Medium:12.0" \
     label.padding_right=4 \
     icon.font="$FONT:Medium:18.0" \
     label.padding_right=4 \

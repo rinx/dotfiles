@@ -6,6 +6,7 @@ sketchybar \
     icon.padding_right=0 \
     label.padding_left=0 \
     label.color=$CREAM \
+    label.font="$FONT:Medium:12.0" \
     script="$PLUGIN_DIR/time.sh" \
     \
     --add item date right \
