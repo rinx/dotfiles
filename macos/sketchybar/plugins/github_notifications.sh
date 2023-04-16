@@ -18,7 +18,7 @@ fi
 args+=(--remove '/github.notification\.*/')
 
 COUNT=0
-COLOR=$CREAM
+COLOR=$BLACK
 args+=(--set github.bell icon.color=$COLOR)
 
 while read -r repo url type title 
