@@ -12,9 +12,6 @@ else
   args+=(--set $NAME icon="$GITHUB_ICON" label="$COUNT")
 fi
 
-# For sound to play around with:
-# afplay /System/Library/Sounds/Morse.aiff
-
 args+=(--remove '/github.notification\.*/')
 
 COUNT=0

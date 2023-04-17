@@ -62,6 +62,7 @@ source "$ITEM_DIR/net.sh"
 source "$ITEM_DIR/network.sh"
 source "$ITEM_DIR/kubectx.sh"
 source "$ITEM_DIR/gcloud.sh"
+source "$ITEM_DIR/github_pr.sh"
 source "$ITEM_DIR/github.sh"
 
 sketchybar --update
