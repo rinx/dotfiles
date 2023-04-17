@@ -32,6 +32,8 @@ do
     ;;
     "'Discussion'") COLOR=0xffe1e3e4; ICON="$DISCUSSION_ICON"; PADDING=0; URL="https://github.com/notifications"
     ;;
+    "'CheckSuite'") COLOR=0xff9dd274; ICON="$CHECK_ICON"; PADDING=0; URL="https://github.com/notifications"
+    ;;
     "'PullRequest'") COLOR=0xffba9cf3; ICON="$PULLREQ_ICON"; PADDING=4; URL="$(gh api "$(echo "${url}" | sed -e "s/^'//" -e "s/'$//")" | jq .html_url)"
     ;;
   esac
