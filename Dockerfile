@@ -6,7 +6,7 @@
 ## ---  {:name "BUF_VERSION"
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
-ARG CLOJURE_LSP_VERSION=2023.02.27-13.12.12
+ARG CLOJURE_LSP_VERSION=2023.04.19-12.43.29
 ARG RUST_ANALYZER_VERSION=2023-04-17
 ARG BUF_VERSION=v1.9.0
 
