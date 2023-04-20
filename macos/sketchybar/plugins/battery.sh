@@ -25,4 +25,4 @@ if [[ $CHARGING != "" ]]; then
     ICON=$BATTERY_CHARGING
 fi
 
-sketchybar --set $NAME label="${PERCENTAGE}%" icon.padding_right=-2 icon="$ICON"
+sketchybar --set $NAME label="${PERCENTAGE}%" icon="$ICON"
