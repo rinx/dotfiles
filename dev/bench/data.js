@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1681923956368,
+  "lastUpdate": 1682036555778,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -1627,6 +1627,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 263.1462,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "de36a524522e316dee227e04d7e89aaff84e26c6",
+          "message": "config(sketchybar): remove unused padding\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-04-20T14:40:54+09:00",
+          "tree_id": "48efdf70079c2f9c937b5d85b27df7c21c0fd38c",
+          "url": "https://github.com/rinx/dotfiles/commit/de36a524522e316dee227e04d7e89aaff84e26c6"
+        },
+        "date": 1682036554895,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 69.3394001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 263.21347819999994,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 253.5018,
             "unit": "ms"
           }
         ]
