@@ -3,6 +3,7 @@
 # Color Palette
 DARKER_BLACK=0xff0a0d11
 BLACK=0xff101317
+TRANSPARENT_BLACK=0xb3000000
 WHITE=0xffd4d4d5
 RED=0xfff87070
 GREEN=0xff37d99e
@@ -17,7 +18,7 @@ TRANSPARENT=0x00000000
 CREAM=0xfff5ead5
 
 # General bar colors
-BAR_COLOR=$BLACK # Black bar
+BAR_COLOR=$TRANSPARENT_BLACK
 ICON_COLOR=$CREAM # Color of all icons
 LABEL_COLOR=$CREAM # Color of all labels
 
