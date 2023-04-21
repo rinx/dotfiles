@@ -19,7 +19,7 @@
 ## ---   :tx "(fn [x] (-> x (string/replace #\"ci_\" \"v\") (string/replace #\"_.*\" \"\")))"}]
 
 BAT_VERSION := v0.23.0
-BB_VERSION := 1.3.176
+BB_VERSION := 1.3.178
 DELTA_VERSION := 0.15.1
 EXA_VERSION := v0.10.1
 FD_VERSION := v8.7.0
