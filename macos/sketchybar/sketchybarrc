@@ -1,8 +1,11 @@
+PATH=$PATH:$HOME/.bin
+
 source "$HOME/.config/sketchybar/colors.sh"
 source "$HOME/.config/sketchybar/icons.sh"
 
 ITEM_DIR="$HOME/.config/sketchybar/items"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+BB_ITEM_DIR="$HOME/.config/sketchybar/rc/target/items"
 
 FONT="JetBrainsMono Nerd Font"
 
@@ -54,7 +57,8 @@ source "$ITEM_DIR/front_app.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/battery.sh"
+# source "$ITEM_DIR/battery.sh"
+bb  $BB_ITEM_DIR/battery.jar
 source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/net.sh"

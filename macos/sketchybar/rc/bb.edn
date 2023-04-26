@@ -1,0 +1,38 @@
+{:paths ["src"]
+ :min-bb-version "1.0.0"
+ :tasks {:requires ([babashka.fs :as fs])
+         :init (do
+                (def target-dir "target")
+                (def items-dir (str target-dir "/items"))
+                (def plugins-dir (str target-dir "/plugins")))
+         -target (do
+                  (fs/create-dirs target-dir)
+                  (fs/create-dirs items-dir)
+                  (fs/create-dirs plugins-dir))
+         build (run '-build {:parallel true})
+         -build {:depends [build:item:battery
+                           build:plugin:battery]}
+         build:item:battery {:depends [-target]
+                             :task (shell
+                                     (str "bb uberjar "
+                                          items-dir
+                                          "/battery.jar -m items.battery"))}
+         build:plugin:battery {:depends [-target]
+                               :task (shell
+                                       (str "bb uberjar "
+                                            plugins-dir
+                                            "/battery.jar -m plugins.battery"))}
+         build-ubs {:requires ([carve.api :as carve])
+                    :extra-deps {io.github.borkdude/carve
+                                 {:git/url "https://github.com/borkdude/carve"
+                                  :git/sha "14a3a5db4b372e33d20763a8d1344bddae72c735"}}
+                    :depends [-target]
+                    :task (do
+                           (shell
+                             (str "bb uberscript "
+                                  plugins-dir
+                                  "/battery.clj -f src/plugins/battery.clj"))
+                           (carve/carve!
+                             {:paths [(str plugins-dir "/battery.clj")]
+                              :aggressive true
+                              :silent true}))}}}

@@ -1,2 +1,4 @@
 .clj-kondo
 tools/textlint/.cache
+
+macos/sketchybar/rc/target
