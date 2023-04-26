@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1682355940904,
+  "lastUpdate": 1682512952685,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -1783,6 +1783,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 235.718,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "dd07624743f1209f8b4d0120487538f7576e9cbf",
+          "message": "config(nvim-tree): update keymappings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-04-26T21:36:47+09:00",
+          "tree_id": "773af20e51f4d02c4fd4b89d10cde880951bd3aa",
+          "url": "https://github.com/rinx/dotfiles/commit/dd07624743f1209f8b4d0120487538f7576e9cbf"
+        },
+        "date": 1682512950728,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 74.8743887,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 330.7051368000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 288.5002,
             "unit": "ms"
           }
         ]
