@@ -20,38 +20,42 @@
               :folder {:default icontab.folder
                        :open icontab.folder-open}}})
 
-(def- mappings
-  [{:key [:<CR> :o :<2-LeftMouse>] :cb (cb :edit)}
-   {:key [:<2-RightMouse> "<C-]>"] :cb (cb :cd)}
-   {:key :<C-v> :cb (cb :vsplit)}
-   {:key :<C-x> :cb (cb :split)}
-   {:key :<C-t> :cb (cb :tabnew)}
-   {:key "<" :cb (cb :prev_sibling)}
-   {:key ">" :cb (cb :next_sibling)}
-   {:key :P :cb (cb :parent_node)}
-   {:key :<BS> :cb (cb :close_node)}
-   {:key :<S-CR> :cb (cb :close_node)}
-   {:key :<Tab> :cb (cb :preview)}
-   {:key :K :cb (cb :first_sibling)}
-   {:key :J :cb (cb :last_sibling)}
-   {:key :I :cb (cb :toggle_ignored)}
-   {:key :H :cb (cb :toggle_dotfiles)}
-   {:key :R :cb (cb :refresh)}
-   {:key :a :cb (cb :create)}
-   {:key :d :cb (cb :remove)}
-   {:key :r :cb (cb :rename)}
-   {:key :<C-r> :cb (cb :full_rename)}
-   {:key :x :cb (cb :cut)}
-   {:key :c :cb (cb :copy)}
-   {:key :p :cb (cb :paste)}
-   {:key :y :cb (cb :copy_name)}
-   {:key :Y :cb (cb :copy_path)}
-   {:key :gy :cb (cb :copy_absolute_path)}
-   {:key "[c" :cb (cb :prev_git_item)}
-   {:key "]c" :cb (cb :next_git_item)}
-   {:key :- :cb (cb :dir_up)}
-   {:key :q :cb (cb :close)}
-   {:key :g? :cb (cb :toggle_help)}])
+(defn on-attach [bufnr]
+  (let [api (require :nvim-tree.api)
+        opts (fn [desc]
+               {:desc (.. "nvim-tree: " desc)
+                :buffer bufnr
+                :noremap true
+                :silent true
+                :nowait true})]
+    (vim.keymap.set :n :<CR> api.node.open.edit (opts "Open"))
+    (vim.keymap.set :n "<C-]>" api.tree.change_root_to_node (opts "CD"))
+    (vim.keymap.set :n :<C-v> api.node.open.vertical (opts "Open: Vertical"))
+    (vim.keymap.set :n :<C-x> api.node.open.horizontal (opts "Open: Horizontal"))
+    (vim.keymap.set :n "<" api.node.navigate.sibling.prev (opts "Previous Sibling"))
+    (vim.keymap.set :n ">" api.node.navigate.sibling.next (opts "Next Sibling"))
+    (vim.keymap.set :n :P api.node.navigate.parent (opts "Parent Directory"))
+    (vim.keymap.set :n :<BS> api.node.navigate.parent_close (opts "Close Directory"))
+    (vim.keymap.set :n :<S-CR> api.node.navigate.parent_close (opts "Close Directory"))
+    (vim.keymap.set :n :<Tab> api.node.open.preview (opts "Open Preview"))
+    (vim.keymap.set :n :gg api.node.navigate.sibling.first (opts "First Sibling"))
+    (vim.keymap.set :n :G api.node.navigate.sibling.last (opts "Last Sibling"))
+    (vim.keymap.set :n :I api.tree.toggle_gitignore_filter (opts "Toggle Git Ignore"))
+    (vim.keymap.set :n :H api.tree.toggle_hidden_filter (opts "Toggle Dotfiles"))
+    (vim.keymap.set :n :R api.tree.reload (opts "Refresh"))
+    (vim.keymap.set :n :a api.fs.create (opts "Create"))
+    (vim.keymap.set :n :d api.fs.remove (opts "Delete"))
+    (vim.keymap.set :n :r api.fs.rename (opts "Rename"))
+    (vim.keymap.set :n :<C-r> api.fs.rename_sub (opts "Rename: Omit Filename"))
+    (vim.keymap.set :n :x api.fs.cut (opts "Cut"))
+    (vim.keymap.set :n :c api.fs.copy.node (opts "Copy"))
+    (vim.keymap.set :n :p api.fs.paste (opts "Paste"))
+    (vim.keymap.set :n :y api.fs.copy.filename (opts "Copy Name"))
+    (vim.keymap.set :n :Y api.fs.copy.relative_path (opts "Copy Relative Path"))
+    (vim.keymap.set :n :gy api.fs.copy.absolute_path (opts "Copy Absolute Path"))
+    (vim.keymap.set :n :- api.tree.change_root_to_parent (opts "Up"))
+    (vim.keymap.set :n :q api.tree.close (opts "Close"))
+    (vim.keymap.set :n :? api.tree.toggle_help (opts "Help"))))
 
 (noremap! [:n] :<leader>t ":<C-u>NvimTreeToggle<CR>" :silent)
 
@@ -64,6 +68,5 @@
    :renderer {:icons icons}
    :respect_buf_cwd true
    :view {:width 30
-          :side :left
-          :mappings {:custom_only true
-                     :list mappings}}})
+          :side :left}
+   :on_attach on-attach})
