@@ -1,4 +1,4 @@
-(ns command
+(ns common
   (:require
    [babashka.process :refer [shell]]
    [clojure.java.io :as io]))
@@ -14,10 +14,9 @@
   (-> (io/file home ".config" "sketchybar" "rc" "target" "plugins")
       (.getPath)))
 
+(defn plugin-script [filename]
+  (str bb-path " " plugins-dir "/" filename))
+
 (defn sh [& cmds]
   (-> (apply shell {:out :string} cmds)
       :out))
-
-(defn sketchybar [& args]
-  (apply shell "sketchybar" args))
-

@@ -1,8 +1,9 @@
 (ns plugins.battery
   (:require
    [clojure.string :as str]
-   [command :as command]
-   [icons :as icons]))
+   [sketchybar]
+   [common]
+   [icons]))
 
 (defn ->icon [percentage charging]
   (->> (if charging
@@ -16,7 +17,7 @@
        (icons/get :battery)))
 
 (defn -main [& args]
-  (let [info (command/sh "pmset" "-g" "batt")
+  (let [info (common/sh "pmset" "-g" "batt")
         percentage (-> info
                        (->> (re-matcher #"\d+%")
                             (re-find))
@@ -29,10 +30,9 @@
     (if (nil? percentage)
       nil
       (let [icon (->icon percentage charging)]
-        (command/sketchybar
-         "--set" (System/getenv "NAME")
-         (str "label=" percentage "%")
-         (str "icon=" icon ""))))))
+        (sketchybar/exec
+         (sketchybar/set (System/getenv "NAME") {:label (str percentage "%")
+                                                 :icon icon}))))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))
