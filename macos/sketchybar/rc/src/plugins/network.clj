@@ -1,7 +1,6 @@
 (ns plugins.network
   (:require
    [clojure.string :as str]
-   [clojure.walk :as walk]
    [sketchybar]
    [common]
    [icons]))

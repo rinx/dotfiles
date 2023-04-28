@@ -14,6 +14,7 @@
          build (run '-build {:parallel true})
          -build {:depends [build:item:battery
                            build:item:date
+                           build:item:kubectx
                            build:item:mic
                            build:item:network
                            build:item:time
@@ -21,6 +22,7 @@
                            build:item:wifi
                            build:plugin:battery
                            build:plugin:date
+                           build:plugin:kubectx
                            build:plugin:mic
                            build:plugin:network
                            build:plugin:time
@@ -36,6 +38,11 @@
                                   (str "bb uberjar "
                                        items-dir
                                        "/date.jar -m items.date"))}
+         build:item:kubectx {:depends [-target]
+                             :task (shell
+                                     (str "bb uberjar "
+                                          items-dir
+                                          "/kubectx.jar -m items.kubectx"))}
          build:item:mic {:depends [-target]
                          :task (shell
                                  (str "bb uberjar "
@@ -71,6 +78,11 @@
                                     (str "bb uberjar "
                                          plugins-dir
                                          "/date.jar -m plugins.date"))}
+         build:plugin:kubectx {:depends [-target]
+                               :task (shell
+                                       (str "bb uberjar "
+                                            plugins-dir
+                                            "/kubectx.jar -m plugins.kubectx"))}
          build:plugin:mic {:depends [-target]
                            :task (shell
                                    (str "bb uberjar "
