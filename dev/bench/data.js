@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1682604310992,
+  "lastUpdate": 1682685678126,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -1939,6 +1939,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 293.6086,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "af5053a814a12e32efd1076bde2a589aa04dac56",
+          "message": "config(sketchybarrc): use bb for mic and volume providers\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-04-28T21:34:52+09:00",
+          "tree_id": "c5ef838b224054cb46cea66f9695e384c5c996dd",
+          "url": "https://github.com/rinx/dotfiles/commit/af5053a814a12e32efd1076bde2a589aa04dac56"
+        },
+        "date": 1682685676216,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 76.59698,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 331.59094810000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 274.4706,
             "unit": "ms"
           }
         ]
