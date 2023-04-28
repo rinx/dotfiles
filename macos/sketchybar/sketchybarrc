@@ -56,7 +56,9 @@ source "$ITEM_DIR/front_app.sh"
 # Center
 
 # Right
-source "$ITEM_DIR/calendar.sh"
+# source "$ITEM_DIR/calendar.sh"
+bb  $BB_ITEM_DIR/time.jar
+bb  $BB_ITEM_DIR/date.jar
 # source "$ITEM_DIR/battery.sh"
 bb  $BB_ITEM_DIR/battery.jar
 source "$ITEM_DIR/mic.sh"

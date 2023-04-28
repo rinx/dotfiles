@@ -1,5 +1,6 @@
 {:paths ["src"]
- :deps {camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.3"}}
+ :deps {camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.3"}
+        tick/tick {:mvn/version "0.6.0"}}
  :min-bb-version "1.0.0"
  :tasks {:requires ([babashka.fs :as fs])
          :init (do
@@ -12,17 +13,41 @@
                   (fs/create-dirs plugins-dir))
          build (run '-build {:parallel true})
          -build {:depends [build:item:battery
-                           build:plugin:battery]}
+                           build:item:date
+                           build:item:time
+                           build:plugin:battery
+                           build:plugin:date
+                           build:plugin:time]}
          build:item:battery {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "
                                           items-dir
                                           "/battery.jar -m items.battery"))}
+         build:item:date {:depends [-target]
+                          :task (shell
+                                  (str "bb uberjar "
+                                       items-dir
+                                       "/date.jar -m items.date"))}
+         build:item:time {:depends [-target]
+                          :task (shell
+                                   (str "bb uberjar "
+                                        items-dir
+                                       "/time.jar -m items.time"))}
          build:plugin:battery {:depends [-target]
                                :task (shell
                                        (str "bb uberjar "
                                             plugins-dir
                                             "/battery.jar -m plugins.battery"))}
+         build:plugin:date {:depends [-target]
+                            :task (shell
+                                    (str "bb uberjar "
+                                         plugins-dir
+                                         "/date.jar -m plugins.date"))}
+         build:plugin:time {:depends [-target]
+                            :task (shell
+                                    (str "bb uberjar "
+                                         plugins-dir
+                                         "/time.jar -m plugins.time"))}
          build-ubs {:requires ([carve.api :as carve])
                     :extra-deps {io.github.borkdude/carve
                                  {:git/url "https://github.com/borkdude/carve"
