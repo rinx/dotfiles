@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1682695530584,
+  "lastUpdate": 1682696601381,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2056,6 +2056,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 287.0798,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "14cdc7a0f56c60b5021c04c33b38277910e372ef",
+          "message": "config(sketchybar): use bb for gcloud indicator provider\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-04-29T00:38:06+09:00",
+          "tree_id": "b511e32f174596e134e674ab78c6f0277e0416f8",
+          "url": "https://github.com/rinx/dotfiles/commit/14cdc7a0f56c60b5021c04c33b38277910e372ef"
+        },
+        "date": 1682696600199,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 69.3472335,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 300.0482591,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 257.171,
             "unit": "ms"
           }
         ]
