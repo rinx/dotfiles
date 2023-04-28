@@ -71,7 +71,8 @@ bb $BB_ITEM_DIR/wifi.jar
 bb $BB_ITEM_DIR/network.jar
 # source "$ITEM_DIR/kubectx.sh"
 bb $BB_ITEM_DIR/kubectx.jar
-source "$ITEM_DIR/gcloud.sh"
+# source "$ITEM_DIR/gcloud.sh"
+bb $BB_ITEM_DIR/gcloud.jar
 source "$ITEM_DIR/github_pr.sh"
 source "$ITEM_DIR/github.sh"
 

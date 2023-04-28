@@ -14,6 +14,7 @@
          build (run '-build {:parallel true})
          -build {:depends [build:item:battery
                            build:item:date
+                           build:item:gcloud
                            build:item:kubectx
                            build:item:mic
                            build:item:network
@@ -22,6 +23,7 @@
                            build:item:wifi
                            build:plugin:battery
                            build:plugin:date
+                           build:plugin:gcloud
                            build:plugin:kubectx
                            build:plugin:mic
                            build:plugin:network
@@ -38,6 +40,11 @@
                                   (str "bb uberjar "
                                        items-dir
                                        "/date.jar -m items.date"))}
+         build:item:gcloud {:depends [-target]
+                            :task (shell
+                                    (str "bb uberjar "
+                                         items-dir
+                                         "/gcloud.jar -m items.gcloud"))}
          build:item:kubectx {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "
@@ -78,6 +85,11 @@
                                     (str "bb uberjar "
                                          plugins-dir
                                          "/date.jar -m plugins.date"))}
+         build:plugin:gcloud {:depends [-target]
+                              :task (shell
+                                      (str "bb uberjar "
+                                           plugins-dir
+                                           "/gcloud.jar -m plugins.gcloud"))}
          build:plugin:kubectx {:depends [-target]
                                :task (shell
                                        (str "bb uberjar "
