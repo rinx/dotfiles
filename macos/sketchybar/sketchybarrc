@@ -65,8 +65,10 @@ bb $BB_ITEM_DIR/battery.jar
 bb $BB_ITEM_DIR/mic.jar
 # source "$ITEM_DIR/volume.sh"
 bb $BB_ITEM_DIR/volume.jar
-source "$ITEM_DIR/net.sh"
-source "$ITEM_DIR/network.sh"
+# source "$ITEM_DIR/net.sh"
+bb $BB_ITEM_DIR/wifi.jar
+# source "$ITEM_DIR/network.sh"
+bb $BB_ITEM_DIR/network.jar
 source "$ITEM_DIR/kubectx.sh"
 source "$ITEM_DIR/gcloud.sh"
 source "$ITEM_DIR/github_pr.sh"

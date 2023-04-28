@@ -15,13 +15,17 @@
          -build {:depends [build:item:battery
                            build:item:date
                            build:item:mic
+                           build:item:network
                            build:item:time
                            build:item:volume
+                           build:item:wifi
                            build:plugin:battery
                            build:plugin:date
                            build:plugin:mic
+                           build:plugin:network
                            build:plugin:time
-                           build:plugin:volume]}
+                           build:plugin:volume
+                           build:plugin:wifi]}
          build:item:battery {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "
@@ -37,6 +41,11 @@
                                  (str "bb uberjar "
                                       items-dir
                                       "/mic.jar -m items.mic"))}
+         build:item:network {:depends [-target]
+                             :task (shell
+                                     (str "bb uberjar "
+                                          items-dir
+                                          "/network.jar -m items.network"))}
          build:item:time {:depends [-target]
                           :task (shell
                                    (str "bb uberjar "
@@ -47,6 +56,11 @@
                                      (str "bb uberjar "
                                           items-dir
                                          "/volume.jar -m items.volume"))}
+         build:item:wifi {:depends [-target]
+                          :task (shell
+                                   (str "bb uberjar "
+                                        items-dir
+                                       "/wifi.jar -m items.wifi"))}
          build:plugin:battery {:depends [-target]
                                :task (shell
                                        (str "bb uberjar "
@@ -62,6 +76,11 @@
                                    (str "bb uberjar "
                                         plugins-dir
                                         "/mic.jar -m plugins.mic"))}
+         build:plugin:network {:depends [-target]
+                               :task (shell
+                                       (str "bb uberjar "
+                                            plugins-dir
+                                            "/network.jar -m plugins.network"))}
          build:plugin:time {:depends [-target]
                             :task (shell
                                     (str "bb uberjar "
@@ -72,6 +91,11 @@
                                       (str "bb uberjar "
                                            plugins-dir
                                            "/volume.jar -m plugins.volume"))}
+         build:plugin:wifi {:depends [-target]
+                            :task (shell
+                                    (str "bb uberjar "
+                                         plugins-dir
+                                         "/wifi.jar -m plugins.wifi"))}
          build-ubs {:requires ([carve.api :as carve])
                     :extra-deps {io.github.borkdude/carve
                                  {:git/url "https://github.com/borkdude/carve"
