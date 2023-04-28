@@ -14,10 +14,14 @@
          build (run '-build {:parallel true})
          -build {:depends [build:item:battery
                            build:item:date
+                           build:item:mic
                            build:item:time
+                           build:item:volume
                            build:plugin:battery
                            build:plugin:date
-                           build:plugin:time]}
+                           build:plugin:mic
+                           build:plugin:time
+                           build:plugin:volume]}
          build:item:battery {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "
@@ -28,11 +32,21 @@
                                   (str "bb uberjar "
                                        items-dir
                                        "/date.jar -m items.date"))}
+         build:item:mic {:depends [-target]
+                         :task (shell
+                                 (str "bb uberjar "
+                                      items-dir
+                                      "/mic.jar -m items.mic"))}
          build:item:time {:depends [-target]
                           :task (shell
                                    (str "bb uberjar "
                                         items-dir
                                        "/time.jar -m items.time"))}
+         build:item:volume {:depends [-target]
+                            :task (shell
+                                     (str "bb uberjar "
+                                          items-dir
+                                         "/volume.jar -m items.volume"))}
          build:plugin:battery {:depends [-target]
                                :task (shell
                                        (str "bb uberjar "
@@ -43,11 +57,21 @@
                                     (str "bb uberjar "
                                          plugins-dir
                                          "/date.jar -m plugins.date"))}
+         build:plugin:mic {:depends [-target]
+                           :task (shell
+                                   (str "bb uberjar "
+                                        plugins-dir
+                                        "/mic.jar -m plugins.mic"))}
          build:plugin:time {:depends [-target]
                             :task (shell
                                     (str "bb uberjar "
                                          plugins-dir
                                          "/time.jar -m plugins.time"))}
+         build:plugin:volume {:depends [-target]
+                              :task (shell
+                                      (str "bb uberjar "
+                                           plugins-dir
+                                           "/volume.jar -m plugins.volume"))}
          build-ubs {:requires ([carve.api :as carve])
                     :extra-deps {io.github.borkdude/carve
                                  {:git/url "https://github.com/borkdude/carve"
