@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1682690393867,
+  "lastUpdate": 1682695530584,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2017,6 +2017,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 298.2234,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "826322c0039b03bc4bdfc29a525f590f05b62c1e",
+          "message": "config(sketchybar): use bb for kubectx indicator provider\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-04-29T00:20:28+09:00",
+          "tree_id": "97e52faef271c5fa99fc58fcc7d84d0408f8d80d",
+          "url": "https://github.com/rinx/dotfiles/commit/826322c0039b03bc4bdfc29a525f590f05b62c1e"
+        },
+        "date": 1682695529028,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 80.66196289999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 409.1304262,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 287.0798,
             "unit": "ms"
           }
         ]
