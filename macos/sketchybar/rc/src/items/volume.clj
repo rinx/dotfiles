@@ -19,8 +19,7 @@
      :icon.font (fonts/get :Medium 12.0)
      :label.color (colors/get :black)
      :label.font (fonts/get :Medium 12.0)})
-   (sketchybar/subscribe :volume :volume_change)
-   (sketchybar/subscribe :volume :mouse.clicked)))
+   (sketchybar/subscribe :volume :volume_change :mouse.clicked)))
 
 (defn -main [& args]
   (setup))

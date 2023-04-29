@@ -19,7 +19,7 @@
      :icon.font (fonts/get :Medium 14.0)
      :label.color (colors/get :black)
      :label.font (fonts/get :Medium 12.0)})
-   (sketchybar/subscribe :battery :system_woke)))
+   (sketchybar/subscribe :battery :power_source_change :system_woke)))
 
 (defn -main [& args]
   (setup))

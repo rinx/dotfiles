@@ -18,7 +18,8 @@
      :icon.color (colors/get :black)
      :icon.font (fonts/get :Medium 12.0)
      :label.color (colors/get :black)
-     :label.font (fonts/get :Medium 12.0)})))
+     :label.font (fonts/get :Medium 12.0)})
+   (sketchybar/subscribe :wifi :wifi_change)))
 
 (defn -main [& args]
   (setup))
