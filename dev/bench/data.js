@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1682731777191,
+  "lastUpdate": 1682773266696,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2134,6 +2134,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 271.8689,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "213942dbc047fc85f31a72e99c480bd5ad9e5eb0",
+          "message": "remove(sketchybar): remove useless scripts\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-04-29T21:54:18+09:00",
+          "tree_id": "f6fac5689d8c85996c5cca2c661a634c8b9c08cc",
+          "url": "https://github.com/rinx/dotfiles/commit/213942dbc047fc85f31a72e99c480bd5ad9e5eb0"
+        },
+        "date": 1682773265679,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 85.6389597,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 338.9309511999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 264.4672,
             "unit": "ms"
           }
         ]
