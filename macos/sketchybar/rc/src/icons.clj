@@ -29,6 +29,7 @@
             :exclamation ""
             :check ""}
    :info "󰋼"
+   :beer ""
    :gcloud ""
    :k8s "⎈"})
 

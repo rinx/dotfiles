@@ -3,6 +3,7 @@
    [colors]
    [fonts]
    [items.battery :as battery]
+   [items.brew :as brew]
    [items.date :as date]
    [items.front-app :as front-app]
    [items.gcloud :as gcloud]
@@ -69,7 +70,8 @@
   (kubectx/setup)
   (gcloud/setup)
   (pr/setup)
-  (github/setup))
+  (github/setup)
+  (brew/setup))
 
 (defn -main [& args]
   (init)

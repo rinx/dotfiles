@@ -14,6 +14,7 @@
          build (run '-build {:parallel true})
          -build {:depends [build:main
                            build:item:battery
+                           build:item:brew
                            build:item:date
                            build:item:front_app
                            build:item:gcloud
@@ -28,6 +29,7 @@
                            build:item:wifi
                            build:item:yabai
                            build:plugin:battery
+                           build:plugin:brew
                            build:plugin:date
                            build:plugin:front_app
                            build:plugin:gcloud
@@ -51,6 +53,11 @@
                                      (str "bb uberjar "
                                           items-dir
                                           "/battery.jar -m items.battery"))}
+         build:item:brew {:depends [-target]
+                          :task (shell
+                                   (str "bb uberjar "
+                                        items-dir
+                                       "/brew.jar -m items.brew"))}
          build:item:date {:depends [-target]
                           :task (shell
                                   (str "bb uberjar "
@@ -121,6 +128,11 @@
                                        (str "bb uberjar "
                                             plugins-dir
                                             "/battery.jar -m plugins.battery"))}
+         build:plugin:brew {:depends [-target]
+                            :task (shell
+                                     (str "bb uberjar "
+                                          plugins-dir
+                                         "/brew.jar -m plugins.brew"))}
          build:plugin:date {:depends [-target]
                             :task (shell
                                     (str "bb uberjar "
