@@ -16,6 +16,9 @@
    :magenta "0xffc6a0f6"
    :grey "0xff3e4145"
    :cream "0xfff5ead5"
+   :light-red "0xffd1242f"
+   :light-grey "0xffe1e3e4"
+   :light-violet "0xffba9cf3"
    :transparent "0x00000000"})
 
 (defn get [key]

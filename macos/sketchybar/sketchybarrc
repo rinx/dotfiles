@@ -73,8 +73,10 @@ bb $BB_ITEM_DIR/network.jar
 bb $BB_ITEM_DIR/kubectx.jar
 # source "$ITEM_DIR/gcloud.sh"
 bb $BB_ITEM_DIR/gcloud.jar
-source "$ITEM_DIR/github_pr.sh"
-source "$ITEM_DIR/github.sh"
+# source "$ITEM_DIR/github_pr.sh"
+bb $BB_ITEM_DIR/github_pr.jar
+# source "$ITEM_DIR/github.sh"
+bb $BB_ITEM_DIR/github.jar
 
 sketchybar --update
 

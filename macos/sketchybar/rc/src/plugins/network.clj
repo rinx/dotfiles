@@ -16,7 +16,7 @@
            (zipmap [:down :up]))))
 
 (defn -main [& args]
-  (let [{up :up down :down} (ifstat-updown)
+  (let [{:keys [up down]} (ifstat-updown)
         up? (> up down)
         icon (if up?
                (icons/get :net :upload)

@@ -15,6 +15,8 @@
          -build {:depends [build:item:battery
                            build:item:date
                            build:item:gcloud
+                           build:item:github
+                           build:item:github-pr
                            build:item:kubectx
                            build:item:mic
                            build:item:network
@@ -24,6 +26,8 @@
                            build:plugin:battery
                            build:plugin:date
                            build:plugin:gcloud
+                           build:plugin:github
+                           build:plugin:github-pr
                            build:plugin:kubectx
                            build:plugin:mic
                            build:plugin:network
@@ -45,6 +49,16 @@
                                     (str "bb uberjar "
                                          items-dir
                                          "/gcloud.jar -m items.gcloud"))}
+         build:item:github {:depends [-target]
+                            :task (shell
+                                    (str "bb uberjar "
+                                         items-dir
+                                         "/github.jar -m items.github"))}
+         build:item:github-pr {:depends [-target]
+                               :task (shell
+                                       (str "bb uberjar "
+                                            items-dir
+                                            "/github_pr.jar -m items.github-pr"))}
          build:item:kubectx {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "
@@ -90,6 +104,16 @@
                                       (str "bb uberjar "
                                            plugins-dir
                                            "/gcloud.jar -m plugins.gcloud"))}
+         build:plugin:github {:depends [-target]
+                              :task (shell
+                                      (str "bb uberjar "
+                                           plugins-dir
+                                           "/github.jar -m plugins.github"))}
+         build:plugin:github-pr {:depends [-target]
+                                 :task (shell
+                                         (str "bb uberjar "
+                                              plugins-dir
+                                              "/github_pr.jar -m plugins.github-pr"))}
          build:plugin:kubectx {:depends [-target]
                                :task (shell
                                        (str "bb uberjar "

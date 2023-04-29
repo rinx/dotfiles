@@ -28,6 +28,7 @@
             :pullreq ""
             :exclamation ""
             :check ""}
+   :info "󰋼"
    :gcloud ""
    :k8s "⎈"})
 
