@@ -1,10 +1,10 @@
 (ns items.github
   (:require
-   [sketchybar]
-   [common]
    [colors]
+   [common]
+   [fonts]
    [icons]
-   [fonts]))
+   [sketchybar]))
 
 (defn -main [& args]
   (sketchybar/exec

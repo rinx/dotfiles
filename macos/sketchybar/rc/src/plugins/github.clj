@@ -1,12 +1,12 @@
 (ns plugins.github
   (:require
-   [clojure.string :as str]
-   [cheshire.core :as json]
    [camel-snake-kebab.core :as csk]
-   [sketchybar]
-   [common]
+   [cheshire.core :as json]
+   [clojure.string :as str]
    [colors]
-   [icons]))
+   [common]
+   [icons]
+   [sketchybar]))
 
 (defn notifications []
   (-> (common/sh "gh" "api" "notifications")

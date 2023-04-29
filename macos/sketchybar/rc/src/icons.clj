@@ -32,8 +32,22 @@
    :gcloud ""
    :k8s "⎈"})
 
+(def spaces
+  [" " " " " " " " " " " " " " " " " " " "])
+  ; [" " " " " " " " " " " " " " " " " " " "]
+  ; [" " " " " " " " " " " " " " " " " " " "])
+
 (defn get [& ks]
   (get-in icons ks))
+
+(defn window [n]
+  (case n
+    "Google Chrome" ""
+    "kitty" "󰆍"
+    "Finder" "󰀶"
+    "Microsoft Teams" "󰊻"
+    "goneovim" ""
+    ""))
 
 (comment
   (get :github :octocat)

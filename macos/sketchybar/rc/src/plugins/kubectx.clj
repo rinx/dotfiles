@@ -1,10 +1,10 @@
 (ns plugins.kubectx
   (:require
    [clojure.string :as str]
-   [sketchybar]
-   [common]
    [colors]
-   [icons]))
+   [common]
+   [icons]
+   [sketchybar]))
 
 (defn format-context-name [ctx]
   (let [es (str/split ctx #"_")]

@@ -1,7 +1,7 @@
 (ns plugins.time
   (:require
-   [tick.core :as tick]
-   [sketchybar]))
+   [sketchybar]
+   [tick.core :as tick]))
 
 (defn -main [& args]
   (let [time (tick/format (tick/formatter "HH:mm") (tick/time))]

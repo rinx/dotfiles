@@ -1,9 +1,9 @@
 (ns plugins.battery
   (:require
    [clojure.string :as str]
-   [sketchybar]
    [common]
-   [icons]))
+   [icons]
+   [sketchybar]))
 
 (defn ->icon [percentage charging]
   (->> (if charging

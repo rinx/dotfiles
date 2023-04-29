@@ -1,7 +1,7 @@
 (ns plugins.date
   (:require
-   [tick.core :as tick]
-   [sketchybar]))
+   [sketchybar]
+   [tick.core :as tick]))
 
 (defn -main [& args]
   (let [date (tick/format (tick/formatter "EEE dd. MMM") (tick/date))]

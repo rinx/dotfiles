@@ -1,9 +1,9 @@
 (ns plugins.volume
   (:require
    [clojure.string :as str]
-   [sketchybar]
    [common]
-   [icons]))
+   [icons]
+   [sketchybar]))
 
 (defn mute? []
   (-> (common/sh "osascript" "-e" "output muted of (get volume settings)")

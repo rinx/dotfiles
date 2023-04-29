@@ -1,9 +1,9 @@
 (ns items.wifi
   (:require
-   [sketchybar]
-   [common]
    [colors]
-   [fonts]))
+   [common]
+   [fonts]
+   [sketchybar]))
 
 (defn -main [& args]
   (sketchybar/exec

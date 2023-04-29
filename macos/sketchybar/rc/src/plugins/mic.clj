@@ -1,9 +1,9 @@
 (ns plugins.mic
   (:require
    [clojure.string :as str]
-   [sketchybar]
    [common]
-   [icons]))
+   [icons]
+   [sketchybar]))
 
 (defn get-mic-volume []
   (-> (common/sh "osascript" "-e" "input volume of (get volume settings)")

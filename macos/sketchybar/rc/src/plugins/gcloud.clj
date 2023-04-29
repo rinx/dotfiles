@@ -1,10 +1,10 @@
 (ns plugins.gcloud
   (:require
    [clojure.string :as str]
-   [sketchybar]
-   [common]
    [colors]
-   [icons]))
+   [common]
+   [icons]
+   [sketchybar]))
 
 (defn contexts []
   (->> (common/sh "gcloud" "config" "configurations" "list" "--format" "value(name)")

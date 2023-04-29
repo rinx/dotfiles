@@ -1,9 +1,9 @@
 (ns plugins.network
   (:require
    [clojure.string :as str]
-   [sketchybar]
    [common]
-   [icons]))
+   [icons]
+   [sketchybar]))
 
 (defn ifstat-updown []
   (-> (common/sh "ifstat" "-i" "en0" "-b" "0.1" "1")

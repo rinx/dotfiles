@@ -50,7 +50,8 @@ sketchybar \
     popup.background.shadow.drawing=$SHADOW
 
 # Left
-source "$ITEM_DIR/spaces.sh"
+# source "$ITEM_DIR/spaces.sh"
+bb $BB_ITEM_DIR/spaces.jar
 source "$ITEM_DIR/front_app.sh"
 
 # Center

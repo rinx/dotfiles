@@ -18,5 +18,8 @@
   (str bb-path " " plugins-dir "/" filename))
 
 (defn sh [& cmds]
-  (-> (apply shell {:out :string} cmds)
-      :out))
+  (try
+    (-> (apply shell {:out :string} cmds)
+        :out)
+    (catch Exception _
+      nil)))

@@ -20,6 +20,7 @@
                            build:item:kubectx
                            build:item:mic
                            build:item:network
+                           build:item:spaces
                            build:item:time
                            build:item:volume
                            build:item:wifi
@@ -31,6 +32,7 @@
                            build:plugin:kubectx
                            build:plugin:mic
                            build:plugin:network
+                           build:plugin:spaces
                            build:plugin:time
                            build:plugin:volume
                            build:plugin:wifi]}
@@ -74,6 +76,11 @@
                                      (str "bb uberjar "
                                           items-dir
                                           "/network.jar -m items.network"))}
+         build:item:spaces {:depends [-target]
+                            :task (shell
+                                    (str "bb uberjar "
+                                         items-dir
+                                         "/spaces.jar -m items.spaces"))}
          build:item:time {:depends [-target]
                           :task (shell
                                    (str "bb uberjar "
@@ -129,6 +136,11 @@
                                        (str "bb uberjar "
                                             plugins-dir
                                             "/network.jar -m plugins.network"))}
+         build:plugin:spaces {:depends [-target]
+                              :task (shell
+                                      (str "bb uberjar "
+                                           plugins-dir
+                                           "/spaces.jar -m plugins.spaces"))}
          build:plugin:time {:depends [-target]
                             :task (shell
                                     (str "bb uberjar "

@@ -2,9 +2,9 @@
   (:require
    [clojure.string :as str]
    [clojure.walk :as walk]
-   [sketchybar]
    [common]
-   [icons]))
+   [icons]
+   [sketchybar]))
 
 (defn airport []
   (->> (common/sh

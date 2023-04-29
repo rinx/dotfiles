@@ -1,8 +1,8 @@
 (ns sketchybar
   (:require
    [babashka.process :refer [shell]]
-   [cheshire.core :as json]
-   [camel-snake-kebab.core :as csk])
+   [camel-snake-kebab.core :as csk]
+   [cheshire.core :as json])
   (:refer-clojure :exclude [set update]))
 
 (defn map->kvs [m]
@@ -42,6 +42,7 @@
 
 (defn exec [& args]
   (->> (flatten args)
+       (filter some?)
        (apply shell "sketchybar")))
 
 (defn update []

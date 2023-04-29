@@ -1,9 +1,9 @@
 (ns items.volume
   (:require
-   [sketchybar]
-   [common]
    [colors]
-   [fonts]))
+   [common]
+   [fonts]
+   [sketchybar]))
 
 (defn -main [& args]
   (sketchybar/exec
