@@ -14,6 +14,7 @@
          build (run '-build {:parallel true})
          -build {:depends [build:item:battery
                            build:item:date
+                           build:item:front_app
                            build:item:gcloud
                            build:item:github
                            build:item:github-pr
@@ -24,8 +25,10 @@
                            build:item:time
                            build:item:volume
                            build:item:wifi
+                           build:item:yabai
                            build:plugin:battery
                            build:plugin:date
+                           build:plugin:front_app
                            build:plugin:gcloud
                            build:plugin:github
                            build:plugin:github-pr
@@ -35,7 +38,8 @@
                            build:plugin:spaces
                            build:plugin:time
                            build:plugin:volume
-                           build:plugin:wifi]}
+                           build:plugin:wifi
+                           build:plugin:yabai]}
          build:item:battery {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "
@@ -46,6 +50,11 @@
                                   (str "bb uberjar "
                                        items-dir
                                        "/date.jar -m items.date"))}
+         build:item:front_app {:depends [-target]
+                               :task (shell
+                                       (str "bb uberjar "
+                                            items-dir
+                                            "/front_app.jar -m items.front-app"))}
          build:item:gcloud {:depends [-target]
                             :task (shell
                                     (str "bb uberjar "
@@ -96,6 +105,11 @@
                                    (str "bb uberjar "
                                         items-dir
                                        "/wifi.jar -m items.wifi"))}
+         build:item:yabai {:depends [-target]
+                           :task (shell
+                                    (str "bb uberjar "
+                                         items-dir
+                                        "/yabai.jar -m items.yabai"))}
          build:plugin:battery {:depends [-target]
                                :task (shell
                                        (str "bb uberjar "
@@ -106,6 +120,11 @@
                                     (str "bb uberjar "
                                          plugins-dir
                                          "/date.jar -m plugins.date"))}
+         build:plugin:front_app {:depends [-target]
+                                 :task (shell
+                                         (str "bb uberjar "
+                                              plugins-dir
+                                              "/front_app.jar -m plugins.front-app"))}
          build:plugin:gcloud {:depends [-target]
                               :task (shell
                                       (str "bb uberjar "
@@ -156,6 +175,11 @@
                                     (str "bb uberjar "
                                          plugins-dir
                                          "/wifi.jar -m plugins.wifi"))}
+         build:plugin:yabai {:depends [-target]
+                             :task (shell
+                                     (str "bb uberjar "
+                                          plugins-dir
+                                          "/yabai.jar -m plugins.yabai"))}
          build-ubs {:requires ([carve.api :as carve])
                     :extra-deps {io.github.borkdude/carve
                                  {:git/url "https://github.com/borkdude/carve"

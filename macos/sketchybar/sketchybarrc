@@ -6,6 +6,7 @@ source "$HOME/.config/sketchybar/icons.sh"
 ITEM_DIR="$HOME/.config/sketchybar/items"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 BB_ITEM_DIR="$HOME/.config/sketchybar/rc/target/items"
+BB_PLUGIN_DIR="$HOME/.config/sketchybar/rc/target/items"
 
 FONT="JetBrainsMono Nerd Font"
 
@@ -52,7 +53,9 @@ sketchybar \
 # Left
 # source "$ITEM_DIR/spaces.sh"
 bb $BB_ITEM_DIR/spaces.jar
-source "$ITEM_DIR/front_app.sh"
+# source "$ITEM_DIR/front_app.sh"
+bb $BB_ITEM_DIR/yabai.jar
+bb $BB_ITEM_DIR/front_app.jar
 
 # Center
 

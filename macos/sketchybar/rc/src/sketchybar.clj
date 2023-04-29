@@ -8,7 +8,10 @@
 (defn map->kvs [m]
   (->> m
        (map (fn [[k v]]
-              (str (name k) "=" v)))))
+              (let [v (if (keyword? v)
+                        (name v)
+                        v)]
+                (str (name k) "=" v))))))
 
 (defn bar [m]
   (flatten [["--bar"] (map->kvs m)]))
@@ -33,6 +36,12 @@
 
 (defn add-slider [slider position width]
   ["--add" "slider" (name slider) (name position) (str width)])
+
+(defn add-event
+  ([event]
+   ["--add" "event" (name event)])
+  ([event notification]
+   ["--add" "event" (name event) (name notification)]))
 
 (defn push-datapoint [graph & data]
   (flatten [["--push" (name graph)] (map str data)]))
