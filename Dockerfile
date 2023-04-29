@@ -153,6 +153,7 @@ RUN apt update \
     perl \
     pkg-config \
     python3-dev \
+    python3-full \
     python3-pip \
     rlwrap \
     sed \
