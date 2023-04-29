@@ -23,8 +23,11 @@
         :script (common/plugin-script "spaces.jar")})
       (sketchybar/subscribe item :front_app_switched)])))
 
-(defn -main [& args]
+(defn setup []
   (apply sketchybar/exec (map-indexed ->space icons/spaces)))
+
+(defn -main [& args]
+  (setup))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

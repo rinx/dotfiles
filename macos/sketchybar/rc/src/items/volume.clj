@@ -5,7 +5,7 @@
    [fonts]
    [sketchybar]))
 
-(defn -main [& args]
+(defn setup []
   (sketchybar/exec
    (sketchybar/add-item :volume :right)
    (sketchybar/set
@@ -21,6 +21,9 @@
      :label.font (fonts/get :Medium 12.0)})
    (sketchybar/subscribe :volume :volume_change)
    (sketchybar/subscribe :volume :mouse.clicked)))
+
+(defn -main [& args]
+  (setup))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

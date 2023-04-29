@@ -6,7 +6,7 @@
    [icons]
    [sketchybar]))
 
-(defn -main [& args]
+(defn setup []
   (sketchybar/exec
    (sketchybar/add-item :front_app :left)
    (sketchybar/set
@@ -19,6 +19,9 @@
      :background.padding_left 0
      :background.padding_right 10})
    (sketchybar/subscribe :front_app :front_app_switched)))
+
+(defn -main [& args]
+  (setup))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

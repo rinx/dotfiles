@@ -12,7 +12,8 @@
                   (fs/create-dirs items-dir)
                   (fs/create-dirs plugins-dir))
          build (run '-build {:parallel true})
-         -build {:depends [build:item:battery
+         -build {:depends [build:main
+                           build:item:battery
                            build:item:date
                            build:item:front_app
                            build:item:gcloud
@@ -40,6 +41,11 @@
                            build:plugin:volume
                            build:plugin:wifi
                            build:plugin:yabai]}
+         build:main {:depends [-target]
+                     :task (shell
+                             (str "bb uberjar "
+                                  target-dir
+                                  "/main.jar -m main"))}
          build:item:battery {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "

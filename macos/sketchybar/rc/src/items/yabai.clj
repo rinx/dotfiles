@@ -6,7 +6,7 @@
    [icons]
    [sketchybar]))
 
-(defn -main [& args]
+(defn setup []
   (sketchybar/exec
    (sketchybar/add-event :window_focus)
    (sketchybar/add-item :system.yabai :left)
@@ -22,6 +22,9 @@
      :icon.padding_left 10
      :label.drawing :off})
    (sketchybar/subscribe :system.yabai :window_focus :mouse.clicked)))
+
+(defn -main [& args]
+  (setup))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

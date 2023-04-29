@@ -1,87 +1,13 @@
 PATH=$PATH:$HOME/.bin
+BB_RC_DIR="$HOME/.config/sketchybar/rc"
+BB_MAIN="${BB_RC_DIR}/target/main.jar"
 
-source "$HOME/.config/sketchybar/colors.sh"
-source "$HOME/.config/sketchybar/icons.sh"
+if [ ! -f ${BB_MAIN} ]; then
+  pushd ${BB_RC_DIR}
+  bb build
+  popd
+fi
 
-ITEM_DIR="$HOME/.config/sketchybar/items"
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-BB_ITEM_DIR="$HOME/.config/sketchybar/rc/target/items"
-BB_PLUGIN_DIR="$HOME/.config/sketchybar/rc/target/items"
-
-FONT="JetBrainsMono Nerd Font"
-
-PADDINGS=3
-
-POPUP_BORDER_WIDTH=1
-POPUP_CORNER_RADIUS=5
-
-SHADOW=off
-
-sketchybar \
-    --bar \
-    height=28 \
-    color=$BAR_COLOR \
-    shadow=$SHADOW \
-    position=top \
-    sticky=on \
-    y_offset=5 \
-    padding_right=21 \
-    padding_left=21 \
-    corner_radius=5 \
-    margin=14 \
-    blur_radius=0 \
-    notch_width=0 \
-    \
-    --default \
-    updates=when_shown \
-    icon.font="$FONT:Bold:14.0" \
-    icon.color=$ICON_COLOR \
-    icon.padding_left=$PADDINGS \
-    icon.padding_right=$PADDINGS \
-    label.font="$FONT:Semibold:13.0" \
-    label.color=$LABEL_COLOR \
-    label.padding_left=$PADDINGS \
-    label.padding_right=$PADDINGS \
-    background.padding_right=$PADDINGS \
-    background.padding_left=$PADDINGS \
-    popup.background.border_width=$POPUP_BORDER_WIDTH \
-    popup.background.corner_radius=$POPUP_CORNER_RADIUS \
-    popup.background.border_color=$POPUP_BORDER_COLOR \
-    popup.background.color=$POPUP_BACKGROUND_COLOR \
-    popup.background.shadow.drawing=$SHADOW
-
-# Left
-# source "$ITEM_DIR/spaces.sh"
-bb $BB_ITEM_DIR/spaces.jar
-# source "$ITEM_DIR/front_app.sh"
-bb $BB_ITEM_DIR/yabai.jar
-bb $BB_ITEM_DIR/front_app.jar
-
-# Center
-
-# Right
-# source "$ITEM_DIR/calendar.sh"
-bb $BB_ITEM_DIR/time.jar
-bb $BB_ITEM_DIR/date.jar
-# source "$ITEM_DIR/battery.sh"
-bb $BB_ITEM_DIR/battery.jar
-# source "$ITEM_DIR/mic.sh"
-bb $BB_ITEM_DIR/mic.jar
-# source "$ITEM_DIR/volume.sh"
-bb $BB_ITEM_DIR/volume.jar
-# source "$ITEM_DIR/net.sh"
-bb $BB_ITEM_DIR/wifi.jar
-# source "$ITEM_DIR/network.sh"
-bb $BB_ITEM_DIR/network.jar
-# source "$ITEM_DIR/kubectx.sh"
-bb $BB_ITEM_DIR/kubectx.jar
-# source "$ITEM_DIR/gcloud.sh"
-bb $BB_ITEM_DIR/gcloud.jar
-# source "$ITEM_DIR/github_pr.sh"
-bb $BB_ITEM_DIR/github_pr.jar
-# source "$ITEM_DIR/github.sh"
-bb $BB_ITEM_DIR/github.jar
-
-sketchybar --update
+bb ${BB_MAIN}
 
 # vim: set ft=bash:

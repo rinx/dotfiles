@@ -16,6 +16,9 @@
 (defn bar [m]
   (flatten [["--bar"] (map->kvs m)]))
 
+(defn default [m]
+  (flatten [["--default"] (map->kvs m)]))
+
 (defn set [item m]
   (flatten [["--set" (name item)] (map->kvs m)]))
 
