@@ -153,7 +153,6 @@ RUN apt update \
     perl \
     pkg-config \
     python3-dev \
-    python3-full \
     python3-pip \
     rlwrap \
     sed \
@@ -168,6 +167,10 @@ RUN apt update \
     && apt autoclean -y \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
+
+RUN set -eux \
+    && python3 -m venv venv \
+    && . venv/bin/activate
 
 RUN pip3 install --upgrade pip neovim \
     && npm config set user root \
