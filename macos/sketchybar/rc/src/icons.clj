@@ -32,6 +32,7 @@
    :beer ""
    :package "󰏗"
    :gcloud ""
+   :celsius "󰔄"
    :k8s "⎈"})
 
 (def spaces

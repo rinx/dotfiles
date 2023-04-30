@@ -26,6 +26,7 @@
                            build:item:spaces
                            build:item:time
                            build:item:volume
+                           build:item:weather
                            build:item:wifi
                            build:item:yabai
                            build:plugin:battery
@@ -41,6 +42,7 @@
                            build:plugin:spaces
                            build:plugin:time
                            build:plugin:volume
+                           build:plugin:weather
                            build:plugin:wifi
                            build:plugin:yabai]}
          build:main {:depends [-target]
@@ -113,6 +115,11 @@
                                      (str "bb uberjar "
                                           items-dir
                                          "/volume.jar -m items.volume"))}
+         build:item:weather {:depends [-target]
+                             :task (shell
+                                      (str "bb uberjar "
+                                           items-dir
+                                          "/weather.jar -m items.weather"))}
          build:item:wifi {:depends [-target]
                           :task (shell
                                    (str "bb uberjar "
@@ -188,6 +195,11 @@
                                       (str "bb uberjar "
                                            plugins-dir
                                            "/volume.jar -m plugins.volume"))}
+         build:plugin:weather {:depends [-target]
+                               :task (shell
+                                       (str "bb uberjar "
+                                            plugins-dir
+                                            "/weather.jar -m plugins.weather"))}
          build:plugin:wifi {:depends [-target]
                             :task (shell
                                     (str "bb uberjar "

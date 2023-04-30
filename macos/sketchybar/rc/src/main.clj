@@ -15,6 +15,7 @@
    [items.spaces :as spaces]
    [items.time :as time]
    [items.volume :as volume]
+   [items.weather :as weather]
    [items.wifi :as wifi]
    [items.yabai :as yabai]
    [sketchybar]))
@@ -62,6 +63,7 @@
 (defn right-items []
   (time/setup)
   (date/setup)
+  (weather/setup)
   (battery/setup)
   (mic/setup)
   (volume/setup)
