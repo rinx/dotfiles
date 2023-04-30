@@ -30,6 +30,7 @@
             :check ""}
    :info "󰋼"
    :beer ""
+   :package "󰏗"
    :gcloud ""
    :k8s "⎈"})
 

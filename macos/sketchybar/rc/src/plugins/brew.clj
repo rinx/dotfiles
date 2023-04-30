@@ -24,7 +24,7 @@
                    :background.padding_right 7
                    :background.color (colors/get :transparent-black)
                    :background.drawing :off
-                   :icon (str (icons/get :beer) \space pkg-name)
+                   :icon (str (icons/get :package) \space pkg-name)
                    :icon.background.height 1
                    :icon.background.y_offset -12
                    :icon.padding_left 0
