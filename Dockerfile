@@ -154,6 +154,7 @@ RUN apt update \
     pkg-config \
     python3-dev \
     python3-pip \
+    python3.11-venv \
     rlwrap \
     sed \
     tar \
