@@ -152,7 +152,7 @@ RUN apt update \
     openssl \
     perl \
     pkg-config \
-    python3-dev \
+    python3-full \
     python3-pip \
     python3.11-venv \
     rlwrap \
