@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1682903647059,
+  "lastUpdate": 1682903692153,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2368,6 +2368,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 351.3675,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "eed7cc3ab3b9ca0e196efc5bcd85d7e7bfd125f4",
+          "message": "fix(docker): add venv\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-05-01T10:08:15+09:00",
+          "tree_id": "7dd68a21d354e5b1d4296b8c78b5cd4ded2c4d0d",
+          "url": "https://github.com/rinx/dotfiles/commit/eed7cc3ab3b9ca0e196efc5bcd85d7e7bfd125f4"
+        },
+        "date": 1682903690578,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 88.53936789999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 389.5088221,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 339.7738,
             "unit": "ms"
           }
         ]
