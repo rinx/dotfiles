@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1682903692153,
+  "lastUpdate": 1682904204009,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2407,6 +2407,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 339.7738,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "737047114e81a553a08fc6054f83513af784c966",
+          "message": "fix(docker): use python3-full\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-05-01T10:17:35+09:00",
+          "tree_id": "d3bede109834de904cbf142dbaa49b234ff656fe",
+          "url": "https://github.com/rinx/dotfiles/commit/737047114e81a553a08fc6054f83513af784c966"
+        },
+        "date": 1682904202329,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 65.3854797,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 332.5440537,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 297.1725,
             "unit": "ms"
           }
         ]
