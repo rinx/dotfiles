@@ -8,9 +8,16 @@
    [icons]
    [sketchybar]))
 
-(defn notifications []
-  (-> (common/sh "gh" "api" "notifications")
+(defn gh-api [endpoint]
+  (-> (common/sh "gh" "api" endpoint)
       (json/parse-string csk/->kebab-case-keyword)))
+
+(defn notifications []
+  (gh-api "notifications"))
+
+(defn subject-url->html-url [subject-url]
+  (when-let [response (gh-api subject-url)]
+    (get-in response [:html-url])))
 
 (defn ->element [idx notification]
   (let [item (str "github.notification.list." idx)
@@ -28,7 +35,7 @@
                      "CheckSuite" (colors/get :light-red)
                      "PullRequest" (colors/get :light-violet)
                      (colors/get :light-grey))
-        url (or (get-in notifications [:subject :url])
+        url (or (subject-url->html-url (get-in notification [:subject :url]))
                 "https://github.com/notifications")
         add-args (sketchybar/add-item item :popup.github.notification)
         set-args (sketchybar/set
