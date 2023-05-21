@@ -170,10 +170,7 @@ RUN apt update \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m pip install pipx \
-    && python3 -m pipx ensurepath \
-    && pipx install neovim \
-    && npm config set user root \
+RUN npm config set user root \
     && npm install -g neovim
 
 RUN npm install -g \
@@ -183,9 +180,7 @@ RUN npm install -g \
     typescript-language-server \
     vscode-langservers-extracted \
     yaml-language-server \
-    yarn \
-    && pipx install \
-    fortran-language-server
+    yarn
 
 RUN cd /tmp \
     && curl -OL "https://github.com/clojure-lsp/clojure-lsp/releases/download/${CLOJURE_LSP_VERSION}/clojure-lsp-native-linux-amd64.zip" \
