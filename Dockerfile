@@ -152,9 +152,10 @@ RUN apt update \
     openssl \
     perl \
     pkg-config \
-    python3-full \
+    python3-dev \
     python3-pip \
-    python3.11-venv \
+    python3-venv \
+    python3-virtualenv \
     rlwrap \
     sed \
     tar \
@@ -169,11 +170,8 @@ RUN apt update \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN set -eux \
-    && python3 -m venv venv \
-    && . venv/bin/activate
-
-RUN pip3 install --upgrade pip neovim \
+RUN pip3 install pipx \
+    && pipx install neovim \
     && npm config set user root \
     && npm install -g neovim
 
@@ -185,7 +183,7 @@ RUN npm install -g \
     vscode-langservers-extracted \
     yaml-language-server \
     yarn \
-    && pip3 install \
+    && pipx install \
     fortran-language-server
 
 RUN cd /tmp \
