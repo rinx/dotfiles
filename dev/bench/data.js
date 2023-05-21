@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1684647866043,
+  "lastUpdate": 1684648331520,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2758,6 +2758,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 236.6286,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1a0d033e92bb08310596cc23f948d2429390f7ee",
+          "message": "fix: remove pip packages\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-05-21T14:46:54+09:00",
+          "tree_id": "217d3b524f59fb389373bab1d81bade1c8c11c9f",
+          "url": "https://github.com/rinx/dotfiles/commit/1a0d033e92bb08310596cc23f948d2429390f7ee"
+        },
+        "date": 1684648330421,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 77.4488314,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 276.4966969999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 236.3357,
             "unit": "ms"
           }
         ]
