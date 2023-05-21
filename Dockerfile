@@ -170,12 +170,10 @@ RUN apt update \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN npm config set user root \
-    && npm install -g neovim
-
 RUN npm install -g \
     bash-language-server \
     dockerfile-language-server-nodejs \
+    neovim \
     typescript \
     typescript-language-server \
     vscode-langservers-extracted \
