@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1684646897220,
+  "lastUpdate": 1684647391852,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2680,6 +2680,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 233.473,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d25652aa6243566d27a5f9a2e47f4c95205ed628",
+          "message": "fix: install pipx\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-05-21T14:31:14+09:00",
+          "tree_id": "bc437d90387c1aabc5b7e0069da224d6248a031f",
+          "url": "https://github.com/rinx/dotfiles/commit/d25652aa6243566d27a5f9a2e47f4c95205ed628"
+        },
+        "date": 1684647390996,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 87.2671347,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 324.25220049999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 256.0435,
             "unit": "ms"
           }
         ]
