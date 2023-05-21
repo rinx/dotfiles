@@ -156,7 +156,6 @@ RUN apt update \
     python3-pip \
     python3-venv \
     python3-virtualenv \
-    python3-pipx \
     rlwrap \
     sed \
     tar \
@@ -171,7 +170,9 @@ RUN apt update \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pipx install neovim \
+RUN python3 -m pip install pipx \
+    && python3 -m pipx ensurepath \
+    && pipx install neovim \
     && npm config set user root \
     && npm install -g neovim
 
