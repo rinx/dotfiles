@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1684648331520,
+  "lastUpdate": 1684648759669,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2797,6 +2797,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 236.3357,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ba3b0971f97c0a3233ef05422f1b914fdacce3e1",
+          "message": "fix: npm install\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-05-21T14:54:04+09:00",
+          "tree_id": "679e7ff58a88ccb54db6d1be5e3720977c8a8043",
+          "url": "https://github.com/rinx/dotfiles/commit/ba3b0971f97c0a3233ef05422f1b914fdacce3e1"
+        },
+        "date": 1684648758060,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 75.24281579999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 268.10633529999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 230.1786,
             "unit": "ms"
           }
         ]
