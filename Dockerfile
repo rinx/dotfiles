@@ -7,7 +7,7 @@
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
 ARG CLOJURE_LSP_VERSION=2023.05.04-19.38.01
-ARG RUST_ANALYZER_VERSION=2023-05-15
+ARG RUST_ANALYZER_VERSION=2023-05-22
 ARG BUF_VERSION=v1.9.0
 
 FROM rust:slim AS rust
