@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1684775181574,
+  "lastUpdate": 1684900952765,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -2875,6 +2875,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 251.3544,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c41d1fadb935db3701d0e7b5406384f80b8d969d",
+          "message": "config(sketchybar): fix spaces and yabai status\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-05-24T12:55:16+09:00",
+          "tree_id": "ff0d24ba83f13466ec4f1d664fe8d1ceb187d78b",
+          "url": "https://github.com/rinx/dotfiles/commit/c41d1fadb935db3701d0e7b5406384f80b8d969d"
+        },
+        "date": 1684900951941,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 96.474523,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 303.91261640000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 255.545,
             "unit": "ms"
           }
         ]
