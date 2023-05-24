@@ -42,8 +42,9 @@ yabai -m space 8 --label VIII
 yabai -m space 9 --label IX
 yabai -m space 10 --label X
 
-# Ubersicht
+# Sketchybar
 yabai -m config external_bar main:20:0
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 
 # rules
 yabai -m rule --add app="^System Preferences$" manage=off
@@ -51,7 +52,5 @@ yabai -m rule --add app="^システム環境設定$" manage=off
 yabai -m rule --add app="^システム設定$" manage=off
 
 yabai -m rule --add app="^Citrix Viewer$" manage=off
-
-yabai -m rule --add app="^Microsoft Teams$" manage=off
 
 echo "yabai configuration loaded.."

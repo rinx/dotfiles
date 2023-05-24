@@ -14,8 +14,7 @@
                    (map :app)
                    (map icons/window)
                    (str/join " "))]
-    (when (not-empty icons)
-      (sketchybar/set item {:label icons}))))
+    (sketchybar/set item {:label (if (not-empty icons) icons " ")})))
 
 (defn -main [& args]
   (sketchybar/exec
