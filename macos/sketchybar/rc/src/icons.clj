@@ -3,8 +3,8 @@
 
 (def icons
   {:yabai {:stack ""
-           :fullscreen-zoom ""
-           :parent-zoom ""
+           :fullscreen-zoom "󰊓"
+           :parent-zoom "󰖯"
            :float ""
            :grid "󰕰"}
    :battery {:100 ""
