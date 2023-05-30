@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1685353771765,
+  "lastUpdate": 1685423014022,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -3109,6 +3109,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 279.3252,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "6998af6aa0e9a8f66b0c8bc8f8803bdd428aa155",
+          "message": "config(git): add alias for force push\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-05-30T13:55:16+09:00",
+          "tree_id": "212ff51bffcf7a0668dad78285b3bde440b9dd6f",
+          "url": "https://github.com/rinx/dotfiles/commit/6998af6aa0e9a8f66b0c8bc8f8803bdd428aa155"
+        },
+        "date": 1685423012627,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 77.07253019999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 304.6662853,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 249.4194,
             "unit": "ms"
           }
         ]
