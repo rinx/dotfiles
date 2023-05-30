@@ -9,3 +9,5 @@ Session.vim
 .lsp
 
 .nrepl-port
+
+# vim: set ft=gitignore:

@@ -13,3 +13,4 @@
 *.rb diff=ruby
 *.tex diff=tex
 
+# vim: set ft=gitattributes:

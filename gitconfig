@@ -68,6 +68,7 @@
     cae   = commit --signoff --amend
 
     ps    = push
+    psf   = push --force-with-lease --force-if-includes
     psa   = push --all
 
     pl    = pull
@@ -110,3 +111,5 @@
 
 [rebase]
     autosquash = true
+
+# vim: set ft=gitconfig:
