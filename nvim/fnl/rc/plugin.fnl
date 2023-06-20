@@ -97,6 +97,8 @@
                          :config (mod :octo)}
    :ghillb/cybu.nvim {:config (mod :cybu)
                       :event [:VeryLazy]}
+   :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
+                             :config (mod :hypersonic)}
 
    ;; :stevearc/profile.nvim {:config (mod :profile)}
 
@@ -104,7 +106,7 @@
    :neovim/nvim-lspconfig {:config (mod :lsp)}
    :ray-x/lsp_signature.nvim {}
    :stevearc/dressing.nvim {:event [:VeryLazy]}
-   :j-hui/fidget.nvim {}
+   :j-hui/fidget.nvim {:tag :legacy}
    :kosayoda/nvim-lightbulb {}
    :aznhe21/actions-preview.nvim {}
    :folke/trouble.nvim {}

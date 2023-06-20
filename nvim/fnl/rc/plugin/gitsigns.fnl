@@ -27,7 +27,6 @@
                           :linehl :GitSignsChangeLn}}
    :numhl false
    :linehl false
-   :keymaps {}
    :watch_gitdir {:interval 1000}
    :current_line_blame false
    :sign_priority 6
