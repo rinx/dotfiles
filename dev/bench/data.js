@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1689872668053,
+  "lastUpdate": 1690191415731,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -3577,6 +3577,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 255.3746,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "241f670471e923e3132372d3532b620b1a50aaba",
+          "message": "config(kitty): set longer scrollback lines\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-07-24T18:32:44+09:00",
+          "tree_id": "4bd8ce15a7f55b13ff03b0a2b345ecd9cb70f449",
+          "url": "https://github.com/rinx/dotfiles/commit/241f670471e923e3132372d3532b620b1a50aaba"
+        },
+        "date": 1690191414500,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 70.2574502,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 282.4692152,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 246.1302,
             "unit": "ms"
           }
         ]
