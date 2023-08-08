@@ -42,7 +42,6 @@
 
 (use
   {:folke/lazy.nvim {:lazy true}
-   :Olical/aniseed {:lazy true}
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
