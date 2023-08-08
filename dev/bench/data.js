@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691502961260,
+  "lastUpdate": 1691503875395,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -3850,6 +3850,43 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 318.4778,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Rintaro Okamura",
+            "username": "rinx",
+            "email": "rintaro.okamura@gmail.com"
+          },
+          "committer": {
+            "name": "Rintaro Okamura",
+            "username": "rinx",
+            "email": "rintaro.okamura@gmail.com"
+          },
+          "id": "09b7b8c5d5111f93eca66a81919753849a77303d",
+          "message": "remove: treesitter help parser\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-08T13:24:44Z",
+          "url": "https://github.com/rinx/dotfiles/commit/09b7b8c5d5111f93eca66a81919753849a77303d"
+        },
+        "date": 1691503872722,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 115.43489989999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 500.8983056,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 323.6228,
             "unit": "ms"
           }
         ]
