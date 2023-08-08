@@ -1,7 +1,5 @@
-(module rc.plugin.colorizer
-  {autoload {nvim aniseed.nvim
-             colorizer colorizer}})
+(local colorizer (require :colorizer))
 
-;; enforce to set &termguicolors
-(nvim.ex.set :termguicolors)
+(set vim.o.termguicolors true)
+
 (colorizer.setup)

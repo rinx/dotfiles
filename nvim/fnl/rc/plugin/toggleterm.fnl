@@ -1,8 +1,7 @@
-(module rc.plugin.toggleterm
-  {autoload {nvim aniseed.nvim
-             toggleterm toggleterm}
-   require-macros [rc.macros]})
+(local toggleterm (require :toggleterm))
+
+(import-macros {: map!} :rc.macros)
 
 (toggleterm.setup {})
 
-(noremap! [:n] :<leader>w ":<C-u>ToggleTerm<CR>" :silent)
+(map! [:n] :<leader>w ":<C-u>ToggleTerm<CR>" {:silent true})

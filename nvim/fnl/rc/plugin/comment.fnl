@@ -1,10 +1,6 @@
-(module rc.plugin.comment
-  {autoload {cm Comment
-             ts-commentstring ts_context_commentstring.internal}})
-
-(defn hook-fn []
-  (fn [ctx]
-    (ts-commentstring.calculate_commentstring)))
+(local cm (require :Comment))
+(local ts-commentstring (require :ts_context_commentstring.internal))
 
 (cm.setup
-  {:pre_hook (hook-fn)})
+  {:pre_hook (fn [ctx]
+               (ts-commentstring.calculate_commentstring))})

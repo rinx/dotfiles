@@ -1,27 +1,29 @@
-(module rc.plugin.lsp
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             color rc.color
-             icon rc.icon
-             lsp lspconfig
-             lsp-configs lspconfig.configs
-             lsp-signature lsp_signature
-             lsp-lines lsp_lines
-             lsputil lspconfig.util
-             schemastore schemastore
-             rust-tools rust-tools
-             dressing dressing
-             actions-preview actions-preview
-             trouble trouble
-             lsp-colors lsp-colors
-             tdc todo-comments
-             fidget fidget}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
 
-(def- colors color.colors)
-(def- icontab icon.tab)
+(local lsp (require :lspconfig))
+(local lsp-configs (require :lspconfig.configs))
+(local lsp-signature (require :lsp_signature))
+(local lsp-lines (require :lsp_lines))
+(local lsputil (require :lspconfig.util))
+(local schemastore (require :schemastore))
+(local rust-tools (require :rust-tools))
+(local dressing (require :dressing))
+(local actions-preview (require :actions-preview))
+(local trouble (require :trouble))
+(local lsp-colors (require :lsp-colors))
+(local tdc (require :todo-comments))
+(local fidget (require :fidget))
+(local lightbulb (require :nvim-lightbulb))
 
-(defn- on-attach [client bufnr]
+(local color (autoload :rc.color))
+(local icon (autoload :rc.icon))
+(import-macros {: map! : augroup!} :rc.macros)
+
+(local colors color.colors)
+(local icontab icon.tab)
+
+(fn on-attach [client bufnr]
   (lsp-signature.on_attach
     {:bind true
      :doc_lines 10
@@ -32,7 +34,7 @@
      {:border :single}
      :decorator {"`" "`"}}))
 
-(def- capabilities
+(local capabilities
   (let [cap (vim.lsp.protocol.make_client_capabilities)]
     (set cap.textDocument.completion.completionItem.snippetSupport true)
     (set cap.textDocument.completion.completionItem.preselectSupport true)
@@ -49,7 +51,7 @@
            :additionalTextEdits]})
     cap))
 
-(def- default-options
+(local default-options
   {:on_attach on-attach
    :capabilities capabilities})
 
@@ -226,41 +228,44 @@
       :textDocument/signatureHelp
       (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
 
-(noremap! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" :silent)
-(noremap! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" :silent)
-(noremap! [:n] :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>" :silent)
-(noremap! [:n] :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>" :silent)
-(noremap! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" :silent)
-(noremap! [:n] :gs ":<C-u>lua vim.lsp.buf.signature_help()<CR>" :silent)
+(map! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" {:silent true})
+(map! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" {:silent true})
+(map! [:n] :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>" {:silent true})
+(map! [:n] :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>" {:silent true})
+(map! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" {:silent true})
+(map! [:n] :gs ":<C-u>lua vim.lsp.buf.signature_help()<CR>" {:silent true})
 
-(noremap! [:n] :<leader>f ":<C-u>lua vim.lsp.buf.formatting()<CR>" :silent)
-(noremap! [:x] :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>" :silent)
+(map! [:n] :<leader>f ":<C-u>lua vim.lsp.buf.formatting()<CR>" {:silent true})
+(map! [:x] :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>" {:silent true})
 
-(noremap! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" :silent)
-(augroup! init-lsp-codelens
-          (autocmd! "CursorHold,CursorHoldI"
-                    "*"
-                    "lua vim.lsp.codelens.refresh()"))
+(map! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" {:silent true})
+(augroup!
+  init-lsp-codelens
+  {:events [:CursorHold :CursorHoldI]
+   :pattern :*
+   :callback vim.lsp.codelens.refresh})
 
-(noremap!
+(map!
   [:n]
   "<Leader>d"
   ":<C-u>lua vim.diagnostic.open_float({border = 'rounded'})<CR>"
-  :silent)
-(noremap!
+  {:silent true})
+(map!
   [:n]
   "[d"
-  ":<C-u>lua vim.diagnostic.goto_prev({float = {border = 'rounded'}})<CR>" :silent)
-(noremap!
+  ":<C-u>lua vim.diagnostic.goto_prev({float = {border = 'rounded'}})<CR>"
+  {:silent true})
+(map!
   [:n]
   "]d"
-  ":<C-u>lua vim.diagnostic.goto_next({float = {border = 'rounded'}})<CR>" :silent)
+  ":<C-u>lua vim.diagnostic.goto_next({float = {border = 'rounded'}})<CR>"
+  {:silent true})
 
-(noremap! [:n :i] "<F2>" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
-(noremap! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" :silent)
+(map! [:n :i] "<F2>" ":<C-u>lua vim.lsp.buf.rename()<CR>" {:silent true})
+(map! [:n] "<leader>rn" ":<C-u>lua vim.lsp.buf.rename()<CR>" {:silent true})
 
-(noremap! [:n] "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>" :silent)
-(noremap! [:x] "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>" :silent)
+(map! [:n] "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>" {:silent true})
+(map! [:x] "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>" {:silent true})
 
 (dressing.setup
   {:input
@@ -269,10 +274,10 @@
 (actions-preview.setup
   {:backend [:nui :telescope]
    :nui {:dir :row}}
-  (noremap! [:n :v]
-            "<Leader>A"
-            ":<C-u>lua require'actions-preview'.code_actions()<CR>"
-            :silent))
+  (map! [:n :v]
+        "<Leader>A"
+        ":<C-u>lua require'actions-preview'.code_actions()<CR>"
+        {:silent true}))
 
 (lsp-lines.setup)
 
@@ -282,18 +287,18 @@
    :underline true
    :signs true})
 
-(nvim.fn.sign_define :DiagnosticSignError
-                     {:text icontab.bug
-                      :texthl :DiagnosticSignError})
-(nvim.fn.sign_define :DiagnosticSignWarn
-                     {:text icontab.exclam-circle
-                      :texthl :DiagnosticSignWarn})
-(nvim.fn.sign_define :DiagnosticSignInfo
-                     {:text icontab.info-circle
-                      :texthl :DiagnosticSignInfo})
-(nvim.fn.sign_define :DiagnosticSignHint
-                     {:text icontab.leaf
-                      :texthl :DiagnosticSignHint})
+(vim.fn.sign_define :DiagnosticSignError
+                    {:text icontab.bug
+                     :texthl :DiagnosticSignError})
+(vim.fn.sign_define :DiagnosticSignWarn
+                    {:text icontab.exclam-circle
+                     :texthl :DiagnosticSignWarn})
+(vim.fn.sign_define :DiagnosticSignInfo
+                    {:text icontab.info-circle
+                     :texthl :DiagnosticSignInfo})
+(vim.fn.sign_define :DiagnosticSignHint
+                    {:text icontab.leaf
+                     :texthl :DiagnosticSignHint})
 
 ;; trouble.nvim
 (trouble.setup {:auto_open true
@@ -302,13 +307,13 @@
                         :warning icontab.exclam-circle
                         :hint icontab.leaf
                         :information icontab.info-circle
-                        :other icontab.comment-alt}}
-  (noremap! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" :silent)
-  (noremap! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" :silent)
-  (noremap! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" :silent)
-  (noremap! [:n] "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>" :silent)
-  (noremap! [:n] "<leader>xl" ":<C-u>TroubleToggle loclist<CR>" :silent)
-  (noremap! [:n] "gR" ":<C-u>TroubleToggle lsp_references<CR>" :silent))
+                        :other icontab.comment-alt}})
+(map! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" {:silent true})
+(map! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" {:silent true})
+(map! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" {:silent true})
+(map! [:n] "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>" {:silent true})
+(map! [:n] "<leader>xl" ":<C-u>TroubleToggle loclist<CR>" {:silent true})
+(map! [:n] "gR" ":<C-u>TroubleToggle lsp_references<CR>" {:silent true})
 
 ;; lsp-colors.nvim
 (lsp-colors.setup {:Error colors.error
@@ -339,13 +344,14 @@
                      :default [colors.purple]}})
 
 ;; lightbulb
-(augroup! init-lightbulb
-          (autocmd! "CursorHold,CursorHoldI"
-                    "*"
-                    "lua require'nvim-lightbulb'.update_lightbulb()"))
-(nvim.fn.sign_define :LightBulbSign
-                     {:text icontab.lightbulb
-                      :texthl :DiagnosticSignLightBulb})
+(augroup!
+  init-lightbulb
+  {:events [:CursorHold :CursorHoldI]
+   :pattern :*
+   :callback lightbulb.update_lightbulb})
+(vim.fn.sign_define :LightBulbSign
+                    {:text icontab.lightbulb
+                     :texthl :DiagnosticSignLightBulb})
 
 (fidget.setup
   {:text {:spinner icon.spinners

@@ -1,23 +1,22 @@
-(module rc.plugin.grep
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             icon rc.icon}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
 
-(def- icontab icon.tab)
+(local icon (autoload :rc.icon))
+(import-macros {: map!} :rc.macros)
 
-(defn rg [args]
+(local icontab icon.tab)
+
+(fn rg [args]
   (vim.fn.ripgrep#search args))
 
-(defn callback [query]
+(fn callback [query]
   (when query
     (rg query)))
 
-(defn rg-input []
+(fn rg-input []
   (vim.ui.input
     {:prompt icontab.search
      :completion :file}
     callback))
 
-(nvim.ex.command_ :Rg (->viml! :rg-input))
-(noremap! [:n] :<Leader>g ":<C-u>Rg<CR>" :silent)
+(vim.api.nvim_create_user_command :Rg rg-input {})
+(map! [:n] :<Leader>g ":<C-u>Rg<CR>" {:silent true})

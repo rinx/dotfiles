@@ -1,13 +1,12 @@
-(module rc.plugin.neogen
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             neogen neogen}
-   require-macros [rc.macros]})
+(local neogen (require :neogen))
+
+(import-macros {: map!} :rc.macros)
 
 (neogen.setup
   {:enabled true})
 
-(noremap! [:n]
-          :<Leader>n
-          ":<C-u>lua require('neogen').generate()<CR>"
-          :silent)
+(map!
+  [:n]
+  :<Leader>n
+  ":<C-u>lua require('neogen').generate()<CR>"
+  {:silent true})

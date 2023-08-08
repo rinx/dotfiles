@@ -5,7 +5,7 @@ prepare-deploy:
 .PHONY: neovim-deploy
 neovim-deploy: \
     init.lua \
-    nvim-fnl \
+    nvim-lua \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
 
@@ -16,12 +16,12 @@ $(HOME)/.config/nvim/init.lua:
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/nvim/init.lua $(HOME)/.config/nvim/init.lua
 
-.PHONY: nvim-fnl
-nvim-fnl: $(HOME)/.config/nvim/fnl
-$(HOME)/.config/nvim/fnl:
-	@$(call cyan, "--\> nvim/fnl directory for nvim")
+.PHONY: nvim-lua
+nvim-lua: $(HOME)/.config/nvim/lua
+$(HOME)/.config/nvim/lua:
+	@$(call cyan, "--\> nvim/lua directory for nvim")
 	mkdir -p $(HOME)/.config/nvim
-	ln -s $(DOTDIR)/nvim/fnl $(HOME)/.config/nvim/fnl
+	ln -s $(DOTDIR)/nvim/lua $(HOME)/.config/nvim/lua
 
 .PHONY: skk-jisyo-large
 skk-jisyo-large: $(HOME)/.SKK-JISYO.L

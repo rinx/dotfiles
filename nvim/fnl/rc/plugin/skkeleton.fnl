@@ -1,13 +1,11 @@
-(module rc.plugin.skkeleton
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             cmp cmp}
-   require-macros [rc.macros]})
+(local cmp (require :cmp))
 
-(map! [:i] :<C-j> "<Plug>(skkeleton-toggle)")
-(map! [:c] :<C-j> "<Plug>(skkeleton-toggle)")
+(import-macros {: map! : augroup!} :rc.macros)
 
-(defn initialize []
+(map! [:i] :<C-j> "<Plug>(skkeleton-toggle)" {})
+(map! [:c] :<C-j> "<Plug>(skkeleton-toggle)" {})
+
+(fn initialize []
   (vim.fn.skkeleton#config
     {:eggLikeNewline false
      :globalJisyo "~/.SKK-JISYO.L"
@@ -21,18 +19,27 @@
      :usePopup true
      :userJisyo "~/.skk-jisyo"}))
 
-(defn enable-pre []
+(fn enable-pre []
   (cmp.setup.buffer
     {:view
      {:entries :native}}))
 
-(defn disable-pre []
+(fn disable-pre []
   (cmp.setup.buffer
     {:view
      {:entries :custom}}))
 
-(augroup! init-skkeleton
-          (autocmd! :User :skkeleton-initialize-pre (->viml! :initialize))
-          (autocmd! :User :skkeleton-enable-pre (->viml! :enable-pre))
-          (autocmd! :User :skkeleton-disable-pre (->viml! :disable-pre))
-          (autocmd! :User :skkeleton-mode-changed :redrawstatus))
+(augroup!
+  init-skkeleton
+  {:events [:User]
+   :pattern :skkeleton-initialize-pre
+   :callback initialize}
+  {:events [:User]
+   :pattern :skkeleton-enable-pre
+   :callback enable-pre}
+  {:events [:User]
+   :pattern :skkeleton-disable-pre
+   :callback disable-pre}
+  {:events [:User]
+   :pattern :skkeleton-mode-changed
+   :command :redrawstatus})

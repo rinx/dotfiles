@@ -1,26 +1,26 @@
-(module rc.plugin.nvim-tree
-  {autoload {nvim aniseed.nvim
-             icon rc.icon
-             tree nvim-tree
-             config nvim-tree.config}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
 
-(def- icontab icon.tab)
-(def- cb config.nvim_tree_callback)
+(local tree (require :nvim-tree))
+
+(local icon (autoload :rc.icon))
+(import-macros {: map!} :rc.macros)
+
+(local icontab icon.tab)
 
 ;; nvim-tree.lua
-(def- icons {:glyphs
-             {:default icontab.text
-              :symlink icontab.symlink
-              :git {:unstaged icontab.diff-modified
-                    :staged icontab.check
-                    :unmerged icontab.merge
-                    :renamed icontab.diff-renamed
-                    :untracked icontab.asterisk}
-              :folder {:default icontab.folder
-                       :open icontab.folder-open}}})
+(local icons
+  {:glyphs
+   {:default icontab.text
+    :symlink icontab.symlink
+    :git {:unstaged icontab.diff-modified
+          :staged icontab.check
+          :unmerged icontab.merge
+          :renamed icontab.diff-renamed
+          :untracked icontab.asterisk}
+    :folder {:default icontab.folder
+             :open icontab.folder-open}}})
 
-(defn on-attach [bufnr]
+(fn on-attach [bufnr]
   (let [api (require :nvim-tree.api)
         opts (fn [desc]
                {:desc (.. "nvim-tree: " desc)
@@ -57,7 +57,7 @@
     (vim.keymap.set :n :q api.tree.close (opts "Close"))
     (vim.keymap.set :n :? api.tree.toggle_help (opts "Help"))))
 
-(noremap! [:n] :<leader>t ":<C-u>NvimTreeToggle<CR>" :silent)
+(map! [:n] :<leader>t ":<C-u>NvimTreeToggle<CR>" {:silent true})
 
 (tree.setup
   {:disable_netrw true

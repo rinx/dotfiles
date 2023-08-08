@@ -1,15 +1,15 @@
-(module rc.plugin.sidebar
-  {autoload {nvim aniseed.nvim
-             sidebar sidebar-nvim}
-   require-macros [rc.macros]})
+(local sidebar (require :sidebar-nvim))
+
+(import-macros {: map!} :rc.macros)
 
 (sidebar.setup
   {:open false
    :side :right
-   :sections [:git
-              :todos
-              :buffers
-              :symbols]
+   :sections
+   [:git
+    :todos
+    :buffers
+    :symbols]
    :disable_closing_prompt true})
 
-(noremap! [:n] :<leader>o ":<C-u>SidebarNvimToggle<CR>" :silent)
+(map! [:n] :<leader>o ":<C-u>SidebarNvimToggle<CR>" {:silent true})

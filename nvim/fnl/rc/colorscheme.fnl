@@ -1,15 +1,15 @@
-(module rc.colorscheme
-  {autoload {nvim aniseed.nvim
-             core aniseed.core
-             color rc.color
-             nightfox nightfox}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
 
-(def- colors color.colors)
+(local nightfox (require :nightfox))
+
+(local color (autoload :rc.color))
+(import-macros {: hi!} :rc.macros)
+
+(local colors color.colors)
 
 (nightfox.setup
   {:options
-   {:compile_path (nvim.fn.expand
+   {:compile_path (vim.fn.expand
                     "~/.config/nvim/tmp/cache/nightfox")
     :compile_file_suffix :_compiled
     :transparent true
@@ -20,8 +20,9 @@
      :keywords "bold,italic"
      :functions :bold
      :types :italic}}})
-(nvim.ex.silent_ "colorscheme duskfox")
-(nvim.ex.syntax :enable)
+
+(vim.cmd "silent colorscheme duskfox")
+(vim.cmd "syntax enable")
 
 (hi! :DiagnosticUnderlineError
      {:cterm :undercurl

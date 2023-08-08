@@ -1,26 +1,27 @@
-(module rc.plugin.dap
-  {autoload {nvim aniseed.nvim
-             color rc.color
-             icon rc.icon
-             dap dap
-             dap-ext-vscode dap.ext.vscode
-             dapui dapui}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
 
-(def- colors color.colors)
-(def- icontab icon.tab)
+(local dap (require :dap))
+(local dap-ext-vscode (require :dap.ext.vscode))
+(local dapui (require :dapui))
 
-(def- adapters-dir (.. (vim.fn.stdpath :data) :/dap))
-(when (not (= (nvim.fn.isdirectory adapters-dir) 1))
-  (nvim.fn.mkdir adapters-dir :p))
+(local color (autoload :rc.color))
+(local icon (autoload :rc.icon))
+(import-macros {: map! : hi!} :rc.macros)
+
+(local colors color.colors)
+(local icontab icon.tab)
+
+(local adapters-dir (.. (vim.fn.stdpath :data) :/dap))
+(when (not (= (vim.fn.isdirectory adapters-dir) 1))
+  (vim.fn.mkdir adapters-dir :p))
 
 ;; go
-(when (= (nvim.fn.executable :dlv) 1)
+(when (= (vim.fn.executable :dlv) 1)
   (let [dlv-path (vim.fn.exepath :dlv)
         vscode-go-path (.. adapters-dir :/vscode-go)
         debug-adapter-path (.. vscode-go-path :/dist/debugAdapter.js)]
 
-    (defn dap-sync-go-adapter []
+    (fn dap-sync-go-adapter []
       (if (vim.fn.empty (vim.fn.glob vscode-go-path))
         (do
           (vim.cmd
@@ -48,7 +49,7 @@
             "finished to update Go adapter."
             vim.lsp.log_levels.WARN
             {:title :dap-sync-go-adapter}))))
-    (nvim.ex.command_ :DapSyncGoAdapter (->viml! :dap-sync-go-adapter))
+    (vim.api.nvim_create_user_command :DapSyncGoAdapter dap-sync-go-adapter {})
 
     (set dap.adapters.go
          {:name :dlv
@@ -77,7 +78,7 @@
       codelldb-url (if (= (vim.fn.has :unix) 1)
                      "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-linux.vsix"
                      "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-darwin.vsix")]
-  (defn dap-sync-lldb-adapter []
+  (fn dap-sync-lldb-adapter []
     (if (vim.fn.empty (vim.fn.glob adapter-path))
       (do
         (vim.cmd
@@ -96,7 +97,7 @@
           "codelldb already installed."
           vim.lsp.log_levels.WARN
           {:title :dap-sync-lldb-adapter}))))
-  (nvim.ex.command_ :DapSyncLLDBAdapter (->viml! :dap-sync-lldb-adapter))
+  (vim.api.nvim_create_user_command :DapSyncLLDBAdapter dap-sync-lldb-adapter {})
   (set dap.adapters.rust
        (fn [callback config]
          (let [port (math.random 30000 40000)
@@ -131,7 +132,7 @@
 (let [adapter-path (.. adapters-dir :/kotlin)
       bin-path (.. adapter-path
                    :/adapter/build/install/adapter/bin/kotlin-debug-adapter)]
-  (defn dap-sync-kotlin-adapter []
+  (fn dap-sync-kotlin-adapter []
     (if (vim.fn.empty (vim.fn.glob adapter-path))
       (do
         (vim.cmd
@@ -151,14 +152,14 @@
           "kotlin-debug-adapter already installed."
           vim.lsp.log_levels.WARN
           {:title :dap-sync-kotlin-adapter}))))
-  (nvim.ex.command_ :DapSyncKotlinAdapter (->viml! :dap-sync-kotlin-adapter))
+  (vim.api.nvim_create_user_command :DapSyncKotlinAdapter dap-sync-kotlin-adapter {})
   (set dap.adapters.kotlin
        {:name :kotlin-debug-adapter
         :type :executable
         :command bin-path}))
 
 ;; loading .vscode/launch.json
-(defn load-launch-js []
+(fn load-launch-js []
   (let [cwd (vim.fn.getcwd)
         path (.. cwd :/.vscode/launch.json)]
     (when (vim.loop.fs_stat path)
@@ -171,7 +172,7 @@
         "finished to load .vscode/launch.json."
         vim.lsp.log_levels.INFO
         {:title :dap-load-launch-js}))))
-(nvim.ex.command_ :DapLoadLaunchJSON (->viml! :load-launch-js))
+(vim.api.nvim_create_user_command :DapLoadLaunchJSON load-launch-js {})
 
 (dapui.setup {:icons
               {:expanded icontab.fold-open
@@ -181,31 +182,40 @@
 (hi! :DapLogPoint {:ctermfg :yellow :guifg colors.warn})
 (hi! :DapStopped {:ctermfg :blue :guifg colors.hint})
 
-(nvim.fn.sign_define :DapBreakpoint
+(vim.fn.sign_define :DapBreakpoint
                      {:text icontab.circle
                       :texthl :DapBreakpoint})
-(nvim.fn.sign_define :DapLogPoint
+(vim.fn.sign_define :DapLogPoint
                      {:text icontab.comment
                       :texthl :DapLogPoint})
-(nvim.fn.sign_define :DapStopped
+(vim.fn.sign_define :DapStopped
                      {:text icontab.arrow-r
                       :texthl :DapStopped})
-(nvim.fn.sign_define :DapBreakpointRejected
+(vim.fn.sign_define :DapBreakpointRejected
                      {:text icontab.times
                       :texthl :DapBreakpoint})
 
-(nvim.ex.command_ :DapToggleBreakpoint "lua require('dap').toggle_breakpoint()")
-(nvim.ex.command_ :DapListBreakpoints "lua require('dap').list_breakpoints()")
-(nvim.ex.command_ :DapContinue "lua require('dap').continue()")
-(nvim.ex.command_ :DapStepOver "lua require('dap').step_over()")
-(nvim.ex.command_ :DapStepInto "lua require('dap').step_into()")
-(nvim.ex.command_ :DapStepOut "lua require('dap').step_out()")
-(nvim.ex.command_ :DapUIOpen "lua require('dapui').open()")
-(nvim.ex.command_ :DapUIClose "lua require('dapui').close()")
-(nvim.ex.command_ :DapUIToggle "lua require('dapui').toggle()")
+(vim.api.nvim_create_user_command
+  :DapToggleBreakpoint "lua require('dap').toggle_breakpoint()" {})
+(vim.api.nvim_create_user_command
+  :DapListBreakpoints "lua require('dap').list_breakpoints()" {})
+(vim.api.nvim_create_user_command
+  :DapContinue "lua require('dap').continue()" {})
+(vim.api.nvim_create_user_command
+  :DapStepOver "lua require('dap').step_over()" {})
+(vim.api.nvim_create_user_command
+  :DapStepInto "lua require('dap').step_into()" {})
+(vim.api.nvim_create_user_command
+  :DapStepOut "lua require('dap').step_out()" {})
+(vim.api.nvim_create_user_command
+  :DapUIOpen "lua require('dapui').open()" {})
+(vim.api.nvim_create_user_command
+  :DapUIClose "lua require('dapui').close()" {})
+(vim.api.nvim_create_user_command
+  :DapUIToggle "lua require('dapui').toggle()" {})
 
-(noremap! [:n] "<F5>" ":<C-u>DapContinue<CR>" :silent)
-(noremap! [:n] "<F9>" ":<C-u>DapToggleBreakpoint<CR>" :silent)
-(noremap! [:n] "<F10>" ":<C-u>DapStepOver<CR>" :silent)
-(noremap! [:n] "<F11>" ":<C-u>DapStepInto<CR>" :silent)
-(noremap! [:n] "<F12>" ":<C-u>DapStepOut<CR>" :silent)
+(map! [:n] "<F5>" ":<C-u>DapContinue<CR>" {:silent true})
+(map! [:n] "<F9>" ":<C-u>DapToggleBreakpoint<CR>" {:silent true})
+(map! [:n] "<F10>" ":<C-u>DapStepOver<CR>" {:silent true})
+(map! [:n] "<F11>" ":<C-u>DapStepInto<CR>" {:silent true})
+(map! [:n] "<F12>" ":<C-u>DapStepOut<CR>" {:silent true})

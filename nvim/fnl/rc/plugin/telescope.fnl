@@ -1,20 +1,21 @@
-(module rc.plugin.telescope
-  {autoload {nvim aniseed.nvim
-             icon rc.icon
-             telescope telescope
-             actions telescope.actions
-             builtin telescope.builtin
-             finders telescope.finders
-             pickers telescope.pickers
-             previewers telescope.previewers
-             sorters telescope.sorters
-             themes telescope.themes
-             toggleterm telescope-toggleterm}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
 
-(def- icontab icon.tab)
+(local telescope (require :telescope))
+(local actions (require :telescope.actions))
+(local builtin (require :telescope.builtin))
+(local finders (require :telescope.finders))
+(local pickers (require :telescope.pickers))
+(local previewers (require :telescope.previewers))
+(local sorters (require :telescope.sorters))
+(local themes (require :telescope.themes))
+(local toggleterm (require :telescope-toggleterm))
 
-(def- action-cmds
+(local icon (autoload :rc.icon))
+(import-macros {: map!} :rc.macros)
+
+(local icontab icon.tab)
+
+(local action-cmds
   ["cd %:p:h"
    :BlamerToggle
    :ConjureConnect
@@ -86,15 +87,15 @@
 (telescope.load_extension :repo)
 (telescope.load_extension :toggleterm)
 
-(defn telescope-ghq []
+(fn telescope-ghq []
   (telescope.extensions.repo.list
     {:search_dirs ["~/local/src"]}))
-(nvim.ex.command_ :Ghq (->viml! :telescope-ghq))
+(vim.api.nvim_create_user_command :Ghq telescope-ghq {})
 
 (toggleterm.setup {:telescope_mappings
                     {:<C-c> actions.close}})
 
-(defn telescope-git-status []
+(fn telescope-git-status []
   (builtin.git_status
     {:previewer (previewers.new_termopen_previewer
                   {:get_command
@@ -102,9 +103,9 @@
                      [:git :-c :core.pager=delta
                       :-c :delta.side-by-side=false :diff
                       entry.value])})}))
-(nvim.ex.command_ :TelescopeGitStatus (->viml! :telescope-git-status))
+(vim.api.nvim_create_user_command :TelescopeGitStatus telescope-git-status {})
 
-(defn telescope-actions []
+(fn telescope-actions []
   (let [p (pickers.new
             (themes.get_dropdown {})
             {:prompt_title :Actions
@@ -114,30 +115,30 @@
                                 (map :i :<CR> actions.set_command_line)
                                 true)})]
     (p:find)))
-(nvim.ex.command_ :TelescopeActions (->viml! :telescope-actions))
+(vim.api.nvim_create_user_command :TelescopeActions telescope-actions {})
 
-(noremap! [:n] ",f" ":<C-u>Telescope fd<CR>" :silent)
-(noremap! [:n]
-          ",af"
-          ":<C-u>Telescope find_files find_command=fd,--hidden<CR>"
-          :silent)
-(noremap! [:n] ",of" ":<C-u>Telescope oldfiles<CR>" :silent)
-(noremap! [:n] ",gf" ":<C-u>Telescope git_files<CR>" :silent)
-(noremap! [:n] ",gb" ":<C-u>Telescope git_branches<CR>" :silent)
-(noremap! [:n] ",gc" ":<C-u>Telescope git_commits<CR>" :silent)
-(noremap! [:n] ",gs" ":<C-u>TelescopeGitStatus<CR>" :silent)
-(noremap! [:n] ",g" ":<C-u>Telescope live_grep<CR>" :silent)
-(noremap! [:n] ",/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>" :silent)
-(noremap! [:n] ",b" ":<C-u>Telescope buffers<CR>" :silent)
-(noremap! [:n] ",t" ":<C-u>Telescope filetypes<CR>" :silent)
-(noremap! [:n]
-          ",c"
-          ":<C-u>Telescope command_history theme=get_dropdown<CR>"
-          :silent)
-(noremap! [:n] ",h" ":<C-u>Telescope help_tags<CR>" :silent)
-(noremap! [:n]
-          :<Leader><Leader>
-          ":<C-u>Telescope commands theme=get_dropdown<CR>"
-          :silent)
-(noremap! [:n] :<C-\> ":<C-u>Telescope builtin<CR>" :silent)
-(noremap! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" :silent)
+(map! [:n] ",f" ":<C-u>Telescope fd<CR>" {:silent true})
+(map! [:n]
+      ",af"
+      ":<C-u>Telescope find_files find_command=fd,--hidden<CR>"
+      {:silent true})
+(map! [:n] ",of" ":<C-u>Telescope oldfiles<CR>" {:silent true})
+(map! [:n] ",gf" ":<C-u>Telescope git_files<CR>" {:silent true})
+(map! [:n] ",gb" ":<C-u>Telescope git_branches<CR>" {:silent true})
+(map! [:n] ",gc" ":<C-u>Telescope git_commits<CR>" {:silent true})
+(map! [:n] ",gs" ":<C-u>TelescopeGitStatus<CR>" {:silent true})
+(map! [:n] ",g" ":<C-u>Telescope live_grep<CR>" {:silent true})
+(map! [:n] ",/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>" {:silent true})
+(map! [:n] ",b" ":<C-u>Telescope buffers<CR>" {:silent true})
+(map! [:n] ",t" ":<C-u>Telescope filetypes<CR>" {:silent true})
+(map! [:n]
+      ",c"
+      ":<C-u>Telescope command_history theme=get_dropdown<CR>"
+      {:silent true})
+(map! [:n] ",h" ":<C-u>Telescope help_tags<CR>" {:silent true})
+(map! [:n]
+      :<Leader><Leader>
+      ":<C-u>Telescope commands theme=get_dropdown<CR>"
+      {:silent true})
+(map! [:n] :<C-\> ":<C-u>Telescope builtin<CR>" {:silent true})
+(map! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" {:silent true})

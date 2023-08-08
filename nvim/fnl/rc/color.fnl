@@ -1,6 +1,4 @@
-(module rc.color)
-
-(def colors
+(local colors
   {:error :#f07178
    :warn :#ffb454
    :info :#c2d94c
@@ -16,3 +14,4 @@
    :color8 :#f07178
    :color9 :#3e4b59})
 
+{: colors}

@@ -1,7 +1,6 @@
-(module rc.plugin.cybu
-  {autoload {nvim aniseed.nvim
-             cybu cybu}
-   require-macros [rc.macros]})
+(local cybu (require :cybu))
+
+(import-macros {: map!} :rc.macros)
 
 (cybu.setup
   {:position
@@ -11,5 +10,5 @@
     :border :rounded}
    :display_time 1000})
 
-(noremap! [:n] :gt ":<C-u>lua require('cybu').cycle('next')<CR>" :silent)
-(noremap! [:n] :gT ":<C-u>lua require('cybu').cycle('prev')<CR>" :silent)
+(map! [:n] :gt ":<C-u>lua require('cybu').cycle('next')<CR>" {:silent true})
+(map! [:n] :gT ":<C-u>lua require('cybu').cycle('prev')<CR>" {:silent true})

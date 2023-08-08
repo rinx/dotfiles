@@ -1,21 +1,13 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local pack_path = fn.stdpath("data") .. "/lazy"
-local fmt = string.format
-
-function ensure (user, repo)
-  local install_path = fmt("%s/%s", pack_path, repo)
-  if fn.empty(fn.glob(install_path)) > 0 then
-    execute(fmt("!git clone --filter=blob:none --single-branch https://github.com/%s/%s %s", user, repo, install_path))
+-- [nfnl] Compiled from init.fnl by https://github.com/Olical/nfnl, do not edit.
+local lazypath = (vim.fn.stdpath("data") .. "/lazy")
+local function ensure(user, repo)
+  local install_path = string.format("%s/%s", lazypath, repo)
+  if (vim.fn.empty(vim.fn.glob(install_path)) > 1) then
+    vim.api.nvim_command(string.format("!git clone --filter=blob:none --single-branch https://github.com/%s/%s %s", user, repo, install_path))
+  else
   end
-  vim.opt.runtimepath:prepend(install_path)
+  return (vim.opt.runtimepath):prepend(install_path)
 end
-
 ensure("folke", "lazy.nvim")
-ensure("Olical", "aniseed")
-
-vim.g["aniseed#env"] = {
-  module = "rc.init",
-  compile = true,
-}
+ensure("Olical", "nfnl")
+return require("rc.init")

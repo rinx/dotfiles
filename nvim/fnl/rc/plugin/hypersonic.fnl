@@ -1,6 +1,3 @@
-(module rc.plugin.hypersonic
-  {autoload {nvim aniseed.nvim
-             hypersonic hypersonic}
-   require-macros [rc.macros]})
+(local hypersonic (require :hypersonic))
 
 (hypersonic.setup {})

@@ -1,19 +1,20 @@
-(module rc.plugin.feline
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             color rc.color
-             icon rc.icon
-             feline feline
-             vimode-providers feline.providers.vi_mode
-             lsp-providers feline.providers.lsp}})
+(local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
 
-(def- colors color.colors)
-(def- icontab icon.tab)
+(local feline (require :feline))
+(local vimode-providers (require :feline.providers.vi_mode))
+(local lsp-providers (require :feline.providers.lsp))
 
-(def- space " ")
-(def- fill "▊")
+(local color (autoload :rc.color))
+(local icon (autoload :rc.icon))
 
-(def- vi-mode-colors
+(local colors color.colors)
+(local icontab icon.tab)
+
+(local space " ")
+(local fill "▊")
+
+(local vi-mode-colors
   {:NORMAL colors.info
    :INSERT colors.error
    :VISUAL colors.color8
@@ -29,41 +30,41 @@
    :TERM colors.info
    :NONE colors.color3})
 
-(def- lsp-icons
+(local lsp-icons
   {:error icontab.bug
    :warn icontab.exclam-circle
    :info icontab.info-circle
    :hint icontab.leaf})
 
-(defn- vimode-hl []
+(fn vimode-hl []
   {:name (vimode-providers.get_mode_highlight_name)
    :fg (vimode-providers.get_mode_color)})
 
-(defn- lsp-diagnostics-info []
+(fn lsp-diagnostics-info []
   {:error (lsp-providers.get_diagnostics_count :Error)
    :warn (lsp-providers.get_diagnostics_count :Warn)
    :info (lsp-providers.get_diagnostics_count :Info)
    :hint (lsp-providers.get_diagnostics_count :Hint)})
 
-(defn- diagnostics-enable [f s]
+(fn diagnostics-enable [f s]
   (fn []
     (let [diag (core.get (f) s)]
       (and diag (~= diag 0)))))
 
-(defn- diagnostics-of [f s]
+(fn diagnostics-of [f s]
   (fn []
     (let [diag (core.get (f) s)
           ic (core.get lsp-icons s)]
       (.. ic diag))))
 
-(defn- nc [...]
+(fn nc [...]
   (accumulate [str ""
                _ v (ipairs [...])]
     (if v
       (.. str v)
       str)))
 
-(def- comps
+(local comps
   {:vimode {:provider fill
             :hl vimode-hl
             :right_sep space}
@@ -160,7 +161,7 @@
                   :icon icontab.diff-removed
                   :left_sep space}}})
 
-(def- force-inactive
+(local force-inactive
   {:filetypes [:^Trouble$
                :^qf$
                :^help$
@@ -175,7 +176,7 @@
    :buftypes [:^terminal$]
    :bufnames []})
 
-(def- components
+(local components
   {:active [[comps.vimode
              comps.file.info
              comps.lsp
@@ -200,7 +201,7 @@
               []
               []]})
 
-(def- providers
+(local providers
   {:dap_status (fn []
                 (let [dap (require :dap)]
                   (or (dap.status) "")))
@@ -209,7 +210,7 @@
                       :running icontab.dinosaur
                       _ ""))
    :devenv_status (fn []
-                    (if (not (= vim.NIL (nvim.fn.getenv :DOCKERIZED_DEVENV)))
+                    (if (not (= vim.NIL (vim.fn.getenv :DOCKERIZED_DEVENV)))
                       icontab.whale
                       ""))
    :skkeleton_status (fn []
@@ -222,16 +223,16 @@
                          :abbrev "aあ"
                          _ ""))
    :ghosttext_status (fn []
-                       (if nvim.g.ghosttext_started
+                       (if vim.g.ghosttext_started
                          icontab.ghost
-                         (match (nvim.fn.ghosttext#status)
+                         (match (vim.fn.ghosttext#status)
                            :running (do
-                                      (set nvim.g.ghosttext_started true)
+                                      (set vim.g.ghosttext_started true)
                                       icontab.ghost)
                            _ "")))})
 
 ;; enforce to set &termguicolors
-(nvim.ex.set :termguicolors)
+(set vim.o.termguicolors true)
 
 (feline.setup
   {:default_bg colors.color2

@@ -1,49 +1,35 @@
-(module rc.plugin
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             lazy lazy}})
+(local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
 
-(def- ui-icons
-      {:loaded "●"
-       :not_loaded "○"
-       :cmd " "
-       :config ""
-       :event ""
-       :ft " "
-       :init " "
-       :keys " "
-       :plugin " "
-       :runtime " "
-       :source " "
-       :start " "
-       :task " "
-       :lazy "鈴"
-       :list ["●" "➜" "★" "‒"]})
+(local lazy (require :lazy))
 
-(def- rtp-disabled-plugins
-      [:gzip
-       :netrwPlugin
-       :tarPlugin
-       :tohtml
-       :tutor
-       :zipPlugin])
+(local icon (autoload :rc.icon))
+(local ui-icons icon.lazy-nvim-ui-icons)
 
-(defn- config-require-str [name]
+(local rtp-disabled-plugins
+  [:gzip
+   :netrwPlugin
+   :tarPlugin
+   :tohtml
+   :tutor
+   :zipPlugin])
+
+(fn config-require-str [name]
   (.. "require('rc.plugin." name "')"))
 
-(defn- eval [str]
+(fn eval [str]
   (assert (load str)))
 
-(defn- mod [m]
+(fn mod [m]
   (-> m
       config-require-str
       eval))
 
-(defn- cmd->fn [cmd]
+(fn cmd->fn [cmd]
   (fn []
     (vim.cmd (.. ":" cmd))))
 
-(defn- use [pkgs]
+(fn use [pkgs]
   (let [plugins (icollect [name opts (pairs pkgs)]
                   (core.assoc opts 1 name))]
     (lazy.setup
@@ -177,6 +163,7 @@
    :simrat39/rust-tools.nvim {:ft [:rust]}
    :Olical/conjure {:ft [:clojure
                          :fennel]}
+   :Olical/nfnl {:ft [:fennel]}
 
    ;; treesitter
    :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)

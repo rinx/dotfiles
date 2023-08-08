@@ -1,12 +1,13 @@
-(module rc.plugin.bufferline
-  {autoload {nvim aniseed.nvim
-             color rc.color
-             icon rc.icon
-             bufferline bufferline}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
 
-(def- colors color.colors)
-(def- icontab icon.tab)
+(local bufferline (require :bufferline))
+
+(local color (autoload :rc.color))
+(local icon (autoload :rc.icon))
+(import-macros {: map!} :rc.macros)
+
+(local colors color.colors)
+(local icontab icon.tab)
 
 (bufferline.setup
   {:highlights
@@ -150,21 +151,21 @@
              :always_show_bufferline true
              :sort_by :extension}})
 
-(noremap! [:n] ",bc" ":tabe<CR>" :silent)
-(noremap! [:n] ",bb" ":<C-u>BufferLinePick<CR>" :silent)
-(noremap! [:n] ",bo" ":<C-u>BufferLineSortByDirectory<CR>" :silent)
-(noremap! [:n] ",be" ":<C-u>BufferLineSortByExtension<CR>" :silent)
-(noremap! [:n] ",bn" ":<C-u>BufferLineCycleNext<CR>" :silent)
-(noremap! [:n] ",bp" ":<C-u>BufferLineCyclePrev<CR>" :silent)
-(noremap! [:n] ",bN" ":<C-u>BufferLineMoveNext<CR>" :silent)
-(noremap! [:n] ",bP" ":<C-u>BufferLineMovePrev<CR>" :silent)
+(map! [:n] ",bc" ":tabe<CR>" {:silent true})
+(map! [:n] ",bb" ":<C-u>BufferLinePick<CR>" {:silent true})
+(map! [:n] ",bo" ":<C-u>BufferLineSortByDirectory<CR>" {:silent true})
+(map! [:n] ",be" ":<C-u>BufferLineSortByExtension<CR>" {:silent true})
+(map! [:n] ",bn" ":<C-u>BufferLineCycleNext<CR>" {:silent true})
+(map! [:n] ",bp" ":<C-u>BufferLineCyclePrev<CR>" {:silent true})
+(map! [:n] ",bN" ":<C-u>BufferLineMoveNext<CR>" {:silent true})
+(map! [:n] ",bP" ":<C-u>BufferLineMovePrev<CR>" {:silent true})
 
-(defn buffer-close []
-  (let [bn (nvim.fn.bufnr :%)
-        abn (nvim.fn.bufnr :#)]
+(fn buffer-close [opts]
+  (let [bn (vim.fn.bufnr :%)
+        abn (vim.fn.bufnr :#)]
     (if (not (= abn -1))
-      (nvim.ex.silent_ :bnext)
-      (nvim.ex.silent_ :enew))
-    (nvim.ex.silent_ (.. "bdelete " bn))))
-(nvim.ex.command_ :BufferClose (->viml! :buffer-close))
-(noremap! [:n] ",bd" ":<C-u>BufferClose<CR>" :silent)
+      (vim.cmd "silent bnext")
+      (vim.cmd "silent enew"))
+    (vim.cmd (.. "silent bdelete " bn))))
+(vim.api.nvim_create_user_command :BufferClose buffer-close {})
+(map! [:n] ",bd" ":<C-u>BufferClose<CR>" {:silent true})

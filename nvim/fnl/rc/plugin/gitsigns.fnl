@@ -1,8 +1,10 @@
-(module rc.plugin.gitsigns
-  {autoload {icon rc.icon
-             gitsigns gitsigns}})
+(local {: autoload} (require :nfnl.module))
 
-(def- icontab icon.tab)
+(local gitsigns (require :gitsigns))
+
+(local icon (autoload :rc.icon))
+
+(local icontab icon.tab)
 
 (gitsigns.setup
   {:signs {:add {:hl :GitSignsAdd

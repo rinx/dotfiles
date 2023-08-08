@@ -1,29 +1,36 @@
-(fn autocmd! [...]
-  `(nvim.ex.autocmd ,...))
+;; [nfnl-macro]
 
-(fn augroup! [name ...]
-  `(do
-     (nvim.ex.augroup ,(tostring name))
-     (nvim.ex.autocmd_)
-     (do
-       ,...)
-     (nvim.ex.augroup :END)))
+(fn time! [...]
+  `(let [start# (vim.loop.hrtime)
+         result# (do ,...)
+         end# (vim.loop.hrtime)]
+     (print (.. "Elapsed time: " (/ (- end# start#) 1000000) " msecs"))
+     result#))
 
-(fn ->viml! [name]
-  `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))
-
-(fn map! [modes from to ...]
-  (let [opts (collect [_ opt (ipairs [...])]
-               (values (tostring opt) true))
-        out []]
+(fn map! [modes from to opts]
+  (let [out []]
     (each [_ mode (ipairs modes)]
-      (table.insert out `(nvim.set_keymap ,mode ,from ,to ,opts)))
+      (table.insert
+        out
+        `(vim.keymap.set ,mode ,from ,to ,opts)))
     (if (> (length out) 1)
       `(do ,(unpack out))
       `,(unpack out))))
 
-(fn noremap! [modes from to ...]
-  `(map! ,modes ,from ,to :noremap ,...))
+(fn augroup! [name ...]
+  `(let [group# (vim.api.nvim_create_augroup
+                  ,(tostring name)
+                  {:clear true})]
+     ,(let [cmds (icollect [_ cmd (ipairs [...])]
+                   `(vim.api.nvim_create_autocmd
+                      ,cmd.events
+                      {:pattern ,cmd.pattern
+                       :group group#
+                       :command ,cmd.command
+                       :callback ,cmd.callback}))]
+         (if (> (length cmds) 1)
+             `(do ,(unpack cmds))
+             `,(unpack cmds)))))
 
 (fn hi! [name opts]
   (let [f (fn [k v]
@@ -38,11 +45,13 @@
                [args name
                 k v (pairs opts)]
                `(.. ,args " " ,(f k v)))]
-    `(nvim.ex.highlight ,args)))
+    `(vim.cmd (.. "highlight " ,args))))
 
-{: autocmd!
- : augroup!
- : ->viml!
+(fn ->viml! [name]
+  `(.. "lua require('" *module-name* "')['" ,(tostring name) "']()"))
+
+{: time!
  : map!
- : noremap!
- : hi!}
+ : augroup!
+ : hi!
+ : ->viml!}

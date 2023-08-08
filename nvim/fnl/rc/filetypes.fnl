@@ -1,8 +1,10 @@
-(module rc.filetypes
-  {autoload {nvim aniseed.nvim}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
 
-(defn lsp-formatting []
+(local core (autoload :nfnl.core))
+
+(import-macros {: augroup!} :rc.macros)
+
+(fn lsp-formatting []
   (let [(ok? val-or-err) (pcall vim.lsp.buf.format)]
     (if ok?
       (vim.notify
@@ -14,110 +16,212 @@
         vim.lsp.log_levels.WARN
         {:title :lsp-formatting}))))
 
-;; filetypes
-(augroup! init-filetype-detect
-          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.cue" "setf cue")
-          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.nml" "setf fortran")
-          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.namelist" "setf fortran")
-          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.jl" "setf julia")
-          (autocmd! "BufNewFile,BufRead,BufWinEnter" "*.tf,*.tfvars" "setf terraform"))
+; (augroup!
+;   init-filetype-detect
+;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.cue" "setf cue")
+;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.nml,*.namelist" "setf fortran")
+;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.jl" "setf julia")
+;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.tf,*.tfvars" "setf terraform"))
 
-(augroup! init-git-files
-          (autocmd! :FileType "gitcommit,gitrebase" "set bufhidden=delete"))
+(augroup!
+  init-filetype-detect
+  {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "*.cue"
+   :command "setf cue"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "*.nml,*.namelist"
+   :command "setf fortran"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "*.jl"
+   :command "setf julia"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "*.tf,*.tfvars"
+   :command "setf terraform"})
 
-;; markdown
-(augroup! init-markdown
-          (autocmd! :FileType :markdown "setl shiftwidth=4"))
+(augroup!
+  init-git-files
+  {:events [:FileType]
+   :pattern "gitcommit,gitrebase"
+   :command "set bufhidden=delete"})
 
-;; json
-(augroup! init-json
-          (autocmd! :FileType :json "setl shiftwidth=2"))
+(augroup!
+  init-markdown
+  {:events [:FileType]
+   :pattern :markdown
+   :command "setl shiftwidth=4"})
 
-;; julia
-(augroup! init-julia
-          (autocmd! :FileType :julia "setl shiftwidth=4"))
+(augroup!
+  init-json
+  {:events [:FileType]
+   :pattern :json
+   :command "setl shiftwidth=2"})
 
-;; yaml
-(augroup! init-yaml
-          (autocmd! :FileType :yaml "setl shiftwidth=2"))
+(augroup!
+  init-julia
+  {:events [:FileType]
+   :pattern :julia
+   :command "setl shiftwidth=4"})
 
-;; fennel
-(set nvim.g.conjure#client#fennel#aniseed#aniseed_module_prefix "aniseed.")
-(defn conjure-client-fennel-stdio []
-  (set nvim.g.conjure#filetype#fennel "conjure.client.fennel.stdio"))
-(nvim.ex.command_ :ConjureClientFennelStdio (->viml! :conjure-client-fennel-stdio))
+(augroup!
+  init-yaml
+  {:events [:FileType]
+   :pattern :yaml
+   :command "setl shiftwidth=2"})
 
-(augroup! init-fennel
-          (autocmd! :FileType :fennel "setl shiftwidth=2")
-          (autocmd! :FileType :fennel "setl colorcolumn=80"))
+(augroup!
+  init-yaml
+  {:events [:FileType]
+   :pattern :yaml
+   :command "setl shiftwidth=2"})
 
-;; lua
-(augroup! init-lua
-          (autocmd! :FileType :lua "setl shiftwidth=2"))
+(augroup!
+  init-fennel
+  {:events [:FileType]
+   :pattern :fennel
+   :command "setl shiftwidth=2"}
+  {:events [:FileType]
+   :pattern :fennel
+   :command "setl colorcolumn=80"})
 
-;; clojure
-(augroup! init-clojure
-          (autocmd! :FileType :clojure
-                    "nnoremap <buffer><silent> <leader>K :<C-u>lua vim.lsp.buf.hover()<CR>")
-          (autocmd! :FileType :clojure "setl colorcolumn=80")
-          (autocmd! :BufWritePre "*.clj,*.cljc,*.cljs" (->viml! :lsp-formatting)))
+(augroup!
+  init-lua
+  {:events [:FileType]
+   :pattern :lua
+   :command "setl shiftwidth=2"})
 
-;; go
-(augroup! init-golang
-          (autocmd! :FileType :go "setl colorcolumn=80")
-          (autocmd! :FileType :go "setl noexpandtab")
-          (autocmd! :FileType :go "setl shiftwidth=4")
-          (autocmd! :FileType :go "setl tabstop=4")
-          (autocmd! :FileType :go "setl softtabstop=4")
-          (autocmd! :FileType :go "compiler go")
-          (autocmd! :BufWritePre "*.go" (->viml! :lsp-formatting)))
+(augroup!
+  init-clojure
+  {:events [:FileType]
+   :pattern :clojure
+   :command "nnoremap <buffer><silent> <leader>K :<C-u>lua vim.lsp.buf.hover()<CR>"}
+  {:events [:FileType]
+   :pattern :clojure
+   :command "setl colorcolumn=80"}
+  {:events [:BufWritePre]
+   :pattern "*.clj,*.cljc,*.cljs"
+   :callback lsp-formatting})
 
-;; rust
-(augroup! init-rust
-          (autocmd! :BufWritePre "*.rs" (->viml! :lsp-formatting)))
+(augroup!
+  init-go
+  {:events [:FileType]
+   :pattern :go
+   :command "setl colorcolumn=80"}
+  {:events [:FileType]
+   :pattern :go
+   :command "setl noexpandtab"}
+  {:events [:FileType]
+   :pattern :go
+   :command "setl shiftwidth=4"}
+  {:events [:FileType]
+   :pattern :go
+   :command "setl tabstop=4"}
+  {:events [:FileType]
+   :pattern :go
+   :command "setl softtabstop=4"}
+  {:events [:FileType]
+   :pattern :go
+   :command "compiler go"}
+  {:events [:BufWritePre]
+   :pattern "*.go"
+   :callback lsp-formatting})
 
-;; kotlin
-(augroup! init-kotlin
-          (autocmd! :BufWritePre "*.kt,*.kts" (->viml! :lsp-formatting)))
+(augroup!
+  init-rust
+  {:events [:BufWritePre]
+   :pattern "*.rs"
+   :callback lsp-formatting})
 
-;; terraform
-(augroup! init-terraform
-          (autocmd! :FileType :terraform "setl shiftwidth=2")
-          (autocmd! :BufWritePre "*.tf,*tfvars" (->viml! :lsp-formatting)))
+(augroup!
+  init-kotlin
+  {:events [:BufWritePre]
+   :pattern "*.kt,*.kts"
+   :callback lsp-formatting})
 
-;; typescript
-(augroup! init-typescript
-          (autocmd! :FileType :typescript "setl shiftwidth=2")
-          (autocmd! :BufWritePre "*.ts" (->viml! :lsp-formatting)))
+(augroup!
+  init-terraform
+  {:events [:FileType]
+   :pattern :terraform
+   :command "setl shiftwidth=2"}
+  {:events [:BufWritePre]
+   :pattern "*.tf,*.tfvars"
+   :callback lsp-formatting})
 
-;; QuickFix
-(augroup! init-qf
-          (autocmd! :FileType :qf "nnoremap <buffer> j j")
-          (autocmd! :FileType :qf "nnoremap <buffer> k k")
-          (autocmd! :FileType :qf "nnoremap <buffer> 0 0")
-          (autocmd! :FileType :qf "nnoremap <buffer> $ $")
-          (autocmd! :FileType :qf "nnoremap <buffer> gj gj")
-          (autocmd! :FileType :qf "nnoremap <buffer> gk gk")
-          (autocmd! :FileType :qf "nnoremap <buffer> g0 g0")
-          (autocmd! :FileType :qf "nnoremap <buffer> g$ g$")
-          (autocmd! :FileType :qf "nnoremap <buffer><silent>q :<C-u>q<CR>")
-          (autocmd! :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif"))
+(augroup!
+  init-typescript
+  {:events [:FileType]
+   :pattern :typescript
+   :command "setl shiftwidth=2"}
+  {:events [:BufWritePre]
+   :pattern "*.ts"
+   :callback lsp-formatting})
 
-;; Help
-(augroup! init-help
-          (autocmd! :FileType :help "nnoremap <buffer> j j")
-          (autocmd! :FileType :help "nnoremap <buffer> k k")
-          (autocmd! :FileType :help "nnoremap <buffer> 0 0")
-          (autocmd! :FileType :help "nnoremap <buffer> $ $")
-          (autocmd! :FileType :help "nnoremap <buffer> gj gj")
-          (autocmd! :FileType :help "nnoremap <buffer> gk gk")
-          (autocmd! :FileType :help "nnoremap <buffer> g0 g0")
-          (autocmd! :FileType :help "nnoremap <buffer> g$ g$")
-          (autocmd! :FileType :help "nnoremap <buffer><silent>q :<C-u>q<CR>")
-          (autocmd! :WinEnter :* "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'help' | q | endif"))
+(augroup!
+  init-qf
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> j j"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> k k"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> 0 0"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> $ $"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> gj gj"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> gk gk"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> g0 g0"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer> g$ g$"}
+  {:events [:FileType]
+   :pattern :qf
+   :command "nnoremap <buffer><silent>q :<C-u>q<CR>"}
+  {:events [:WinEnter]
+   :pattern :*
+   :command "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif"})
 
-;; Ghosttext.vim
-(set nvim.g.dps_ghosttext#ftmap
+(augroup!
+  init-help
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> j j"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> k k"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> 0 0"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> $ $"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> gj gj"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> gk gk"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> g0 g0"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer> g$ g$"}
+  {:events [:FileType]
+   :pattern :help
+   :command "nnoremap <buffer><silent>q :<C-u>q<CR>"}
+  {:events [:WinEnter]
+   :pattern :*
+   :command "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif"})
+
+(set vim.g.dps_ghosttext#ftmap
      {:github.com :markdown
       :app.zenhub.com :markdown
       :mail.google.com :html})

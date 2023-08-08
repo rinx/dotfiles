@@ -1,128 +1,124 @@
-(module rc.core
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             color rc.color
-             icon rc.icon
-             util rc.util}})
+(local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
 
-(def- icontab icon.tab)
+(local icon (autoload :rc.icon))
 
 ;; basics
-(set nvim.o.viminfo "'1000,<100,f1,h,s100")
-(set nvim.o.history 300)
-(set nvim.o.bs "indent,eol,start")
+(set vim.o.viminfo "'1000,<100,f1,h,s100")
+(set vim.o.history 300)
+(set vim.o.bs "indent,eol,start")
 
-(nvim.ex.set :ruler)
-(nvim.ex.set :number)
-(set nvim.o.cmdheight 2)
-(nvim.ex.set :wildmenu)
-(set nvim.o.wildchar 9) ;; 9 = <Tab>
-(set nvim.o.wildmode "longest:full,full")
+(set vim.o.ruler true)
+(set vim.o.number true)
+(set vim.o.cmdheight 2)
+(set vim.o.wildmenu true)
+(set vim.o.wildchar 9) ;; 9 = <Tab>
+(set vim.o.wildmode "longest:full,full")
 
-(set nvim.o.shortmess "filnxtToOFc")
+(set vim.o.shortmess "filnxtToOFc")
 (set vim.opt.completeopt [:menu :menuone :noselect])
 
-(nvim.ex.set :imdisable)
+(set vim.o.imdisable true)
 
-(nvim.ex.set :ignorecase)
-(nvim.ex.set :smartcase)
+(set vim.o.ignorecase true)
+(set vim.o.smartcase true)
 
-(nvim.ex.set :smartindent)
-(nvim.ex.set :breakindent)
+(set vim.o.smartindent true)
+(set vim.o.breakindent true)
 
-(nvim.ex.set :confirm)
+(set vim.o.confirm true)
 
-(set nvim.o.clipboard "unnamed,unnamedplus")
+(set vim.o.clipboard "unnamed,unnamedplus")
 
-(set nvim.o.mouse "a")
+(set vim.o.mouse "a")
 
-(set nvim.o.foldmethod :marker)
-(set nvim.o.foldlevel 99)
+(set vim.o.foldmethod :marker)
+(set vim.o.foldlevel 99)
 
-(set nvim.o.virtualedit "block")
+(set vim.o.virtualedit "block")
 
-(nvim.ex.set :expandtab)
-(nvim.ex.set :smarttab)
-(set nvim.o.tabstop 8)
-(set nvim.o.shiftwidth 4)
-(set nvim.o.softtabstop 4)
+(set vim.o.expandtab true)
+(set vim.o.smarttab true)
+(set vim.o.tabstop 8)
+(set vim.o.shiftwidth 4)
+(set vim.o.softtabstop 4)
 
-(if (= (nvim.fn.exists "&pumblend") 1)
-  (set nvim.o.pumblend 30))
-(if (= (nvim.fn.exists "&winblend") 1)
-  (set nvim.o.winblend 30))
+(if (= (vim.fn.exists "&pumblend") 1)
+  (set vim.o.pumblend 30))
+(if (= (vim.fn.exists "&winblend") 1)
+  (set vim.o.winblend 30))
 
-(nvim.ex.set :visualbell)
-(nvim.ex.set :lazyredraw)
-(nvim.ex.set :ttyfast)
+(set vim.o.visualbell true)
+(set vim.o.lazyredraw true)
+(set vim.o.ttyfast true)
 
-(nvim.ex.set :showmatch)
-(set nvim.o.matchtime 3)
+(set vim.o.showmatch true)
+(set vim.o.matchtime 3)
 
-(nvim.ex.set :nobackup)
-(nvim.ex.set :nowritebackup)
+(set vim.o.backup false)
+(set vim.o.writebackup false)
 
-(set nvim.o.updatetime 300)
-(set nvim.o.timeoutlen 500)
+(set vim.o.updatetime 300)
+(set vim.o.timeoutlen 500)
 
-(set nvim.wo.signcolumn "number")
+(set vim.wo.signcolumn :number)
 
-(nvim.ex.set :undofile)
-(set nvim.o.undolevels 1000)
-(set nvim.o.undoreload 10000)
+(set vim.o.undofile true)
+(set vim.o.undolevels 1000)
+(set vim.o.undoreload 10000)
 
-(let [backupdir (nvim.fn.expand "~/.config/nvim/tmp/backup")
-      undodir (nvim.fn.expand "~/.config/nvim/tmp/undo")
-      swapdir (nvim.fn.expand "~/.config/nvim/tmp/swap")]
-  (set nvim.o.backupdir backupdir)
-  (set nvim.o.undodir undodir)
-  (set nvim.o.directory swapdir)
+(let [backupdir (vim.fn.expand "~/.config/nvim/tmp/backup")
+      undodir (vim.fn.expand "~/.config/nvim/tmp/undo")
+      swapdir (vim.fn.expand "~/.config/nvim/tmp/swap")]
+  (set vim.o.backupdir backupdir)
+  (set vim.o.undodir undodir)
+  (set vim.o.directory swapdir)
 
-  (when (not (= (nvim.fn.isdirectory backupdir) 1))
-    (nvim.fn.mkdir backupdir :p))
-  (when (not (= (nvim.fn.isdirectory undodir) 1))
-    (nvim.fn.mkdir undodir :p))
-  (when (not (= (nvim.fn.isdirectory swapdir) 1))
-    (nvim.fn.mkdir swapdir :p)))
+  (when (not (= (vim.fn.isdirectory backupdir) 1))
+    (vim.fn.mkdir backupdir :p))
+  (when (not (= (vim.fn.isdirectory undodir) 1))
+    (vim.fn.mkdir undodir :p))
+  (when (not (= (vim.fn.isdirectory swapdir) 1))
+    (vim.fn.mkdir swapdir :p)))
 
-(nvim.ex.set :list)
+(set vim.o.list true)
 (set vim.opt.listchars
-     {:eol icontab.subdirectory-arrow-left
-      :extends icontab.extends
-      :nbsp icontab.nbsp
-      :precedes icontab.precedes
-      :tab icontab.keyboard-tab
-      :trail icontab.trail})
+     {:eol icon.tab.subdirectory-arrow-left
+      :extends icon.tab.extends
+      :nbsp icon.tab.nbsp
+      :precedes icon.tab.precedes
+      :tab icon.tab.keyboard-tab
+      :trail icon.tab.trail})
 
-(nvim.ex.set :noautochdir)
-(nvim.ex.set :autoread)
-(nvim.ex.set :noautowrite)
+(set vim.o.autochdir false)
+(set vim.o.autoread true)
+(set vim.o.autowrite false)
 
-(nvim.ex.set :noexrc)
-(nvim.ex.set :nosecure)
+(set vim.o.exrc false)
+(set vim.o.secure false)
 
-(nvim.ex.set :timeout)
-(set nvim.o.timeoutlen 1000)
-(set nvim.o.ttimeoutlen 200)
+(set vim.o.timeout true)
+(set vim.o.timeoutlen 1000)
+(set vim.o.ttimeoutlen 200)
 
-(nvim.ex.set :hidden)
+(set vim.o.hidden true)
 
-(set nvim.o.laststatus 3)
-(set nvim.o.showtabline 2)
+(set vim.o.laststatus 3)
+(set vim.o.showtabline 2)
 
-(nvim.ex.set :termguicolors)
-(nvim.ex.syntax :on)
-(nvim.ex.filetype :off)
-(nvim.ex.filetype "plugin indent on")
+(set vim.o.termguicolors true)
+(vim.cmd "syntax on")
+(vim.cmd "filetype off")
+(vim.cmd "filetype plugin indent on")
 
-(nvim.ex.set :modeline)
+(set vim.o.modeline true)
 
 ;; grep
-(if (= (nvim.fn.executable :rg) 1)
+(if (= (vim.fn.executable :rg) 1)
   (do
-    (set nvim.o.grepprg "rg --vimgrep --no-heading")
-    (set nvim.o.grepformat "%f:%l:%c:%m,%f:%l:%m")
-    (set nvim.g.ackprg "rg --vimgrep --no-heading")))
+    (set vim.o.grepprg "rg --vimgrep --no-heading")
+    (set vim.o.grepformat "%f:%l:%c:%m,%f:%l:%m")
+    (set vim.g.ackprg "rg --vimgrep --no-heading")))
 
 ;; guis
 (let [fonts ["VictorMono Nerd Font"
@@ -130,39 +126,39 @@
              "JetBrainsMono Nerd Font"
              "HackGenNerd"
              "Noto Color Emoji"]
-      size (if (= (nvim.fn.has :mac) 1)
+      size (if (= (vim.fn.has :mac) 1)
              "h14"
              "h12")]
   (-> (core.map (fn [font]
                   (.. font ":" size)) fonts)
     (table.concat ",")
-    (->> (set nvim.o.guifont))))
+    (->> (set vim.o.guifont))))
 
 ;; nvui
-(when (= nvim.g.nvui 1)
-  (nvim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.80)
-  (nvim.fn.rpcnotify 1 :NVUI_FRAMELESS false)
-  (nvim.fn.rpcnotify 1 :NVUI_CURSOR_HIDE_TYPE true)
+(when (= vim.g.nvui 1)
+  (vim.fn.rpcnotify 1 :NVUI_WINOPACITY 0.80)
+  (vim.fn.rpcnotify 1 :NVUI_FRAMELESS false)
+  (vim.fn.rpcnotify 1 :NVUI_CURSOR_HIDE_TYPE true)
 
-  (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_FAMILY "JetBrainsMono Nerd Font")
-  (nvim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_SIZE 10)
+  (vim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_FAMILY "JetBrainsMono Nerd Font")
+  (vim.fn.rpcnotify 1 :NVUI_TITLEBAR_FONT_SIZE 10)
 
-  (nvim.fn.rpcnotify 1 :NVUI_ANIMATIONS_ENABLED true)
+  (vim.fn.rpcnotify 1 :NVUI_ANIMATIONS_ENABLED true)
 
-  (nvim.fn.rpcnotify 1 :NVUI_IME_SET false)
+  (vim.fn.rpcnotify 1 :NVUI_IME_SET false)
 
-  (nvim.fn.rpcnotify 1 :NVUI_EXT_POPUPMENU true)
+  (vim.fn.rpcnotify 1 :NVUI_EXT_POPUPMENU true)
 
-  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 20)
-  (nvim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 20))
+  (vim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_TOP 20)
+  (vim.fn.rpcnotify 1 :NVUI_CARET_EXTEND_BOTTOM 20))
 
 ;; neovide
-(when  nvim.g.neovide
-  (set nvim.g.neovide_floating_blur 0)
-  (set nvim.g.neovide_transparency 0.8)
-  (set nvim.g.neovide_cursor_animation_length 0.1)
-  (set nvim.g.neovide_cursor_trail_size 0.01)
-  (set nvim.g.neovide_cursor_vfx_mode :ripple)
-  (set nvim.g.neovide_refresh_rate 60)
-  (set nvim.g.neovide_refresh_rate_idle 5)
-  (set nvim.g.neovide_underline_automatic_scaling true))
+(when vim.g.neovide
+  (set vim.g.neovide_floating_blur 0)
+  (set vim.g.neovide_transparency 0.8)
+  (set vim.g.neovide_cursor_animation_length 0.1)
+  (set vim.g.neovide_cursor_trail_size 0.01)
+  (set vim.g.neovide_cursor_vfx_mode :ripple)
+  (set vim.g.neovide_refresh_rate 60)
+  (set vim.g.neovide_refresh_rate_idle 5)
+  (set vim.g.neovide_underline_automatic_scaling true))

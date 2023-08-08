@@ -1,15 +1,16 @@
-(module rc.plugin.cmp
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             icon rc.icon
-             util rc.util
-             cmp cmp
-             autopairs-cmp nvim-autopairs.completion.cmp
-             cmp-git cmp_git}
-   require-macros [rc.macros]})
+(local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
 
-(def- icontab icon.tab)
-(def- cmp-kinds
+(local cmp (require :cmp))
+(local autopairs-cmp (require :nvim-autopairs.completion.cmp))
+(local cmp-git (require :cmp_git))
+
+(local icon (autoload :rc.icon))
+(import-macros {: map! : augroup!} :rc.macros)
+
+(local icontab icon.tab)
+
+(local cmp-kinds
   {:Class icontab.class
    :Color icontab.color
    :Constant icontab.pi
@@ -36,7 +37,7 @@
    :Event icontab.zap
    :TypeParameter icontab.package})
 
-(def- cmp-srcs
+(local cmp-srcs
   {:buffer :Buffer
    :calc :Calc
    :cmdline :CMD
@@ -51,7 +52,7 @@
    :treesitter :TS
    :vsnip :VSnip})
 
-(def- default-sources
+(local default-sources
   [{:name :nvim_lsp}
    {:name :buffer}
    {:name :vsnip}
@@ -102,36 +103,31 @@
                           [{:name :path}]
                           [{:name :cmdline}])})
 
-
 ;; conjure
-(defn append-cmp-conjure []
+(fn append-cmp-conjure []
   (let [ss []]
     (each [_ v (ipairs default-sources)]
       (table.insert ss v))
     (table.insert ss {:name :conjure})
     (cmp.setup.buffer
       {:sources ss})))
-(augroup! init-cmp-conjure
-          (autocmd! :FileType :clojure (->viml! :append-cmp-conjure))
-          (autocmd! :FileType :fennel (->viml! :append-cmp-conjure))
-          (autocmd! :FileType :hy (->viml! :append-cmp-conjure)))
-
-;; neorg
-(defn append-cmp-neorg []
-  (let [ss []]
-    (each [_ v (ipairs default-sources)]
-      (table.insert ss v))
-    (table.insert ss {:name :neorg})
-    (cmp.setup.buffer
-      {:sources ss})))
-(augroup! init-cmp-neorg
-          (autocmd! :FileType :norg (->viml! :append-cmp-neorg)))
+(augroup!
+  init-cmp-conjure
+  {:events [:FileType]
+   :pattern :clojure
+   :callback append-cmp-conjure}
+  {:events [:FileType]
+   :pattern :fennel
+   :callback append-cmp-conjure}
+  {:events [:FileType]
+   :pattern :hy
+   :callback append-cmp-conjure})
 
 ;; autopairs
 (cmp.event:on :confirm_done (autopairs-cmp.on_confirm_done))
 
 ;; cmp-git
-(defn append-cmp-git []
+(fn append-cmp-git []
   (cmp-git.setup {})
   (let [ss []]
     (each [_ v (ipairs default-sources)]
@@ -139,5 +135,8 @@
     (table.insert ss {:name :git})
     (cmp.setup.buffer
       {:sources ss})))
-(augroup! init-cmp-git
-          (autocmd! :FileType :gitcommit (->viml! :append-cmp-git)))
+(augroup!
+  init-cmp-git
+  {:events [:FileType]
+   :pattern :gitcommit
+   :callback append-cmp-git})

@@ -1,14 +1,10 @@
-(module rc.plugin.profile
-  {autoload {core aniseed.core
-             nvim aniseed.nvim
-             profile profile}
-   require-macros [rc.macros]})
+(local profile (require :profile))
 
-(when (not (= vim.NIL (nvim.fn.getenv :NVIM_PROFILE)))
+(when (not (= vim.NIL (vim.fn.getenv :NVIM_PROFILE)))
   (profile.instrument_autocmds)
   (profile.instrument "*"))
 
-(defn toggle-profile []
+(fn toggle-profile []
   (if (profile.is_recording)
     (do
       (profile.stop)
@@ -22,4 +18,4 @@
             (vim.notify (string.format "Wrote %s" filename))))))
     (profile.start "*")))
 
-(nvim.ex.command_ :ProfileToggle (->viml! :toggle-profile))
+(vim.api.nvim_create_user_command :ProfileToggle toggle-profile {})

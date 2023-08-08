@@ -1,7 +1,8 @@
-(module rc.icon
-  {autoload {core aniseed.core}})
+(local {: autoload} (require :nfnl.module))
 
-(def tab
+(local core (autoload :nfnl.core))
+
+(local tab
   {:vim-classic " "
    :vim " "
    :clojure " "
@@ -227,7 +228,24 @@
    :pix-l " "
    :pix-r " "})
 
-(def popfix-border-chars
+(local lazy-nvim-ui-icons
+  {:loaded "●"
+   :not_loaded "○"
+   :cmd " "
+   :config ""
+   :event ""
+   :ft " "
+   :init " "
+   :keys " "
+   :plugin " "
+   :runtime " "
+   :source " "
+   :start " "
+   :task " "
+   :lazy "鈴"
+   :list ["●" "➜" "★" "‒"]})
+
+(local popfix-border-chars
   {:TOP_LEFT "┌"
    :TOP_RIGHT "┐"
    :MID_HORIZONTAL "─"
@@ -235,7 +253,7 @@
    :BOTTOM_LEFT "└"
    :BOTTOM_RIGHT "┘"})
 
-(def popfix-border-chars-alt
+(local popfix-border-chars-alt
   {:TOP_LEFT "╭"
    :TOP_RIGHT "╮"
    :MID_HORIZONTAL "─"
@@ -243,13 +261,13 @@
    :BOTTOM_LEFT "╰"
    :BOTTOM_RIGHT "╯"})
 
-(def progress
+(local progress
   ["" "" "" "" "" ""])
 
-(def spinners
+(local spinners
   ["" "" "" "" "" ""])
 
-(def brailles
+(local brailles
   ["⠀" "⠁" "⠂" "⠃" "⠄" "⠅" "⠆" "⠇" "⡀" "⡁" "⡂" "⡃" "⡄" "⡅" "⡆" "⡇"
    "⠈" "⠉" "⠊" "⠋" "⠌" "⠍" "⠎" "⠏" "⡈" "⡉" "⡊" "⡋" "⡌" "⡍" "⡎" "⡏"
    "⠐" "⠑" "⠒" "⠓" "⠔" "⠕" "⠖" "⠗" "⡐" "⡑" "⡒" "⡓" "⡔" "⡕" "⡖" "⡗"
@@ -271,7 +289,7 @@
 ;; (pos->braille [0 0]
 ;;               [1 1]
 ;;               [1 2])
-(defn pos->braille [...]
+(fn pos->braille [...]
   (let [->idx (fn [[x y]]
                 (* (^ 2 y) (^ 16 x)))]
                 ;; returns an index to enable specified place (x, y) of braille.
@@ -282,3 +300,12 @@
                         (+ acc x)) 0)
          (core.inc)
          (. brailles))))
+
+{: tab
+ : lazy-nvim-ui-icons
+ : popfix-border-chars
+ : popfix-border-chars-alt
+ : progress
+ : spinners
+ : brailles
+ : pos->braille}
