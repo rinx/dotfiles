@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/treesitter.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] Compiled from nl by https://github.com/Olical/nfnl, do not edit.
 local configs = require("nvim-treesitter.configs")
 local parsers = require("nvim-treesitter.parsers")
 do
@@ -7,7 +7,7 @@ do
   parser_configs.norg_meta = {install_info = {url = "https://github.com/nvim-neorg/tree-sitter-norg-meta", files = {"src/parser.c"}, branch = "main"}}
   parser_configs.norg_table = {install_info = {url = "https://github.com/nvim-neorg/tree-sitter-norg-table", files = {"src/parser.c"}, branch = "main"}}
 end
-local languages = {"bash", "bibtex", "c", "clojure", "cmake", "comment", "commonlisp", "cpp", "css", "cue", "diff", "dockerfile", "elixir", "elm", "erlang", "fennel", "fortran", "git_rebase", "gitattributes", "gitcommit", "gitignore", "go", "gomod", "graphql", "hcl", "help", "hjson", "html", "http", "java", "javascript", "jq", "jsdoc", "json", "json5", "jsonc", "jsonnet", "julia", "kotlin", "latex", "llvm", "lua", "make", "markdown", "mermaid", "norg", "norg_meta", "norg_table", "passwd", "proto", "python", "ql", "query", "r", "regex", "rego", "rst", "rust", "scss", "sparql", "sql", "teal", "terraform", "toml", "tsx", "typescript", "vim", "vue", "yaml"}
+local languages = {"bash", "bibtex", "c", "clojure", "cmake", "comment", "commonlisp", "cpp", "css", "cue", "diff", "dockerfile", "elixir", "elm", "erlang", "fennel", "fortran", "git_rebase", "gitattributes", "gitcommit", "gitignore", "go", "gomod", "graphql", "hcl", "hjson", "html", "http", "java", "javascript", "jq", "jsdoc", "json", "json5", "jsonc", "jsonnet", "julia", "kotlin", "latex", "llvm", "lua", "make", "markdown", "mermaid", "norg", "norg_meta", "norg_table", "passwd", "proto", "python", "ql", "query", "r", "regex", "rego", "rst", "rust", "scss", "sparql", "sql", "teal", "terraform", "toml", "tsx", "typescript", "vim", "vue", "yaml"}
 configs.setup({ensure_installed = languages, highlight = {enable = true, disable = {}}, indent = {enable = true, disable = {}}, context_commentstring = {enable = true, enable_autocmd = false}})
 do
   local queries_dir = string.format("%s/queries", vim.fn.stdpath("config"))

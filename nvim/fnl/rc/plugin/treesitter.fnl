@@ -45,7 +45,6 @@
    :gomod
    :graphql
    :hcl
-   :help
    :hjson
    :html
    :http
