@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691428008311,
+  "lastUpdate": 1691499179583,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -3772,6 +3772,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 247.0518,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c180d0579339cd864af0ad16b893913401ed4afd",
+          "message": "chore(nvim): use nfnl instead of aniseed\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-08T21:47:46+09:00",
+          "tree_id": "a08bfb783867ca9e5b5da2b919cb8963ba48fd92",
+          "url": "https://github.com/rinx/dotfiles/commit/c180d0579339cd864af0ad16b893913401ed4afd"
+        },
+        "date": 1691499178350,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 55.224290800000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 37.73752029999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 19.7039,
             "unit": "ms"
           }
         ]
