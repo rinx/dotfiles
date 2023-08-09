@@ -1,4 +1,4 @@
--- [nfnl] Compiled from  by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] Compiled from fnl/rc/plugin/autopairs.fnl by https://github.com/Olical/nfnl, do not edit.
 local autopairs = require("nvim-autopairs")
 autopairs.setup({})
 autopairs.remove_rule()

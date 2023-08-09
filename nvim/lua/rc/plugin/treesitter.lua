@@ -1,4 +1,4 @@
--- [nfnl] Compiled from nl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] Compiled from fnl/rc/plugin/treesitter.fnl by https://github.com/Olical/nfnl, do not edit.
 local configs = require("nvim-treesitter.configs")
 local parsers = require("nvim-treesitter.parsers")
 do

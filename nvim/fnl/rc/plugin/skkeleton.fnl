@@ -1,5 +1,3 @@
-(local cmp (require :cmp))
-
 (import-macros {: map! : augroup!} :rc.macros)
 
 (map! [:i] :<C-j> "<Plug>(skkeleton-toggle)" {})
@@ -20,14 +18,16 @@
      :userJisyo "~/.skk-jisyo"}))
 
 (fn enable-pre []
-  (cmp.setup.buffer
-    {:view
-     {:entries :native}}))
+  (let [cmp (require :cmp)]
+    (cmp.setup.buffer
+      {:view
+       {:entries :native}})))
 
 (fn disable-pre []
-  (cmp.setup.buffer
-    {:view
-     {:entries :custom}}))
+  (let [cmp (require :cmp)]
+    (cmp.setup.buffer
+      {:view
+       {:entries :custom}})))
 
 (augroup!
   init-skkeleton
