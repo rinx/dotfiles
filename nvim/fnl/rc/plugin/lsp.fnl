@@ -4,16 +4,9 @@
 (local lsp (require :lspconfig))
 (local lsp-configs (require :lspconfig.configs))
 (local lsp-signature (require :lsp_signature))
-(local lsp-lines (require :lsp_lines))
 (local lsputil (require :lspconfig.util))
 (local schemastore (require :schemastore))
 (local rust-tools (require :rust-tools))
-(local dressing (require :dressing))
-(local actions-preview (require :actions-preview))
-(local trouble (require :trouble))
-(local lsp-colors (require :lsp-colors))
-(local tdc (require :todo-comments))
-(local fidget (require :fidget))
 (local lightbulb (require :nvim-lightbulb))
 
 (local color (autoload :rc.color))
@@ -267,20 +260,6 @@
 (map! [:n] "<Leader>a" ":<C-u>lua vim.lsp.buf.code_action()<CR>" {:silent true})
 (map! [:x] "<Leader>a" ":<C-u>lua vim.lsp.buf.range_code_action()<CR>" {:silent true})
 
-(dressing.setup
-  {:input
-   {:default_prompt icontab.rquot}})
-
-(actions-preview.setup
-  {:backend [:nui :telescope]
-   :nui {:dir :row}}
-  (map! [:n :v]
-        "<Leader>A"
-        ":<C-u>lua require'actions-preview'.code_actions()<CR>"
-        {:silent true}))
-
-(lsp-lines.setup)
-
 (vim.diagnostic.config
   {:virtual_text false
    :virtual_lines true
@@ -300,49 +279,6 @@
                     {:text icontab.leaf
                      :texthl :DiagnosticSignHint})
 
-;; trouble.nvim
-(trouble.setup {:auto_open true
-                :auto_close true
-                :signs {:error icontab.bug
-                        :warning icontab.exclam-circle
-                        :hint icontab.leaf
-                        :information icontab.info-circle
-                        :other icontab.comment-alt}})
-(map! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" {:silent true})
-(map! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" {:silent true})
-(map! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" {:silent true})
-(map! [:n] "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>" {:silent true})
-(map! [:n] "<leader>xl" ":<C-u>TroubleToggle loclist<CR>" {:silent true})
-(map! [:n] "gR" ":<C-u>TroubleToggle lsp_references<CR>" {:silent true})
-
-;; lsp-colors.nvim
-(lsp-colors.setup {:Error colors.error
-                   :Warning colors.warn
-                   :Information colors.info
-                   :Hint colors.hint})
-
-(tdc.setup {:signs true
-            :keywords {:FIX {:icon icontab.bug
-                             :color :error
-                             :alt [:FIXME :BUG :FIXIT :FIX :ISSUE]}
-                       :TODO {:icon icontab.check
-                              :color :info}
-                       :HACK {:icon icontab.fire
-                              :color :warning}
-                       :WARN {:icon icontab.excram-tri
-                              :color :warning}
-                       :PERF {:icon icontab.watch
-                              :color :default
-                              :alt [:OPTIM :PERFORMANCE :OPTIMIZE]}
-                       :NOTE {:icon icontab.comment-alt
-                              :color :hint
-                              :alt [:INFO]}}
-            :colors {:error [:DiagnosticSignError]
-                     :warning [:DiagnosticSignWarn]
-                     :info [:DiagnosticSignInfo]
-                     :hint [:DiagnosticSignHint]
-                     :default [colors.purple]}})
-
 ;; lightbulb
 (augroup!
   init-lightbulb
@@ -353,6 +289,3 @@
                     {:text icontab.lightbulb
                      :texthl :DiagnosticSignLightBulb})
 
-(fidget.setup
-  {:text {:spinner icon.spinners
-          :done icontab.check}})

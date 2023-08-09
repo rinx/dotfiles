@@ -42,6 +42,8 @@
 
 (use
   {:folke/lazy.nvim {:lazy true}
+   :Olical/nfnl {:lazy true
+                 :ft [:fennel]}
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
@@ -49,10 +51,12 @@
                             :lazy true
                             :priority 1000}
    :kyazdani42/nvim-web-devicons {:config (mod :devicons)}
-   :feline-nvim/feline.nvim {:config (mod :feline)}
-   :akinsho/bufferline.nvim {:config (mod :bufferline)}
+   :feline-nvim/feline.nvim {:config (mod :feline)
+                             :event [:BufEnter]}
+   :akinsho/bufferline.nvim {:config (mod :bufferline)
+                             :event [:BufEnter]}
    :akinsho/toggleterm.nvim {:config (mod :toggleterm)
-                             :event [:VeryLazy]}
+                             :event [:BufReadPost]}
    :windwp/nvim-autopairs {:config (mod :autopairs)
                            :event [:InsertEnter]}
    :kyazdani42/nvim-tree.lua {:event [:VeryLazy]
@@ -68,12 +72,12 @@
                                  :event [:BufEnter]}
    :lukas-reineke/indent-blankline.nvim {:event [:VeryLazy]
                                          :config (mod :indent-blankline)}
-   :ggandor/lightspeed.nvim {:event [:BufEnter]
+   :ggandor/lightspeed.nvim {:event [:BufReadPost]
                              :config (mod :lightspeed)}
-   :numToStr/Comment.nvim {:event [:BufEnter]
+   :numToStr/Comment.nvim {:event [:BufReadPost]
                            :config (mod :comment)}
    :kyoh86/vim-ripgrep {:config (mod :grep)
-                        :event [:VeryLazy]}
+                        :event [:VimEnter]}
    :kana/vim-submode {:event [:BufEnter]
                       :config (mod :submode)}
    :ahmedkhalf/project.nvim {:config (mod :project)
@@ -81,24 +85,35 @@
    :pwntester/octo.nvim {:cmd [:Octo]
                          :config (mod :octo)}
    :ghillb/cybu.nvim {:config (mod :cybu)
-                      :event [:VeryLazy]}
+                      :event [:BufEnter]}
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
                              :config (mod :hypersonic)}
 
    ;; :stevearc/profile.nvim {:config (mod :profile)}
 
    ;; lsp
-   :neovim/nvim-lspconfig {:config (mod :lsp)}
-   :ray-x/lsp_signature.nvim {}
-   :stevearc/dressing.nvim {:event [:VeryLazy]}
-   :j-hui/fidget.nvim {:tag :legacy}
-   :kosayoda/nvim-lightbulb {}
-   :aznhe21/actions-preview.nvim {}
-   :folke/trouble.nvim {}
-   :folke/lsp-colors.nvim {}
-   :folke/todo-comments.nvim {}
-   :b0o/schemastore.nvim {}
-   :whynothugo/lsp_lines.nvim {:url "https://git.sr.ht/~whynothugo/lsp_lines.nvim"}
+   :neovim/nvim-lspconfig {:config (mod :lsp)
+                           :dependencies [:ray-x/lsp_signature.nvim
+                                          :kosayoda/nvim-lightbulb
+                                          :b0o/schemastore.nvim
+                                          :simrat39/rust-tools.nvim]
+                           :event [:BufReadPre]}
+   :stevearc/dressing.nvim {:config (mod :dressing)
+                            :event [:BufReadPost]}
+   :j-hui/fidget.nvim {:tag :legacy
+                       :config (mod :fidget)
+                       :event [:BufReadPost]}
+   :aznhe21/actions-preview.nvim {:config (mod :actions-preview)
+                                  :event [:BufReadPost]}
+   :folke/trouble.nvim {:config (mod :trouble)
+                        :event [:BufReadPost]}
+   :folke/lsp-colors.nvim {:config (mod :lsp-colors)
+                           :event [:BufReadPost]}
+   :folke/todo-comments.nvim {:config (mod :todo-comments)
+                              :event [:BufReadPost]}
+   :whynothugo/lsp_lines.nvim {:url "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+                               :config (mod :lsp-lines)
+                               :event [:BufReadPost]}
 
    ;; cmp
    :hrsh7th/nvim-cmp {:config (mod :cmp)
@@ -120,7 +135,7 @@
 
    ;; dap
    :mfussenegger/nvim-dap {:config (mod :dap)
-                           :event [:VeryLazy]
+                           :event [:BufReadPost]
                            :dependencies [:rcarriga/nvim-dap-ui]}
 
    ;; telescope
@@ -138,8 +153,6 @@
    :gamoutatsumi/dps-ghosttext.vim {:event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)}
    :skanehira/denops-silicon.vim {:cmd [:Silicon]}
-   :tani/glance-vim {:ft [:asciidoc
-                          :markdown]}
 
    ;; operator/textobj
    :kana/vim-operator-user {:event [:VeryLazy]
@@ -155,14 +168,11 @@
                                           :osyo-manga/vim-textobj-multiblock]}
 
    ;; languages
-   :gpanders/nvim-parinfer {}
    :guns/vim-sexp {:ft [:clojure
                         :fennel]
                    :config (mod :sexp)}
-   :simrat39/rust-tools.nvim {:ft [:rust]}
-   :Olical/conjure {:ft [:clojure
-                         :fennel]}
-   :Olical/nfnl {:ft [:fennel]}
+   :gpanders/nvim-parinfer {}
+   :Olical/conjure {}
 
    ;; treesitter
    :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)
@@ -171,4 +181,4 @@
                                      :dependencies [:romgrk/nvim-treesitter-context
                                                     :JoosepAlviste/nvim-ts-context-commentstring]}
    :danymat/neogen {:config (mod :neogen)
-                    :event [:VeryLazy]}})
+                    :event [:BufReadPost]}})
