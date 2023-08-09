@@ -59,8 +59,6 @@
                            :event [:InsertEnter]}
    :kyazdani42/nvim-tree.lua {:event [:VeryLazy]
                               :config (mod :nvim-tree)}
-   :sidebar-nvim/sidebar.nvim {:config (mod :sidebar)
-                               :event [:VeryLazy]}
    :lewis6991/gitsigns.nvim {:event [:VeryLazy]
                              :config (mod :gitsigns)}
    :APZelos/blamer.nvim {:event [:VeryLazy]}
