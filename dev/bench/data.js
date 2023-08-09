@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691503875395,
+  "lastUpdate": 1691583903650,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -3887,6 +3887,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 323.6228,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "aa88d814a311c592faa65f1d99a021c3376a2b14",
+          "message": "chore(nvim): optimize plugin lazy loading\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-09T21:17:17+09:00",
+          "tree_id": "a90fb0336ad762ddd0d3ee56c57ac1faf9d843a2",
+          "url": "https://github.com/rinx/dotfiles/commit/aa88d814a311c592faa65f1d99a021c3376a2b14"
+        },
+        "date": 1691583901554,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 63.61020140000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 186.39842860000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 171.4269,
             "unit": "ms"
           }
         ]
