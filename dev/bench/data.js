@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691586073349,
+  "lastUpdate": 1691586366637,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4082,6 +4082,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 167.2706,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3c7af046b20e274b44dc8f910182bd478543fdf7",
+          "message": "config(nvim): remove useless shortcut\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-09T21:58:33+09:00",
+          "tree_id": "f22280b6b41d8e44d22dcf2b6460559967ac1a12",
+          "url": "https://github.com/rinx/dotfiles/commit/3c7af046b20e274b44dc8f910182bd478543fdf7"
+        },
+        "date": 1691586364295,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 151.38599870000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 435.0856596,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 183.1309,
             "unit": "ms"
           }
         ]
