@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691584042177,
+  "lastUpdate": 1691584383852,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -3965,6 +3965,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 192.2483,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "46e6287daffe8044d861043169177926e73b6a34",
+          "message": "config(nvim): nfnl is not loaded lazily\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-09T21:26:02+09:00",
+          "tree_id": "aba52dd750ccdb103766bdc22b723c12dfb5b5c1",
+          "url": "https://github.com/rinx/dotfiles/commit/46e6287daffe8044d861043169177926e73b6a34"
+        },
+        "date": 1691584382098,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 67.22011319999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 225.24704860000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 178.4925,
             "unit": "ms"
           }
         ]
