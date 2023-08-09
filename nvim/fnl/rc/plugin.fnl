@@ -42,8 +42,6 @@
 
 (use
   {:folke/lazy.nvim {:lazy true}
-   :Olical/nfnl {:lazy true
-                 :ft [:fennel]}
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
@@ -173,6 +171,7 @@
                    :config (mod :sexp)}
    :gpanders/nvim-parinfer {}
    :Olical/conjure {}
+   :Olical/nfnl {}
 
    ;; treesitter
    :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)
