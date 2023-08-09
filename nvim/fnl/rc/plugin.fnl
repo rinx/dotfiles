@@ -145,11 +145,12 @@
                                     :event [:BufEnter]}
 
    ;; denops.vim
-   :vim-denops/denops.vim {}
+   :vim-denops/denops.vim {:event [:VimEnter]}
    :vim-skk/skkeleton {:config (mod :skkeleton)
                        :event [:BufEnter]}
    :gamoutatsumi/dps-ghosttext.vim {:event [:BufEnter]}
-   :lambdalisue/guise.vim {:config (mod :guise)}
+   :lambdalisue/guise.vim {:config (mod :guise)
+                           :event [:VimEnter]}
    :skanehira/denops-silicon.vim {:cmd [:Silicon]}
 
    ;; operator/textobj
