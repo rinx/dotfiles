@@ -50,7 +50,6 @@
    :NvimTreeToggle
    "Octo pr list"
    "Octo issue list"
-   :SidebarNvimToggle
    "Telescope dap list_breakpoints"
    "Telescope repo list"
    "Telescope notify"
