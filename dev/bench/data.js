@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691584383852,
+  "lastUpdate": 1691585418213,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4004,6 +4004,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 178.4925,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9c281892a7566248dccb86888f38204cdafbbc60",
+          "message": "config(nvim): denops is loaded lazily\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-09T21:41:30+09:00",
+          "tree_id": "dc7e342f620783f43196f9f0a98c3f835ee0c859",
+          "url": "https://github.com/rinx/dotfiles/commit/9c281892a7566248dccb86888f38204cdafbbc60"
+        },
+        "date": 1691585416437,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 66.128187,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 198.3363001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 182.9575,
             "unit": "ms"
           }
         ]
