@@ -16,13 +16,6 @@
         vim.lsp.log_levels.WARN
         {:title :lsp-formatting}))))
 
-; (augroup!
-;   init-filetype-detect
-;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.cue" "setf cue")
-;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.nml,*.namelist" "setf fortran")
-;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.jl" "setf julia")
-;   (autocmd! [:BufNewFile :BufRead :BufWinEnter] "*.tf,*.tfvars" "setf terraform"))
-
 (augroup!
   init-filetype-detect
   {:events [:BufNewFile :BufRead :BufWinEnter]
@@ -220,8 +213,3 @@
   {:events [:WinEnter]
    :pattern :*
    :command "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif"})
-
-(set vim.g.dps_ghosttext#ftmap
-     {:github.com :markdown
-      :app.zenhub.com :markdown
-      :mail.google.com :html})

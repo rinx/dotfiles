@@ -97,18 +97,14 @@ do
   vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer><silent>q :<C-u>q<CR>", group = group_5_auto, pattern = "qf"})
   vim.api.nvim_create_autocmd({"WinEnter"}, {command = "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif", group = group_5_auto, pattern = "*"})
 end
-do
-  local group_5_auto = vim.api.nvim_create_augroup("init-help", {clear = true})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> j j", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> k k", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> 0 0", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> $ $", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> gj gj", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> gk gk", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> g0 g0", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> g$ g$", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer><silent>q :<C-u>q<CR>", group = group_5_auto, pattern = "help"})
-  vim.api.nvim_create_autocmd({"WinEnter"}, {command = "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif", group = group_5_auto, pattern = "*"})
-end
-vim.g["dps_ghosttext#ftmap"] = {["github.com"] = "markdown", ["app.zenhub.com"] = "markdown", ["mail.google.com"] = "html"}
-return nil
+local group_5_auto = vim.api.nvim_create_augroup("init-help", {clear = true})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> j j", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> k k", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> 0 0", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> $ $", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> gj gj", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> gk gk", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> g0 g0", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> g$ g$", group = group_5_auto, pattern = "help"})
+vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer><silent>q :<C-u>q<CR>", group = group_5_auto, pattern = "help"})
+return vim.api.nvim_create_autocmd({"WinEnter"}, {command = "if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | q | endif", group = group_5_auto, pattern = "*"})

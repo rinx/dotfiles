@@ -146,7 +146,8 @@
    :vim-denops/denops.vim {:event [:VimEnter]}
    :vim-skk/skkeleton {:config (mod :skkeleton)
                        :event [:BufEnter]}
-   :gamoutatsumi/dps-ghosttext.vim {:event [:BufEnter]}
+   :gamoutatsumi/dps-ghosttext.vim {:config (mod :ghosttext)
+                                    :event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)
                            :event [:VimEnter]}
    :skanehira/denops-silicon.vim {:cmd [:Silicon]}
@@ -168,9 +169,11 @@
    :guns/vim-sexp {:ft [:clojure
                         :fennel]
                    :config (mod :sexp)}
-   :gpanders/nvim-parinfer {}
-   :Olical/conjure {}
-   :Olical/nfnl {}
+   :gpanders/nvim-parinfer {:ft [:clojure
+                                 :fennel]}
+   :Olical/conjure {:ft [:clojure
+                         :fennel]}
+   :Olical/nfnl {:ft [:fennel]}
 
    ;; treesitter
    :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)
