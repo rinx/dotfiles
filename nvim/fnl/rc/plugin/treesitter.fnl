@@ -1,24 +1,6 @@
 (local configs (require :nvim-treesitter.configs))
 (local parsers (require :nvim-treesitter.parsers))
 
-(let [parser-configs (parsers.get_parser_configs)]
-  (set parser-configs.cue
-       {:install_info
-        {:url "https://github.com/eonpatapon/tree-sitter-cue"
-         :files [:src/parser.c :src/scanner.c]
-         :branch :main}
-        :filetype :cue})
-  (set parser-configs.norg_meta
-       {:install_info
-        {:url "https://github.com/nvim-neorg/tree-sitter-norg-meta"
-         :files [:src/parser.c]
-         :branch :main}})
-  (set parser-configs.norg_table
-       {:install_info
-        {:url "https://github.com/nvim-neorg/tree-sitter-norg-table"
-         :files [:src/parser.c]
-         :branch :main}}))
-
 (local languages
   [:bash
    :bibtex
@@ -32,17 +14,21 @@
    :cue
    :diff
    :dockerfile
+   :dot
    :elixir
    :elm
    :erlang
    :fennel
    :fortran
+   :git_config
    :git_rebase
    :gitattributes
    :gitcommit
    :gitignore
    :go
    :gomod
+   :gosum
+   :gowork
    :graphql
    :hcl
    :hjson
@@ -61,13 +47,14 @@
    :latex
    :llvm
    :lua
+   :luadoc
+   :luap
    :make
    :markdown
    :mermaid
    :norg
-   :norg_meta
-   :norg_table
    :passwd
+   :promql
    :proto
    :python
    :ql
@@ -78,6 +65,7 @@
    :rst
    :rust
    :scss
+   :smithy
    :sparql
    :sql
    :teal
@@ -86,6 +74,7 @@
    :tsx
    :typescript
    :vim
+   :vimdoc
    :vue
    :yaml])
 
@@ -97,17 +86,6 @@
             :disable []}
    :context_commentstring {:enable true
                            :enable_autocmd false}})
-
-;; dirty hack
-(let [queries-dir (string.format :%s/queries (vim.fn.stdpath :config))
-      cue-dir (string.format :%s/cue queries-dir)
-      cue-highlight-scm (string.format :%s/highlights.scm cue-dir)]
-  (when (= (vim.fn.empty (vim.fn.glob cue-highlight-scm)) 1)
-    (vim.cmd (string.format "silent !mkdir -p %s" cue-dir))
-    (vim.cmd (string.format
-               "silent !wget -O %s %s"
-               cue-highlight-scm
-               "https://raw.githubusercontent.com/eonpatapon/tree-sitter-cue/main/queries/highlights.scm"))))
 
 (fn ensure-installed []
   (each [_ lang (ipairs languages)]
