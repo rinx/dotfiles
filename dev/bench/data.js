@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691631135900,
+  "lastUpdate": 1691632017986,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4269,6 +4269,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 181.7026,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e24b840f983812f912db8c6671f9d512ef9e9f04",
+          "message": "feat(nvim): add several treesitter parsers\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-10T10:37:52+09:00",
+          "tree_id": "f572ddec8c5d03027eb71a0e7e2c73285128a67c",
+          "url": "https://github.com/rinx/dotfiles/commit/e24b840f983812f912db8c6671f9d512ef9e9f04"
+        },
+        "date": 1691632015242,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 111.88436659999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 474.2603590999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 173.3744,
             "unit": "ms"
           }
         ]
