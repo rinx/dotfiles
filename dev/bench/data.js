@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1691667165417,
+  "lastUpdate": 1691726501931,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4423,6 +4423,43 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 143.4176,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Rintaro Okamura",
+            "username": "rinx",
+            "email": "rintaro.okamura@gmail.com"
+          },
+          "committer": {
+            "name": "Rintaro Okamura",
+            "username": "rinx",
+            "email": "rintaro.okamura@gmail.com"
+          },
+          "id": "4b3a97e6657c40e0c9f3ebb398d87a9e6fbd95a1",
+          "message": "fix(nvim): fix loading order\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-10T11:26:02Z",
+          "url": "https://github.com/rinx/dotfiles/commit/4b3a97e6657c40e0c9f3ebb398d87a9e6fbd95a1"
+        },
+        "date": 1691726500924,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 66.65499940000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 181.8212524,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 166.4923,
             "unit": "ms"
           }
         ]
