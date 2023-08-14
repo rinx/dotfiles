@@ -12,6 +12,11 @@ ARG BUF_VERSION=v1.9.0
 
 FROM rust:slim AS rust
 
+RUN cargo install --git https://github.com/rydesun/fennel-language-server
+
+RUN mkdir -p /out/packer \
+    && mv /usr/local/cargo/bin/fennel-language-server /out/packer/fennel-language-server
+
 FROM golang:alpine AS go
 
 RUN apk update \
@@ -98,6 +103,9 @@ RUN apk update \
     && apk upgrade \
     && apk --update-cache add --no-cache \
     upx
+
+COPY --from=rust /out/packer /out/rust
+RUN upx -9 /out/rust/*
 
 COPY --from=go /out /out/go
 RUN upx -9 /out/go/usr/local/go/bin/*
@@ -225,6 +233,8 @@ COPY --from=go /usr/local/go/src  $GOROOT/src
 COPY --from=go /usr/local/go/lib  $GOROOT/lib
 COPY --from=go /usr/local/go/pkg  $GOROOT/pkg
 COPY --from=go /usr/local/go/misc $GOROOT/misc
+
+COPY --from=rust /out/rust/fennel-language-server /usr/local/bin/fennel-language-server
 
 COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
 COPY --from=packer /out/go/go/bin           $GOROOT/bin

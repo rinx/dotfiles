@@ -2,18 +2,15 @@
 (local core (autoload :nfnl.core))
 
 (local lsp (require :lspconfig))
-(local lsp-configs (require :lspconfig.configs))
 (local lsp-signature (require :lsp_signature))
 (local lsputil (require :lspconfig.util))
 (local schemastore (require :schemastore))
 (local rust-tools (require :rust-tools))
 (local lightbulb (require :nvim-lightbulb))
 
-(local color (autoload :rc.color))
 (local icon (autoload :rc.icon))
 (import-macros {: map! : augroup!} :rc.macros)
 
-(local colors color.colors)
 (local icontab icon.tab)
 
 (fn on-attach [client bufnr]
@@ -47,16 +44,6 @@
 (local default-options
   {:on_attach on-attach
    :capabilities capabilities})
-
-(when (not lsp-configs.regols)
-  (tset lsp-configs
-        :regols
-        {:default_config
-         {:cmd [:regols]
-          :filetypes [:rego]
-          :root_dir (lsputil.root_pattern ".git")
-          :init_options {:command [:regols]}}}))
-(lsp.regols.setup (core.merge default-options {}))
 
 (lsp.bashls.setup (core.merge default-options {}))
 (lsp.bufls.setup (core.merge default-options {}))
@@ -112,6 +99,13 @@
                                     "%-G%.%#"]}]}
                    :lintDebounce 3000000000}}))
 (lsp.erlangls.setup (core.merge default-options {}))
+(lsp.fennel_language_server.setup
+  (core.merge
+    default-options
+    {:root_dir (lsputil.root_pattern ".nfnl.fnl")
+     :settings {:fennel {:diagnostics {:globals [:vim :jit :comment]}
+                         :workspace {:library
+                                     (vim.api.nvim_list_runtime_paths)}}}}))
 (lsp.fortls.setup (core.merge default-options {}))
 (lsp.gopls.setup (core.merge
                    default-options
@@ -137,6 +131,7 @@
 (lsp.kotlin_language_server.setup (core.merge default-options {}))
 (lsp.marksman.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
+(lsp.regols.setup (core.merge default-options {}))
 (lsp.terraformls.setup (core.merge
                          default-options
                          {:settings
