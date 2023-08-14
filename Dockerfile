@@ -234,7 +234,7 @@ COPY --from=go /usr/local/go/lib  $GOROOT/lib
 COPY --from=go /usr/local/go/pkg  $GOROOT/pkg
 COPY --from=go /usr/local/go/misc $GOROOT/misc
 
-COPY --from=rust /out/rust/fennel-language-server /usr/local/bin/fennel-language-server
+COPY --from=packer /out/rust/fennel-language-server /usr/local/bin/fennel-language-server
 
 COPY --from=packer /out/go/usr/local/go/bin $GOROOT/bin
 COPY --from=packer /out/go/go/bin           $GOROOT/bin
