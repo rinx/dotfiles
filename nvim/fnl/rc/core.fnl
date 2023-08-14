@@ -131,8 +131,8 @@
              "h12")]
   (-> (core.map (fn [font]
                   (.. font ":" size)) fonts)
-    (table.concat ",")
-    (->> (set vim.o.guifont))))
+      (table.concat ",")
+      (->> (set vim.o.guifont))))
 
 ;; nvui
 (when (= vim.g.nvui 1)

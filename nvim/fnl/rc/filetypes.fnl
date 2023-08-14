@@ -1,7 +1,3 @@
-(local {: autoload} (require :nfnl.module))
-
-(local core (autoload :nfnl.core))
-
 (import-macros {: augroup!} :rc.macros)
 
 (fn lsp-formatting []

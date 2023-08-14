@@ -3,15 +3,12 @@ local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local core = autoload("nfnl.core")
 local lsp = require("lspconfig")
-local lsp_configs = require("lspconfig.configs")
 local lsp_signature = require("lsp_signature")
 local lsputil = require("lspconfig.util")
 local schemastore = require("schemastore")
 local rust_tools = require("rust-tools")
 local lightbulb = require("nvim-lightbulb")
-local color = autoload("rc.color")
 local icon = autoload("rc.icon")
-local colors = color.colors
 local icontab = icon.tab
 local function on_attach(client, bufnr)
   return lsp_signature.on_attach({bind = true, doc_lines = 10, hint_enabled = true, hint_prefix = (icontab.info .. " "), hint_scheme = "String", handler_opts = {border = "single"}, decorator = {["`"] = "`"}})

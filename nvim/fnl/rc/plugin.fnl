@@ -173,7 +173,8 @@
                                  :fennel]}
    :Olical/conjure {:ft [:clojure
                          :fennel]}
-   :Olical/nfnl {:ft [:fennel]}
+   :Olical/nfnl {:ft [:fennel]
+                 :config (mod :nfnl)}
 
    ;; treesitter
    :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)
