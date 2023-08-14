@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1692007472411,
+  "lastUpdate": 1692007512908,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4499,6 +4499,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 155.8617,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "51d2a749a83971519bdf8f6c67ca0280bc82b891",
+          "message": "[patch] feat: add fennel-language-server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-14T18:56:25+09:00",
+          "tree_id": "8ae16e825adb4b38f0dc10c85bb2d444a41d5033",
+          "url": "https://github.com/rinx/dotfiles/commit/51d2a749a83971519bdf8f6c67ca0280bc82b891"
+        },
+        "date": 1692007511626,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 66.0173255,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 175.6756488,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 161.9664,
             "unit": "ms"
           }
         ]
