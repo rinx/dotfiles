@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1692007512908,
+  "lastUpdate": 1692012056754,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4538,6 +4538,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 161.9664,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c6d934d420c57ada06a76b372eafb8161ee058d1",
+          "message": "fix: fix copy source container name\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-14T20:14:19+09:00",
+          "tree_id": "5d67c45d5a86c6bebe5b59db410237ca08a7e486",
+          "url": "https://github.com/rinx/dotfiles/commit/c6d934d420c57ada06a76b372eafb8161ee058d1"
+        },
+        "date": 1692012055733,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 61.357256099999994,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 164.6877869,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 151.8135,
             "unit": "ms"
           }
         ]
