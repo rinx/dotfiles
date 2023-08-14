@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1692012056754,
+  "lastUpdate": 1692012837467,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4577,6 +4577,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 151.8135,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4a6afc69d4021558765d5a824bdc29725fd8d84c",
+          "message": "chore: add NfnlCompileAllFiles command\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-14T20:27:33+09:00",
+          "tree_id": "6a9d82e44a8127e29089d89b0f57f662ca21f0ab",
+          "url": "https://github.com/rinx/dotfiles/commit/4a6afc69d4021558765d5a824bdc29725fd8d84c"
+        },
+        "date": 1692012836223,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 91.44454979999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 165.50198229999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 151.9849,
             "unit": "ms"
           }
         ]
