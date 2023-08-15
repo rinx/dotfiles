@@ -128,11 +128,11 @@
              "Noto Color Emoji"]
       size (if (= (vim.fn.has :mac) 1)
              "h14"
-             "h12")]
-  (-> (core.map (fn [font]
-                  (.. font ":" size)) fonts)
-      (table.concat ",")
-      (->> (set vim.o.guifont))))
+             "h12")
+      guifonts (-> (core.map (fn [font]
+                               (.. font ":" size)) fonts)
+                   (table.concat ","))]
+  (set vim.o.guifont guifonts))
 
 ;; nvui
 (when (= vim.g.nvui 1)

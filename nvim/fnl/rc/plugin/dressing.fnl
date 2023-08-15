@@ -8,5 +8,3 @@
 (dressing.setup
   {:input
    {:default_prompt icontab.rquot}})
-
-

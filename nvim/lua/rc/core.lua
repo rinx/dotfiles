@@ -103,10 +103,12 @@ do
   else
     size = "h12"
   end
+  local guifonts
   local function _9_(font)
     return (font .. ":" .. size)
   end
-  vim.o.guifont = table.concat(core.map(_9_, fonts), ",")
+  guifonts = table.concat(core.map(_9_, fonts), ",")
+  vim.o.guifont = guifonts
 end
 if (vim.g.nvui == 1) then
   vim.fn.rpcnotify(1, "NVUI_WINOPACITY", 0.8)

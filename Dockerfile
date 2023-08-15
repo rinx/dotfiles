@@ -35,6 +35,7 @@ RUN go install github.com/bufbuild/buf-language-server/cmd/bufls@latest \
     && go install github.com/hashicorp/terraform-ls@latest \
     && go install github.com/kitagry/regols@latest \
     && go install github.com/mattn/efm-langserver@latest \
+    && go install github.com/wader/jq-lsp@latest \
     && go install golang.org/x/tools/gopls@latest \
     && go install github.com/x-motemen/ghq@latest \
     && go install github.com/terraform-linters/tflint@latest

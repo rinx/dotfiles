@@ -21,6 +21,9 @@
    :pattern "*.nml,*.namelist"
    :command "setf fortran"}
   {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "*.jq"
+   :command "setf jq"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
    :pattern "*.jl"
    :command "setf julia"}
   {:events [:BufNewFile :BufRead :BufWinEnter]

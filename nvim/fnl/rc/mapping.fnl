@@ -63,16 +63,3 @@
 (map! [:n] :ZZ :<Nop> {})
 (map! [:n] :ZQ :<Nop> {})
 (map! [:n] :Q :<Nop> {})
-
-;; operator
-(map! [""] :X "<Plug>(operator-replace)" {})
-(map! [""] :Sa "<Plug>(operator-surround-append)" {})
-(map! [""] :Sd "<Plug>(operator-surround-delete)" {})
-(map! [""] :Sr "<Plug>(operator-surround-replace)" {})
-
-;; textobj
-(set vim.g.textobj_between_no_default_key_mappings 1)
-(map! [:o :v] :ac "<Plug>(textobj-between-a)" {})
-(map! [:o :v] :ic "<Plug>(textobj-between-i)" {})
-(map! [:o :v] :ab "<Plug>(textobj-multiblock-a)" {})
-(map! [:o :v] :ib "<Plug>(textobj-multiblock-i)" {})

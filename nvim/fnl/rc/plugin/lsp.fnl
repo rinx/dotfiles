@@ -121,6 +121,7 @@
                       :gofumpt true}}}))
 (lsp.hls.setup (core.merge default-options {}))
 (lsp.html.setup (core.merge default-options {}))
+(lsp.jqls.setup (core.merge default-options {}))
 (lsp.jsonls.setup
   (core.merge
     default-options

@@ -45,6 +45,7 @@
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
+   :stevearc/dressing.nvim {:config (mod :dressing)}
    :EdenEast/nightfox.nvim {:build (cmd->fn :NightfoxCompile)
                             :lazy true
                             :priority 1000}
@@ -54,7 +55,7 @@
    :akinsho/bufferline.nvim {:config (mod :bufferline)
                              :event [:BufEnter]}
    :akinsho/toggleterm.nvim {:config (mod :toggleterm)
-                             :event [:BufReadPost]}
+                             :event [:BufReadPost :BufAdd :BufNewFile]}
    :windwp/nvim-autopairs {:config (mod :autopairs)
                            :event [:InsertEnter]}
    :kyazdani42/nvim-tree.lua {:event [:VeryLazy]
@@ -66,22 +67,22 @@
                           :event [:BufEnter]}
    :norcalli/nvim-colorizer.lua {:config (mod :colorizer)
                                  :event [:BufEnter]}
-   :lukas-reineke/indent-blankline.nvim {:event [:VeryLazy]
+   :lukas-reineke/indent-blankline.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                                          :config (mod :indent-blankline)}
-   :ggandor/lightspeed.nvim {:event [:BufReadPost]
+   :ggandor/lightspeed.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                              :config (mod :lightspeed)}
-   :numToStr/Comment.nvim {:event [:BufReadPost]
+   :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
    :kyoh86/vim-ripgrep {:config (mod :grep)
                         :event [:VimEnter]}
-   :kana/vim-submode {:event [:BufEnter]
+   :kana/vim-submode {:event [:BufReadPost :BufAdd :BufNewFile]
                       :config (mod :submode)}
    :ahmedkhalf/project.nvim {:config (mod :project)
-                             :event [:BufEnter]}
+                             :event [:BufRead :BufNewFile]}
    :pwntester/octo.nvim {:cmd [:Octo]
                          :config (mod :octo)}
    :ghillb/cybu.nvim {:config (mod :cybu)
-                      :event [:BufEnter]}
+                      :event [:BufReadPost :BufAdd :BufNewFile]}
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
                              :config (mod :hypersonic)}
 
@@ -94,22 +95,20 @@
                                           :b0o/schemastore.nvim
                                           :simrat39/rust-tools.nvim]
                            :event [:BufReadPre]}
-   :stevearc/dressing.nvim {:config (mod :dressing)
-                            :event [:BufReadPost]}
    :j-hui/fidget.nvim {:tag :legacy
                        :config (mod :fidget)
-                       :event [:BufReadPost]}
+                       :event [:BufReadPost :BufAdd :BufNewFile]}
    :aznhe21/actions-preview.nvim {:config (mod :actions-preview)
-                                  :event [:BufReadPost]}
+                                  :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/trouble.nvim {:config (mod :trouble)
-                        :event [:BufReadPost]}
+                        :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/lsp-colors.nvim {:config (mod :lsp-colors)
-                           :event [:BufReadPost]}
+                           :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/todo-comments.nvim {:config (mod :todo-comments)
-                              :event [:BufReadPost]}
+                              :event [:BufReadPost :BufAdd :BufNewFile]}
    :whynothugo/lsp_lines.nvim {:url "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
                                :config (mod :lsp-lines)
-                               :event [:BufReadPost]}
+                               :event [:BufReadPost :BufAdd :BufNewFile]}
 
    ;; cmp
    :hrsh7th/nvim-cmp {:config (mod :cmp)
@@ -131,7 +130,7 @@
 
    ;; dap
    :mfussenegger/nvim-dap {:config (mod :dap)
-                           :event [:BufReadPost]
+                           :event [:BufReadPost :BufAdd :BufNewFile]
                            :dependencies [:rcarriga/nvim-dap-ui]}
 
    ;; telescope
@@ -150,13 +149,15 @@
                                     :event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)
                            :event [:VimEnter]}
-   :skanehira/denops-silicon.vim {:cmd [:Silicon]}
+   :tani/glance-vim {:event [:BufReadPost :BufAdd :BufNewFile]}
 
    ;; operator/textobj
-   :kana/vim-operator-user {:event [:VeryLazy]
+   :kana/vim-operator-user {:config (mod :operator)
+                            :event [:CursorHold :CursorHoldI]
                             :dependencies [:kana/vim-operator-replace
                                            :rhysd/vim-operator-surround]}
-   :kana/vim-textobj-user {:event [:VeryLazy]
+   :kana/vim-textobj-user {:config (mod :textobj)
+                           :event [:CursorHold :CursorHoldI]
                            :dependencies [:kana/vim-textobj-indent
                                           :kana/vim-textobj-function
                                           :kana/vim-textobj-entire
@@ -183,4 +184,4 @@
                                      :dependencies [:romgrk/nvim-treesitter-context
                                                     :JoosepAlviste/nvim-ts-context-commentstring]}
    :danymat/neogen {:config (mod :neogen)
-                    :event [:BufReadPost]}})
+                    :event [:BufReadPost :BufAdd :BufNewFile]}})
