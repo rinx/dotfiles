@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1692012837467,
+  "lastUpdate": 1692093449355,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4616,6 +4616,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 151.9849,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "15eeba67bf2a9838c9b02384555521620bff125e",
+          "message": "add: add jq-lsp\n\n- config(nvim): revise several lazy load events\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-15T18:50:40+09:00",
+          "tree_id": "d6d4ec8c7ae7714ff2cbdc586f65c02bdcaa7a37",
+          "url": "https://github.com/rinx/dotfiles/commit/15eeba67bf2a9838c9b02384555521620bff125e"
+        },
+        "date": 1692093448399,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 91.31552749999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 167.7661849,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 153.8713,
             "unit": "ms"
           }
         ]
