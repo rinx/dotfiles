@@ -7,7 +7,6 @@ local lsp_signature = require("lsp_signature")
 local lsputil = require("lspconfig.util")
 local schemastore = require("schemastore")
 local rust_tools = require("rust-tools")
-local lightbulb = require("nvim-lightbulb")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
 local function on_attach(client, bufnr)
@@ -99,9 +98,4 @@ vim.diagnostic.config({virtual_lines = true, underline = true, signs = true, vir
 vim.fn.sign_define("DiagnosticSignError", {text = icontab.bug, texthl = "DiagnosticSignError"})
 vim.fn.sign_define("DiagnosticSignWarn", {text = icontab["exclam-circle"], texthl = "DiagnosticSignWarn"})
 vim.fn.sign_define("DiagnosticSignInfo", {text = icontab["info-circle"], texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint", {text = icontab.leaf, texthl = "DiagnosticSignHint"})
-do
-  local group_5_auto = vim.api.nvim_create_augroup("init-lightbulb", {clear = true})
-  vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {callback = lightbulb.update_lightbulb, group = group_5_auto, pattern = "*"})
-end
-return vim.fn.sign_define("LightBulbSign", {text = icontab.lightbulb, texthl = "DiagnosticSignLightBulb"})
+return vim.fn.sign_define("DiagnosticSignHint", {text = icontab.leaf, texthl = "DiagnosticSignHint"})

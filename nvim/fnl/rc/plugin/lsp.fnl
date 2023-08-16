@@ -6,7 +6,6 @@
 (local lsputil (require :lspconfig.util))
 (local schemastore (require :schemastore))
 (local rust-tools (require :rust-tools))
-(local lightbulb (require :nvim-lightbulb))
 
 (local icon (autoload :rc.icon))
 (import-macros {: map! : augroup!} :rc.macros)
@@ -274,14 +273,3 @@
 (vim.fn.sign_define :DiagnosticSignHint
                     {:text icontab.leaf
                      :texthl :DiagnosticSignHint})
-
-;; lightbulb
-(augroup!
-  init-lightbulb
-  {:events [:CursorHold :CursorHoldI]
-   :pattern :*
-   :callback lightbulb.update_lightbulb})
-(vim.fn.sign_define :LightBulbSign
-                    {:text icontab.lightbulb
-                     :texthl :DiagnosticSignLightBulb})
-

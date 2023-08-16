@@ -13,7 +13,8 @@
                         :warning icontab.exclam-circle
                         :hint icontab.leaf
                         :information icontab.info-circle
-                        :other icontab.comment-alt}})
+                        :other icontab.comment-alt}
+                :action_keys {:switch_severity :S}})
 (map! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" {:silent true})
 (map! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" {:silent true})
 (map! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" {:silent true})

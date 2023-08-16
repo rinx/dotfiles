@@ -91,7 +91,6 @@
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)
                            :dependencies [:ray-x/lsp_signature.nvim
-                                          :kosayoda/nvim-lightbulb
                                           :b0o/schemastore.nvim
                                           :simrat39/rust-tools.nvim]
                            :event [:BufReadPre]}
@@ -100,6 +99,8 @@
                        :event [:BufReadPost :BufAdd :BufNewFile]}
    :aznhe21/actions-preview.nvim {:config (mod :actions-preview)
                                   :event [:BufReadPost :BufAdd :BufNewFile]}
+   :kosayoda/nvim-lightbulb {:config (mod :lightbulb)
+                             :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/trouble.nvim {:config (mod :trouble)
                         :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/lsp-colors.nvim {:config (mod :lsp-colors)
