@@ -33,6 +33,8 @@ jobs:
       - name: Install vim-startuptime
         run: |
           go install github.com/rhysd/vim-startuptime@latest
+
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Setup dotfiles
         run: |
           make DOTDIR=$(pwd) deploy
@@ -50,8 +52,6 @@ jobs:
           nvim --headless -c 'qall'
       - name: Run benchmark
         run: |
-          export PATH=$PATH:$(go env GOPATH)/bin
-
           ./bb ./.github/scripts/benchmark.clj > result.json
       - name: Dump
         run: |
