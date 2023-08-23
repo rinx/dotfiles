@@ -46,6 +46,7 @@
 (defn window [n]
   (case n
     "Google Chrome" ""
+    "Arc" "󰲇"
     "kitty" "󰆍"
     "Finder" "󰀶"
     "Microsoft Teams" "󰊻"
