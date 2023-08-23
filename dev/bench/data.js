@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1692637702781,
+  "lastUpdate": 1692754563623,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4733,6 +4733,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 152.9805,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d2de1fc12a9607737ce8c2c44744f59061f8a55f",
+          "message": "config: add icon for Arc browser\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-08-23T10:28:07+09:00",
+          "tree_id": "5fe4be81e1e5ff4e4cdfc7d1e2f5003aaa1ec595",
+          "url": "https://github.com/rinx/dotfiles/commit/d2de1fc12a9607737ce8c2c44744f59061f8a55f"
+        },
+        "date": 1692754562588,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 60.9295657,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 156.87466639999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 143.8629,
             "unit": "ms"
           }
         ]
