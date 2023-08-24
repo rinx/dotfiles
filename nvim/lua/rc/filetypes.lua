@@ -65,6 +65,10 @@ do
   vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.go"})
 end
 do
+  local group_5_auto = vim.api.nvim_create_augroup("init-rego", {clear = true})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.rego"})
+end
+do
   local group_5_auto = vim.api.nvim_create_augroup("init-rust", {clear = true})
   vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.rs"})
 end

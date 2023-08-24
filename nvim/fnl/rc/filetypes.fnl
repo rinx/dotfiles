@@ -118,6 +118,12 @@
    :callback lsp-formatting})
 
 (augroup!
+  init-rego
+  {:events [:BufWritePre]
+   :pattern "*.rego"
+   :callback lsp-formatting})
+
+(augroup!
   init-rust
   {:events [:BufWritePre]
    :pattern "*.rs"

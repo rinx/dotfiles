@@ -65,6 +65,7 @@
                  default-options
                  {:filetypes [:markdown
                               :proto
+                              :rego
                               :vcl]
                   :init_options {:codeAction true
                                  :completion true
@@ -87,6 +88,9 @@
                       :hoverStdin true}]
                     :proto
                     [{:lintCommand "buf lint --path"}]
+                    :rego
+                    [{:formatCommand "opa fmt"
+                      :formatStdin true}]
                     :vcl
                     [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
                       :lintIgnoreExitCode true
