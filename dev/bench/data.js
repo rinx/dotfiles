@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1693847183094,
+  "lastUpdate": 1693908450592,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4811,6 +4811,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 19.5993,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d683d825703f98feb4c85c4b48cdf265c2c633a0",
+          "message": "fix(nvim): comment out `imdisable`\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-09-05T18:54:28+09:00",
+          "tree_id": "ab0ce39cfa82f49f862e37663e2b74612fb87d44",
+          "url": "https://github.com/rinx/dotfiles/commit/d683d825703f98feb4c85c4b48cdf265c2c633a0"
+        },
+        "date": 1693908449065,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 64.3623918,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 164.3555507,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 153.6123,
             "unit": "ms"
           }
         ]
