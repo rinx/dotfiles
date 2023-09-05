@@ -18,7 +18,7 @@
 (set vim.o.shortmess "filnxtToOFc")
 (set vim.opt.completeopt [:menu :menuone :noselect])
 
-(set vim.o.imdisable true)
+;; (set vim.o.imdisable true)
 
 (set vim.o.ignorecase true)
 (set vim.o.smartcase true)

@@ -14,7 +14,6 @@ vim.o.wildchar = 9
 vim.o.wildmode = "longest:full,full"
 vim.o.shortmess = "filnxtToOFc"
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
-vim.o.imdisable = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.smartindent = true
