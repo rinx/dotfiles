@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1693908450592,
+  "lastUpdate": 1694245249001,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4850,6 +4850,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 153.6123,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "90eba14282a695ace855fd844f18d15135786694",
+          "message": "config(nvim): add regal linter\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-09-09T16:30:58+09:00",
+          "tree_id": "71debe9ac9fe1e32c021be664e4f8a6caa0bfd66",
+          "url": "https://github.com/rinx/dotfiles/commit/90eba14282a695ace855fd844f18d15135786694"
+        },
+        "date": 1694245248179,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 86.0333265,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 187.72165489999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 171.1536,
             "unit": "ms"
           }
         ]
