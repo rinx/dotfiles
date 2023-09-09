@@ -89,7 +89,12 @@
                     :proto
                     [{:lintCommand "buf lint --path"}]
                     :rego
-                    [{:formatCommand "opa fmt"
+                    [{:lintCommand "regal lint --format=github ${INPUT}"
+                      :lintIgnoreExitCode true
+                      :lintFormats ["%E::error file=%f,line=%l,col=%c::%m"
+                                    "%W::warning file=%f,line=%l,col=%c::%m"
+                                    "%I::notice file=%f,line=%l,col=%c::%m"]}
+                     {:formatCommand "opa fmt"
                       :formatStdin true}]
                     :vcl
                     [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
