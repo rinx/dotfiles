@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1695280452995,
+  "lastUpdate": 1695282684534,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4928,6 +4928,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 146.9526,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "581fb3e6c85013f658aff4f533e8d664ad750594",
+          "message": "config(nvim): replace sexp with paredit\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-09-21T16:37:15+09:00",
+          "tree_id": "6e08477539c8852074067bfd1f92b48233ddd78f",
+          "url": "https://github.com/rinx/dotfiles/commit/581fb3e6c85013f658aff4f533e8d664ad750594"
+        },
+        "date": 1695282683717,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 72.7786376,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 172.1201077,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 153.6434,
             "unit": "ms"
           }
         ]
