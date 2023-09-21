@@ -169,11 +169,14 @@
                                           :osyo-manga/vim-textobj-multiblock]}
 
    ;; languages
-   :guns/vim-sexp {:ft [:clojure
-                        :fennel]
-                   :config (mod :sexp)}
    :gpanders/nvim-parinfer {:ft [:clojure
                                  :fennel]}
+   :julienvincent/nvim-paredit {:config (mod :paredit)
+                                :ft [:clojure
+                                     :fennel]}
+   :julienvincent/nvim-paredit-fennel {:config (mod :paredit-fennel)
+                                       :dependencies [:julienvincent/nvim-paredit]
+                                       :ft [:fennel]}
    :Olical/conjure {:ft [:clojure
                          :fennel]}
    :Olical/nfnl {:ft [:fennel]
