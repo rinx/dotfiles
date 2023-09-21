@@ -78,6 +78,7 @@ local function _14_(self)
   return nil
 end
 filename_block = {file_icon_component, space_component, filename_component, file_flags_component, init = _14_}
+local ruler_component = {provider = "[%l/%L] ", hl = {fg = colors.hint, bg = colors.color2}}
 local scrollbar_component
 local function _15_(self)
   local curr_line = core.get(vim.api.nvim_win_get_cursor(0), 1)
@@ -85,7 +86,7 @@ local function _15_(self)
   local i = core.inc(math.floor(((core.dec(curr_line) / lines) * core.count(self.sbar))))
   return string.rep(core.get(self.sbar, i), 2)
 end
-scrollbar_component = {static = {sbar = {"\226\150\129", "\226\150\130", "\226\150\131", "\226\150\132", "\226\150\133", "\226\150\134", "\226\150\135", "\226\150\136"}}, provider = _15_, hl = {fg = colors.hint, bg = colors.color2}}
+scrollbar_component = {static = {sbar = {"\240\159\173\182", "\240\159\173\183", "\240\159\173\184", "\240\159\173\185", "\240\159\173\186", "\240\159\173\187"}}, provider = _15_, hl = {fg = colors.hint, bg = colors.color2}}
 local lsp_component
 local function _16_()
   local names = {}
@@ -263,7 +264,7 @@ local function _52_()
   return vim.o.paste
 end
 paste_component = {condition = _52_, provider = (icontab.paste .. space), hl = {fg = colors.hint, bg = colors.color2}}
-local default_statusline = {vi_mode_component, space_component, filename_block, align_component, skkeleton_component, git_component, denops_component, ghosttext_component, spell_component, paste_component, scrollbar_component}
+local default_statusline = {vi_mode_component, space_component, filename_block, align_component, git_component, skkeleton_component, denops_component, ghosttext_component, spell_component, paste_component, ruler_component, scrollbar_component}
 local lsp_winbar = {navic_component, align_component, dap_component, align_component, diagnostics_component, lsp_component}
 local function _53_(args)
   return conditions.buffer_matches({buftype = {"nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$", "^NvimTree$"}})

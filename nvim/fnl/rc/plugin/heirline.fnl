@@ -115,8 +115,13 @@
         3 filename-component
         4 file-flags-component})
 
+(local ruler-component
+       {:provider "[%l/%L] "
+        :hl {:fg colors.hint
+             :bg colors.color2}})
+
 (local scrollbar-component
-       {:static {:sbar ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"]}
+       {:static {:sbar ["🭶" "🭷" "🭸" "🭹" "🭺" "🭻"]}
         :provider (fn [self]
                     (let [curr-line (core.get (vim.api.nvim_win_get_cursor 0) 1)
                           lines (vim.api.nvim_buf_line_count 0)
@@ -266,12 +271,13 @@
         space-component
         filename-block
         align-component
-        skkeleton-component
         git-component
+        skkeleton-component
         denops-component
         ghosttext-component
         spell-component
         paste-component
+        ruler-component
         scrollbar-component])
 
 (local lsp-winbar
