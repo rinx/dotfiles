@@ -50,8 +50,8 @@
                             :lazy true
                             :priority 1000}
    :kyazdani42/nvim-web-devicons {:config (mod :devicons)}
-   :feline-nvim/feline.nvim {:config (mod :feline)
-                             :event [:BufEnter]}
+   :rebelot/heirline.nvim {:config (mod :heirline)
+                           :event [:BufEnter]}
    :akinsho/bufferline.nvim {:config (mod :bufferline)
                              :event [:BufEnter]}
    :akinsho/toggleterm.nvim {:config (mod :toggleterm)
@@ -91,6 +91,7 @@
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)
                            :dependencies [:ray-x/lsp_signature.nvim
+                                          :SmiteshP/nvim-navic
                                           :b0o/schemastore.nvim
                                           :simrat39/rust-tools.nvim]
                            :event [:BufReadPre]}
@@ -182,7 +183,6 @@
    :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)
                                      :config (mod :treesitter)
                                      :event [:BufEnter]
-                                     :dependencies [:romgrk/nvim-treesitter-context
-                                                    :JoosepAlviste/nvim-ts-context-commentstring]}
+                                     :dependencies [:JoosepAlviste/nvim-ts-context-commentstring]}
    :danymat/neogen {:config (mod :neogen)
                     :event [:BufReadPost :BufAdd :BufNewFile]}})

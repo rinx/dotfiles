@@ -1,11 +1,12 @@
 (local {: autoload} (require :nfnl.module))
 (local core (autoload :nfnl.core))
 
-(local lsp (require :lspconfig))
-(local lsp-signature (require :lsp_signature))
-(local lsputil (require :lspconfig.util))
-(local schemastore (require :schemastore))
-(local rust-tools (require :rust-tools))
+(local lsp (autoload :lspconfig))
+(local lsp-signature (autoload :lsp_signature))
+(local lsputil (autoload :lspconfig.util))
+(local navic (autoload :nvim-navic))
+(local schemastore (autoload :schemastore))
+(local rust-tools (autoload :rust-tools))
 
 (local icon (autoload :rc.icon))
 (import-macros {: map! : augroup!} :rc.macros)
@@ -21,7 +22,8 @@
      :hint_scheme :String
      :handler_opts
      {:border :single}
-     :decorator {"`" "`"}}))
+     :decorator {"`" "`"}})
+  (navic.attach client bufnr))
 
 (local capabilities
   (let [cap (vim.lsp.protocol.make_client_capabilities)]
