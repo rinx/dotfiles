@@ -115,6 +115,25 @@
         3 filename-component
         4 file-flags-component})
 
+(local cwd-component
+       {:provider (fn []
+                    (let [shorten (fn [cwd]
+                                    (if (conditions.width_percent_below
+                                          (core.count cwd)
+                                          0.25)
+                                      cwd
+                                      (vim.fn.pathshorten cwd)))
+                          trail (fn [cwd]
+                                  (if (= (cwd:sub -1) :/)
+                                    cwd
+                                    (.. cwd :/)))
+                          cwd (-> (vim.fn.getcwd 0)
+                                  (vim.fn.fnamemodify ":~")
+                                  (shorten)
+                                  (trail))]
+                      (.. icontab.directory space cwd space)))
+        :hl {:fg colors.hint}})
+
 (local ruler-component
        {:provider "[%l/%L] "
         :hl {:fg colors.hint
@@ -148,7 +167,9 @@
        {:condition (fn []
                      (navic.is_available))
         :provider (fn []
-                    (navic.get_location {:highlight true}))
+                    (.. icontab.slash
+                        space
+                        (navic.get_location {:highlight true})))
         :update :CursorMoved})
 
 (local diagnostics-component
@@ -280,8 +301,9 @@
         ruler-component
         scrollbar-component])
 
-(local lsp-winbar
-       [navic-component
+(local standard-winbar
+       [cwd-component
+        navic-component
         align-component
         dap-component
         align-component
@@ -290,7 +312,7 @@
 
 (heirline.setup
   {:statusline [default-statusline]
-   :winbar [lsp-winbar]
+   :winbar [standard-winbar]
    :opts {:colors palette
           :disable_winbar_cb (fn [args]
                                (conditions.buffer_matches
