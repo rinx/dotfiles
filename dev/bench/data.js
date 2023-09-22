@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1695282684534,
+  "lastUpdate": 1695360489234,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -4967,6 +4967,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 153.6434,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5f593d6cc8c66d73b03842e5d55a0b84085489ca",
+          "message": "config: update icons by nerdfont v3\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-09-22T14:18:01+09:00",
+          "tree_id": "cf9dbc934d8edb79fa922e63614166389203d17e",
+          "url": "https://github.com/rinx/dotfiles/commit/5f593d6cc8c66d73b03842e5d55a0b84085489ca"
+        },
+        "date": 1695360488382,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 81.1899575,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 174.9150596,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 156.3053,
             "unit": "ms"
           }
         ]
