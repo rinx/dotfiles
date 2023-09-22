@@ -156,11 +156,17 @@
        {:condition conditions.lsp_attached
         :update [:LspAttach :LspDetach]
         :provider (fn []
-                    (local names [])
-                    (each [_ server (pairs (vim.lsp.get_active_clients {:bufnr 0}))]
-                      (table.insert names server.name))
-                    (.. icontab.compas
-                        (table.concat names space)))
+                    (let [clients (-> (vim.lsp.get_active_clients {:bufnr 0})
+                                      (core.count))]
+                      (if (>= clients 2)
+                          (.. icontab.compas clients)
+                          icontab.compas)))
+        :on_click {:callback (fn []
+                               (vim.defer_fn
+                                 (fn []
+                                   (vim.cmd :LspInfo))
+                                 100))
+                   :name :heirline_LSP}
         :hl {:fg colors.info}})
 
 (local navic-component
@@ -287,10 +293,48 @@
         :hl {:fg colors.hint
              :bg colors.color2}})
 
+(local search-component
+       {:condition (fn []
+                     (~= vim.v.hlsearch 0))
+        :init (fn [self]
+                (let [(ok search) (pcall vim.fn.searchcount)
+                      word (vim.fn.getreg :/)]
+                  (when (and ok search.total)
+                    (set self.search search)
+                    (set self.word word))))
+        :provider (fn [self]
+                    (string.format
+                      (.. icontab.search
+                          self.word
+                          "[%d/%d]"
+                          space)
+                      self.search.current
+                      (math.min
+                        self.search.total
+                        self.search.maxcount)))
+        :hl {:fg colors.hint
+             :bg colors.color2}})
+
+(local macrorec-component
+       {:condition (fn []
+                     (~= (vim.fn.reg_recording) ""))
+        :provider (fn []
+                    (.. icontab.recording
+                        "["
+                        (vim.fn.reg_recording)
+                        "]"
+                        space))
+        :hl {:fg colors.info
+             :bg colors.color2}
+        :update [:RecordingEnter :RecordingLeave]})
+
 (local default-statusline
        [vi-mode-component
         space-component
         filename-block
+        align-component
+        search-component
+        macrorec-component
         align-component
         git-component
         skkeleton-component

@@ -43,6 +43,7 @@
    :sparkles "󰙴 "
    :ban " "
    :circle "●"
+   :recording " "
    :asterisk " "
    :exclam ""
    :exclam-circle " "
