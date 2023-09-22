@@ -90,8 +90,8 @@
                      (if (core.empty? filename)
                          "[No Name]"
                          (if (conditions.width_percent_below (core.count filename) 0.25)
-                             (vim.fn.pathshorten filename)
-                             filename))))
+                             filename
+                             (vim.fn.pathshorten filename)))))
         :hl {:fg colors.hint
              :bg colors.color2
              :bold true}})

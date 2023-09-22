@@ -57,9 +57,9 @@ local function _9_(self)
     return "[No Name]"
   else
     if conditions.width_percent_below(core.count(filename), 0.25) then
-      return vim.fn.pathshorten(filename)
-    else
       return filename
+    else
+      return vim.fn.pathshorten(filename)
     end
   end
 end
