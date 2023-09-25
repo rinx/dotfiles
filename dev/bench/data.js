@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1695635758140,
+  "lastUpdate": 1695635855117,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5084,6 +5084,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 148.0937,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e7833ca5e469a98240f13216d0d0998f514af25e",
+          "message": "config(kitty): use HackGen NF for Japanese chars\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-09-25T18:45:14+09:00",
+          "tree_id": "bb94bc36e173799c0a18d8d3334ba903aba30606",
+          "url": "https://github.com/rinx/dotfiles/commit/e7833ca5e469a98240f13216d0d0998f514af25e"
+        },
+        "date": 1695635853340,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 75.2282248,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 192.64562610000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 173.1688,
             "unit": "ms"
           }
         ]
