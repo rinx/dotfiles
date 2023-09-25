@@ -31,7 +31,7 @@
    :info "󰋼"
    :beer ""
    :package "󰏗"
-   :gcloud ""
+   :gcloud ""
    :celsius "󰔄"
    :k8s "⎈"})
 
