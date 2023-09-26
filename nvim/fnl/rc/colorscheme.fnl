@@ -158,3 +158,6 @@
 (hi! :FidgetTask
      {:ctermfg :blue
       :guifg colors.hint})
+(hi! :NavicSeparator
+     {:ctermfg :white
+      :guifg colors.color4})

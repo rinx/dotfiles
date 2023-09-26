@@ -98,13 +98,13 @@
 (local file-flags-component
        [{:condition (fn []
                       vim.bo.modified)
-         :provider icontab.circle
+         :provider (.. space icontab.circle)
          :hl {:fg colors.hint
               :bg colors.color2}}
         {:condition (fn []
                       (or (not vim.bo.modifiable)
                           vim.bo.readonly))
-         :provider icontab.lock
+         :provider (.. space icontab.lock)
          :hl {:fg colors.hint
               :bg colors.color2}}])
 (local filename-block

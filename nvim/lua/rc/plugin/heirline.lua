@@ -71,7 +71,7 @@ end
 local function _13_()
   return (not vim.bo.modifiable or vim.bo.readonly)
 end
-file_flags_component = {{condition = _12_, provider = icontab.circle, hl = {fg = colors.hint, bg = colors.color2}}, {condition = _13_, provider = icontab.lock, hl = {fg = colors.hint, bg = colors.color2}}}
+file_flags_component = {{condition = _12_, provider = (space .. icontab.circle), hl = {fg = colors.hint, bg = colors.color2}}, {condition = _13_, provider = (space .. icontab.lock), hl = {fg = colors.hint, bg = colors.color2}}}
 local filename_block
 local function _14_(self)
   self.filename = vim.api.nvim_buf_get_name(0)
