@@ -9,6 +9,6 @@ else
     k8s_info=""
 fi
 
-directory="#[underscore]#[bg=default,fg=cyan][ $1]#[default]"
+directory="#[underscore]#[bg=default,fg=cyan][ $1]#[default]"
 
 echo "$directory $k8s_info"
