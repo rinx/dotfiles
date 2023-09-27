@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1695635855117,
+  "lastUpdate": 1695789499204,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5123,6 +5123,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 173.1688,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8f36ffe0818e38ce1742eadd27695b1d40552f2f",
+          "message": "config: update k8s icon\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-09-27T13:26:06+09:00",
+          "tree_id": "dd4d081782a4a8ae8a1d799791b7723d2995de5b",
+          "url": "https://github.com/rinx/dotfiles/commit/8f36ffe0818e38ce1742eadd27695b1d40552f2f"
+        },
+        "date": 1695789497734,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 65.30101970000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 158.9088251,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 142.9326,
             "unit": "ms"
           }
         ]
