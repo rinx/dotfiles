@@ -136,7 +136,6 @@
 
 (local ruler-component
        {:provider "[%l/%L] "
-        :flexible true
         :hl {:fg colors.hint
              :bg colors.color2}})
 
@@ -156,7 +155,6 @@
 (local lsp-component
        {:condition conditions.lsp_attached
         :update [:LspAttach :LspDetach]
-        :flexible true
         :provider (fn []
                     (let [clients (-> (vim.lsp.get_active_clients {:bufnr 0})
                                       (core.count))]
@@ -210,7 +208,6 @@
 
 (local git-component
        {:condition conditions.is_git_repo
-        :flexible true
         :init (fn [self]
                 (set self.status_dict vim.b.gitsigns_status_dict)
                 (set self.has_changes
@@ -299,7 +296,6 @@
 (local search-component
        {:condition (fn []
                      (~= vim.v.hlsearch 0))
-        :flexible true
         :init (fn [self]
                 (let [(ok search) (pcall vim.fn.searchcount)
                       word (vim.fn.getreg :/)]
@@ -322,7 +318,6 @@
 (local macrorec-component
        {:condition (fn []
                      (~= (vim.fn.reg_recording) ""))
-        :flexible true
         :provider (fn []
                     (.. icontab.recording
                         "["

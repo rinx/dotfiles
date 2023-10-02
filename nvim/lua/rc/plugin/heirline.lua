@@ -102,7 +102,7 @@ local function _15_()
   return (icontab.directory .. space .. cwd .. space)
 end
 cwd_component = {provider = _15_, hl = {fg = colors.hint}}
-local ruler_component = {provider = "[%l/%L] ", flexible = true, hl = {fg = colors.hint, bg = colors.color2}}
+local ruler_component = {provider = "[%l/%L] ", hl = {fg = colors.hint, bg = colors.color2}}
 local scrollbar_component
 local function _20_(self)
   local curr_line = core.get(vim.api.nvim_win_get_cursor(0), 1)
@@ -126,7 +126,7 @@ local function _23_()
   end
   return vim.defer_fn(_24_, 100)
 end
-lsp_component = {condition = conditions.lsp_attached, update = {"LspAttach", "LspDetach"}, flexible = true, provider = _21_, on_click = {callback = _23_, name = "heirline_LSP"}, hl = {fg = colors.info}}
+lsp_component = {condition = conditions.lsp_attached, update = {"LspAttach", "LspDetach"}, provider = _21_, on_click = {callback = _23_, name = "heirline_LSP"}, hl = {fg = colors.info}}
 local navic_component
 local function _25_()
   return navic.is_available()
@@ -210,7 +210,7 @@ local function _44_(self)
   self.has_changes = ((self.status_dict.added ~= 0) or (self.status_dict.removed ~= 0) or (self.status_dict.changed ~= 0))
   return nil
 end
-git_component = {{provider = _37_, hl = {bold = true}}, {provider = _38_, hl = {fg = "git_add"}}, {provider = _40_, hl = {fg = "git_del"}}, {provider = _42_, hl = {fg = "git_change"}}, condition = conditions.is_git_repo, flexible = true, init = _44_, hl = {fg = "purple", bg = colors.color2}}
+git_component = {{provider = _37_, hl = {bold = true}}, {provider = _38_, hl = {fg = "git_add"}}, {provider = _40_, hl = {fg = "git_del"}}, {provider = _42_, hl = {fg = "git_change"}}, condition = conditions.is_git_repo, init = _44_, hl = {fg = "purple", bg = colors.color2}}
 local dap_component
 local function _45_()
   local session = dap.session()
@@ -313,7 +313,7 @@ end
 local function _64_(self)
   return string.format((icontab.search .. self.word .. "[%d/%d]" .. space), self.search.current, math.min(self.search.total, self.search.maxcount))
 end
-search_component = {condition = _61_, flexible = true, init = _62_, provider = _64_, hl = {fg = colors.hint, bg = colors.color2}}
+search_component = {condition = _61_, init = _62_, provider = _64_, hl = {fg = colors.hint, bg = colors.color2}}
 local macrorec_component
 local function _65_()
   return (vim.fn.reg_recording() ~= "")
@@ -321,7 +321,7 @@ end
 local function _66_()
   return (icontab.recording .. "[" .. vim.fn.reg_recording() .. "]" .. space)
 end
-macrorec_component = {condition = _65_, flexible = true, provider = _66_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
+macrorec_component = {condition = _65_, provider = _66_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
 local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, git_component, skkeleton_component, denops_component, ghosttext_component, spell_component, paste_component, ruler_component, scrollbar_component}
 local standard_winbar = {cwd_component, navic_component, align_component, dap_component, align_component, diagnostics_component, lsp_component}
 local function _67_(args)
