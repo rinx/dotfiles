@@ -91,7 +91,10 @@
                          "[No Name]"
                          (if (conditions.width_percent_below (core.count filename) 0.25)
                              filename
-                             (vim.fn.pathshorten filename)))))
+                             (let [shortened (vim.fn.pathshorten filename)]
+                               (if (conditions.width_percent_below (core.count shortened) 0.25)
+                                   shortened
+                                   (vim.fn.fnamemodify self.filename ":p:t")))))))
         :hl {:fg colors.hint
              :bg colors.color2
              :bold true}})
@@ -208,6 +211,7 @@
 
 (local git-component
        {:condition conditions.is_git_repo
+        :flexible true
         :init (fn [self]
                 (set self.status_dict vim.b.gitsigns_status_dict)
                 (set self.has_changes

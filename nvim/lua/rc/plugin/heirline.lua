@@ -59,60 +59,65 @@ local function _9_(self)
     if conditions.width_percent_below(core.count(filename), 0.25) then
       return filename
     else
-      return vim.fn.pathshorten(filename)
+      local shortened = vim.fn.pathshorten(filename)
+      if conditions.width_percent_below(core.count(shortened), 0.25) then
+        return shortened
+      else
+        return vim.fn.fnamemodify(self.filename, ":p:t")
+      end
     end
   end
 end
 filename_component = {provider = _9_, hl = {fg = colors.hint, bg = colors.color2, bold = true}}
 local file_flags_component
-local function _12_()
+local function _13_()
   return vim.bo.modified
 end
-local function _13_()
+local function _14_()
   return (not vim.bo.modifiable or vim.bo.readonly)
 end
-file_flags_component = {{condition = _12_, provider = (space .. icontab.circle), hl = {fg = colors.hint, bg = colors.color2}}, {condition = _13_, provider = (space .. icontab.lock), hl = {fg = colors.hint, bg = colors.color2}}}
+file_flags_component = {{condition = _13_, provider = (space .. icontab.circle), hl = {fg = colors.hint, bg = colors.color2}}, {condition = _14_, provider = (space .. icontab.lock), hl = {fg = colors.hint, bg = colors.color2}}}
 local filename_block
-local function _14_(self)
+local function _15_(self)
   self.filename = vim.api.nvim_buf_get_name(0)
   return nil
 end
-filename_block = {file_icon_component, space_component, filename_component, file_flags_component, init = _14_}
+filename_block = {file_icon_component, space_component, filename_component, file_flags_component, init = _15_}
 local cwd_component
-local function _15_()
+local function _16_()
   local shorten
-  local function _16_(cwd)
+  local function _17_(cwd)
     if conditions.width_percent_below(core.count(cwd), 0.25) then
       return cwd
     else
       return vim.fn.pathshorten(cwd)
     end
   end
-  shorten = _16_
+  shorten = _17_
   local trail
-  local function _18_(cwd)
+  local function _19_(cwd)
     if (cwd:sub(-1) == "/") then
       return cwd
     else
       return (cwd .. "/")
     end
   end
-  trail = _18_
+  trail = _19_
   local cwd = trail(shorten(vim.fn.fnamemodify(vim.fn.getcwd(0), ":~")))
   return (icontab.directory .. space .. cwd .. space)
 end
-cwd_component = {provider = _15_, hl = {fg = colors.hint}}
+cwd_component = {provider = _16_, hl = {fg = colors.hint}}
 local ruler_component = {provider = "[%l/%L] ", hl = {fg = colors.hint, bg = colors.color2}}
 local scrollbar_component
-local function _20_(self)
+local function _21_(self)
   local curr_line = core.get(vim.api.nvim_win_get_cursor(0), 1)
   local lines = vim.api.nvim_buf_line_count(0)
   local i = core.inc(math.floor(((core.dec(curr_line) / lines) * core.count(self.sbar))))
   return string.rep(core.get(self.sbar, i), 2)
 end
-scrollbar_component = {static = {sbar = {"\240\159\173\182", "\240\159\173\183", "\240\159\173\184", "\240\159\173\185", "\240\159\173\186", "\240\159\173\187"}}, provider = _20_, hl = {fg = colors.hint, bg = colors.color2}}
+scrollbar_component = {static = {sbar = {"\240\159\173\182", "\240\159\173\183", "\240\159\173\184", "\240\159\173\185", "\240\159\173\186", "\240\159\173\187"}}, provider = _21_, hl = {fg = colors.hint, bg = colors.color2}}
 local lsp_component
-local function _21_()
+local function _22_()
   local clients = core.count(vim.lsp.get_active_clients({bufnr = 0}))
   if (clients >= 2) then
     return (icontab.compas .. clients)
@@ -120,68 +125,68 @@ local function _21_()
     return icontab.compas
   end
 end
-local function _23_()
-  local function _24_()
+local function _24_()
+  local function _25_()
     return vim.cmd("LspInfo")
   end
-  return vim.defer_fn(_24_, 100)
+  return vim.defer_fn(_25_, 100)
 end
-lsp_component = {condition = conditions.lsp_attached, update = {"LspAttach", "LspDetach"}, provider = _21_, on_click = {callback = _23_, name = "heirline_LSP"}, hl = {fg = colors.info}}
+lsp_component = {condition = conditions.lsp_attached, update = {"LspAttach", "LspDetach"}, provider = _22_, on_click = {callback = _24_, name = "heirline_LSP"}, hl = {fg = colors.info}}
 local navic_component
-local function _25_()
+local function _26_()
   return navic.is_available()
 end
-local function _26_()
+local function _27_()
   return (icontab.slash .. space .. navic.get_location({highlight = true}))
 end
-navic_component = {condition = _25_, provider = _26_, update = "CursorMoved"}
+navic_component = {condition = _26_, provider = _27_, update = "CursorMoved"}
 local diagnostics_component
-local function _27_(self)
+local function _28_(self)
   if (self.errors > 0) then
     return (icontab.bug .. self.errors .. space)
   else
     return nil
   end
 end
-local function _29_(self)
+local function _30_(self)
   if (self.warns > 0) then
     return (icontab["exclam-circle"] .. self.warns .. space)
   else
     return nil
   end
 end
-local function _31_(self)
+local function _32_(self)
   if (self.infos > 0) then
     return (icontab["info-circle"] .. self.infos .. space)
   else
     return nil
   end
 end
-local function _33_(self)
+local function _34_(self)
   if (self.hints > 0) then
     return (icontab.leaf .. self.hints .. space)
   else
     return nil
   end
 end
-local function _35_(self)
+local function _36_(self)
   local dc
-  local function _36_(severity)
+  local function _37_(severity)
     return core.count(vim.diagnostic.get(0, {severity = severity}))
   end
-  dc = _36_
+  dc = _37_
   self.errors = dc(vim.diagnostic.severity.ERROR)
   self.warns = dc(vim.diagnostic.severity.WARN)
   self.infos = dc(vim.diagnostic.severity.INFO)
   self.hints = dc(vim.diagnostic.severity.HINT)
   return nil
 end
-diagnostics_component = {{provider = _27_, hl = {fg = "diag_error"}}, {provider = _29_, hl = {fg = "diag_warn"}}, {provider = _31_, hl = {fg = "diag_info"}}, {provider = _33_, hl = {fg = "diag_hint"}}, condition = conditions.has_diagnostics, init = _35_, update = {"DiagnosticChanged", "BufEnter", "CursorMoved"}}
+diagnostics_component = {{provider = _28_, hl = {fg = "diag_error"}}, {provider = _30_, hl = {fg = "diag_warn"}}, {provider = _32_, hl = {fg = "diag_info"}}, {provider = _34_, hl = {fg = "diag_hint"}}, condition = conditions.has_diagnostics, init = _36_, update = {"DiagnosticChanged", "BufEnter", "CursorMoved"}}
 local git_component
-local function _37_(self)
+local function _38_(self)
   return (icontab.github .. self.status_dict.head .. space)
 end
-local function _38_(self)
+local function _39_(self)
   local added = (self.status_dict.added or 0)
   if (added > 0) then
     return (icontab["diff-add"] .. added .. space)
@@ -189,7 +194,7 @@ local function _38_(self)
     return nil
   end
 end
-local function _40_(self)
+local function _41_(self)
   local deleted = (self.status_dict.removed or 0)
   if (deleted > 0) then
     return (icontab["diff-removed"] .. deleted .. space)
@@ -197,7 +202,7 @@ local function _40_(self)
     return nil
   end
 end
-local function _42_(self)
+local function _43_(self)
   local changed = (self.status_dict.changed or 0)
   if (changed > 0) then
     return (icontab["diff-modified"] .. changed .. space)
@@ -205,53 +210,53 @@ local function _42_(self)
     return nil
   end
 end
-local function _44_(self)
+local function _45_(self)
   self.status_dict = vim.b.gitsigns_status_dict
   self.has_changes = ((self.status_dict.added ~= 0) or (self.status_dict.removed ~= 0) or (self.status_dict.changed ~= 0))
   return nil
 end
-git_component = {{provider = _37_, hl = {bold = true}}, {provider = _38_, hl = {fg = "git_add"}}, {provider = _40_, hl = {fg = "git_del"}}, {provider = _42_, hl = {fg = "git_change"}}, condition = conditions.is_git_repo, init = _44_, hl = {fg = "purple", bg = colors.color2}}
+git_component = {{provider = _38_, hl = {bold = true}}, {provider = _39_, hl = {fg = "git_add"}}, {provider = _41_, hl = {fg = "git_del"}}, {provider = _43_, hl = {fg = "git_change"}}, condition = conditions.is_git_repo, flexible = true, init = _45_, hl = {fg = "purple", bg = colors.color2}}
 local dap_component
-local function _45_()
+local function _46_()
   local session = dap.session()
   return (session ~= nil)
 end
-local function _46_()
+local function _47_()
   return (icontab["play-circle"] .. space .. dap.status())
 end
-dap_component = {condition = _45_, provider = _46_, hl = {fg = colors.color4}}
+dap_component = {condition = _46_, provider = _47_, hl = {fg = colors.color4}}
 local denops_component
-local function _47_()
-  local _48_ = vim.fn["denops#server#status"]()
-  if (_48_ == "running") then
+local function _48_()
+  local _49_ = vim.fn["denops#server#status"]()
+  if (_49_ == "running") then
     return (icontab.dinosaur .. space)
   elseif true then
-    local _ = _48_
+    local _ = _49_
     return ""
   else
     return nil
   end
 end
-denops_component = {provider = _47_, hl = {fg = colors.color4, bg = colors.color2}}
+denops_component = {provider = _48_, hl = {fg = colors.color4, bg = colors.color2}}
 local skkeleton_component
-local function _50_()
+local function _51_()
   local mode
   do
-    local _51_ = vim.fn["skkeleton#mode"]()
-    if (_51_ == "hira") then
+    local _52_ = vim.fn["skkeleton#mode"]()
+    if (_52_ == "hira") then
       mode = "\227\129\130"
-    elseif (_51_ == "kata") then
+    elseif (_52_ == "kata") then
       mode = "\227\130\162"
-    elseif (_51_ == "hankata") then
+    elseif (_52_ == "hankata") then
       mode = "\239\189\167\239\189\177"
-    elseif (_51_ == "ascii") then
+    elseif (_52_ == "ascii") then
       mode = "aA"
-    elseif (_51_ == "zenei") then
+    elseif (_52_ == "zenei") then
       mode = "\239\189\129"
-    elseif (_51_ == "abbrev") then
+    elseif (_52_ == "abbrev") then
       mode = "a\227\129\130"
     elseif true then
-      local _ = _51_
+      local _ = _52_
       mode = nil
     else
       mode = nil
@@ -263,43 +268,43 @@ local function _50_()
     return nil
   end
 end
-skkeleton_component = {provider = _50_, hl = {fg = colors.color10, bg = colors.color2}}
+skkeleton_component = {provider = _51_, hl = {fg = colors.color10, bg = colors.color2}}
 local ghosttext_component
-local function _54_()
+local function _55_()
   if vim.g.ghosttext_started then
     return (icontab.ghost .. space)
   else
-    local _55_ = vim.fn["ghosttext#status"]()
-    if (_55_ == "running") then
+    local _56_ = vim.fn["ghosttext#status"]()
+    if (_56_ == "running") then
       vim.g.ghosttext_started = true
       return (icontab.ghost .. space)
     elseif true then
-      local _ = _55_
+      local _ = _56_
       return ""
     else
       return nil
     end
   end
 end
-ghosttext_component = {provider = _54_, hl = {fg = colors.color4, bg = colors.color2}}
+ghosttext_component = {provider = _55_, hl = {fg = colors.color4, bg = colors.color2}}
 local spell_component
-local function _58_()
+local function _59_()
   return vim.wo.spell
 end
-local function _59_()
+local function _60_()
   return (icontab.spellcheck .. vim.o.spelllang .. space)
 end
-spell_component = {condition = _58_, provider = _59_, hl = {fg = colors.hint, bg = colors.color2}}
+spell_component = {condition = _59_, provider = _60_, hl = {fg = colors.hint, bg = colors.color2}}
 local paste_component
-local function _60_()
+local function _61_()
   return vim.o.paste
 end
-paste_component = {condition = _60_, provider = (icontab.paste .. space), hl = {fg = colors.hint, bg = colors.color2}}
+paste_component = {condition = _61_, provider = (icontab.paste .. space), hl = {fg = colors.hint, bg = colors.color2}}
 local search_component
-local function _61_()
+local function _62_()
   return (vim.v.hlsearch ~= 0)
 end
-local function _62_(self)
+local function _63_(self)
   local ok, search = pcall(vim.fn.searchcount)
   local word = vim.fn.getreg("/")
   if (ok and search.total) then
@@ -310,21 +315,21 @@ local function _62_(self)
     return nil
   end
 end
-local function _64_(self)
+local function _65_(self)
   return string.format((icontab.search .. self.word .. "[%d/%d]" .. space), self.search.current, math.min(self.search.total, self.search.maxcount))
 end
-search_component = {condition = _61_, init = _62_, provider = _64_, hl = {fg = colors.hint, bg = colors.color2}}
+search_component = {condition = _62_, init = _63_, provider = _65_, hl = {fg = colors.hint, bg = colors.color2}}
 local macrorec_component
-local function _65_()
+local function _66_()
   return (vim.fn.reg_recording() ~= "")
 end
-local function _66_()
+local function _67_()
   return (icontab.recording .. "[" .. vim.fn.reg_recording() .. "]" .. space)
 end
-macrorec_component = {condition = _65_, provider = _66_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
+macrorec_component = {condition = _66_, provider = _67_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
 local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, git_component, skkeleton_component, denops_component, ghosttext_component, spell_component, paste_component, ruler_component, scrollbar_component}
 local standard_winbar = {cwd_component, navic_component, align_component, dap_component, align_component, diagnostics_component, lsp_component}
-local function _67_(args)
+local function _68_(args)
   return conditions.buffer_matches({buftype = {"nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$", "^NvimTree$"}})
 end
-return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _67_}})
+return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _68_}})
