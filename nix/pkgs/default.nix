@@ -23,6 +23,7 @@
     gnumake
     jq
     neovim-unwrapped
+    open-policy-agent
     pass
     ripgrep
     sad
@@ -64,6 +65,7 @@
     delve
     efm-langserver
     # fennel-language-server
+    fortls
     gopls
     # jq-lsp
     nil
@@ -72,6 +74,7 @@
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
+    # regal
     # regols
     terraform-ls
     tflint
