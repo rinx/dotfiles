@@ -24,6 +24,10 @@ do
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl shiftwidth=4", group = group_5_auto, pattern = "markdown"})
 end
 do
+  local group_5_auto = vim.api.nvim_create_augroup("init-nix", {clear = true})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl shiftwidth=2", group = group_5_auto, pattern = "nix"})
+end
+do
   local group_5_auto = vim.api.nvim_create_augroup("init-json", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl shiftwidth=2", group = group_5_auto, pattern = "json"})
 end

@@ -43,6 +43,12 @@
    :command "setl shiftwidth=4"})
 
 (augroup!
+  init-nix
+  {:events [:FileType]
+   :pattern :nix
+   :command "setl shiftwidth=2"})
+
+(augroup!
   init-json
   {:events [:FileType]
    :pattern :json
