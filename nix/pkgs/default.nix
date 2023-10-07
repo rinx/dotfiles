@@ -76,5 +76,14 @@
     terraform-ls
     tflint
 
+    # fonts
+    hackgen-nf-font
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "JetBrainsMono"
+        "VictorMono"
+      ];
+    })
   ];
 }
