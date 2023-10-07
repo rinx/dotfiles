@@ -68,6 +68,7 @@
     fortls
     gopls
     # jq-lsp
+    marksman
     nil
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
