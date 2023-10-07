@@ -141,6 +141,7 @@
 (lsp.julials.setup (core.merge default-options {}))
 (lsp.kotlin_language_server.setup (core.merge default-options {}))
 (lsp.marksman.setup (core.merge default-options {}))
+(lsp.nil_ls.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
 (lsp.regols.setup (core.merge default-options {}))
 (lsp.terraformls.setup (core.merge

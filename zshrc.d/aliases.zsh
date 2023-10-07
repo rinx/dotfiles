@@ -10,7 +10,12 @@ alias uuuu='cd ../../../../'
 alias cdr='cd -'
 alias cdg='cd-gitroot'
 
-if builtin command -v exa > /dev/null 2>&1 ; then
+if builtin command -v eza > /dev/null 2>&1 ; then
+    alias ls='eza'
+    alias lsa='eza -a'
+    alias lsl='eza -l'
+    alias lsal='eza -a -l'
+elif builtin command -v exa > /dev/null 2>&1 ; then
     alias ls='exa'
     alias lsa='exa -a'
     alias lsl='exa -l'

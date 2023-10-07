@@ -47,6 +47,7 @@ lsp.jsonls.setup(core.merge(default_options, {settings = {json = {schemas = sche
 lsp.julials.setup(core.merge(default_options, {}))
 lsp.kotlin_language_server.setup(core.merge(default_options, {}))
 lsp.marksman.setup(core.merge(default_options, {}))
+lsp.nil_ls.setup(core.merge(default_options, {}))
 lsp.pylsp.setup(core.merge(default_options, {}))
 lsp.regols.setup(core.merge(default_options, {}))
 lsp.terraformls.setup(core.merge(default_options, {settings = {["terraform-ls"] = {experimentalFeatures = {validateOnSave = true, prefillRequiredFields = true}}}}))
