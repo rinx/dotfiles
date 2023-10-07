@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1696646846398,
+  "lastUpdate": 1696685701748,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5279,6 +5279,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 151.8735,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8552b15a97f721913461c0567ece80320f73d71e",
+          "message": "config(nix): add fonts\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2023-10-07T22:20:35+09:00",
+          "tree_id": "61312c1a0fb74d9956f9ba33acfa84bb010638b7",
+          "url": "https://github.com/rinx/dotfiles/commit/8552b15a97f721913461c0567ece80320f73d71e"
+        },
+        "date": 1696685700991,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 71.6927196,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 164.1377617,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 152.7841,
             "unit": "ms"
           }
         ]
