@@ -3,11 +3,13 @@
   pkgs,
   flake-inputs,
 }: let 
+    fennel-language-server = pkgs.callPackage ./fennel-language-server.nix {};
     jq-lsp = pkgs.callPackage ./jq-lsp.nix {};
     regal = pkgs.callPackage ./regal.nix {};
     regols = pkgs.callPackage ./regols.nix {};
 
     custom-pkgs = [
+      fennel-language-server
       jq-lsp
       regal
       regols
@@ -74,7 +76,6 @@
       cuelsp
       delve
       efm-langserver
-      # fennel-language-server
       fortls
       gopls
       marksman
