@@ -2,92 +2,98 @@
   self,
   pkgs,
   flake-inputs,
-}: pkgs.buildEnv {
-  name = "basic-packages";
+}: let 
+    jq-lsp = pkgs.callPackage ./jq-lsp.nix {};
+    regols = pkgs.callPackage ./regols.nix {};
 
-  paths = with pkgs; [
+    custom-pkgs = [
+      jq-lsp
+      regols
+    ];
+  in pkgs.buildEnv {
+    name = "basic-packages";
 
-    # tools
-    bat
-    cmakeMinimal
-    curl
-    delta
-    docker-credential-helpers
-    eza
-    fd
-    fzf
-    fzy
-    gh
-    ghq
-    git
-    gnumake
-    jq
-    neovim-unwrapped
-    open-policy-agent
-    pass
-    ripgrep
-    sad
-    tmux
-    tmux-xpanes
-    wget
-    yq
-    zsh
+    paths = with pkgs; [
 
-    # k8s
-    helmfile
-    k3d
-    k9s
-    kubectl
-    kubectx
-    kubernetes-helm
-    kustomize
-    stern
+      # tools
+      bat
+      cmakeMinimal
+      curl
+      delta
+      docker-credential-helpers
+      eza
+      fd
+      fzf
+      fzy
+      gh
+      ghq
+      git
+      gnumake
+      jq
+      neovim-unwrapped
+      open-policy-agent
+      pass
+      ripgrep
+      sad
+      tmux
+      tmux-xpanes
+      wget
+      yq
+      zsh
 
-    # cloud development
-    awscli2
-    google-cloud-sdk
-    terraform
+      # k8s
+      helmfile
+      k3d
+      k9s
+      kubectl
+      kubectx
+      kubernetes-helm
+      kustomize
+      stern
 
-    # languages
-    babashka
-    buf
-    clojure
-    deno
-    gfortran
-    go
-    nodejs
-    nodePackages.typescript
+      # cloud development
+      awscli2
+      google-cloud-sdk
+      terraform
 
-    # LSP / DAP / Linter / Formatter
-    buf-language-server
-    clojure-lsp
-    cuelsp
-    delve
-    efm-langserver
-    # fennel-language-server
-    fortls
-    gopls
-    # jq-lsp
-    marksman
-    nil
-    nodePackages.bash-language-server
-    nodePackages.dockerfile-language-server-nodejs
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
-    # regal
-    # regols
-    terraform-ls
-    tflint
+      # languages
+      babashka
+      buf
+      clojure
+      deno
+      gfortran
+      go
+      nodejs
+      nodePackages.typescript
 
-    # fonts
-    hackgen-nf-font
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-        "VictorMono"
-      ];
-    })
-  ];
-}
+      # LSP / DAP / Linter / Formatter
+      buf-language-server
+      clojure-lsp
+      cuelsp
+      delve
+      efm-langserver
+      # fennel-language-server
+      fortls
+      gopls
+      marksman
+      nil
+      nodePackages.bash-language-server
+      nodePackages.dockerfile-language-server-nodejs
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      nodePackages.yaml-language-server
+      # regal
+      terraform-ls
+      tflint
+
+      # fonts
+      hackgen-nf-font
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "VictorMono"
+        ];
+      })
+    ] ++ custom-pkgs;
+  }
