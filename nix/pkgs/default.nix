@@ -4,10 +4,12 @@
   flake-inputs,
 }: let 
     jq-lsp = pkgs.callPackage ./jq-lsp.nix {};
+    regal = pkgs.callPackage ./regal.nix {};
     regols = pkgs.callPackage ./regols.nix {};
 
     custom-pkgs = [
       jq-lsp
+      regal
       regols
     ];
   in pkgs.buildEnv {
@@ -82,7 +84,6 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
-      # regal
       terraform-ls
       tflint
 
