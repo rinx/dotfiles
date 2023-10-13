@@ -37,3 +37,31 @@ function run-compinit() {
 if ! zstyle -t ':zshzoo:plugin:compinit' defer; then
     run-compinit
 fi
+
+if builtin command -v kubectl > /dev/null 2>&1 ; then
+    source <(kubectl completion zsh)
+fi
+
+if builtin command -v kustomize > /dev/null 2>&1 ; then
+    source <(kustomize completion zsh)
+fi
+
+if builtin command -v deno > /dev/null 2>&1 ; then
+    source <(deno completions zsh)
+fi
+
+if builtin command -v gh > /dev/null 2>&1 ; then
+    source <(gh completion -s zsh)
+fi
+
+if builtin command -v helm > /dev/null 2>&1 ; then
+    source <(helm completion zsh)
+fi
+
+if builtin command -v helmfile > /dev/null 2>&1 ; then
+    source <(helmfile completion zsh)
+fi
+
+if builtin command -v buf > /dev/null 2>&1 ; then
+    source <(buf completion zsh)
+fi
