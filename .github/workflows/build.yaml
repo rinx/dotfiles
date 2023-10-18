@@ -9,7 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build barista
+      - name: Install dependencies
         run: |
-          cd barista
+          sudo apt update
+          sudo apt install -y \
+            libasound2-dev
+      - name: Build barista
+        working-directory: ./barista
+        run: |
           go build .
