@@ -61,7 +61,8 @@
                                       {"https://deno.land" true
                                        "https://cdn.nest.land" true
                                        "https://crux.land" true}}}}
-                     :root_dir (lsputil.root_pattern "deno.json")}))
+                     :root_dir (lsputil.root_pattern "deno.json"
+                                                     "deno.jsonc")}))
 (lsp.dockerls.setup (core.merge default-options {}))
 (lsp.efm.setup (core.merge
                  default-options
