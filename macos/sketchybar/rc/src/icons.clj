@@ -48,6 +48,8 @@
     "kitty" "󰆍"
     "Finder" "󰀶"
     "Microsoft Teams" "󰊻"
+    "Microsoft Teams classic" "󰊻"
+    "Microsoft Teams (work or school)" "󰊻"
     "goneovim" ""
     ""))
 
