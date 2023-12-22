@@ -11,7 +11,7 @@
        (str/split-lines)))
 
 (defn current-context []
-  (->> (common/sh "gcloud" "config" "list" "--format" "value(core.project)")
+  (->> (common/sh "gcloud" "info" "--format" "get(config.active_config_name)")
        (str/trim-newline)))
 
 (defn ->element [idx ctx]
