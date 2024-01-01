@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1703956068032,
+  "lastUpdate": 1704128849485,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5630,6 +5630,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 109.3274,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "116073707+rinx-app[bot]@users.noreply.github.com",
+            "name": "rinx-app[bot]",
+            "username": "rinx-app[bot]"
+          },
+          "committer": {
+            "email": "116073707+rinx-app[bot]@users.noreply.github.com",
+            "name": "rinx-app[bot]",
+            "username": "rinx-app[bot]"
+          },
+          "distinct": true,
+          "id": "6e0dd920aac3e13fd1859440d0637e32268e250e",
+          "message": "[patch] :robot: Automatically upgrade dependencies.\n\nSigned-off-by: rinx-app[bot] <116073707+rinx-app[bot]@users.noreply.github.com>",
+          "timestamp": "2024-01-01T17:00:47Z",
+          "tree_id": "72fb26974a25e7c49461ffa13a085e742984c571",
+          "url": "https://github.com/rinx/dotfiles/commit/6e0dd920aac3e13fd1859440d0637e32268e250e"
+        },
+        "date": 1704128848331,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 57.840680299999995,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 123.31573019999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 110.5272,
             "unit": "ms"
           }
         ]
