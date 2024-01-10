@@ -1,5 +1,5 @@
 (local configs (require :nvim-treesitter.configs))
-(local parsers (require :nvim-treesitter.parsers))
+(local commentstring (require :ts_context_commentstring))
 
 (local languages
   [:bash
@@ -83,9 +83,12 @@
    :highlight {:enable true
                :disable []}
    :indent {:enable true
-            :disable []}
-   :context_commentstring {:enable true
-                           :enable_autocmd false}})
+            :disable []}})
+
+;; context-commentstring
+(set vim.g.skip_ts_context_commentstring_module true)
+(commentstring.setup
+  {:enable_autocmd false})
 
 (fn ensure-installed []
   (each [_ lang (ipairs languages)]

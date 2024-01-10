@@ -2,7 +2,7 @@
 vim.keymap.set("i", "<C-j>", "<Plug>(skkeleton-toggle)", {})
 vim.keymap.set("c", "<C-j>", "<Plug>(skkeleton-toggle)", {})
 local function initialize()
-  return vim.fn["skkeleton#config"]({globalJisyo = "~/.SKK-JISYO.L", globalJisyoEncoding = "euc-jp", immediatelyJisyoRW = true, keepState = true, selectCandidateKeys = "asdfjkl", setUndoPoint = true, showCandidatesCount = 4, usePopup = true, userJisyo = "~/.skk-jisyo", eggLikeNewline = false, registerConvertResult = false})
+  return vim.fn["skkeleton#config"]({globalJisyo = "~/.SKK-JISYO.L", globalJisyoEncoding = "euc-jp", immediatelyJisyoRW = true, keepState = true, selectCandidateKeys = "asdfjkl", setUndoPoint = true, showCandidatesCount = 4, usePopup = true, userJisyo = "~/.skk-jisyo", registerConvertResult = false, eggLikeNewline = false})
 end
 local function enable_pre()
   local cmp = require("cmp")
