@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1704862366817,
+  "lastUpdate": 1704881798277,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5786,6 +5786,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 108.9,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "74bf6b10d5f2bb0acf88f5b55453e9ebf29d3676",
+          "message": "chore(deps): Bump golang.org/x/crypto from 0.14.0 to 0.17.0 in /barista (#47)\n\nBumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.14.0 to 0.17.0.\r\n- [Commits](https://github.com/golang/crypto/compare/v0.14.0...v0.17.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: golang.org/x/crypto\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-01-10T18:40:24+09:00",
+          "tree_id": "8398e28f4ec9ed6e7bbdb1a2bce6a5707ef4a81a",
+          "url": "https://github.com/rinx/dotfiles/commit/74bf6b10d5f2bb0acf88f5b55453e9ebf29d3676"
+        },
+        "date": 1704881796446,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 55.77947880000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 122.52808089999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 108.89,
             "unit": "ms"
           }
         ]
