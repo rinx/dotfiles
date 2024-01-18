@@ -6,16 +6,15 @@
 (fn initialize []
   (vim.fn.skkeleton#config
     {:eggLikeNewline false
-     :globalJisyo "~/.SKK-JISYO.L"
-     :globalJisyoEncoding :euc-jp
-     :immediatelyJisyoRW true
+     :globalDictionaries ["~/.SKK-JISYO.L"]
+     :immediatelyDictionaryRW true
      :registerConvertResult false
      :keepState true
      :selectCandidateKeys :asdfjkl
      :setUndoPoint true
      :showCandidatesCount 4
      :usePopup true
-     :userJisyo "~/.skk-jisyo"}))
+     :userDictionary "~/.skk-jisyo"}))
 
 (fn enable-pre []
   (let [cmp (require :cmp)]
