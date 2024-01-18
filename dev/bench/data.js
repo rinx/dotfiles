@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1704881798277,
+  "lastUpdate": 1705565250081,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5825,6 +5825,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 108.89,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "682597f0ae474afc30eb6a9561ab74d7cd1558cf",
+          "message": "config: fix skkeleton configs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-01-18T16:59:30+09:00",
+          "tree_id": "f1d5ee7e1b5f770e9ea35a738b49a8c1df45c4b5",
+          "url": "https://github.com/rinx/dotfiles/commit/682597f0ae474afc30eb6a9561ab74d7cd1558cf"
+        },
+        "date": 1705565248240,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 47.9542752,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 121.19156329999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 108.956,
             "unit": "ms"
           }
         ]
