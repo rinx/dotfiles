@@ -20,6 +20,7 @@
    :BlamerToggle
    :ConjureConnect
    :ConjureLogSplit
+   :ConjureLogVSplit
    :DapContinue
    :DapListBreakpoints
    :DapLoadLaunchJSON
@@ -35,7 +36,6 @@
    :DapUIToggle
    :GhostStart
    :Ghq
-   :Glance
    :Lazy
    "Lazy check"
    "Lazy update"
