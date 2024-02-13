@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1707826995242,
+  "lastUpdate": 1707832324783,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6059,6 +6059,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 120.8675,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d1a3f63ed2c706d8bf7274fd30e8531bdb28cc4a",
+          "message": "config: use Monaspace and Moralerspace\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-02-13T22:43:04+09:00",
+          "tree_id": "eb6bbe24eb7f5f440b8d0685fb52bb2d056810b6",
+          "url": "https://github.com/rinx/dotfiles/commit/d1a3f63ed2c706d8bf7274fd30e8531bdb28cc4a"
+        },
+        "date": 1707832322784,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 85.50987960000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 149.11756010000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 139.8179,
             "unit": "ms"
           }
         ]
