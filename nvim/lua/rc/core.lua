@@ -95,7 +95,7 @@ if (vim.fn.executable("rg") == 1) then
 else
 end
 do
-  local fonts = {"MonaspiceRa NFM", "FiraCode Nerd Font", "Moralerspace Radon NF", "Noto Color Emoji"}
+  local fonts = {"MonaspiceRn NFM", "FiraCode Nerd Font", "Moralerspace Radon NF", "Noto Color Emoji"}
   local size
   if (vim.fn.has("mac") == 1) then
     size = "h14"
