@@ -121,10 +121,9 @@
     (set vim.g.ackprg "rg --vimgrep --no-heading")))
 
 ;; guis
-(let [fonts ["VictorMono Nerd Font"
+(let [fonts ["MonaspiceRa NFM"
              "FiraCode Nerd Font"
-             "JetBrainsMono Nerd Font"
-             "HackGenNerd"
+             "Moralerspace Radon NF"
              "Noto Color Emoji"]
       size (if (= (vim.fn.has :mac) 1)
              "h14"
