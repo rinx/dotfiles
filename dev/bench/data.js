@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1707818300215,
+  "lastUpdate": 1707826995242,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6020,6 +6020,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 159.7779,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "6fc100c468a2f4ee907283dce02f17a9c4f98c9d",
+          "message": "config: add disable_ligatures cursor\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-02-13T21:11:56+09:00",
+          "tree_id": "ccca91332d73f874452077afe1b957f4d8a0496e",
+          "url": "https://github.com/rinx/dotfiles/commit/6fc100c468a2f4ee907283dce02f17a9c4f98c9d"
+        },
+        "date": 1707826993584,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 59.92033550000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 146.5011057,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 120.8675,
             "unit": "ms"
           }
         ]
