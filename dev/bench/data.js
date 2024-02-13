@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1707757820082,
+  "lastUpdate": 1707818300215,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5981,6 +5981,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 109.112,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "60c42dea2e08c7732af1f8f0a3812733bdf9c6ac",
+          "message": "feat: add aws-sts-token script\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-02-13T18:47:01+09:00",
+          "tree_id": "7007979391249e626011314091ee49bc19f61061",
+          "url": "https://github.com/rinx/dotfiles/commit/60c42dea2e08c7732af1f8f0a3812733bdf9c6ac"
+        },
+        "date": 1707818299174,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 86.70030550000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 179.8012822,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 159.7779,
             "unit": "ms"
           }
         ]
