@@ -94,6 +94,7 @@
         fonts = [
           "FiraCode"
           "JetBrainsMono"
+          "Monaspace"
           "VictorMono"
         ];
       })
