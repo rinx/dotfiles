@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1707832921620,
+  "lastUpdate": 1707908693426,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6137,6 +6137,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 147.3872,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "75e8c82af3171ab7c3b24523cb6a7f68ba0df1c7",
+          "message": "config: add FiraCode features\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-02-14T19:57:51+09:00",
+          "tree_id": "7b1d2dd0f9cb4f0131a71246ec028038c5496a9b",
+          "url": "https://github.com/rinx/dotfiles/commit/75e8c82af3171ab7c3b24523cb6a7f68ba0df1c7"
+        },
+        "date": 1707908691828,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 52.4866362,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 121.24037619999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 105.8839,
             "unit": "ms"
           }
         ]
