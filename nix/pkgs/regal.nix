@@ -5,14 +5,14 @@
 }:
 buildGoModule rec {
   name = "regal";
-  version = "0.10.1";
+  version = "0.16.0";
 
   src = fetchFromGitHub {
     owner = "StyraInc";
     repo = "regal";
     rev = "v${version}";
-    hash = "sha256-YVVAOMIHGXzByS47ElY2t81kZuFnjLmjT9EibLn8/ac=";
+    hash = "sha256-VjxoqLpbCq5+bZIk9qwRkEOCHizvvotXKdIzpn8ydbU=";
   };
 
-  vendorHash = "sha256-nh0ucEVKnhPNY/z1Ax2Juq3i4E9PrT7WloDfnbxPUOI=";
+  vendorHash = "sha256-DMcyB6l2bNKG0W6fz6FqAeQVdFETgxOQYtxMArz0cv0=";
 }
