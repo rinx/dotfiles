@@ -50,9 +50,9 @@
    :NvimTreeToggle
    "Octo pr list"
    "Octo issue list"
+   "Fidget history"
    "Telescope dap list_breakpoints"
    "Telescope repo list"
-   "Telescope notify"
    "Telescope projects"
    "Telescope toggleterm"
    :ToggleTerm
@@ -81,7 +81,6 @@
      :override_file_sorter true}}})
 
 (telescope.load_extension :dap)
-(telescope.load_extension :notify)
 (telescope.load_extension :projects)
 (telescope.load_extension :repo)
 (telescope.load_extension :toggleterm)
