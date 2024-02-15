@@ -95,8 +95,7 @@
                                           :b0o/schemastore.nvim
                                           :simrat39/rust-tools.nvim]
                            :event [:BufReadPre]}
-   :j-hui/fidget.nvim {:tag :legacy
-                       :config (mod :fidget)
+   :j-hui/fidget.nvim {:config (mod :fidget)
                        :event [:BufReadPost :BufAdd :BufNewFile]}
    :aznhe21/actions-preview.nvim {:config (mod :actions-preview)
                                   :event [:BufReadPost :BufAdd :BufNewFile]}
