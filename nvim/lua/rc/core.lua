@@ -109,19 +109,6 @@ do
   guifonts = table.concat(core.map(_9_, fonts), ",")
   vim.o.guifont = guifonts
 end
-if (vim.g.nvui == 1) then
-  vim.fn.rpcnotify(1, "NVUI_WINOPACITY", 0.8)
-  vim.fn.rpcnotify(1, "NVUI_FRAMELESS", false)
-  vim.fn.rpcnotify(1, "NVUI_CURSOR_HIDE_TYPE", true)
-  vim.fn.rpcnotify(1, "NVUI_TITLEBAR_FONT_FAMILY", "JetBrainsMono Nerd Font")
-  vim.fn.rpcnotify(1, "NVUI_TITLEBAR_FONT_SIZE", 10)
-  vim.fn.rpcnotify(1, "NVUI_ANIMATIONS_ENABLED", true)
-  vim.fn.rpcnotify(1, "NVUI_IME_SET", false)
-  vim.fn.rpcnotify(1, "NVUI_EXT_POPUPMENU", true)
-  vim.fn.rpcnotify(1, "NVUI_CARET_EXTEND_TOP", 20)
-  vim.fn.rpcnotify(1, "NVUI_CARET_EXTEND_BOTTOM", 20)
-else
-end
 if vim.g.neovide then
   vim.g.neovide_floating_blur = 0
   vim.g.neovide_transparency = 0.8
