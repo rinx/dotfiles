@@ -1,16 +1,17 @@
 (import-macros {: augroup!} :rc.macros)
 
-(fn lsp-formatting []
+(fn lsp-format []
   (let [(ok? val-or-err) (pcall vim.lsp.buf.format)]
     (if ok?
       (vim.notify
-        "formatted."
+        "Formatted."
         vim.lsp.log_levels.INFO
-        {:title :lsp-formatting})
+        {:annote "LSP format"
+         :skip_history true})
       (vim.notify
-        (.. "error occurred: " val-or-err)
+        (.. "An error occurred: " val-or-err)
         vim.lsp.log_levels.WARN
-        {:title :lsp-formatting}))))
+        {:annote "LSP format"}))))
 
 (augroup!
   init-filetype-detect
@@ -97,7 +98,7 @@
    :command "setl colorcolumn=80"}
   {:events [:BufWritePre]
    :pattern "*.clj,*.cljc,*.cljs"
-   :callback lsp-formatting})
+   :callback lsp-format})
 
 (augroup!
   init-go
@@ -121,25 +122,25 @@
    :command "compiler go"}
   {:events [:BufWritePre]
    :pattern "*.go"
-   :callback lsp-formatting})
+   :callback lsp-format})
 
 (augroup!
   init-rego
   {:events [:BufWritePre]
    :pattern "*.rego"
-   :callback lsp-formatting})
+   :callback lsp-format})
 
 (augroup!
   init-rust
   {:events [:BufWritePre]
    :pattern "*.rs"
-   :callback lsp-formatting})
+   :callback lsp-format})
 
 (augroup!
   init-kotlin
   {:events [:BufWritePre]
    :pattern "*.kt,*.kts"
-   :callback lsp-formatting})
+   :callback lsp-format})
 
 (augroup!
   init-terraform
@@ -148,7 +149,7 @@
    :command "setl shiftwidth=2"}
   {:events [:BufWritePre]
    :pattern "*.tf,*.tfvars"
-   :callback lsp-formatting})
+   :callback lsp-format})
 
 (augroup!
   init-typescript
@@ -157,7 +158,7 @@
    :command "setl shiftwidth=2"}
   {:events [:BufWritePre]
    :pattern "*.ts"
-   :callback lsp-formatting})
+   :callback lsp-format})
 
 (augroup!
   init-qf

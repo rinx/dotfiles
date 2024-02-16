@@ -1,10 +1,10 @@
 -- [nfnl] Compiled from fnl/rc/filetypes.fnl by https://github.com/Olical/nfnl, do not edit.
-local function lsp_formatting()
+local function lsp_format()
   local ok_3f, val_or_err = pcall(vim.lsp.buf.format)
   if ok_3f then
-    return vim.notify("formatted.", vim.lsp.log_levels.INFO, {title = "lsp-formatting"})
+    return vim.notify("Formatted.", vim.lsp.log_levels.INFO, {annote = "LSP format", skip_history = true})
   else
-    return vim.notify(("error occurred: " .. val_or_err), vim.lsp.log_levels.WARN, {title = "lsp-formatting"})
+    return vim.notify(("An error occurred: " .. val_or_err), vim.lsp.log_levels.WARN, {annote = "LSP format"})
   end
 end
 do
@@ -56,7 +56,7 @@ do
   local group_5_auto = vim.api.nvim_create_augroup("init-clojure", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer><silent> <leader>K :<C-u>lua vim.lsp.buf.hover()<CR>", group = group_5_auto, pattern = "clojure"})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl colorcolumn=80", group = group_5_auto, pattern = "clojure"})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.clj,*.cljc,*.cljs"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.clj,*.cljc,*.cljs"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-go", {clear = true})
@@ -66,29 +66,29 @@ do
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl tabstop=4", group = group_5_auto, pattern = "go"})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl softtabstop=4", group = group_5_auto, pattern = "go"})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "compiler go", group = group_5_auto, pattern = "go"})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.go"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.go"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-rego", {clear = true})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.rego"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.rego"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-rust", {clear = true})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.rs"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.rs"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-kotlin", {clear = true})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.kt,*.kts"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.kt,*.kts"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-terraform", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl shiftwidth=2", group = group_5_auto, pattern = "terraform"})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.tf,*.tfvars"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.tf,*.tfvars"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-typescript", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl shiftwidth=2", group = group_5_auto, pattern = "typescript"})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_formatting, group = group_5_auto, pattern = "*.ts"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.ts"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-qf", {clear = true})
