@@ -1,13 +1,9 @@
 ## --- [{:name "CLOJURE_LSP_VERSION"
 ## ---   :url "https://api.github.com/repos/clojure-lsp/clojure-lsp/releases"}
-## ---  {:name "RUST_ANALYZER_VERSION"
-## ---   :url "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases"
-## ---   :tx "(fn [v] (if (not (= v \"nightly\")) v))"}
 ## ---  {:name "BUF_VERSION"
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
 ARG CLOJURE_LSP_VERSION=2024.02.01-11.01.59
-ARG RUST_ANALYZER_VERSION=2024-02-12
 ARG BUF_VERSION=v1.9.0
 
 FROM rust:slim AS rust
@@ -119,7 +115,6 @@ FROM ubuntu:rolling AS base
 
 LABEL maintainer "Rintaro Okamura <rintaro.okamura@gmail.com>"
 ARG CLOJURE_LSP_VERSION
-ARG RUST_ANALYZER_VERSION
 ARG BUF_VERSION
 
 ENV LANG en_US.UTF-8
@@ -194,13 +189,6 @@ RUN cd /tmp \
     && unzip clojure-lsp-native-linux-amd64.zip \
     && mv clojure-lsp /usr/local/bin/ \
     && rm -rf clojure-lsp-native-linux-amd64.zip
-
-RUN cd /tmp \
-    && curl -L https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-x86_64-unknown-linux-gnu.gz --output rust-analyzer.gz \
-    && gunzip rust-analyzer.gz \
-    && mv rust-analyzer /usr/local/bin/rust-analyzer \
-    && chmod a+x /usr/local/bin/rust-analyzer \
-    && upx -9 /usr/local/bin/rust-analyzer
 
 RUN cd /tmp \
     && curl -L https://github.com/bufbuild/buf/releases/download/${BUF_VERSION}/buf-Linux-x86_64 --output buf \
