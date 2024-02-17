@@ -36,7 +36,7 @@
           (vim.notify
             "finished to install Go adapter."
             vim.lsp.log_levels.INFO
-            {:title :dap-sync-go-adapter}))
+            {:annote :dap-sync-go-adapter}))
         (do
           (vim.cmd
             (string.format
@@ -48,7 +48,7 @@
           (vim.notify
             "finished to update Go adapter."
             vim.lsp.log_levels.WARN
-            {:title :dap-sync-go-adapter}))))
+            {:annote :dap-sync-go-adapter}))))
     (vim.api.nvim_create_user_command :DapSyncGoAdapter dap-sync-go-adapter {})
 
     (set dap.adapters.go
@@ -91,12 +91,12 @@
         (vim.notify
           "finished to install codelldb."
           vim.lsp.log_levels.INFO
-          {:title :dap-sync-lldb-adapter}))
+          {:annote :dap-sync-lldb-adapter}))
       (do
         (vim.notify
           "codelldb already installed."
           vim.lsp.log_levels.WARN
-          {:title :dap-sync-lldb-adapter}))))
+          {:annote :dap-sync-lldb-adapter}))))
   (vim.api.nvim_create_user_command :DapSyncLLDBAdapter dap-sync-lldb-adapter {})
   (set dap.adapters.rust
        (fn [callback config]
@@ -146,12 +146,12 @@
         (vim.notify
           "finished to install kotlin-debug-adapter"
           vim.lsp.log_levels.INFO
-          {:title :dap-sync-kotlin-adapter}))
+          {:annote :dap-sync-kotlin-adapter}))
       (do
         (vim.notify
           "kotlin-debug-adapter already installed."
           vim.lsp.log_levels.WARN
-          {:title :dap-sync-kotlin-adapter}))))
+          {:annote :dap-sync-kotlin-adapter}))))
   (vim.api.nvim_create_user_command :DapSyncKotlinAdapter dap-sync-kotlin-adapter {})
   (set dap.adapters.kotlin
        {:name :kotlin-debug-adapter
@@ -166,12 +166,12 @@
       (vim.notify
         "loading .vscode/launch.json..."
         vim.lsp.log_levels.INFO
-        {:title :dap-load-launch-js})
+        {:annote :dap-load-launch-js})
       (pcall dap-ext-vscode.load_launchjs)
       (vim.notify
         "finished to load .vscode/launch.json."
         vim.lsp.log_levels.INFO
-        {:title :dap-load-launch-js}))))
+        {:annote :dap-load-launch-js}))))
 (vim.api.nvim_create_user_command :DapLoadLaunchJSON load-launch-js {})
 
 (dapui.setup {:icons

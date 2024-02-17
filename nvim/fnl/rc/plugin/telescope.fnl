@@ -21,6 +21,7 @@
    :ConjureConnect
    :ConjureLogSplit
    :ConjureLogVSplit
+   :ConjureCljDebugInit
    :DapContinue
    :DapListBreakpoints
    :DapLoadLaunchJSON

@@ -20,10 +20,10 @@ if (vim.fn.executable("dlv") == 1) then
   local function dap_sync_go_adapter()
     if vim.fn.empty(vim.fn.glob(vscode_go_path)) then
       vim.cmd(string.format(("!git clone --depth 1 " .. "http://github.com/golang/vscode-go %s; " .. "cd %s; " .. "npm install; " .. "npm run compile"), vscode_go_path, vscode_go_path))
-      return vim.notify("finished to install Go adapter.", vim.lsp.log_levels.INFO, {title = "dap-sync-go-adapter"})
+      return vim.notify("finished to install Go adapter.", vim.lsp.log_levels.INFO, {annote = "dap-sync-go-adapter"})
     else
       vim.cmd(string.format(("!cd %s; " .. "git pull origin master; " .. "npm install; " .. "npm run compile"), vscode_go_path))
-      return vim.notify("finished to update Go adapter.", vim.lsp.log_levels.WARN, {title = "dap-sync-go-adapter"})
+      return vim.notify("finished to update Go adapter.", vim.lsp.log_levels.WARN, {annote = "dap-sync-go-adapter"})
     end
   end
   vim.api.nvim_create_user_command("DapSyncGoAdapter", dap_sync_go_adapter, {})
@@ -43,9 +43,9 @@ do
   local function dap_sync_lldb_adapter()
     if vim.fn.empty(vim.fn.glob(adapter_path)) then
       vim.cmd(string.format(("!curl -L %s --output /tmp/codelldb.zip; " .. "unzip /tmp/codelldb.zip -d %s; " .. "rm -rf /tmp/codelldb.zip"), codelldb_url, adapter_path))
-      return vim.notify("finished to install codelldb.", vim.lsp.log_levels.INFO, {title = "dap-sync-lldb-adapter"})
+      return vim.notify("finished to install codelldb.", vim.lsp.log_levels.INFO, {annote = "dap-sync-lldb-adapter"})
     else
-      return vim.notify("codelldb already installed.", vim.lsp.log_levels.WARN, {title = "dap-sync-lldb-adapter"})
+      return vim.notify("codelldb already installed.", vim.lsp.log_levels.WARN, {annote = "dap-sync-lldb-adapter"})
     end
   end
   vim.api.nvim_create_user_command("DapSyncLLDBAdapter", dap_sync_lldb_adapter, {})
@@ -73,9 +73,9 @@ do
   local function dap_sync_kotlin_adapter()
     if vim.fn.empty(vim.fn.glob(adapter_path)) then
       vim.cmd(string.format(("!git clone --depth 1 " .. "https://github.com/fwcd/kotlin-debug-adapter %s; " .. "cd %s; " .. "./gradlew :adapter:installDist"), adapter_path, adapter_path))
-      return vim.notify("finished to install kotlin-debug-adapter", vim.lsp.log_levels.INFO, {title = "dap-sync-kotlin-adapter"})
+      return vim.notify("finished to install kotlin-debug-adapter", vim.lsp.log_levels.INFO, {annote = "dap-sync-kotlin-adapter"})
     else
-      return vim.notify("kotlin-debug-adapter already installed.", vim.lsp.log_levels.WARN, {title = "dap-sync-kotlin-adapter"})
+      return vim.notify("kotlin-debug-adapter already installed.", vim.lsp.log_levels.WARN, {annote = "dap-sync-kotlin-adapter"})
     end
   end
   vim.api.nvim_create_user_command("DapSyncKotlinAdapter", dap_sync_kotlin_adapter, {})
@@ -85,9 +85,9 @@ local function load_launch_js()
   local cwd = vim.fn.getcwd()
   local path = (cwd .. "/.vscode/launch.json")
   if vim.loop.fs_stat(path) then
-    vim.notify("loading .vscode/launch.json...", vim.lsp.log_levels.INFO, {title = "dap-load-launch-js"})
+    vim.notify("loading .vscode/launch.json...", vim.lsp.log_levels.INFO, {annote = "dap-load-launch-js"})
     pcall(dap_ext_vscode.load_launchjs)
-    return vim.notify("finished to load .vscode/launch.json.", vim.lsp.log_levels.INFO, {title = "dap-load-launch-js"})
+    return vim.notify("finished to load .vscode/launch.json.", vim.lsp.log_levels.INFO, {annote = "dap-load-launch-js"})
   else
     return nil
   end
