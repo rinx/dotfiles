@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1707908693426,
+  "lastUpdate": 1708174483387,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6176,6 +6176,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 105.8839,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1aa9273353a02e9ba10d0737f70292c48d8cbc7b",
+          "message": "chore: remove rust-analyzer from Dockerfile\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-02-17T21:47:30+09:00",
+          "tree_id": "3618738e08197779e5190cdd2ab1f49a069b3f99",
+          "url": "https://github.com/rinx/dotfiles/commit/1aa9273353a02e9ba10d0737f70292c48d8cbc7b"
+        },
+        "date": 1708174481754,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 42.8992592,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 125.64096749999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 101.8206,
             "unit": "ms"
           }
         ]
