@@ -3,7 +3,7 @@
 ## ---  {:name "BUF_VERSION"
 ## ---   :url "https://api.github.com/repos/bufbuild/buf/tags"}]
 
-ARG CLOJURE_LSP_VERSION=2024.02.01-11.01.59
+ARG CLOJURE_LSP_VERSION=2024.03.01-11.37.51
 ARG BUF_VERSION=v1.9.0
 
 FROM rust:slim AS rust
