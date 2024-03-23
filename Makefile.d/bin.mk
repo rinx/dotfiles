@@ -25,7 +25,7 @@ EXA_VERSION := v0.10.1
 FD_VERSION := v9.0.0
 FZF_VERSION := 0.48.1
 RG_VERSION := 14.1.0
-SAD_VERSION := v0.4.23
+SAD_VERSION := v0.4.25
 
 .PHONY: install-bins
 install-bins: \
