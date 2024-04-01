@@ -130,7 +130,8 @@
    ;; dap
    :mfussenegger/nvim-dap {:config (mod :dap)
                            :event [:BufReadPost :BufAdd :BufNewFile]
-                           :dependencies [:rcarriga/nvim-dap-ui]}
+                           :dependencies [:nvim-neotest/nvim-nio
+                                          :rcarriga/nvim-dap-ui]}
 
    ;; telescope
    :nvim-telescope/telescope.nvim {:config (mod :telescope)
