@@ -28,12 +28,16 @@
    :go
    :gomod
    :gosum
+   :gotmpl
    :gowork
+   :gpg
    :graphql
    :hcl
+   :helm
    :hjson
    :html
    :http
+   :ini
    :java
    :javascript
    :jq
@@ -51,9 +55,11 @@
    :luap
    :make
    :markdown
+   :markdown_inline
    :mermaid
-   :norg
+   :nix
    :passwd
+   :pem
    :promql
    :proto
    :python
@@ -68,15 +74,20 @@
    :smithy
    :sparql
    :sql
+   :ssh_config
+   :strace
    :teal
    :terraform
+   :tmux
    :toml
    :tsx
    :typescript
    :vim
    :vimdoc
    :vue
-   :yaml])
+   :xml
+   :yaml
+   :zig])
 
 (configs.setup
   {:ensure_installed languages
