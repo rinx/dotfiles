@@ -11,7 +11,7 @@
    (sketchybar/set
     :wifi
     {:script (common/plugin-script "wifi.jar")
-     :update_freq 30
+     :update_freq 60
      :background.color (colors/get :cream)
      :background.corner_radius 4
      :background.height 15
