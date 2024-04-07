@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1711991245354,
+  "lastUpdate": 1712492269021,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6332,6 +6332,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 104.7037,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "60709726b7c2986de228e04f20e0c596ef4e1d8b",
+          "message": "chore(sketchybar): update-freq of wifi item\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-04-07T21:10:09+09:00",
+          "tree_id": "0c3ed9b752afb0f8b21dcff7ce8be8b84d4490e2",
+          "url": "https://github.com/rinx/dotfiles/commit/60709726b7c2986de228e04f20e0c596ef4e1d8b"
+        },
+        "date": 1712492267234,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 42.804814400000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 123.7564477,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 106.9974,
             "unit": "ms"
           }
         ]
