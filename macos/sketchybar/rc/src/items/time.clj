@@ -11,7 +11,7 @@
    (sketchybar/set
     :time
     {:script (common/plugin-script "time.jar")
-     :update_freq 2
+     :update_freq 5
      :background.color (colors/get :cream)
      :background.corner_radius 4
      :background.height 15

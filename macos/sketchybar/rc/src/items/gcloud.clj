@@ -13,7 +13,7 @@
     :gcloud.current
     {:script (common/plugin-script "gcloud.jar")
      :click_script "sketchybar --set $NAME popup.drawing=toggle"
-     :update_freq 10
+     :update_freq 60
      :background.color (colors/get :cream)
      :background.corner_radius 4
      :background.height 15

@@ -11,7 +11,7 @@
    (sketchybar/set
     :battery
     {:script (common/plugin-script "battery.jar")
-     :update_freq 5
+     :update_freq 60
      :background.color (colors/get :cream)
      :background.corner_radius 4
      :background.height 15

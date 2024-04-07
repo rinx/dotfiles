@@ -11,7 +11,7 @@
    (sketchybar/set
     :volume
     {:script (common/plugin-script "volume.jar")
-     :update_freq 3
+     :update_freq 20
      :background.color (colors/get :cream)
      :background.corner_radius 4
      :background.height 15

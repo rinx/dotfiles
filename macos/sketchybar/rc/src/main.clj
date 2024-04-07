@@ -11,7 +11,6 @@
    [items.github-pr :as pr]
    [items.kubectx :as kubectx]
    [items.mic :as mic]
-   [items.network :as network]
    [items.spaces :as spaces]
    [items.time :as time]
    [items.volume :as volume]
@@ -68,7 +67,6 @@
   (mic/setup)
   (volume/setup)
   (wifi/setup)
-  (network/setup)
   (kubectx/setup)
   (gcloud/setup)
   (pr/setup)
