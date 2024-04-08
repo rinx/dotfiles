@@ -1,227 +1,49 @@
 {:paths ["src"]
- :deps {io.github.rinx/sbar-bb {:git/sha "fc986d37337f455b3682215da0908704ec2f05be"}
+ :deps {io.github.rinx/sbar-bb {:git/sha "a233649ef0e82d2ee10288909a6f9ca07757ea58"}
         camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.3"}
         tick/tick {:mvn/version "0.6.0"}}
  :min-bb-version "1.0.0"
  :tasks {:requires ([babashka.fs :as fs])
          :init (do
                 (def target-dir "target")
-                (def items-dir (str target-dir "/items"))
                 (def plugins-dir (str target-dir "/plugins")))
          -target (do
                   (fs/create-dirs target-dir)
-                  (fs/create-dirs items-dir)
                   (fs/create-dirs plugins-dir))
          build (run '-build {:parallel true})
          -build {:depends [build:main
-                           build:item:battery
-                           build:item:brew
-                           build:item:date
-                           build:item:front_app
-                           build:item:gcloud
-                           build:item:github
-                           build:item:github-pr
-                           build:item:kubectx
-                           build:item:mic
-                           build:item:network
-                           build:item:spaces
-                           build:item:time
-                           build:item:volume
-                           build:item:weather
-                           build:item:wifi
-                           build:item:yabai
-                           build:plugin:battery
-                           build:plugin:brew
-                           build:plugin:date
                            build:plugin:front_app
-                           build:plugin:gcloud
-                           build:plugin:github
-                           build:plugin:github-pr
-                           build:plugin:kubectx
                            build:plugin:mic
-                           build:plugin:network
                            build:plugin:spaces
-                           build:plugin:time
                            build:plugin:volume
-                           build:plugin:weather
-                           build:plugin:wifi
                            build:plugin:yabai]}
          build:main {:depends [-target]
                      :task (shell
                              (str "bb uberjar "
                                   target-dir
-                                  "/main.jar -m main"))}
-         build:item:battery {:depends [-target]
-                             :task (shell
-                                     (str "bb uberjar "
-                                          items-dir
-                                          "/battery.jar -m items.battery"))}
-         build:item:brew {:depends [-target]
-                          :task (shell
-                                   (str "bb uberjar "
-                                        items-dir
-                                       "/brew.jar -m items.brew"))}
-         build:item:date {:depends [-target]
-                          :task (shell
-                                  (str "bb uberjar "
-                                       items-dir
-                                       "/date.jar -m items.date"))}
-         build:item:front_app {:depends [-target]
-                               :task (shell
-                                       (str "bb uberjar "
-                                            items-dir
-                                            "/front_app.jar -m items.front-app"))}
-         build:item:gcloud {:depends [-target]
-                            :task (shell
-                                    (str "bb uberjar "
-                                         items-dir
-                                         "/gcloud.jar -m items.gcloud"))}
-         build:item:github {:depends [-target]
-                            :task (shell
-                                    (str "bb uberjar "
-                                         items-dir
-                                         "/github.jar -m items.github"))}
-         build:item:github-pr {:depends [-target]
-                               :task (shell
-                                       (str "bb uberjar "
-                                            items-dir
-                                            "/github_pr.jar -m items.github-pr"))}
-         build:item:kubectx {:depends [-target]
-                             :task (shell
-                                     (str "bb uberjar "
-                                          items-dir
-                                          "/kubectx.jar -m items.kubectx"))}
-         build:item:mic {:depends [-target]
-                         :task (shell
-                                 (str "bb uberjar "
-                                      items-dir
-                                      "/mic.jar -m items.mic"))}
-         build:item:network {:depends [-target]
-                             :task (shell
-                                     (str "bb uberjar "
-                                          items-dir
-                                          "/network.jar -m items.network"))}
-         build:item:spaces {:depends [-target]
-                            :task (shell
-                                    (str "bb uberjar "
-                                         items-dir
-                                         "/spaces.jar -m items.spaces"))}
-         build:item:time {:depends [-target]
-                          :task (shell
-                                   (str "bb uberjar "
-                                        items-dir
-                                       "/time.jar -m items.time"))}
-         build:item:volume {:depends [-target]
-                            :task (shell
-                                     (str "bb uberjar "
-                                          items-dir
-                                         "/volume.jar -m items.volume"))}
-         build:item:weather {:depends [-target]
-                             :task (shell
-                                      (str "bb uberjar "
-                                           items-dir
-                                          "/weather.jar -m items.weather"))}
-         build:item:wifi {:depends [-target]
-                          :task (shell
-                                   (str "bb uberjar "
-                                        items-dir
-                                       "/wifi.jar -m items.wifi"))}
-         build:item:yabai {:depends [-target]
-                           :task (shell
-                                    (str "bb uberjar "
-                                         items-dir
-                                        "/yabai.jar -m items.yabai"))}
-         build:plugin:battery {:depends [-target]
-                               :task (shell
-                                       (str "bb uberjar "
-                                            plugins-dir
-                                            "/battery.jar -m plugins.battery"))}
-         build:plugin:brew {:depends [-target]
-                            :task (shell
-                                     (str "bb uberjar "
-                                          plugins-dir
-                                         "/brew.jar -m plugins.brew"))}
-         build:plugin:date {:depends [-target]
-                            :task (shell
-                                    (str "bb uberjar "
-                                         plugins-dir
-                                         "/date.jar -m plugins.date"))}
+                                  "/main.jar -m sbar.main"))}
          build:plugin:front_app {:depends [-target]
                                  :task (shell
                                          (str "bb uberjar "
                                               plugins-dir
-                                              "/front_app.jar -m plugins.front-app"))}
-         build:plugin:gcloud {:depends [-target]
-                              :task (shell
-                                      (str "bb uberjar "
-                                           plugins-dir
-                                           "/gcloud.jar -m plugins.gcloud"))}
-         build:plugin:github {:depends [-target]
-                              :task (shell
-                                      (str "bb uberjar "
-                                           plugins-dir
-                                           "/github.jar -m plugins.github"))}
-         build:plugin:github-pr {:depends [-target]
-                                 :task (shell
-                                         (str "bb uberjar "
-                                              plugins-dir
-                                              "/github_pr.jar -m plugins.github-pr"))}
-         build:plugin:kubectx {:depends [-target]
-                               :task (shell
-                                       (str "bb uberjar "
-                                            plugins-dir
-                                            "/kubectx.jar -m plugins.kubectx"))}
+                                              "/front_app.jar -m sbar.plugins.front-app"))}
          build:plugin:mic {:depends [-target]
                            :task (shell
                                    (str "bb uberjar "
                                         plugins-dir
-                                        "/mic.jar -m plugins.mic"))}
-         build:plugin:network {:depends [-target]
-                               :task (shell
-                                       (str "bb uberjar "
-                                            plugins-dir
-                                            "/network.jar -m plugins.network"))}
+                                        "/mic.jar -m sbar.plugins.mic"))}
          build:plugin:spaces {:depends [-target]
                               :task (shell
                                       (str "bb uberjar "
                                            plugins-dir
-                                           "/spaces.jar -m plugins.spaces"))}
-         build:plugin:time {:depends [-target]
-                            :task (shell
-                                    (str "bb uberjar "
-                                         plugins-dir
-                                         "/time.jar -m plugins.time"))}
+                                           "/spaces.jar -m sbar.plugins.spaces"))}
          build:plugin:volume {:depends [-target]
                               :task (shell
                                       (str "bb uberjar "
                                            plugins-dir
-                                           "/volume.jar -m plugins.volume"))}
-         build:plugin:weather {:depends [-target]
-                               :task (shell
-                                       (str "bb uberjar "
-                                            plugins-dir
-                                            "/weather.jar -m plugins.weather"))}
-         build:plugin:wifi {:depends [-target]
-                            :task (shell
-                                    (str "bb uberjar "
-                                         plugins-dir
-                                         "/wifi.jar -m plugins.wifi"))}
+                                           "/volume.jar -m sbar.plugins.volume"))}
          build:plugin:yabai {:depends [-target]
                              :task (shell
                                      (str "bb uberjar "
                                           plugins-dir
-                                          "/yabai.jar -m plugins.yabai"))}
-         build-ubs {:requires ([carve.api :as carve])
-                    :extra-deps {io.github.borkdude/carve
-                                 {:git/url "https://github.com/borkdude/carve"
-                                  :git/sha "14a3a5db4b372e33d20763a8d1344bddae72c735"}}
-                    :depends [-target]
-                    :task (do
-                           (shell
-                             (str "bb uberscript "
-                                  plugins-dir
-                                  "/battery.clj -f src/plugins/battery.clj"))
-                           (carve/carve!
-                             {:paths [(str plugins-dir "/battery.clj")]
-                              :aggressive true
-                              :silent true}))}}}
+                                          "/yabai.jar -m sbar.plugins.yabai"))}}}
