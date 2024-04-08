@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1712492269021,
+  "lastUpdate": 1712585208733,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6371,6 +6371,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 106.9974,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5f407650cd91a6e8b6546c1bc99ac78df97786c3",
+          "message": "refactor(sketchybar): use rinx/sbar-bb\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-04-08T22:57:35+09:00",
+          "tree_id": "2c06c41fb522ac76c9e96dfae64e401b65cf2c65",
+          "url": "https://github.com/rinx/dotfiles/commit/5f407650cd91a6e8b6546c1bc99ac78df97786c3"
+        },
+        "date": 1712585206811,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 56.5540568,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 142.5469099,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 124.9775,
             "unit": "ms"
           }
         ]
