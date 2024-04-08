@@ -6,7 +6,7 @@
    [colors]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn outdated []
   (-> (common/sh "brew" "outdated" "--json")

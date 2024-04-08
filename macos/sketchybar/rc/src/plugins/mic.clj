@@ -3,7 +3,7 @@
    [clojure.string :as str]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn get-mic-volume []
   (-> (common/sh "osascript" "-e" "input volume of (get volume settings)")

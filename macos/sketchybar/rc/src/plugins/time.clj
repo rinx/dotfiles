@@ -1,6 +1,6 @@
 (ns plugins.time
   (:require
-   [sketchybar]
+   [sketchybar.core :as sketchybar]
    [tick.core :as tick]))
 
 (defn -main [& args]

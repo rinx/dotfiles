@@ -4,7 +4,7 @@
    [colors]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn format-context-name [ctx]
   (let [es (str/split ctx #"_")]

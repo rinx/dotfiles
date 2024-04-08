@@ -4,7 +4,7 @@
    [common]
    [fonts]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn setup []
   (sketchybar/exec

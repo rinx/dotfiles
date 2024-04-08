@@ -3,7 +3,7 @@
    [clojure.string :as str]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn ->icon [percentage charging]
   (->> (if charging

@@ -6,7 +6,7 @@
    [colors]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn gh-api [endpoint]
   (-> (common/sh "gh" "api" endpoint)

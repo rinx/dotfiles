@@ -6,7 +6,7 @@
    [colors]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn prs []
   (-> (common/sh "gh" "search" "prs" "--state=open" "--review-requested=@me" "--json=repository,url,title")

@@ -3,7 +3,7 @@
    [clojure.string :as str]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn mute? []
   (-> (common/sh "osascript" "-e" "output muted of (get volume settings)")

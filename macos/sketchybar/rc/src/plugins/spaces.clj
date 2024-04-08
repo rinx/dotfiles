@@ -5,7 +5,7 @@
    [common]
    [external.yabai :as yabai]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn ->space-icons [i _]
   (let [idx (inc i)

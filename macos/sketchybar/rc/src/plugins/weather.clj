@@ -6,7 +6,7 @@
    [colors]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (def weather-icon-descs
   {"113" {:icon "" :desc "Sunny"}

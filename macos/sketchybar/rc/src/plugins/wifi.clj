@@ -4,7 +4,7 @@
    [clojure.walk :as walk]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn airport []
   (->> (common/sh

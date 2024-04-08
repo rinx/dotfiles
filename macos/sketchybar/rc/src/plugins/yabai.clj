@@ -3,7 +3,7 @@
    [colors]
    [external.yabai :as yabai]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn -icon-and-color [window]
   (cond

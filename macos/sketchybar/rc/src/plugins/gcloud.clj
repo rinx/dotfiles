@@ -4,7 +4,7 @@
    [colors]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn contexts []
   (->> (common/sh "gcloud" "config" "configurations" "list" "--format" "value(name)")

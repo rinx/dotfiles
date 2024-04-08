@@ -17,7 +17,7 @@
    [items.weather :as weather]
    [items.wifi :as wifi]
    [items.yabai :as yabai]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn init []
   (sketchybar/exec

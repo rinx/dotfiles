@@ -3,7 +3,7 @@
    [colors]
    [common]
    [icons]
-   [sketchybar]))
+   [sketchybar.core :as sketchybar]))
 
 (defn -main [& args]
   (when (= (System/getenv "SENDER") "front_app_switched")
