@@ -87,7 +87,7 @@
    {:battery {:fn battery/update
               :duration-ms 60000}
     :brew {:fn brew/update
-           :duration-ms 43200000}
+           :duration-ms 7200000}
     :date {:fn date/update
            :duration-ms 60000}
     :gcloud {:fn gcloud/update
@@ -103,7 +103,7 @@
     :weather {:fn weather/update
               :duration-ms 3600000}
     :wifi {:fn wifi/update
-           :duration-ms 180000}}))
+           :duration-ms 60000}}))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

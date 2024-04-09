@@ -42,6 +42,10 @@ if builtin command -v kubectl > /dev/null 2>&1 ; then
     source <(kubectl completion zsh)
 fi
 
+if builtin command -v kubecolor > /dev/null 2>&1 ; then
+    compdef kubecolor=kubectl
+fi
+
 if builtin command -v kustomize > /dev/null 2>&1 ; then
     source <(kustomize completion zsh)
 fi
