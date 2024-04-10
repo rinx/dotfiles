@@ -4,6 +4,9 @@
 (def default
   "JetBrainsMono Nerd Font")
 
+(def app-font
+  "sketchybar-app-font")
+
 (defn get
   ([style size]
    (get default style size))

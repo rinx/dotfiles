@@ -19,7 +19,7 @@
         :icon icon
         :icon.padding_right 4
         :icon.font (fonts/get :Medium 16.0)
-        :label.font (fonts/get :Medium 16.0)
+        :label.font (fonts/get fonts/app-font :Regular 16.0)
         :script (common/plugin-script "spaces.jar")})
       (sketchybar/subscribe item :front_app_switched)])))
 

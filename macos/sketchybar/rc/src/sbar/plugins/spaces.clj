@@ -12,7 +12,7 @@
         item (str "space." idx)
         icons (->> (yabai/windows idx)
                    (map :app)
-                   (map icons/window)
+                   (map icons/app-font) ;; (map icons/window)
                    (str/join " "))]
     (sketchybar/set item {:label (if (not-empty icons) icons " ")})))
 
