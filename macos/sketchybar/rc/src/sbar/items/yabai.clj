@@ -16,7 +16,7 @@
      :associated_display :active
      :updates :on
      :icon (icons/get :yabai :grid)
-     :icon.color (colors/get :cream)
+     :icon.color (colors/get :light-green)
      :icon.font (fonts/get :Bold 14.0)
      :icon.width 30
      :icon.padding_left 10

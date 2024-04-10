@@ -8,13 +8,13 @@
 (defn -icon-and-color [window]
   (cond
     (:is-floating window) {:icon (icons/get :yabai :float)
-                           :icon.color (colors/get :magenta)}
+                           :icon.color (colors/get :light-green)}
     (:has-fullscreen-zoom window) {:icon (icons/get :yabai :fullscreen-zoom)
-                                   :icon.color (colors/get :yellow)}
+                                   :icon.color (colors/get :light-green)}
     (:has-parent-zoom window) {:icon (icons/get :yabai :parent-zoom)
-                               :icon.color (colors/get :blue)}
+                               :icon.color (colors/get :light-green)}
     :else {:icon (icons/get :yabai :grid)
-           :icon.color (colors/get :white)}))
+           :icon.color (colors/get :light-green)}))
 
 (defn update-icon []
   (let [window (yabai/window)]
@@ -27,7 +27,7 @@
           {:label (format "[%s/%s]" current last-index)
            :label.drawing :on
            :icon (icons/get :yabai :stack)
-           :icon.color (colors/get :green)})
+           :icon.color (colors/get :light-green)})
         (into {:label.drawing :off} (-icon-and-color window)))))))
 
 (defn -main [& args]

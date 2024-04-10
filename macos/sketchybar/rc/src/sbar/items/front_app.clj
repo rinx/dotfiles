@@ -14,8 +14,8 @@
     {:script (common/plugin-script "front_app.jar")
      :associated_display :active
      :icon.drawing :off
-     :label.color (colors/get :cream)
-     :label.font (fonts/get :Bold 14.0)
+     :label.color (colors/get :light-green)
+     :label.font (fonts/get "Bold Italic" 14.0)
      :background.padding_left 0
      :background.padding_right 10})
    (sketchybar/subscribe :front_app :front_app_switched)))
