@@ -16,8 +16,8 @@
    :wifi {:off "󰖪"
           :disconnected "󱚼"
           :connected "󰖩"}
-   :net {:upload "󰕒"
-         :download "󰇚"}
+   :net {:upload ""
+         :download ""}
    :volume {:unmute "󰋋"
             :mute "󰟎"}
    :mic {:unmute ""
