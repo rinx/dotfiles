@@ -202,6 +202,7 @@
           (->schemastore "golangci-lint.json") ".golangci.yml"})
        :validate true}
       :single_file_support true}}))
+(lsp.zls.setup {})
 ;; rust-analyzer
 (rust-tools.setup
   {:tools

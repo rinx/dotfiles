@@ -69,6 +69,7 @@
       go
       nodejs
       nodePackages.typescript
+      zig
 
       # LSP / DAP / Linter / Formatter
       buf-language-server
@@ -87,6 +88,7 @@
       nodePackages.yaml-language-server
       terraform-ls
       tflint
+      zls
 
       # fonts
       hackgen-nf-font
