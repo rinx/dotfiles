@@ -49,13 +49,11 @@
    :path :Path
    :skkeleton :SKK
    :spell :Spell
-   :treesitter :TS
-   :vsnip :VSnip})
+   :treesitter :TS})
 
 (local default-sources
   [{:name :nvim_lsp}
    {:name :buffer}
-   {:name :vsnip}
    {:name :treesitter}
    {:name :path}
    {:name :skkeleton}
@@ -91,9 +89,6 @@
              (if (cmp.visible)
                (cmp.select_next_item)
                (fallback)))}
-   :snippet
-   {:expand (fn [args]
-              (vim.fn.vsnip#anonymous args.body))}
    :sources default-sources})
 
 ;; cmdline completions
