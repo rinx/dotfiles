@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1713407404176,
+  "lastUpdate": 1713435641410,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6449,6 +6449,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim startup time",
             "value": 194.3108,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b639c73eadbe70da13423ec785f38aab953853d1",
+          "message": "config(nvim): update gopls options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-04-18T18:48:04+09:00",
+          "tree_id": "a04fb63d477f8b31842d093a02c49b6aeca12c93",
+          "url": "https://github.com/rinx/dotfiles/commit/b639c73eadbe70da13423ec785f38aab953853d1"
+        },
+        "date": 1713435640267,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 70.71087109999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 205.95082229999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim startup time",
+            "value": 169.2437,
             "unit": "ms"
           }
         ]
