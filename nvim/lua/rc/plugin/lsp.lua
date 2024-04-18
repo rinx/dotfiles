@@ -39,7 +39,7 @@ lsp.efm.setup(core.merge(default_options, {filetypes = {"markdown", "proto", "re
 lsp.erlangls.setup(core.merge(default_options, {}))
 lsp.fennel_language_server.setup(core.merge(default_options, {root_dir = lsputil.root_pattern(".nfnl.fnl"), settings = {fennel = {diagnostics = {globals = {"vim", "jit", "comment"}}, workspace = {library = vim.api.nvim_list_runtime_paths()}}}}))
 lsp.fortls.setup(core.merge(default_options, {}))
-lsp.gopls.setup(core.merge(default_options, {settings = {gopls = {usePlaceholders = true, analyses = {fieldalignment = true, fillstruct = true, nilless = true, shadow = true, unusedwrite = true}, staticcheck = true, gofumpt = true}}}))
+lsp.gopls.setup(core.merge(default_options, {settings = {gopls = {usePlaceholders = true, analyses = {fieldalignment = true, shadow = true, useany = true, unusedvariable = true}, hints = {assignVariableTypes = true, compositeLiteralFields = true, compositeLiteralTypes = true, constantValues = true, functionTypeParameters = true, parameterNames = true, rangeVariableTypes = true}, staticcheck = true, vulncheck = "Imports", gofumpt = true}}}))
 lsp.hls.setup(core.merge(default_options, {}))
 lsp.html.setup(core.merge(default_options, {}))
 lsp.jqls.setup(core.merge(default_options, {}))
@@ -81,13 +81,12 @@ vim.keymap.set("n", "gD", ":<C-u>lua vim.lsp.buf.declaration()<CR>", {silent = t
 vim.keymap.set("n", "gi", ":<C-u>lua vim.lsp.buf.implementation()<CR>", {silent = true})
 vim.keymap.set("n", "gr", ":<C-u>lua vim.lsp.buf.references()<CR>", {silent = true})
 vim.keymap.set("n", "gs", ":<C-u>lua vim.lsp.buf.signature_help()<CR>", {silent = true})
-vim.keymap.set("n", "<leader>f", ":<C-u>lua vim.lsp.buf.formatting()<CR>", {silent = true})
-vim.keymap.set("x", "<leader>f", ":<C-u>lua vim.lsp.buf.range_formatting()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>l", ":<C-u>lua vim.lsp.codelens.run()<CR>", {silent = true})
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-lsp-codelens", {clear = true})
   vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {callback = vim.lsp.codelens.refresh, group = group_5_auto, pattern = "*"})
 end
+vim.keymap.set("n", "<leader>i", ":<C-u>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>", {silent = true})
 vim.keymap.set("n", "<Leader>d", ":<C-u>lua vim.diagnostic.open_float({border = 'rounded'})<CR>", {silent = true})
 vim.keymap.set("n", "[d", ":<C-u>lua vim.diagnostic.goto_prev({float = {border = 'rounded'}})<CR>", {silent = true})
 vim.keymap.set("n", "]d", ":<C-u>lua vim.diagnostic.goto_next({float = {border = 'rounded'}})<CR>", {silent = true})

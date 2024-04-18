@@ -124,11 +124,18 @@
                     {:gopls
                      {:usePlaceholders true
                       :analyses {:fieldalignment true
-                                 :fillstruct true
-                                 :nilless true
                                  :shadow true
-                                 :unusedwrite true}
+                                 :useany true
+                                 :unusedvariable true}
+                      :hints {:assignVariableTypes true
+                              :compositeLiteralFields true
+                              :compositeLiteralTypes true
+                              :constantValues true
+                              :functionTypeParameters true
+                              :parameterNames true
+                              :rangeVariableTypes true}
                       :staticcheck true
+                      :vulncheck :Imports
                       :gofumpt true}}}))
 (lsp.hls.setup (core.merge default-options {}))
 (lsp.html.setup (core.merge default-options {}))
@@ -237,15 +244,15 @@
 (map! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" {:silent true})
 (map! [:n] :gs ":<C-u>lua vim.lsp.buf.signature_help()<CR>" {:silent true})
 
-(map! [:n] :<leader>f ":<C-u>lua vim.lsp.buf.formatting()<CR>" {:silent true})
-(map! [:x] :<leader>f ":<C-u>lua vim.lsp.buf.range_formatting()<CR>" {:silent true})
-
 (map! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" {:silent true})
 (augroup!
   init-lsp-codelens
   {:events [:CursorHold :CursorHoldI]
    :pattern :*
    :callback vim.lsp.codelens.refresh})
+
+;; toggle inlay hints
+(map! [:n] :<leader>i ":<C-u>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>" {:silent true})
 
 (map!
   [:n]
