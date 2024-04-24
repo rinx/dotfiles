@@ -88,6 +88,7 @@
       cuelsp
       delve
       efm-langserver
+      fennel-ls
       fortls
       gopls
       marksman

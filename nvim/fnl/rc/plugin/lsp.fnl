@@ -117,6 +117,10 @@
      :settings {:fennel {:diagnostics {:globals [:vim :jit :comment]}
                          :workspace {:library
                                      (vim.api.nvim_list_runtime_paths)}}}}))
+(lsp.fennel_ls.setup
+  (core.merge
+    default-options
+    {:root_dir (lsputil.root_pattern ".nfnl.fnl")}))
 (lsp.fortls.setup (core.merge default-options {}))
 (lsp.gopls.setup (core.merge
                    default-options
