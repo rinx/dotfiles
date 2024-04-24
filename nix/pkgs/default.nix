@@ -35,12 +35,14 @@
       gnumake
       jq
       neovim-unwrapped
+      nodePackages.neovim
       open-policy-agent
       pass
       ripgrep
       sad
       tmux
       tmux-xpanes
+      tree-sitter
       wget
       yq
       zsh
