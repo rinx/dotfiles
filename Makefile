@@ -5,6 +5,7 @@ BINDIR := \
     ~/.bin
 
 UNAME := $(eval UNAME := $(shell uname))$(UNAME)
+ARCH :=  $(eval ARCH := $(shell uname -m))$(ARCH)
 
 # color palletes
 red    = /bin/echo -e "\x1b[31m\#\# $1\x1b[0m"

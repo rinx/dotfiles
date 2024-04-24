@@ -61,10 +61,14 @@ $(BINDIR):
 
 $(BINDIR)/bat:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/bat.tar.gz https://github.com/sharkdp/bat/releases/download/$(BAT_VERSION)/bat-$(BAT_VERSION)-x86_64-apple-darwin.tar.gz
-	tar xzvf /tmp/bat.tar.gz -C /tmp
-	mv -f /tmp/bat-$(BAT_VERSION)-x86_64-apple-darwin/bat $(BINDIR)/bat
-	rm -rf /tmp/bat.tar.gz /tmp/bat-$(BAT_VERSION)-x86_64-apple-darwin
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/bat.tar.gz https://github.com/sharkdp/bat/releases/download/$(BAT_VERSION)/bat-$(BAT_VERSION)-x86_64-apple-darwin.tar.gz
+		tar xzvf /tmp/bat.tar.gz -C /tmp
+		mv -f /tmp/bat-$(BAT_VERSION)-x86_64-apple-darwin/bat $(BINDIR)/bat
+		rm -rf /tmp/bat.tar.gz /tmp/bat-$(BAT_VERSION)-x86_64-apple-darwin
+	else
+		@$(call red, "bat has no aarch64 distribution")
+	endif
 else
 	curl -sL -o /tmp/bat.tar.gz https://github.com/sharkdp/bat/releases/download/$(BAT_VERSION)/bat-$(BAT_VERSION)-x86_64-unknown-linux-musl.tar.gz
 	tar xzvf /tmp/bat.tar.gz -C /tmp
@@ -74,10 +78,17 @@ endif
 
 $(BINDIR)/bb:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/bb.tar.gz https://github.com/babashka/babashka/releases/download/v$(BB_VERSION)/babashka-$(BB_VERSION)-macos-amd64.tar.gz
-	tar xzvf /tmp/bb.tar.gz -C /tmp
-	mv -f /tmp/bb $(BINDIR)/bb
-	rm -rf /tmp/bb.tar.gz
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/bb.tar.gz https://github.com/babashka/babashka/releases/download/v$(BB_VERSION)/babashka-$(BB_VERSION)-macos-amd64.tar.gz
+		tar xzvf /tmp/bb.tar.gz -C /tmp
+		mv -f /tmp/bb $(BINDIR)/bb
+		rm -rf /tmp/bb.tar.gz
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/bb.tar.gz https://github.com/babashka/babashka/releases/download/v$(BB_VERSION)/babashka-$(BB_VERSION)-macos-aarch64.tar.gz
+		tar xzvf /tmp/bb.tar.gz -C /tmp
+		mv -f /tmp/bb $(BINDIR)/bb
+		rm -rf /tmp/bb.tar.gz
+	endif
 else
 	curl -sL -o /tmp/bb.tar.gz https://github.com/babashka/babashka/releases/download/v$(BB_VERSION)/babashka-$(BB_VERSION)-linux-amd64-static.tar.gz
 	tar xzvf /tmp/bb.tar.gz -C /tmp
@@ -87,10 +98,17 @@ endif
 
 $(BINDIR)/delta:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/delta.tar.gz https://github.com/dandavison/delta/releases/download/$(DELTA_VERSION)/delta-$(DELTA_VERSION)-x86_64-apple-darwin.tar.gz
-	tar xzvf /tmp/delta.tar.gz -C /tmp
-	mv -f /tmp/delta-$(DELTA_VERSION)-x86_64-apple-darwin/delta $(BINDIR)/delta
-	rm -rf /tmp/delta.tar.gz /tmp/delta-$(DELTA_VERSION)-x86_64-apple-darwin
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/delta.tar.gz https://github.com/dandavison/delta/releases/download/$(DELTA_VERSION)/delta-$(DELTA_VERSION)-x86_64-apple-darwin.tar.gz
+		tar xzvf /tmp/delta.tar.gz -C /tmp
+		mv -f /tmp/delta-$(DELTA_VERSION)-x86_64-apple-darwin/delta $(BINDIR)/delta
+		rm -rf /tmp/delta.tar.gz /tmp/delta-$(DELTA_VERSION)-x86_64-apple-darwin
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/delta.tar.gz https://github.com/dandavison/delta/releases/download/$(DELTA_VERSION)/delta-$(DELTA_VERSION)-aarch64-apple-darwin.tar.gz
+		tar xzvf /tmp/delta.tar.gz -C /tmp
+		mv -f /tmp/delta-$(DELTA_VERSION)-aarch64-apple-darwin/delta $(BINDIR)/delta
+		rm -rf /tmp/delta.tar.gz /tmp/delta-$(DELTA_VERSION)-aarch64-apple-darwin
+	endif
 else
 	curl -sL -o /tmp/delta.tar.gz https://github.com/dandavison/delta/releases/download/$(DELTA_VERSION)/delta-$(DELTA_VERSION)-x86_64-unknown-linux-musl.tar.gz
 	tar xzvf /tmp/delta.tar.gz -C /tmp
@@ -100,8 +118,13 @@ endif
 
 $(BINDIR)/deno:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/deno.zip https://github.com/denoland/deno/releases/latest/download/deno-x86_64-apple-darwin.zip
-	unzip -o /tmp/deno.zip -d $(BINDIR)/
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/deno.zip https://github.com/denoland/deno/releases/latest/download/deno-x86_64-apple-darwin.zip
+		unzip -o /tmp/deno.zip -d $(BINDIR)/
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/deno.zip https://github.com/denoland/deno/releases/latest/download/deno-aarch64-apple-darwin.zip
+		unzip -o /tmp/deno.zip -d $(BINDIR)/
+	endif
 else
 	curl -sL -o /tmp/deno.zip https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip
 	unzip -o /tmp/deno.zip -d $(BINDIR)/
@@ -109,10 +132,14 @@ endif
 
 $(BINDIR)/exa:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/exa.zip https://github.com/ogham/exa/releases/download/$(EXA_VERSION)/exa-macos-x86_64-$(EXA_VERSION).zip
-	unzip -o /tmp/exa.zip -d /tmp/exa
-	mv -f /tmp/exa/bin/exa $(BINDIR)/exa
-	rm -rf /tmp/exa.zip /tmp/exa
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/exa.zip https://github.com/ogham/exa/releases/download/$(EXA_VERSION)/exa-macos-x86_64-$(EXA_VERSION).zip
+		unzip -o /tmp/exa.zip -d /tmp/exa
+		mv -f /tmp/exa/bin/exa $(BINDIR)/exa
+		rm -rf /tmp/exa.zip /tmp/exa
+	else
+		@$(call red, "exa has no aarch64 distribution")
+	endif
 else
 	curl -sL -o /tmp/exa.zip https://github.com/ogham/exa/releases/download/$(EXA_VERSION)/exa-linux-x86_64-musl-$(EXA_VERSION).zip
 	unzip -o /tmp/exa.zip -d /tmp/exa
@@ -122,10 +149,14 @@ endif
 
 $(BINDIR)/fd:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/fd.tar.gz https://github.com/sharkdp/fd/releases/download/$(FD_VERSION)/fd-$(FD_VERSION)-x86_64-apple-darwin.tar.gz
-	tar xzvf /tmp/fd.tar.gz -C /tmp
-	mv -f /tmp/fd-$(FD_VERSION)-x86_64-apple-darwin/fd $(BINDIR)/fd
-	rm -rf /tmp/fd.tar.gz /tmp/fd-$(FD_VERSION)-x86_64-apple-darwin
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/fd.tar.gz https://github.com/sharkdp/fd/releases/download/$(FD_VERSION)/fd-$(FD_VERSION)-x86_64-apple-darwin.tar.gz
+		tar xzvf /tmp/fd.tar.gz -C /tmp
+		mv -f /tmp/fd-$(FD_VERSION)-x86_64-apple-darwin/fd $(BINDIR)/fd
+		rm -rf /tmp/fd.tar.gz /tmp/fd-$(FD_VERSION)-x86_64-apple-darwin
+	else
+		@$(call red, "fd has no aarch64 distribution")
+	endif
 else
 	curl -sL -o /tmp/fd.tar.gz https://github.com/sharkdp/fd/releases/download/$(FD_VERSION)/fd-$(FD_VERSION)-x86_64-unknown-linux-musl.tar.gz
 	tar xzvf /tmp/fd.tar.gz -C /tmp
@@ -135,9 +166,15 @@ endif
 
 $(BINDIR)/fzf:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/fzf.zip https://github.com/junegunn/fzf/releases/download/$(FZF_VERSION)/fzf-$(FZF_VERSION)-darwin_amd64.zip
-	unzip -o /tmp/fzf.zip -d $(BINDIR)
-	rm -rf /tmp/fzf.zip
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/fzf.zip https://github.com/junegunn/fzf/releases/download/$(FZF_VERSION)/fzf-$(FZF_VERSION)-darwin_amd64.zip
+		unzip -o /tmp/fzf.zip -d $(BINDIR)
+		rm -rf /tmp/fzf.zip
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/fzf.zip https://github.com/junegunn/fzf/releases/download/$(FZF_VERSION)/fzf-$(FZF_VERSION)-darwin_arm64.zip
+		unzip -o /tmp/fzf.zip -d $(BINDIR)
+		rm -rf /tmp/fzf.zip
+	endif
 else
 	curl -sL -o /tmp/fzf.tar.gz https://github.com/junegunn/fzf/releases/download/$(FZF_VERSION)/fzf-$(FZF_VERSION)-linux_amd64.tar.gz
 	tar xzvf /tmp/fzf.tar.gz -C $(BINDIR)
@@ -150,10 +187,17 @@ $(BINDIR)/fzf-tmux:
 
 $(BINDIR)/ghq:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/ghq.zip https://github.com/x-motemen/ghq/releases/latest/download/ghq_darwin_amd64.zip
-	unzip -o /tmp/ghq.zip -d /tmp/ghq
-	mv -f /tmp/ghq/ghq_darwin_amd64/ghq $(BINDIR)/ghq
-	rm -rf /tmp/ghq.tar.gz /tmp/ghq
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/ghq.zip https://github.com/x-motemen/ghq/releases/latest/download/ghq_darwin_amd64.zip
+		unzip -o /tmp/ghq.zip -d /tmp/ghq
+		mv -f /tmp/ghq/ghq_darwin_amd64/ghq $(BINDIR)/ghq
+		rm -rf /tmp/ghq.tar.gz /tmp/ghq
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/ghq.zip https://github.com/x-motemen/ghq/releases/latest/download/ghq_darwin_arm64.zip
+		unzip -o /tmp/ghq.zip -d /tmp/ghq
+		mv -f /tmp/ghq/ghq_darwin_arm64/ghq $(BINDIR)/ghq
+		rm -rf /tmp/ghq.tar.gz /tmp/ghq
+	endif
 else
 	curl -sL -o /tmp/ghq.zip https://github.com/x-motemen/ghq/releases/latest/download/ghq_linux_amd64.zip
 	unzip -o /tmp/ghq.zip -d /tmp/ghq
@@ -163,10 +207,17 @@ endif
 
 $(BINDIR)/k9s:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Darwin_amd64.tar.gz
-	tar xzvf /tmp/k9s.tar.gz -C /tmp
-	mv -f /tmp/k9s $(BINDIR)/k9s
-	rm -rf /tmp/k9s.tar.gz /tmp/LICENSE /tmp/README.md
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Darwin_amd64.tar.gz
+		tar xzvf /tmp/k9s.tar.gz -C /tmp
+		mv -f /tmp/k9s $(BINDIR)/k9s
+		rm -rf /tmp/k9s.tar.gz /tmp/LICENSE /tmp/README.md
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Darwin_arm64.tar.gz
+		tar xzvf /tmp/k9s.tar.gz -C /tmp
+		mv -f /tmp/k9s $(BINDIR)/k9s
+		rm -rf /tmp/k9s.tar.gz /tmp/LICENSE /tmp/README.md
+	endif
 else
 	curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz
 	tar xzvf /tmp/k9s.tar.gz -C /tmp
@@ -184,8 +235,13 @@ $(BINDIR)/kubens:
 
 $(BINDIR)/jq:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o $(BINDIR)/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64
-	chmod a+x $(BINDIR)/jq
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o $(BINDIR)/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64
+		chmod a+x $(BINDIR)/jq
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o $(BINDIR)/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-arm64
+		chmod a+x $(BINDIR)/jq
+	endif
 else
 	curl -sL -o $(BINDIR)/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 	chmod a+x $(BINDIR)/jq
@@ -193,10 +249,17 @@ endif
 
 $(BINDIR)/rg:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/rg.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$(RG_VERSION)/ripgrep-$(RG_VERSION)-x86_64-apple-darwin.tar.gz
-	tar xzvf /tmp/rg.tar.gz -C /tmp
-	mv -f /tmp/ripgrep-$(RG_VERSION)-x86_64-apple-darwin/rg $(BINDIR)/rg
-	rm -rf /tmp/rg.tar.gz /tmp/ripgrep-$(RG_VERSION)-x86_64-apple-darwin
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/rg.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$(RG_VERSION)/ripgrep-$(RG_VERSION)-x86_64-apple-darwin.tar.gz
+		tar xzvf /tmp/rg.tar.gz -C /tmp
+		mv -f /tmp/ripgrep-$(RG_VERSION)-x86_64-apple-darwin/rg $(BINDIR)/rg
+		rm -rf /tmp/rg.tar.gz /tmp/ripgrep-$(RG_VERSION)-x86_64-apple-darwin
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/rg.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$(RG_VERSION)/ripgrep-$(RG_VERSION)-aarch64-apple-darwin.tar.gz
+		tar xzvf /tmp/rg.tar.gz -C /tmp
+		mv -f /tmp/ripgrep-$(RG_VERSION)-aarch64-apple-darwin/rg $(BINDIR)/rg
+		rm -rf /tmp/rg.tar.gz /tmp/ripgrep-$(RG_VERSION)-aarch64-apple-darwin
+	endif
 else
 	curl -sL -o /tmp/rg.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$(RG_VERSION)/ripgrep-$(RG_VERSION)-x86_64-unknown-linux-musl.tar.gz
 	tar xzvf /tmp/rg.tar.gz -C /tmp
@@ -206,10 +269,17 @@ endif
 
 $(BINDIR)/sad:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o /tmp/sad.zip https://github.com/ms-jpq/sad/releases/download/$(SAD_VERSION)/x86_64-apple-darwin.zip
-	unzip -o /tmp/sad.zip -d /tmp/sad
-	mv -f /tmp/sad/sad $(BINDIR)/sad
-	rm -rf /tmp/sad.zip /tmp/sad
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o /tmp/sad.zip https://github.com/ms-jpq/sad/releases/download/$(SAD_VERSION)/x86_64-apple-darwin.zip
+		unzip -o /tmp/sad.zip -d /tmp/sad
+		mv -f /tmp/sad/sad $(BINDIR)/sad
+		rm -rf /tmp/sad.zip /tmp/sad
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o /tmp/sad.zip https://github.com/ms-jpq/sad/releases/download/$(SAD_VERSION)/aarch64-apple-darwin.zip
+		unzip -o /tmp/sad.zip -d /tmp/sad
+		mv -f /tmp/sad/sad $(BINDIR)/sad
+		rm -rf /tmp/sad.zip /tmp/sad
+	endif
 else
 	curl -sL -o /tmp/sad.zip https://github.com/ms-jpq/sad/releases/download/$(SAD_VERSION)/x86_64-unknown-linux-musl.zip
 	unzip -o /tmp/sad.zip -d /tmp/sad
@@ -223,8 +293,13 @@ $(BINDIR)/xpanes:
 
 $(BINDIR)/yq:
 ifeq ($(UNAME),Darwin)
-	curl -sL -o $(BINDIR)/yq https://github.com/mikefarah/yq/releases/latest/download/yq_darwin_amd64
-	chmod a+x $(BINDIR)/yq
+	ifeq ($(ARCH),x86_64)
+		curl -sL -o $(BINDIR)/yq https://github.com/mikefarah/yq/releases/latest/download/yq_darwin_amd64
+		chmod a+x $(BINDIR)/yq
+	else ifeq ($(ARCH),aarch64)
+		curl -sL -o $(BINDIR)/yq https://github.com/mikefarah/yq/releases/latest/download/yq_darwin_arm64
+		chmod a+x $(BINDIR)/yq
+	endif
 else
 	curl -sL -o $(BINDIR)/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 	chmod a+x $(BINDIR)/yq
