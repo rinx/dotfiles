@@ -8,11 +8,21 @@
     regal = pkgs.callPackage ./regal.nix {};
     regols = pkgs.callPackage ./regols.nix {};
 
+    google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents ([
+      pkgs.google-cloud-sdk.components.beta
+      pkgs.google-cloud-sdk.components.bq
+      pkgs.google-cloud-sdk.components.core
+      pkgs.google-cloud-sdk.components.gcloud-crc32c
+      pkgs.google-cloud-sdk.components.gsutil
+      pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
+    ]);
+
     custom-pkgs = [
       fennel-language-server
       jq-lsp
       regal
       regols
+      google-cloud-sdk-with-components
     ];
   in pkgs.buildEnv {
     name = "basic-packages";
@@ -59,7 +69,6 @@
 
       # cloud development
       awscli2
-      google-cloud-sdk
       terraform
 
       # languages
