@@ -4,9 +4,7 @@
   flake-inputs,
 }: let 
     fennel-language-server = pkgs.callPackage ./fennel-language-server.nix {};
-    jq-lsp = pkgs.callPackage ./jq-lsp.nix {};
     regal = pkgs.callPackage ./regal.nix {};
-    regols = pkgs.callPackage ./regols.nix {};
 
     google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents ([
       pkgs.google-cloud-sdk.components.beta
@@ -19,9 +17,7 @@
 
     custom-pkgs = [
       fennel-language-server
-      jq-lsp
       regal
-      regols
       google-cloud-sdk-with-components
     ];
   in pkgs.buildEnv {
@@ -91,6 +87,7 @@
       fennel-ls
       fortls
       gopls
+      jq-lsp
       marksman
       nil
       nodePackages.bash-language-server
@@ -98,6 +95,7 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
+      regols
       terraform-ls
       tflint
       zls
