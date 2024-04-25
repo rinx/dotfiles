@@ -2,7 +2,6 @@
   (:require
    [clojure.string :as str]
    [sbar.colors :as colors]
-   [sbar.common :as common]
    [sbar.external.yabai :as yabai]
    [sbar.icons :as icons]
    [sketchybar.core :as sketchybar]))
@@ -25,8 +24,8 @@
            :background.padding_left 3
            :background.padding_right 3}
           (if (= (System/getenv "SELECTED") "true")
-            {:background.color (colors/get :cream)
-             :background.border_color (colors/get :cream)}
+            {:background.color (colors/get :cyan)
+             :background.border_color (colors/get :cyan)}
             {:background.color (colors/get :grey)
              :background.border_color (colors/get :grey)})))
    (when (= (System/getenv "SENDER") "front_app_switched")

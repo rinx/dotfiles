@@ -15,14 +15,10 @@
    (sketchybar/set
     :github.pr
     {:click_script "sketchybar --set $NAME popup.drawing=toggle"
-     :background.color (colors/get :cream)
-     :background.corner_radius 4
-     :background.height 15
      :icon (icons/get :github :pullreq)
-     :icon.color (colors/get :black)
      :icon.font (fonts/get :Medium 12.0)
+     :icon.color (colors/get :light-violet)
      :label "-"
-     :label.color (colors/get :black)
      :label.font (fonts/get :Medium 12.0)})))
 
 (defn prs []
@@ -55,8 +51,10 @@
     (flatten [add-args set-args])))
 
 (defn update []
-  (let [prs (prs)]
+  (let [prs (prs)
+        cnt (count prs)]
     (sketchybar/exec
      ["--remove" "/github.prlist\\.*/"]
-     (sketchybar/set :github.pr {:label (count prs)})
+     (sketchybar/set :github.pr {:drawing (if (zero? cnt) :off :on)
+                                 :label cnt})
      (map-indexed ->element prs))))

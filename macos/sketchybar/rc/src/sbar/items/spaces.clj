@@ -1,6 +1,5 @@
 (ns sbar.items.spaces
   (:require
-   [sbar.colors :as colors]
    [sbar.common :as common]
    [sbar.fonts :as fonts]
    [sbar.icons :as icons]
@@ -14,7 +13,6 @@
       (sketchybar/set
        item
        {:associated_space idx
-        :background.height 18
         :background.corner_radius 4
         :icon icon
         :icon.padding_right 4

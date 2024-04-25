@@ -25,6 +25,9 @@
   (clojure.core/get palette key))
 
 (def bar
+  (get :transparent))
+
+(def background
   (get :transparent-black))
 
 (def icon

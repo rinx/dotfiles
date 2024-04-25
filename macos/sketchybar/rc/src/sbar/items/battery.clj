@@ -1,10 +1,10 @@
 (ns sbar.items.battery
   (:require
    [clojure.string :as str]
-   [sbar.colors :as colors]
    [sbar.common :as common]
    [sbar.fonts :as fonts]
    [sbar.icons :as icons]
+   [sbar.colors :as colors]
    [sketchybar.core :as sketchybar]))
 
 (defn setup []
@@ -12,12 +12,8 @@
    (sketchybar/add-item :battery :right)
    (sketchybar/set
     :battery
-    {:background.color (colors/get :cream)
-     :background.corner_radius 4
-     :background.height 15
-     :icon.color (colors/get :black)
-     :icon.font (fonts/get :Medium 14.0)
-     :label.color (colors/get :black)
+    {:icon.font (fonts/get :Medium 14.0)
+     :icon.color (colors/get :yellow)
      :label.font (fonts/get :Medium 12.0)})
    (sketchybar/subscribe :battery :power_source_change :system_woke)))
 

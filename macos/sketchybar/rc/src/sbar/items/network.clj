@@ -1,10 +1,10 @@
 (ns sbar.items.network
   (:require
    [clojure.string :as str]
-   [sbar.colors :as colors]
    [sbar.common :as common]
    [sbar.fonts :as fonts]
    [sbar.icons :as icons]
+   [sbar.colors :as colors]
    [sketchybar.core :as sketchybar]))
 
 (defn setup []
@@ -14,8 +14,10 @@
     :network.up
     {:label.font (fonts/get :SemiBold 8.0)
      :label "0.0KB/s"
+     :label.color (colors/get :transparent-black)
      :icon.font (fonts/get :SemiBold 7.0)
      :icon (icons/get :net :upload)
+     :icon.color (colors/get :transparent-black)
      :width 0
      :y_offset 5})
    (sketchybar/add-item :network.down :right)
@@ -23,8 +25,10 @@
     :network.down
     {:label.font (fonts/get :SemiBold 8.0)
      :label "0.0KB/s"
+     :label.color (colors/get :transparent-black)
      :icon.font (fonts/get :SemiBold 7.0)
      :icon (icons/get :net :download)
+     :icon.color (colors/get :transparent-black)
      :width 0
      :y_offset -5})))
 

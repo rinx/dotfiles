@@ -15,14 +15,10 @@
    (sketchybar/set
     :github.notification
     {:click_script "sketchybar --set $NAME popup.drawing=toggle"
-     :background.color (colors/get :cream)
-     :background.corner_radius 4
-     :background.height 15
      :icon (icons/get :github :octocat)
-     :icon.color (colors/get :black)
      :icon.font (fonts/get :Medium 16.0)
+     :icon.color (colors/get :light-green)
      :label "-"
-     :label.color (colors/get :black)
      :label.font (fonts/get :Medium 12.0)})))
 
 (defn gh-api [endpoint]
@@ -75,8 +71,10 @@
     (flatten [add-args set-args])))
 
 (defn update []
-  (let [notifications (notifications)]
+  (let [notifications (notifications)
+        cnt (count notifications)]
     (sketchybar/exec
      ["--remove" "/github.notification.list\\.*/"]
-     (sketchybar/set :github.notification {:label (count notifications)})
+     (sketchybar/set :github.notification {:drawing (if (zero? cnt) :off :on)
+                                           :label cnt})
      (map-indexed ->element notifications))))

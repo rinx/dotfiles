@@ -26,27 +26,30 @@
    (sketchybar/bar
     {:blur_radius 0
      :color colors/bar
-     :corner_radius 5
-     :height 28
-     :margin 14
-     :notch_width 0
-     :padding_left 21
-     :padding_right 21
+     :corner_radius 0
+     :height 34
+     :margin 0
+     :notch_width 188
+     :padding_left 12
+     :padding_right 12
      :position :top
      :shadow :off
      :sticky :on
-     :y_offset 5})
+     :y_offset 0})
    (sketchybar/default
     {:background.padding_left 3
      :background.padding_right 3
+     :background.color colors/background
+     :background.height 25
+     :background.corner_radius 3
      :icon.color colors/icon
      :icon.font (fonts/get :Bold 14.0)
-     :icon.padding_left 3
+     :icon.padding_left 10
      :icon.padding_right 3
      :label.color colors/label
      :label.font (fonts/get :SemiBold 13.0)
      :label.padding_left 3
-     :label.padding_right 3
+     :label.padding_right 10
      :popup.background.border_color colors/popup-border
      :popup.background.border_width 1
      :popup.background.color colors/popup-background
@@ -56,19 +59,19 @@
 
 (defn left-items []
   (spaces/setup)
-  (yabai/setup)
+  ; (yabai/setup)
   (front-app/setup))
 
 (defn center-items [])
 
 (defn right-items []
   (time/setup)
-  (date/setup)
-  (weather/setup)
+  ; (date/setup)
+  ; (weather/setup)
   (battery/setup)
   (mic/setup)
   (volume/setup)
-  (wifi/setup)
+  ; (wifi/setup)
   (kubectx/setup)
   (gcloud/setup)
   (github-pr/setup)

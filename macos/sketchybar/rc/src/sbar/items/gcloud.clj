@@ -13,13 +13,9 @@
    (sketchybar/set
     :gcloud.current
     {:click_script "sketchybar --set $NAME popup.drawing=toggle"
-     :background.color (colors/get :cream)
-     :background.corner_radius 4
-     :background.height 15
      :icon (icons/get :gcloud)
-     :icon.color (colors/get :black)
      :icon.font (fonts/get :Medium 12.0)
-     :label.color (colors/get :black)
+     :icon.color (colors/get :green)
      :label.font (fonts/get :Medium 12.0)})))
 
 (defn contexts []
