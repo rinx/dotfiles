@@ -19,15 +19,15 @@
   (sketchybar/exec
    (sketchybar/set
     (System/getenv "NAME")
-    (into {:icon.color (colors/get :black)
-           :label.color (colors/get :black)
+    (into {:background.color (colors/get :transparent-black)
+           :background.border_color (colors/get :transparent-black)
            :background.padding_left 3
            :background.padding_right 3}
           (if (= (System/getenv "SELECTED") "true")
-            {:background.color (colors/get :cyan)
-             :background.border_color (colors/get :cyan)}
-            {:background.color (colors/get :grey)
-             :background.border_color (colors/get :grey)})))
+            {:icon.color (colors/get :light-green)
+             :label.color (colors/get :cream)}
+            {:icon.color (colors/get :black)
+             :label.color (colors/get :black)})))
    (when (= (System/getenv "SENDER") "front_app_switched")
      (->> (map-indexed ->space-icons icons/spaces)
           (filter some?)))))
