@@ -4,7 +4,6 @@
   flake-inputs,
 }: let 
     fennel-language-server = pkgs.callPackage ./fennel-language-server.nix {};
-    regal = pkgs.callPackage ./regal.nix {};
 
     google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents ([
       pkgs.google-cloud-sdk.components.beta
@@ -17,7 +16,6 @@
 
     custom-pkgs = [
       fennel-language-server
-      regal
       google-cloud-sdk-with-components
     ];
   in pkgs.buildEnv {
@@ -95,6 +93,7 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
+      regal
       regols
       terraform-ls
       tflint
