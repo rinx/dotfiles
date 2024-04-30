@@ -49,13 +49,6 @@
     (spit filename replaced)))
 
 (do-update
- "Dockerfile"
- (fn [name]
-   (re-pattern (str "ARG " name "=.*")))
- (fn [name version]
-   (str "ARG " name "=" version)))
-
-(do-update
  "Makefile.d/bin.mk"
  (fn [name]
    (re-pattern (str name " := .*")))
