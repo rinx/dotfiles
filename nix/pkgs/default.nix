@@ -14,9 +14,12 @@
       pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
     ]);
 
+    moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix {};
+
     custom-pkgs = [
       fennel-language-server
       google-cloud-sdk-with-components
+      moralerspace-nerdfont
     ];
   in pkgs.buildEnv {
     name = "basic-packages";
