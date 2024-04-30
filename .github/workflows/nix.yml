@@ -21,4 +21,4 @@ jobs:
       - name: nix flake check
         working-directory: nix
         run: |
-          nix flake check
+          nix flake check --all-systems
