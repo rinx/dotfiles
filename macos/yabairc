@@ -25,25 +25,25 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  20
+yabai -m config top_padding                  12
 yabai -m config bottom_padding               12
 yabai -m config left_padding                 12
 yabai -m config right_padding                12
 yabai -m config window_gap                   12
 
-yabai -m space 1 --label I
-yabai -m space 2 --label II
-yabai -m space 3 --label III
-yabai -m space 4 --label IV
-yabai -m space 5 --label V
-yabai -m space 6 --label VI
-yabai -m space 7 --label VII
-yabai -m space 8 --label VIII
-yabai -m space 9 --label IX
-yabai -m space 10 --label X
+yabai -m space 1 --label 1
+yabai -m space 2 --label 2
+yabai -m space 3 --label 3
+yabai -m space 4 --label 4
+yabai -m space 5 --label 5
+yabai -m space 6 --label 6
+yabai -m space 7 --label 7
+yabai -m space 8 --label 8
+yabai -m space 9 --label 9
+yabai -m space 10 --label 0
 
 # Sketchybar
-yabai -m config external_bar main:20:0
+yabai -m config external_bar all:20:00
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 
 # rules
