@@ -44,7 +44,7 @@ jobs:
             git config --global user.email "${ID}+${NAME}@users.noreply.github.com"
             git config --global user.name "rinx-app[bot]"
 
-            git add Dockerfile Makefile.d/bin.mk
+            git add Makefile.d/bin.mk
 
             git commit --signoff -m "[patch] :robot: Automatically upgrade dependencies."
 
