@@ -22,8 +22,8 @@
 
 (defn bench [n cmd]
   (take n
-    (repeatedly
-      #(time' (shell cmd)))))
+        (repeatedly
+         #(time' (shell cmd)))))
 
 (defn avg [coll]
   (/ (reduce + coll) (count coll)))
@@ -34,22 +34,22 @@
       :out
       (str/split-lines)
       (->> (some #(when
-                    (str/includes? % "Total Average") %))
+                   (str/includes? % "Total Average") %))
            (re-matches #"Total Average: (\d+.\d+) msec"))
       (second)
       (Float/parseFloat)))
 
 (print
-  (json/generate-string
-    [{:name "zsh load time"
-      :unit "ms"
-      :value (avg (bench 10 zsh))}
-     {:name "neovim load time"
-      :unit "ms"
-      :value (avg (bench 10 nvim))}
-     {:name "neovim startup time"
-      :unit "ms"
-      :value (nvim-startuptime 10)}]))
+ (json/generate-string
+  [{:name "zsh load time"
+    :unit "ms"
+    :value (avg (bench 10 zsh))}
+   {:name "neovim load time"
+    :unit "ms"
+    :value (avg (bench 10 nvim))}]))
+     ; {:name "neovim startup time"
+     ;  :unit "ms"
+     ;  :value (nvim-startuptime 10)}]))
 
 (comment
   (time' (shell zsh))

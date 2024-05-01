@@ -27,13 +27,13 @@ jobs:
         run: |
           bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
           ./bb --version
-      - name: Install vim-startuptime
-        run: |
-          brew install go
-
-          go install github.com/rhysd/vim-startuptime@latest
-
-          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+      # - name: Install vim-startuptime
+      #   run: |
+      #     brew install go
+      #
+      #     go install github.com/rhysd/vim-startuptime@latest
+      #
+      #     echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Setup dotfiles
         run: |
           make DOTDIR=$(pwd) deploy
