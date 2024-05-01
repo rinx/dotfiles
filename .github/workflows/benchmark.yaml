@@ -23,6 +23,9 @@ jobs:
           brew install neovim --HEAD
           brew install deno
           nvim --version
+      - name: Install tree-sitter
+        run: |
+          npm i -g tree-sitter-cli
       - name: Install babashka
         run: |
           bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
