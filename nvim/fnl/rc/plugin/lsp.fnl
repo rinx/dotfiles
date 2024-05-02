@@ -66,9 +66,11 @@
 (lsp.dockerls.setup (core.merge default-options {}))
 (lsp.efm.setup (core.merge
                  default-options
-                 {:filetypes [:markdown
+                 {:filetypes [:bash
+                              :markdown
                               :proto
                               :rego
+                              :sh
                               :vcl]
                   :init_options {:codeAction true
                                  :completion true
@@ -77,7 +79,13 @@
                                  :hover true}
                   :settings
                   {:languages
-                   {:markdown
+                   {:bash
+                    [{:lintCommand "shellcheck -f gcc -x"
+                      :lintSource "shellcheck"
+                      :lintFormats ["%f:%l:%c: %trror: %m"
+                                    "%f:%l:%c: %tarning: %m"
+                                    "%f:%l:%c: %tote: %m"]}]
+                    :markdown
                     [{:lintCommand "deno run --allow-env --allow-net --allow-read --allow-sys --allow-write ~/.dotfiles/tools/textlint/textlint.ts ${INPUT}"
                       :lintIgnoreExitCode true
                       :lintFormats ["%f:%l:%n: %m"]}
@@ -99,6 +107,12 @@
                                     "%I::notice file=%f,line=%l,col=%c::%m"]}
                      {:formatCommand "opa fmt"
                       :formatStdin true}]
+                    :sh
+                    [{:lintCommand "shellcheck -f gcc -x"
+                      :lintSource "shellcheck"
+                      :lintFormats ["%f:%l:%c: %trror: %m"
+                                    "%f:%l:%c: %tarning: %m"
+                                    "%f:%l:%c: %tote: %m"]}]
                     :vcl
                     [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
                       :lintIgnoreExitCode true

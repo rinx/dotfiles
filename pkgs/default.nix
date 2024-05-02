@@ -45,13 +45,14 @@
       nodePackages.neovim
       open-policy-agent
       pass
+      passExtensions.pass-otp
       ripgrep
       sad
       tmux
       tmux-xpanes
       tree-sitter
       wget
-      yq
+      yq-go
       zsh
 
       # k8s
@@ -81,6 +82,7 @@
 
       # LSP / DAP / Linter / Formatter
       buf-language-server
+      clj-kondo
       clojure-lsp
       cuelsp
       delve
@@ -98,6 +100,7 @@
       nodePackages.yaml-language-server
       regal
       regols
+      shellcheck
       terraform-ls
       tflint
       zls
