@@ -79,7 +79,7 @@
       gfortran
       go
       nodejs
-      nodePackages.typescript
+      typescript
       zig
 
       # LSP / DAP / Linter / Formatter
@@ -88,6 +88,7 @@
       clojure-lsp
       cuelsp
       delve
+      dockerfile-language-server-nodejs
       efm-langserver
       fennel-ls
       fortls
@@ -96,15 +97,14 @@
       marksman
       nil
       nodePackages.bash-language-server
-      nodePackages.dockerfile-language-server-nodejs
       nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.yaml-language-server
       regal
       regols
       shellcheck
       terraform-ls
       tflint
+      vscode-langservers-extracted
+      yaml-language-server
       zls
 
       # fonts
