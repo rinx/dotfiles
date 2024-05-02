@@ -15,10 +15,8 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           nix_path: nixpkgs=channel:nixos-unstable
       - name: nix build
-        working-directory: nix
         run: |
           nix build
       - name: nix flake check
-        working-directory: nix
         run: |
           nix flake check --all-systems
