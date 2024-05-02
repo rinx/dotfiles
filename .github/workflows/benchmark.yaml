@@ -50,7 +50,7 @@ jobs:
           nvim --headless -c 'TSInstallEnsure' -c 'qall'
       - name: Confirm all neovim plugins installed
         run: |
-          time nvim --headless -c 'qall'
+          time nvim --headless -V -c 'qall'
       - name: Run benchmark
         run: |
           ./bb ./.github/scripts/benchmark.clj | tee result.json
