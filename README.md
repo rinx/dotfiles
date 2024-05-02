@@ -18,3 +18,10 @@ git clone https://github.com/rinx/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 make deploy
 ```
+
+### Nix shell
+
+```sh
+cd ~/.dotfiles/nix
+nix develop --command zsh
+```
