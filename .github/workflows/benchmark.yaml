@@ -50,13 +50,10 @@ jobs:
           nvim --headless -c 'TSInstallEnsure' -c 'qall'
       - name: Confirm all neovim plugins installed
         run: |
-          nvim --headless -c 'qall'
+          time nvim --headless -c 'qall'
       - name: Run benchmark
         run: |
-          ./bb ./.github/scripts/benchmark.clj > result.json
-      - name: Dump
-        run: |
-          cat result.json
+          ./bb ./.github/scripts/benchmark.clj | tee result.json
       - name: Upload benchmark
         uses: benchmark-action/github-action-benchmark@v1
         with:
