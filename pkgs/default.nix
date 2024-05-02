@@ -33,6 +33,7 @@
       delta
       docker-credential-helpers
       eza
+      fcp
       fd
       fzf
       fzy
@@ -53,6 +54,7 @@
       tree-sitter
       wget
       yq-go
+      zellij
       zsh
 
       # k8s
