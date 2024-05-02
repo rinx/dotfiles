@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1714631416746,
+  "lastUpdate": 1714636568473,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6561,6 +6561,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 48.1391373,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "14fea9b4f247ee92e1358fb54e0e17968b73fec0",
+          "message": "chore(nix): add fcp and zellij\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-05-02T16:42:08+09:00",
+          "tree_id": "eb6cce1109ff41fa44e04122241ea7d0c5ae663a",
+          "url": "https://github.com/rinx/dotfiles/commit/14fea9b4f247ee92e1358fb54e0e17968b73fec0"
+        },
+        "date": 1714636566907,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.4032874,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 85.55739170000001,
             "unit": "ms"
           }
         ]
