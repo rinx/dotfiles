@@ -22,6 +22,5 @@ make deploy
 ### Nix shell
 
 ```sh
-cd ~/.dotfiles/nix
 nix develop --command zsh
 ```
