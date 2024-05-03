@@ -67,6 +67,7 @@
 (lsp.efm.setup (core.merge
                  default-options
                  {:filetypes [:bash
+                              :dockerfile
                               :markdown
                               :proto
                               :rego
@@ -85,6 +86,9 @@
                       :lintFormats ["%f:%l:%c: %trror: %m"
                                     "%f:%l:%c: %tarning: %m"
                                     "%f:%l:%c: %tote: %m"]}]
+                    :dockerfile
+                    [{:lintCommand "hadolint --no-color"
+                      :lintFormats ["%f:%l %m"]}]
                     :markdown
                     [{:lintCommand "deno run --allow-env --allow-net --allow-read --allow-sys --allow-write ~/.dotfiles/tools/textlint/textlint.ts ${INPUT}"
                       :lintIgnoreExitCode true

@@ -93,6 +93,7 @@
       fennel-ls
       fortls
       gopls
+      hadolint
       jq-lsp
       marksman
       nil
