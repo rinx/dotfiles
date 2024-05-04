@@ -46,10 +46,4 @@ install: \
 	install-bins
 	@$(call cyan, "Done: install")
 
-.PHONY: install-barista
-install-barista: \
-	$(BINDIR)/barista
-$(BINDIR)/barista:
-	(cd barista && go build -o $(BINDIR)/barista)
-
 include Makefile.d/*.mk
