@@ -103,6 +103,7 @@ others-deploy: \
     Xdefaults \
     rofi-config \
     sway-config \
+    hyprland-config \
     textlintrc \
     markdownlintrc \
     dotfiles-local \
@@ -140,6 +141,27 @@ sway-config: \
 $(HOME)/.config/sway/config:
 	mkdir -p $(HOME)/.config/sway
 	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
+endif
+
+ifeq ($(UNAME),Darwin)
+.PHONY: hyprland-config
+hyprland-config:
+	@$(call green, "hyprland-config: nothing to do")
+else
+.PHONY: hyprland-config
+hyprland-config: \
+	$(HOME)/.config/hypr/hyprland.conf \
+	$(HOME)/.config/waybar/config.jsonc \
+	$(HOME)/.config/waybar/style.css
+$(HOME)/.config/hypr/hyprland.conf:
+	mkdir -p $(HOME)/.config/hypr
+	ln -s $(DOTDIR)/hyprland.conf $(HOME)/.config/hypr/hyprland.conf
+$(HOME)/.config/waybar/config.jsonc:
+	mkdir -p $(HOME)/.config/waybar
+	ln -s $(DOTDIR)/waybar-config.jsonc $(HOME)/.config/waybar/config.jsonc
+$(HOME)/.config/waybar/style.css:
+	mkdir -p $(HOME)/.config/waybar
+	ln -s $(DOTDIR)/waybar-style.css $(HOME)/.config/waybar/style.css
 endif
 
 .PHONY: wallpapers
