@@ -14,9 +14,9 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "pulseaudio",
+        // "pulseaudio",
         "network",
-        "power-profiles-daemon",
+        // "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
