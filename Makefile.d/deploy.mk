@@ -137,11 +137,19 @@ else
 .PHONY: hyprland-config
 hyprland-config: \
 	$(HOME)/.config/hypr/hyprland.conf \
+	$(HOME)/.config/hypr/hypridle.conf \
+	$(HOME)/.config/hypr/hyprlock.conf \
 	$(HOME)/.config/waybar/config.jsonc \
 	$(HOME)/.config/waybar/style.css
 $(HOME)/.config/hypr/hyprland.conf:
 	mkdir -p $(HOME)/.config/hypr
 	ln -s $(DOTDIR)/hyprland.conf $(HOME)/.config/hypr/hyprland.conf
+$(HOME)/.config/hypr/hypridle.conf:
+	mkdir -p $(HOME)/.config/hypr
+	ln -s $(DOTDIR)/hypridle.conf $(HOME)/.config/hypr/hypridle.conf
+$(HOME)/.config/hypr/hyprlock.conf:
+	mkdir -p $(HOME)/.config/hypr
+	ln -s $(DOTDIR)/hyprlock.conf $(HOME)/.config/hypr/hyprlock.conf
 $(HOME)/.config/waybar/config.jsonc:
 	mkdir -p $(HOME)/.config/waybar
 	ln -s $(DOTDIR)/waybar-config.jsonc $(HOME)/.config/waybar/config.jsonc
