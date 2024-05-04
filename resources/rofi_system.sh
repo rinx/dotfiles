@@ -1,7 +1,6 @@
 #!/bin/bash
 
 list=(
-  "Swaylock" "swaylock -i ~/.wallpapers/wallpaper.jpg --scaling stretch -f"
   "Suspend" "systemctl suspend"
   "Sleep and Suspend" "sleep 3 && systemctl suspend"
   "Reboot" "systemctl reboot"

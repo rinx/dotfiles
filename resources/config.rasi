@@ -1,5 +1,5 @@
 configuration {
-  modi: "run,system:~/.dotfiles/resources/rofi_system.sh,workspace:~/.dotfiles/resources/rofi_sway_workspaces.sh,ssh";
+  modi: "run,system:~/.dotfiles/resources/rofi_system.sh";
   font: "Ricty Discord for Powerline 20";
   location: 0;
   yoffset: 0;

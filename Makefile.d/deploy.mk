@@ -102,7 +102,6 @@ others-deploy: \
     kitty.conf \
     Xdefaults \
     rofi-config \
-    sway-config \
     hyprland-config \
     textlintrc \
     markdownlintrc \
@@ -129,19 +128,6 @@ rofi-config: \
 $(HOME)/.config/rofi/config.rasi:
 	mkdir -p $(HOME)/.config/rofi
 	ln -s $(DOTDIR)/resources/config.rasi $(HOME)/.config/rofi/config.rasi
-
-ifeq ($(UNAME),Darwin)
-.PHONY: sway-config
-sway-config:
-	@$(call green, "sway-config: nothing to do")
-else
-.PHONY: sway-config
-sway-config: \
-    $(HOME)/.config/sway/config
-$(HOME)/.config/sway/config:
-	mkdir -p $(HOME)/.config/sway
-	ln -s $(DOTDIR)/sway-config $(HOME)/.config/sway/config
-endif
 
 ifeq ($(UNAME),Darwin)
 .PHONY: hyprland-config
