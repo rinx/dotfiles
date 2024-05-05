@@ -137,6 +137,7 @@ else
 .PHONY: hyprland-config
 hyprland-config: \
 	$(HOME)/.config/hypr/hyprland.conf \
+	$(HOME)/.config/hypr/hyprland.local.conf \
 	$(HOME)/.config/hypr/hypridle.conf \
 	$(HOME)/.config/hypr/hyprlock.conf \
 	$(HOME)/.config/waybar/config.jsonc \
@@ -144,6 +145,9 @@ hyprland-config: \
 $(HOME)/.config/hypr/hyprland.conf:
 	mkdir -p $(HOME)/.config/hypr
 	ln -s $(DOTDIR)/hypr/hyprland.conf $(HOME)/.config/hypr/hyprland.conf
+$(HOME)/.config/hypr/hyprland.local.conf:
+	mkdir -p $(HOME)/.config/hypr
+	touch $(HOME)/.config/hypr/hyprland.local.conf
 $(HOME)/.config/hypr/hypridle.conf:
 	mkdir -p $(HOME)/.config/hypr
 	ln -s $(DOTDIR)/hypr/hypridle.conf $(HOME)/.config/hypr/hypridle.conf
