@@ -69,3 +69,7 @@ fi
 if builtin command -v buf > /dev/null 2>&1 ; then
     source <(buf completion zsh)
 fi
+
+if builtin command -v tenv > /dev/null 2>&1 ; then
+    source <(tenv completion zsh)
+fi
