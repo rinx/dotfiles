@@ -69,7 +69,7 @@
 
       # cloud development
       awscli2
-      terraform
+      tenv
 
       # languages
       babashka
