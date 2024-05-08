@@ -19,6 +19,7 @@
    :light-red "0xffd1242f"
    :light-grey "0xffe1e3e4"
    :light-violet "0xffba9cf3"
+   :light-blue "0xff59f8e1"
    :transparent "0x00000000"})
 
 (defn get [key]
@@ -40,7 +41,7 @@
   (get :transparent-black))
 
 (def popup-border
-  (get :grey))
+  (get :transparent-black))
 
 (def shadow
   (get :darker-black))

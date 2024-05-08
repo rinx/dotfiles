@@ -42,6 +42,7 @@
      :background.color colors/background
      :background.height 25
      :background.corner_radius 3
+     :background.border_width 1
      :icon.color colors/icon
      :icon.font (fonts/get :Bold 14.0)
      :icon.padding_left 10

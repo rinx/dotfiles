@@ -24,8 +24,9 @@
            :background.padding_left 3
            :background.padding_right 3}
           (if (= (System/getenv "SELECTED") "true")
-            {:icon.color (colors/get :light-green)
-             :label.color (colors/get :cream)}
+            {:icon.color (colors/get :light-blue)
+             :label.color (colors/get :cream)
+             :background.border_color (colors/get :light-blue)}
             {:icon.color (colors/get :black)
              :label.color (colors/get :black)})))
    (when (= (System/getenv "SENDER") "front_app_switched")

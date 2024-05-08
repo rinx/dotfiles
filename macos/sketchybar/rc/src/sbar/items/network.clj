@@ -14,10 +14,10 @@
     :network.up
     {:label.font (fonts/get :SemiBold 8.0)
      :label "0.0KB/s"
-     :label.color (colors/get :transparent-black)
+     :label.color (colors/get :white)
      :icon.font (fonts/get :SemiBold 7.0)
      :icon (icons/get :net :upload)
-     :icon.color (colors/get :transparent-black)
+     :icon.color (colors/get :white)
      :width 0
      :y_offset 5})
    (sketchybar/add-item :network.down :right)
@@ -25,10 +25,10 @@
     :network.down
     {:label.font (fonts/get :SemiBold 8.0)
      :label "0.0KB/s"
-     :label.color (colors/get :transparent-black)
+     :label.color (colors/get :white)
      :icon.font (fonts/get :SemiBold 7.0)
      :icon (icons/get :net :download)
-     :icon.color (colors/get :transparent-black)
+     :icon.color (colors/get :white)
      :width 0
      :y_offset -5})))
 
