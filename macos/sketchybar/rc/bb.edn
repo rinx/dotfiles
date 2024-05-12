@@ -1,7 +1,7 @@
 {:paths ["src"]
  :deps {io.github.rinx/sbar-bb {:git/sha "d63dd223095a864fc922e7587d9351804b008466"}
         camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.3"}
-        tick/tick {:mvn/version "0.6.0"}}
+        tick/tick {:mvn/version "0.7.5"}}
  :min-bb-version "1.0.0"
  :tasks {:requires ([babashka.fs :as fs])
          :init (do
