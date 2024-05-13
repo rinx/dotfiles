@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended"
   ],
-  "lockFileMaintenance" {
+  "lockFileMaintenance": {
     "enabled": true,
     "extends": ["schedule:daily"]
   },
