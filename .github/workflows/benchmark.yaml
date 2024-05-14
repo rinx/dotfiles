@@ -10,7 +10,7 @@ on:
 jobs:
   benchmark:
     runs-on: macos-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Generate github token
         id: generate_token
