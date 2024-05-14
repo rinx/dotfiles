@@ -1,9 +1,6 @@
 DOTDIR := \
     ~/.dotfiles
 
-BINDIR := \
-    ~/.bin
-
 UNAME := $(eval UNAME := $(shell uname))$(UNAME)
 ARCH :=  $(eval ARCH := $(shell uname -m))$(ARCH)
 
@@ -39,11 +36,5 @@ init: \
     prepare-init \
     tmux-init
 	@$(call cyan, "Done: initialize")
-
-.PHONY: install
-## install binaries
-install: \
-	install-bins
-	@$(call cyan, "Done: install")
 
 include Makefile.d/*.mk
