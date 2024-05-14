@@ -36,7 +36,6 @@
       fcp
       fd
       fzf
-      fzy
       gh
       ghq
       git
