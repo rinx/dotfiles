@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1714636568473,
+  "lastUpdate": 1715685053151,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6595,6 +6595,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 85.55739170000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "rinx",
+            "username": "rinx"
+          },
+          "committer": {
+            "name": "rinx",
+            "username": "rinx"
+          },
+          "id": "f5b30d36b3d6ba4641f56a353e73bfb11f51b910",
+          "message": "config(ci): use nix for benchmark workflow",
+          "timestamp": "2024-05-14T10:09:27Z",
+          "url": "https://github.com/rinx/dotfiles/pull/57/commits/f5b30d36b3d6ba4641f56a353e73bfb11f51b910"
+        },
+        "date": 1715685052527,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.5857746,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 84.3913514,
             "unit": "ms"
           }
         ]
