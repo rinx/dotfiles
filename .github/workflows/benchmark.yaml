@@ -5,6 +5,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+  pull_request:
 
 jobs:
   benchmark:
@@ -18,23 +19,19 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v4
-      - name: Install neovim
+      - uses: cachix/install-nix-action@v26
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          nix_path: nixpkgs=channel:nixos-unstable
+      - name: Install dependencies
         run: |
-          brew install neovim --HEAD
-          brew install deno
-          brew install tree-sitter
+          nix profile install .
+      - name: nvim version
+        run: |
           nvim --version
-      - name: Install babashka
+      - name: babashka version
         run: |
-          bash <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install) --dir $(pwd)
-          ./bb --version
-      # - name: Install vim-startuptime
-      #   run: |
-      #     brew install go
-      #
-      #     go install github.com/rhysd/vim-startuptime@latest
-      #
-      #     echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          bb --version
       - name: Setup dotfiles
         run: |
           make DOTDIR=$(pwd) deploy
@@ -53,7 +50,7 @@ jobs:
           time nvim --headless -V -c 'qall'
       - name: Run benchmark
         run: |
-          ./bb ./.github/scripts/benchmark.clj | tee result.json
+          bb ./.github/scripts/benchmark.clj | tee result.json
       - name: Upload benchmark
         uses: benchmark-action/github-action-benchmark@v1
         with:
