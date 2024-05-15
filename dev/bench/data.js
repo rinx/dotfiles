@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1715686153106,
+  "lastUpdate": 1715745659182,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6659,6 +6659,38 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 84.7509068,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Rintaro Okamura",
+            "username": "rinx",
+            "email": "rintaro.okamura@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "6ff738e77c7bd133a1a3a6b971758b1cf6a287d6",
+          "message": "config(ci): use nix for benchmark workflow (#57)",
+          "timestamp": "2024-05-14T11:19:37Z",
+          "url": "https://github.com/rinx/dotfiles/commit/6ff738e77c7bd133a1a3a6b971758b1cf6a287d6"
+        },
+        "date": 1715745658111,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.858312500000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 84.34185340000002,
             "unit": "ms"
           }
         ]
