@@ -1,6 +1,8 @@
 # dotfiles
 
-[![benchmark](https://img.shields.io/badge/benchmark-nvim%2Fzsh-brightgreen?style=flat-square)](https://rinx.github.io/dotfiles/dev/bench/)
+[![build](https://img.shields.io/github/actions/workflow/status/rinx/dotfiles/nix.yml?style=flat-square&label=nix%20build&logo=nixos)](https://github.com/rinx/dotfiles/actions/workflows/nix.yml)
+[![benchmark](https://img.shields.io/github/actions/workflow/status/rinx/dotfiles/benchmark.yaml?style=flat-square&logo=neovim&label=benchmark%20for%20zsh%2Fneovim
+)](https://rinx.github.io/dotfiles/dev/bench/)
 
 ## Usage
 
