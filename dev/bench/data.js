@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1715842944003,
+  "lastUpdate": 1715843853367,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -5993,6 +5993,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 74.75253459999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "393cfbfca28bc1169cf77d587f25b368ed913c67",
+          "message": "Update README.md",
+          "timestamp": "2024-05-16T16:07:07+09:00",
+          "tree_id": "1a7b586fe18a0571b10ea552e1f389957b63ac1f",
+          "url": "https://github.com/rinx/dotfiles/commit/393cfbfca28bc1169cf77d587f25b368ed913c67"
+        },
+        "date": 1715843852711,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.995792200000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 83.4527747,
             "unit": "ms"
           }
         ]
