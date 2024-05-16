@@ -1,6 +1,5 @@
 # dotfiles
 
-[![release](https://img.shields.io/github/v/release/rinx/dotfiles?style=flat-square)](https://github.com/rinx/dotfiles/releases)
 [![benchmark](https://img.shields.io/badge/benchmark-nvim%2Fzsh-brightgreen?style=flat-square)](https://rinx.github.io/dotfiles/dev/bench/)
 
 ## Usage
