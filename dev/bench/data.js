@@ -336,11 +336,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 310.8040262,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 297.4542,
-            "unit": "ms"
           }
         ]
       },
@@ -374,11 +369,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 370.7997861,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 340.7153,
             "unit": "ms"
           }
         ]
@@ -414,11 +404,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 387.2377819,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 322.3004,
-            "unit": "ms"
           }
         ]
       },
@@ -452,11 +437,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 359.1740611,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 284.4159,
             "unit": "ms"
           }
         ]
@@ -492,11 +472,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 286.7724248,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 256.4502,
-            "unit": "ms"
           }
         ]
       },
@@ -530,11 +505,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 456.6988742,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 291.3956,
             "unit": "ms"
           }
         ]
@@ -570,11 +540,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 252.1824686,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 260.254,
-            "unit": "ms"
           }
         ]
       },
@@ -608,11 +573,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 260.99919620000003,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 218.2186,
             "unit": "ms"
           }
         ]
@@ -648,11 +608,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 588.584965,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 234.581,
-            "unit": "ms"
           }
         ]
       },
@@ -686,11 +641,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 291.1756086,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 227.429,
             "unit": "ms"
           }
         ]
@@ -726,11 +676,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 226.2065552,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 216.0247,
-            "unit": "ms"
           }
         ]
       },
@@ -764,11 +709,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 238.5601837,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 214.1694,
             "unit": "ms"
           }
         ]
@@ -804,11 +744,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 251.62181070000003,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 225.8243,
-            "unit": "ms"
           }
         ]
       },
@@ -842,11 +777,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 289.6775007,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 247.982,
             "unit": "ms"
           }
         ]
@@ -882,11 +812,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 253.64568749999998,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 210.7603,
-            "unit": "ms"
           }
         ]
       },
@@ -920,11 +845,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 252.14188100000007,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 228.7426,
             "unit": "ms"
           }
         ]
@@ -960,11 +880,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 365.54780839999995,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 227.107,
-            "unit": "ms"
           }
         ]
       },
@@ -998,11 +913,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 282.7000609,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 219.1019,
             "unit": "ms"
           }
         ]
@@ -1038,11 +948,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 268.5501817,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 276.3701,
-            "unit": "ms"
           }
         ]
       },
@@ -1076,11 +981,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 304.76615469999996,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 284.9398,
             "unit": "ms"
           }
         ]
@@ -1116,11 +1016,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 342.6050783,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 282.4576,
-            "unit": "ms"
           }
         ]
       },
@@ -1154,11 +1049,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 376.6408818999999,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 324.3405,
             "unit": "ms"
           }
         ]
@@ -1194,11 +1084,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 343.0283901,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 301.0294,
-            "unit": "ms"
           }
         ]
       },
@@ -1232,11 +1117,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 362.9117513,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 326.8965,
             "unit": "ms"
           }
         ]
@@ -1272,11 +1152,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 297.26309729999997,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 239.5425,
-            "unit": "ms"
           }
         ]
       },
@@ -1310,11 +1185,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 298.1561039,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 246.5775,
             "unit": "ms"
           }
         ]
@@ -1350,11 +1220,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 284.33625739999997,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 259.9888,
-            "unit": "ms"
           }
         ]
       },
@@ -1388,11 +1253,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 294.81895620000006,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 259.5585,
             "unit": "ms"
           }
         ]
@@ -1428,11 +1288,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 309.87178070000004,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 272.5715,
-            "unit": "ms"
           }
         ]
       },
@@ -1466,11 +1321,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 263.7625914,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 236.7636,
             "unit": "ms"
           }
         ]
@@ -1506,11 +1356,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 267.9505843,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 247.9764,
-            "unit": "ms"
           }
         ]
       },
@@ -1544,11 +1389,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 405.8360881,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 351.371,
             "unit": "ms"
           }
         ]
@@ -1584,11 +1424,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 256.8490026,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 233.0431,
-            "unit": "ms"
           }
         ]
       },
@@ -1622,11 +1457,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 364.0683438,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 263.1462,
             "unit": "ms"
           }
         ]
@@ -1662,11 +1492,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 263.21347819999994,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 253.5018,
-            "unit": "ms"
           }
         ]
       },
@@ -1700,11 +1525,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 271.80578890000004,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 240.935,
             "unit": "ms"
           }
         ]
@@ -1740,11 +1560,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 286.1234649,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 250.4875,
-            "unit": "ms"
           }
         ]
       },
@@ -1778,11 +1593,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 281.60573280000006,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 235.718,
             "unit": "ms"
           }
         ]
@@ -1818,11 +1628,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 330.7051368000001,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 288.5002,
-            "unit": "ms"
           }
         ]
       },
@@ -1856,11 +1661,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 386.5531072,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 278.9031,
             "unit": "ms"
           }
         ]
@@ -1896,11 +1696,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 268.3021081,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 233.1501,
-            "unit": "ms"
           }
         ]
       },
@@ -1934,11 +1729,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 296.0142373,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 293.6086,
             "unit": "ms"
           }
         ]
@@ -1974,11 +1764,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 331.59094810000005,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 274.4706,
-            "unit": "ms"
           }
         ]
       },
@@ -2012,11 +1797,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 422.4819697,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 298.2234,
             "unit": "ms"
           }
         ]
@@ -2052,11 +1832,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 409.1304262,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 287.0798,
-            "unit": "ms"
           }
         ]
       },
@@ -2090,11 +1865,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 300.0482591,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 257.171,
             "unit": "ms"
           }
         ]
@@ -2130,11 +1900,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 319.2559595,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 271.8689,
-            "unit": "ms"
           }
         ]
       },
@@ -2168,11 +1933,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 338.9309511999999,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 264.4672,
             "unit": "ms"
           }
         ]
@@ -2208,11 +1968,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 300.72382319999997,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 261.0933,
-            "unit": "ms"
           }
         ]
       },
@@ -2246,11 +2001,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 335.3792567,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 288.3046,
             "unit": "ms"
           }
         ]
@@ -2286,11 +2036,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 357.1128166,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 277.8933,
-            "unit": "ms"
           }
         ]
       },
@@ -2324,11 +2069,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 303.7997827,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 256.0731,
             "unit": "ms"
           }
         ]
@@ -2364,11 +2104,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 474.2657771000001,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 351.3675,
-            "unit": "ms"
           }
         ]
       },
@@ -2402,11 +2137,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 389.5088221,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 339.7738,
             "unit": "ms"
           }
         ]
@@ -2442,11 +2172,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 332.5440537,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 297.1725,
-            "unit": "ms"
           }
         ]
       },
@@ -2480,11 +2205,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 383.6964084,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 312.2075,
             "unit": "ms"
           }
         ]
@@ -2520,11 +2240,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 301.78184380000005,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 262.3055,
-            "unit": "ms"
           }
         ]
       },
@@ -2558,11 +2273,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 265.54476430000005,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 232.8761,
             "unit": "ms"
           }
         ]
@@ -2598,11 +2308,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 303.10241069999995,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 246.281,
-            "unit": "ms"
           }
         ]
       },
@@ -2636,11 +2341,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 332.5932455000001,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 248.0555,
             "unit": "ms"
           }
         ]
@@ -2676,11 +2376,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 270.7632002,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 233.473,
-            "unit": "ms"
           }
         ]
       },
@@ -2714,11 +2409,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 324.25220049999996,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 256.0435,
             "unit": "ms"
           }
         ]
@@ -2754,11 +2444,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 271.4228099999999,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 236.6286,
-            "unit": "ms"
           }
         ]
       },
@@ -2792,11 +2477,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 276.4966969999999,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 236.3357,
             "unit": "ms"
           }
         ]
@@ -2832,11 +2512,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 268.10633529999996,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 230.1786,
-            "unit": "ms"
           }
         ]
       },
@@ -2870,11 +2545,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 261.2537481,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 251.3544,
             "unit": "ms"
           }
         ]
@@ -2910,11 +2580,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 303.91261640000005,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 255.545,
-            "unit": "ms"
           }
         ]
       },
@@ -2948,11 +2613,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 279.2855261,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 263.0347,
             "unit": "ms"
           }
         ]
@@ -2988,11 +2648,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 280.5228492,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 247.9015,
-            "unit": "ms"
           }
         ]
       },
@@ -3026,11 +2681,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 273.3219836,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 226.7997,
             "unit": "ms"
           }
         ]
@@ -3066,11 +2716,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 310.7069875,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 268.2833,
-            "unit": "ms"
           }
         ]
       },
@@ -3104,11 +2749,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 329.6452155,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 279.3252,
             "unit": "ms"
           }
         ]
@@ -3144,11 +2784,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 304.6662853,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 249.4194,
-            "unit": "ms"
           }
         ]
       },
@@ -3182,11 +2817,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 441.69065600000005,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 696.9476,
             "unit": "ms"
           }
         ]
@@ -3222,11 +2852,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 384.6679577,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 257.3025,
-            "unit": "ms"
           }
         ]
       },
@@ -3260,11 +2885,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 342.3284224000001,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 295.4397,
             "unit": "ms"
           }
         ]
@@ -3300,11 +2920,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 327.67375359999994,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 274.1013,
-            "unit": "ms"
           }
         ]
       },
@@ -3338,11 +2953,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 286.532406,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 254.5843,
             "unit": "ms"
           }
         ]
@@ -3378,11 +2988,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 256.4247499,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 226.7341,
-            "unit": "ms"
           }
         ]
       },
@@ -3416,11 +3021,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 330.33411099999995,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 294.2328,
             "unit": "ms"
           }
         ]
@@ -3456,11 +3056,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 281.49881830000004,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 262.5638,
-            "unit": "ms"
           }
         ]
       },
@@ -3494,11 +3089,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 291.4797239,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 266.1469,
             "unit": "ms"
           }
         ]
@@ -3534,11 +3124,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 252.95722530000003,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 234.6686,
-            "unit": "ms"
           }
         ]
       },
@@ -3572,11 +3157,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 279.21127160000003,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 255.3746,
             "unit": "ms"
           }
         ]
@@ -3612,11 +3192,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 282.4692152,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 246.1302,
-            "unit": "ms"
           }
         ]
       },
@@ -3650,11 +3225,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 450.8270396,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 259.5054,
             "unit": "ms"
           }
         ]
@@ -3690,11 +3260,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 396.12838239999996,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 315.9028,
-            "unit": "ms"
           }
         ]
       },
@@ -3728,11 +3293,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 273.80255999999997,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 244.0887,
             "unit": "ms"
           }
         ]
@@ -3768,11 +3328,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 291.8633841,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 247.0518,
-            "unit": "ms"
           }
         ]
       },
@@ -3806,11 +3361,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 541.2678003000002,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 291.322,
             "unit": "ms"
           }
         ]
@@ -3846,11 +3396,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 578.9396746,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 318.4778,
-            "unit": "ms"
           }
         ]
       },
@@ -3882,11 +3427,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 500.8983056,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 323.6228,
             "unit": "ms"
           }
         ]
@@ -3922,11 +3462,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 186.39842860000002,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 171.4269,
-            "unit": "ms"
           }
         ]
       },
@@ -3960,11 +3495,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 231.0465413,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 192.2483,
             "unit": "ms"
           }
         ]
@@ -4000,11 +3530,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 225.24704860000003,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 178.4925,
-            "unit": "ms"
           }
         ]
       },
@@ -4038,11 +3563,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 198.3363001,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 182.9575,
             "unit": "ms"
           }
         ]
@@ -4078,11 +3598,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 202.9910961,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 167.2706,
-            "unit": "ms"
           }
         ]
       },
@@ -4117,11 +3632,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 435.0856596,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 183.1309,
-            "unit": "ms"
           }
         ]
       },
@@ -4153,11 +3663,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 481.0085637,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 198.3359,
             "unit": "ms"
           }
         ]
@@ -4191,11 +3696,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 378.6882427000001,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 187.611,
-            "unit": "ms"
           }
         ]
       },
@@ -4228,11 +3728,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 490.03110879999997,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 198.3092,
-            "unit": "ms"
           }
         ]
       },
@@ -4264,11 +3759,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 237.07301059999995,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 181.7026,
             "unit": "ms"
           }
         ]
@@ -4304,11 +3794,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 474.2603590999999,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 173.3744,
-            "unit": "ms"
           }
         ]
       },
@@ -4343,11 +3828,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 188.2169577,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 175.6362,
-            "unit": "ms"
           }
         ]
       },
@@ -4379,11 +3859,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 242.587691,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 197.696,
             "unit": "ms"
           }
         ]
@@ -4419,11 +3894,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 156.05284650000002,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 143.4176,
-            "unit": "ms"
           }
         ]
       },
@@ -4455,11 +3925,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 181.8212524,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 166.4923,
             "unit": "ms"
           }
         ]
@@ -4495,11 +3960,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 173.06583289999998,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 155.8617,
-            "unit": "ms"
           }
         ]
       },
@@ -4533,11 +3993,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 175.6756488,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 161.9664,
             "unit": "ms"
           }
         ]
@@ -4573,11 +4028,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 164.6877869,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 151.8135,
-            "unit": "ms"
           }
         ]
       },
@@ -4611,11 +4061,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 165.50198229999998,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 151.9849,
             "unit": "ms"
           }
         ]
@@ -4651,11 +4096,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 167.7661849,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 153.8713,
-            "unit": "ms"
           }
         ]
       },
@@ -4689,11 +4129,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 161.0705304,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 211.2789,
             "unit": "ms"
           }
         ]
@@ -4729,11 +4164,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 178.49398100000002,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 152.9805,
-            "unit": "ms"
           }
         ]
       },
@@ -4767,11 +4197,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 156.87466639999997,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 143.8629,
             "unit": "ms"
           }
         ]
@@ -4807,11 +4232,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 32.6805004,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 19.5993,
-            "unit": "ms"
           }
         ]
       },
@@ -4845,11 +4265,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 164.3555507,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 153.6123,
             "unit": "ms"
           }
         ]
@@ -4885,11 +4300,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 187.72165489999998,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 171.1536,
-            "unit": "ms"
           }
         ]
       },
@@ -4923,11 +4333,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 156.8562792,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 146.9526,
             "unit": "ms"
           }
         ]
@@ -4963,11 +4368,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 172.1201077,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 153.6434,
-            "unit": "ms"
           }
         ]
       },
@@ -5001,11 +4401,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 174.9150596,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 156.3053,
             "unit": "ms"
           }
         ]
@@ -5041,11 +4436,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 176.7484455,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 154.981,
-            "unit": "ms"
           }
         ]
       },
@@ -5079,11 +4469,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 161.6443784,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 148.0937,
             "unit": "ms"
           }
         ]
@@ -5119,11 +4504,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 192.64562610000002,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 173.1688,
-            "unit": "ms"
           }
         ]
       },
@@ -5157,11 +4537,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 158.9088251,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 142.9326,
             "unit": "ms"
           }
         ]
@@ -5197,11 +4572,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 170.62188830000005,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 147.8394,
-            "unit": "ms"
           }
         ]
       },
@@ -5235,11 +4605,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 192.70060560000002,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 163.7184,
             "unit": "ms"
           }
         ]
@@ -5275,11 +4640,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 165.7669624,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 151.8735,
-            "unit": "ms"
           }
         ]
       },
@@ -5313,11 +4673,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 164.1377617,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 152.7841,
             "unit": "ms"
           }
         ]
@@ -5353,11 +4708,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 174.33569419999998,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 154.9947,
-            "unit": "ms"
           }
         ]
       },
@@ -5391,11 +4741,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 216.5615444,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 178.0905,
             "unit": "ms"
           }
         ]
@@ -5431,11 +4776,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 124.1661861,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 110.1259,
-            "unit": "ms"
           }
         ]
       },
@@ -5469,11 +4809,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 193.4160226,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 162.5071,
             "unit": "ms"
           }
         ]
@@ -5509,11 +4844,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 181.5109018,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 152.8156,
-            "unit": "ms"
           }
         ]
       },
@@ -5547,11 +4877,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 135.98153059999999,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 116.3,
             "unit": "ms"
           }
         ]
@@ -5587,11 +4912,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 129.1113552,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 114.093,
-            "unit": "ms"
           }
         ]
       },
@@ -5625,11 +4945,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 129.5538971,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 109.3274,
             "unit": "ms"
           }
         ]
@@ -5665,11 +4980,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 123.31573019999999,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 110.5272,
-            "unit": "ms"
           }
         ]
       },
@@ -5703,11 +5013,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 146.65045020000002,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 112.5274,
             "unit": "ms"
           }
         ]
@@ -5743,11 +5048,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 126.90659430000001,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 111.7415,
-            "unit": "ms"
           }
         ]
       },
@@ -5781,11 +5081,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 133.7588312,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 108.9,
             "unit": "ms"
           }
         ]
@@ -5821,11 +5116,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 122.52808089999999,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 108.89,
-            "unit": "ms"
           }
         ]
       },
@@ -5859,11 +5149,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 121.19156329999998,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 108.956,
             "unit": "ms"
           }
         ]
@@ -5899,11 +5184,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 151.5005869,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 137.4492,
-            "unit": "ms"
           }
         ]
       },
@@ -5937,11 +5217,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 203.8572839,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 168.8115,
             "unit": "ms"
           }
         ]
@@ -5977,11 +5252,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 139.38044559999997,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 109.112,
-            "unit": "ms"
           }
         ]
       },
@@ -6015,11 +5285,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 179.8012822,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 159.7779,
             "unit": "ms"
           }
         ]
@@ -6055,11 +5320,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 146.5011057,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 120.8675,
-            "unit": "ms"
           }
         ]
       },
@@ -6093,11 +5353,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 149.11756010000002,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 139.8179,
             "unit": "ms"
           }
         ]
@@ -6133,11 +5388,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 163.20115460000002,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 147.3872,
-            "unit": "ms"
           }
         ]
       },
@@ -6171,11 +5421,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 121.24037619999997,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 105.8839,
             "unit": "ms"
           }
         ]
@@ -6211,11 +5456,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 125.64096749999999,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 101.8206,
-            "unit": "ms"
           }
         ]
       },
@@ -6249,11 +5489,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 168.71329719999997,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 148.0149,
             "unit": "ms"
           }
         ]
@@ -6289,11 +5524,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 137.6359279,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 116.6089,
-            "unit": "ms"
           }
         ]
       },
@@ -6327,11 +5557,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 121.50031229999999,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 104.7037,
             "unit": "ms"
           }
         ]
@@ -6367,11 +5592,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 123.7564477,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 106.9974,
-            "unit": "ms"
           }
         ]
       },
@@ -6405,11 +5625,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 142.5469099,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 124.9775,
             "unit": "ms"
           }
         ]
@@ -6445,11 +5660,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 253.09682510000002,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 194.3108,
-            "unit": "ms"
           }
         ]
       },
@@ -6484,11 +5694,6 @@ window.BENCHMARK_DATA = {
             "name": "neovim load time",
             "value": 205.95082229999997,
             "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 169.2437,
-            "unit": "ms"
           }
         ]
       },
@@ -6522,11 +5727,6 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 287.0689508,
-            "unit": "ms"
-          },
-          {
-            "name": "neovim startup time",
-            "value": 255.6332,
             "unit": "ms"
           }
         ]
