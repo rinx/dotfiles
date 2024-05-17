@@ -22,3 +22,6 @@ jobs:
       - name: nix flake check
         run: |
           nix flake check --all-systems
+      - name: nix flake show
+        run: |
+          nix flake show --all-systems
