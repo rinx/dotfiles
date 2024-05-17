@@ -23,7 +23,7 @@ make deploy
 ### Nix shell
 
 ```sh
-nix shell
+nix shell --command zsh
 ```
 
 ### Nix profile install
