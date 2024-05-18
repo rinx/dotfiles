@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1715956172242,
+  "lastUpdate": 1716042483645,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6229,6 +6229,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.12156639999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3f59ea1b1bcd7fa97dd87549f6849dad583d7123",
+          "message": "add(nix): add nixd and docker-compose-ls\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-05-18T23:17:33+09:00",
+          "tree_id": "55db04e3a27abd159922ec558c93929fff437068",
+          "url": "https://github.com/rinx/dotfiles/commit/3f59ea1b1bcd7fa97dd87549f6849dad583d7123"
+        },
+        "date": 1716042482689,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.115909800000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.2266217,
             "unit": "ms"
           }
         ]
