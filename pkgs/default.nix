@@ -87,6 +87,7 @@
       clojure-lsp
       cuelsp
       delve
+      docker-compose-language-service
       dockerfile-language-server-nodejs
       efm-langserver
       fennel-ls
@@ -96,6 +97,7 @@
       jq-lsp
       marksman
       nil
+      nixd
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       regal

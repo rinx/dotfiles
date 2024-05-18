@@ -63,6 +63,7 @@
                                        "https://crux.land" true}}}}
                      :root_dir (lsputil.root_pattern "deno.json"
                                                      "deno.jsonc")}))
+(lsp.docker_compose_language_service.setup (core.merge default-options {}))
 (lsp.dockerls.setup (core.merge default-options {}))
 (lsp.efm.setup (core.merge
                  default-options
@@ -172,6 +173,7 @@
 (lsp.kotlin_language_server.setup (core.merge default-options {}))
 (lsp.marksman.setup (core.merge default-options {}))
 (lsp.nil_ls.setup (core.merge default-options {}))
+(lsp.nixd.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
 (lsp.regal.setup (core.merge default-options {}))
 (lsp.regols.setup (core.merge default-options {}))
