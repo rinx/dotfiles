@@ -29,7 +29,10 @@
    :command "setf julia"}
   {:events [:BufNewFile :BufRead :BufWinEnter]
    :pattern "*.tf,*.tfvars"
-   :command "setf terraform"})
+   :command "setf terraform"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "docker-compose.yaml"
+   :command "setf yaml.docker-compose"})
 
 (augroup!
   init-git-files

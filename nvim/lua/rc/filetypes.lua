@@ -14,6 +14,7 @@ do
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf jq", group = group_5_auto, pattern = "*.jq"})
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf julia", group = group_5_auto, pattern = "*.jl"})
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf terraform", group = group_5_auto, pattern = "*.tf,*.tfvars"})
+  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf yaml.docker-compose", group = group_5_auto, pattern = "docker-compose.yaml"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-git-files", {clear = true})
