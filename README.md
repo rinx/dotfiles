@@ -4,6 +4,11 @@
 [![benchmark](https://img.shields.io/github/actions/workflow/status/rinx/dotfiles/benchmark.yaml?style=flat-square&logo=neovim&label=benchmark%20for%20zsh%2Fneovim
 )](https://rinx.github.io/dotfiles/dev/bench/)
 
+![total lines](https://tokei.rs/b1/github/rinx/dotfiles?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rinx/dotfiles?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/rinx/dotfiles?style=flat-square)
+![GitHub commit year activity](https://img.shields.io/github/commit-activity/y/rinx/dotfiles?style=flat-square)
+
 ## Usage
 
 
