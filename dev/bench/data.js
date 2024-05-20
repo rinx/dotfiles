@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1716199867432,
+  "lastUpdate": 1716206303719,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6365,6 +6365,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.4753039,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ea0d4a92a0b49ae34b56b913f61ed8f251c830cb",
+          "message": "refactor(nix): remove redundant parens\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-05-20T20:48:09+09:00",
+          "tree_id": "475d11c6838fc22c2be6e6109be49ca0aa91c08b",
+          "url": "https://github.com/rinx/dotfiles/commit/ea0d4a92a0b49ae34b56b913f61ed8f251c830cb"
+        },
+        "date": 1716206302741,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.699348899999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.7097688,
             "unit": "ms"
           }
         ]
