@@ -36,3 +36,7 @@ nix shell --command zsh
 ```sh
 nix profile install .
 ```
+
+## Zsh/Neovim load time benchmark
+
+Results available in [gh-pages](https://rinx.github.io/dotfiles/dev/bench/).
