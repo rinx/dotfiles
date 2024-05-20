@@ -5,14 +5,14 @@
 }: let 
     fennel-language-server = pkgs.callPackage ./fennel-language-server.nix {};
 
-    google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents ([
+    google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents [
       pkgs.google-cloud-sdk.components.beta
       pkgs.google-cloud-sdk.components.bq
       pkgs.google-cloud-sdk.components.core
       pkgs.google-cloud-sdk.components.gcloud-crc32c
       pkgs.google-cloud-sdk.components.gsutil
       pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
-    ]);
+    ];
 
     moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix {};
 
