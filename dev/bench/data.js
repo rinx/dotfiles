@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1716425011452,
+  "lastUpdate": 1716513750986,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6501,6 +6501,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.5837186,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "05fd22b91adf07ea71fa071ab2d575a90be897a6",
+          "message": "chore(nix): add kubecolor\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-05-24T10:12:24+09:00",
+          "tree_id": "d53193afc884490a7a5f06023c45602ef0ffee5e",
+          "url": "https://github.com/rinx/dotfiles/commit/05fd22b91adf07ea71fa071ab2d575a90be897a6"
+        },
+        "date": 1716513750598,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.285721700000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.42730979999999,
             "unit": "ms"
           }
         ]
