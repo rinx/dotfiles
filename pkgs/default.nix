@@ -60,6 +60,7 @@
       helmfile
       k3d
       k9s
+      kubecolor
       kubectl
       kubectx
       kubernetes-helm
