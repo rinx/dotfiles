@@ -29,6 +29,7 @@
       # tools
       bat
       cmakeMinimal
+      cosign
       curl
       delta
       docker-credential-helpers
@@ -39,6 +40,7 @@
       gh
       ghq
       git
+      gitsign
       gnumake
       jq
       neovim-unwrapped
