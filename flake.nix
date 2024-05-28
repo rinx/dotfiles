@@ -24,7 +24,7 @@
           system = system;
           config.allowUnfree = true;
           overlays = [
-            neovim-nightly.overlay
+            neovim-nightly.overlays.default
           ];
         };
       in {
