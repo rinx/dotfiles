@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1716513750986,
+  "lastUpdate": 1716866106287,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6535,6 +6535,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.42730979999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "133d1a9ee21f71a32868a52dfa88ec562592f9bf",
+          "message": "chore(deps): update neovim-nightly-overlay\n\n- fix usage\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-05-28T12:06:10+09:00",
+          "tree_id": "66a527616fdb8f826f3181df2f00abbe36c20d6d",
+          "url": "https://github.com/rinx/dotfiles/commit/133d1a9ee21f71a32868a52dfa88ec562592f9bf"
+        },
+        "date": 1716866105708,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.1317965,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.5569538,
             "unit": "ms"
           }
         ]
