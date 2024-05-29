@@ -81,6 +81,7 @@
       gfortran
       go
       nodejs
+      protobuf
       typescript
       zig
 
