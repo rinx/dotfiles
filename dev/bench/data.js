@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1717467226043,
+  "lastUpdate": 1717467488337,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6773,6 +6773,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.43088750000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8e72f4e92001bc4e5434e7d345aa92eae9954a66",
+          "message": "chore(renovate): lockfile maintenance weekly\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-06-04T11:09:57+09:00",
+          "tree_id": "0f9bd27494fe8b6f868b2e9de183322a11441ef6",
+          "url": "https://github.com/rinx/dotfiles/commit/8e72f4e92001bc4e5434e7d345aa92eae9954a66"
+        },
+        "date": 1717467487686,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.154592700000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.1507293,
             "unit": "ms"
           }
         ]
