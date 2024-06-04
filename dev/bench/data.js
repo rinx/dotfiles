@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1717467488337,
+  "lastUpdate": 1717489506751,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6807,6 +6807,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.1507293,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2f1f9a5fe7fa2731f62453d03dfe1f66c1098e14",
+          "message": "chore(ci): use multiple os for nix build workflow\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-06-04T17:17:10+09:00",
+          "tree_id": "af1dbdbc829034caee116b0fb3a07960357f3231",
+          "url": "https://github.com/rinx/dotfiles/commit/2f1f9a5fe7fa2731f62453d03dfe1f66c1098e14"
+        },
+        "date": 1717489506293,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.9529043,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 75.70712449999999,
             "unit": "ms"
           }
         ]
