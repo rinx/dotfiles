@@ -83,9 +83,10 @@
       nodejs
       protobuf
       typescript
-      zig
+      # zig ## https://github.com/NixOS/nixpkgs/issues/317055
 
       # LSP / DAP / Linter / Formatter
+      bash-language-server
       buf-language-server
       clj-kondo
       clojure-lsp
@@ -102,7 +103,6 @@
       marksman
       nil
       nixd
-      nodePackages.bash-language-server
       nodePackages.typescript-language-server
       regal
       regols
@@ -111,7 +111,7 @@
       tflint
       vscode-langservers-extracted
       yaml-language-server
-      zls
+      # zls ## https://github.com/NixOS/nixpkgs/issues/317055
 
       # fonts
       hackgen-nf-font
