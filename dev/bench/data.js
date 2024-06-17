@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1717490321826,
+  "lastUpdate": 1718620193585,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -6875,6 +6875,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 76.78859109999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "925097078c818481b2b4d2340fc88df624354549",
+          "message": "chore-deps(nix): temporarily remove zig tools\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-06-17T19:21:49+09:00",
+          "tree_id": "ec79043a86e7123541fe2eaf4de7ef4cb07f9e56",
+          "url": "https://github.com/rinx/dotfiles/commit/925097078c818481b2b4d2340fc88df624354549"
+        },
+        "date": 1718620193257,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.3289662,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.4288128,
             "unit": "ms"
           }
         ]
