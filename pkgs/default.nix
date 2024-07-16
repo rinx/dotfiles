@@ -83,7 +83,7 @@
       nodejs
       protobuf
       typescript
-      # zig ## https://github.com/NixOS/nixpkgs/issues/317055
+      zig
 
       # LSP / DAP / Linter / Formatter
       bash-language-server
@@ -111,7 +111,7 @@
       tflint
       vscode-langservers-extracted
       yaml-language-server
-      # zls ## https://github.com/NixOS/nixpkgs/issues/317055
+      zls
 
       # fonts
       hackgen-nf-font
