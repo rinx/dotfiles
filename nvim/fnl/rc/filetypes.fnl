@@ -28,6 +28,9 @@
    :pattern "*.jl"
    :command "setf julia"}
   {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "*.rego,*.rq"
+   :command "setf rego"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
    :pattern "*.tf,*.tfvars"
    :command "setf terraform"}
   {:events [:BufNewFile :BufRead :BufWinEnter]
@@ -130,7 +133,7 @@
 (augroup!
   init-rego
   {:events [:BufWritePre]
-   :pattern "*.rego"
+   :pattern "*.rego,*.rq"
    :callback lsp-format})
 
 (augroup!

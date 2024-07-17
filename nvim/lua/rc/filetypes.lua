@@ -13,6 +13,7 @@ do
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf fortran", group = group_5_auto, pattern = "*.nml,*.namelist"})
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf jq", group = group_5_auto, pattern = "*.jq"})
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf julia", group = group_5_auto, pattern = "*.jl"})
+  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf rego", group = group_5_auto, pattern = "*.rego,*.rq"})
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf terraform", group = group_5_auto, pattern = "*.tf,*.tfvars"})
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf yaml.docker-compose", group = group_5_auto, pattern = "docker-compose.yaml"})
 end
@@ -71,7 +72,7 @@ do
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-rego", {clear = true})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.rego"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.rego,*.rq"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-rust", {clear = true})
