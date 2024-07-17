@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1721212596769,
+  "lastUpdate": 1721212816877,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7147,6 +7147,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.8996647,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e8108dc97ab79f5325058d618bf73e0af73b265f",
+          "message": "fix(nvim): fix opa-check-strict option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-07-17T19:33:04+09:00",
+          "tree_id": "9ef0658c27bc515162d61bdb6b09f88a44d52b14",
+          "url": "https://github.com/rinx/dotfiles/commit/e8108dc97ab79f5325058d618bf73e0af73b265f"
+        },
+        "date": 1721212816480,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.497568700000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.18653990000001,
             "unit": "ms"
           }
         ]
