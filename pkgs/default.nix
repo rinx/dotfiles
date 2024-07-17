@@ -26,7 +26,7 @@
 
     paths = with pkgs; [
 
-      # tools
+      ## tools
       bat
       cmakeMinimal
       cosign
@@ -58,8 +58,8 @@
       zellij
       zsh
 
-      # k8s
-      helmfile
+      ## k8s
+      # helmfile
       k3d
       k9s
       kubecolor
@@ -69,11 +69,11 @@
       kustomize
       stern
 
-      # cloud development
+      ## cloud development
       awscli2
       tenv
 
-      # languages
+      ## languages
       babashka
       buf
       clojure
@@ -85,7 +85,7 @@
       typescript
       # zig ## https://github.com/NixOS/nixpkgs/issues/317055
 
-      # LSP / DAP / Linter / Formatter
+      ## LSP / DAP / Linter / Formatter
       bash-language-server
       buf-language-server
       clj-kondo
@@ -112,7 +112,7 @@
       yaml-language-server
       # zls ## https://github.com/NixOS/nixpkgs/issues/317055
 
-      # fonts
+      ## fonts
       hackgen-nf-font
       (nerdfonts.override {
         fonts = [
