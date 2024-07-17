@@ -105,7 +105,6 @@
       nixd
       nodePackages.typescript-language-server
       regal
-      regols
       shellcheck
       terraform-ls
       tflint

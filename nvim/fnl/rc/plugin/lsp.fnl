@@ -71,7 +71,6 @@
                               :dockerfile
                               :markdown
                               :proto
-                              :rego
                               :sh
                               :vcl]
                   :init_options {:codeAction true
@@ -104,14 +103,6 @@
                       :hoverStdin true}]
                     :proto
                     [{:lintCommand "buf lint --path"}]
-                    :rego
-                    [{:lintCommand "regal lint --format=github ${INPUT}"
-                      :lintIgnoreExitCode true
-                      :lintFormats ["%E::error file=%f,line=%l,col=%c::%m"
-                                    "%W::warning file=%f,line=%l,col=%c::%m"
-                                    "%I::notice file=%f,line=%l,col=%c::%m"]}
-                     {:formatCommand "opa fmt"
-                      :formatStdin true}]
                     :sh
                     [{:lintCommand "shellcheck -f gcc -x"
                       :lintSource "shellcheck"
@@ -176,7 +167,7 @@
 (lsp.nixd.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
 (lsp.regal.setup (core.merge default-options {}))
-(lsp.regols.setup (core.merge default-options {}))
+; (lsp.regols.setup (core.merge default-options {}))
 (lsp.terraformls.setup (core.merge
                          default-options
                          {:settings
