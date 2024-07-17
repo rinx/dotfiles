@@ -106,6 +106,7 @@
                     [{:lintCommand "buf lint --path"}]
                     :rego
                     [{:lintCommand "opa check --strict"
+                      :lintIgnoreExitCode true
                       :lintFormats ["%m: %f:%l: %m"
                                     "%f:%l: %m"]}]
                     :sh
