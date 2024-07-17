@@ -71,6 +71,7 @@
                               :dockerfile
                               :markdown
                               :proto
+                              :rego
                               :sh
                               :vcl]
                   :init_options {:codeAction true
@@ -103,6 +104,10 @@
                       :hoverStdin true}]
                     :proto
                     [{:lintCommand "buf lint --path"}]
+                    :rego
+                    [{:lintCommand "opa check --strict"
+                      :lintFormats ["%m: %f:%l: %m"
+                                    "%f:%l: %m"]}]
                     :sh
                     [{:lintCommand "shellcheck -f gcc -x"
                       :lintSource "shellcheck"
@@ -167,7 +172,6 @@
 (lsp.nixd.setup (core.merge default-options {}))
 (lsp.pylsp.setup (core.merge default-options {}))
 (lsp.regal.setup (core.merge default-options {}))
-; (lsp.regols.setup (core.merge default-options {}))
 (lsp.terraformls.setup (core.merge
                          default-options
                          {:settings
