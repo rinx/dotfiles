@@ -16,10 +16,13 @@
 
     moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix {};
 
+    rq = pkgs.callPackage ./rq.nix {};
+
     custom-pkgs = [
       fennel-language-server
       google-cloud-sdk-with-components
       moralerspace-nerdfont
+      rq
     ];
   in pkgs.buildEnv {
     name = "basic-packages";
