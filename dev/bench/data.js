@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1721007681694,
+  "lastUpdate": 1721211578347,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7079,6 +7079,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 76.74313880000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d14ee289d010c233d2f7afbb706ae341f3f5fc32",
+          "message": "config(nvim): use regal only as an ls\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-07-17T19:11:54+09:00",
+          "tree_id": "f57ad1e7bafcb9c53dd3f988fbb228a8b8843f04",
+          "url": "https://github.com/rinx/dotfiles/commit/d14ee289d010c233d2f7afbb706ae341f3f5fc32"
+        },
+        "date": 1721211577989,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.015565799999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 86.3723386,
             "unit": "ms"
           }
         ]
