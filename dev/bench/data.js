@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1721368987691,
+  "lastUpdate": 1721433408242,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7317,6 +7317,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.21693259999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "cf7d6b698f439ce98a6347f40abfeb8787fa972e",
+          "message": "fix(nvim): fix codelens autocmd\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-07-20T08:48:30+09:00",
+          "tree_id": "f3a026235637efc112cce00102c2b49cab8bd1bd",
+          "url": "https://github.com/rinx/dotfiles/commit/cf7d6b698f439ce98a6347f40abfeb8787fa972e"
+        },
+        "date": 1721433407776,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.129077700000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.293121,
             "unit": "ms"
           }
         ]
