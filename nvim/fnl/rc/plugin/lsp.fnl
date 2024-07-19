@@ -91,10 +91,11 @@
                     [{:lintCommand "hadolint --no-color"
                       :lintFormats ["%f:%l %m"]}]
                     :markdown
-                    [{:lintCommand "deno run --allow-env --allow-net --allow-read --allow-sys --allow-write ~/.dotfiles/tools/textlint/textlint.ts ${INPUT}"
-                      :lintIgnoreExitCode true
-                      :lintFormats ["%f:%l:%n: %m"]}
-                     {:lintCommand "deno run --allow-env --allow-read --allow-sys npm:markdownlint-cli@latest -s -c %USERPROFILE%.markdownlintrc"
+                    [
+                     ; {:lintCommand "deno run --allow-env --allow-net --allow-read --allow-sys --allow-write ~/.dotfiles/tools/textlint/textlint.ts ${INPUT}"
+                     ;  :lintIgnoreExitCode true
+                     ;  :lintFormats ["%f:%l:%n: %m"]}
+                     {:lintCommand "deno run --allow-env --allow-read --allow-sys --no-lock npm:markdownlint-cli@latest -s -c ~/.dotfiles/markdownlintrc"
                       :lintIgnoreExitCode true
                       :lintStdin true
                       :lintFormats ["%f:%l %m"
