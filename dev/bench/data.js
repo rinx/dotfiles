@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1721226846016,
+  "lastUpdate": 1721368987691,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7283,6 +7283,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.4754777,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "adc0208d93ce7759ac63d1b76b68e21e4e0a9f98",
+          "message": "config: disable textlint on efm\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-07-19T14:54:52+09:00",
+          "tree_id": "9f1280b7d8620ed7c06c2e27b3ed3f05acbaea98",
+          "url": "https://github.com/rinx/dotfiles/commit/adc0208d93ce7759ac63d1b76b68e21e4e0a9f98"
+        },
+        "date": 1721368987320,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.353674500000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.21693259999999,
             "unit": "ms"
           }
         ]
