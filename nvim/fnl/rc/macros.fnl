@@ -26,6 +26,7 @@
                       ,cmd.events
                       {:pattern ,cmd.pattern
                        :group group#
+                       :buffer ,cmd.buffer
                        :command ,cmd.command
                        :callback ,cmd.callback}))]
          (if (> (length cmds) 1)

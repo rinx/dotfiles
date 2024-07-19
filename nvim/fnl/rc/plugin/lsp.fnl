@@ -13,7 +13,20 @@
 
 (local icontab icon.tab)
 
+(fn setup-codelens-refresh [client bufnr]
+  (let [(ok? supported?)
+        (pcall
+          (fn []
+            (client.supports_method :textDocument/codeLens)))]
+    (when (and ok? supported?)
+      (augroup!
+        init-lsp-codelens
+        {:events [:CursorHold :CursorHoldI]
+         :buffer bufnr
+         :callback vim.lsp.codelens.refresh}))))
+
 (fn on-attach [client bufnr]
+  (setup-codelens-refresh client bufnr)
   (lsp-signature.on_attach
     {:bind true
      :doc_lines 10
@@ -267,11 +280,6 @@
 (map! [:n] :gs ":<C-u>lua vim.lsp.buf.signature_help()<CR>" {:silent true})
 
 (map! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" {:silent true})
-(augroup!
-  init-lsp-codelens
-  {:events [:CursorHold :CursorHoldI]
-   :pattern :*
-   :callback vim.lsp.codelens.refresh})
 
 ;; toggle inlay hints
 (map! [:n] :<leader>i ":<C-u>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>" {:silent true})

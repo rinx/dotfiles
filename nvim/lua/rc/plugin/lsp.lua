@@ -10,7 +10,21 @@ local schemastore = autoload("schemastore")
 local rust_tools = autoload("rust-tools")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
+local function setup_codelens_refresh(client, bufnr)
+  local ok_3f, supported_3f = nil, nil
+  local function _2_()
+    return client.supports_method("textDocument/codeLens")
+  end
+  ok_3f, supported_3f = pcall(_2_)
+  if (ok_3f and supported_3f) then
+    local group_5_auto = vim.api.nvim_create_augroup("init-lsp-codelens", {clear = true})
+    return vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {buffer = bufnr, callback = vim.lsp.codelens.refresh, group = group_5_auto})
+  else
+    return nil
+  end
+end
 local function on_attach(client, bufnr)
+  setup_codelens_refresh(client, bufnr)
   lsp_signature.on_attach({bind = true, doc_lines = 10, hint_enabled = true, hint_prefix = (icontab.info .. " "), hint_scheme = "String", handler_opts = {border = "single"}, decorator = {["`"] = "`"}})
   return navic.attach(client, bufnr)
 end
@@ -57,23 +71,23 @@ lsp.terraformls.setup(core.merge(default_options, {settings = {["terraform-ls"] 
 lsp.tflint.setup({})
 lsp.texlab.setup(core.merge(default_options, {filetypes = {"tex", "bib", "plaintex"}}))
 lsp.tsserver.setup(core.merge(default_options, {root_dir = lsputil.root_pattern("package.json")}))
-local _2_
+local _4_
 do
   local k8s_prefix = table.concat({"https://raw.githubusercontent.com/", "yannh/", "kubernetes-json-schema/", "master/", "v1.22.4-standalone"})
   local __3ek8s
-  local function _3_(x)
+  local function _5_(x)
     return table.concat({k8s_prefix, x}, "/")
   end
-  __3ek8s = _3_
+  __3ek8s = _5_
   local schemastore_prefix = "https://json.schemastore.org"
   local __3eschemastore
-  local function _4_(x)
+  local function _6_(x)
     return table.concat({schemastore_prefix, x}, "/")
   end
-  __3eschemastore = _4_
-  _2_ = {[__3ek8s("all.json")] = "k8s/**/*.yaml", [__3ek8s("clusterrole.json")] = "clusterrole.yaml", [__3ek8s("clusterrolebinding.json")] = "clusterrolebinding.yaml", [__3ek8s("configmap.json")] = "configmap.yaml", [__3ek8s("cronjob.json")] = "cronjob.yaml", [__3ek8s("daemonset.json")] = "daemonset.yaml", [__3ek8s("deployment.json")] = "deployment.yaml", [__3ek8s("horizontalpodautoscaler.json")] = "hpa.yaml", [__3ek8s("ingress.json")] = "ingress.yaml", [__3ek8s("ingressclass.json")] = "ingressclass.yaml", [__3ek8s("job.json")] = "job.yaml", [__3ek8s("namespace.json")] = "namespace.yaml", [__3ek8s("networkpolicy.json")] = "networkpolicy.yaml", [__3ek8s("poddisruptionbudget.json")] = "pdb.yaml", [__3ek8s("podsecuritycontext.json")] = "podsecuritycontext.yaml", [__3ek8s("podsecuritypolicy.json")] = {"podsecuritypolicy.yaml", "psp.yaml"}, [__3ek8s("priorityclass.json")] = "priorityclass.yaml", [__3ek8s("secret.json")] = "secret.yaml", [__3ek8s("securitycontext.json")] = "securitycontext.yaml", [__3ek8s("service.json")] = {"service.yaml", "svc.yaml"}, [__3ek8s("serviceaccount.json")] = "serviceaccount.yaml", [__3ek8s("statefulset.json")] = "statefulset.yaml", [__3ek8s("storageclass.json")] = "storageclass.yaml", [__3eschemastore("kustomization")] = "kustomization.yaml", [__3eschemastore("helmfile.json")] = "helmfile.yaml", [__3eschemastore("github-workflow.json")] = "/.github/workflows/*", [__3eschemastore("circleciconfig.json")] = "/.circleci/*", [__3eschemastore("golangci-lint.json")] = ".golangci.yml"}
+  __3eschemastore = _6_
+  _4_ = {[__3ek8s("all.json")] = "k8s/**/*.yaml", [__3ek8s("clusterrole.json")] = "clusterrole.yaml", [__3ek8s("clusterrolebinding.json")] = "clusterrolebinding.yaml", [__3ek8s("configmap.json")] = "configmap.yaml", [__3ek8s("cronjob.json")] = "cronjob.yaml", [__3ek8s("daemonset.json")] = "daemonset.yaml", [__3ek8s("deployment.json")] = "deployment.yaml", [__3ek8s("horizontalpodautoscaler.json")] = "hpa.yaml", [__3ek8s("ingress.json")] = "ingress.yaml", [__3ek8s("ingressclass.json")] = "ingressclass.yaml", [__3ek8s("job.json")] = "job.yaml", [__3ek8s("namespace.json")] = "namespace.yaml", [__3ek8s("networkpolicy.json")] = "networkpolicy.yaml", [__3ek8s("poddisruptionbudget.json")] = "pdb.yaml", [__3ek8s("podsecuritycontext.json")] = "podsecuritycontext.yaml", [__3ek8s("podsecuritypolicy.json")] = {"podsecuritypolicy.yaml", "psp.yaml"}, [__3ek8s("priorityclass.json")] = "priorityclass.yaml", [__3ek8s("secret.json")] = "secret.yaml", [__3ek8s("securitycontext.json")] = "securitycontext.yaml", [__3ek8s("service.json")] = {"service.yaml", "svc.yaml"}, [__3ek8s("serviceaccount.json")] = "serviceaccount.yaml", [__3ek8s("statefulset.json")] = "statefulset.yaml", [__3ek8s("storageclass.json")] = "storageclass.yaml", [__3eschemastore("kustomization")] = "kustomization.yaml", [__3eschemastore("helmfile.json")] = "helmfile.yaml", [__3eschemastore("github-workflow.json")] = "/.github/workflows/*", [__3eschemastore("circleciconfig.json")] = "/.circleci/*", [__3eschemastore("golangci-lint.json")] = ".golangci.yml"}
 end
-lsp.yamlls.setup(core.merge(default_options, {settings = {yaml = {schemas = _2_, validate = true}, single_file_support = true}}))
+lsp.yamlls.setup(core.merge(default_options, {settings = {yaml = {schemas = _4_, validate = true}, single_file_support = true}}))
 lsp.zls.setup({})
 rust_tools.setup({tools = {inlay_hints = {parameter_hints_prefix = (" " .. icontab.slash .. icontab["arrow-l"] .. " "), other_hints_prefix = (" " .. icontab["arrow-r"] .. " ")}}, server = {on_attach = on_attach, capabilities = capabilities, settings = {["rust-analyzer"] = {cargo = {allFeatures = true}, lens = {enable = true, methodReferences = true, references = true}}}}})
 do end (vim.lsp.handlers)["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
@@ -85,10 +99,6 @@ vim.keymap.set("n", "gi", ":<C-u>lua vim.lsp.buf.implementation()<CR>", {silent 
 vim.keymap.set("n", "gr", ":<C-u>lua vim.lsp.buf.references()<CR>", {silent = true})
 vim.keymap.set("n", "gs", ":<C-u>lua vim.lsp.buf.signature_help()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>l", ":<C-u>lua vim.lsp.codelens.run()<CR>", {silent = true})
-do
-  local group_5_auto = vim.api.nvim_create_augroup("init-lsp-codelens", {clear = true})
-  vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {callback = vim.lsp.codelens.refresh, group = group_5_auto, pattern = "*"})
-end
 vim.keymap.set("n", "<leader>i", ":<C-u>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>", {silent = true})
 vim.keymap.set("n", "<Leader>d", ":<C-u>lua vim.diagnostic.open_float({border = 'rounded'})<CR>", {silent = true})
 vim.keymap.set("n", "[d", ":<C-u>lua vim.diagnostic.goto_prev({float = {border = 'rounded'}})<CR>", {silent = true})
