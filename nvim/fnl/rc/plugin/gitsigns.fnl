@@ -7,31 +7,24 @@
 (local icontab icon.tab)
 
 (gitsigns.setup
-  {:signs {:add {:hl :GitSignsAdd
-                 :text icontab.plus
-                 :numhl :GitSignsAddNr
-                 :linehl :GitSignsAddLn}
-           :change {:hl :GitSignsChange
-                    :text icontab.circle
-                    :numhl :GitSignsChangeNr
-                    :linehl :GitSignsChangeLn}
-           :delete {:hl :GitSignsDelete
-                    :text icontab.minus
-                    :numhl :GitSignsDeleteNr
-                    :linehl :GitSignsDeleteLn}
-           :topdelete {:hl :GitSignsDelete
-                       :text icontab.level-up
-                       :numhl :GitSignsDeleteNr
-                       :linehl :GitSignsDeleteLn}
-           :changedelete {:hl :GitSignsChange
-                          :text icontab.dots
-                          :numhl :GitSignsChangeNr
-                          :linehl :GitSignsChangeLn}}
+  {:signs {:add {:text icontab.plus}
+           :change {:text icontab.circle}
+           :delete {:text icontab.minus}
+           :topdelete {:text icontab.level-up}
+           :changedelete {:text icontab.dots}
+           :untracked {:text icontab.nbsp}}
+   :signs_staged {:add {:text icontab.plus}
+                  :change {:text icontab.circle}
+                  :delete {:text icontab.minus}
+                  :topdelete {:text icontab.level-up}
+                  :changedelete {:text icontab.dots}
+                  :untracked {:text icontab.nbsp}}
+   :signs_staged_enable true
    :numhl false
    :linehl false
-   :watch_gitdir {:interval 1000}
+   :word_diff true
+   :watch_gitdir {:follow_files true}
    :current_line_blame false
    :sign_priority 6
    :update_debounce 100
-   :status_formatter nil
-   :diff_opts {:internal true}})
+   :status_formatter nil})

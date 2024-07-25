@@ -7,8 +7,8 @@
 
 (local icontab icon.tab)
 
-(trouble.setup {:auto_open true
-                :auto_close true
+(trouble.setup {:auto_close true
+                :modes {:diagnostics {:auto_open true}}
                 :signs {:error icontab.bug
                         :warning icontab.exclam-circle
                         :hint icontab.leaf
