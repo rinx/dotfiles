@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1722214100143,
+  "lastUpdate": 1722914153227,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7453,6 +7453,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.8181625,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "633c26c59d0236677d35cab3c69cf58974674a39",
+          "message": "config(nvim): remove efm config for markdown\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-06T12:07:27+09:00",
+          "tree_id": "fc168f13a62321c49111b284309cc01220fee49b",
+          "url": "https://github.com/rinx/dotfiles/commit/633c26c59d0236677d35cab3c69cf58974674a39"
+        },
+        "date": 1722914152671,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.4072897,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.9669956,
             "unit": "ms"
           }
         ]
