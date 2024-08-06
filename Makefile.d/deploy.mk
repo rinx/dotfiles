@@ -103,8 +103,6 @@ others-deploy: \
     Xdefaults \
     rofi-config \
     hyprland-config \
-    textlintrc \
-    markdownlintrc \
     dotfiles-local \
     macos
 	@$(call red, "others-deploy")
@@ -207,16 +205,6 @@ i3status-config: \
 $(HOME)/.config/i3status/config:
 	mkdir -p $(HOME)/.config/i3status
 	ln -s $(DOTDIR)/i3status-config $(HOME)/.config/i3status/config
-
-.PHONY: markdownlintrc
-markdownlintrc: $(HOME)/.markdownlintrc
-$(HOME)/.markdownlintrc:
-	ln -s $(DOTDIR)/markdownlintrc $(HOME)/.markdownlintrc
-
-.PHONY: textlintrc
-textlintrc: $(HOME)/.textlintrc
-$(HOME)/.textlintrc:
-	ln -s $(DOTDIR)/textlintrc $(HOME)/.textlintrc
 
 .PHONY: dotfiles-local
 dotfiles-local: \
