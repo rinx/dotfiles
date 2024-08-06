@@ -82,7 +82,6 @@
                  default-options
                  {:filetypes [:bash
                               :dockerfile
-                              :markdown
                               :proto
                               :rego
                               :sh
@@ -103,19 +102,6 @@
                     :dockerfile
                     [{:lintCommand "hadolint --no-color"
                       :lintFormats ["%f:%l %m"]}]
-                    :markdown
-                    [
-                     ; {:lintCommand "deno run --allow-env --allow-net --allow-read --allow-sys --allow-write ~/.dotfiles/tools/textlint/textlint.ts ${INPUT}"
-                     ;  :lintIgnoreExitCode true
-                     ;  :lintFormats ["%f:%l:%n: %m"]}
-                     {:lintCommand "deno run --allow-env --allow-read --allow-sys --no-lock npm:markdownlint-cli@latest -s -c ~/.dotfiles/markdownlintrc"
-                      :lintIgnoreExitCode true
-                      :lintStdin true
-                      :lintFormats ["%f:%l %m"
-                                    "%f:%l:%c %m"
-                                    "%f: %l: %m"]}
-                     {:hoverCommand :excitetranslate.clj
-                      :hoverStdin true}]
                     :proto
                     [{:lintCommand "buf lint --path"}]
                     :rego
