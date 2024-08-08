@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1722914287449,
+  "lastUpdate": 1723092408636,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7521,6 +7521,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.29353520000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a8184bab70bcce86505075a8e911c49b8226c2c3",
+          "message": "chore(deps): update flake.lock\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-08T13:38:12+09:00",
+          "tree_id": "e26415ab40f125f954a691aaafbc04b1b18b69ba",
+          "url": "https://github.com/rinx/dotfiles/commit/a8184bab70bcce86505075a8e911c49b8226c2c3"
+        },
+        "date": 1723092407689,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.6143175,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.3675223,
             "unit": "ms"
           }
         ]
