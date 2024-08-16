@@ -150,12 +150,6 @@ export VISUAL="$EDITOR"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-if [ -n "${DOCKERIZED_DEVENV}" ]; then
-    typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION="${DOCKERIZED_DEVENV} ❯"
-    typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION="${DOCKERIZED_DEVENV} ❮"
-    typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION="${DOCKERIZED_DEVENV} ❮"
-fi
-
 zsh-defer source $HOME/.dotfiles/zshrc.d/aliases.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/compinit.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/docker.zsh
