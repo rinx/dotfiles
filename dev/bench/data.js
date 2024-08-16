@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1723630104014,
+  "lastUpdate": 1723805062248,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7589,6 +7589,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.6320913,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "77c8e8596f223b1718e8402216165c81ac71ee9e",
+          "message": "config: remove dockerized devenv variable\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-16T19:36:10+09:00",
+          "tree_id": "13ce18ffaa14f8188220bbf0d03e1d52be728236",
+          "url": "https://github.com/rinx/dotfiles/commit/77c8e8596f223b1718e8402216165c81ac71ee9e"
+        },
+        "date": 1723805061891,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.2983817,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.4902287,
             "unit": "ms"
           }
         ]
