@@ -37,7 +37,7 @@
       delta
       docker-credential-helpers
       eza
-      fcp
+      # fcp
       fd
       fzf
       gh
