@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1723805062248,
+  "lastUpdate": 1723992060986,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7623,6 +7623,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.4902287,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b7f03fe8ce3d6d6f270b4be468da70a0ea00dc00",
+          "message": "config(nvim): add rego ft rules\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-18T23:31:30+09:00",
+          "tree_id": "5d04de50d071767fe6701e744dcbfdbc71a12f68",
+          "url": "https://github.com/rinx/dotfiles/commit/b7f03fe8ce3d6d6f270b4be468da70a0ea00dc00"
+        },
+        "date": 1723992060625,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.562882300000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 89.1371189,
             "unit": "ms"
           }
         ]
