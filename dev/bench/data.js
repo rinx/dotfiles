@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1723992060986,
+  "lastUpdate": 1723992412470,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7657,6 +7657,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 89.1371189,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f554d02a5ad588bf31b7f97206b4b6189aa569cb",
+          "message": "config(nix): disable fcp\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-18T23:33:25+09:00",
+          "tree_id": "f43f4095af7a948a3f8fdebff27cb7045c0c0533",
+          "url": "https://github.com/rinx/dotfiles/commit/f554d02a5ad588bf31b7f97206b4b6189aa569cb"
+        },
+        "date": 1723992412106,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.9429146,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.3832535,
             "unit": "ms"
           }
         ]
