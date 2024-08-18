@@ -72,6 +72,11 @@ do
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-rego", {clear = true})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl colorcolumn=120", group = group_5_auto, pattern = "rego"})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl noexpandtab", group = group_5_auto, pattern = "rego"})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl shiftwidth=4", group = group_5_auto, pattern = "rego"})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl tabstop=4", group = group_5_auto, pattern = "rego"})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl softtabstop=4", group = group_5_auto, pattern = "rego"})
   vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.rego,*.rq"})
 end
 do

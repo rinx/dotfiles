@@ -132,6 +132,21 @@
 
 (augroup!
   init-rego
+  {:events [:FileType]
+   :pattern :rego
+   :command "setl colorcolumn=120"}
+  {:events [:FileType]
+   :pattern :rego
+   :command "setl noexpandtab"}
+  {:events [:FileType]
+   :pattern :rego
+   :command "setl shiftwidth=4"}
+  {:events [:FileType]
+   :pattern :rego
+   :command "setl tabstop=4"}
+  {:events [:FileType]
+   :pattern :rego
+   :command "setl softtabstop=4"}
   {:events [:BufWritePre]
    :pattern "*.rego,*.rq"
    :callback lsp-format})
