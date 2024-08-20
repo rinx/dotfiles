@@ -80,11 +80,9 @@
 (lsp.dockerls.setup (core.merge default-options {}))
 (lsp.efm.setup (core.merge
                  default-options
-                 {:filetypes [:bash
-                              :dockerfile
+                 {:filetypes [:dockerfile
                               :proto
                               :rego
-                              :sh
                               :vcl
                               :yaml.github-actions]
                   :init_options {:codeAction true
@@ -94,21 +92,15 @@
                                  :hover true}
                   :settings
                   {:languages
-                   {:bash
-                    [{:lintCommand "shellcheck -f gcc -x"
-                      :lintSource "efm/shellcheck"
-                      :lintFormats ["%f:%l:%c: %trror: %m"
-                                    "%f:%l:%c: %tarning: %m"
-                                    "%f:%l:%c: %tote: %m"]}
-                     {:formatCommand "shfmt -ci -s -bn"
-                      :formatStdin true}]
-                    :dockerfile
+                   {:dockerfile
                     [{:lintCommand "hadolint --no-color"
                       :lintSource "efm/hadolint"
+                      :lintAfterOpen true
                       :lintFormats ["%f:%l %m"]}]
                     :proto
                     [{:lintCommand "buf lint --path"
                       :lintSource "efm/buf-lint"
+                      :lintAfterOpen true
                       :lintFormats ["%f:%l:%c:%m"]
                       :lintSeverity 2
                       :rootMarkers ["buf.yaml"]}]
@@ -116,20 +108,14 @@
                     [{:lintCommand "opa check --strict"
                       :lintIgnoreExitCode true
                       :lintSource "efm/opa-check-strict"
+                      :lintAfterOpen true
                       :lintFormats ["%m: %f:%l: %m"
                                     "%f:%l: %m"]}]
-                    :sh
-                    [{:lintCommand "shellcheck -f gcc -x"
-                      :lintSource "efm/shellcheck"
-                      :lintFormats ["%f:%l:%c: %trror: %m"
-                                    "%f:%l:%c: %tarning: %m"
-                                    "%f:%l:%c: %tote: %m"]}
-                     {:formatCommand "shfmt -ci -s -bn"
-                      :formatStdin true}]
                     :vcl
                     [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
                       :lintIgnoreExitCode true
                       :lintSource "efm/falco"
+                      :lintAfterOpen true
                       :lintFormats ["%E💥 %m"
                                     "%E🔥 [ERROR] %m"
                                     "%W❗️ [WARNING] %m"
@@ -140,6 +126,7 @@
                     [{:lintCommand "actionlint -no-color -oneline -stdin-filename \"${INPUT}\" -"
                       :lintStdin true
                       :lintSource "efm/actionlint"
+                      :lintAfterOpen true
                       :lintFormats ["%f:%l:%c: %.%#: SC%n:%trror:%m"
                                     "%f:%l:%c: %.%#: SC%n:%tarning:%m"
                                     "%f:%l:%c: %.%#: SC%n:%tnfo:%m"
