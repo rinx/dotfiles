@@ -32,6 +32,7 @@
       ## tools
       bat
       cmakeMinimal
+      conftest
       cosign
       curl
       delta
@@ -89,6 +90,7 @@
       # zig ## https://github.com/NixOS/nixpkgs/issues/317055
 
       ## LSP / DAP / Linter / Formatter
+      actionlint
       bash-language-server
       buf-language-server
       clj-kondo

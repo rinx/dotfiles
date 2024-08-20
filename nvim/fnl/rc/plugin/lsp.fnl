@@ -85,7 +85,8 @@
                               :proto
                               :rego
                               :sh
-                              :vcl]
+                              :vcl
+                              :yaml]
                   :init_options {:codeAction true
                                  :completion true
                                  :documentFormatting true
@@ -95,36 +96,53 @@
                   {:languages
                    {:bash
                     [{:lintCommand "shellcheck -f gcc -x"
-                      :lintSource "shellcheck"
+                      :lintSource "efm/shellcheck"
                       :lintFormats ["%f:%l:%c: %trror: %m"
                                     "%f:%l:%c: %tarning: %m"
                                     "%f:%l:%c: %tote: %m"]}]
                     :dockerfile
                     [{:lintCommand "hadolint --no-color"
+                      :lintSource "efm/hadolint"
                       :lintFormats ["%f:%l %m"]}]
                     :proto
-                    [{:lintCommand "buf lint --path"}]
+                    [{:lintCommand "buf lint --path"
+                      :lintSource "efm/buf-lint"
+                      :lintFormats ["%f:%l:%c:%m"]
+                      :lintSeverity 2
+                      :rootMarkers ["buf.yaml"]}]
                     :rego
                     [{:lintCommand "opa check --strict"
                       :lintIgnoreExitCode true
+                      :lintSource "efm/opa-check-strict"
                       :lintFormats ["%m: %f:%l: %m"
                                     "%f:%l: %m"]}]
                     :sh
                     [{:lintCommand "shellcheck -f gcc -x"
-                      :lintSource "shellcheck"
+                      :lintSource "efm/shellcheck"
                       :lintFormats ["%f:%l:%c: %trror: %m"
                                     "%f:%l:%c: %tarning: %m"
                                     "%f:%l:%c: %tote: %m"]}]
                     :vcl
                     [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
                       :lintIgnoreExitCode true
+                      :lintSource "efm/falco"
                       :lintFormats ["%E💥 %m"
                                     "%E🔥 [ERROR] %m"
                                     "%W❗️ [WARNING] %m"
                                     "%I🔈 [INFO] %m"
                                     "%Zin %f at line %l, position %c"
-                                    "%-G%.%#"]}]}
-                   :lintDebounce 3000000000}}))
+                                    "%-G%.%#"]}]
+                    :yaml
+                    [{:lintCommand "actionlint -no-color -oneline -stdin-filename \"${INPUT}\" -"
+                      :lintStdin true
+                      :lintSource "efm/actionlint"
+                      :lintFormats ["%f:%l:%c: %.%#: SC%n:%trror:%m"
+                                    "%f:%l:%c: %.%#: SC%n:%tarning:%m"
+                                    "%f:%l:%c: %.%#: SC%n:%tnfo:%m"
+                                    "%f:%l:%c: %m"]
+                      :requireMarker true
+                      :rootMarkers [".github/"]}]}
+                   :lintDebounce "300ms"}}))
 (lsp.erlangls.setup (core.merge default-options {}))
 (lsp.fennel_language_server.setup
   (core.merge

@@ -15,12 +15,8 @@
                         :information icontab.info-circle
                         :other icontab.comment-alt}
                 :action_keys {:switch_severity :S}})
-(map! [:n] "<leader>xx" ":<C-u>TroubleToggle<CR>" {:silent true})
-(map! [:n] "<leader>xw" ":<C-u>TroubleToggle lsp_workspace_diagnostics<CR>" {:silent true})
-(map! [:n] "<leader>xd" ":<C-u>TroubleToggle lsp_document_diagnostics<CR>" {:silent true})
-(map! [:n] "<leader>xq" ":<C-u>TroubleToggle quickfix<CR>" {:silent true})
-(map! [:n] "<leader>xl" ":<C-u>TroubleToggle loclist<CR>" {:silent true})
-(map! [:n] "gR" ":<C-u>TroubleToggle lsp_references<CR>" {:silent true})
-
-
-
+(map! [:n] "<leader>xx" ":<C-u>Trouble diagnostics toggle<CR>" {:silent true})
+(map! [:n] "<leader>xX" ":<C-u>Trouble diagnostics toggle filter.buf=0<CR>" {:silent true})
+(map! [:n] "<leader>xd" ":<C-u>Trouble lsp toggle<CR>" {:silent true})
+(map! [:n] "<leader>xq" ":<C-u>Trouble qflist toggle<CR>" {:silent true})
+(map! [:n] "<leader>xl" ":<C-u>Trouble loclist toggle<CR>" {:silent true})
