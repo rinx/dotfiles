@@ -99,6 +99,7 @@
       efm-langserver
       fennel-ls
       fortls
+      gitlint
       gopls
       hadolint
       jq-lsp

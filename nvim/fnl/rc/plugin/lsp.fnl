@@ -81,6 +81,7 @@
 (lsp.efm.setup (core.merge
                  default-options
                  {:filetypes [:dockerfile
+                              :gitcommit
                               :proto
                               :rego
                               :vcl
@@ -97,6 +98,13 @@
                       :lintSource "efm/hadolint"
                       :lintAfterOpen true
                       :lintFormats ["%f:%l %m"]}]
+                    :gitcommit
+                    [{:lintCommand "gitlint --config ~/.dotfiles/.gitlint"
+                      :lintStdin true
+                      :lintSource "efm/gitlint"
+                      :lintAfterOpen true
+                      :lintFormats ["%l: %m: \"%r\""
+                                    "%l: %m"]}]
                     :proto
                     [{:lintCommand "buf lint --path"
                       :lintSource "efm/buf-lint"
