@@ -38,7 +38,6 @@
       delta
       docker-credential-helpers
       eza
-      # fcp
       fd
       fzf
       gh
@@ -63,7 +62,6 @@
       zsh
 
       ## k8s
-      # helmfile
       k3d
       k9s
       kubecolor
@@ -87,7 +85,6 @@
       nodejs
       protobuf
       typescript
-      # zig ## https://github.com/NixOS/nixpkgs/issues/317055
 
       ## LSP / DAP / Linter / Formatter
       actionlint
@@ -116,7 +113,6 @@
       tflint
       vscode-langservers-extracted
       yaml-language-server
-      # zls ## https://github.com/NixOS/nixpkgs/issues/317055
 
       ## fonts
       hackgen-nf-font
