@@ -99,6 +99,10 @@ do
   vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.ts"})
 end
 do
+  local group_5_auto = vim.api.nvim_create_augroup("init-sh", {clear = true})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {callback = lsp_format, group = group_5_auto, pattern = "*.sh,*.bash"})
+end
+do
   local group_5_auto = vim.api.nvim_create_augroup("init-qf", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> j j", group = group_5_auto, pattern = "qf"})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "nnoremap <buffer> k k", group = group_5_auto, pattern = "qf"})

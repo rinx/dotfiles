@@ -99,7 +99,9 @@
                       :lintSource "efm/shellcheck"
                       :lintFormats ["%f:%l:%c: %trror: %m"
                                     "%f:%l:%c: %tarning: %m"
-                                    "%f:%l:%c: %tote: %m"]}]
+                                    "%f:%l:%c: %tote: %m"]}
+                     {:formatCommand "shfmt -ci -s -bn"
+                      :formatStdin true}]
                     :dockerfile
                     [{:lintCommand "hadolint --no-color"
                       :lintSource "efm/hadolint"
@@ -121,7 +123,9 @@
                       :lintSource "efm/shellcheck"
                       :lintFormats ["%f:%l:%c: %trror: %m"
                                     "%f:%l:%c: %tarning: %m"
-                                    "%f:%l:%c: %tote: %m"]}]
+                                    "%f:%l:%c: %tote: %m"]}
+                     {:formatCommand "shfmt -ci -s -bn"
+                      :formatStdin true}]
                     :vcl
                     [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
                       :lintIgnoreExitCode true

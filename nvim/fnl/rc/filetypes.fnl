@@ -185,6 +185,12 @@
    :callback lsp-format})
 
 (augroup!
+  init-sh
+  {:events [:BufWritePre]
+   :pattern "*.sh,*.bash"
+   :callback lsp-format})
+
+(augroup!
   init-qf
   {:events [:FileType]
    :pattern :qf

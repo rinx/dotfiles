@@ -111,6 +111,7 @@
       nodePackages.typescript-language-server
       regal
       shellcheck
+      shfmt
       terraform-ls
       tflint
       vscode-langservers-extracted
