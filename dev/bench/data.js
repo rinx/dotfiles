@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724151560284,
+  "lastUpdate": 1724159359696,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7827,6 +7827,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.24787369999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "79190f6ac0f18f4b6726cf6f59ab77e3de87fa3b",
+          "message": "config(nvim): add lint-after-open opts to efm settings\n\n- remove sh, bash from efm settings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-20T22:00:53+09:00",
+          "tree_id": "a1f5132bfe3a7ae1efd3e3c61feceeac1122fd71",
+          "url": "https://github.com/rinx/dotfiles/commit/79190f6ac0f18f4b6726cf6f59ab77e3de87fa3b"
+        },
+        "date": 1724159359353,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.0386934,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.7855344,
             "unit": "ms"
           }
         ]
