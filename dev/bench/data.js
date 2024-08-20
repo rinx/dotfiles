@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724150486871,
+  "lastUpdate": 1724151560284,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7793,6 +7793,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.91676340000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5030992f36b16f10ef93f148eed1703d36cca833",
+          "message": "config(nix): add shfmt\n\n- add lsp-format callback to sh files\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-20T19:50:51+09:00",
+          "tree_id": "15b2ad6a93cb651c51b7ad7943fe0e46cf947eda",
+          "url": "https://github.com/rinx/dotfiles/commit/5030992f36b16f10ef93f148eed1703d36cca833"
+        },
+        "date": 1724151559925,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.6015503,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.24787369999999,
             "unit": "ms"
           }
         ]
