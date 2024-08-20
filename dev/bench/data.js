@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1723992412470,
+  "lastUpdate": 1724149681844,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7691,6 +7691,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.3832535,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a248b32e003ac295062031b2c72c61ac642bfbe2",
+          "message": "config(nix): add actionlint\n\n- update efm settings\n- fix trouble settings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-20T19:19:39+09:00",
+          "tree_id": "0602ee0d8239c53aa841c769324d89aee6fdeee2",
+          "url": "https://github.com/rinx/dotfiles/commit/a248b32e003ac295062031b2c72c61ac642bfbe2"
+        },
+        "date": 1724149681469,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.6549076,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.512566,
             "unit": "ms"
           }
         ]
