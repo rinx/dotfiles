@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724159359696,
+  "lastUpdate": 1724161916159,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7861,6 +7861,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.7855344,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a4939f94b498ca208730c2d5766eb3d1d160936e",
+          "message": "config(nix): gitlint\n\n- add efm rule for gitcommit\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-20T22:42:51+09:00",
+          "tree_id": "18f3c3fb0c9be98980a6cff3f2e770dc9de9f3f4",
+          "url": "https://github.com/rinx/dotfiles/commit/a4939f94b498ca208730c2d5766eb3d1d160936e"
+        },
+        "date": 1724161915586,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.6045597,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 83.06673070000001,
             "unit": "ms"
           }
         ]
