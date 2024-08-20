@@ -86,7 +86,7 @@
                               :rego
                               :sh
                               :vcl
-                              :yaml]
+                              :yaml.github-actions]
                   :init_options {:codeAction true
                                  :completion true
                                  :documentFormatting true
@@ -132,7 +132,7 @@
                                     "%I🔈 [INFO] %m"
                                     "%Zin %f at line %l, position %c"
                                     "%-G%.%#"]}]
-                    :yaml
+                    :yaml.github-actions
                     [{:lintCommand "actionlint -no-color -oneline -stdin-filename \"${INPUT}\" -"
                       :lintStdin true
                       :lintSource "efm/actionlint"
@@ -212,7 +212,7 @@
                                        "yannh/"
                                        "kubernetes-json-schema/"
                                        "master/"
-                                       "v1.22.4-standalone"])
+                                       "v1.31.0-standalone"])
              ->k8s (fn [x]
                      (table.concat [k8s-prefix x] :/))
              schemastore-prefix "https://json.schemastore.org"

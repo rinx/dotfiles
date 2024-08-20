@@ -34,6 +34,9 @@
    :pattern "*.tf,*.tfvars"
    :command "setf terraform"}
   {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern ".github/workflows/*.yaml"
+   :command "setf yaml.github-actions"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
    :pattern "docker-compose.yaml"
    :command "setf yaml.docker-compose"})
 
