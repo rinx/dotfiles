@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724150398207,
+  "lastUpdate": 1724150486871,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7759,6 +7759,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.8686705,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a1872657d1362901f9470562f744e144a1b60716",
+          "message": "config(nvim): add patterns for yaml.github-actions detection\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-20T19:33:17+09:00",
+          "tree_id": "09652a3a6b5079705aabc2910ee3277bfd8658ca",
+          "url": "https://github.com/rinx/dotfiles/commit/a1872657d1362901f9470562f744e144a1b60716"
+        },
+        "date": 1724150486470,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.1256884,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.91676340000001,
             "unit": "ms"
           }
         ]
