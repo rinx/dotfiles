@@ -30,6 +30,7 @@
     paths = with pkgs; [
 
       ## tools
+      ast-grep
       bat
       cmakeMinimal
       conftest
