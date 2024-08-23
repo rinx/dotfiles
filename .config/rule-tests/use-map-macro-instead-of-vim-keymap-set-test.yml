@@ -1,0 +1,5 @@
+id: use-map-macro-instead-of-vim-keymap-set
+valid:
+  - "(local map {})"
+invalid:
+  - "(vim.keymap.set :n :q api.tree.close :Close)"

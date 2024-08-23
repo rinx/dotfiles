@@ -1,0 +1,8 @@
+id: use-map-macro-instead-of-vim-keymap-set
+snapshots:
+  (vim.keymap.set :n :q api.tree.close :Close):
+    labels:
+    - source: (vim.keymap.set :n :q api.tree.close :Close)
+      style: primary
+      start: 0
+      end: 44

@@ -59,7 +59,14 @@
   {:on_attach on-attach
    :capabilities capabilities})
 
-(lsp.ast_grep.setup (core.merge default-options {}))
+(lsp.ast_grep.setup (core.merge
+                      default-options
+                      {:filetypes [:fennel
+                                   :go
+                                   :javascript
+                                   :lua
+                                   :rust
+                                   :typescript]}))
 (lsp.bashls.setup (core.merge default-options {}))
 (lsp.bufls.setup (core.merge default-options {}))
 (lsp.clojure_lsp.setup (core.merge default-options {}))
