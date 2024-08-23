@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install tree-sitter grammer for fennel
+      - name: Install tree-sitter grammar for fennel
         uses: rinx/setup-tree-sitter-parser@v1
         with:
           parser_dir: .cache/tree-sitter/parser
