@@ -1,0 +1,25 @@
+name: Lint
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  sg-scan:
+    name: ast-grep scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tree-sitter grammer for fennel
+        uses: rinx/setup-tree-sitter-parser@v1
+        with:
+          parser_dir: .cache/tree-sitter/parser
+          parser_repository: alexmozaidze/tree-sitter-fennel
+      - name: Run ast-grep with reviewdog
+        uses: reviewdog/action-ast-grep@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: info
+          reporeter: github-check
+          filter_mode: nofilter
