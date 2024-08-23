@@ -6,4 +6,3 @@ severity: warning
 language: fennel
 rule:
   pattern: (vim.keymap.set $$$)
-note: Add detailed explanation for the rule.
