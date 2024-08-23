@@ -22,4 +22,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: info
           reporter: github-check
-          filter_mode: nofilter
