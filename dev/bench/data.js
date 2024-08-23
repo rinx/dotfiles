@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724321695890,
+  "lastUpdate": 1724419168596,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -7963,6 +7963,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.0629654,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b8474e8210c11e141aef1d81c8bd44c7c5b171d9",
+          "message": "config(ci): add ast-grep lint (#85)\n\n* config: add ast-grep rule for fennel\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n* config(ci): add sg lint\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n* fix(ci): fix reviewdog option\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n* chore: remove useless line\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n* config(ci): set reviewdog filter\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n---------\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-23T22:10:55+09:00",
+          "tree_id": "b5c22d9d548db83fb145fb327eb8489677329402",
+          "url": "https://github.com/rinx/dotfiles/commit/b8474e8210c11e141aef1d81c8bd44c7c5b171d9"
+        },
+        "date": 1724419167992,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.576527000000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 88.93257229999999,
             "unit": "ms"
           }
         ]
