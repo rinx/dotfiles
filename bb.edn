@@ -1,0 +1,32 @@
+{:min-bb-version "1.0.0"
+ :tasks {:requires ([babashka.fs :as fs])
+         :init (do
+                (def cache-dir ".cache")
+                (def ts-dir (str cache-dir "/tree-sitter"))
+                (def src-dir (str ts-dir "/src"))
+                (def parser-dir (str ts-dir "/parser")))
+         -dirs (do
+                (fs/create-dirs cache-dir)
+                (fs/create-dirs ts-dir)
+                (fs/create-dirs src-dir)
+                (fs/create-dirs parser-dir))
+         build (run '-build {:parallel true})
+         -build {:depends [build:parser:fennel]}
+         build:parser:fennel {:depends [-dirs]
+                              :task (do
+                                      (let [ts-fnl-dir (str src-dir "/tree-sitter-fennel")]
+                                        (shell
+                                         "git clone"
+                                         "--depth=1"
+                                         "https://github.com/alexmozaidze/tree-sitter-fennel.git"
+                                         ts-fnl-dir)
+                                        (shell
+                                          {:dir ts-fnl-dir
+                                           :continue true
+                                           :extra-env {"TREE_SITTER_LIBDIR" (fs/absolutize parser-dir)}}
+                                          "tree-sitter test")))}
+         test (run '-test {:parallel true})
+         -test {:depends [test:sg]}
+         test:sg (shell "sg" "test")
+         clean (do
+                 (fs/delete-tree cache-dir))}}

@@ -1,0 +1,9 @@
+ruleDirs:
+  - ./.config/rules
+testConfigs:
+  - testDir: ./.config/rule-tests
+customLanguages:
+  fennel:
+    libraryPath: .cache/tree-sitter/parser/fennel.so
+    extensions:
+      - fnl
