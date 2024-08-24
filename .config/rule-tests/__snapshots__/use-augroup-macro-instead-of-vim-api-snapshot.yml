@@ -1,0 +1,14 @@
+id: use-augroup-macro-instead-of-vim-api
+snapshots:
+  (vim.api.nvim_create_augroup :augroup-name {:clear true}):
+    labels:
+    - source: (vim.api.nvim_create_augroup :augroup-name {:clear true})
+      style: primary
+      start: 0
+      end: 57
+  (vim.api.nvim_create_autocmd :FileType {:pattern :go}):
+    labels:
+    - source: (vim.api.nvim_create_autocmd :FileType {:pattern :go})
+      style: primary
+      start: 0
+      end: 54

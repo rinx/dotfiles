@@ -1,5 +1,6 @@
 id: use-augroup-macro-instead-of-vim-api
 valid:
-- "valid code"
+- "(local map {})"
 invalid:
-- "invalid code"
+  - "(vim.api.nvim_create_augroup :augroup-name {:clear true})"
+  - "(vim.api.nvim_create_autocmd :FileType {:pattern :go})"
