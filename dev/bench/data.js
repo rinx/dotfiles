@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724501444931,
+  "lastUpdate": 1724501875148,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8133,6 +8133,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.0621383,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9939d56ebc8df63bd78183d9497684a3cb057b82",
+          "message": "config(ci): add test for ast-grep rules\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-24T21:09:15+09:00",
+          "tree_id": "1e322d2f412fced281d683939e4bfebc68219852",
+          "url": "https://github.com/rinx/dotfiles/commit/9939d56ebc8df63bd78183d9497684a3cb057b82"
+        },
+        "date": 1724501874521,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.2880786,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.8567303,
             "unit": "ms"
           }
         ]
