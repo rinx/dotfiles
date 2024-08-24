@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724419920015,
+  "lastUpdate": 1724499470331,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8031,6 +8031,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.7281158,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "73214ee67522f980bf92a991c12ca97652dbfce7",
+          "message": "config(nvim): update tree-sitter installed languages\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-24T20:29:29+09:00",
+          "tree_id": "4db217838af02ba0cc8a955ecd8b6ad248c6ad28",
+          "url": "https://github.com/rinx/dotfiles/commit/73214ee67522f980bf92a991c12ca97652dbfce7"
+        },
+        "date": 1724499470019,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.608716,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.0084334,
             "unit": "ms"
           }
         ]
