@@ -22,6 +22,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: info
           reporter: github-check
+          reviewdog_flags: -tee
 
   test-sg-rules:
     name: Test ast-grep rules
