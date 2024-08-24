@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724501950978,
+  "lastUpdate": 1724502291555,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8201,6 +8201,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 78.88317800000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e27264436d8262bc3117032b4e898fd9373ba629",
+          "message": "chore(ci): add reviewdog `-tee` option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-24T21:16:48+09:00",
+          "tree_id": "00ca582cbcd8bca7e907f51376ecc50afaa8d972",
+          "url": "https://github.com/rinx/dotfiles/commit/e27264436d8262bc3117032b4e898fd9373ba629"
+        },
+        "date": 1724502291113,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.578523999999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.5962084,
             "unit": "ms"
           }
         ]
