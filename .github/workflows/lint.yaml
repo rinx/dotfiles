@@ -7,7 +7,7 @@ on:
 
 jobs:
   sg-scan:
-    name: Scan using asg-grep
+    name: Scan using ast-grep
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
           reporter: github-check
 
   test-sg-rules:
-    name: Test asg-grep rules
+    name: Test ast-grep rules
     runs-on: ubuntu-latest
     steps:
       - name: Generate github token
