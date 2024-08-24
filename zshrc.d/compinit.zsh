@@ -73,3 +73,7 @@ fi
 if builtin command -v tenv > /dev/null 2>&1 ; then
     source <(tenv completion zsh)
 fi
+
+if builtin command -v sg > /dev/null 2>&1 ; then
+    source <(sg completions zsh)
+fi
