@@ -3,7 +3,6 @@
 
 (local languages
   [:bash
-   :bibtex
    :c
    :clojure
    :cmake
@@ -15,6 +14,8 @@
    :diff
    :dockerfile
    :dot
+   :earthfile
+   :editorconfig
    :elixir
    :elm
    :erlang
@@ -37,7 +38,9 @@
    :hjson
    :html
    :http
+   :hyprlang
    :ini
+   :janet_simple
    :java
    :javascript
    :jq
@@ -57,6 +60,7 @@
    :markdown
    :markdown_inline
    :mermaid
+   :nginx
    :nix
    :passwd
    :pem
@@ -84,6 +88,7 @@
    :typescript
    :vim
    :vimdoc
+   :vrl
    :vue
    :xml
    :yaml
