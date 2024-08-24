@@ -42,7 +42,7 @@ do
   capabilities = cap
 end
 local default_options = {on_attach = on_attach, capabilities = capabilities}
-lsp.ast_grep.setup(core.merge(default_options, {filetypes = {"fennel", "go", "javascript", "lua", "rust", "typescript"}}))
+lsp.ast_grep.setup(core.merge(default_options, {filetypes = {"*"}}))
 lsp.bashls.setup(core.merge(default_options, {}))
 lsp.bufls.setup(core.merge(default_options, {}))
 lsp.clojure_lsp.setup(core.merge(default_options, {}))
