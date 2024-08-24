@@ -6,3 +6,5 @@ severity: warning
 language: fennel
 rule:
   pattern: (vim.keymap.set $$$)
+ignores:
+  - ./nvim/fnl/rc/macros.fnl

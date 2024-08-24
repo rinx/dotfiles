@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ast-grep/ast-grep/main/schemas/rule.json
+
+id: use-augroup-macro-instead-of-vim-api
+message: Use `augroup!` macro instead of `vim.api.nvim_create_augroup` and `vim.api.nvim_create_autocmd`
+severity: warning
+language: fennel
+rule:
+  any:
+    - pattern: (vim.api.nvim_create_augroup $$$) 
+    - pattern: (vim.api.nvim_create_autocmd $$$) 
+ignores:
+  - ./nvim/fnl/rc/macros.fnl
