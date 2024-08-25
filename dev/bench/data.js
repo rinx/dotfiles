@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724554191448,
+  "lastUpdate": 1724555989000,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8269,6 +8269,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.08662340000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ef266f6d8bb9247a4b5a879e7f39dc8d9a7cdf57",
+          "message": "chore(ci): add rule for fnl lambda\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-25T12:11:37+09:00",
+          "tree_id": "0a232a3d0add613676178127007d4934492f79e0",
+          "url": "https://github.com/rinx/dotfiles/commit/ef266f6d8bb9247a4b5a879e7f39dc8d9a7cdf57"
+        },
+        "date": 1724555988608,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.2529386,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.7425902,
             "unit": "ms"
           }
         ]
