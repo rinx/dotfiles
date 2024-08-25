@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ast-grep/ast-grep/main/schemas/rule.json
+
+id: prefer-lambda-alias
+message: It is preferred to use `λ` instead of `lambda`.
+severity: info # error, warning, info, hint
+language: fennel
+rule:
+  pattern: (lambda [$$$ARGS] $$$EXPR)
+fix: (λ [$$$ARGS] $$$EXPR)
+note: |
+  `λ` is an alias for `lambda`. See https://fennel-lang.org/reference#lambda%CE%BB-nil-checked-function

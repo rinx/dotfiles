@@ -1,0 +1,14 @@
+id: prefer-lambda-alias
+snapshots:
+  ? |
+    (lambda [a b]
+     (+ a b))
+  : fixed: |
+      (λ [a b] (+ a b))
+    labels:
+    - source: |-
+        (lambda [a b]
+         (+ a b))
+      style: primary
+      start: 0
+      end: 23

@@ -1,0 +1,9 @@
+id: prefer-lambda-alias
+valid:
+  - |
+    (λ [a b]
+     (+ a b))
+invalid:
+  - |
+    (lambda [a b]
+     (+ a b))
