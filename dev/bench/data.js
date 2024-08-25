@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724502291555,
+  "lastUpdate": 1724554191448,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8235,6 +8235,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.5962084,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "126e99580b6b040312ab32a9f57656c336cd22c8",
+          "message": "chore(ci): update sg rule for map! macro (#86)\n\n* chore(ci): update sg rule for map! macro\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n* refactor(nvim): use map! macro partially\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n* config(ci): update reviewdog options\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n* Apply suggestions from code review\r\n\r\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\r\n\r\n* refactor(nvim): use map! macro for nvim-tree config\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\n\r\n---------\r\n\r\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\r\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
+          "timestamp": "2024-08-25T02:41:37Z",
+          "tree_id": "e3664f2cd1880827cb19754087bd2aac80fcfe83",
+          "url": "https://github.com/rinx/dotfiles/commit/126e99580b6b040312ab32a9f57656c336cd22c8"
+        },
+        "date": 1724554190854,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.3698287,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 83.08662340000001,
             "unit": "ms"
           }
         ]
