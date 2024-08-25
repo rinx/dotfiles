@@ -9,6 +9,10 @@ jobs:
   sg-scan:
     name: Scan using ast-grep
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - name: Install tree-sitter grammar for fennel
@@ -21,7 +25,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: info
-          reporter: github-check
+          reporter: ${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }}
+          filter_mode: nofilter
           reviewdog_flags: -tee
 
   test-sg-rules:

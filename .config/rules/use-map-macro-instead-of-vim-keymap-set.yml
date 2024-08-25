@@ -5,6 +5,7 @@ message: Use `map!` macro instead of `vim.keymap.set`
 severity: warning
 language: fennel
 rule:
-  pattern: (vim.keymap.set $$$)
+  pattern: (vim.keymap.set $MODE $FROM $TO $OPTS)
 ignores:
   - ./nvim/fnl/rc/macros.fnl
+fix: (map! [$MODE] $FROM $TO $OPTS)
