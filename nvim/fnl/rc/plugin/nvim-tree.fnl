@@ -28,9 +28,9 @@
                 :noremap true
                 :silent true
                 :nowait true})]
-    (vim.keymap.set :n :<CR> api.node.open.edit (opts "Open"))
-    (vim.keymap.set :n "<C-]>" api.tree.change_root_to_node (opts "CD"))
-    (vim.keymap.set :n :<C-v> api.node.open.vertical (opts "Open: Vertical"))
+    (map! [:n] :<CR> api.node.open.edit (opts "Open"))
+    (map! [:n] "<C-]>" api.tree.change_root_to_node (opts "CD"))
+    (map! [:n] :<C-v> api.node.open.vertical (opts "Open: Vertical"))
     (vim.keymap.set :n :<C-x> api.node.open.horizontal (opts "Open: Horizontal"))
     (vim.keymap.set :n "<" api.node.navigate.sibling.prev (opts "Previous Sibling"))
     (vim.keymap.set :n ">" api.node.navigate.sibling.next (opts "Next Sibling"))
