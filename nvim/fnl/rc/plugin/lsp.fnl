@@ -62,7 +62,11 @@
 (lsp.ast_grep.setup (core.merge
                       default-options
                       {:filetypes [:*]}))
-(lsp.bashls.setup (core.merge default-options {}))
+(lsp.bashls.setup (core.merge
+                    default-options
+                    {:settings
+                     {:bashIde
+                      {:shfmt {:caseIndent true}}}}))
 (lsp.bufls.setup (core.merge default-options {}))
 (lsp.clojure_lsp.setup (core.merge default-options {}))
 (lsp.cssls.setup (core.merge default-options {}))
