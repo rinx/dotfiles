@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724555989000,
+  "lastUpdate": 1724577215803,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8303,6 +8303,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.7425902,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c65357785daf3c25512a888e26e165efe5416247",
+          "message": "config(nvim): enable bashls shfmt-case-indent\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-25T18:04:56+09:00",
+          "tree_id": "0144a4252adaf5af2049546570fb6b7a37c04df2",
+          "url": "https://github.com/rinx/dotfiles/commit/c65357785daf3c25512a888e26e165efe5416247"
+        },
+        "date": 1724577215220,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.749318199999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.7351707,
             "unit": "ms"
           }
         ]
