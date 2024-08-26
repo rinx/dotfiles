@@ -24,7 +24,11 @@
                                           {:dir ts-fnl-dir
                                            :continue true
                                            :extra-env {"TREE_SITTER_LIBDIR" (fs/absolutize parser-dir)}}
-                                          "tree-sitter test")))}
+                                          "tree-sitter test"))
+                                      ;; for macos
+                                      (when-not (fs/exists? (str parser-dir "/fennel.so"))
+                                        (fs/move (str parser-dir "/fennel.dylib")
+                                                 (str parser-dir "/fennel.so"))))}
          test (run '-test {:parallel true})
          -test {:depends [test:sg]}
          test:sg (shell "sg" "test")
