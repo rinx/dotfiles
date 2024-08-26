@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724634501360,
+  "lastUpdate": 1724666026118,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8371,6 +8371,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.3900879,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "991abc7c168ff1d743a0954c7a20f304fea66d3f",
+          "message": "chore: rename tree-sitter lib after build on macos\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-26T18:44:41+09:00",
+          "tree_id": "aa2f04a87e23dc2e4b08550e145d6f20041b1d43",
+          "url": "https://github.com/rinx/dotfiles/commit/991abc7c168ff1d743a0954c7a20f304fea66d3f"
+        },
+        "date": 1724666025702,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.825749800000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 85.84355939999999,
             "unit": "ms"
           }
         ]
