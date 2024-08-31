@@ -37,6 +37,8 @@
    :DapUIToggle
    :GhostStart
    :Ghq
+   :Inspect
+   :InspectTree
    :Lazy
    "Lazy check"
    "Lazy update"
