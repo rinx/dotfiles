@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1724666026118,
+  "lastUpdate": 1725112179408,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8405,6 +8405,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 85.84355939999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4cdfc2f755ef30ab290be47891b6a995e75c8199",
+          "message": "config(nvim): add telescope shortcut for :Inspect/:InspectTree\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-08-31T22:41:16+09:00",
+          "tree_id": "4f6a5aa04c5986824a361704c4dc8c75f74328bf",
+          "url": "https://github.com/rinx/dotfiles/commit/4cdfc2f755ef30ab290be47891b6a995e75c8199"
+        },
+        "date": 1725112179006,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.754418899999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 76.387562,
             "unit": "ms"
           }
         ]
