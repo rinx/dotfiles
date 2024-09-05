@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1725545515470,
+  "lastUpdate": 1725549089848,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8541,6 +8541,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 88.0563396,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "185bc65868b74903c449a91cb3ea281426505bfc",
+          "message": "config(nvim): remove unused dap adapters\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-09-06T00:02:50+09:00",
+          "tree_id": "798df8110d22fbf77cbc66b77428857bbca04978",
+          "url": "https://github.com/rinx/dotfiles/commit/185bc65868b74903c449a91cb3ea281426505bfc"
+        },
+        "date": 1725549089268,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.6579967,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 89.2994163,
             "unit": "ms"
           }
         ]
