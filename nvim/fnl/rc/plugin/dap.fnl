@@ -1,7 +1,6 @@
 (local {: autoload} (require :nfnl.module))
 
 (local dap (require :dap))
-(local dap-ext-vscode (require :dap.ext.vscode))
 (local dapui (require :dapui))
 
 (local color (autoload :rc.color))
@@ -72,92 +71,6 @@
            :args ["-test.v"]
            :dlvToolPath dlv-path}])))
 
-;; lldb
-(let [adapter-path (.. adapters-dir :/codelldb)
-      codelldb-path (.. adapter-path :/extension/adapter/codelldb)
-      codelldb-url (if (= (vim.fn.has :unix) 1)
-                     "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-linux.vsix"
-                     "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-darwin.vsix")]
-  (fn dap-sync-lldb-adapter []
-    (if (vim.fn.empty (vim.fn.glob adapter-path))
-      (do
-        (vim.cmd
-          (string.format
-            (.. "!curl -L %s --output /tmp/codelldb.zip; "
-                "unzip /tmp/codelldb.zip -d %s; "
-                "rm -rf /tmp/codelldb.zip")
-            codelldb-url
-            adapter-path))
-        (vim.notify
-          "finished to install codelldb."
-          vim.lsp.log_levels.INFO
-          {:annote :dap-sync-lldb-adapter}))
-      (do
-        (vim.notify
-          "codelldb already installed."
-          vim.lsp.log_levels.WARN
-          {:annote :dap-sync-lldb-adapter}))))
-  (vim.api.nvim_create_user_command :DapSyncLLDBAdapter dap-sync-lldb-adapter {})
-  (set dap.adapters.rust
-       (fn [callback config]
-         (let [port (math.random 30000 40000)
-               (handle pid-or-err)
-               (vim.loop.spawn
-                 codelldb-path
-                 {:args ["--port" (string.format "%d" port)]
-                  :detached true}
-                 (fn [code]
-                   (handle:close)
-                   (vim.notify
-                     (.. "codelldb exited with code: " code)
-                     vim.lsp.log_levels.ERROR
-                     {:title :dap-adapters-rust})))]
-           (vim.defer_fn
-             (fn []
-               (callback {:type :server
-                          :host "127.0.0.1"
-                          :port port}))
-             500))))
-  (set dap.configurations.rust
-       (let [cwd (vim.fn.getcwd)
-             pkg-name (vim.fn.fnamemodify (vim.fn.getcwd) ":t")]
-         [{:type :rust
-           :name "Debug executable"
-           :request :launch
-           :args []
-           :cwd cwd
-           :program (.. :target/debug/ pkg-name)}])))
-
-;; kotlin
-(let [adapter-path (.. adapters-dir :/kotlin)
-      bin-path (.. adapter-path
-                   :/adapter/build/install/adapter/bin/kotlin-debug-adapter)]
-  (fn dap-sync-kotlin-adapter []
-    (if (vim.fn.empty (vim.fn.glob adapter-path))
-      (do
-        (vim.cmd
-          (string.format
-            (.. "!git clone --depth 1 "
-                "https://github.com/fwcd/kotlin-debug-adapter %s; "
-                "cd %s; "
-                "./gradlew :adapter:installDist")
-            adapter-path
-            adapter-path))
-        (vim.notify
-          "finished to install kotlin-debug-adapter"
-          vim.lsp.log_levels.INFO
-          {:annote :dap-sync-kotlin-adapter}))
-      (do
-        (vim.notify
-          "kotlin-debug-adapter already installed."
-          vim.lsp.log_levels.WARN
-          {:annote :dap-sync-kotlin-adapter}))))
-  (vim.api.nvim_create_user_command :DapSyncKotlinAdapter dap-sync-kotlin-adapter {})
-  (set dap.adapters.kotlin
-       {:name :kotlin-debug-adapter
-        :type :executable
-        :command bin-path}))
-
 ;; rego
 (set dap.adapters.rego
      {:name :regal-debug
@@ -182,22 +95,6 @@
        :logLevel :info
        :inputPath "${workspaceFolder}/input.json"
        :dataPaths ["${file}"]}])
-
-;; loading .vscode/launch.json
-(fn load-launch-js []
-  (let [cwd (vim.fn.getcwd)
-        path (.. cwd :/.vscode/launch.json)]
-    (when (vim.loop.fs_stat path)
-      (vim.notify
-        "loading .vscode/launch.json..."
-        vim.lsp.log_levels.INFO
-        {:annote :dap-load-launch-js})
-      (pcall dap-ext-vscode.load_launchjs)
-      (vim.notify
-        "finished to load .vscode/launch.json."
-        vim.lsp.log_levels.INFO
-        {:annote :dap-load-launch-js}))))
-(vim.api.nvim_create_user_command :DapLoadLaunchJSON load-launch-js {})
 
 (dapui.setup {:icons
               {:expanded icontab.fold-open

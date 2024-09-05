@@ -24,13 +24,9 @@
    :ConjureCljDebugInit
    :DapContinue
    :DapListBreakpoints
-   :DapLoadLaunchJSON
    :DapStepInto
    :DapStepOut
    :DapStepOver
-   :DapSyncGoAdapter
-   :DapSyncKotlinAdapter
-   :DapSyncLLDBAdapter
    :DapToggleBreakpoint
    :DapUIClose
    :DapUIOpen

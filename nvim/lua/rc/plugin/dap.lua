@@ -2,7 +2,6 @@
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local dap = require("dap")
-local dap_ext_vscode = require("dap.ext.vscode")
 local dapui = require("dapui")
 local color = autoload("rc.color")
 local icon = autoload("rc.icon")
@@ -31,70 +30,8 @@ if (vim.fn.executable("dlv") == 1) then
   dap.configurations.go = {{type = "go", name = "Launch file", request = "launch", showLog = true, program = "${file}", dlvToolPath = dlv_path}, {type = "go", name = "Launch test file", request = "launch", mode = "test", showLog = true, program = "${file}", args = {"-test.v"}, dlvToolPath = dlv_path}}
 else
 end
-do
-  local adapter_path = (adapters_dir .. "/codelldb")
-  local codelldb_path = (adapter_path .. "/extension/adapter/codelldb")
-  local codelldb_url
-  if (vim.fn.has("unix") == 1) then
-    codelldb_url = "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-linux.vsix"
-  else
-    codelldb_url = "https://github.com/vadimcn/vscode-lldb/releases/latest/download/codelldb-x86_64-darwin.vsix"
-  end
-  local function dap_sync_lldb_adapter()
-    if vim.fn.empty(vim.fn.glob(adapter_path)) then
-      vim.cmd(string.format(("!curl -L %s --output /tmp/codelldb.zip; " .. "unzip /tmp/codelldb.zip -d %s; " .. "rm -rf /tmp/codelldb.zip"), codelldb_url, adapter_path))
-      return vim.notify("finished to install codelldb.", vim.lsp.log_levels.INFO, {annote = "dap-sync-lldb-adapter"})
-    else
-      return vim.notify("codelldb already installed.", vim.lsp.log_levels.WARN, {annote = "dap-sync-lldb-adapter"})
-    end
-  end
-  vim.api.nvim_create_user_command("DapSyncLLDBAdapter", dap_sync_lldb_adapter, {})
-  local function _7_(callback, config)
-    local port = math.random(30000, 40000)
-    local handle, pid_or_err = nil, nil
-    local function _8_(code)
-      handle:close()
-      return vim.notify(("codelldb exited with code: " .. code), vim.lsp.log_levels.ERROR, {title = "dap-adapters-rust"})
-    end
-    handle, pid_or_err = vim.loop.spawn(codelldb_path, {args = {"--port", string.format("%d", port)}, detached = true}, _8_)
-    local function _9_()
-      return callback({type = "server", host = "127.0.0.1", port = port})
-    end
-    return vim.defer_fn(_9_, 500)
-  end
-  dap.adapters.rust = _7_
-  local cwd = vim.fn.getcwd()
-  local pkg_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-  dap.configurations.rust = {{type = "rust", name = "Debug executable", request = "launch", args = {}, cwd = cwd, program = ("target/debug/" .. pkg_name)}}
-end
-do
-  local adapter_path = (adapters_dir .. "/kotlin")
-  local bin_path = (adapter_path .. "/adapter/build/install/adapter/bin/kotlin-debug-adapter")
-  local function dap_sync_kotlin_adapter()
-    if vim.fn.empty(vim.fn.glob(adapter_path)) then
-      vim.cmd(string.format(("!git clone --depth 1 " .. "https://github.com/fwcd/kotlin-debug-adapter %s; " .. "cd %s; " .. "./gradlew :adapter:installDist"), adapter_path, adapter_path))
-      return vim.notify("finished to install kotlin-debug-adapter", vim.lsp.log_levels.INFO, {annote = "dap-sync-kotlin-adapter"})
-    else
-      return vim.notify("kotlin-debug-adapter already installed.", vim.lsp.log_levels.WARN, {annote = "dap-sync-kotlin-adapter"})
-    end
-  end
-  vim.api.nvim_create_user_command("DapSyncKotlinAdapter", dap_sync_kotlin_adapter, {})
-  dap.adapters.kotlin = {name = "kotlin-debug-adapter", type = "executable", command = bin_path}
-end
 dap.adapters.rego = {name = "regal-debug", type = "executable", command = "regal", args = {"debug"}}
 dap.configurations.rego = {{type = "rego", name = "Debug Workspace", request = "launch", command = "eval", query = "data", dataPaths = {"${file}"}, enablePrint = true, logLevel = "info"}, {type = "rego", name = "Launch Rego Workspace", request = "launch", command = "eval", query = "data", enablePrint = true, logLevel = "info", inputPath = "${workspaceFolder}/input.json", dataPaths = {"${file}"}}}
-local function load_launch_js()
-  local cwd = vim.fn.getcwd()
-  local path = (cwd .. "/.vscode/launch.json")
-  if vim.loop.fs_stat(path) then
-    vim.notify("loading .vscode/launch.json...", vim.lsp.log_levels.INFO, {annote = "dap-load-launch-js"})
-    pcall(dap_ext_vscode.load_launchjs)
-    return vim.notify("finished to load .vscode/launch.json.", vim.lsp.log_levels.INFO, {annote = "dap-load-launch-js"})
-  else
-    return nil
-  end
-end
-vim.api.nvim_create_user_command("DapLoadLaunchJSON", load_launch_js, {})
 dapui.setup({icons = {expanded = icontab["fold-open"], collapsed = icontab["fold-closed"]}})
 vim.cmd(("highlight " .. (("DapBreakpoint" .. " " .. ("ctermfg" .. "=" .. "red")) .. " " .. ("guifg" .. "=" .. colors.error))))
 vim.cmd(("highlight " .. (("DapLogPoint" .. " " .. ("ctermfg" .. "=" .. "yellow")) .. " " .. ("guifg" .. "=" .. colors.warn))))
