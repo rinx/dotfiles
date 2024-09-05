@@ -81,6 +81,8 @@ do
   vim.api.nvim_create_user_command("DapSyncKotlinAdapter", dap_sync_kotlin_adapter, {})
   dap.adapters.kotlin = {name = "kotlin-debug-adapter", type = "executable", command = bin_path}
 end
+dap.adapters.rego = {name = "regal-debug", type = "executable", command = "regal", args = {"debug"}}
+dap.configurations.rego = {{type = "rego", name = "Debug Workspace", request = "launch", command = "eval", query = "data", dataPaths = {"${file}"}, enablePrint = true, logLevel = "info"}, {type = "rego", name = "Launch Rego Workspace", request = "launch", command = "eval", query = "data", enablePrint = true, logLevel = "info", inputPath = "${workspaceFolder}/input.json", dataPaths = {"${file}"}}}
 local function load_launch_js()
   local cwd = vim.fn.getcwd()
   local path = (cwd .. "/.vscode/launch.json")

@@ -159,25 +159,29 @@
         :command bin-path}))
 
 ;; rego
-; (set dap.adapters.rego
-;      {:name :regal-debug
-;       :type :executable
-;       :command (.. adapters-dir :/regal)
-;       :args [:debug]})
-; (set dap.configurations.rego
-;      [{:type :rego
-;        :name "Debug Workspace"
-;        :request :launch
-;        :command :eval
-;        :query :data
-;        :enablePrint true}
-;       {:type :rego
-;        :name "Launch Rego Workspace"
-;        :request :launch
-;        :command :eval
-;        :query :data
-;        :enablePrint true
-;        :inputPath "${workspaceFolder}/input.json"}])
+(set dap.adapters.rego
+     {:name :regal-debug
+      :type :executable
+      :command :regal
+      :args [:debug]})
+(set dap.configurations.rego
+     [{:type :rego
+       :name "Debug Workspace"
+       :request :launch
+       :command :eval
+       :query :data
+       :dataPaths ["${file}"]
+       :enablePrint true
+       :logLevel :info}
+      {:type :rego
+       :name "Launch Rego Workspace"
+       :request :launch
+       :command :eval
+       :query :data
+       :enablePrint true
+       :logLevel :info
+       :inputPath "${workspaceFolder}/input.json"
+       :dataPaths ["${file}"]}])
 
 ;; loading .vscode/launch.json
 (fn load-launch-js []
