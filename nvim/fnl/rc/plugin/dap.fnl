@@ -10,67 +10,6 @@
 (local colors color.colors)
 (local icontab icon.tab)
 
-(local adapters-dir (.. (vim.fn.stdpath :data) :/dap))
-(when (not (= (vim.fn.isdirectory adapters-dir) 1))
-  (vim.fn.mkdir adapters-dir :p))
-
-;; go
-(when (= (vim.fn.executable :dlv) 1)
-  (let [dlv-path (vim.fn.exepath :dlv)
-        vscode-go-path (.. adapters-dir :/vscode-go)
-        debug-adapter-path (.. vscode-go-path :/dist/debugAdapter.js)]
-
-    (fn dap-sync-go-adapter []
-      (if (vim.fn.empty (vim.fn.glob vscode-go-path))
-        (do
-          (vim.cmd
-            (string.format
-              (.. "!git clone --depth 1 "
-                  "http://github.com/golang/vscode-go %s; "
-                  "cd %s; "
-                  "npm install; "
-                  "npm run compile")
-              vscode-go-path
-              vscode-go-path))
-          (vim.notify
-            "finished to install Go adapter."
-            vim.lsp.log_levels.INFO
-            {:annote :dap-sync-go-adapter}))
-        (do
-          (vim.cmd
-            (string.format
-              (.. "!cd %s; "
-                  "git pull origin master; "
-                  "npm install; "
-                  "npm run compile")
-              vscode-go-path))
-          (vim.notify
-            "finished to update Go adapter."
-            vim.lsp.log_levels.WARN
-            {:annote :dap-sync-go-adapter}))))
-    (vim.api.nvim_create_user_command :DapSyncGoAdapter dap-sync-go-adapter {})
-
-    (set dap.adapters.go
-         {:name :dlv
-          :type :executable
-          :command :node
-          :args [debug-adapter-path]})
-    (set dap.configurations.go
-         [{:type :go
-           :name "Launch file"
-           :request :launch
-           :showLog true
-           :program "${file}"
-           :dlvToolPath dlv-path}
-          {:type :go
-           :name "Launch test file"
-           :request :launch
-           :mode :test
-           :showLog true
-           :program "${file}"
-           :args ["-test.v"]
-           :dlvToolPath dlv-path}])))
-
 ;; rego
 (set dap.adapters.rego
      {:name :regal-debug

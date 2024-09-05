@@ -129,6 +129,8 @@
                            :event [:BufReadPost :BufAdd :BufNewFile]
                            :dependencies [:nvim-neotest/nvim-nio
                                           :rcarriga/nvim-dap-ui]}
+   :leoluz/nvim-dap-go {:ft [:go]
+                        :config (mod :dap-go)}
 
    ;; telescope
    :nvim-telescope/telescope.nvim {:config (mod :telescope)
