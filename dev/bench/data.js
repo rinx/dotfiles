@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1725242280197,
+  "lastUpdate": 1725544428224,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8473,6 +8473,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.95059690000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ee05579e342092361c85107930ec8d1da9cbc054",
+          "message": "config(nvim): (experimental) add regal dap configurations\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-09-05T22:44:42+09:00",
+          "tree_id": "2be290bf0427035260a46a4807a78b4b97337ed6",
+          "url": "https://github.com/rinx/dotfiles/commit/ee05579e342092361c85107930ec8d1da9cbc054"
+        },
+        "date": 1725544427173,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.8407195,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 85.6588266,
             "unit": "ms"
           }
         ]
