@@ -6,7 +6,6 @@
 (local lsputil (autoload :lspconfig.util))
 (local navic (autoload :nvim-navic))
 (local schemastore (autoload :schemastore))
-(local rust-tools (autoload :rust-tools))
 
 (local icon (autoload :rc.icon))
 (import-macros {: map! : augroup!} :rc.macros)
@@ -256,25 +255,6 @@
        :validate true}
       :single_file_support true}}))
 (lsp.zls.setup {})
-;; rust-analyzer
-(rust-tools.setup
-  {:tools
-   {:inlay_hints
-    {:parameter_hints_prefix (.. " "
-                                 icontab.slash
-                                 icontab.arrow-l
-                                 " ")
-     :other_hints_prefix (.. " "
-                             icontab.arrow-r
-                             " ")}}
-   :server
-   {:on_attach on-attach
-    :capabilities capabilities
-    :settings {:rust-analyzer
-               {:cargo {:allFeatures true}
-                :lens {:enable true
-                       :methodReferences true
-                       :references true}}}}})
 
 (tset vim.lsp.handlers
       :textDocument/hover

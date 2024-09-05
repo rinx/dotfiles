@@ -90,8 +90,7 @@
    :neovim/nvim-lspconfig {:config (mod :lsp)
                            :dependencies [:ray-x/lsp_signature.nvim
                                           :SmiteshP/nvim-navic
-                                          :b0o/schemastore.nvim
-                                          :simrat39/rust-tools.nvim]
+                                          :b0o/schemastore.nvim]
                            :event [:BufReadPre]}
    :j-hui/fidget.nvim {:config (mod :fidget)
                        :event [:BufReadPost :BufAdd :BufNewFile]}

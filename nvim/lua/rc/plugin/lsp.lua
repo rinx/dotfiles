@@ -7,7 +7,6 @@ local lsp_signature = autoload("lsp_signature")
 local lsputil = autoload("lspconfig.util")
 local navic = autoload("nvim-navic")
 local schemastore = autoload("schemastore")
-local rust_tools = autoload("rust-tools")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
 local function setup_codelens_refresh(client, bufnr)
@@ -91,7 +90,6 @@ do
 end
 lsp.yamlls.setup(core.merge(default_options, {settings = {yaml = {schemas = _4_, validate = true}, single_file_support = true}}))
 lsp.zls.setup({})
-rust_tools.setup({tools = {inlay_hints = {parameter_hints_prefix = (" " .. icontab.slash .. icontab["arrow-l"] .. " "), other_hints_prefix = (" " .. icontab["arrow-r"] .. " ")}}, server = {on_attach = on_attach, capabilities = capabilities, settings = {["rust-analyzer"] = {cargo = {allFeatures = true}, lens = {enable = true, methodReferences = true, references = true}}}}})
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
 vim.keymap.set("n", "K", ":<C-u>lua vim.lsp.buf.hover()<CR>", {silent = true})
