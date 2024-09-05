@@ -27,6 +27,7 @@
 
 (fn on-attach [client bufnr]
   (setup-codelens-refresh client bufnr)
+  (vim.lsp.inlay_hint.enable true)
   (lsp-signature.on_attach
     {:bind true
      :doc_lines 10
@@ -292,7 +293,7 @@
 (map! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" {:silent true})
 
 ;; toggle inlay hints
-(map! [:n] :<leader>i ":<C-u>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>" {:silent true})
+(map! [:n] :<leader>i ":<C-u>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>" {:silent true})
 
 (map!
   [:n]
