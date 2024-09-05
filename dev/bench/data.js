@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1725544428224,
+  "lastUpdate": 1725545515470,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8507,6 +8507,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 85.6588266,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c4dc60bf94d1a1860e43c082c16b24dc37b7ea56",
+          "message": "config(nvim): fix regal debug configurations\n\ndebugging feature added at StyraInc/regal#926\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-09-05T23:02:43+09:00",
+          "tree_id": "2c07bd4f7507d92dfd0fee6a84ac2bf16c4554d0",
+          "url": "https://github.com/rinx/dotfiles/commit/c4dc60bf94d1a1860e43c082c16b24dc37b7ea56"
+        },
+        "date": 1725545514910,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.872819999999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 88.0563396,
             "unit": "ms"
           }
         ]
