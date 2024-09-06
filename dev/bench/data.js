@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1725549469587,
+  "lastUpdate": 1725629989039,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8609,6 +8609,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.53068040000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "be754752201982125e30e4347d1a8c8d877a5a21",
+          "message": "config(nvim): update lsp on-attach func\n\nuse LspAttach event instead\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-09-06T22:30:56+09:00",
+          "tree_id": "e63c73ac9b15e44f98c026d60b2da19317b58f53",
+          "url": "https://github.com/rinx/dotfiles/commit/be754752201982125e30e4347d1a8c8d877a5a21"
+        },
+        "date": 1725629988089,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.0556129,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.67548100000002,
             "unit": "ms"
           }
         ]
