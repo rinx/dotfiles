@@ -22,9 +22,9 @@
        :request :launch
        :command :eval
        :query :data
-       :dataPaths ["${file}"]
        :enablePrint true
-       :logLevel :info}
+       :logLevel :info
+       :bundlePaths ["${workspaceFolder}"]}
       {:type :rego
        :name "Launch Rego Workspace"
        :request :launch
@@ -33,7 +33,7 @@
        :enablePrint true
        :logLevel :info
        :inputPath "${workspaceFolder}/input.json"
-       :dataPaths ["${file}"]}])
+       :bundlePaths ["${workspaceFolder}"]}])
 
 (dapui.setup {:icons
               {:expanded icontab.fold-open
