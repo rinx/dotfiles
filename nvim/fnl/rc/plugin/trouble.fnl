@@ -8,7 +8,7 @@
   {:auto_close true})
 
 (augroup!
-  trouble-qf-open
+  init-trouble-qf-open
   {:events [:QuickFixCmdPost]
    :callback (fn []
                (vim.cmd "Trouble qflist open"))})

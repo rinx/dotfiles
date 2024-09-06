@@ -4,7 +4,7 @@ local autoload = _local_1_["autoload"]
 local trouble = require("trouble")
 trouble.setup({auto_close = true})
 do
-  local group_5_auto = vim.api.nvim_create_augroup("trouble-qf-open", {clear = true})
+  local group_5_auto = vim.api.nvim_create_augroup("init-trouble-qf-open", {clear = true})
   local function _2_()
     return vim.cmd("Trouble qflist open")
   end

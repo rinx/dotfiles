@@ -24,40 +24,40 @@
          :buffer bufnr
          :callback vim.lsp.codelens.refresh}))))
 
-(fn on-attach [client bufnr]
-  (setup-codelens-refresh client bufnr)
-  (vim.lsp.inlay_hint.enable true)
-  (lsp-signature.on_attach
-    {:bind true
-     :doc_lines 10
-     :hint_enabled true
-     :hint_prefix (.. icontab.info " ")
-     :hint_scheme :String
-     :handler_opts
-     {:border :single}
-     :decorator {"`" "`"}})
-  (navic.attach client bufnr))
+(fn setup-inlay-hints [client bufnr]
+  (when client.server_capabilities.inlayHintProvider
+    (vim.lsp.inlay_hint.enable true)))
 
-(local capabilities
-  (let [cap (vim.lsp.protocol.make_client_capabilities)]
-    (set cap.textDocument.completion.completionItem.snippetSupport true)
-    (set cap.textDocument.completion.completionItem.preselectSupport true)
-    (set cap.textDocument.completion.completionItem.insertReplaceSupport true)
-    (set cap.textDocument.completion.completionItem.labelDetailsSupport true)
-    (set cap.textDocument.completion.completionItem.deprecatedSupport true)
-    (set cap.textDocument.completion.completionItem.commitCharactersSupport true)
-    (set cap.textDocument.completion.completionItem.tagSupport
-         {:valueSet [1]})
-    (set cap.textDocument.completion.completionItem.resolveSupport
-         {:properties
-          [:documentation
-           :detail
-           :additionalTextEdits]})
-    cap))
+(fn setup-document-formatting [client bufnr]
+  (when client.server_capabilities.documentFormattingProvider
+    (augroup!
+      init-lsp-format
+      {:events [:BufWritePre]
+       :pattern :<buffer>
+       :command "lua vim.lsp.buf.format()"})))
 
-(local default-options
-  {:on_attach on-attach
-   :capabilities capabilities})
+(augroup!
+  lsp-attach
+  {:events [:LspAttach]
+   :callback (fn [args]
+               (let [bufnr args.buf
+                     client (vim.lsp.get_client_by_id args.data.client_id)]
+                 (setup-codelens-refresh client bufnr)
+                 (setup-inlay-hints client bufnr)
+                 (setup-document-formatting client bufnr)
+
+                 (lsp-signature.on_attach
+                  {:bind true
+                   :doc_lines 10
+                   :hint_enabled true
+                   :hint_prefix (.. icontab.info " ")
+                   :hint_scheme :String
+                   :handler_opts
+                   {:border :single}
+                   :decorator {"`" "`"}}
+                  (navic.attach client bufnr))))})
+
+(local default-options {})
 
 (lsp.ast_grep.setup (core.merge
                       default-options

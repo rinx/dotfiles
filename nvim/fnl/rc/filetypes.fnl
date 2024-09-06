@@ -1,18 +1,5 @@
 (import-macros {: augroup!} :rc.macros)
 
-(fn lsp-format []
-  (let [(ok? val-or-err) (pcall vim.lsp.buf.format)]
-    (if ok?
-      (vim.notify
-        "Formatted."
-        vim.lsp.log_levels.INFO
-        {:annote "LSP format"
-         :skip_history true})
-      (vim.notify
-        (.. "An error occurred: " val-or-err)
-        vim.lsp.log_levels.WARN
-        {:annote "LSP format"}))))
-
 (augroup!
   init-filetype-detect
   {:events [:BufNewFile :BufRead :BufWinEnter]
@@ -104,10 +91,7 @@
    :command "nnoremap <buffer><silent> <leader>K :<C-u>lua vim.lsp.buf.hover()<CR>"}
   {:events [:FileType]
    :pattern :clojure
-   :command "setl colorcolumn=80"}
-  {:events [:BufWritePre]
-   :pattern "*.clj,*.cljc,*.cljs"
-   :callback lsp-format})
+   :command "setl colorcolumn=80"})
 
 (augroup!
   init-go
@@ -128,10 +112,7 @@
    :command "setl softtabstop=4"}
   {:events [:FileType]
    :pattern :go
-   :command "compiler go"}
-  {:events [:BufWritePre]
-   :pattern "*.go"
-   :callback lsp-format})
+   :command "compiler go"})
 
 (augroup!
   init-rego
@@ -149,46 +130,19 @@
    :command "setl tabstop=4"}
   {:events [:FileType]
    :pattern :rego
-   :command "setl softtabstop=4"}
-  {:events [:BufWritePre]
-   :pattern "*.rego,*.rq"
-   :callback lsp-format})
-
-(augroup!
-  init-rust
-  {:events [:BufWritePre]
-   :pattern "*.rs"
-   :callback lsp-format})
-
-(augroup!
-  init-kotlin
-  {:events [:BufWritePre]
-   :pattern "*.kt,*.kts"
-   :callback lsp-format})
+   :command "setl softtabstop=4"})
 
 (augroup!
   init-terraform
   {:events [:FileType]
    :pattern :terraform
-   :command "setl shiftwidth=2"}
-  {:events [:BufWritePre]
-   :pattern "*.tf,*.tfvars"
-   :callback lsp-format})
+   :command "setl shiftwidth=2"})
 
 (augroup!
   init-typescript
   {:events [:FileType]
    :pattern :typescript
-   :command "setl shiftwidth=2"}
-  {:events [:BufWritePre]
-   :pattern "*.ts"
-   :callback lsp-format})
-
-(augroup!
-  init-sh
-  {:events [:BufWritePre]
-   :pattern "*.sh,*.bash"
-   :callback lsp-format})
+   :command "setl shiftwidth=2"})
 
 (augroup!
   init-qf

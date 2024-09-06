@@ -22,26 +22,34 @@ local function setup_codelens_refresh(client, bufnr)
     return nil
   end
 end
-local function on_attach(client, bufnr)
-  setup_codelens_refresh(client, bufnr)
-  vim.lsp.inlay_hint.enable(true)
-  lsp_signature.on_attach({bind = true, doc_lines = 10, hint_enabled = true, hint_prefix = (icontab.info .. " "), hint_scheme = "String", handler_opts = {border = "single"}, decorator = {["`"] = "`"}})
-  return navic.attach(client, bufnr)
+local function setup_inlay_hints(client, bufnr)
+  if client.server_capabilities.inlayHintProvider then
+    return vim.lsp.inlay_hint.enable(true)
+  else
+    return nil
+  end
 end
-local capabilities
+local function setup_document_formatting(client, bufnr)
+  if client.server_capabilities.documentFormattingProvider then
+    local group_5_auto = vim.api.nvim_create_augroup("init-lsp-format", {clear = true})
+    return vim.api.nvim_create_autocmd({"BufWritePre"}, {command = "lua vim.lsp.buf.format()", group = group_5_auto, pattern = "<buffer>"})
+  else
+    return nil
+  end
+end
 do
-  local cap = vim.lsp.protocol.make_client_capabilities()
-  cap.textDocument.completion.completionItem.snippetSupport = true
-  cap.textDocument.completion.completionItem.preselectSupport = true
-  cap.textDocument.completion.completionItem.insertReplaceSupport = true
-  cap.textDocument.completion.completionItem.labelDetailsSupport = true
-  cap.textDocument.completion.completionItem.deprecatedSupport = true
-  cap.textDocument.completion.completionItem.commitCharactersSupport = true
-  cap.textDocument.completion.completionItem.tagSupport = {valueSet = {1}}
-  cap.textDocument.completion.completionItem.resolveSupport = {properties = {"documentation", "detail", "additionalTextEdits"}}
-  capabilities = cap
+  local group_5_auto = vim.api.nvim_create_augroup("lsp-attach", {clear = true})
+  local function _6_(args)
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    setup_codelens_refresh(client, bufnr)
+    setup_inlay_hints(client, bufnr)
+    setup_document_formatting(client, bufnr)
+    return lsp_signature.on_attach({bind = true, doc_lines = 10, hint_enabled = true, hint_prefix = (icontab.info .. " "), hint_scheme = "String", handler_opts = {border = "single"}, decorator = {["`"] = "`"}}, navic.attach(client, bufnr))
+  end
+  vim.api.nvim_create_autocmd({"LspAttach"}, {callback = _6_, group = group_5_auto})
 end
-local default_options = {on_attach = on_attach, capabilities = capabilities}
+local default_options = {}
 lsp.ast_grep.setup(core.merge(default_options, {filetypes = {"*"}}))
 lsp.bashls.setup(core.merge(default_options, {settings = {bashIde = {shfmt = {caseIndent = true}}}}))
 lsp.bufls.setup(core.merge(default_options, {}))
@@ -72,23 +80,23 @@ lsp.terraformls.setup(core.merge(default_options, {settings = {["terraform-ls"] 
 lsp.tflint.setup({})
 lsp.texlab.setup(core.merge(default_options, {filetypes = {"tex", "bib", "plaintex"}}))
 lsp.tsserver.setup(core.merge(default_options, {root_dir = lsputil.root_pattern("package.json")}))
-local _4_
+local _7_
 do
   local k8s_prefix = table.concat({"https://raw.githubusercontent.com/", "yannh/", "kubernetes-json-schema/", "master/", "v1.31.0-standalone"})
   local __3ek8s
-  local function _5_(x)
+  local function _8_(x)
     return table.concat({k8s_prefix, x}, "/")
   end
-  __3ek8s = _5_
+  __3ek8s = _8_
   local schemastore_prefix = "https://json.schemastore.org"
   local __3eschemastore
-  local function _6_(x)
+  local function _9_(x)
     return table.concat({schemastore_prefix, x}, "/")
   end
-  __3eschemastore = _6_
-  _4_ = {[__3ek8s("all.json")] = "k8s/**/*.yaml", [__3ek8s("clusterrole.json")] = "clusterrole.yaml", [__3ek8s("clusterrolebinding.json")] = "clusterrolebinding.yaml", [__3ek8s("configmap.json")] = "configmap.yaml", [__3ek8s("cronjob.json")] = "cronjob.yaml", [__3ek8s("daemonset.json")] = "daemonset.yaml", [__3ek8s("deployment.json")] = "deployment.yaml", [__3ek8s("horizontalpodautoscaler.json")] = "hpa.yaml", [__3ek8s("ingress.json")] = "ingress.yaml", [__3ek8s("ingressclass.json")] = "ingressclass.yaml", [__3ek8s("job.json")] = "job.yaml", [__3ek8s("namespace.json")] = "namespace.yaml", [__3ek8s("networkpolicy.json")] = "networkpolicy.yaml", [__3ek8s("poddisruptionbudget.json")] = "pdb.yaml", [__3ek8s("podsecuritycontext.json")] = "podsecuritycontext.yaml", [__3ek8s("podsecuritypolicy.json")] = {"podsecuritypolicy.yaml", "psp.yaml"}, [__3ek8s("priorityclass.json")] = "priorityclass.yaml", [__3ek8s("secret.json")] = "secret.yaml", [__3ek8s("securitycontext.json")] = "securitycontext.yaml", [__3ek8s("service.json")] = {"service.yaml", "svc.yaml"}, [__3ek8s("serviceaccount.json")] = "serviceaccount.yaml", [__3ek8s("statefulset.json")] = "statefulset.yaml", [__3ek8s("storageclass.json")] = "storageclass.yaml", [__3eschemastore("kustomization")] = "kustomization.yaml", [__3eschemastore("helmfile.json")] = "helmfile.yaml", [__3eschemastore("github-workflow.json")] = "/.github/workflows/*", [__3eschemastore("circleciconfig.json")] = "/.circleci/*", [__3eschemastore("golangci-lint.json")] = ".golangci.yml"}
+  __3eschemastore = _9_
+  _7_ = {[__3ek8s("all.json")] = "k8s/**/*.yaml", [__3ek8s("clusterrole.json")] = "clusterrole.yaml", [__3ek8s("clusterrolebinding.json")] = "clusterrolebinding.yaml", [__3ek8s("configmap.json")] = "configmap.yaml", [__3ek8s("cronjob.json")] = "cronjob.yaml", [__3ek8s("daemonset.json")] = "daemonset.yaml", [__3ek8s("deployment.json")] = "deployment.yaml", [__3ek8s("horizontalpodautoscaler.json")] = "hpa.yaml", [__3ek8s("ingress.json")] = "ingress.yaml", [__3ek8s("ingressclass.json")] = "ingressclass.yaml", [__3ek8s("job.json")] = "job.yaml", [__3ek8s("namespace.json")] = "namespace.yaml", [__3ek8s("networkpolicy.json")] = "networkpolicy.yaml", [__3ek8s("poddisruptionbudget.json")] = "pdb.yaml", [__3ek8s("podsecuritycontext.json")] = "podsecuritycontext.yaml", [__3ek8s("podsecuritypolicy.json")] = {"podsecuritypolicy.yaml", "psp.yaml"}, [__3ek8s("priorityclass.json")] = "priorityclass.yaml", [__3ek8s("secret.json")] = "secret.yaml", [__3ek8s("securitycontext.json")] = "securitycontext.yaml", [__3ek8s("service.json")] = {"service.yaml", "svc.yaml"}, [__3ek8s("serviceaccount.json")] = "serviceaccount.yaml", [__3ek8s("statefulset.json")] = "statefulset.yaml", [__3ek8s("storageclass.json")] = "storageclass.yaml", [__3eschemastore("kustomization")] = "kustomization.yaml", [__3eschemastore("helmfile.json")] = "helmfile.yaml", [__3eschemastore("github-workflow.json")] = "/.github/workflows/*", [__3eschemastore("circleciconfig.json")] = "/.circleci/*", [__3eschemastore("golangci-lint.json")] = ".golangci.yml"}
 end
-lsp.yamlls.setup(core.merge(default_options, {settings = {yaml = {schemas = _4_, validate = true}, single_file_support = true}}))
+lsp.yamlls.setup(core.merge(default_options, {settings = {yaml = {schemas = _7_, validate = true}, single_file_support = true}}))
 lsp.zls.setup({})
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
