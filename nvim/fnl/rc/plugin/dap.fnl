@@ -10,31 +10,6 @@
 (local colors color.colors)
 (local icontab icon.tab)
 
-;; rego
-(set dap.adapters.rego
-     {:name :regal-debug
-      :type :executable
-      :command :regal
-      :args [:debug]})
-(set dap.configurations.rego
-     [{:type :rego
-       :name "Debug Workspace"
-       :request :launch
-       :command :eval
-       :query :data
-       :enablePrint true
-       :logLevel :info
-       :bundlePaths ["${workspaceFolder}"]}
-      {:type :rego
-       :name "Launch Rego Workspace"
-       :request :launch
-       :command :eval
-       :query :data
-       :enablePrint true
-       :logLevel :info
-       :inputPath "${workspaceFolder}/input.json"
-       :bundlePaths ["${workspaceFolder}"]}])
-
 (dapui.setup {:icons
               {:expanded icontab.fold-open
                :collapsed icontab.fold-closed}})

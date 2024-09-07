@@ -131,6 +131,9 @@
                                           :rcarriga/nvim-dap-ui]}
    :leoluz/nvim-dap-go {:ft [:go]
                         :config (mod :dap-go)}
+   :rinx/nvim-dap-rego {:ft [:rego]
+                        :config (mod :dap-rego)}
+                        ; :dir (vim.fn.expand "~/local/src/github.com/rinx/nvim-dap-rego")}
 
    ;; telescope
    :nvim-telescope/telescope.nvim {:config (mod :telescope)

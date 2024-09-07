@@ -7,8 +7,6 @@ local color = autoload("rc.color")
 local icon = autoload("rc.icon")
 local colors = color.colors
 local icontab = icon.tab
-dap.adapters.rego = {name = "regal-debug", type = "executable", command = "regal", args = {"debug"}}
-dap.configurations.rego = {{type = "rego", name = "Debug Workspace", request = "launch", command = "eval", query = "data", enablePrint = true, logLevel = "info", bundlePaths = {"${workspaceFolder}"}}, {type = "rego", name = "Launch Rego Workspace", request = "launch", command = "eval", query = "data", enablePrint = true, logLevel = "info", inputPath = "${workspaceFolder}/input.json", bundlePaths = {"${workspaceFolder}"}}}
 dapui.setup({icons = {expanded = icontab["fold-open"], collapsed = icontab["fold-closed"]}})
 vim.cmd(("highlight " .. (("DapBreakpoint" .. " " .. ("ctermfg" .. "=" .. "red")) .. " " .. ("guifg" .. "=" .. colors.error))))
 vim.cmd(("highlight " .. (("DapLogPoint" .. " " .. ("ctermfg" .. "=" .. "yellow")) .. " " .. ("guifg" .. "=" .. colors.warn))))
