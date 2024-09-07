@@ -205,9 +205,7 @@
                                                    :prefillRequiredFields true}}}}))
 (lsp.tflint.setup {})
 (lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
-(lsp.tsserver.setup (core.merge
-                      default-options
-                      {:root_dir (lsputil.root_pattern "package.json")}))
+(lsp.ts_ls.setup {})
 (lsp.yamlls.setup
   (core.merge
     default-options

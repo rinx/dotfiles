@@ -79,7 +79,7 @@ lsp.regal.setup(core.merge(default_options, {}))
 lsp.terraformls.setup(core.merge(default_options, {settings = {["terraform-ls"] = {experimentalFeatures = {validateOnSave = true, prefillRequiredFields = true}}}}))
 lsp.tflint.setup({})
 lsp.texlab.setup(core.merge(default_options, {filetypes = {"tex", "bib", "plaintex"}}))
-lsp.tsserver.setup(core.merge(default_options, {root_dir = lsputil.root_pattern("package.json")}))
+lsp.ts_ls.setup({})
 local _7_
 do
   local k8s_prefix = table.concat({"https://raw.githubusercontent.com/", "yannh/", "kubernetes-json-schema/", "master/", "v1.31.0-standalone"})
