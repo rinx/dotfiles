@@ -9,4 +9,5 @@ rule:
     - pattern: (vim.api.nvim_create_augroup $$$) 
     - pattern: (vim.api.nvim_create_autocmd $$$) 
 ignores:
+  - nvim/fnl/rc/macros.fnl
   - ./nvim/fnl/rc/macros.fnl

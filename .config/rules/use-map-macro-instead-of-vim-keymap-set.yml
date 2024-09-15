@@ -7,5 +7,6 @@ language: fennel
 rule:
   pattern: (vim.keymap.set $MODE $FROM $TO $OPTS)
 ignores:
+  - nvim/fnl/rc/macros.fnl
   - ./nvim/fnl/rc/macros.fnl
 fix: (map! [$MODE] $FROM $TO $OPTS)
