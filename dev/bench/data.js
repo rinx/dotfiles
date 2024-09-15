@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1726408181343,
+  "lastUpdate": 1726409329270,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8813,6 +8813,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.9522793,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "138b65d2bcb0a86a8329ba922eeef98f190a0d88",
+          "message": "chore(ci/lint): add ignores\n\nfor workaround to invalid detection only on github actions\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-09-15T22:59:41+09:00",
+          "tree_id": "e7ea24f5b57af2b66e0f19593d871dc04e0284d3",
+          "url": "https://github.com/rinx/dotfiles/commit/138b65d2bcb0a86a8329ba922eeef98f190a0d88"
+        },
+        "date": 1726409328931,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.4228226,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 84.0973377,
             "unit": "ms"
           }
         ]
