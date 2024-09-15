@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1725841896458,
+  "lastUpdate": 1726408181343,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8779,6 +8779,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.28803300000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2e33deaf777ccab9b863ab8bd9efbe8908482f86",
+          "message": "config(nvim): automatically open dap-ui\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-09-15T21:44:21+09:00",
+          "tree_id": "ed2a3278eadf950374378525b9aaec10a29af8a6",
+          "url": "https://github.com/rinx/dotfiles/commit/2e33deaf777ccab9b863ab8bd9efbe8908482f86"
+        },
+        "date": 1726408180369,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.0968552,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 82.9522793,
             "unit": "ms"
           }
         ]
