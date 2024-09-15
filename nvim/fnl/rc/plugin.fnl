@@ -151,7 +151,6 @@
                                     :event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)
                            :event [:VimEnter]}
-   :tani/glance-vim {:event [:BufReadPost :BufAdd :BufNewFile]}
 
    ;; operator/textobj
    :kana/vim-operator-user {:config (mod :operator)

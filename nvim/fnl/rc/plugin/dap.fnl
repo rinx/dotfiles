@@ -14,6 +14,10 @@
               {:expanded icontab.fold-open
                :collapsed icontab.fold-closed}})
 
+;; automatically open UI
+(set dap.listeners.before.attach.dapui_config dapui.open)
+(set dap.listeners.before.launch.dapui_config dapui.open)
+
 (hi! :DapBreakpoint {:ctermfg :red :guifg colors.error})
 (hi! :DapLogPoint {:ctermfg :yellow :guifg colors.warn})
 (hi! :DapStopped {:ctermfg :blue :guifg colors.hint})

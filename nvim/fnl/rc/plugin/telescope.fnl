@@ -28,8 +28,6 @@
    :DapStepOut
    :DapStepOver
    :DapToggleBreakpoint
-   :DapUIClose
-   :DapUIOpen
    :DapUIToggle
    :GhostStart
    :Ghq
