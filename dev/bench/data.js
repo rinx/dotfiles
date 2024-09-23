@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727053800986,
+  "lastUpdate": 1727093159800,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8915,6 +8915,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 86.06543509999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "0bfa9c8cb55ce262c76281bea8c1da8d4e603d0c",
+          "message": "config(nvim): add dap configurations for vcl\n\nfalco's dap feature is proposed in ysugimoto/falco#349\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-09-23T20:55:58+09:00",
+          "tree_id": "d075826d83a2954a0460c744c779bb3c76d1fe52",
+          "url": "https://github.com/rinx/dotfiles/commit/0bfa9c8cb55ce262c76281bea8c1da8d4e603d0c"
+        },
+        "date": 1727093158830,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.962731999999995,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 82.20679340000001,
             "unit": "ms"
           }
         ]
