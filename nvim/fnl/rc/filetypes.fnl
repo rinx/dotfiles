@@ -21,6 +21,9 @@
    :pattern "*.tf,*.tfvars"
    :command "setf terraform"}
   {:events [:BufNewFile :BufRead :BufWinEnter]
+   :pattern "*.vcl"
+   :command "setf vcl"}
+  {:events [:BufNewFile :BufRead :BufWinEnter]
    :pattern ".github/workflows/*.yaml,.github/workflows/*.yml"
    :command "setf yaml.github-actions"}
   {:events [:BufNewFile :BufRead :BufWinEnter]

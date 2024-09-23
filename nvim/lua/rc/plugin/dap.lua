@@ -8,6 +8,8 @@ local icon = autoload("rc.icon")
 local colors = color.colors
 local icontab = icon.tab
 dapui.setup({icons = {expanded = icontab["fold-open"], collapsed = icontab["fold-closed"]}})
+dap.adapters.vcl = {name = "falco", type = "executable", command = "falco", args = {"dap"}}
+dap.configurations.vcl = {{type = "vcl", name = "Debug VCL by Falco", request = "launch", mainVCL = "${file}", includePaths = {"${workspaceFolder}"}}}
 dap.listeners.before.attach.dapui_config = dapui.open
 dap.listeners.before.launch.dapui_config = dapui.open
 vim.cmd(("highlight " .. (("DapBreakpoint" .. " " .. ("ctermfg" .. "=" .. "red")) .. " " .. ("guifg" .. "=" .. colors.error))))

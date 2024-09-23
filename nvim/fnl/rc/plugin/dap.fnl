@@ -14,6 +14,19 @@
               {:expanded icontab.fold-open
                :collapsed icontab.fold-closed}})
 
+;; vcl
+(set dap.adapters.vcl
+     {:name :falco
+      :type :executable
+      :command :falco
+      :args [:dap]})
+(set dap.configurations.vcl
+     [{:type :vcl
+       :name "Debug VCL by Falco"
+       :request :launch
+       :mainVCL "${file}"
+       :includePaths ["${workspaceFolder}"]}])
+
 ;; automatically open UI
 (set dap.listeners.before.attach.dapui_config dapui.open)
 (set dap.listeners.before.launch.dapui_config dapui.open)
