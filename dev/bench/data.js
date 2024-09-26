@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727093159800,
+  "lastUpdate": 1727391528588,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8949,6 +8949,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.20679340000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c0cc462b9634db7e7c0fe9eb227102c8ae72adfc",
+          "message": "chore(deps): update cachix/install-nix-action action to v29 (#92)",
+          "timestamp": "2024-09-27T07:50:35+09:00",
+          "tree_id": "b1fee3cb93207696c7c1a250fde0fa7a8acdf39b",
+          "url": "https://github.com/rinx/dotfiles/commit/c0cc462b9634db7e7c0fe9eb227102c8ae72adfc"
+        },
+        "date": 1727391527563,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.5622255,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.7063817,
             "unit": "ms"
           }
         ]
