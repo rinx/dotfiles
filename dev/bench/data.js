@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727391528588,
+  "lastUpdate": 1727864828211,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -8983,6 +8983,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.7063817,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fa12233c2253a4551b4c44e40043fb2bc1d51a11",
+          "message": "chore(ci): use x86_64-linux and aarch64-darwin for nix flake check (#94)\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-02T19:19:10+09:00",
+          "tree_id": "cb6b39dd552afc45bf16fff6e9aeff75f6811149",
+          "url": "https://github.com/rinx/dotfiles/commit/fa12233c2253a4551b4c44e40043fb2bc1d51a11"
+        },
+        "date": 1727864827778,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.4303024,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.76794079999999,
             "unit": "ms"
           }
         ]
