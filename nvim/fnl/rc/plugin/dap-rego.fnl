@@ -2,6 +2,4 @@
 
 (local dap-rego (require :dap-rego))
 
-(dap-rego.setup
-  {:regal
-   {:path :regal-debug}})
+(dap-rego.setup)
