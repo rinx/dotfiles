@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727917839831,
+  "lastUpdate": 1727920920043,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9085,6 +9085,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.47633379999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ec4c0574574aa312fc3d149102d0f2ccf079c0c4",
+          "message": "chore(ci): disable fail-fast for nix check\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-03T10:53:40+09:00",
+          "tree_id": "684cfd5af4a26e6a0869582274865164e57e62ef",
+          "url": "https://github.com/rinx/dotfiles/commit/ec4c0574574aa312fc3d149102d0f2ccf079c0c4"
+        },
+        "date": 1727920919471,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.110869099999995,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.3046755,
             "unit": "ms"
           }
         ]
