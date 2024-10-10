@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728261702957,
+  "lastUpdate": 1728562924650,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9221,6 +9221,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.0215977,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ad6c2c9168e92fa335cd8f3bf7d70681eaf30b97",
+          "message": "config(nvim): add lsp options for regal\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-10T21:13:37+09:00",
+          "tree_id": "f215ededfe88a5b495171ca656f7c3b7a9d9ca79",
+          "url": "https://github.com/rinx/dotfiles/commit/ad6c2c9168e92fa335cd8f3bf7d70681eaf30b97"
+        },
+        "date": 1728562924219,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.139930200000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.2054173,
             "unit": "ms"
           }
         ]
