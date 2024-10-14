@@ -172,13 +172,10 @@
                                  :fennel]}
    :julienvincent/nvim-paredit {:ft [:clojure
                                      :fennel]}
-   :julienvincent/nvim-paredit-fennel {:dependencies [:julienvincent/nvim-paredit]
-                                       :ft [:fennel]}
    :dundalek/parpar.nvim {:ft [:clojure
                                :fennel]
                           :dependencies [:gpanders/nvim-parinfer
-                                         :julienvincent/nvim-paredit
-                                         :julienvincent/nvim-paredit-fennel]
+                                         :julienvincent/nvim-paredit]
                           :config (mod :parpar)}
    :Olical/conjure {:ft [:clojure
                          :fennel]}
