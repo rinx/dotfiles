@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728883053614,
+  "lastUpdate": 1728896797392,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9357,6 +9357,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 78.29988520000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3910ac21881ce7ce4160c3e5e8e0238226fd720d",
+          "message": "chore(nvim): fix terraform-ls options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-14T17:58:08+09:00",
+          "tree_id": "a3853be05392f72b1525e63ae5e366e06506a424",
+          "url": "https://github.com/rinx/dotfiles/commit/3910ac21881ce7ce4160c3e5e8e0238226fd720d"
+        },
+        "date": 1728896796803,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.1232944,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.84570260000001,
             "unit": "ms"
           }
         ]
