@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728870684106,
+  "lastUpdate": 1728876917285,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9289,6 +9289,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.6811791,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1df0fb17d01cf5fa164ab17d1c6bd25b624c3792",
+          "message": "chore(nvim): remove nvim-paredit-fennel\n\njulienvincent/nvim-paredit@v1.0.0 supports fennel natively\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-14T12:26:15+09:00",
+          "tree_id": "5e2ebfd9848f2a192c5de87354bff7feb81c8f49",
+          "url": "https://github.com/rinx/dotfiles/commit/1df0fb17d01cf5fa164ab17d1c6bd25b624c3792"
+        },
+        "date": 1728876916849,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.6054755,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.31136509999999,
             "unit": "ms"
           }
         ]
