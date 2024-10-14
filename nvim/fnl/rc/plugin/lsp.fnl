@@ -203,10 +203,10 @@
                      :evalCodelensDisplayInline true}}))
 (lsp.terraformls.setup (core.merge
                          default-options
-                         {:settings
-                          {:terraform-ls
-                           {:experimentalFeatures {:validateOnSave true
-                                                   :prefillRequiredFields true}}}}))
+                         {:init_options
+                          {:experimentalFeatures
+                           {:validateOnSave true
+                            :prefillRequiredFields true}}}))
 (lsp.tflint.setup {})
 (lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
 (lsp.ts_ls.setup {})
