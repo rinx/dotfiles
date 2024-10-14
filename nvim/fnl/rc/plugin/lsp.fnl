@@ -198,8 +198,7 @@
 (lsp.pylsp.setup (core.merge default-options {}))
 (lsp.regal.setup (core.merge
                    default-options
-                   {:cmd [:regal-debug :language-server]
-                    :init_options
+                   {:init_options
                     {:enableDebugCodelens true
                      :evalCodelensDisplayInline true}}))
 (lsp.terraformls.setup (core.merge
