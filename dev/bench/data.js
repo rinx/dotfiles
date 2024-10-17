@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728896797392,
+  "lastUpdate": 1729159682046,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9391,6 +9391,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.84570260000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "80a1d9ed417c7e3654645f727c5a008669d80fe5",
+          "message": "config: add falco as nix package\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-17T18:58:36+09:00",
+          "tree_id": "f8b5facf37c7dc235cdea0414045c7dde7ddfc87",
+          "url": "https://github.com/rinx/dotfiles/commit/80a1d9ed417c7e3654645f727c5a008669d80fe5"
+        },
+        "date": 1729159681005,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.810769500000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.0313025,
             "unit": "ms"
           }
         ]
