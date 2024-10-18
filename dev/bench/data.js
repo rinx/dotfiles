@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1729234848240,
+  "lastUpdate": 1729245615492,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9459,6 +9459,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.5904072,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b14b892e2974de1559a8916f6a47ca6ca9b62406",
+          "message": "chore(pkgs): upgrade falco to v1.11.1\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-18T18:51:11+09:00",
+          "tree_id": "03cb0d1138f222fb6ea0e6cc0b7abd0254c8bb14",
+          "url": "https://github.com/rinx/dotfiles/commit/b14b892e2974de1559a8916f6a47ca6ca9b62406"
+        },
+        "date": 1729245615120,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.499957000000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.3010093,
             "unit": "ms"
           }
         ]
