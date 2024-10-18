@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1729159682046,
+  "lastUpdate": 1729234848240,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9425,6 +9425,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.0313025,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "cb9589148fad3cc9a7306355f4c457b1384af9b9",
+          "message": "chore: falco release candidate version\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-18T15:51:32+09:00",
+          "tree_id": "62aa055c472745030de1e36d990c1d06cb7a3193",
+          "url": "https://github.com/rinx/dotfiles/commit/cb9589148fad3cc9a7306355f4c457b1384af9b9"
+        },
+        "date": 1729234847607,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.5360856,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.5904072,
             "unit": "ms"
           }
         ]
