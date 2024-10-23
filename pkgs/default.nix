@@ -38,6 +38,7 @@
       cmakeMinimal
       conftest
       cosign
+      cue
       curl
       delta
       docker-credential-helpers
