@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1729827239579,
+  "lastUpdate": 1729831342510,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9561,6 +9561,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.00370559999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "fc2bc6a9b670cf1cc39147c5371c2f7074145978",
+          "message": "chore: add orgmode and pandoc\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-25T13:17:29+09:00",
+          "tree_id": "3af09cdd331ac363a6e437fe11bf9bc8c24bdd63",
+          "url": "https://github.com/rinx/dotfiles/commit/fc2bc6a9b670cf1cc39147c5371c2f7074145978"
+        },
+        "date": 1729831341941,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.3968596,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 85.4887631,
             "unit": "ms"
           }
         ]
