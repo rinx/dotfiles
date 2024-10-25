@@ -54,6 +54,7 @@
       neovim-unwrapped
       nodePackages.neovim
       open-policy-agent
+      pandoc
       pass
       passExtensions.pass-otp
       ripgrep

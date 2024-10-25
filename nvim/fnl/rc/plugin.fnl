@@ -187,5 +187,10 @@
                                      :config (mod :treesitter)
                                      :event [:BufEnter]
                                      :dependencies [:JoosepAlviste/nvim-ts-context-commentstring]}
-   :danymat/neogen {:config (mod :neogen)
-                    :event [:BufReadPost :BufAdd :BufNewFile]}})
+
+   ;; orgmode
+   :nvim-orgmode/orgmode {:config (mod :orgmode)
+                          :event [:VeryLazy]
+                          :ft [:org]
+                          :dependencies [:nvim-orgmode/org-bullets.nvim 
+                                         :danilshvalov/org-modern.nvim]}})

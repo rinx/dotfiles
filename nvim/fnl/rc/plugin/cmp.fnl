@@ -59,7 +59,8 @@
    {:name :skkeleton}
    {:name :spell}
    {:name :calc}
-   {:name :emoji}])
+   {:name :emoji}
+   {:name :orgmode}])
 
 (cmp.setup
   {:formatting
