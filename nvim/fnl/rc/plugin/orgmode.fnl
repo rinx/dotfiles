@@ -50,7 +50,10 @@
     :c {:description "Add a code-reading note to inbox"
         ;; TODO: add link to github in template
         :template (->tmplstr :code-snippet.org)
-        :headline :Codes}
+        :headline :Notes}
+    :n {:description "Add a new note to inbox"
+        :template (->tmplstr :note.org)
+        :headline :Notes}
     :j {:description "Add a new note to journal"
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
