@@ -1,17 +1,41 @@
+(local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
+
 (local orgmode (require :orgmode))
 (local bullets (require :org-bullets))
 (local modern-menu (require :org-modern.menu))
 
-(local basepath "~/notes/org")
+(local basepath (vim.fn.expand "~/notes/org"))
+(local templates
+       ;; get current filepath and concatinate
+       (let [info (debug.getinfo 1)]
+         (vim.fn.expand
+           (.. (vim.fn.fnamemodify (info.source:sub 2) ":h")
+               :/../../../orgmode/templates))))
 
 (fn ->path [path]
   (.. basepath :/ path))
+(fn ->tmpl [path]
+  (.. templates :/ path))
 
-;; TODO: create ~/notes/org/inbox.org if not exists
+(fn ->tmplstr [path]
+  (vim.fn.join
+    (vim.fn.readfile (->tmpl path))
+    "\n"))
+
+(local inbox (->path :inbox.org))
+
+(when (not (= (vim.fn.isdirectory basepath) 1))
+  (vim.fn.mkdir basepath :p))
+(when (not (= (vim.fn.filereadable inbox) 1))
+  (vim.fn.writefile
+    (vim.fn.readfile (->tmpl :inbox.org))
+    inbox))
 
 (orgmode.setup
-  {:org_agenda_files (->path :agenda/**/*)
-   :org_default_notes_file (->path :inbox.org)
+  {:org_agenda_files [inbox
+                      (->path :journal/*.org)]
+   :org_default_notes_file inbox
    :org_archive_location (->path "archive/%s_archive::")
    :org_todo_keywords [:TODO
                        :WAITING
@@ -21,16 +45,16 @@
    :org_startup_folded :showeverything
    :org_capture_templates
    {:t {:description "Add a new task to inbox"
-        ;; TODO: load templates from individual file
-        :template "** TODO %?\n %U"
+        :template (->tmplstr :task.org)
         :headline :Tasks}
     :c {:description "Add a code-reading note to inbox"
         ;; TODO: add link to github in template
-        :template "** %?\n %a %U"
+        :template (->tmplstr :code-snippet.org)
         :headline :Codes}
-    :j {:description "Add a new event or thoughts to journal"
-        :template "\n* %<%Y-%m-%d> %<%A>\n** %U\n\n%?"
-        :target (->path :journal/%<%Y-%m>.org)}}
+    :j {:description "Add a new note to journal"
+        :template (->tmplstr :journal.org)
+        :target (->path :journal/%<%Y-%m>.org)
+        :datetree {:tree_type :month}}}
    :org_tags_column 90
    :win_split_mode :auto
    :ui
