@@ -12,12 +12,13 @@ local themes = require("telescope.themes")
 local toggleterm = require("telescope-toggleterm")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
-local action_cmds = {"cd %:p:h", "BlamerToggle", "ConjureConnect", "ConjureLogSplit", "ConjureLogVSplit", "ConjureCljDebugInit", "DapContinue", "DapListBreakpoints", "DapStepInto", "DapStepOut", "DapStepOver", "DapToggleBreakpoint", "DapUIToggle", "GhostStart", "Ghq", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "LspInfo", "LspRestart", "LspStart", "LspStart denols", "LspStart tsserver", "LspStop", "NvimTreeRefresh", "NvimTreeToggle", "Octo pr list", "Octo issue list", "Fidget history", "Telescope dap list_breakpoints", "Telescope repo list", "Telescope projects", "Telescope toggleterm", "ToggleTerm", "ToggleTermCloseAll", "ToggleTermOpenAll", "TodoTrouble", "TroubleToggle", "TroubleToggle loclist", "TroubleToggle lsp_document_diagnostics", "TroubleToggle lsp_references", "TroubleToggle lsp_workspace_diagnostics", "TroubleToggle quickfix"}
+local action_cmds = {"cd %:p:h", "BlamerToggle", "ConjureConnect", "ConjureLogSplit", "ConjureLogVSplit", "ConjureCljDebugInit", "DapContinue", "DapListBreakpoints", "DapStepInto", "DapStepOut", "DapStepOver", "DapToggleBreakpoint", "DapUIToggle", "GhostStart", "Ghq", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "LspInfo", "LspRestart", "LspStart", "LspStart denols", "LspStart tsserver", "LspStop", "NvimTreeRefresh", "NvimTreeToggle", "Octo pr list", "Octo issue list", "Fidget history", "Telescope dap list_breakpoints", "Telescope repo list", "Telescope projects", "Telescope toggleterm", "Telescope orgmode refile_heading", "Telescope orgmode search_headings", "Telescope orgmode insert_link", "ToggleTerm", "ToggleTermCloseAll", "ToggleTermOpenAll", "TodoTrouble", "TroubleToggle", "TroubleToggle loclist", "TroubleToggle lsp_document_diagnostics", "TroubleToggle lsp_references", "TroubleToggle lsp_workspace_diagnostics", "TroubleToggle quickfix"}
 telescope.setup({defaults = {mappings = {i = {["<Up>"] = actions.cycle_history_prev, ["<Down>"] = actions.cycle_history_next}}, prompt_prefix = (icontab.search .. " "), selection_caret = (icontab.rquot .. " "), sorting_strategy = "ascending", scroll_strategy = "cycle"}, extensions = {fzy_native = {override_generic_sorter = true, override_file_sorter = true}}})
 telescope.load_extension("dap")
 telescope.load_extension("projects")
 telescope.load_extension("repo")
 telescope.load_extension("toggleterm")
+telescope.load_extension("orgmode")
 local function telescope_ghq()
   return telescope.extensions.repo.list({search_dirs = {"~/local/src"}})
 end

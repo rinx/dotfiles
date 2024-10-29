@@ -52,6 +52,9 @@
    "Telescope repo list"
    "Telescope projects"
    "Telescope toggleterm"
+   "Telescope orgmode refile_heading"
+   "Telescope orgmode search_headings"
+   "Telescope orgmode insert_link"
    :ToggleTerm
    :ToggleTermCloseAll
    :ToggleTermOpenAll
@@ -81,6 +84,7 @@
 (telescope.load_extension :projects)
 (telescope.load_extension :repo)
 (telescope.load_extension :toggleterm)
+(telescope.load_extension :orgmode)
 
 (fn telescope-ghq []
   (telescope.extensions.repo.list
