@@ -1,3 +1,5 @@
-** %?
+* %?
 
-   created: %U
+  :PROPERTIES:
+  :CAPTURED: %U
+  :END:

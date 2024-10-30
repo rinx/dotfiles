@@ -46,24 +46,30 @@
    :org_capture_templates
    {:t {:description "Add a new task to inbox"
         :template (->tmplstr :task.org)
-        :headline :Tasks}
+        :headline :Tasks
+        :properties {:empty_lines 1}}
     :c {:description "Add a code-reading note to inbox"
         ;; TODO: add link to github in template
         :template (->tmplstr :code-note.org)
-        :headline :Notes}
+        :headline :Notes
+        :properties {:empty_lines 1}}
     :n {:description "Add a new note to inbox"
         :template (->tmplstr :note.org)
-        :headline :Notes}
+        :headline :Notes
+        :properties {:empty_lines 1}}
     :l {:description "Add a new note to inbox with link"
         :template (->tmplstr :link.org)
-        :headline :Notes}
+        :headline :Notes
+        :properties {:empty_lines 1}}
     :p {:description "Add a new note to inbox with clipboard content"
         :template (->tmplstr :paste.org)
-        :headline :Notes}
+        :headline :Notes
+        :properties {:empty_lines 1}}
     :j {:description "Add a new note to journal"
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
-        :datetree {:tree_type :day}}}
+        :datetree {:tree_type :day}
+        :properties {:empty_lines 1}}}
    :org_tags_column 90
    :win_split_mode :auto
    :ui

@@ -1,4 +1,6 @@
-** %?
+* %?
 
-   file: %a
-   created: %U
+  :PROPERTIES:
+  :CAPTURED: %U
+  :FILE: %a
+  :END:

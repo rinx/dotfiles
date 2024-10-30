@@ -1,4 +1,5 @@
 * %?
 
-  %T
-  created: %U
+  :PROPERTIES:
+  :CAPTURED: %T
+  :END:

@@ -1,7 +1,9 @@
-** %?
+* %?
 
-   #+begin_quote
-   %x
-   #+end_quote
+  #+begin_quote
+  %x
+  #+end_quote
 
-   created: %U
+  :PROPERTIES:
+  :CAPTURED: %U
+  :END:
