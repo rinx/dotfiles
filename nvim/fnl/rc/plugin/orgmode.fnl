@@ -54,6 +54,12 @@
     :n {:description "Add a new note to inbox"
         :template (->tmplstr :note.org)
         :headline :Notes}
+    :l {:description "Add a new note to inbox with link"
+        :template (->tmplstr :link.org)
+        :headline :Notes}
+    :p {:description "Add a new note to inbox with clipboard content"
+        :template (->tmplstr :paste.org)
+        :headline :Notes}
     :j {:description "Add a new note to journal"
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
