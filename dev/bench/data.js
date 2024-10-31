@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730381943858,
+  "lastUpdate": 1730382547694,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9935,6 +9935,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 364.4066944,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d528b2c179144de96c7d96c29a68ae44c1e3b672",
+          "message": "chore(nvim): add user dictionary for harper-ls\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-31T22:39:18+09:00",
+          "tree_id": "993b695f8a675f66049e3b7477a3bcc452f57981",
+          "url": "https://github.com/rinx/dotfiles/commit/d528b2c179144de96c7d96c29a68ae44c1e3b672"
+        },
+        "date": 1730382546646,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.385392099999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 164.7971972,
             "unit": "ms"
           }
         ]
