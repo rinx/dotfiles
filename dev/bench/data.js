@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730369685462,
+  "lastUpdate": 1730370154057,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9833,6 +9833,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 1254.3592116,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "354f97371d32468352130c759c0992b86b33df1b",
+          "message": "config(nvim): add augroup for org\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-31T19:13:26+09:00",
+          "tree_id": "26ee3c0d1615752cc53e8dde94372b61153ac8eb",
+          "url": "https://github.com/rinx/dotfiles/commit/354f97371d32468352130c759c0992b86b33df1b"
+        },
+        "date": 1730370153695,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.158423300000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 163.3754128,
             "unit": "ms"
           }
         ]
