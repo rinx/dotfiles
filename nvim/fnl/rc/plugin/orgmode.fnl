@@ -2,6 +2,7 @@
 (local core (autoload :nfnl.core))
 
 (local orgmode (require :orgmode))
+(local roam (require :org-roam))
 (local bullets (require :org-bullets))
 (local modern-menu (require :org-modern.menu))
 
@@ -85,6 +86,11 @@
                            :icons
                            {:separator "➜"}})]
                   (m:open data)))}}})
+
+(roam.setup
+  {:directory (->path :roam)
+   :org_files [inbox
+               (->path :journal/*.org)]})
 
 (bullets.setup
   {:concealcursor false

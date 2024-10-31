@@ -194,4 +194,5 @@
                           :event [:VeryLazy]
                           :ft [:org]
                           :dependencies [:nvim-orgmode/org-bullets.nvim 
-                                         :danilshvalov/org-modern.nvim]}})
+                                         :danilshvalov/org-modern.nvim
+                                         :chipsenkbeil/org-roam.nvim]}})
