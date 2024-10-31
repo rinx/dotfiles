@@ -152,7 +152,6 @@ export VISUAL="$EDITOR"
 
 zsh-defer source $HOME/.dotfiles/zshrc.d/aliases.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/compinit.zsh
-zsh-defer source $HOME/.dotfiles/zshrc.d/docker.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/zstyle-completions.zsh
 
 if [ ! -f "$HOME/.zshrc.zwc" -o "$HOME/.zshrc" -nt "$HOME/.zshrc.zwc" ]; then
