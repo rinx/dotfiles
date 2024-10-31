@@ -1,0 +1,7 @@
+dotfiles
+gh
+nvim
+okamura
+rintaro
+rinx
+zsh
