@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730336327256,
+  "lastUpdate": 1730369685462,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9799,6 +9799,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 161.22659790000003,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ee3aaede51968960dbddd4c822b1149ea6311404",
+          "message": "config(nvim): update org-bullets icons\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-31T19:04:03+09:00",
+          "tree_id": "9a8211ba5d706094a0dbb3e620e532cbaf314b94",
+          "url": "https://github.com/rinx/dotfiles/commit/ee3aaede51968960dbddd4c822b1149ea6311404"
+        },
+        "date": 1730369684568,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 295.6913752,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 1254.3592116,
             "unit": "ms"
           }
         ]
