@@ -118,6 +118,12 @@
    :command "compiler go"})
 
 (augroup!
+  init-org
+  {:events [:FileType]
+   :pattern :org
+   :command "setl conceallevel=2"})
+
+(augroup!
   init-rego
   {:events [:FileType]
    :pattern :rego

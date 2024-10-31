@@ -63,6 +63,10 @@ do
   vim.api.nvim_create_autocmd({"FileType"}, {command = "compiler go", group = group_5_auto, pattern = "go"})
 end
 do
+  local group_5_auto = vim.api.nvim_create_augroup("init-org", {clear = true})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl conceallevel=2", group = group_5_auto, pattern = "org"})
+end
+do
   local group_5_auto = vim.api.nvim_create_augroup("init-rego", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl colorcolumn=120", group = group_5_auto, pattern = "rego"})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl noexpandtab", group = group_5_auto, pattern = "rego"})
