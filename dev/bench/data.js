@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730374110599,
+  "lastUpdate": 1730381943858,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -9901,6 +9901,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 160.7590207,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "db10051671ef95de4948e8cef8fb7ddc38a263e9",
+          "message": "config(nvim): remove navic\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-10-31T22:28:48+09:00",
+          "tree_id": "e7ecf878bb66ee370b3248bbbd0e4cd350cf6fe2",
+          "url": "https://github.com/rinx/dotfiles/commit/db10051671ef95de4948e8cef8fb7ddc38a263e9"
+        },
+        "date": 1730381942778,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.762806899999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 364.4066944,
             "unit": "ms"
           }
         ]
