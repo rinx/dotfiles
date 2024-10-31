@@ -5,7 +5,6 @@ local core = autoload("nfnl.core")
 local lsp = autoload("lspconfig")
 local lsp_signature = autoload("lsp_signature")
 local lsputil = autoload("lspconfig.util")
-local navic = autoload("nvim-navic")
 local schemastore = autoload("schemastore")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
@@ -45,7 +44,7 @@ do
     setup_codelens_refresh(client, bufnr)
     setup_inlay_hints(client, bufnr)
     setup_document_formatting(client, bufnr)
-    return lsp_signature.on_attach({bind = true, doc_lines = 10, hint_enabled = true, hint_prefix = (icontab.info .. " "), hint_scheme = "String", handler_opts = {border = "single"}, decorator = {["`"] = "`"}}, navic.attach(client, bufnr))
+    return lsp_signature.on_attach({bind = true, doc_lines = 10, hint_enabled = true, hint_prefix = (icontab.info .. " "), hint_scheme = "String", handler_opts = {border = "single"}, decorator = {["`"] = "`"}})
   end
   vim.api.nvim_create_autocmd({"LspAttach"}, {callback = _6_, group = group_5_auto})
 end

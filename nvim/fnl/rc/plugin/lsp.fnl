@@ -4,7 +4,6 @@
 (local lsp (autoload :lspconfig))
 (local lsp-signature (autoload :lsp_signature))
 (local lsputil (autoload :lspconfig.util))
-(local navic (autoload :nvim-navic))
 (local schemastore (autoload :schemastore))
 
 (local icon (autoload :rc.icon))
@@ -54,8 +53,7 @@
                    :hint_scheme :String
                    :handler_opts
                    {:border :single}
-                   :decorator {"`" "`"}}
-                  (navic.attach client bufnr))))})
+                   :decorator {"`" "`"}})))})
 
 (local default-options {})
 

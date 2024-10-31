@@ -89,7 +89,6 @@
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)
                            :dependencies [:ray-x/lsp_signature.nvim
-                                          :SmiteshP/nvim-navic
                                           :b0o/schemastore.nvim]
                            :event [:BufReadPre]}
    :j-hui/fidget.nvim {:config (mod :fidget)

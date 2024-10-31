@@ -42,5 +42,4 @@ vim.cmd(("highlight " .. (("NotifyINFOTitle" .. " " .. ("ctermfg" .. "=" .. "gre
 vim.cmd(("highlight " .. (("NotifyDEBUGTitle" .. " " .. ("ctermfg" .. "=" .. "blue")) .. " " .. ("guifg" .. "=" .. colors.hint))))
 vim.cmd(("highlight " .. (("NotifyTRACETitle" .. " " .. ("ctermfg" .. "=" .. "blue")) .. " " .. ("guifg" .. "=" .. colors.hint))))
 vim.cmd(("highlight " .. (("FidgetTitle" .. " " .. ("ctermfg" .. "=" .. "green")) .. " " .. ("guifg" .. "=" .. colors.info))))
-vim.cmd(("highlight " .. (("FidgetTask" .. " " .. ("ctermfg" .. "=" .. "blue")) .. " " .. ("guifg" .. "=" .. colors.hint))))
-return vim.cmd(("highlight " .. (("NavicSeparator" .. " " .. ("ctermfg" .. "=" .. "white")) .. " " .. ("guifg" .. "=" .. colors.color4))))
+return vim.cmd(("highlight " .. (("FidgetTask" .. " " .. ("ctermfg" .. "=" .. "blue")) .. " " .. ("guifg" .. "=" .. colors.hint))))

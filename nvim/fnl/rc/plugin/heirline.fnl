@@ -8,7 +8,6 @@
 (local devicons (autoload :nvim-web-devicons))
 
 (local dap (autoload :dap))
-(local navic (autoload :nvim-navic))
 
 (local color (autoload :rc.color))
 (local icon (autoload :rc.icon))
@@ -171,15 +170,6 @@
                                  100))
                    :name :heirline_LSP}
         :hl {:fg colors.info}})
-
-(local navic-component
-       {:condition (fn []
-                     (navic.is_available))
-        :provider (fn []
-                    (.. icontab.slash
-                        space
-                        (navic.get_location {:highlight true})))
-        :update :CursorMoved})
 
 (local diagnostics-component
        {:condition conditions.has_diagnostics
@@ -351,7 +341,6 @@
 
 (local standard-winbar
        [cwd-component
-        navic-component
         align-component
         dap-component
         align-component
