@@ -108,6 +108,7 @@
       gitlint
       gopls
       hadolint
+      harper
       jq-lsp
       marksman
       nil
