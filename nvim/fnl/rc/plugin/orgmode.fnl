@@ -74,6 +74,14 @@
         :datetree {:tree_type :day}
         :properties {:empty_lines 1}}}
    :org_tags_column 90
+   :org_custom_exports
+   {:g
+    {:label "Export to GitHub flavored markdown"
+     :action (fn [exporter]
+               (let [current (vim.api.nvim_buf_get_name 0)
+                     target (.. (vim.fn.fnamemodify current ":p:r") ".md")
+                     cmd [:pandoc current :-o target]]
+                 (exporter cmd target)))}}
    :win_split_mode :auto
    :ui
    {:menu
