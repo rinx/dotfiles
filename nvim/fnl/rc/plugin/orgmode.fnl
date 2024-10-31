@@ -1,6 +1,8 @@
 (local {: autoload} (require :nfnl.module))
 (local core (autoload :nfnl.core))
 
+(local icon (autoload :rc.icon))
+
 (local orgmode (require :orgmode))
 (local roam (require :org-roam))
 (local bullets (require :org-bullets))
@@ -94,6 +96,4 @@
 
 (bullets.setup
   {:concealcursor false
-   :symbols
-   {:list "•"
-    :headlines ["◉" "○" "✸" "✿"]}})
+   :symbols icon.org-bullets})

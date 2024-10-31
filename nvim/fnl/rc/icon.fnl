@@ -261,6 +261,10 @@
 (local spinners
   ["" "" "" "" "" ""])
 
+(local org-bullets
+  {:list "•"
+   :headlines ["◉" "○" "◈" "◇" "✳"]})
+
 (local brailles
   ["⠀" "⠁" "⠂" "⠃" "⠄" "⠅" "⠆" "⠇" "⡀" "⡁" "⡂" "⡃" "⡄" "⡅" "⡆" "⡇"
    "⠈" "⠉" "⠊" "⠋" "⠌" "⠍" "⠎" "⠏" "⡈" "⡉" "⡊" "⡋" "⡌" "⡍" "⡎" "⡏"
@@ -301,5 +305,6 @@
  : popfix-border-chars-alt
  : progress
  : spinners
+ : org-bullets
  : brailles
  : pos->braille}

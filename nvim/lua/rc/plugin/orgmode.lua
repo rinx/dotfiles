@@ -2,6 +2,7 @@
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local core = autoload("nfnl.core")
+local icon = autoload("rc.icon")
 local orgmode = require("orgmode")
 local roam = require("org-roam")
 local bullets = require("org-bullets")
@@ -36,4 +37,4 @@ local function _4_(data)
 end
 orgmode.setup({org_agenda_files = {inbox, __3epath("journal/*.org")}, org_default_notes_file = inbox, org_archive_location = __3epath("archive/%s_archive::"), org_todo_keywords = {"TODO", "WAITING", "|", "CANCELED", "DONE"}, org_startup_folded = "showeverything", org_capture_templates = {t = {description = "Add a new task to inbox", template = __3etmplstr("task.org"), headline = "Tasks", properties = {empty_lines = 1}}, c = {description = "Add a code-reading note to inbox", template = __3etmplstr("code-note.org"), headline = "Notes", properties = {empty_lines = 1}}, n = {description = "Add a new note to inbox", template = __3etmplstr("note.org"), headline = "Notes", properties = {empty_lines = 1}}, l = {description = "Add a new note to inbox with link", template = __3etmplstr("link.org"), headline = "Notes", properties = {empty_lines = 1}}, p = {description = "Add a new note to inbox with clipboard content", template = __3etmplstr("paste.org"), headline = "Notes", properties = {empty_lines = 1}}, j = {description = "Add a new note to journal", template = __3etmplstr("journal.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}, properties = {empty_lines = 1}}}, org_tags_column = 90, win_split_mode = "auto", ui = {menu = {handler = _4_}}})
 roam.setup({directory = __3epath("roam"), org_files = {inbox, __3epath("journal/*.org")}})
-return bullets.setup({symbols = {list = "\226\128\162", headlines = {"\226\151\137", "\226\151\139", "\226\156\184", "\226\156\191"}}, concealcursor = false})
+return bullets.setup({symbols = icon["org-bullets"], concealcursor = false})
