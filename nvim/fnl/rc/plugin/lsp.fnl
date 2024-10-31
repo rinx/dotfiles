@@ -179,11 +179,7 @@
                       :staticcheck true
                       :vulncheck :Imports
                       :gofumpt true}}}))
-(lsp.harper_ls.setup (core.merge
-                       default-options
-                       {:settings
-                        {:harper-ls
-                         {:userDictPath "~/.dotfiles/resources/dict.txt"}}}))
+(lsp.harper_ls.setup (core.merge default-options {}))
 (lsp.hls.setup (core.merge default-options {}))
 (lsp.html.setup (core.merge default-options {}))
 (lsp.jqls.setup (core.merge default-options {}))
