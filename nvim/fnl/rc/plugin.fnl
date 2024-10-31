@@ -136,12 +136,12 @@
 
    ;; telescope
    :nvim-telescope/telescope.nvim {:config (mod :telescope)
-                                   :event [:BufEnter]
+                                   :event [:VeryLazy]
                                    :dependencies [:nvim-telescope/telescope-dap.nvim
                                                   :cljoly/telescope-repo.nvim
                                                   :nvim-orgmode/telescope-orgmode.nvim]}
    :havi/telescope-toggleterm.nvim {:url "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
-                                    :event [:BufEnter]}
+                                    :event [:VeryLazy]}
 
    ;; denops.vim
    :vim-denops/denops.vim {:event [:VimEnter]}
