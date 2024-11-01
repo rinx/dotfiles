@@ -46,7 +46,7 @@
                        :|
                        :CANCELED
                        :DONE]
-   :org_startup_folded :showeverything
+   :org_startup_folded :overview
    :org_capture_templates
    {:t {:description "Add a new task to inbox"
         :template (->tmplstr :task.org)
