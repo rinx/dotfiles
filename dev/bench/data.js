@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730463680786,
+  "lastUpdate": 1730464299092,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10105,6 +10105,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 54.2063714,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c78a6580cb6293c786a7f0fc6bec37a7d6a6a09e",
+          "message": "config(nvim): add toggle folding keymap\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-01T21:22:11+09:00",
+          "tree_id": "8cbea3ae30238306590ef6f458a3fe0ec1163815",
+          "url": "https://github.com/rinx/dotfiles/commit/c78a6580cb6293c786a7f0fc6bec37a7d6a6a09e"
+        },
+        "date": 1730464298081,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.2096549,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 52.404727,
             "unit": "ms"
           }
         ]
