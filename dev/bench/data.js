@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730461952434,
+  "lastUpdate": 1730463680786,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10071,6 +10071,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 52.06317839999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "984b1d0d4ee2deeb6897b2cb0bba663a3e334c20",
+          "message": "config(nvim): replace lightspeed with leap\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-01T21:12:26+09:00",
+          "tree_id": "91f5b4c21a8d83771efd4d47d52e1e9c609468cb",
+          "url": "https://github.com/rinx/dotfiles/commit/984b1d0d4ee2deeb6897b2cb0bba663a3e334c20"
+        },
+        "date": 1730463680320,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.9267551,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.2063714,
             "unit": "ms"
           }
         ]
