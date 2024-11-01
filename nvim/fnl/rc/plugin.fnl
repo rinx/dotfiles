@@ -67,8 +67,8 @@
                                  :event [:BufEnter]}
    :lukas-reineke/indent-blankline.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                                          :config (mod :indent-blankline)}
-   :ggandor/lightspeed.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
-                             :config (mod :lightspeed)}
+   :ggandor/leap.nvim {:event [:VeryLazy]
+                       :config (mod :leap)}
    :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
    :kyoh86/vim-ripgrep {:config (mod :grep)
