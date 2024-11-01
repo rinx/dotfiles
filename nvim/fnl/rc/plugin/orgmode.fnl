@@ -42,6 +42,7 @@
    :org_archive_location (->path "archive/%s_archive::")
    :org_todo_keywords [:TODO
                        :WAITING
+                       :IN_REVIEW
                        :|
                        :CANCELED
                        :DONE]
