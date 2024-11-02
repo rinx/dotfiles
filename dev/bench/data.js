@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730520483150,
+  "lastUpdate": 1730522987958,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10173,6 +10173,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 52.02223730000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "dd042dcc43d68a2711ca7f5f0b8886a81876abf8",
+          "message": "config(sketchybar): remove network component from bar\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-02T13:38:58+09:00",
+          "tree_id": "a381dbaf1273f10978013ca555e1121d9ab23181",
+          "url": "https://github.com/rinx/dotfiles/commit/dd042dcc43d68a2711ca7f5f0b8886a81876abf8"
+        },
+        "date": 1730522987567,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.4508684,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 52.375856799999994,
             "unit": "ms"
           }
         ]
