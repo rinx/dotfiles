@@ -65,7 +65,7 @@ end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-org", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl conceallevel=2", group = group_5_auto, pattern = "org"})
-  vim.api.nvim_create_autocmd({"BufWritePre"}, {command = "normal! gg=G", group = group_5_auto, pattern = "*.org"})
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {command = "normal! mtgg=G't", group = group_5_auto, pattern = "*.org"})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-rego", {clear = true})

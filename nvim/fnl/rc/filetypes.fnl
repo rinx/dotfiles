@@ -124,7 +124,7 @@
    :command "setl conceallevel=2"}
   {:events [:BufWritePre]
    :pattern "*.org"
-   :command "normal! gg=G"})
+   :command "normal! mtgg=G't"})
 
 (augroup!
   init-rego
