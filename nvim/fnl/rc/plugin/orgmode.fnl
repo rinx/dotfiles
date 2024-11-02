@@ -50,21 +50,26 @@
    :org_capture_templates
    {:t {:description "Add a new task to inbox"
         :template (->tmplstr :task.org)
+        :target inbox
         :headline :Tasks}
     :n {:description "Add a new note to inbox"
         :subtemplates
         {:c {:description "code-reading note"
              ;; TODO: add link to github in template
              :template (->tmplstr :code-note.org)
+             :target inbox
              :headline :Notes}
          :d {:description "default note"
              :template (->tmplstr :note.org)
+             :target inbox
              :headline :Notes}
          :l {:description "with link"
              :template (->tmplstr :link.org)
+             :target inbox
              :headline :Notes}
          :p {:description "with clipboard content"
              :template (->tmplstr :paste.org)
+             :target inbox
              :headline :Notes}}}
     :j {:description "Add a new note to journal"
         :template (->tmplstr :journal.org)
