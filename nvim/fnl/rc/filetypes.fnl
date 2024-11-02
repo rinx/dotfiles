@@ -121,7 +121,10 @@
   init-org
   {:events [:FileType]
    :pattern :org
-   :command "setl conceallevel=2"})
+   :command "setl conceallevel=2"}
+  {:events [:BufWritePre]
+   :pattern "*.org"
+   :command "normal! gg=G"})
 
 (augroup!
   init-rego
