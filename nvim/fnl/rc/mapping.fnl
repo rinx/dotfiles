@@ -66,3 +66,4 @@
 
 ;; Toggle folding
 (map! [:n] :<Space> :za {})
+(map! [:n] :Q :zi {})
