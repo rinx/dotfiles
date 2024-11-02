@@ -63,7 +63,3 @@
 (map! [:n] :ZZ :<Nop> {})
 (map! [:n] :ZQ :<Nop> {})
 (map! [:n] :Q :<Nop> {})
-
-;; Toggle folding
-(map! [:n] :<Space> :za {})
-(map! [:n] :Q :zi {})
