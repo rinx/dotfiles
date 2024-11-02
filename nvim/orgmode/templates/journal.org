@@ -1,5 +1,5 @@
-* %?
+**** %?
 
-  :PROPERTIES:
-  :CAPTURED: %T
-  :END:
+     :PROPERTIES:
+     :CAPTURED: %T
+     :END:

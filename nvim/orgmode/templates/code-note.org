@@ -1,6 +1,6 @@
-* %?
+** %?
 
-  :PROPERTIES:
-  :CAPTURED: %U
-  :FILE: %a
-  :END:
+   :PROPERTIES:
+   :CAPTURED: %U
+   :FILE: %a
+   :END:

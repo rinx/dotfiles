@@ -1,9 +1,9 @@
-* %?
+** %?
 
-  #+begin_quote
-  %x
-  #+end_quote
+   #+begin_quote
+   %x
+   #+end_quote
 
-  :PROPERTIES:
-  :CAPTURED: %U
-  :END:
+   :PROPERTIES:
+   :CAPTURED: %U
+   :END:
