@@ -11,7 +11,6 @@
    [sbar.items.github-pr :as github-pr]
    [sbar.items.kubectx :as kubectx]
    [sbar.items.mic :as mic]
-   [sbar.items.network :as network]
    [sbar.items.spaces :as spaces]
    [sbar.items.time :as time]
    [sbar.items.volume :as volume]
@@ -77,8 +76,8 @@
   (gcloud/setup)
   (github-pr/setup)
   (github/setup)
-  (brew/setup)
-  (network/setup))
+  (brew/setup))
+  ; (network/setup))
 
 (defn -main [& args]
   (init)
@@ -104,8 +103,6 @@
                 :duration-ms 180000}
     :kubectx {:fn kubectx/update
               :duration-ms 60000}
-    :network {:fn network/update
-              :duration-ms 30000}
     :time {:fn time/update
            :duration-ms 5000}
     :weather {:fn weather/update
