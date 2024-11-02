@@ -50,30 +50,26 @@
    :org_capture_templates
    {:t {:description "Add a new task to inbox"
         :template (->tmplstr :task.org)
-        :headline :Tasks
-        :properties {:empty_lines 1}}
-    :c {:description "Add a code-reading note to inbox"
-        ;; TODO: add link to github in template
-        :template (->tmplstr :code-note.org)
-        :headline :Notes
-        :properties {:empty_lines 1}}
+        :headline :Tasks}
     :n {:description "Add a new note to inbox"
-        :template (->tmplstr :note.org)
-        :headline :Notes
-        :properties {:empty_lines 1}}
-    :l {:description "Add a new note to inbox with link"
-        :template (->tmplstr :link.org)
-        :headline :Notes
-        :properties {:empty_lines 1}}
-    :p {:description "Add a new note to inbox with clipboard content"
-        :template (->tmplstr :paste.org)
-        :headline :Notes
-        :properties {:empty_lines 1}}
+        :subtemplates
+        {:c {:description "code-reading note"
+             ;; TODO: add link to github in template
+             :template (->tmplstr :code-note.org)
+             :headline :Notes}
+         :d {:description "default note"
+             :template (->tmplstr :note.org)
+             :headline :Notes}
+         :l {:description "with link"
+             :template (->tmplstr :link.org)
+             :headline :Notes}
+         :p {:description "with clipboard content"
+             :template (->tmplstr :paste.org)
+             :headline :Notes}}}
     :j {:description "Add a new note to journal"
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
-        :datetree {:tree_type :day}
-        :properties {:empty_lines 1}}}
+        :datetree {:tree_type :day}}}
    :org_tags_column 90
    :org_custom_exports
    {:g

@@ -1,5 +1,10 @@
 * TODO %?
-
+  ** Overview
+  ** Details
+  ** Checks [/]
+    - [ ] 
+  ** References
+    - 
   :PROPERTIES:
-  :CAPTURED: %U
+  :CAPTURED: %T
   :END:
