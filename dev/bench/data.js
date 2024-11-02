@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730536923356,
+  "lastUpdate": 1730540223314,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10241,6 +10241,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 51.990651600000014,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1b677d1371d128d0480ea99cf1716beabf5380c5",
+          "message": "config(nvim): remove useless mappings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-02T18:27:35+09:00",
+          "tree_id": "19e2f4ad93456a3e77afe65cd4cc30edbb8fa2a6",
+          "url": "https://github.com/rinx/dotfiles/commit/1b677d1371d128d0480ea99cf1716beabf5380c5"
+        },
+        "date": 1730540222194,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.4298761,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 51.497556599999996,
             "unit": "ms"
           }
         ]
