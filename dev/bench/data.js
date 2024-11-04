@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730540223314,
+  "lastUpdate": 1730679677282,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10275,6 +10275,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 51.497556599999996,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "distinct": true,
+          "id": "f145fddc0921b432d330966d41e27d0eb68c3d86",
+          "message": "chore(deps): lock file maintenance",
+          "timestamp": "2024-11-04T00:12:04Z",
+          "tree_id": "80d55cbe741652ececac4a9c04a911732f2a5f61",
+          "url": "https://github.com/rinx/dotfiles/commit/f145fddc0921b432d330966d41e27d0eb68c3d86"
+        },
+        "date": 1730679676278,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.799939200000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 52.63585019999999,
             "unit": "ms"
           }
         ]
