@@ -117,14 +117,14 @@
   {:concealcursor false
    :symbols icon.org-bullets})
 
-(fn open-org-journal []
-  (let [filepath (->path
-                   (.. :journal/
-                       (vim.fn.strftime :%Y-%m (vim.fn.localtime))
-                       :.org))]
-    (vim.cmd (.. "e " filepath))))
-(vim.api.nvim_create_user_command :OrgJournal open-org-journal {})
-(map! [:n] :<Leader>oj ":<C-u>OrgJournal<CR>" {:silent true})
+(fn open-fn [filepath]
+  (fn []
+     (vim.cmd (.. "e " filepath))))
+(let [filepath (->path :inbox.org)]
+  (vim.api.nvim_create_user_command :OrgInbox (open-fn filepath) {}))
+(let [filepath (->path
+                 (.. :journal/ (vim.fn.strftime :%Y-%m (vim.fn.localtime)) :.org))]
+  (vim.api.nvim_create_user_command :OrgJournal (open-fn filepath) {}))
 
 (fn grep-fn [path]
   (fn []

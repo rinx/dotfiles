@@ -48,6 +48,7 @@
    "Octo pr list"
    "Octo issue list"
    :OrgGrep
+   :OrgInbox
    :OrgJournal
    :RoamGrep
    "Fidget history"
