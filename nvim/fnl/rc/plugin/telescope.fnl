@@ -47,6 +47,7 @@
    :NvimTreeToggle
    "Octo pr list"
    "Octo issue list"
+   :OrgGrep
    :OrgJournal
    :RoamGrep
    "Fidget history"
