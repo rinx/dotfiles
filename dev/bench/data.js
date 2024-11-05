@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730816757609,
+  "lastUpdate": 1730816907405,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10411,6 +10411,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 52.2936251,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2624c8bd2a71ed30baa638eded0b90350fd7660a",
+          "message": "chore: add linguist-vendored attribute\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-05T23:19:02+09:00",
+          "tree_id": "5173e1e991aa9d4ebd60285fc78d2135445daa07",
+          "url": "https://github.com/rinx/dotfiles/commit/2624c8bd2a71ed30baa638eded0b90350fd7660a"
+        },
+        "date": 1730816906947,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.6945999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.1228186,
             "unit": "ms"
           }
         ]
