@@ -1,5 +1,4 @@
 **** %?
-
      :PROPERTIES:
      :CAPTURED: %T
      :END:

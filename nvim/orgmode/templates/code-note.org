@@ -1,5 +1,4 @@
 ** %?
-
    :PROPERTIES:
    :CAPTURED: %U
    :FILE: %a

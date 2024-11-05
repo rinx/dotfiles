@@ -1,7 +1,6 @@
 ** %?
-
-   [[%x]]
-
    :PROPERTIES:
    :CAPTURED: %U
    :END:
+
+   [[%x]]

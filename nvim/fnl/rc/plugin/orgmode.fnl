@@ -71,6 +71,14 @@
              :template (->tmplstr :paste.org)
              :target inbox
              :headline :Notes}}}
+    :i {:description "Add a new idea"
+        :template (->tmplstr :idea.org)
+        :target inbox
+        :headline :Ideas}
+    :s {:description "Add a new topic"
+        :template (->tmplstr :topic.org)
+        :target inbox
+        :headline :Topics}
     :j {:description "Add a new note to journal"
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
