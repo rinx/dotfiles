@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730801587952,
+  "lastUpdate": 1730801882529,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10343,6 +10343,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 51.60733689999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "32fa1acd910149507f4a56aeb58754f600c94e27",
+          "message": "config(nvim): fix the indent in the org task template\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-05T19:08:02+09:00",
+          "tree_id": "f0f16603d26e1936a432020c363f8515af0f911b",
+          "url": "https://github.com/rinx/dotfiles/commit/32fa1acd910149507f4a56aeb58754f600c94e27"
+        },
+        "date": 1730801881423,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.5376488,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 52.77223090000001,
             "unit": "ms"
           }
         ]
