@@ -3,9 +3,11 @@
    :CAPTURED: %T
    :END:
 
-   *** Overview
-   *** Details
-   *** Checks [/]
-   - [ ] 
-   *** References
-   - 
+*** Overview
+
+*** Details
+
+*** Checks [/]
+    - [ ] 
+*** References
+    - 
