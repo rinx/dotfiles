@@ -47,6 +47,7 @@
    :NvimTreeToggle
    "Octo pr list"
    "Octo issue list"
+   :OrgJournal
    "Fidget history"
    "Telescope dap list_breakpoints"
    "Telescope repo list"

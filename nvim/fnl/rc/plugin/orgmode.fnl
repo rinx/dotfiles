@@ -2,6 +2,7 @@
 (local core (autoload :nfnl.core))
 
 (local icon (autoload :rc.icon))
+(import-macros {: map!} :rc.macros)
 
 (local orgmode (require :orgmode))
 (local roam (require :org-roam))
@@ -115,3 +116,12 @@
 (bullets.setup
   {:concealcursor false
    :symbols icon.org-bullets})
+
+(fn open-org-journal []
+  (let [filepath (->path
+                   (.. :journal/
+                       (vim.fn.strftime :%Y-%m (vim.fn.localtime))
+                       :.org))]
+    (vim.cmd (.. "e " filepath))))
+(vim.api.nvim_create_user_command :OrgJournal open-org-journal {})
+(map! [:n] :<Leader>oj ":<C-u>OrgJournal<CR>" {:silent true})

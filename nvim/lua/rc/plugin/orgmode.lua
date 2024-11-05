@@ -43,4 +43,10 @@ local function _5_(data)
 end
 orgmode.setup({org_agenda_files = {inbox, __3epath("journal/*.org")}, org_default_notes_file = inbox, org_archive_location = __3epath("archive/%s_archive::"), org_todo_keywords = {"TODO", "WAITING", "IN_REVIEW", "|", "CANCELED", "DONE"}, org_startup_folded = "overview", org_capture_templates = {t = {description = "Add a new task to inbox", template = __3etmplstr("task.org"), target = inbox, headline = "Tasks"}, n = {description = "Add a new note to inbox", subtemplates = {c = {description = "code-reading note", template = __3etmplstr("code-note.org"), target = inbox, headline = "Notes"}, d = {description = "default note", template = __3etmplstr("note.org"), target = inbox, headline = "Notes"}, l = {description = "with link", template = __3etmplstr("link.org"), target = inbox, headline = "Notes"}, p = {description = "with clipboard content", template = __3etmplstr("paste.org"), target = inbox, headline = "Notes"}}}, i = {description = "Add a new idea", template = __3etmplstr("idea.org"), target = inbox, headline = "Ideas"}, s = {description = "Add a new topic", template = __3etmplstr("topic.org"), target = inbox, headline = "Topics"}, j = {description = "Add a new note to journal", template = __3etmplstr("journal.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}}, org_tags_column = 90, org_custom_exports = {g = {label = "Export to GitHub flavored markdown", action = _4_}}, win_split_mode = "auto", ui = {menu = {handler = _5_}}})
 roam.setup({directory = __3epath("roam"), org_files = {inbox, __3epath("journal/*.org")}})
-return bullets.setup({symbols = icon["org-bullets"], concealcursor = false})
+bullets.setup({symbols = icon["org-bullets"], concealcursor = false})
+local function open_org_journal()
+  local filepath = __3epath(("journal/" .. vim.fn.strftime("%Y-%m", vim.fn.localtime()) .. ".org"))
+  return vim.cmd(("e " .. filepath))
+end
+vim.api.nvim_create_user_command("OrgJournal", open_org_journal, {})
+return vim.keymap.set("n", "<Leader>oj", ":<C-u>OrgJournal<CR>", {silent = true})
