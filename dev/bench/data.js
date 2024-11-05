@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730818824198,
+  "lastUpdate": 1730819101276,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10581,6 +10581,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 200.99331139999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "17df6643fd9fa275889a054b01ec10b7a54b4b39",
+          "message": "chore(nvim): remove ghosttext plugin\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-05T23:55:25+09:00",
+          "tree_id": "a636ac500e8d458b504f374bb67d2c7493741a66",
+          "url": "https://github.com/rinx/dotfiles/commit/17df6643fd9fa275889a054b01ec10b7a54b4b39"
+        },
+        "date": 1730819100642,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.4789984,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 59.406834700000005,
             "unit": "ms"
           }
         ]
