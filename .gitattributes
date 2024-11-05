@@ -2,3 +2,5 @@ p10k.zsh linguist-generated
 
 nvim/lua/**/*.lua linguist-generated
 nvim/*.lua linguist-generated
+
+waybar/*.css linguist-vendored
