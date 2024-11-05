@@ -126,16 +126,11 @@
 (vim.api.nvim_create_user_command :OrgJournal open-org-journal {})
 (map! [:n] :<Leader>oj ":<C-u>OrgJournal<CR>" {:silent true})
 
-(fn org-grep []
-  (let [tb (require :telescope.builtin)]
-    (tb.live_grep
-      {:cwd basepath
-       :type_filter :org})))
-(vim.api.nvim_create_user_command :OrgGrep org-grep {})
-
-(fn roam-grep []
-  (let [tb (require :telescope.builtin)]
-    (tb.live_grep
-      {:cwd (->path :roam)
-       :type_filter :org})))
-(vim.api.nvim_create_user_command :RoamGrep roam-grep {})
+(fn grep-fn [path]
+  (fn []
+    (let [tb (require :telescope.builtin)]
+      (tb.live_grep
+        {:cwd path
+         :type_filter :org}))))
+(vim.api.nvim_create_user_command :OrgGrep (grep-fn basepath) {})
+(vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})
