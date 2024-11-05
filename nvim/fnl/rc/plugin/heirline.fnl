@@ -260,18 +260,6 @@
         :hl {:fg colors.color10
              :bg colors.color2}})
 
-(local ghosttext-component
-       {:provider (fn []
-                    (if vim.g.ghosttext_started
-                      (.. icontab.ghost space)
-                      (match (vim.fn.ghosttext#status)
-                        :running (do
-                                   (set vim.g.ghosttext_started true)
-                                   (.. icontab.ghost space))
-                        _ "")))
-        :hl {:fg colors.color4
-             :bg colors.color2}})
-
 (local spell-component
        {:condition (fn []
                      vim.wo.spell)
@@ -333,7 +321,6 @@
         git-component
         skkeleton-component
         denops-component
-        ghosttext-component
         spell-component
         paste-component
         ruler-component

@@ -256,40 +256,24 @@ local function _49_()
   end
 end
 skkeleton_component = {provider = _49_, hl = {fg = colors.color10, bg = colors.color2}}
-local ghosttext_component
-local function _53_()
-  if vim.g.ghosttext_started then
-    return (icontab.ghost .. space)
-  else
-    local _54_ = vim.fn["ghosttext#status"]()
-    if (_54_ == "running") then
-      vim.g.ghosttext_started = true
-      return (icontab.ghost .. space)
-    else
-      local _ = _54_
-      return ""
-    end
-  end
-end
-ghosttext_component = {provider = _53_, hl = {fg = colors.color4, bg = colors.color2}}
 local spell_component
-local function _57_()
+local function _53_()
   return vim.wo.spell
 end
-local function _58_()
+local function _54_()
   return (icontab.spellcheck .. vim.o.spelllang .. space)
 end
-spell_component = {condition = _57_, provider = _58_, hl = {fg = colors.hint, bg = colors.color2}}
+spell_component = {condition = _53_, provider = _54_, hl = {fg = colors.hint, bg = colors.color2}}
 local paste_component
-local function _59_()
+local function _55_()
   return vim.o.paste
 end
-paste_component = {condition = _59_, provider = (icontab.paste .. space), hl = {fg = colors.hint, bg = colors.color2}}
+paste_component = {condition = _55_, provider = (icontab.paste .. space), hl = {fg = colors.hint, bg = colors.color2}}
 local search_component
-local function _60_()
+local function _56_()
   return (vim.v.hlsearch ~= 0)
 end
-local function _61_(self)
+local function _57_(self)
   local ok, search = pcall(vim.fn.searchcount)
   local word = vim.fn.getreg("/")
   if (ok and search.total) then
@@ -300,21 +284,21 @@ local function _61_(self)
     return nil
   end
 end
-local function _63_(self)
+local function _59_(self)
   return string.format((icontab.search .. self.word .. "[%d/%d]" .. space), self.search.current, math.min(self.search.total, self.search.maxcount))
 end
-search_component = {condition = _60_, init = _61_, provider = _63_, hl = {fg = colors.hint, bg = colors.color2}}
+search_component = {condition = _56_, init = _57_, provider = _59_, hl = {fg = colors.hint, bg = colors.color2}}
 local macrorec_component
-local function _64_()
+local function _60_()
   return (vim.fn.reg_recording() ~= "")
 end
-local function _65_()
+local function _61_()
   return (icontab.recording .. "[" .. vim.fn.reg_recording() .. "]" .. space)
 end
-macrorec_component = {condition = _64_, provider = _65_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
-local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, git_component, skkeleton_component, denops_component, ghosttext_component, spell_component, paste_component, ruler_component, scrollbar_component}
+macrorec_component = {condition = _60_, provider = _61_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
+local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, git_component, skkeleton_component, denops_component, spell_component, paste_component, ruler_component, scrollbar_component}
 local standard_winbar = {cwd_component, align_component, dap_component, align_component, diagnostics_component, lsp_component}
-local function _66_(args)
+local function _62_(args)
   return conditions.buffer_matches({buftype = {"nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$", "^NvimTree$"}})
 end
-return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _66_}})
+return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _62_}})

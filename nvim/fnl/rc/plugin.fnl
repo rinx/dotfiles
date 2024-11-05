@@ -147,8 +147,6 @@
    :vim-denops/denops.vim {:event [:VimEnter]}
    :vim-skk/skkeleton {:config (mod :skkeleton)
                        :event [:BufEnter]}
-   :gamoutatsumi/dps-ghosttext.vim {:config (mod :ghosttext)
-                                    :event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)
                            :event [:VimEnter]}
 

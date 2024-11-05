@@ -29,7 +29,6 @@
    :DapStepOver
    :DapToggleBreakpoint
    :DapUIToggle
-   :GhostStart
    :Ghq
    :Inspect
    :InspectTree
