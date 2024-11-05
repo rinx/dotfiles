@@ -49,4 +49,9 @@ local function open_org_journal()
   return vim.cmd(("e " .. filepath))
 end
 vim.api.nvim_create_user_command("OrgJournal", open_org_journal, {})
-return vim.keymap.set("n", "<Leader>oj", ":<C-u>OrgJournal<CR>", {silent = true})
+vim.keymap.set("n", "<Leader>oj", ":<C-u>OrgJournal<CR>", {silent = true})
+local function roam_grep()
+  local tb = require("telescope.builtin")
+  return tb.live_grep({cwd = __3epath("roam"), type_filter = "org"})
+end
+return vim.api.nvim_create_user_command("RoamGrep", roam_grep, {})

@@ -125,3 +125,11 @@
     (vim.cmd (.. "e " filepath))))
 (vim.api.nvim_create_user_command :OrgJournal open-org-journal {})
 (map! [:n] :<Leader>oj ":<C-u>OrgJournal<CR>" {:silent true})
+
+(fn roam-grep []
+  (let [tb (require :telescope.builtin)]
+    (tb.live_grep
+      {:cwd (->path :roam)
+       :type_filter :org})))
+
+(vim.api.nvim_create_user_command :RoamGrep roam-grep {})

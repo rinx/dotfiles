@@ -48,6 +48,7 @@
    "Octo pr list"
    "Octo issue list"
    :OrgJournal
+   :RoamGrep
    "Fidget history"
    "Telescope dap list_breakpoints"
    "Telescope repo list"
