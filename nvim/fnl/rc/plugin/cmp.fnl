@@ -90,7 +90,10 @@
              (if (cmp.visible)
                (cmp.select_next_item)
                (fallback)))}
-   :sources default-sources})
+   :sources default-sources
+   :enabled (fn []
+              (let [bufname (vim.api.nvim_buf_get_name 0)]
+                (not (~= (bufname:match "org%-roam%-select$") nil))))})
 
 ;; cmdline completions
 (cmp.setup.cmdline :/ {:sources [{:name :buffer}]})
