@@ -111,7 +111,11 @@
 (roam.setup
   {:directory (->path :roam)
    :org_files [inbox
-               (->path :journal/*.org)]})
+               (->path :journal/*.org)]
+   :templates
+   {:d {:description "default"
+        :template (->tmplstr :roam/default.org)
+        :target "%<%Y%m%d%H%M%S>-%[slug].org"}}})
 
 (bullets.setup
   {:concealcursor false
