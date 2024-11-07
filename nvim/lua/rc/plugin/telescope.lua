@@ -12,7 +12,7 @@ local themes = require("telescope.themes")
 local toggleterm = require("telescope-toggleterm")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
-local action_cmds = {"cd %:p:h", "BlamerToggle", "ConjureConnect", "ConjureLogSplit", "ConjureLogVSplit", "ConjureCljDebugInit", "DapContinue", "DapListBreakpoints", "DapStepInto", "DapStepOut", "DapStepOver", "DapToggleBreakpoint", "DapUIToggle", "Ghq", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "LspInfo", "LspRestart", "LspStart", "LspStart denols", "LspStart tsserver", "LspStop", "NvimTreeRefresh", "NvimTreeToggle", "Octo pr list", "Octo issue list", "OrgGrep", "OrgInbox", "OrgJournal", "RoamGrep", "Fidget history", "Telescope dap list_breakpoints", "Telescope repo list", "Telescope projects", "Telescope toggleterm", "Telescope orgmode refile_heading", "Telescope orgmode search_headings", "Telescope orgmode insert_link", "ToggleTerm", "ToggleTermCloseAll", "ToggleTermOpenAll", "TodoTrouble", "TroubleToggle", "TroubleToggle loclist", "TroubleToggle lsp_document_diagnostics", "TroubleToggle lsp_references", "TroubleToggle lsp_workspace_diagnostics", "TroubleToggle quickfix"}
+local action_cmds = {"cd %:p:h", "BlamerToggle", "ConjureConnect", "ConjureLogSplit", "ConjureLogVSplit", "ConjureCljDebugInit", "DapContinue", "DapListBreakpoints", "DapStepInto", "DapStepOut", "DapStepOver", "DapToggleBreakpoint", "DapUIToggle", "Ghq", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "LspInfo", "LspRestart", "LspStart", "LspStart denols", "LspStart tsserver", "LspStop", "NvimTreeRefresh", "NvimTreeToggle", "Octo pr list", "Octo issue list", "OrgGrep", "OrgInbox", "OrgJournal", "RoamGrep", "Fidget history", "Telescope dap list_breakpoints", "Telescope repo list", "Telescope projects", "Telescope toggleterm", "Telescope orgmode refile_heading", "Telescope orgmode search_headings", "Telescope orgmode insert_link", "TelescopeRoamNodesByTag code", "TelescopeRoamNodesByTag scrap", "TelescopeRoamNodesByTag wiki", "ToggleTerm", "ToggleTermCloseAll", "ToggleTermOpenAll", "TodoTrouble", "TroubleToggle", "TroubleToggle loclist", "TroubleToggle lsp_document_diagnostics", "TroubleToggle lsp_references", "TroubleToggle lsp_workspace_diagnostics", "TroubleToggle quickfix"}
 telescope.setup({defaults = {mappings = {i = {["<Up>"] = actions.cycle_history_prev, ["<Down>"] = actions.cycle_history_next}}, prompt_prefix = (icontab.search .. " "), selection_caret = (icontab.rquot .. " "), sorting_strategy = "ascending", scroll_strategy = "cycle"}, extensions = {fzy_native = {override_generic_sorter = true, override_file_sorter = true}}})
 telescope.load_extension("dap")
 telescope.load_extension("projects")
@@ -41,6 +41,19 @@ local function telescope_actions()
   return p:find()
 end
 vim.api.nvim_create_user_command("TelescopeActions", telescope_actions, {})
+local function telescope_roam_nodes_by_tag(opts)
+  local tag = opts.fargs[1]
+  local roam = require("org-roam")
+  local results = roam.database:find_nodes_by_tag_sync(tag)
+  local entry_maker
+  local function _4_(entry)
+    return {value = entry, ordinal = (entry.title .. "," .. table.concat(entry.aliases, ",")), display = entry.title, path = entry.file}
+  end
+  entry_maker = _4_
+  local p = pickers.new({}, {prompt_title = "Find roam nodes by tag", finder = finders.new_table({results = results, entry_maker = entry_maker}), sorter = sorters.get_fzy_sorter(), previewer = previewers.cat.new({})})
+  return p:find()
+end
+vim.api.nvim_create_user_command("TelescopeRoamNodesByTag", telescope_roam_nodes_by_tag, {nargs = 1})
 vim.keymap.set("n", ",f", ":<C-u>Telescope fd<CR>", {silent = true})
 vim.keymap.set("n", ",af", ":<C-u>Telescope find_files find_command=fd,--hidden<CR>", {silent = true})
 vim.keymap.set("n", ",of", ":<C-u>Telescope oldfiles<CR>", {silent = true})
