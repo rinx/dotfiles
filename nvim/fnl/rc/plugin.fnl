@@ -42,6 +42,9 @@
 
 (use
   {:folke/lazy.nvim {:lazy true}
+   :folke/snacks.nvim {:priority 1000
+                       :lazy false
+                       :opts {}}
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
