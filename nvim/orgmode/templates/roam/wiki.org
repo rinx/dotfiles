@@ -1,3 +1,4 @@
+#+FILETAGS: :wiki:
 #+CAPTURED: %U
 
 * %?

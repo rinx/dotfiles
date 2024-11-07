@@ -1,0 +1,5 @@
+#+FILETAGS: :code:
+#+CAPTURED: %U
+
+* %?
+  - Git Repository: [[][<put here>]]

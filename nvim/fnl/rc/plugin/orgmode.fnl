@@ -113,9 +113,18 @@
    :org_files [inbox
                (->path :journal/*.org)]
    :templates
-   {:d {:description "default"
+   {:d {:description :default
         :template (->tmplstr :roam/default.org)
-        :target "%<%Y%m%d%H%M%S>-%[slug].org"}}})
+        :target "fleeting/%<%Y%m%d%H%M%S>-%[slug].org"}
+    :w {:description :wiki
+        :template (->tmplstr :roam/wiki.org)
+        :target "wiki/%<%Y%m%d%H%M%S>-%[slug].org"}
+    :c {:description :code
+        :template (->tmplstr :roam/code.org)
+        :target "code/%<%Y%m%d%H%M%S>-%[slug].org"}
+    :s {:description :scrap
+        :template (->tmplstr :roam/scrap.org)
+        :target "scrap/%<%Y%m%d%H%M%S>-%[slug].org"}}})
 
 (bullets.setup
   {:concealcursor false

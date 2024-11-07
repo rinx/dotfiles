@@ -1,0 +1,5 @@
+#+FILETAGS: :scrap:
+#+CAPTURED: %U
+
+* %?
+  - url: [[][<put here>]]
