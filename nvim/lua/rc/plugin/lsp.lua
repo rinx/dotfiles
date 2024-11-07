@@ -51,7 +51,7 @@ end
 local default_options = {}
 lsp.ast_grep.setup(core.merge(default_options, {filetypes = {"*"}}))
 lsp.bashls.setup(core.merge(default_options, {settings = {bashIde = {shfmt = {caseIndent = true}}}}))
-lsp.bufls.setup(core.merge(default_options, {}))
+lsp.buf_ls.setup(core.merge(default_options, {}))
 lsp.clojure_lsp.setup(core.merge(default_options, {}))
 lsp.cssls.setup(core.merge(default_options, {}))
 lsp.dagger.setup(core.merge(default_options, {}))

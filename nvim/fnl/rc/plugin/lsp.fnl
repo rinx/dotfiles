@@ -65,7 +65,7 @@
                     {:settings
                      {:bashIde
                       {:shfmt {:caseIndent true}}}}))
-(lsp.bufls.setup (core.merge default-options {}))
+(lsp.buf_ls.setup (core.merge default-options {}))
 (lsp.clojure_lsp.setup (core.merge default-options {}))
 (lsp.cssls.setup (core.merge default-options {}))
 (lsp.dagger.setup (core.merge default-options {}))
