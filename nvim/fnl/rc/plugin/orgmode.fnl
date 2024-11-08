@@ -123,6 +123,9 @@
     :c {:description :code
         :template (->tmplstr :roam/code.org)
         :target "code/%<%Y%m%d%H%M%S>-%[slug].org"}
+    :b {:description :book
+        :template (->tmplstr :roam/book.org)
+        :target "book/%<%Y%m%d%H%M%S>-%[slug].org"}
     :s {:description :scrap
         :template (->tmplstr :roam/scrap.org)
         :target "scrap/%<%Y%m%d%H%M%S>-%[slug].org"}}})

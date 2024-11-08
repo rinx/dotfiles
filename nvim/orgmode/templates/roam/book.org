@@ -1,0 +1,5 @@
+#+FILETAGS: :book:
+#+CAPTURED: %U
+
+* %?
+
