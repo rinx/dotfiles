@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731059985942,
+  "lastUpdate": 1731061224187,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10853,6 +10853,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 54.12349029999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "82efcda2e2d6bdc6826a647b343b0ebd48027d43",
+          "message": "config(nvim): add roam template for book\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-08T19:11:13+09:00",
+          "tree_id": "5a54a0d6ff918f1a09ccfbcc973579a567e80a0d",
+          "url": "https://github.com/rinx/dotfiles/commit/82efcda2e2d6bdc6826a647b343b0ebd48027d43"
+        },
+        "date": 1731061223729,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.0040622,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.410768899999994,
             "unit": "ms"
           }
         ]
