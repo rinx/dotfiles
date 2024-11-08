@@ -39,7 +39,6 @@
 
 (local cmp-srcs
   {:buffer :Buffer
-   :calc :Calc
    :cmdline :CMD
    :git :Git
    :conjure :Conjure
@@ -58,7 +57,6 @@
    {:name :path}
    {:name :skkeleton}
    {:name :spell}
-   {:name :calc}
    {:name :emoji}
    {:name :orgmode}])
 

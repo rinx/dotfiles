@@ -8,8 +8,8 @@ local cmp_git = require("cmp_git")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
 local cmp_kinds = {Class = icontab.class, Color = icontab.color, Constant = icontab.pi, Constructor = icontab.tools, Enum = icontab.enum, EnumMember = icontab.atoz, Field = icontab.buffer, File = icontab["document-alt"], Folder = icontab["folder-open-alt"], Function = icontab["function-alt"], Interface = icontab.structure, Keyword = icontab.key, Method = icontab["function"], Module = icontab.cubes, Property = icontab.property, Snippet = icontab["code-braces"], Struct = icontab.struct, Reference = icontab.reference, Text = icontab.text, Unit = icontab.unit, Value = icontab["one-two-three"], Variable = icontab.cube, Operator = icontab["plus-minus"], Event = icontab.zap, TypeParameter = icontab.package}
-local cmp_srcs = {buffer = "Buffer", calc = "Calc", cmdline = "CMD", git = "Git", conjure = "Conjure", emoji = "Emoji", neorg = "Neorg", nvim_lsp = "LSP", path = "Path", skkeleton = "SKK", spell = "Spell", treesitter = "TS"}
-local default_sources = {{name = "nvim_lsp"}, {name = "buffer"}, {name = "treesitter"}, {name = "path"}, {name = "skkeleton"}, {name = "spell"}, {name = "calc"}, {name = "emoji"}, {name = "orgmode"}}
+local cmp_srcs = {buffer = "Buffer", cmdline = "CMD", git = "Git", conjure = "Conjure", emoji = "Emoji", neorg = "Neorg", nvim_lsp = "LSP", path = "Path", skkeleton = "SKK", spell = "Spell", treesitter = "TS"}
+local default_sources = {{name = "nvim_lsp"}, {name = "buffer"}, {name = "treesitter"}, {name = "path"}, {name = "skkeleton"}, {name = "spell"}, {name = "emoji"}, {name = "orgmode"}}
 local function _2_(entry, item)
   item.kind = ((core.get(cmp_kinds, item.kind) or "") .. " " .. item.kind)
   item.menu = (core.get(cmp_srcs, entry.source.name) or "")

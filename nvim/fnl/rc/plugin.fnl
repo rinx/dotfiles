@@ -114,7 +114,6 @@
    :hrsh7th/nvim-cmp {:config (mod :cmp)
                       :event [:InsertEnter]
                       :dependencies [:hrsh7th/cmp-buffer
-                                     :hrsh7th/cmp-calc
                                      :hrsh7th/cmp-cmdline
                                      :hrsh7th/cmp-emoji
                                      :hrsh7th/cmp-nvim-lsp
