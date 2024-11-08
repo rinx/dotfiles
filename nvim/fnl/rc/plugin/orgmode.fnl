@@ -85,6 +85,7 @@
         :target (->path :journal/%<%Y-%m>.org)
         :datetree {:tree_type :day}}}
    :org_tags_column 90
+   :org_id_link_to_org_use_id true
    :org_custom_exports
    {:g
     {:label "Export to GitHub flavored markdown"
