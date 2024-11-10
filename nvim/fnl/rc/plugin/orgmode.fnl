@@ -116,19 +116,19 @@
    :templates
    {:f {:description :fleeting
         :template (->tmplstr :roam/fleeting.org)
-        :target "fleeting/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "fleeting%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
     :w {:description :wiki
         :template (->tmplstr :roam/wiki.org)
-        :target "wiki/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "wiki%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
     :p {:description :project
         :template (->tmplstr :roam/project.org)
-        :target "project/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "project%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
     :c {:description :code
         :template (->tmplstr :roam/code.org)
-        :target "code/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "code%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
     :b {:description :book
         :template (->tmplstr :roam/book.org)
-        :target "book/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "book%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
     :s {:description :scrap
         :template (->tmplstr :roam/scrap.org)
         :target "scrap/%<%Y%m%d%H%M%S>-%[slug].org"}}})
