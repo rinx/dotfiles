@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731230407243,
+  "lastUpdate": 1731244796151,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11125,6 +11125,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 52.866573900000006,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5de9b2a685f7c7e7d0566fe64383635f3acfdd66",
+          "message": "config(nvim): update telescope options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-10T22:10:47+09:00",
+          "tree_id": "bad8a1f719169576d8099a5f1710e3e0de8adb29",
+          "url": "https://github.com/rinx/dotfiles/commit/5de9b2a685f7c7e7d0566fe64383635f3acfdd66"
+        },
+        "date": 1731244795691,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.1667863,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.5513502,
             "unit": "ms"
           }
         ]
