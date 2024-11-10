@@ -23,8 +23,9 @@ local function _3_(fallback)
   end
 end
 local function _5_()
+  local buftype = vim.api.nvim_buf_get_option(0, "buftype")
   local bufname = vim.api.nvim_buf_get_name(0)
-  return not (bufname:match("org%-roam%-select$") ~= nil)
+  return (not (buftype == "prompt") and not (bufname:match("org%-roam%-select$") ~= nil))
 end
 cmp.setup({formatting = {format = _2_}, mapping = {["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}), {"i", "c"}), ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}), {"i", "c"}), ["<Up>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}), ["<Down>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}), ["<C-s>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}), ["<C-e>"] = cmp.mapping(cmp.mapping.close(), {"i", "c"}), ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}), ["<Tab>"] = _3_}, sources = default_sources, enabled = _5_})
 cmp.setup.cmdline("/", {sources = {{name = "buffer"}}})
