@@ -116,22 +116,22 @@
    :templates
    {:f {:description :fleeting
         :template (->tmplstr :roam/fleeting.org)
-        :target "fleeting%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "fleeting%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
     :w {:description :wiki
         :template (->tmplstr :roam/wiki.org)
-        :target "wiki%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "wiki%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
     :p {:description :project
         :template (->tmplstr :roam/project.org)
-        :target "project%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "project%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
     :c {:description :code
         :template (->tmplstr :roam/code.org)
-        :target "code%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "code%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
     :b {:description :book
         :template (->tmplstr :roam/book.org)
-        :target "book%[sep]%<%Y%m%d%H%M%S>-%[slug].org"}
+        :target "book%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
     :s {:description :scrap
         :template (->tmplstr :roam/scrap.org)
-        :target "scrap/%<%Y%m%d%H%M%S>-%[slug].org"}}})
+        :target "scrap/%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}}})
 
 (bullets.setup
   {:concealcursor false
