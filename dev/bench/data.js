@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731222021709,
+  "lastUpdate": 1731223566251,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11023,6 +11023,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 54.844305199999994,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3d8d260182dcfa46255990021ee204eddd7045ac",
+          "message": "config(nvim): update org-roam templates to add tags\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-10T16:16:29+09:00",
+          "tree_id": "838266a8c62bd679c152b763a96c91715fa63388",
+          "url": "https://github.com/rinx/dotfiles/commit/3d8d260182dcfa46255990021ee204eddd7045ac"
+        },
+        "date": 1731223565236,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.3539395,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 53.508566900000005,
             "unit": "ms"
           }
         ]
