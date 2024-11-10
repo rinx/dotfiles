@@ -49,7 +49,9 @@
    :OrgGrep
    :OrgInbox
    :OrgJournal
+   :OrgLiveGrep
    :RoamGrep
+   :RoamLiveGrep
    "Fidget history"
    "Telescope dap list_breakpoints"
    "Telescope repo list"

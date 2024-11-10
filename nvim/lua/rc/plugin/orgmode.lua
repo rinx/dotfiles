@@ -3,6 +3,7 @@ local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local core = autoload("nfnl.core")
 local icon = autoload("rc.icon")
+local icontab = icon.tab
 local orgmode = require("orgmode")
 local roam = require("org-roam")
 local bullets = require("org-bullets")
@@ -58,12 +59,25 @@ do
   local filepath = __3epath(("journal/" .. vim.fn.strftime("%Y-%m", vim.fn.localtime()) .. ".org"))
   vim.api.nvim_create_user_command("OrgJournal", open_fn(filepath), {})
 end
-local function grep_fn(path)
+local function live_grep_fn(path)
   local function _7_()
     local tb = require("telescope.builtin")
     return tb.live_grep({cwd = path, type_filter = "org"})
   end
   return _7_
+end
+vim.api.nvim_create_user_command("OrgLiveGrep", live_grep_fn(basepath), {})
+vim.api.nvim_create_user_command("RoamLiveGrep", live_grep_fn(__3epath("roam")), {})
+local function grep_fn(path)
+  local function _8_()
+    local function _9_(query)
+      local tb = require("telescope.builtin")
+      local search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})
+      return tb.grep_string({prompt_title = ("Grep for: " .. query), cwd = path, use_regex = true, search = search})
+    end
+    return vim.ui.input({prompt = icontab.search, completion = "file"}, _9_)
+  end
+  return _8_
 end
 vim.api.nvim_create_user_command("OrgGrep", grep_fn(basepath), {})
 return vim.api.nvim_create_user_command("RoamGrep", grep_fn(__3epath("roam")), {})

@@ -151,6 +151,7 @@
                        :event [:BufEnter]}
    :lambdalisue/guise.vim {:config (mod :guise)
                            :event [:VimEnter]}
+   :lambdalisue/vim-kensaku {:event [:VimEnter]}
 
    ;; operator/textobj
    :kana/vim-operator-user {:config (mod :operator)

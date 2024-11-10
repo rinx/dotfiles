@@ -2,7 +2,8 @@
 (local core (autoload :nfnl.core))
 
 (local icon (autoload :rc.icon))
-(import-macros {: map!} :rc.macros)
+
+(local icontab icon.tab)
 
 (local orgmode (require :orgmode))
 (local roam (require :org-roam))
@@ -146,11 +147,27 @@
                  (.. :journal/ (vim.fn.strftime :%Y-%m (vim.fn.localtime)) :.org))]
   (vim.api.nvim_create_user_command :OrgJournal (open-fn filepath) {}))
 
-(fn grep-fn [path]
+(fn live-grep-fn [path]
   (fn []
     (let [tb (require :telescope.builtin)]
       (tb.live_grep
         {:cwd path
          :type_filter :org}))))
+(vim.api.nvim_create_user_command :OrgLiveGrep (live-grep-fn basepath) {})
+(vim.api.nvim_create_user_command :RoamLiveGrep (live-grep-fn (->path :roam)) {})
+
+(fn grep-fn [path]
+  (fn []
+    (vim.ui.input
+      {:prompt icontab.search
+       :completion :file}
+      (fn [query]
+        (let [tb (require :telescope.builtin)
+              search (vim.fn.kensaku#query query {:rxop vim.g.kensaku#rxop#javascript})]
+          (tb.grep_string
+            {:prompt_title (.. "Grep for: " query)
+             :cwd path
+             :use_regex true
+             :search search}))))))
 (vim.api.nvim_create_user_command :OrgGrep (grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})
