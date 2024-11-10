@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731223566251,
+  "lastUpdate": 1731224125464,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11057,6 +11057,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 53.508566900000005,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "47f1f5108fb68a677799193238badcd2a0628e2a",
+          "message": "config(nvim): disable cmp on buftype = prompt\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-10T16:26:19+09:00",
+          "tree_id": "c3d75ce2dbb89c2b13ce9ca257da60fb30cecdc0",
+          "url": "https://github.com/rinx/dotfiles/commit/47f1f5108fb68a677799193238badcd2a0628e2a"
+        },
+        "date": 1731224124987,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.3953991,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 51.7344927,
             "unit": "ms"
           }
         ]
