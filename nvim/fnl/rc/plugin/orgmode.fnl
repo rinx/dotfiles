@@ -115,7 +115,7 @@
                (->path :journal/*.org)]
    :templates
    {:f {:description :fleeting
-        :template (->tmplstr :roam/default.org)
+        :template (->tmplstr :roam/fleeting.org)
         :target "fleeting/%<%Y%m%d%H%M%S>-%[slug].org"}
     :w {:description :wiki
         :template (->tmplstr :roam/wiki.org)
