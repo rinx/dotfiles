@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731224125464,
+  "lastUpdate": 1731230407243,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11091,6 +11091,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 51.7344927,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "97e01de23c8a2a8f3b56e34e98d560625de89b6e",
+          "message": "config(nvim): add vim-kensaku to grep org files by migemo\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-10T18:10:45+09:00",
+          "tree_id": "12e91e5de263ddab63f37b1aeb28ea612a2b7f30",
+          "url": "https://github.com/rinx/dotfiles/commit/97e01de23c8a2a8f3b56e34e98d560625de89b6e"
+        },
+        "date": 1731230406754,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.0333047,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 52.866573900000006,
             "unit": "ms"
           }
         ]
