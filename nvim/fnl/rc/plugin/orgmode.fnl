@@ -159,15 +159,18 @@
 (fn grep-fn [path]
   (fn []
     (vim.ui.input
-      {:prompt icontab.search
+      {:prompt (.. icontab.search " Grep")
        :completion :file}
       (fn [query]
-        (let [tb (require :telescope.builtin)
-              search (vim.fn.kensaku#query query {:rxop vim.g.kensaku#rxop#javascript})]
-          (tb.grep_string
-            {:prompt_title (.. "Grep for: " query)
-             :cwd path
-             :use_regex true
-             :search search}))))))
+        (when query
+          (let [tb (require :telescope.builtin)
+                search (vim.fn.kensaku#query
+                         query
+                         {:rxop vim.g.kensaku#rxop#javascript})]
+            (tb.grep_string
+              {:prompt_title (.. "Grep for: " query)
+               :cwd path
+               :use_regex true
+               :search search})))))))
 (vim.api.nvim_create_user_command :OrgGrep (grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})

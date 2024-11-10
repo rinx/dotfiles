@@ -54,8 +54,21 @@ local function telescope_roam_nodes_by_tag(opts)
   return p:find()
 end
 vim.api.nvim_create_user_command("TelescopeRoamNodesByTag", telescope_roam_nodes_by_tag, {nargs = 1})
-vim.keymap.set("n", ",f", ":<C-u>Telescope fd<CR>", {silent = true})
-vim.keymap.set("n", ",af", ":<C-u>Telescope find_files find_command=fd,--hidden<CR>", {silent = true})
+local function telescope_migemo_grep()
+  local function _5_(query)
+    if query then
+      local tb = require("telescope.builtin")
+      local search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})
+      return tb.grep_string({prompt_title = ("Grep for: " .. query), use_regex = true, search = search})
+    else
+      return nil
+    end
+  end
+  return vim.ui.input({prompt = (icontab.search .. " Grep"), completion = "file"}, _5_)
+end
+vim.api.nvim_create_user_command("TelescopeMigemoGrep", telescope_migemo_grep, {})
+vim.keymap.set("n", ",f", ":<C-u>Telescope fd no_ignore=true no_ignore_parent=true<CR>", {silent = true})
+vim.keymap.set("n", ",af", ":<C-u>Telescope fd hidden=true no_ignore=true no_ignore_parent=true<CR>", {silent = true})
 vim.keymap.set("n", ",of", ":<C-u>Telescope oldfiles<CR>", {silent = true})
 vim.keymap.set("n", ",gf", ":<C-u>Telescope git_files<CR>", {silent = true})
 vim.keymap.set("n", ",gb", ":<C-u>Telescope git_branches<CR>", {silent = true})
@@ -69,4 +82,5 @@ vim.keymap.set("n", ",c", ":<C-u>Telescope command_history theme=get_dropdown<CR
 vim.keymap.set("n", ",h", ":<C-u>Telescope help_tags<CR>", {silent = true})
 vim.keymap.set("n", "<Leader><Leader>", ":<C-u>Telescope commands theme=get_dropdown<CR>", {silent = true})
 vim.keymap.set("n", "<C-\\>", ":<C-u>Telescope builtin<CR>", {silent = true})
-return vim.keymap.set("n", "<Leader>h", ":<C-u>TelescopeActions<CR>", {silent = true})
+vim.keymap.set("n", "<Leader>h", ":<C-u>TelescopeActions<CR>", {silent = true})
+return vim.keymap.set("n", ",m", ":<C-u>TelescopeMigemoGrep<CR>", {silent = true})

@@ -71,11 +71,15 @@ vim.api.nvim_create_user_command("RoamLiveGrep", live_grep_fn(__3epath("roam")),
 local function grep_fn(path)
   local function _8_()
     local function _9_(query)
-      local tb = require("telescope.builtin")
-      local search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})
-      return tb.grep_string({prompt_title = ("Grep for: " .. query), cwd = path, use_regex = true, search = search})
+      if query then
+        local tb = require("telescope.builtin")
+        local search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})
+        return tb.grep_string({prompt_title = ("Grep for: " .. query), cwd = path, use_regex = true, search = search})
+      else
+        return nil
+      end
     end
-    return vim.ui.input({prompt = icontab.search, completion = "file"}, _9_)
+    return vim.ui.input({prompt = (icontab.search .. " Grep"), completion = "file"}, _9_)
   end
   return _8_
 end

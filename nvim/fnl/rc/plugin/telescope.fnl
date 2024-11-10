@@ -148,10 +148,29 @@
     (p:find)))
 (vim.api.nvim_create_user_command :TelescopeRoamNodesByTag telescope-roam-nodes-by-tag {:nargs 1})
 
-(map! [:n] ",f" ":<C-u>Telescope fd<CR>" {:silent true})
+(fn telescope-migemo-grep []
+  (vim.ui.input
+    {:prompt (.. icontab.search " Grep")
+     :completion :file}
+    (fn [query]
+      (when query
+        (let [tb (require :telescope.builtin)
+              search (vim.fn.kensaku#query
+                       query
+                       {:rxop vim.g.kensaku#rxop#javascript})]
+          (tb.grep_string
+            {:prompt_title (.. "Grep for: " query)
+             :use_regex true
+             :search search}))))))
+(vim.api.nvim_create_user_command :TelescopeMigemoGrep telescope-migemo-grep {})
+
+(map! [:n]
+      ",f"
+      ":<C-u>Telescope fd no_ignore=true no_ignore_parent=true<CR>"
+      {:silent true})
 (map! [:n]
       ",af"
-      ":<C-u>Telescope find_files find_command=fd,--hidden<CR>"
+      ":<C-u>Telescope fd hidden=true no_ignore=true no_ignore_parent=true<CR>"
       {:silent true})
 (map! [:n] ",of" ":<C-u>Telescope oldfiles<CR>" {:silent true})
 (map! [:n] ",gf" ":<C-u>Telescope git_files<CR>" {:silent true})
@@ -173,3 +192,4 @@
       {:silent true})
 (map! [:n] :<C-\> ":<C-u>Telescope builtin<CR>" {:silent true})
 (map! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" {:silent true})
+(map! [:n] ",m" ":<C-u>TelescopeMigemoGrep<CR>" {:silent true})
