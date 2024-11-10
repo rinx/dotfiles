@@ -59,6 +59,7 @@
    "Telescope orgmode search_headings"
    "Telescope orgmode insert_link"
    "TelescopeRoamNodesByTag code"
+   "TelescopeRoamNodesByTag project"
    "TelescopeRoamNodesByTag scrap"
    "TelescopeRoamNodesByTag wiki"
    :ToggleTerm

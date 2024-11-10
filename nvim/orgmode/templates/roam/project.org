@@ -1,0 +1,13 @@
+#+FILETAGS: :project:
+#+CAPTURED: %U
+
+* %?
+
+** Overview
+
+** Description
+
+** Tasks
+
+** References
+

@@ -114,21 +114,54 @@
    :org_files [inbox
                (->path :journal/*.org)]
    :templates
-   {:d {:description :default
-        :template (->tmplstr :roam/default.org)
-        :target "fleeting/%<%Y%m%d%H%M%S>-%[slug].org"}
+   {:f {:description :fleeting
+        :subtemplates
+        {:d {:description :default
+             :template (->tmplstr :roam/default.org)
+             :target "fleeting/%<%Y%m%d%H%M%S>-%[slug].org"}
+         :l {:description "local note (ignored by git)"
+             :template (->tmplstr :roam/default.org)
+             :target "fleeting/%<%Y%m%d%H%M%S>-%[slug].local.org"}}}
     :w {:description :wiki
-        :template (->tmplstr :roam/wiki.org)
-        :target "wiki/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :subtemplates
+        {:d {:description :default
+             :template (->tmplstr :roam/wiki.org)
+             :target "wiki/%<%Y%m%d%H%M%S>-%[slug].org"}
+         :l {:description "local note (ignored by git)"
+             :template (->tmplstr :roam/wiki.org)
+             :target "wiki/%<%Y%m%d%H%M%S>-%[slug].local.org"}}}
+    :p {:description :project
+        :subtemplates
+        {:d {:description :default
+             :template (->tmplstr :roam/project.org)
+             :target "project/%<%Y%m%d%H%M%S>-%[slug].org"}
+         :l {:description "local note (ignored by git)"
+             :template (->tmplstr :roam/project.org)
+             :target "project/%<%Y%m%d%H%M%S>-%[slug].local.org"}}}
     :c {:description :code
-        :template (->tmplstr :roam/code.org)
-        :target "code/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :subtemplates
+        {:d {:description :default
+             :template (->tmplstr :roam/code.org)
+             :target "code/%<%Y%m%d%H%M%S>-%[slug].org"}
+         :l {:description "local note (ignored by git)"
+             :template (->tmplstr :roam/code.org)
+             :target "code/%<%Y%m%d%H%M%S>-%[slug].local.org"}}}
     :b {:description :book
-        :template (->tmplstr :roam/book.org)
-        :target "book/%<%Y%m%d%H%M%S>-%[slug].org"}
+        :subtemplates
+        {:d {:description :default
+             :template (->tmplstr :roam/book.org)
+             :target "book/%<%Y%m%d%H%M%S>-%[slug].org"}
+         :l {:description "local note (ignored by git)"
+             :template (->tmplstr :roam/book.org)
+             :target "book/%<%Y%m%d%H%M%S>-%[slug].local.org"}}}
     :s {:description :scrap
-        :template (->tmplstr :roam/scrap.org)
-        :target "scrap/%<%Y%m%d%H%M%S>-%[slug].org"}}})
+        :subtemplates
+        {:d {:description :default
+             :template (->tmplstr :roam/scrap.org)
+             :target "scrap/%<%Y%m%d%H%M%S>-%[slug].org"}
+         :l {:description "local note (ignored by git)"
+             :template (->tmplstr :roam/scrap.org)
+             :target "scrap/%<%Y%m%d%H%M%S>-%[slug].local.org"}}}}})
 
 (bullets.setup
   {:concealcursor false
