@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731221057324,
+  "lastUpdate": 1731222021709,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -10989,6 +10989,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 51.722543099999996,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c27286e04def13d31005be1f0a525026183aa3ca",
+          "message": "config(nvim): add filename suffix prompt for org-roam templates\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-10T15:50:56+09:00",
+          "tree_id": "eef0ed728250cd8ef576116490291445d0a823ad",
+          "url": "https://github.com/rinx/dotfiles/commit/c27286e04def13d31005be1f0a525026183aa3ca"
+        },
+        "date": 1731222021026,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.797779600000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.844305199999994,
             "unit": "ms"
           }
         ]
