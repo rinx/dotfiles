@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731405088865,
+  "lastUpdate": 1731417332263,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11227,6 +11227,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.9788053,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "14032b4d091aa4c74aed0cd745f21af5afe8fdbb",
+          "message": "chore: make org linguist-detectable\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-12T22:05:29+09:00",
+          "tree_id": "0fa2043793d422c9129a8a3eda27f746c0fb6b19",
+          "url": "https://github.com/rinx/dotfiles/commit/14032b4d091aa4c74aed0cd745f21af5afe8fdbb"
+        },
+        "date": 1731417331066,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.2773052,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 52.8474569,
             "unit": "ms"
           }
         ]
