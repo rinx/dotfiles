@@ -50,6 +50,7 @@
    :OrgInbox
    :OrgJournal
    :OrgLiveGrep
+   :OrgRefileToToday
    :RoamGrep
    :RoamLiveGrep
    "Fidget history"

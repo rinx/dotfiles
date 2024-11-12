@@ -81,4 +81,9 @@ local function grep_fn(path)
   return _8_
 end
 vim.api.nvim_create_user_command("OrgGrep", grep_fn(basepath), {})
-return vim.api.nvim_create_user_command("RoamGrep", grep_fn(__3epath("roam")), {})
+vim.api.nvim_create_user_command("RoamGrep", grep_fn(__3epath("roam")), {})
+local function refile_to_today()
+  local date = os.date("%Y-%m-%d")
+  return vim.cmd(("Telescope orgmode refile_heading default_text=" .. date))
+end
+return vim.api.nvim_create_user_command("OrgRefileToToday", refile_to_today, {})
