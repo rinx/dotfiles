@@ -1,5 +1,11 @@
 #+FILETAGS: :scrap:
 #+CAPTURED: %U
 
+# if it is webpage, paste the url here
+#+FROM: [[%x]]
+
 * %?
-  - url: [[][<put here>]]
+** Summary
+
+** Notes
+

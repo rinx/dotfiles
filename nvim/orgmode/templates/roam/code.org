@@ -1,5 +1,11 @@
 #+FILETAGS: :code:
 #+CAPTURED: %U
 
+# paste the repository url here
+#+REPOSITORY: [[%x]]
+
 * %?
-  - Git Repository: [[][<put here>]]
+** Description
+
+** Notes
+
