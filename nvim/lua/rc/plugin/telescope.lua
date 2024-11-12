@@ -55,16 +55,13 @@ local function telescope_roam_nodes_by_tag(opts)
 end
 vim.api.nvim_create_user_command("TelescopeRoamNodesByTag", telescope_roam_nodes_by_tag, {nargs = 1})
 local function telescope_migemo_grep()
-  local function _5_(query)
-    if query then
-      local tb = require("telescope.builtin")
-      local search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})
-      return tb.grep_string({prompt_title = ("Grep for: " .. query), use_regex = true, search = search})
-    else
-      return nil
-    end
+  local query = vim.fn.input("Migemo Grep: ")
+  local tb = require("telescope.builtin")
+  if (query and not (query == "")) then
+    return tb.grep_string({prompt_title = ("Grep for: " .. query), use_regex = true, search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})})
+  else
+    return nil
   end
-  return vim.ui.input({prompt = (icontab.search .. " Grep"), completion = "file"}, _5_)
 end
 vim.api.nvim_create_user_command("TelescopeMigemoGrep", telescope_migemo_grep, {})
 vim.keymap.set("n", ",f", ":<C-u>Telescope fd no_ignore=true no_ignore_parent=true<CR>", {silent = true})

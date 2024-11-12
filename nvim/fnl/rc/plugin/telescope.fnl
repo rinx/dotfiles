@@ -149,19 +149,13 @@
 (vim.api.nvim_create_user_command :TelescopeRoamNodesByTag telescope-roam-nodes-by-tag {:nargs 1})
 
 (fn telescope-migemo-grep []
-  (vim.ui.input
-    {:prompt (.. icontab.search " Grep")
-     :completion :file}
-    (fn [query]
-      (when query
-        (let [tb (require :telescope.builtin)
-              search (vim.fn.kensaku#query
-                       query
-                       {:rxop vim.g.kensaku#rxop#javascript})]
-          (tb.grep_string
-            {:prompt_title (.. "Grep for: " query)
-             :use_regex true
-             :search search}))))))
+  (let [query (vim.fn.input "Migemo Grep: ")
+        tb (require :telescope.builtin)]
+    (when (and query (not (= query "")))
+      (tb.grep_string
+        {:prompt_title (.. "Grep for: " query)
+         :use_regex true
+         :search (vim.fn.kensaku#query query {:rxop vim.g.kensaku#rxop#javascript})}))))
 (vim.api.nvim_create_user_command :TelescopeMigemoGrep telescope-migemo-grep {})
 
 (map! [:n]

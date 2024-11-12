@@ -39,7 +39,8 @@
 
 (orgmode.setup
   {:org_agenda_files [inbox
-                      (->path :journal/*.org)]
+                      (->path :journal/*.org)
+                      (->path :notes/**/*.org)]
    :org_default_notes_file inbox
    :org_archive_location (->path "archive/%s_archive::")
    :org_todo_keywords [:TODO
@@ -158,19 +159,13 @@
 
 (fn grep-fn [path]
   (fn []
-    (vim.ui.input
-      {:prompt (.. icontab.search " Grep")
-       :completion :file}
-      (fn [query]
-        (when query
-          (let [tb (require :telescope.builtin)
-                search (vim.fn.kensaku#query
-                         query
-                         {:rxop vim.g.kensaku#rxop#javascript})]
-            (tb.grep_string
-              {:prompt_title (.. "Grep for: " query)
-               :cwd path
-               :use_regex true
-               :search search})))))))
+    (let [query (vim.fn.input "Grep: ")
+          tb (require :telescope.builtin)]
+      (when (and query (not (= query "")))
+        (tb.grep_string
+          {:prompt_title (.. "Grep for: " query)
+           :cwd path
+           :use_regex true
+           :search (vim.fn.kensaku#query query {:rxop vim.g.kensaku#rxop#javascript})})))))
 (vim.api.nvim_create_user_command :OrgGrep (grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})
