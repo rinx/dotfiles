@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731423003357,
+  "lastUpdate": 1731591333080,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11329,6 +11329,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 52.590631099999996,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f3e6fa560d948b2d1b48e598a124833866941514",
+          "message": "config(nvim): add icons to org-capture templates\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-14T22:25:39+09:00",
+          "tree_id": "22ce70508782a910d150746d303245219068eae9",
+          "url": "https://github.com/rinx/dotfiles/commit/f3e6fa560d948b2d1b48e598a124833866941514"
+        },
+        "date": 1731591332540,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.4240067,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 58.6921733,
             "unit": "ms"
           }
         ]
