@@ -51,38 +51,38 @@
                        :DONE]
    :org_startup_folded :overview
    :org_capture_templates
-   {:t {:description "Add a new task to inbox"
+   {:t {:description " Add a new task to inbox"
         :template (->tmplstr :task.org)
         :target inbox
         :headline :Tasks}
-    :n {:description "Add a new note to inbox"
+    :n {:description " Add a new note to inbox"
         :subtemplates
-        {:c {:description "code-reading note"
+        {:c {:description "󰅴 code-reading note"
              ;; TODO: add link to github in template
              :template (->tmplstr :code-note.org)
              :target inbox
              :headline :Notes}
-         :d {:description "default note"
+         :d {:description " default note"
              :template (->tmplstr :note.org)
              :target inbox
              :headline :Notes}
-         :l {:description "with link"
+         :l {:description " with link"
              :template (->tmplstr :link.org)
              :target inbox
              :headline :Notes}
-         :p {:description "with clipboard content"
+         :p {:description " with clipboard content"
              :template (->tmplstr :paste.org)
              :target inbox
              :headline :Notes}}}
-    :i {:description "Add a new idea"
+    :i {:description " Add a new idea"
         :template (->tmplstr :idea.org)
         :target inbox
         :headline :Ideas}
-    :s {:description "Add a new topic"
+    :s {:description " Add a new topic"
         :template (->tmplstr :topic.org)
         :target inbox
         :headline :Topics}
-    :j {:description "Add a new note to journal"
+    :j {:description "󰃭 Add a new note to journal"
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
         :datetree {:tree_type :day}}}
@@ -116,22 +116,22 @@
    :org_files [inbox
                (->path :journal/*.org)]
    :templates
-   {:f {:description :fleeting
+   {:f {:description "󰎚 fleeting"
         :template (->tmplstr :roam/fleeting.org)
         :target "fleeting%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
-    :w {:description :wiki
+    :w {:description "󰖬 wiki"
         :template (->tmplstr :roam/wiki.org)
         :target "wiki%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
-    :p {:description :project
+    :p {:description " project"
         :template (->tmplstr :roam/project.org)
         :target "project%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
-    :c {:description :code
+    :c {:description " code"
         :template (->tmplstr :roam/code.org)
         :target "code%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
-    :b {:description :book
+    :b {:description " book"
         :template (->tmplstr :roam/book.org)
         :target "book%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
-    :s {:description :scrap
+    :s {:description " scrap"
         :template (->tmplstr :roam/scrap.org)
         :target "scrap/%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}}})
 
