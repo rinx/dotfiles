@@ -43,9 +43,8 @@
    :git :Git
    :conjure :Conjure
    :emoji :Emoji
-   :neorg :Neorg
    :nvim_lsp :LSP
-   :path :Path
+   :async_path :Path
    :skkeleton :SKK
    :spell :Spell
    :treesitter :TS})
@@ -54,7 +53,7 @@
   [{:name :nvim_lsp}
    {:name :buffer}
    {:name :treesitter}
-   {:name :path}
+   {:name :async_path}
    {:name :skkeleton}
    {:name :spell}
    {:name :emoji}

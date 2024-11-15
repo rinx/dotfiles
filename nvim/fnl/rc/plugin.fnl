@@ -111,19 +111,26 @@
                                :event [:BufReadPost :BufAdd :BufNewFile]}
 
    ;; cmp
-   :hrsh7th/nvim-cmp {:config (mod :cmp)
-                      :event [:InsertEnter]
-                      :dependencies [:hrsh7th/cmp-buffer
-                                     :hrsh7th/cmp-cmdline
-                                     :hrsh7th/cmp-emoji
-                                     :hrsh7th/cmp-nvim-lsp
-                                     :hrsh7th/cmp-path
-                                     :f3fora/cmp-spell
-                                     :petertriho/cmp-git
-                                     :rafamadriz/friendly-snippets
-                                     :ray-x/cmp-treesitter
-                                     :PaterJason/cmp-conjure
-                                     :rinx/cmp-skkeleton]}
+   :iguanacucumber/magazine.nvim {:name :nvim-cmp
+                                  :config (mod :cmp)
+                                  :event [:InsertEnter]
+                                  :dependencies [:hrsh7th/cmp-emoji
+                                                 :f3fora/cmp-spell
+                                                 :petertriho/cmp-git
+                                                 :rafamadriz/friendly-snippets
+                                                 :ray-x/cmp-treesitter
+                                                 :PaterJason/cmp-conjure
+                                                 :rinx/cmp-skkeleton]}
+   :iguanacucumber/mag-nvim-lsp {:name :cmp-nvim-lsp
+                                 :event [:InsertEnter]}
+   :iguanacucumber/mag-buffer {:name :cmp-buffer
+                               :event [:InsertEnter]}
+   :iguanacucumber/mag-cmdline {:name :cmp-cmdline
+                                :event [:InsertEnter]}
+   :iguanacucumber/mag-cmdline {:name :cmp-cmdline
+                                :event [:InsertEnter]}
+   :FelipeLema/cmp-async-path {:url "https://codeberg.org/FelipeLema/cmp-async-path"
+                               :event [:InsertEnter]}
 
    ;; dap
    :mfussenegger/nvim-dap {:config (mod :dap)
