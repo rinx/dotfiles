@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731591333080,
+  "lastUpdate": 1731676584313,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11363,6 +11363,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 58.6921733,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "cf99ed2d8cdef6605340cb35036650cae1eeb2bc",
+          "message": "config(nvim): use magazine.nvim instead of nvim-cmp\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-15T22:05:16+09:00",
+          "tree_id": "a4fe4e5c92f85eb106b784754cef4e58faf6b6b7",
+          "url": "https://github.com/rinx/dotfiles/commit/cf99ed2d8cdef6605340cb35036650cae1eeb2bc"
+        },
+        "date": 1731676582969,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.5368228,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 53.2563447,
             "unit": "ms"
           }
         ]
