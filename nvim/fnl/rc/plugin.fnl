@@ -65,7 +65,6 @@
                               :config (mod :nvim-tree)}
    :lewis6991/gitsigns.nvim {:event [:VeryLazy]
                              :config (mod :gitsigns)}
-   :APZelos/blamer.nvim {:event [:VeryLazy]}
    :norcalli/nvim-colorizer.lua {:config (mod :colorizer)
                                  :event [:BufEnter]}
    :lukas-reineke/indent-blankline.nvim {:event [:BufReadPost :BufAdd :BufNewFile]

@@ -17,7 +17,9 @@
 
 (local action-cmds
   ["cd %:p:h"
-   :BlamerToggle
+   "lua Snacks.git.blame_line()"
+   "lua Snacks.gitbrowse()"
+   "lua Snacks.notifier.show_history()"
    :ConjureConnect
    :ConjureLogSplit
    :ConjureLogVSplit
@@ -39,8 +41,6 @@
    :LspInfo
    :LspRestart
    :LspStart
-   "LspStart denols"
-   "LspStart tsserver"
    :LspStop
    :NvimTreeRefresh
    :NvimTreeToggle
@@ -53,7 +53,6 @@
    :OrgRefileToToday
    :RoamGrep
    :RoamLiveGrep
-   "Fidget history"
    "Telescope dap list_breakpoints"
    "Telescope repo list"
    "Telescope projects"
