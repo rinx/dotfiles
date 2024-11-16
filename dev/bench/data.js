@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731761400751,
+  "lastUpdate": 1731761626356,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11465,6 +11465,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 53.639189699999996,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5e1c6ae700fbf102c73b960b1b60345a3d65ada9",
+          "message": "config(nvim): add mapping description for command-history\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-16T21:43:35+09:00",
+          "tree_id": "e3f0782326e2f56674e13ca1d2434b5b78d93856",
+          "url": "https://github.com/rinx/dotfiles/commit/5e1c6ae700fbf102c73b960b1b60345a3d65ada9"
+        },
+        "date": 1731761624972,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.316149900000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.1168054,
             "unit": "ms"
           }
         ]
