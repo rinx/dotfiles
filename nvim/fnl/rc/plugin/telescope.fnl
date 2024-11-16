@@ -178,7 +178,8 @@
 (map! [:n]
       ",c"
       ":<C-u>Telescope command_history theme=get_dropdown<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Select command from history via telescope"})
 (map! [:n] ",h" ":<C-u>Telescope help_tags<CR>" {:silent true
                                                  :desc "Select helptag via telescope"})
 (map! [:n]

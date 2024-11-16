@@ -67,7 +67,7 @@ vim.keymap.set("n", ",g", ":<C-u>Telescope live_grep<CR>", {silent = true, desc 
 vim.keymap.set("n", ",/", ":<C-u>Telescope current_buffer_fuzzy_find<CR>", {silent = true, desc = "Fuzzy search via telescope"})
 vim.keymap.set("n", ",b", ":<C-u>Telescope buffers<CR>", {silent = true, desc = "Select buffer via telescope"})
 vim.keymap.set("n", ",t", ":<C-u>Telescope filetypes<CR>", {silent = true, desc = "Select filetype via telescope"})
-vim.keymap.set("n", ",c", ":<C-u>Telescope command_history theme=get_dropdown<CR>", {silent = true})
+vim.keymap.set("n", ",c", ":<C-u>Telescope command_history theme=get_dropdown<CR>", {silent = true, desc = "Select command from history via telescope"})
 vim.keymap.set("n", ",h", ":<C-u>Telescope help_tags<CR>", {silent = true, desc = "Select helptag via telescope"})
 vim.keymap.set("n", "<Leader><Leader>", ":<C-u>Telescope commands theme=get_dropdown<CR>", {silent = true, desc = "Select commands via telescope"})
 vim.keymap.set("n", "<C-\\>", ":<C-u>Telescope builtin<CR>", {silent = true, desc = "Select source via telescope"})
