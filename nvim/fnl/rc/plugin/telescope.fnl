@@ -19,6 +19,7 @@
   ["cd %:p:h"
    "lua Snacks.git.blame_line()"
    "lua Snacks.gitbrowse()"
+   "lua Snacks.lazygit()"
    "lua Snacks.notifier.show_history()"
    :ConjureConnect
    :ConjureLogSplit

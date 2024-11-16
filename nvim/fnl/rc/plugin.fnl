@@ -112,7 +112,8 @@
    ;; cmp
    :iguanacucumber/magazine.nvim {:name :nvim-cmp
                                   :config (mod :cmp)
-                                  :event [:InsertEnter]
+                                  :event [:CmdlineEnter
+                                          :InsertEnter]
                                   :dependencies [:hrsh7th/cmp-emoji
                                                  :f3fora/cmp-spell
                                                  :petertriho/cmp-git
@@ -125,9 +126,8 @@
    :iguanacucumber/mag-buffer {:name :cmp-buffer
                                :event [:InsertEnter]}
    :iguanacucumber/mag-cmdline {:name :cmp-cmdline
-                                :event [:InsertEnter]}
-   :iguanacucumber/mag-cmdline {:name :cmp-cmdline
-                                :event [:InsertEnter]}
+                                :event [:CmdlineEnter
+                                        :InsertEnter]}
    :FelipeLema/cmp-async-path {:url "https://codeberg.org/FelipeLema/cmp-async-path"
                                :event [:InsertEnter]}
 
