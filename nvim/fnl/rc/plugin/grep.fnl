@@ -19,4 +19,5 @@
     callback))
 
 (vim.api.nvim_create_user_command :Rg rg-input {})
-(map! [:n] :<Leader>g ":<C-u>Rg<CR>" {:silent true})
+(map! [:n] :<Leader>g ":<C-u>Rg<CR>" {:silent true
+                                      :desc "Ripgrep"})

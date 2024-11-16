@@ -17,4 +17,4 @@ local function rg_input()
   return vim.ui.input({prompt = icontab.search, completion = "file"}, callback)
 end
 vim.api.nvim_create_user_command("Rg", rg_input, {})
-return vim.keymap.set("n", "<Leader>g", ":<C-u>Rg<CR>", {silent = true})
+return vim.keymap.set("n", "<Leader>g", ":<C-u>Rg<CR>", {silent = true, desc = "Ripgrep"})

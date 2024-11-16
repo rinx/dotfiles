@@ -24,20 +24,13 @@ local function telescope_ghq()
 end
 vim.api.nvim_create_user_command("Ghq", telescope_ghq, {})
 toggleterm.setup({telescope_mappings = {["<C-c>"] = actions.close}})
-local function telescope_git_status()
-  local function _2_(entry)
-    return {"git", "-c", "core.pager=delta", "-c", "delta.side-by-side=false", "diff", entry.value}
-  end
-  return builtin.git_status({previewer = previewers.new_termopen_previewer({get_command = _2_})})
-end
-vim.api.nvim_create_user_command("TelescopeGitStatus", telescope_git_status, {})
 local function telescope_actions()
   local p
-  local function _3_(_, map)
+  local function _2_(_, map)
     map("i", "<CR>", actions.set_command_line)
     return true
   end
-  p = pickers.new(themes.get_dropdown({}), {prompt_title = "Actions", finder = finders.new_table({results = action_cmds}), sorter = sorters.get_fzy_sorter(), attach_mappings = _3_})
+  p = pickers.new(themes.get_dropdown({}), {prompt_title = "Actions", finder = finders.new_table({results = action_cmds}), sorter = sorters.get_fzy_sorter(), attach_mappings = _2_})
   return p:find()
 end
 vim.api.nvim_create_user_command("TelescopeActions", telescope_actions, {})
@@ -46,10 +39,10 @@ local function telescope_roam_nodes_by_tag(opts)
   local roam = require("org-roam")
   local results = roam.database:find_nodes_by_tag_sync(tag)
   local entry_maker
-  local function _4_(entry)
+  local function _3_(entry)
     return {value = entry, ordinal = (entry.title .. "," .. table.concat(entry.aliases, ",")), display = entry.title, path = entry.file}
   end
-  entry_maker = _4_
+  entry_maker = _3_
   local p = pickers.new({}, {prompt_title = "Find roam nodes by tag", finder = finders.new_table({results = results, entry_maker = entry_maker}), sorter = sorters.get_fzy_sorter(), previewer = previewers.cat.new({})})
   return p:find()
 end
@@ -64,20 +57,19 @@ local function telescope_migemo_grep()
   end
 end
 vim.api.nvim_create_user_command("TelescopeMigemoGrep", telescope_migemo_grep, {})
-vim.keymap.set("n", ",f", ":<C-u>Telescope fd no_ignore=true no_ignore_parent=true<CR>", {silent = true})
-vim.keymap.set("n", ",af", ":<C-u>Telescope fd hidden=true no_ignore=true no_ignore_parent=true<CR>", {silent = true})
-vim.keymap.set("n", ",of", ":<C-u>Telescope oldfiles<CR>", {silent = true})
-vim.keymap.set("n", ",gf", ":<C-u>Telescope git_files<CR>", {silent = true})
-vim.keymap.set("n", ",gb", ":<C-u>Telescope git_branches<CR>", {silent = true})
-vim.keymap.set("n", ",gc", ":<C-u>Telescope git_commits<CR>", {silent = true})
-vim.keymap.set("n", ",gs", ":<C-u>TelescopeGitStatus<CR>", {silent = true})
-vim.keymap.set("n", ",g", ":<C-u>Telescope live_grep<CR>", {silent = true})
-vim.keymap.set("n", ",/", ":<C-u>Telescope current_buffer_fuzzy_find<CR>", {silent = true})
-vim.keymap.set("n", ",b", ":<C-u>Telescope buffers<CR>", {silent = true})
-vim.keymap.set("n", ",t", ":<C-u>Telescope filetypes<CR>", {silent = true})
+vim.keymap.set("n", ",f", ":<C-u>Telescope fd no_ignore=true no_ignore_parent=true<CR>", {silent = true, desc = "Select file via telescope"})
+vim.keymap.set("n", ",af", ":<C-u>Telescope fd hidden=true no_ignore=true no_ignore_parent=true<CR>", {silent = true, desc = "Select all file via telescope"})
+vim.keymap.set("n", ",of", ":<C-u>Telescope oldfiles<CR>", {silent = true, desc = "Select previously opened file via telescope"})
+vim.keymap.set("n", ",gf", ":<C-u>Telescope git_files<CR>", {silent = true, desc = "Select git file via telescope"})
+vim.keymap.set("n", ",gb", ":<C-u>Telescope git_branches<CR>", {silent = true, desc = "Switch git branch via telescope"})
+vim.keymap.set("n", ",gc", ":<C-u>Telescope git_commits<CR>", {silent = true, desc = "Select git commit via telescope"})
+vim.keymap.set("n", ",g", ":<C-u>Telescope live_grep<CR>", {silent = true, desc = "Live grep by telescope"})
+vim.keymap.set("n", ",/", ":<C-u>Telescope current_buffer_fuzzy_find<CR>", {silent = true, desc = "Fuzzy search via telescope"})
+vim.keymap.set("n", ",b", ":<C-u>Telescope buffers<CR>", {silent = true, desc = "Select buffer via telescope"})
+vim.keymap.set("n", ",t", ":<C-u>Telescope filetypes<CR>", {silent = true, desc = "Select filetype via telescope"})
 vim.keymap.set("n", ",c", ":<C-u>Telescope command_history theme=get_dropdown<CR>", {silent = true})
-vim.keymap.set("n", ",h", ":<C-u>Telescope help_tags<CR>", {silent = true})
-vim.keymap.set("n", "<Leader><Leader>", ":<C-u>Telescope commands theme=get_dropdown<CR>", {silent = true})
-vim.keymap.set("n", "<C-\\>", ":<C-u>Telescope builtin<CR>", {silent = true})
-vim.keymap.set("n", "<Leader>h", ":<C-u>TelescopeActions<CR>", {silent = true})
-return vim.keymap.set("n", ",m", ":<C-u>TelescopeMigemoGrep<CR>", {silent = true})
+vim.keymap.set("n", ",h", ":<C-u>Telescope help_tags<CR>", {silent = true, desc = "Select helptag via telescope"})
+vim.keymap.set("n", "<Leader><Leader>", ":<C-u>Telescope commands theme=get_dropdown<CR>", {silent = true, desc = "Select commands via telescope"})
+vim.keymap.set("n", "<C-\\>", ":<C-u>Telescope builtin<CR>", {silent = true, desc = "Select source via telescope"})
+vim.keymap.set("n", "<Leader>h", ":<C-u>TelescopeActions<CR>", {silent = true, desc = "Select action via telescope"})
+return vim.keymap.set("n", ",m", ":<C-u>TelescopeMigemoGrep<CR>", {silent = true, desc = "Migemo grep and filter result by telescope"})

@@ -45,6 +45,9 @@
    :folke/snacks.nvim {:priority 1000
                        :lazy false
                        :opts {}}
+   :folke/which-key.nvim {:event [:VeryLazy]
+                          :opts {}
+                          :config (mod :which-key)}
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
@@ -95,8 +98,6 @@
                            :event [:BufReadPre]}
    :j-hui/fidget.nvim {:config (mod :fidget)
                        :event [:BufReadPost :BufAdd :BufNewFile]}
-   :aznhe21/actions-preview.nvim {:config (mod :actions-preview)
-                                  :event [:BufReadPost :BufAdd :BufNewFile]}
    :kosayoda/nvim-lightbulb {:config (mod :lightbulb)
                              :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/trouble.nvim {:config (mod :trouble)

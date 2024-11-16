@@ -16,24 +16,30 @@
 (map! [:n]
       "<leader>xx"
       ":<C-u>Trouble diagnostics toggle<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Trouble: toggle diagnostics"})
 (map! [:n]
       "<leader>xX"
       ":<C-u>Trouble diagnostics toggle filter.buf=0<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Trouble: toggle diagnostics for current buffer"})
 (map! [:n]
       "<leader>xd"
       ":<C-u>Trouble lsp toggle focus=false win.position=right<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Trouble: toggle lsp sidebar"})
 (map! [:n]
       "<leader>xs"
       ":<C-u>Trouble symbols toggle focus=false<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Trouble: toggle symbols"})
 (map! [:n]
       "<leader>xq"
       ":<C-u>Trouble qflist toggle<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Trouble: toggle quickfix"})
 (map! [:n]
       "<leader>xl"
       ":<C-u>Trouble loclist toggle<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Trouble: toggle loclist"})

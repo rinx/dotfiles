@@ -106,16 +106,6 @@
 (toggleterm.setup {:telescope_mappings
                     {:<C-c> actions.close}})
 
-(fn telescope-git-status []
-  (builtin.git_status
-    {:previewer (previewers.new_termopen_previewer
-                  {:get_command
-                   (fn [entry]
-                     [:git :-c :core.pager=delta
-                      :-c :delta.side-by-side=false :diff
-                      entry.value])})}))
-(vim.api.nvim_create_user_command :TelescopeGitStatus telescope-git-status {})
-
 (fn telescope-actions []
   (let [p (pickers.new
             (themes.get_dropdown {})
@@ -162,29 +152,43 @@
 (map! [:n]
       ",f"
       ":<C-u>Telescope fd no_ignore=true no_ignore_parent=true<CR>"
-      {:silent true})
+      {:silent true
+       :desc "Select file via telescope"})
 (map! [:n]
       ",af"
       ":<C-u>Telescope fd hidden=true no_ignore=true no_ignore_parent=true<CR>"
-      {:silent true})
-(map! [:n] ",of" ":<C-u>Telescope oldfiles<CR>" {:silent true})
-(map! [:n] ",gf" ":<C-u>Telescope git_files<CR>" {:silent true})
-(map! [:n] ",gb" ":<C-u>Telescope git_branches<CR>" {:silent true})
-(map! [:n] ",gc" ":<C-u>Telescope git_commits<CR>" {:silent true})
-(map! [:n] ",gs" ":<C-u>TelescopeGitStatus<CR>" {:silent true})
-(map! [:n] ",g" ":<C-u>Telescope live_grep<CR>" {:silent true})
-(map! [:n] ",/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>" {:silent true})
-(map! [:n] ",b" ":<C-u>Telescope buffers<CR>" {:silent true})
-(map! [:n] ",t" ":<C-u>Telescope filetypes<CR>" {:silent true})
+      {:silent true
+       :desc "Select all file via telescope"})
+(map! [:n] ",of" ":<C-u>Telescope oldfiles<CR>" {:silent true
+                                                 :desc "Select previously opened file via telescope"})
+(map! [:n] ",gf" ":<C-u>Telescope git_files<CR>" {:silent true
+                                                  :desc "Select git file via telescope"})
+(map! [:n] ",gb" ":<C-u>Telescope git_branches<CR>" {:silent true
+                                                     :desc "Switch git branch via telescope"})
+(map! [:n] ",gc" ":<C-u>Telescope git_commits<CR>" {:silent true
+                                                    :desc "Select git commit via telescope"})
+(map! [:n] ",g" ":<C-u>Telescope live_grep<CR>" {:silent true
+                                                 :desc "Live grep by telescope"})
+(map! [:n] ",/" ":<C-u>Telescope current_buffer_fuzzy_find<CR>" {:silent true
+                                                                 :desc "Fuzzy search via telescope"})
+(map! [:n] ",b" ":<C-u>Telescope buffers<CR>" {:silent true
+                                               :desc "Select buffer via telescope"})
+(map! [:n] ",t" ":<C-u>Telescope filetypes<CR>" {:silent true
+                                                 :desc "Select filetype via telescope"})
 (map! [:n]
       ",c"
       ":<C-u>Telescope command_history theme=get_dropdown<CR>"
       {:silent true})
-(map! [:n] ",h" ":<C-u>Telescope help_tags<CR>" {:silent true})
+(map! [:n] ",h" ":<C-u>Telescope help_tags<CR>" {:silent true
+                                                 :desc "Select helptag via telescope"})
 (map! [:n]
       :<Leader><Leader>
       ":<C-u>Telescope commands theme=get_dropdown<CR>"
-      {:silent true})
-(map! [:n] :<C-\> ":<C-u>Telescope builtin<CR>" {:silent true})
-(map! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" {:silent true})
-(map! [:n] ",m" ":<C-u>TelescopeMigemoGrep<CR>" {:silent true})
+      {:silent true
+       :desc "Select commands via telescope"})
+(map! [:n] :<C-\> ":<C-u>Telescope builtin<CR>" {:silent true
+                                                 :desc "Select source via telescope"})
+(map! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" {:silent true
+                                                    :desc "Select action via telescope"})
+(map! [:n] ",m" ":<C-u>TelescopeMigemoGrep<CR>" {:silent true
+                                                 :desc "Migemo grep and filter result by telescope"})
