@@ -16,29 +16,11 @@
      :usePopup true
      :userDictionary "~/.skk-jisyo"}))
 
-(fn enable-pre []
-  (let [cmp (require :cmp)]
-    (cmp.setup.buffer
-      {:view
-       {:entries :native}})))
-
-(fn disable-pre []
-  (let [cmp (require :cmp)]
-    (cmp.setup.buffer
-      {:view
-       {:entries :custom}})))
-
 (augroup!
   init-skkeleton
   {:events [:User]
    :pattern :skkeleton-initialize-pre
    :callback initialize}
-  {:events [:User]
-   :pattern :skkeleton-enable-pre
-   :callback enable-pre}
-  {:events [:User]
-   :pattern :skkeleton-disable-pre
-   :callback disable-pre}
   {:events [:User]
    :pattern :skkeleton-mode-changed
    :command :redrawstatus})
