@@ -94,8 +94,25 @@
      :action (fn [exporter]
                (let [current (vim.api.nvim_buf_get_name 0)
                      target (.. (vim.fn.fnamemodify current ":p:r") ".md")
-                     cmd [:pandoc current :-o target]]
-                 (exporter cmd target)))}}
+                     cmd [:pandoc current :--from=org :--to=gfm :-o target]
+                     on-success (fn [output]
+                                  (vim.notify (.. "Wrote to " target)))
+                     on-error (fn [err]
+                                (vim.notify (.. "Error: " err)))]
+                 (exporter cmd target on-success on-error)))}
+    :c
+    {:label "Convert to GitHub flavored markdown and copy into clipboard"
+     :action (fn [exporter]
+               (let [current (vim.api.nvim_buf_get_name 0)
+                     target (.. (vim.fn.fnamemodify current ":p:r") ".md")
+                     cmd [:pandoc current :--from=org :--to=gfm]
+                     on-success (fn [output]
+                                  (vim.fn.setreg :+ output)
+                                  (vim.notify "Successfully copied into clipboard"))
+                     on-error (fn [err]
+                                (vim.notify (.. "Error: " err)))]
+                 (exporter cmd target on-success on-error)))}}
+
    :win_split_mode :auto
    :ui
    {:menu
