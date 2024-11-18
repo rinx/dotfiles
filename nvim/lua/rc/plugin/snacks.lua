@@ -16,4 +16,11 @@ local function _4_(self)
   return vim.cmd("stopinsert")
 end
 snacks.setup({terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _1_, term_normal = {"<esc>", _4_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
+local function map__3e(toggle, key)
+  return toggle:map(key)
+end
+map__3e(snacks.toggle.option("spell", {name = "spelling"}), "<leader>s")
+map__3e(snacks.toggle.option("paste", {name = "Paste"}), "<leader>p")
+map__3e(snacks.toggle.option("relativenumber", {name = "Relative number"}), "<leader>r")
+map__3e(snacks.toggle.inlay_hints(), "<leader>i")
 return vim.keymap.set("n", "<leader>w", ":<C-u>lua Snacks.terminal.toggle()<CR>", {silent = true, desc = "Open/Close terminal"})

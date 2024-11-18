@@ -55,10 +55,6 @@
 (map! [:n] :ss ":<C-u>sp<CR>" {:silent true})
 (map! [:n] :sv ":<C-u>vs<CR>" {:silent true})
 
-(map! [:n] :<Leader>p ":setl paste!<CR>" {:silent true})
-(map! [:n] :<Leader>r ":setl relativenumber!<CR>" {:silent true})
-(map! [:n] :<Leader>s ":setl spell!<CR>" {:silent true})
-
 (map! [:n] :MM :zz {})
 (map! [:n] :ZZ :<Nop> {})
 (map! [:n] :ZQ :<Nop> {})

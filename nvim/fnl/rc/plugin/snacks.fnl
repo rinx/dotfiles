@@ -25,6 +25,14 @@
         :expr true
         :desc "escape to normal mode"}}}}}})
 
+(fn map-> [toggle key]
+  (toggle:map key))
+  
+(map-> (snacks.toggle.option :spell {:name :spelling}) :<leader>s)
+(map-> (snacks.toggle.option :paste {:name :Paste}) :<leader>p)
+(map-> (snacks.toggle.option :relativenumber {:name "Relative number"}) :<leader>r)
+(map-> (snacks.toggle.inlay_hints) :<leader>i)
+
 (map! [:n]
       :<leader>w
       ":<C-u>lua Snacks.terminal.toggle()<CR>"

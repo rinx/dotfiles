@@ -277,9 +277,6 @@
 
 (map! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" {:silent true})
 
-;; toggle inlay hints
-(map! [:n] :<leader>i ":<C-u>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>" {:silent true})
-
 (map!
   [:n]
   "<Leader>d"
