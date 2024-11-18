@@ -44,7 +44,7 @@
   {:folke/lazy.nvim {:lazy true}
    :folke/snacks.nvim {:priority 1000
                        :lazy false
-                       :opts {}}
+                       :config (mod :snacks)}
    :folke/which-key.nvim {:event [:VeryLazy]
                           :opts {}
                           :config (mod :which-key)}
@@ -60,8 +60,6 @@
                            :event [:BufEnter]}
    :akinsho/bufferline.nvim {:config (mod :bufferline)
                              :event [:BufEnter]}
-   :akinsho/toggleterm.nvim {:config (mod :toggleterm)
-                             :event [:BufReadPost :BufAdd :BufNewFile]}
    :windwp/nvim-autopairs {:config (mod :autopairs)
                            :event [:InsertEnter]}
    :kyazdani42/nvim-tree.lua {:event [:VeryLazy]

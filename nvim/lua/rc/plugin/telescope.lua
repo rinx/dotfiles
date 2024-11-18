@@ -9,21 +9,18 @@ local pickers = require("telescope.pickers")
 local previewers = require("telescope.previewers")
 local sorters = require("telescope.sorters")
 local themes = require("telescope.themes")
-local toggleterm = require("telescope-toggleterm")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
-local action_cmds = {"cd %:p:h", "lua Snacks.git.blame_line()", "lua Snacks.gitbrowse()", "lua Snacks.lazygit()", "lua Snacks.notifier.show_history()", "ConjureConnect", "ConjureLogSplit", "ConjureLogVSplit", "ConjureCljDebugInit", "DapContinue", "DapListBreakpoints", "DapStepInto", "DapStepOut", "DapStepOver", "DapToggleBreakpoint", "DapUIToggle", "Ghq", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "LspInfo", "LspRestart", "LspStart", "LspStop", "NvimTreeRefresh", "NvimTreeToggle", "Octo pr list", "Octo issue list", "OrgGrep", "OrgInbox", "OrgJournal", "OrgLiveGrep", "OrgRefileToToday", "RoamGrep", "RoamLiveGrep", "Telescope dap list_breakpoints", "Telescope repo list", "Telescope projects", "Telescope toggleterm", "Telescope orgmode refile_heading", "Telescope orgmode search_headings", "Telescope orgmode insert_link", "TelescopeRoamNodesByTag book", "TelescopeRoamNodesByTag code", "TelescopeRoamNodesByTag fleeting", "TelescopeRoamNodesByTag project", "TelescopeRoamNodesByTag scrap", "TelescopeRoamNodesByTag wiki", "ToggleTerm", "ToggleTermCloseAll", "ToggleTermOpenAll", "TodoTrouble", "TroubleToggle", "TroubleToggle loclist", "TroubleToggle lsp_document_diagnostics", "TroubleToggle lsp_references", "TroubleToggle lsp_workspace_diagnostics", "TroubleToggle quickfix"}
+local action_cmds = {"cd %:p:h", "lua Snacks.git.blame_line()", "lua Snacks.gitbrowse()", "lua Snacks.lazygit()", "lua Snacks.notifier.show_history()", "ConjureConnect", "ConjureLogSplit", "ConjureLogVSplit", "ConjureCljDebugInit", "DapContinue", "DapListBreakpoints", "DapStepInto", "DapStepOut", "DapStepOver", "DapToggleBreakpoint", "DapUIToggle", "Ghq", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "LspInfo", "LspRestart", "LspStart", "LspStop", "NvimTreeRefresh", "NvimTreeToggle", "Octo pr list", "Octo issue list", "OrgGrep", "OrgInbox", "OrgJournal", "OrgLiveGrep", "OrgRefileToToday", "RoamGrep", "RoamLiveGrep", "Telescope dap list_breakpoints", "Telescope repo list", "Telescope projects", "Telescope orgmode refile_heading", "Telescope orgmode search_headings", "Telescope orgmode insert_link", "TelescopeRoamNodesByTag book", "TelescopeRoamNodesByTag code", "TelescopeRoamNodesByTag fleeting", "TelescopeRoamNodesByTag project", "TelescopeRoamNodesByTag scrap", "TelescopeRoamNodesByTag wiki", "TodoTrouble", "TroubleToggle", "TroubleToggle loclist", "TroubleToggle lsp_document_diagnostics", "TroubleToggle lsp_references", "TroubleToggle lsp_workspace_diagnostics", "TroubleToggle quickfix"}
 telescope.setup({defaults = {mappings = {i = {["<Up>"] = actions.cycle_history_prev, ["<Down>"] = actions.cycle_history_next}}, prompt_prefix = (icontab.search .. " "), selection_caret = (icontab.rquot .. " "), sorting_strategy = "ascending", scroll_strategy = "cycle"}, extensions = {fzy_native = {override_generic_sorter = true, override_file_sorter = true}}})
 telescope.load_extension("dap")
 telescope.load_extension("projects")
 telescope.load_extension("repo")
-telescope.load_extension("toggleterm")
 telescope.load_extension("orgmode")
 local function telescope_ghq()
   return telescope.extensions.repo.list({search_dirs = {"~/local/src"}})
 end
 vim.api.nvim_create_user_command("Ghq", telescope_ghq, {})
-toggleterm.setup({telescope_mappings = {["<C-c>"] = actions.close}})
 local function telescope_actions()
   local p
   local function _2_(_, map)

@@ -8,7 +8,6 @@
 (local previewers (require :telescope.previewers))
 (local sorters (require :telescope.sorters))
 (local themes (require :telescope.themes))
-(local toggleterm (require :telescope-toggleterm))
 
 (local icon (autoload :rc.icon))
 (import-macros {: map!} :rc.macros)
@@ -57,7 +56,6 @@
    "Telescope dap list_breakpoints"
    "Telescope repo list"
    "Telescope projects"
-   "Telescope toggleterm"
    "Telescope orgmode refile_heading"
    "Telescope orgmode search_headings"
    "Telescope orgmode insert_link"
@@ -67,9 +65,6 @@
    "TelescopeRoamNodesByTag project"
    "TelescopeRoamNodesByTag scrap"
    "TelescopeRoamNodesByTag wiki"
-   :ToggleTerm
-   :ToggleTermCloseAll
-   :ToggleTermOpenAll
    :TodoTrouble
    :TroubleToggle
    "TroubleToggle loclist"
@@ -95,16 +90,12 @@
 (telescope.load_extension :dap)
 (telescope.load_extension :projects)
 (telescope.load_extension :repo)
-(telescope.load_extension :toggleterm)
 (telescope.load_extension :orgmode)
 
 (fn telescope-ghq []
   (telescope.extensions.repo.list
     {:search_dirs ["~/local/src"]}))
 (vim.api.nvim_create_user_command :Ghq telescope-ghq {})
-
-(toggleterm.setup {:telescope_mappings
-                    {:<C-c> actions.close}})
 
 (fn telescope-actions []
   (let [p (pickers.new
