@@ -48,6 +48,7 @@
    :NvimTreeToggle
    "Octo pr list"
    "Octo issue list"
+   :OrgFind
    :OrgGrep
    :OrgInbox
    :OrgJournal

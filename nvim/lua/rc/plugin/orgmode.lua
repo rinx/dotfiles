@@ -59,6 +59,11 @@ do
   local filepath = __3epath(("journal/" .. vim.fn.strftime("%Y-%m", vim.fn.localtime()) .. ".org"))
   vim.api.nvim_create_user_command("OrgJournal", open_fn(filepath), {})
 end
+local function fd_fn()
+  local tb = require("telescope.builtin")
+  return tb.find_files({cwd = basepath})
+end
+vim.api.nvim_create_user_command("OrgFind", fd_fn, {})
 local function live_grep_fn(path)
   local function _7_()
     local tb = require("telescope.builtin")

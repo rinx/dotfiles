@@ -148,6 +148,12 @@
                  (.. :journal/ (vim.fn.strftime :%Y-%m (vim.fn.localtime)) :.org))]
   (vim.api.nvim_create_user_command :OrgJournal (open-fn filepath) {}))
 
+(fn fd-fn []
+  (let [tb (require :telescope.builtin)]
+    (tb.find_files
+      {:cwd basepath})))
+(vim.api.nvim_create_user_command :OrgFind fd-fn {})
+
 (fn live-grep-fn [path]
   (fn []
     (let [tb (require :telescope.builtin)]
