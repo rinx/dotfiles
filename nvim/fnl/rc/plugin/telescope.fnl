@@ -20,6 +20,8 @@
    "lua Snacks.gitbrowse()"
    "lua Snacks.lazygit()"
    "lua Snacks.notifier.show_history()"
+   "lua Snacks.terminal.toggle()"
+   "lua Snacks.terminal.open()"
    :ConjureConnect
    :ConjureLogSplit
    :ConjureLogVSplit
