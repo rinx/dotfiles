@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731933783160,
+  "lastUpdate": 1731936875230,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11669,6 +11669,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 56.028208600000006,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "37c0405ada1e56d520d9b70ad9f1928d79dadd44",
+          "message": "config(nvim): add org-export for gfm clipboard\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-18T22:25:07+09:00",
+          "tree_id": "49fb604f8c7a2628613314a37c28133b1dfbb955",
+          "url": "https://github.com/rinx/dotfiles/commit/37c0405ada1e56d520d9b70ad9f1928d79dadd44"
+        },
+        "date": 1731936874739,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.900808599999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.5300917,
             "unit": "ms"
           }
         ]
