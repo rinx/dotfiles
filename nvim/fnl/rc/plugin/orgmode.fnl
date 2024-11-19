@@ -101,17 +101,28 @@
                                 (vim.notify (.. "Error: " err)))]
                  (exporter cmd target on-success on-error)))}
     :c
-    {:label "Convert to GitHub flavored markdown and copy into clipboard"
+    {:label "Export closest headline to clipboard as GitHub flavored markdown"
      :action (fn [exporter]
-               (let [current (vim.api.nvim_buf_get_name 0)
-                     target (.. (vim.fn.fnamemodify current ":p:r") ".md")
-                     cmd [:pandoc current :--from=org :--to=gfm]
+               (let [org-api (require :orgmode.api)
+                     current (org-api.current)
+                     headline (current:get_closest_headline)
+                     lines (vim.api.nvim_buf_get_lines
+                             0
+                             (- headline.position.start_line 1)
+                             headline.position.end_line
+                             false)
+                     content (table.concat lines "\n")
+                     tmppath (vim.fn.tempname)
+                     tmp (io.open tmppath :w)
+                     cmd [:pandoc tmppath :--from=org :--to=gfm]
                      on-success (fn [output]
                                   (vim.fn.setreg :+ output)
                                   (vim.notify "Successfully copied into clipboard"))
                      on-error (fn [err]
                                 (vim.notify (.. "Error: " err)))]
-                 (exporter cmd target on-success on-error)))}}
+                 (tmp:write content)
+                 (tmp:close)
+                 (exporter cmd "" on-success on-error)))}}
 
    :win_split_mode :auto
    :ui
