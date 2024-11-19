@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732020070897,
+  "lastUpdate": 1732021969468,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11771,6 +11771,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.9403955,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c2ed0d0f4ff495ba9ec26bcc106e143760d7a7ac",
+          "message": "feat(nvim): add org-export command for closest headline\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-19T22:02:17+09:00",
+          "tree_id": "5171bbb7b0df0c6a452eb08fbb22c6f3b1429011",
+          "url": "https://github.com/rinx/dotfiles/commit/c2ed0d0f4ff495ba9ec26bcc106e143760d7a7ac"
+        },
+        "date": 1732021968772,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.4053013,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.3518802,
             "unit": "ms"
           }
         ]
