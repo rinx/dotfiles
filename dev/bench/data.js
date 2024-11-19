@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732009945541,
+  "lastUpdate": 1732020070897,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11737,6 +11737,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.68720080000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "709ebc9e25f525feeede3b3960325280d070e58c",
+          "message": "config(nvim): add no-ignore option to orgfind command\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-19T21:32:03+09:00",
+          "tree_id": "3a2e782fc6d8211a3537bcf25c2c821c83a2813a",
+          "url": "https://github.com/rinx/dotfiles/commit/709ebc9e25f525feeede3b3960325280d070e58c"
+        },
+        "date": 1732020070395,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.1152406,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.9403955,
             "unit": "ms"
           }
         ]
