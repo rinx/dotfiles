@@ -111,6 +111,7 @@
    ;; cmp
    :iguanacucumber/magazine.nvim {:name :nvim-cmp
                                   :config (mod :cmp)
+                                  :tag :0.3 ;; NOTE: 2024/11/19 tag 0.4 broken
                                   :event [:CmdlineEnter
                                           :InsertEnter]
                                   :dependencies [:hrsh7th/cmp-emoji
