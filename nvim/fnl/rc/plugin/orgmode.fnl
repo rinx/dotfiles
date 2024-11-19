@@ -168,7 +168,9 @@
 (fn fd-fn []
   (let [tb (require :telescope.builtin)]
     (tb.find_files
-      {:cwd basepath})))
+      {:cwd basepath
+       :no_ignore true
+       :no_ignore_parent true})))
 (vim.api.nvim_create_user_command :OrgFind fd-fn {})
 
 (fn live-grep-fn [path]

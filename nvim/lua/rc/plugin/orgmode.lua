@@ -88,7 +88,7 @@ do
 end
 local function fd_fn()
   local tb = require("telescope.builtin")
-  return tb.find_files({cwd = basepath})
+  return tb.find_files({cwd = basepath, no_ignore = true, no_ignore_parent = true})
 end
 vim.api.nvim_create_user_command("OrgFind", fd_fn, {})
 local function live_grep_fn(path)
