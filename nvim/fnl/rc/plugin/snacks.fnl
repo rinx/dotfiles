@@ -3,7 +3,13 @@
 (import-macros {: map!} :rc.macros)
 
 (snacks.setup
-  {:terminal
+  {:bigfile
+   {:enabled true}
+   :notifier
+   {:enabled true}
+   :quickfile
+   {:enabled true}
+   :terminal
    {:win
     {:style
      {:bo {:filetype :snacks_terminal}
