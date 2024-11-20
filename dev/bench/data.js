@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732022962266,
+  "lastUpdate": 1732066062343,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11839,6 +11839,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 57.37717299999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4970a2f43456d0ad47cbf95182e8e8e1dc8ee06f",
+          "message": "config(nvim): update snacks options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-20T10:06:53+09:00",
+          "tree_id": "b395bcbc1d962499f1da4fb108161e86d2d821d9",
+          "url": "https://github.com/rinx/dotfiles/commit/4970a2f43456d0ad47cbf95182e8e8e1dc8ee06f"
+        },
+        "date": 1732066061245,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.2098327,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 57.4849885,
             "unit": "ms"
           }
         ]
