@@ -22,7 +22,7 @@
             :mute "󰟎"}
    :mic {:unmute ""
          :mute ""}
-   :github {:octocat ""
+   :github {:octocat ""
             :issue ""
             :discussion ""
             :pullreq ""
