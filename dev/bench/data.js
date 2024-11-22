@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732066062343,
+  "lastUpdate": 1732267462032,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11873,6 +11873,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 57.4849885,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "abf4ce35502c8698bd756e266b6e8412c23574b0",
+          "message": "config(sketchybar): replace nerdfont icon for github\n\nbecause nerdfont drops several icons after v3.3.0\nhttps://github.com/ryanoasis/nerd-fonts/releases/tag/v3.3.0\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-22T18:13:56+09:00",
+          "tree_id": "f794c3c46c9bd07de300ef367c2a87f0b436f7ed",
+          "url": "https://github.com/rinx/dotfiles/commit/abf4ce35502c8698bd756e266b6e8412c23574b0"
+        },
+        "date": 1732267461352,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.8125065,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.942897,
             "unit": "ms"
           }
         ]
