@@ -3,7 +3,6 @@ local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local core = autoload("nfnl.core")
 local cmp = require("cmp")
-local autopairs_cmp = require("nvim-autopairs.completion.cmp")
 local cmp_git = require("cmp_git")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
@@ -44,7 +43,6 @@ do
   vim.api.nvim_create_autocmd({"FileType"}, {callback = append_cmp_conjure, group = group_5_auto, pattern = "fennel"})
   vim.api.nvim_create_autocmd({"FileType"}, {callback = append_cmp_conjure, group = group_5_auto, pattern = "hy"})
 end
-cmp.event:on("confirm_done", autopairs_cmp.on_confirm_done())
 local function append_cmp_git()
   cmp_git.setup({})
   local ss = {}

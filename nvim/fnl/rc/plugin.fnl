@@ -51,6 +51,7 @@
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
+   :echasnovski/mini.nvim {:config (mod :mini)}
    :stevearc/dressing.nvim {:config (mod :dressing)}
    :EdenEast/nightfox.nvim {:build (cmd->fn :NightfoxCompile)
                             :lazy true
@@ -60,8 +61,6 @@
                            :event [:BufEnter]}
    :akinsho/bufferline.nvim {:config (mod :bufferline)
                              :event [:BufEnter]}
-   :windwp/nvim-autopairs {:config (mod :autopairs)
-                           :event [:InsertEnter]}
    :kyazdani42/nvim-tree.lua {:event [:VeryLazy]
                               :config (mod :nvim-tree)}
    :lewis6991/gitsigns.nvim {:event [:VeryLazy]
@@ -158,21 +157,6 @@
    :lambdalisue/guise.vim {:config (mod :guise)
                            :event [:VimEnter]}
    :lambdalisue/vim-kensaku {:event [:VimEnter]}
-
-   ;; operator/textobj
-   :kana/vim-operator-user {:config (mod :operator)
-                            :event [:CursorHold :CursorHoldI]
-                            :dependencies [:kana/vim-operator-replace
-                                           :rhysd/vim-operator-surround]}
-   :kana/vim-textobj-user {:config (mod :textobj)
-                           :event [:CursorHold :CursorHoldI]
-                           :dependencies [:kana/vim-textobj-indent
-                                          :kana/vim-textobj-function
-                                          :kana/vim-textobj-entire
-                                          :kana/vim-textobj-line
-                                          :thinca/vim-textobj-between
-                                          :mattn/vim-textobj-url
-                                          :osyo-manga/vim-textobj-multiblock]}
 
    ;; languages
    :gpanders/nvim-parinfer {:ft [:clojure

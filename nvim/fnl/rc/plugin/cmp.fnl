@@ -2,7 +2,6 @@
 (local core (autoload :nfnl.core))
 
 (local cmp (require :cmp))
-(local autopairs-cmp (require :nvim-autopairs.completion.cmp))
 (local cmp-git (require :cmp_git))
 
 (local icon (autoload :rc.icon))
@@ -120,9 +119,6 @@
   {:events [:FileType]
    :pattern :hy
    :callback append-cmp-conjure})
-
-;; autopairs
-(cmp.event:on :confirm_done (autopairs-cmp.on_confirm_done))
 
 ;; cmp-git
 (fn append-cmp-git []
