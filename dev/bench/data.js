@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732267462032,
+  "lastUpdate": 1732370973478,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -11907,6 +11907,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.942897,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "db008b37d782056ed56d898f8de7f4b3d670d78e",
+          "message": "config(nvim): add mini.nvim\n\n- replace several plugins with mini\n- remove operator/textobj plugins\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-23T22:58:18+09:00",
+          "tree_id": "bd01c99e74993a08fd270ac65916c9d5be435c40",
+          "url": "https://github.com/rinx/dotfiles/commit/db008b37d782056ed56d898f8de7f4b3d670d78e"
+        },
+        "date": 1732370972344,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.263313599999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 65.06923259999999,
             "unit": "ms"
           }
         ]
