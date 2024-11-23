@@ -51,7 +51,8 @@
    :nvim-lua/plenary.nvim {:lazy true}
    :nvim-lua/popup.nvim {:lazy true}
    :MunifTanjim/nui.nvim {:lazy true}
-   :echasnovski/mini.nvim {:config (mod :mini)}
+   :echasnovski/mini.nvim {:config (mod :mini)
+                           :event [:VeryLazy]}
    :stevearc/dressing.nvim {:config (mod :dressing)}
    :EdenEast/nightfox.nvim {:build (cmd->fn :NightfoxCompile)
                             :lazy true
