@@ -155,6 +155,10 @@ local function refile_to_today()
   return vim.cmd(("Telescope orgmode refile_heading default_text=" .. date))
 end
 vim.api.nvim_create_user_command("OrgRefileToToday", refile_to_today, {})
+local function roam_pull()
+  return Snacks.terminal("bb pull", {cwd = __3epath("roam"), interactive = false})
+end
+vim.api.nvim_create_user_command("RoamPull", roam_pull, {})
 local function roam_commit_push()
   return Snacks.terminal("bb push", {cwd = __3epath("roam"), interactive = false})
 end

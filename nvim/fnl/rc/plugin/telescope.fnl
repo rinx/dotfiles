@@ -57,6 +57,7 @@
    :RoamCommitPush
    :RoamGrep
    :RoamLiveGrep
+   :RoamPull
    "Telescope dap list_breakpoints"
    "Telescope repo list"
    "Telescope projects"
