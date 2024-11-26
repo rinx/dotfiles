@@ -54,6 +54,7 @@
    :OrgJournal
    :OrgLiveGrep
    :OrgRefileToToday
+   :RoamCommitPush
    :RoamGrep
    :RoamLiveGrep
    "Telescope dap list_breakpoints"

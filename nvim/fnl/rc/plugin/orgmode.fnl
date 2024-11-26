@@ -236,3 +236,8 @@
   (let [date (os.date "%Y-%m-%d")]
     (vim.cmd (.. "Telescope orgmode refile_heading default_text=" date))))
 (vim.api.nvim_create_user_command :OrgRefileToToday refile-to-today {})
+
+(fn roam-commit-push []
+  (Snacks.terminal "bb push" {:cwd (->path :roam)
+                              :interactive false}))
+(vim.api.nvim_create_user_command :RoamCommitPush roam-commit-push {})
