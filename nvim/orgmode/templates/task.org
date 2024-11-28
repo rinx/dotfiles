@@ -1,6 +1,6 @@
 ** TODO %?
    :PROPERTIES:
-   :CAPTURED: %T
+   :CAPTURED: %U
    :END:
 
 *** Overview

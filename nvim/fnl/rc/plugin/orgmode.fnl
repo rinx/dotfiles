@@ -47,8 +47,8 @@
                        :WAITING
                        :IN_REVIEW
                        :|
-                       :CANCELED
-                       :DONE]
+                       :DONE
+                       :CANCELED]
    :org_startup_folded :overview
    :org_capture_templates
    {:t {:description " Add a new task to inbox"
@@ -86,6 +86,7 @@
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
         :datetree {:tree_type :day}}}
+   :org_deadline_warning_days 7
    :org_tags_column 90
    :org_id_link_to_org_use_id true
    :org_custom_exports
