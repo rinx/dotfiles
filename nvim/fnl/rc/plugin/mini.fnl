@@ -10,7 +10,9 @@
   (pairs.setup))
 
 (let [surround (require :mini.surround)]
-  (surround.setup))
+  (surround.setup
+    {:mappings
+     {:highlight ""}}))
 
 (let [trailspace (require :mini.trailspace)]
   (trailspace.setup))

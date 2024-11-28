@@ -13,7 +13,7 @@ do
 end
 do
   local surround = require("mini.surround")
-  surround.setup()
+  surround.setup({mappings = {highlight = ""}})
 end
 local trailspace = require("mini.trailspace")
 return trailspace.setup()
