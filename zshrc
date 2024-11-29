@@ -144,9 +144,9 @@ function precmd() {
     fi
 }
 
-export EDITOR='nvim'
-export GIT_EDITOR="$EDITOR"
-export VISUAL="$EDITOR"
+export EDITOR=${EDITOR:-nvim}
+export GIT_EDITOR=${GIT_EDITOR:-nvim}
+export VISUAL=${EDITOR:-nvim}
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

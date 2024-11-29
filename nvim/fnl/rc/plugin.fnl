@@ -74,8 +74,6 @@
                        :config (mod :leap)}
    :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
-   :kyoh86/vim-ripgrep {:config (mod :grep)
-                        :event [:VimEnter]}
    :kana/vim-submode {:event [:BufReadPost :BufAdd :BufNewFile]
                       :config (mod :submode)}
    :ahmedkhalf/project.nvim {:config (mod :project)
@@ -86,6 +84,7 @@
                       :event [:BufReadPost :BufAdd :BufNewFile]}
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
                              :config (mod :hypersonic)}
+   :notomo/waitevent.nvim {:config (mod :waitevent)}
 
    ;; :stevearc/profile.nvim {:config (mod :profile)}
 
@@ -155,8 +154,6 @@
    :vim-denops/denops.vim {:event [:VimEnter]}
    :vim-skk/skkeleton {:config (mod :skkeleton)
                        :event [:BufEnter]}
-   :lambdalisue/guise.vim {:config (mod :guise)
-                           :event [:VimEnter]}
    :lambdalisue/vim-kensaku {:event [:VimEnter]}
 
    ;; languages
@@ -184,6 +181,6 @@
    :nvim-orgmode/orgmode {:config (mod :orgmode)
                           :event [:VeryLazy]
                           :ft [:org]
-                          :dependencies [:nvim-orgmode/org-bullets.nvim 
+                          :dependencies [:nvim-orgmode/org-bullets.nvim
                                          :danilshvalov/org-modern.nvim
                                          :chipsenkbeil/org-roam.nvim]}})
