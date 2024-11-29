@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732876993933,
+  "lastUpdate": 1732891481535,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12145,6 +12145,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 53.071421,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f4674a9a705c58df4f16a492564896efbeb80461",
+          "message": "config(nvim): replace guise.vim with waitevent.nvim\n\nand remove several plugins\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-29T23:35:36+09:00",
+          "tree_id": "8996d77d9675fc4d97f39117aa92164826acaf49",
+          "url": "https://github.com/rinx/dotfiles/commit/f4674a9a705c58df4f16a492564896efbeb80461"
+        },
+        "date": 1732891481041,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.9223524,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 57.0499093,
             "unit": "ms"
           }
         ]
