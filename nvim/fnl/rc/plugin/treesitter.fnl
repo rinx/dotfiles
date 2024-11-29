@@ -97,7 +97,8 @@
 (configs.setup
   {:ensure_installed languages
    :highlight {:enable true
-               :disable []}
+               :disable []
+               :additional_vim_regex_highlighting [:org]}
    :indent {:enable true
             :disable []}})
 

@@ -152,6 +152,7 @@
 
 
    :win_split_mode :auto
+   :org_highlight_latex_and_related :entities
    :ui
    {:menu
     {:handler (fn [data]

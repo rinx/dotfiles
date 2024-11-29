@@ -121,40 +121,13 @@
      {:ctermfg :blue
       :guifg colors.color10})
 
-(hi! :NotifyERROR
-     {:ctermfg :red
-      :guifg colors.error})
-(hi! :NotifyWARN
-     {:ctermfg :yellow
-      :guifg colors.warn})
-(hi! :NotifyINFO
-     {:ctermfg :green
-      :guifg colors.info})
-(hi! :NotifyDEBUG
-     {:ctermfg :blue
-      :guifg colors.hint})
-(hi! :NotifyTRACE
-     {:ctermfg :blue
-      :guifg colors.hint})
-(hi! :NotifyERRORTitle
-     {:ctermfg :red
-      :guifg colors.error})
-(hi! :NotifyWARNTitle
-     {:ctermfg :yellow
-      :guifg colors.warn})
-(hi! :NotifyINFOTitle
-     {:ctermfg :green
-      :guifg colors.info})
-(hi! :NotifyDEBUGTitle
-     {:ctermfg :blue
-      :guifg colors.hint})
-(hi! :NotifyTRACETitle
-     {:ctermfg :blue
-      :guifg colors.hint})
-
 (hi! :FidgetTitle
      {:ctermfg :green
       :guifg colors.info})
 (hi! :FidgetTask
      {:ctermfg :blue
       :guifg colors.hint})
+
+(hi! :Conceal
+     {:ctermfg :white
+      :guifg colors.color4})
