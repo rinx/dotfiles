@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732788016640,
+  "lastUpdate": 1732874714642,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12077,6 +12077,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.77232299999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9017a88c406fe5783647fff704ab5d93b724c67d",
+          "message": "config(nvim): fix syntax highlight for org files\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-29T18:56:01+09:00",
+          "tree_id": "1af99744b8c7239d6301a99296b352bb6620d97b",
+          "url": "https://github.com/rinx/dotfiles/commit/9017a88c406fe5783647fff704ab5d93b724c67d"
+        },
+        "date": 1732874714107,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.0820876,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.49350840000001,
             "unit": "ms"
           }
         ]
