@@ -156,10 +156,10 @@ local function refile_to_today()
 end
 vim.api.nvim_create_user_command("OrgRefileToToday", refile_to_today, {})
 local function roam_pull()
-  return Snacks.terminal("bb pull", {cwd = __3epath("roam"), interactive = false})
+  return Snacks.terminal.open("bb pull", {cwd = __3epath("roam"), interactive = false})
 end
 vim.api.nvim_create_user_command("RoamPull", roam_pull, {})
 local function roam_commit_push()
-  return Snacks.terminal("bb push", {cwd = __3epath("roam"), interactive = false})
+  return Snacks.terminal.open("bb push", {cwd = __3epath("roam"), interactive = false})
 end
 return vim.api.nvim_create_user_command("RoamCommitPush", roam_commit_push, {})
