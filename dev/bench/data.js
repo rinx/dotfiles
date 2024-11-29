@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732874714642,
+  "lastUpdate": 1732876993933,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12111,6 +12111,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 54.49350840000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7ad837d1c10c3b2299408eefca6cac20e35846df",
+          "message": "config(nvim): use snacks.terminal.open instead\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-11-29T19:34:03+09:00",
+          "tree_id": "7197b22d911ac6f4c374f8a4bf16acd7ff34b4f6",
+          "url": "https://github.com/rinx/dotfiles/commit/7ad837d1c10c3b2299408eefca6cac20e35846df"
+        },
+        "date": 1732876993486,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.709391099999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 53.071421,
             "unit": "ms"
           }
         ]
