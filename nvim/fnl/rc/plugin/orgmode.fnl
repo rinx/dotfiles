@@ -2,8 +2,10 @@
 (local core (autoload :nfnl.core))
 
 (local icon (autoload :rc.icon))
+(local color (autoload :rc.color))
 
 (local icontab icon.tab)
+(local colors color.colors)
 
 (local orgmode (require :orgmode))
 (local roam (require :org-roam))
@@ -45,10 +47,18 @@
    :org_archive_location (->path "archive/%s_archive::")
    :org_todo_keywords [:TODO
                        :WAITING
+                       :PENDING
                        :IN_REVIEW
                        :|
                        :DONE
                        :CANCELED]
+   :org_todo_keyword_faces
+   {:TODO (.. ":foreground " colors.color5 " :background " colors.color8 " :underline on")
+    :WAITING (.. ":foreground " colors.color5 " :background " colors.color10)
+    :PENDING (.. ":foreground " colors.color5 " :background " colors.color10)
+    :IN_REVIEW (.. ":foreground " colors.color5 " :background " colors.color10)
+    :DONE (.. ":foreground " colors.color5 " :background " colors.color13)
+    :CANCELED (.. ":foreground " colors.color5 " :background " colors.color9)}
    :org_startup_folded :overview
    :org_capture_templates
    {:t {:description " Add a new task to inbox"
@@ -86,6 +96,7 @@
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
         :datetree {:tree_type :day}}}
+   :calendar_week_start_day 0
    :org_deadline_warning_days 7
    :org_tags_column 90
    :org_id_link_to_org_use_id true
@@ -153,6 +164,7 @@
 
    :win_split_mode :auto
    :org_highlight_latex_and_related :entities
+   :org_hide_emphasis_markers true
    :ui
    {:menu
     {:handler (fn [data]
