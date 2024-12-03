@@ -38,7 +38,9 @@
        {:icons ui-icons}
        :performance
        {:rtp
-        {:disabled_plugins rtp-disabled-plugins}}})))
+        {:disabled_plugins rtp-disabled-plugins}}
+       :rocks
+       {:enabled false}})))
 
 (use
   {:folke/lazy.nvim {:lazy true}
