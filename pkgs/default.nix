@@ -53,7 +53,6 @@
       jq
       lazygit
       neovim-unwrapped
-      nodePackages.neovim
       open-policy-agent
       pandoc
       pass
