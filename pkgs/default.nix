@@ -123,13 +123,9 @@
 
       ## fonts
       hackgen-nf-font
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "JetBrainsMono"
-          "Monaspace"
-          "VictorMono"
-        ];
-      })
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.monaspace
+      nerd-fonts.victor-mono
     ] ++ custom-pkgs;
   }
