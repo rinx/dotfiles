@@ -96,7 +96,6 @@
       ## LSP / DAP / Linter / Formatter
       actionlint
       bash-language-server
-      buf-language-server
       clj-kondo
       clojure-lsp
       cuelsp
