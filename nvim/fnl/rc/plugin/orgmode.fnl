@@ -229,7 +229,8 @@
     (let [tb (require :telescope.builtin)]
       (tb.live_grep
         {:cwd path
-         :type_filter :org}))))
+         :type_filter :org
+         :additional_args [:--no-ignore-vcs]}))))
 (vim.api.nvim_create_user_command :OrgLiveGrep (live-grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamLiveGrep (live-grep-fn (->path :roam)) {})
 
@@ -242,6 +243,7 @@
           {:prompt_title (.. "Grep for: " query)
            :cwd path
            :use_regex true
+           :additional_args [:--no-ignore-vcs]
            :search (vim.fn.kensaku#query query {:rxop vim.g.kensaku#rxop#javascript})})))))
 (vim.api.nvim_create_user_command :OrgGrep (grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})

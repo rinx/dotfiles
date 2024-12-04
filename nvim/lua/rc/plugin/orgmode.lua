@@ -132,7 +132,7 @@ vim.api.nvim_create_user_command("OrgFind", fd_fn, {})
 local function live_grep_fn(path)
   local function _16_()
     local tb = require("telescope.builtin")
-    return tb.live_grep({cwd = path, type_filter = "org"})
+    return tb.live_grep({cwd = path, type_filter = "org", additional_args = {"--no-ignore-vcs"}})
   end
   return _16_
 end
@@ -143,7 +143,7 @@ local function grep_fn(path)
     local query = vim.fn.input("Grep: ")
     local tb = require("telescope.builtin")
     if (query and not (query == "")) then
-      return tb.grep_string({prompt_title = ("Grep for: " .. query), cwd = path, use_regex = true, search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})})
+      return tb.grep_string({prompt_title = ("Grep for: " .. query), cwd = path, use_regex = true, additional_args = {"--no-ignore-vcs"}, search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})})
     else
       return nil
     end
