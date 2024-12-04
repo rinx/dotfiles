@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733231304282,
+  "lastUpdate": 1733306698236,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12315,6 +12315,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.3458712,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "fabfaef96bd16348a536c362ca76690bfa00cdea",
+          "message": "config(nvim): fix rg args for roam\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-12-04T18:46:42+09:00",
+          "tree_id": "4d5a733e57e0d9842bf6b08357cadf72ffaf362e",
+          "url": "https://github.com/rinx/dotfiles/commit/fabfaef96bd16348a536c362ca76690bfa00cdea"
+        },
+        "date": 1733306697465,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.755155700000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.70497710000001,
             "unit": "ms"
           }
         ]
