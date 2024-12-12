@@ -189,6 +189,7 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-t = 'layout floating tiling' # toggle floating
 alt-b = 'flatten-workspace-tree' # reset layout
+alt-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 cmd-h = [] # Disable "hide application"
