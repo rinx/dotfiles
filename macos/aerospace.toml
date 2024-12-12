@@ -69,7 +69,7 @@ inner.horizontal = 12
 inner.vertical =   12
 outer.left =       12
 outer.bottom =     12
-outer.top =        [{ monitor.main = 4}, 24]
+outer.top =        [{ monitor.main = 4}, 36]
 outer.right =      12
 
 # 'main' binding mode declaration
