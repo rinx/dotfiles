@@ -12,7 +12,7 @@
            :background.padding_left 3
            :background.padding_right 3
            :label.color (colors/get :cream)
-           :label (System/getenv "FOCUSED_WORKSPACE")}))))
+           :label (or (System/getenv "FOCUSED_WORKSPACE") "1")}))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

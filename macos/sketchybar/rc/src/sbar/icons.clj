@@ -34,7 +34,7 @@
    :gcloud ""
    :celsius "󰔄"
    :k8s "󱃾"
-   :space "󰬚"})
+   :space "󱅃"})
 
 (def spaces
   ["󰎦 " "󰎩 " "󰎬 " "󰎮 " "󰎰 " "󰎵 " "󰎸 " "󰎻 " "󰎾 " "󰎣 "])
