@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734010303686,
+  "lastUpdate": 1734047569800,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12553,6 +12553,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 54.9518925,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "316b5cd37ea04c09354645cc2b6efd1561c85b50",
+          "message": "config(aerospace): set gaps in other monitors\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-12-13T08:39:23+09:00",
+          "tree_id": "7077ad808e764624011b34a909630fdada71bb79",
+          "url": "https://github.com/rinx/dotfiles/commit/316b5cd37ea04c09354645cc2b6efd1561c85b50"
+        },
+        "date": 1734047569278,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.5457313,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.383746599999995,
             "unit": "ms"
           }
         ]
