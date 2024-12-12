@@ -2,18 +2,17 @@
   (:require
    [clojure.string :as str]
    [sbar.colors :as colors]
-   [sbar.external.yabai :as yabai]
    [sbar.icons :as icons]
    [sketchybar.core :as sketchybar]))
 
-(defn ->space-icons [i _]
-  (let [idx (inc i)
-        item (str "space." idx)
-        icons (->> (yabai/windows idx)
-                   (map :app)
-                   (map icons/app-font) ;; (map icons/window)
-                   (str/join " "))]
-    (sketchybar/set item {:label (if (not-empty icons) icons " ")})))
+(defn ->space-icons [i _])
+  ; (let [idx (inc i)
+  ;       item (str "space." idx)
+  ;       icons (->> (yabai/windows idx)
+  ;                  (map :app)
+  ;                  (map icons/app-font) ;; (map icons/window)
+  ;                  (str/join " "))]
+  ;   (sketchybar/set item {:label (if (not-empty icons) icons " ")})))
 
 (defn -main [& args]
   (sketchybar/exec
@@ -23,7 +22,7 @@
            :background.border_color (colors/get :transparent-black)
            :background.padding_left 3
            :background.padding_right 3}
-          (if (= (System/getenv "SELECTED") "true")
+          (if (= (System/getenv "FOCUSED_WORKSPACE") (first args))
             {:icon.color (colors/get :light-blue)
              :label.color (colors/get :cream)
              :background.border_color (colors/get :light-blue)}

@@ -16,7 +16,6 @@
    [sbar.items.volume :as volume]
    [sbar.items.weather :as weather]
    [sbar.items.wifi :as wifi]
-   [sbar.items.yabai :as yabai]
    [sketchybar.core :as sketchybar]
    [sketchybar.extra :refer [event-loop]]))
 
@@ -58,8 +57,7 @@
      :updates :when_shown})))
 
 (defn left-items []
-  (spaces/setup)
-  ; (yabai/setup)
+  ; (spaces/setup)
   (front-app/setup))
 
 (defn center-items [])

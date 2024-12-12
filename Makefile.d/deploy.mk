@@ -231,6 +231,7 @@ $(HOME)/.skk-jisyo:
 ifeq ($(UNAME),Darwin)
 .PHONY: macos
 macos: \
+	aerospace \
 	yabairc \
 	sketchybar \
 	skhdrc
@@ -240,6 +241,12 @@ else
 macos:
 	@$(call green, "macos: nothing to do")
 endif
+
+.PHONY: aerospace
+aerospace: $(HOME)/.aerospace.toml
+$(HOME)/.aerospace.toml:
+	@$(call cyan, "--\> .aerospace.toml")
+	ln -s $(DOTDIR)/macos/aerospace.toml $(HOME)/.aerospace.toml
 
 .PHONY: yabairc
 yabairc: $(HOME)/.yabairc
