@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734009015946,
+  "lastUpdate": 1734010303686,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12519,6 +12519,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.75996669999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c2be89d9eec2b52043e980d7a61a33459d08be37",
+          "message": "config(aerospace): add fullscreen binding\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-12-12T22:18:33+09:00",
+          "tree_id": "9a7e359261458c8d73b9736d2e7e4c145de97158",
+          "url": "https://github.com/rinx/dotfiles/commit/c2be89d9eec2b52043e980d7a61a33459d08be37"
+        },
+        "date": 1734010303213,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.959275400000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.9518925,
             "unit": "ms"
           }
         ]
