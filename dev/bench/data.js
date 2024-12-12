@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733714127554,
+  "lastUpdate": 1734006150399,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12417,6 +12417,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 56.85601479999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b69dfdecd458d46970e59c756e7896d5e3700f5e",
+          "message": "config(macos): use aerospace instead of yabai + skhd\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-12-12T21:08:26+09:00",
+          "tree_id": "3643616bdb7cd87c2ef76c5b34f488ce66bd8412",
+          "url": "https://github.com/rinx/dotfiles/commit/b69dfdecd458d46970e59c756e7896d5e3700f5e"
+        },
+        "date": 1734006149708,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.798986199999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.58609309999999,
             "unit": "ms"
           }
         ]
