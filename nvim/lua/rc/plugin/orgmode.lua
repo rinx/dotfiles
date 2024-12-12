@@ -139,8 +139,9 @@ end
 vim.api.nvim_create_user_command("OrgGrep", grep_fn(basepath), {})
 vim.api.nvim_create_user_command("RoamGrep", grep_fn(__3epath("roam")), {})
 local function refile_to_today()
-  local date = os.date("%Y-%m-%d")
-  return vim.cmd(("Telescope orgmode refile_heading default_text=" .. date))
+  local t = require("telescope")
+  local date = os.date("%Y-%m-%d %A")
+  return t.extensions.orgmode.refile_heading({default_text = date})
 end
 vim.api.nvim_create_user_command("OrgRefileToToday", refile_to_today, {})
 local function roam_pull()

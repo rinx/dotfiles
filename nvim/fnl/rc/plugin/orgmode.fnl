@@ -231,8 +231,10 @@
 (vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})
 
 (fn refile-to-today []
-  (let [date (os.date "%Y-%m-%d")]
-    (vim.cmd (.. "Telescope orgmode refile_heading default_text=" date))))
+  (let [t (require :telescope)
+        date (os.date "%Y-%m-%d %A")]
+    (t.extensions.orgmode.refile_heading
+      {:default_text date})))
 (vim.api.nvim_create_user_command :OrgRefileToToday refile-to-today {})
 
 (fn roam-pull []
