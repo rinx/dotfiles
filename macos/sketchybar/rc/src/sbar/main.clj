@@ -57,7 +57,7 @@
      :updates :when_shown})))
 
 (defn left-items []
-  ; (spaces/setup)
+  (spaces/setup)
   (front-app/setup))
 
 (defn center-items [])

@@ -5,23 +5,20 @@
    [sbar.icons :as icons]
    [sketchybar.core :as sketchybar]))
 
-(defn ->space [i icon]
-  (let [idx (inc i)
-        item (str "space." idx)]
-    (flatten
-     [(sketchybar/add-space item :left)
-      (sketchybar/set
-       item
-       {:associated_space idx
-        :background.corner_radius 4
-        :icon icon
-        :icon.padding_right 4
-        :icon.font (fonts/get :Medium 16.0)
-        :label.font (fonts/get fonts/app-font :Regular 16.0)
-        :click_script (str "aerospace workspace " idx)
-        :script (common/plugin-script "spaces.jar")})
-      (sketchybar/subscribe item :front_app_switched)])))
-
 (defn setup []
-  (sketchybar/exec (sketchybar/add-event "aerospace_workspace_change"))
-  (apply sketchybar/exec (map-indexed ->space icons/spaces)))
+  (sketchybar/exec
+    (sketchybar/add-event :aerospace_workspace_change))
+  (sketchybar/exec
+    (sketchybar/add-item :space :left)
+    (sketchybar/subscribe :space :aerospace_workspace_change)
+    (sketchybar/set
+      :space
+      {:background.corner_radius 4
+       :icon.padding_left 10
+       :icon.padding_right 3
+       :label.padding_left 3
+       :label.padding_right 10
+       :label.font (fonts/get :Regular 12.0)
+       :icon.font (fonts/get :Medium 16.0)
+       :icon (icons/get :space)
+       :script (common/plugin-script "spaces.jar")})))
