@@ -13,8 +13,9 @@
      :selectCandidateKeys :asdfjkl
      :setUndoPoint true
      :showCandidatesCount 4
-     :usePopup true
-     :userDictionary "~/.skk-jisyo"}))
+     :userDictionary "~/.skk-jisyo"
+     :databasePath "~/.cache/nvim/skkeleton.db"
+     :sources [:deno_kv :skk_dictionary]}))
 
 (fn enable-pre []
   (let [cmp (require :cmp)]

@@ -143,3 +143,5 @@
   (set vim.g.neovide_refresh_rate 60)
   (set vim.g.neovide_refresh_rate_idle 5)
   (set vim.g.neovide_underline_automatic_scaling true))
+
+(set vim.g.denops#server#deno_args [:-q :--no-lock :-A :--unstable-kv])

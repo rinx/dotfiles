@@ -118,7 +118,7 @@ if vim.g.neovide then
   vim.g.neovide_refresh_rate = 60
   vim.g.neovide_refresh_rate_idle = 5
   vim.g.neovide_underline_automatic_scaling = true
-  return nil
 else
-  return nil
 end
+vim.g["denops#server#deno_args"] = {"-q", "--no-lock", "-A", "--unstable-kv"}
+return nil

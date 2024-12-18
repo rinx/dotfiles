@@ -2,7 +2,7 @@
 vim.keymap.set("i", "<C-j>", "<Plug>(skkeleton-toggle)", {})
 vim.keymap.set("c", "<C-j>", "<Plug>(skkeleton-toggle)", {})
 local function initialize()
-  return vim.fn["skkeleton#config"]({globalDictionaries = {"~/.SKK-JISYO.L"}, immediatelyDictionaryRW = true, keepState = true, selectCandidateKeys = "asdfjkl", setUndoPoint = true, showCandidatesCount = 4, usePopup = true, userDictionary = "~/.skk-jisyo", registerConvertResult = false, eggLikeNewline = false})
+  return vim.fn["skkeleton#config"]({globalDictionaries = {"~/.SKK-JISYO.L"}, immediatelyDictionaryRW = true, keepState = true, selectCandidateKeys = "asdfjkl", setUndoPoint = true, showCandidatesCount = 4, userDictionary = "~/.skk-jisyo", databasePath = "~/.cache/nvim/skkeleton.db", sources = {"deno_kv", "skk_dictionary"}, eggLikeNewline = false, registerConvertResult = false})
 end
 local function enable_pre()
   local cmp = require("cmp")
