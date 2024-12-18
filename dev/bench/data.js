@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734312350297,
+  "lastUpdate": 1734509986330,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12689,6 +12689,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 57.42186339999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3add1508fee8dcbb26575100fa60d1b1572abda1",
+          "message": "config(aerospace): fix shortcut for kitty\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-12-18T17:07:51+09:00",
+          "tree_id": "5e81b7b0e14a04db08144962a8eda327369ba965",
+          "url": "https://github.com/rinx/dotfiles/commit/3add1508fee8dcbb26575100fa60d1b1572abda1"
+        },
+        "date": 1734509985570,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.484700699999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.76636619999999,
             "unit": "ms"
           }
         ]
