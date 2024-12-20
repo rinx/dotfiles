@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734520173076,
+  "lastUpdate": 1734688786220,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12757,6 +12757,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.70531150000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b26008fdf62af0258ab91dc9b5139353d3e3f745",
+          "message": "config(nvim): add org-export to pdf via xelatex\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-12-20T18:47:54+09:00",
+          "tree_id": "bd031c4921470ec52d80802358a2f7d6ef27f2cf",
+          "url": "https://github.com/rinx/dotfiles/commit/b26008fdf62af0258ab91dc9b5139353d3e3f745"
+        },
+        "date": 1734688785017,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.2111647,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.2539939,
             "unit": "ms"
           }
         ]
