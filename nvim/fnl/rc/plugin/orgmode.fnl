@@ -143,7 +143,18 @@
                                     (vim.notify (.. "Error: " err)))]
                      (tmp:write content)
                      (tmp:close)
-                     (exporter cmd "" on-success on-error)))))}}
+                     (exporter cmd "" on-success on-error)))))}
+    :d
+    {:label "Export to PDF file via pandoc & xelatex"
+     :action (fn [exporter]
+               (let [current (vim.api.nvim_buf_get_name 0)
+                     target (.. (vim.fn.fnamemodify current ":p:r") ".pdf")
+                     cmd [:pandoc current :--from=org :--to=pdf :--pdf-engine=xelatex :-V :documentclass=bxjsarticle :-V :classoption=pandoc :-o target]
+                     on-success (fn [output]
+                                  (vim.notify (.. "Successfully saved to: " target)))
+                     on-error (fn [err]
+                                (vim.notify (.. "Error: " err)))]
+                 (exporter cmd target on-success on-error)))}}
    :win_split_mode :auto
    :org_highlight_latex_and_related :entities
    :org_hide_emphasis_markers true
