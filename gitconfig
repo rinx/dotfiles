@@ -1,3 +1,8 @@
+[user]
+    name = Rintaro Okamura
+    email = rintaro.okamura@gmail.com
+    signingkey = 2E26B9B26A1D5D29
+
 [include]
     path = ~/.gitconfig.local
 
