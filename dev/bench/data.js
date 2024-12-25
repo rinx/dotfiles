@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734915154980,
+  "lastUpdate": 1735120072076,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12859,6 +12859,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.5413584,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2ff35676074ec613570702c84ac81d19d8b7066a",
+          "message": "config(kitty): use monaspace as main font\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2024-12-25T18:38:45+09:00",
+          "tree_id": "b04785c342966fce68cd250bae211013d9cc5934",
+          "url": "https://github.com/rinx/dotfiles/commit/2ff35676074ec613570702c84ac81d19d8b7066a"
+        },
+        "date": 1735120071509,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.8256357,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.0216101,
             "unit": "ms"
           }
         ]
