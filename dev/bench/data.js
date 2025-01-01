@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1735601735488,
+  "lastUpdate": 1735726302108,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -12961,6 +12961,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 53.94560529999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "698d81fbc32fa5c9f663352930ace0ab787016b5",
+          "message": "config(hyprland): fix configurations\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-01-01T19:01:58+09:00",
+          "tree_id": "02f496e94b3c126293e2ee0d9a496255340a45ca",
+          "url": "https://github.com/rinx/dotfiles/commit/698d81fbc32fa5c9f663352930ace0ab787016b5"
+        },
+        "date": 1735726301614,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.4508443,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 57.8159444,
             "unit": "ms"
           }
         ]
