@@ -257,3 +257,8 @@
   (Snacks.terminal.open "bb push" {:cwd (->path :roam)
                                    :interactive false}))
 (vim.api.nvim_create_user_command :RoamCommitPush roam-commit-push {})
+
+(fn roam-status []
+  (Snacks.terminal.open "bb status" {:cwd (->path :roam)
+                                     :interactive false}))
+(vim.api.nvim_create_user_command :RoamStatus roam-status {})

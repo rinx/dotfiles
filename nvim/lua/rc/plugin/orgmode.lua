@@ -167,4 +167,8 @@ vim.api.nvim_create_user_command("RoamPull", roam_pull, {})
 local function roam_commit_push()
   return Snacks.terminal.open("bb push", {cwd = __3epath("roam"), interactive = false})
 end
-return vim.api.nvim_create_user_command("RoamCommitPush", roam_commit_push, {})
+vim.api.nvim_create_user_command("RoamCommitPush", roam_commit_push, {})
+local function roam_status()
+  return Snacks.terminal.open("bb status", {cwd = __3epath("roam"), interactive = false})
+end
+return vim.api.nvim_create_user_command("RoamStatus", roam_status, {})

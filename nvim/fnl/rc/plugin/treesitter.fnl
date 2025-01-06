@@ -26,6 +26,7 @@
    :gitattributes
    :gitcommit
    :gitignore
+   :gleam
    :go
    :gomod
    :gosum
