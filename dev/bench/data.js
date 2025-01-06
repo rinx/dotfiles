@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736131452967,
+  "lastUpdate": 1736158016423,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -13029,6 +13029,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 52.72031460000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c2fd35bc7189cc961866c9cdee5b6f63bef449c3",
+          "message": "config(nvim): add roamstatus command\n\n- add tree-sitter gleam lang\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-01-06T18:57:26+09:00",
+          "tree_id": "080917791d84530d4571dacdfc36c7b08ee21bda",
+          "url": "https://github.com/rinx/dotfiles/commit/c2fd35bc7189cc961866c9cdee5b6f63bef449c3"
+        },
+        "date": 1736158015738,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.3680997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 57.2482342,
             "unit": "ms"
           }
         ]
