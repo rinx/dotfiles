@@ -95,6 +95,10 @@
     :j {:description "󰃭 Add a new note to journal"
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
+        :datetree {:tree_type :day}}
+    :r {:description "󰍣 Add a new review task to journal"
+        :template (->tmplstr :task-review.org)
+        :target (->path :journal/%<%Y-%m>.org)
         :datetree {:tree_type :day}}}
    :calendar_week_start_day 0
    :org_deadline_warning_days 7
