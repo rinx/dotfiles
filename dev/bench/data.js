@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1737938600551,
+  "lastUpdate": 1738213687290,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -13165,6 +13165,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.367420200000005,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ca65c0d1fc7061cc995d841ac7769ea661e89798",
+          "message": "chore(nvim): remove waiting status in orgmode\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-01-30T13:58:32+09:00",
+          "tree_id": "ed63bf5e8b3535fb705c2a914c9846288d4b7160",
+          "url": "https://github.com/rinx/dotfiles/commit/ca65c0d1fc7061cc995d841ac7769ea661e89798"
+        },
+        "date": 1738213686799,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.365245899999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 60.489930900000004,
             "unit": "ms"
           }
         ]
