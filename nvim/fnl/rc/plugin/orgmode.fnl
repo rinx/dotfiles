@@ -46,7 +46,6 @@
    :org_default_notes_file inbox
    :org_archive_location (->path "archive/%s_archive::")
    :org_todo_keywords [:TODO
-                       :WAITING
                        :PENDING
                        :IN_REVIEW
                        :|
