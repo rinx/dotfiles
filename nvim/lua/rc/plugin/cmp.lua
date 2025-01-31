@@ -4,11 +4,12 @@ local autoload = _local_1_["autoload"]
 local core = autoload("nfnl.core")
 local cmp = require("cmp")
 local cmp_git = require("cmp_git")
+local mini_snippets = require("mini.snippets")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
 local cmp_kinds = {Class = icontab.class, Color = icontab.color, Constant = icontab.pi, Constructor = icontab.tools, Enum = icontab.enum, EnumMember = icontab.atoz, Field = icontab.buffer, File = icontab["document-alt"], Folder = icontab["folder-open-alt"], Function = icontab["function-alt"], Interface = icontab.structure, Keyword = icontab.key, Method = icontab["function"], Module = icontab.cubes, Property = icontab.property, Snippet = icontab["code-braces"], Struct = icontab.struct, Reference = icontab.reference, Text = icontab.text, Unit = icontab.unit, Value = icontab["one-two-three"], Variable = icontab.cube, Operator = icontab["plus-minus"], Event = icontab.zap, TypeParameter = icontab.package}
 local cmp_srcs = {buffer = "Buffer", cmdline = "CMD", git = "Git", conjure = "Conjure", emoji = "Emoji", nvim_lsp = "LSP", async_path = "Path", skkeleton = "SKK", spell = "Spell", treesitter = "TS"}
-local default_sources = {{name = "nvim_lsp"}, {name = "buffer"}, {name = "treesitter"}, {name = "async_path"}, {name = "skkeleton"}, {name = "spell"}, {name = "emoji"}, {name = "orgmode"}}
+local default_sources = {{name = "nvim_lsp"}, {name = "buffer"}, {name = "treesitter"}, {name = "async_path"}, {name = "skkeleton"}, {name = "spell"}, {name = "emoji"}, {name = "orgmode"}, {name = "mini_snippets"}}
 local function _2_(entry, item)
   item.kind = ((core.get(cmp_kinds, item.kind) or "") .. " " .. item.kind)
   item.menu = (core.get(cmp_srcs, entry.source.name) or "")
@@ -26,7 +27,14 @@ local function _5_()
   local bufname = vim.api.nvim_buf_get_name(0)
   return (not (buftype == "prompt") and not (bufname:match("org%-roam%-select$") ~= nil))
 end
-cmp.setup({formatting = {format = _2_}, mapping = {["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}), {"i", "c"}), ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}), {"i", "c"}), ["<Up>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}), ["<Down>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}), ["<C-s>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}), ["<C-e>"] = cmp.mapping(cmp.mapping.close(), {"i", "c"}), ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}), ["<Tab>"] = _3_}, sources = default_sources, enabled = _5_})
+local function _6_(args)
+  local insert = (MiniSnippets.config.expand.insert or MiniSnippets.default_insert)
+  local config = require("cmp.config")
+  insert({body = args.body})
+  cmp.resubscribe({"TextChangedI", "TextChangedP"})
+  return config.set_onetime({sources = {}})
+end
+cmp.setup({formatting = {format = _2_}, mapping = {["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}), {"i", "c"}), ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}), {"i", "c"}), ["<Up>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}), ["<Down>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}), ["<C-s>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}), ["<C-e>"] = cmp.mapping(cmp.mapping.close(), {"i", "c"}), ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}), ["<Tab>"] = _3_}, sources = default_sources, enabled = _5_, snippet = {expand = _6_}})
 cmp.setup.cmdline("/", {sources = {{name = "buffer"}}})
 cmp.setup.cmdline(":", {sources = cmp.config.sources({{name = "path"}}, {{name = "cmdline"}})})
 local function append_cmp_conjure()
@@ -52,5 +60,8 @@ local function append_cmp_git()
   table.insert(ss, {name = "git"})
   return cmp.setup.buffer({sources = ss})
 end
-local group_5_auto = vim.api.nvim_create_augroup("init-cmp-git", {clear = true})
-return vim.api.nvim_create_autocmd({"FileType"}, {callback = append_cmp_git, group = group_5_auto, pattern = "gitcommit"})
+do
+  local group_5_auto = vim.api.nvim_create_augroup("init-cmp-git", {clear = true})
+  vim.api.nvim_create_autocmd({"FileType"}, {callback = append_cmp_git, group = group_5_auto, pattern = "gitcommit"})
+end
+return mini_snippets.setup({snippets = {mini_snippets.gen_loader.from_lang()}, mappings = {expand = "<C-i>"}})

@@ -117,10 +117,12 @@
                                   :dependencies [:hrsh7th/cmp-emoji
                                                  :f3fora/cmp-spell
                                                  :petertriho/cmp-git
-                                                 :rafamadriz/friendly-snippets
                                                  :ray-x/cmp-treesitter
                                                  :PaterJason/cmp-conjure
-                                                 :rinx/cmp-skkeleton]}
+                                                 :rinx/cmp-skkeleton
+                                                 :rafamadriz/friendly-snippets
+                                                 :echasnovski/mini.snippets
+                                                 :abeldekat/cmp-mini-snippets]}
    :iguanacucumber/mag-nvim-lsp {:name :cmp-nvim-lsp
                                  :event [:InsertEnter]}
    :iguanacucumber/mag-buffer {:name :cmp-buffer

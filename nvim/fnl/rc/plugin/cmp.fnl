@@ -4,6 +4,8 @@
 (local cmp (require :cmp))
 (local cmp-git (require :cmp_git))
 
+(local mini-snippets (require :mini.snippets))
+
 (local icon (autoload :rc.icon))
 (import-macros {: map! : augroup!} :rc.macros)
 
@@ -56,7 +58,8 @@
    {:name :skkeleton}
    {:name :spell}
    {:name :emoji}
-   {:name :orgmode}])
+   {:name :orgmode}
+   {:name :mini_snippets}])
 
 (cmp.setup
   {:formatting
@@ -91,7 +94,16 @@
               (let [buftype (vim.api.nvim_buf_get_option 0 :buftype)
                     bufname (vim.api.nvim_buf_get_name 0)]
                 (and (not (= buftype :prompt))
-                     (not (~= (bufname:match "org%-roam%-select$") nil)))))})
+                     (not (~= (bufname:match "org%-roam%-select$") nil)))))
+   :snippet
+   {:expand (fn [args]
+              (let [insert (or MiniSnippets.config.expand.insert
+                               MiniSnippets.default_insert)
+                    config (require :cmp.config)]
+                (insert {:body args.body})
+                (cmp.resubscribe [:TextChangedI
+                                  :TextChangedP])
+                (config.set_onetime {:sources []})))}})
 
 ;; cmdline completions
 (cmp.setup.cmdline :/ {:sources [{:name :buffer}]})
@@ -134,3 +146,8 @@
   {:events [:FileType]
    :pattern :gitcommit
    :callback append-cmp-git})
+
+;; snippet
+(mini-snippets.setup
+  {:snippets [(mini-snippets.gen_loader.from_lang)]
+   :mappings {:expand :<C-i>}})
