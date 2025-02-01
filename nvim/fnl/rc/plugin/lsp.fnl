@@ -160,6 +160,7 @@
     default-options
     {:root_dir (lsputil.root_pattern ".nfnl.fnl")}))
 (lsp.fortls.setup (core.merge default-options {}))
+(lsp.gleam.setup (core.merge default-options {}))
 (lsp.gopls.setup (core.merge
                    default-options
                    {:settings
@@ -204,15 +205,16 @@
                    {:init_options
                     {:enableDebugCodelens true
                      :evalCodelensDisplayInline true}}))
+(lsp.rust_analyzer.setup (core.merge default-options {}))
 (lsp.terraformls.setup (core.merge
                          default-options
                          {:init_options
                           {:experimentalFeatures
                            {:validateOnSave true
                             :prefillRequiredFields true}}}))
-(lsp.tflint.setup {})
+(lsp.tflint.setup (core.merge default-options {}))
 (lsp.texlab.setup (core.merge default-options {:filetypes [:tex :bib :plaintex]}))
-(lsp.ts_ls.setup {})
+(lsp.ts_ls.setup (core.merge default-options {}))
 (lsp.yamlls.setup
   (core.merge
     default-options
