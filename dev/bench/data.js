@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1738328634985,
+  "lastUpdate": 1738419911516,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -13267,6 +13267,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 57.0422664,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b1ecccee98711c0e576a7c351c040f938ffef399",
+          "message": "config(nvim): add lsp settings for gleam and rust\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-01T23:15:34+09:00",
+          "tree_id": "a465283b0bd6e13b37745dd59c8d198cb6c7a3f5",
+          "url": "https://github.com/rinx/dotfiles/commit/b1ecccee98711c0e576a7c351c040f938ffef399"
+        },
+        "date": 1738419910337,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.7897129,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 56.008860799999994,
             "unit": "ms"
           }
         ]
