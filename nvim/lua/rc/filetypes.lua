@@ -54,6 +54,10 @@ do
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl colorcolumn=80", group = group_5_auto, pattern = "clojure"})
 end
 do
+  local group_5_auto = vim.api.nvim_create_augroup("init-gleam", {clear = true})
+  vim.api.nvim_create_autocmd({"FileType"}, {command = "setl shiftwidth=2", group = group_5_auto, pattern = "gleam"})
+end
+do
   local group_5_auto = vim.api.nvim_create_augroup("init-go", {clear = true})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl colorcolumn=80", group = group_5_auto, pattern = "go"})
   vim.api.nvim_create_autocmd({"FileType"}, {command = "setl noexpandtab", group = group_5_auto, pattern = "go"})

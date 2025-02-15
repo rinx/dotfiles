@@ -97,6 +97,12 @@
    :command "setl colorcolumn=80"})
 
 (augroup!
+  init-gleam
+  {:events [:FileType]
+   :pattern :gleam
+   :command "setl shiftwidth=2"})
+
+(augroup!
   init-go
   {:events [:FileType]
    :pattern :go
