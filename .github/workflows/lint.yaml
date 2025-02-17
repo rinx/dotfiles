@@ -54,4 +54,4 @@ jobs:
           parser_repository: alexmozaidze/tree-sitter-fennel
       - name: Run ast-grep rule tests
         run: |
-          sg test
+          ast-grep test
