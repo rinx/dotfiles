@@ -103,16 +103,17 @@
     root = ~/local/src
 
 [rerere]
-	enabled = true
+    enabled = true
 
 [fetch]
-	prune = true
+    prune = true
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [commit]
-	template = ~/.commit_template
+    template = ~/.commit_template
+    verbose = true
 
 [rebase]
     autosquash = true
