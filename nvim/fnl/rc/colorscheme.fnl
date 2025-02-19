@@ -131,3 +131,6 @@
 (hi! :Conceal
      {:ctermfg :white
       :guifg colors.color4})
+
+(hi! "@markup.underline"
+     {:gui :underline})
