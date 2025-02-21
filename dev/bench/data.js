@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740132604046,
+  "lastUpdate": 1740144458113,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -13539,6 +13539,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.4159217,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "94e3bc591cdb9520ff2ba2ae7f334fc442db0eb2",
+          "message": "config(nix): remove fennel-language-server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-21T22:21:34+09:00",
+          "tree_id": "bdb941f692f00db1a1664f388992c679fab32df4",
+          "url": "https://github.com/rinx/dotfiles/commit/94e3bc591cdb9520ff2ba2ae7f334fc442db0eb2"
+        },
+        "date": 1740144457558,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.142845299999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 56.3199611,
             "unit": "ms"
           }
         ]
