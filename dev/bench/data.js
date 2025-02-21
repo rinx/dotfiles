@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1739947961279,
+  "lastUpdate": 1740100763377,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -13471,6 +13471,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 55.6093922,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c9b73986b18b31dab241dafabdf23746a2c4a43e",
+          "message": "config(nvim): add daily-report capture template\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-21T10:09:34+09:00",
+          "tree_id": "45c2e3dbc687c8c91bb57c23817e54a2d65c2fa8",
+          "url": "https://github.com/rinx/dotfiles/commit/c9b73986b18b31dab241dafabdf23746a2c4a43e"
+        },
+        "date": 1740100762177,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.659780599999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 58.2895763,
             "unit": "ms"
           }
         ]
