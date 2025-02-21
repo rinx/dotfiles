@@ -5,8 +5,6 @@
 }: let 
     falco = pkgs.callPackage ./falco.nix {};
 
-    fennel-language-server = pkgs.callPackage ./fennel-language-server.nix {};
-
     google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents [
       pkgs.google-cloud-sdk.components.beta
       pkgs.google-cloud-sdk.components.bq
@@ -22,7 +20,6 @@
 
     custom-pkgs = [
       falco
-      fennel-language-server
       google-cloud-sdk-with-components
       moralerspace-nerdfont
       rq

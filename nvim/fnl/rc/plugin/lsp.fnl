@@ -148,13 +148,6 @@
                       :rootMarkers [".github/"]}]}
                    :lintDebounce "300ms"}}))
 (lsp.erlangls.setup (core.merge default-options {}))
-(lsp.fennel_language_server.setup
-  (core.merge
-    default-options
-    {:root_dir (lsputil.root_pattern ".nfnl.fnl")
-     :settings {:fennel {:diagnostics {:globals [:vim :jit :comment]}
-                         :workspace {:library
-                                     (vim.api.nvim_list_runtime_paths)}}}}))
 (lsp.fennel_ls.setup
   (core.merge
     default-options
