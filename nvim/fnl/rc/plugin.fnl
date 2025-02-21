@@ -109,29 +109,12 @@
                                :config (mod :lsp-lines)
                                :event [:BufReadPost :BufAdd :BufNewFile]}
 
-   ;; cmp
-   :iguanacucumber/magazine.nvim {:name :nvim-cmp
-                                  :config (mod :cmp)
-                                  :event [:CmdlineEnter
-                                          :InsertEnter]
-                                  :dependencies [:hrsh7th/cmp-emoji
-                                                 :f3fora/cmp-spell
-                                                 :petertriho/cmp-git
-                                                 :ray-x/cmp-treesitter
-                                                 :PaterJason/cmp-conjure
-                                                 :rinx/cmp-skkeleton
-                                                 :rafamadriz/friendly-snippets
-                                                 :echasnovski/mini.snippets
-                                                 :abeldekat/cmp-mini-snippets]}
-   :iguanacucumber/mag-nvim-lsp {:name :cmp-nvim-lsp
-                                 :event [:InsertEnter]}
-   :iguanacucumber/mag-buffer {:name :cmp-buffer
-                               :event [:InsertEnter]}
-   :iguanacucumber/mag-cmdline {:name :cmp-cmdline
-                                :event [:CmdlineEnter
-                                        :InsertEnter]}
-   :FelipeLema/cmp-async-path {:url "https://codeberg.org/FelipeLema/cmp-async-path"
-                               :event [:InsertEnter]}
+   ;; completion
+   :saghen/blink.cmp {:lazy false
+                      :version :v0.*
+                      :dependencies [:rafamadriz/friendly-snippets
+                                     :echasnovski/mini.snippets]
+                      :config (mod :cmp)}
 
    ;; dap
    :mfussenegger/nvim-dap {:config (mod :dap)
