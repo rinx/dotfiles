@@ -1,7 +1,6 @@
 **** %?
      :PROPERTIES:
      :CAPTURED: %U
-     :SCHEDULED: %T
      :END:
 
      #+BEGIN_QUOTE

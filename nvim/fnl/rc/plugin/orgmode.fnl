@@ -283,7 +283,7 @@
     (-> (icollect [_ item (ipairs items)]
          (let [entry (view:_build_line item agenda-day)
                line (entry:compile)]
-           line.content))
+           (string.gsub line.content "^(%s+)([^%s]+):(%s+)" "")))
         (table.concat "\n"))))
-
 {: build_todays_agenda}
+

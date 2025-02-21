@@ -188,7 +188,7 @@ local function build_todays_agenda()
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
-        val_23_auto = line.content
+        val_23_auto = string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", "")
       end
       if (nil ~= val_23_auto) then
         i_22_auto = (i_22_auto + 1)
