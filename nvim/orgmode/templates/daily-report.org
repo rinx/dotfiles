@@ -1,0 +1,11 @@
+**** %?
+     :PROPERTIES:
+     :CAPTURED: %U
+     :SCHEDULED: %T
+     :END:
+
+     #+BEGIN_QUOTE
+     schedule:
+     %(return require('rc.plugin.orgmode').build_todays_agenda())
+     tasks:
+     #+END_QUOTE

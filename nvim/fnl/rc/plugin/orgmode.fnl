@@ -95,6 +95,10 @@
         :template (->tmplstr :journal.org)
         :target (->path :journal/%<%Y-%m>.org)
         :datetree {:tree_type :day}}
+    :d {:description "󰃭 Add a new daily report to journal"
+        :template (->tmplstr :daily-report.org)
+        :target (->path :journal/%<%Y-%m>.org)
+        :datetree {:tree_type :day}}
     :r {:description "󰍣 Add a new review task to journal"
         :template (->tmplstr :task-review.org)
         :target (->path :journal/%<%Y-%m>.org)
@@ -265,3 +269,21 @@
   (Snacks.terminal.open "bb status" {:cwd (->path :roam)
                                      :interactive false}))
 (vim.api.nvim_create_user_command :RoamStatus roam-status {})
+
+(fn build_todays_agenda []
+  (let [orgmode (require :orgmode)
+        agenda-types (require :orgmode.agenda.types)
+        view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
+                                             :agenda_filter orgmode.agenda.filters
+                                             :highlighter orgmode.agenda.highlighter
+                                             :span :day})
+        view (agenda-types.agenda:new view-opts)
+        agenda-day (. (view:_get_agenda_days) 1)
+        items agenda-day.agenda_items]
+    (-> (icollect [_ item (ipairs items)]
+         (let [entry (view:_build_line item agenda-day)
+               line (entry:compile)]
+           line.content))
+        (table.concat "\n"))))
+
+{: build_todays_agenda}
