@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740184371277,
+  "lastUpdate": 1740208901719,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -13709,6 +13709,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 59.08439679999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "86e0a399c0ce3431c8263f5050e8825da825a5b8",
+          "message": "config(nvim): add blink.cmp enabled condition\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-22T16:15:32+09:00",
+          "tree_id": "ae9f9394994445b80206437dfebfa535b47c5ae2",
+          "url": "https://github.com/rinx/dotfiles/commit/86e0a399c0ce3431c8263f5050e8825da825a5b8"
+        },
+        "date": 1740208901030,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.7683687,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.151356199999995,
             "unit": "ms"
           }
         ]
