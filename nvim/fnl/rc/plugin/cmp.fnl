@@ -14,7 +14,8 @@
                        :buffer
                        :ripgrep
                        :emoji
-                       :git]
+                       :git
+                       :orgmode]
              :providers
              {:ripgrep {:module :blink-ripgrep
                         :name :Ripgrep}
@@ -34,7 +35,9 @@
                                  [:octo
                                   :gitcommit
                                   :markdown]
-                                 vim.bo.filetype))}}}
+                                 vim.bo.filetype))}
+              :orgmode {:name :orgmode
+                        :module :blink.compat.source}}}
             :snippets {:preset :mini_snippets}})
 
 ;; snippet
