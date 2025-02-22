@@ -116,7 +116,6 @@
                                      :echasnovski/mini.snippets
                                      :mikavilpas/blink-ripgrep.nvim
                                      :moyiz/blink-emoji.nvim
-                                     :Kaiser-Yang/blink-cmp-dictionary
                                      :Kaiser-Yang/blink-cmp-git]
                       :config (mod :cmp)}
 

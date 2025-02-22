@@ -7,5 +7,5 @@ end
 local function _2_()
   return vim.tbl_contains({"octo", "gitcommit", "markdown"}, vim.bo.filetype)
 end
-cmp.setup({keymap = {preset = "default"}, sources = {default = {"lsp", "path", "snippets", "buffer", "ripgrep", "emoji", "git"}, providers = {ripgrep = {module = "blink-ripgrep", name = "Ripgrep"}, emoji = {module = "blink-emoji", name = "Emoji", score_offset = 15, opts = {insert = true}, should_show_items = _1_}, dictionary = {module = "blink-cmp-dictionary", name = "Dict", min_keyword_length = 3}, git = {module = "blink-cmp-git", name = "Git", enabled = _2_}}}, snippets = {preset = "mini_snippets"}})
+cmp.setup({keymap = {preset = "default"}, sources = {default = {"lsp", "path", "snippets", "buffer", "ripgrep", "emoji", "git"}, providers = {ripgrep = {module = "blink-ripgrep", name = "Ripgrep"}, emoji = {module = "blink-emoji", name = "Emoji", score_offset = 15, opts = {insert = true}, should_show_items = _1_}, git = {module = "blink-cmp-git", name = "Git", enabled = _2_}}}, snippets = {preset = "mini_snippets"}})
 return mini_snippets.setup({snippets = {mini_snippets.gen_loader.from_lang()}, mappings = {expand = "<C-i>"}})

@@ -22,9 +22,6 @@
                                              [:gitcommit
                                               :markdown]
                                              vim.bo.filetype))}
-              :dictionary {:module :blink-cmp-dictionary
-                           :name :Dict
-                           :min_keyword_length 3}
               :git {:module :blink-cmp-git
                     :name :Git
                     :enabled (fn []
