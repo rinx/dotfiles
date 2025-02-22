@@ -1,7 +1,12 @@
 (local cmp (require :blink.cmp))
 (local mini-snippets (require :mini.snippets))
 
-(cmp.setup {:keymap {:preset :default}
+(cmp.setup {:enabled (fn []
+                       (let [buftype (vim.api.nvim_buf_get_option 0 :buftype)
+                             bufname (vim.api.nvim_buf_get_name 0)]
+                         (and (not (= buftype :prompt))
+                              (not (~= (bufname:match "org%-roam%-select$") nil)))))
+            :keymap {:preset :default}
             :sources
             {:default [:lsp
                        :path
