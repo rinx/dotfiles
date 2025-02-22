@@ -3,7 +3,36 @@
 
 (cmp.setup {:keymap {:preset :default}
             :sources
-            {:default [:lsp :path :snippets :buffer]}
+            {:default [:lsp
+                       :path
+                       :snippets
+                       :buffer
+                       :ripgrep
+                       :emoji
+                       :git]
+             :providers
+             {:ripgrep {:module :blink-ripgrep
+                        :name :Ripgrep}
+              :emoji {:module :blink-emoji
+                      :name :Emoji
+                      :score_offset 15
+                      :opts {:insert true}
+                      :should_show_items (fn []
+                                           (vim.tbl_contains
+                                             [:gitcommit
+                                              :markdown]
+                                             vim.bo.filetype))}
+              :dictionary {:module :blink-cmp-dictionary
+                           :name :Dict
+                           :min_keyword_length 3}
+              :git {:module :blink-cmp-git
+                    :name :Git
+                    :enabled (fn []
+                               (vim.tbl_contains
+                                 [:octo
+                                  :gitcommit
+                                  :markdown]
+                                 vim.bo.filetype))}}}
             :snippets {:preset :mini_snippets}})
 
 ;; snippet
