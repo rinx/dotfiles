@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740383926666,
+  "lastUpdate": 1740385186630,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -13845,6 +13845,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 56.379131400000006,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a0bb15b08f0388147a1df4318f7655bd980ab2e5",
+          "message": "config(nvim): fix completion keybinds\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-24T17:13:40+09:00",
+          "tree_id": "0100ac61b089cbd19d88f94895167043a59e8f56",
+          "url": "https://github.com/rinx/dotfiles/commit/a0bb15b08f0388147a1df4318f7655bd980ab2e5"
+        },
+        "date": 1740385186117,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.343363700000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.6192869,
             "unit": "ms"
           }
         ]
