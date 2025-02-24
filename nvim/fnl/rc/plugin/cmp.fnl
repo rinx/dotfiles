@@ -6,7 +6,7 @@
                              bufname (vim.api.nvim_buf_get_name 0)]
                          (and (not (= buftype :prompt))
                               (not (~= (bufname:match "org%-roam%-select$") nil)))))
-            :keymap {:preset :default}
+            :keymap {:preset :enter}
             :sources
             {:default [:lsp
                        :path
@@ -42,10 +42,15 @@
             {:documentation {:auto_show true
                              :auto_show_delay_ms 500}
              :menu {:auto_show (fn [ctx]
-                                 (or (~= ctx.mode "cmdline")
+                                 (or (~= ctx.mode :cmdline)
                                      (not (vim.tbl_contains
                                             [:/ :?]
-                                            (vim.fn.getcmdtype)))))}}
+                                            (vim.fn.getcmdtype)))))}
+             :list {:selection
+                    {:preselect (fn [ctx]
+                                  (~= ctx.mode :cmdline))
+                     :auto_insert (fn [ctx]
+                                    (~= ctx.mode :cmdline))}}}
             :snippets {:preset :mini_snippets}})
 
 ;; snippet
