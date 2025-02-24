@@ -38,6 +38,14 @@
                                  vim.bo.filetype))}
               :orgmode {:name :orgmode
                         :module :blink.compat.source}}}
+            :completion
+            {:documentation {:auto_show true
+                             :auto_show_delay_ms 500}
+             :menu {:auto_show (fn [ctx]
+                                 (or (~= ctx.mode "cmdline")
+                                     (not (vim.tbl_contains
+                                            [:/ :?]
+                                            (vim.fn.getcmdtype)))))}}
             :snippets {:preset :mini_snippets}})
 
 ;; snippet

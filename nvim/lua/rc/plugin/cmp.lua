@@ -12,5 +12,8 @@ end
 local function _3_()
   return vim.tbl_contains({"octo", "gitcommit", "markdown"}, vim.bo.filetype)
 end
-cmp.setup({enabled = _1_, keymap = {preset = "default"}, sources = {default = {"lsp", "path", "snippets", "buffer", "ripgrep", "emoji", "git", "orgmode"}, providers = {ripgrep = {module = "blink-ripgrep", name = "Ripgrep"}, emoji = {module = "blink-emoji", name = "Emoji", score_offset = 15, opts = {insert = true}, should_show_items = _2_}, git = {module = "blink-cmp-git", name = "Git", enabled = _3_}, orgmode = {name = "orgmode", module = "blink.compat.source"}}}, snippets = {preset = "mini_snippets"}})
+local function _4_(ctx)
+  return ((ctx.mode ~= "cmdline") or not vim.tbl_contains({"/", "?"}, vim.fn.getcmdtype()))
+end
+cmp.setup({enabled = _1_, keymap = {preset = "default"}, sources = {default = {"lsp", "path", "snippets", "buffer", "ripgrep", "emoji", "git", "orgmode"}, providers = {ripgrep = {module = "blink-ripgrep", name = "Ripgrep"}, emoji = {module = "blink-emoji", name = "Emoji", score_offset = 15, opts = {insert = true}, should_show_items = _2_}, git = {module = "blink-cmp-git", name = "Git", enabled = _3_}, orgmode = {name = "orgmode", module = "blink.compat.source"}}}, completion = {documentation = {auto_show = true, auto_show_delay_ms = 500}, menu = {auto_show = _4_}}, snippets = {preset = "mini_snippets"}})
 return mini_snippets.setup({snippets = {mini_snippets.gen_loader.from_lang()}, mappings = {expand = "<C-i>"}})

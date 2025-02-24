@@ -110,7 +110,8 @@
                                :event [:BufReadPost :BufAdd :BufNewFile]}
 
    ;; completion
-   :saghen/blink.cmp {:event [:InsertEnter]
+   :saghen/blink.cmp {:event [:InsertEnter
+                              :CmdlineEnter]
                       :version :v0.*
                       :dependencies [:rafamadriz/friendly-snippets
                                      :echasnovski/mini.snippets
