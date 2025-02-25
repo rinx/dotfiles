@@ -51,6 +51,9 @@
                                   (~= ctx.mode :cmdline))
                      :auto_insert (fn [ctx]
                                     (~= ctx.mode :cmdline))}}}
+            :cmdline {:keymap {:<C-n> [:select_next :fallback]
+                               :<C-p> [:select_prev :fallback]
+                               :<CR> [:accept :fallback]}}
             :snippets {:preset :mini_snippets}})
 
 ;; snippet
