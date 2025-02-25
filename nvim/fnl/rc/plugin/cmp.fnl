@@ -14,8 +14,8 @@
                        :buffer
                        :ripgrep
                        :emoji
-                       :git]
-             :per_filetype [:orgmode]
+                       :git
+                       :orgmode]
              :providers
              {:ripgrep {:module :blink-ripgrep
                         :name :Ripgrep}
