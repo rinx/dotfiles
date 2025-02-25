@@ -14,8 +14,8 @@
                        :buffer
                        :ripgrep
                        :emoji
-                       :git
-                       :orgmode]
+                       :git]
+             :per_filetype [:orgmode]
              :providers
              {:ripgrep {:module :blink-ripgrep
                         :name :Ripgrep}
@@ -37,7 +37,8 @@
                                   :markdown]
                                  vim.bo.filetype))}
               :orgmode {:name :orgmode
-                        :module :blink.compat.source}}}
+                        :module :orgmode.org.autocompletion.blink
+                        :fallbacks [:buffer]}}}
             :completion
             {:documentation {:auto_show true
                              :auto_show_delay_ms 500}

@@ -119,8 +119,6 @@
                                      :moyiz/blink-emoji.nvim
                                      :Kaiser-Yang/blink-cmp-git]
                       :config (mod :cmp)}
-   :saghen/blink.compat {:version :*
-                         :lazy true}
 
    ;; dap
    :mfussenegger/nvim-dap {:config (mod :dap)
