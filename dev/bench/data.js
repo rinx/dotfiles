@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740529626495,
+  "lastUpdate": 1740530154482,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14015,6 +14015,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 57.3155487,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d3fe26b6afa3e92c8b9195d54da8b4280a487c10",
+          "message": "config(nvim): enable snacks.nvim image support\n\ninstall imagemagick\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-26T09:29:47+09:00",
+          "tree_id": "b991272b7f08a0902010c34f8b30e61f72e5cf13",
+          "url": "https://github.com/rinx/dotfiles/commit/d3fe26b6afa3e92c8b9195d54da8b4280a487c10"
+        },
+        "date": 1740530153919,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.8066133,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 53.7605956,
             "unit": "ms"
           }
         ]
