@@ -172,23 +172,30 @@
     :deadline_warning_reminder_time [0 5 10 15]
     :reminder_time [0 5 10 15]
     :notifier (fn [tasks]
-                (let [utils (require :orgmode.utils)]
-                  (local result [])
-                  (each [_ task (ipairs tasks)]
-                    (utils.concat
-                      result
-                      [(string.format "# %s (%s)" task.category task.humanized_duration)
-                       (string.format "%s %s"
-                                      (string.rep :* task.level)
-                                      (if task.todo
-                                        (string.format "%s %s" task.todo task.title)
-                                        task.title))
-                       (string.format "%s: <%s>" task.type (task.time:to_string))]))
-                  (when (not (vim.tbl_isempty result))
+                (each [_ task (ipairs tasks)]
+                  (let [id (string.format
+                             "%s:%s"
+                             (task.original_time:to_string)
+                             task.title)]
                     (Snacks.notifier
-                      (table.concat result "\n")
+                      (table.concat
+                        [(string.format
+                           "# %s (%s)"
+                           task.category
+                           task.humanized_duration)
+                         (string.format
+                           "%s %s"
+                           (string.rep :* task.level)
+                           (if task.todo
+                               (string.format "%s %s" task.todo task.title)
+                               task.title))
+                         (string.format
+                           "%s: <%s>"
+                           task.type
+                           (task.time:to_string))] "\n")
                       :info
-                      {:timeout false}))))}
+                      {:id id
+                       :timeout false}))))}
    :ui
    {:menu
     {:handler (fn [data]
@@ -307,7 +314,10 @@
     (-> (icollect [_ item (ipairs items)]
          (let [entry (view:_build_line item agenda-day)
                line (entry:compile)]
-           (string.gsub line.content "^(%s+)([^%s]+):(%s+)" "")))
+           (when (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
+             (-> line.content
+                 (string.gsub "^(%s+)([^%s]+):(%s+)" "")
+                 (string.gsub "Scheduled:%s" "")))))
         (table.concat "\n"))))
 {: build_todays_agenda}
 
