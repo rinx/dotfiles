@@ -10,6 +10,7 @@
    :input {}
    :notifier
    {:enabled true}
+   :picker {}
    :quickfile
    {:enabled true}
    :terminal
