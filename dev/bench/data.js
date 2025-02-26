@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740530154482,
+  "lastUpdate": 1740572435157,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14049,6 +14049,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 53.7605956,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c0737bd405ed8a6e338c9bc7e374f52ec8125856",
+          "message": "config(nvim): use snacks instead of fidget\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-26T21:14:32+09:00",
+          "tree_id": "c0fc12b6012925bc9187bf7db6584cc7bb74f0b2",
+          "url": "https://github.com/rinx/dotfiles/commit/c0737bd405ed8a6e338c9bc7e374f52ec8125856"
+        },
+        "date": 1740572434578,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.365265700000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 55.673014400000014,
             "unit": "ms"
           }
         ]
