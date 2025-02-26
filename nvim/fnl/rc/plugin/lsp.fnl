@@ -54,6 +54,27 @@
                    :handler_opts
                    {:border :single}
                    :decorator {"`" "`"}})))})
+(augroup!
+  lsp-progress
+  {:events [:LspProgress]
+   :callback (fn [ev]
+               (let [client (vim.lsp.get_client_by_id ev.data.client_id)]
+                 (vim.notify
+                   (vim.lsp.status)
+                   :info
+                   {:id :lsp_progress
+                    :title client.name
+                    :opts (fn [notif]
+                            (set notif.icon
+                                 (if (= ev.data.params.value.kind :end)
+                                     icontab.check
+                                     (core.get
+                                       icon.spinners
+                                       (core.inc
+                                         (math.floor
+                                           (% (/ (vim.uv.hrtime)
+                                                 (* 1e6 80))
+                                              (core.count icon.spinners))))))))})))})
 
 (local default-options {})
 

@@ -121,13 +121,6 @@
      {:ctermfg :blue
       :guifg colors.color10})
 
-(hi! :FidgetTitle
-     {:ctermfg :green
-      :guifg colors.info})
-(hi! :FidgetTask
-     {:ctermfg :blue
-      :guifg colors.hint})
-
 (hi! :Conceal
      {:ctermfg :white
       :guifg colors.color4})

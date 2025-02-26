@@ -94,8 +94,6 @@
                            :dependencies [:ray-x/lsp_signature.nvim
                                           :b0o/schemastore.nvim]
                            :event [:BufReadPre]}
-   :j-hui/fidget.nvim {:config (mod :fidget)
-                       :event [:BufReadPost :BufAdd :BufNewFile]}
    :kosayoda/nvim-lightbulb {:config (mod :lightbulb)
                              :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/trouble.nvim {:config (mod :trouble)
