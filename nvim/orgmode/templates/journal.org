@@ -1,5 +1,5 @@
 **** %?
+     SCHEDULED: %T
      :PROPERTIES:
      :CAPTURED: %U
-     :SCHEDULED: %T
      :END:

@@ -165,6 +165,30 @@
    :win_split_mode :auto
    :org_highlight_latex_and_related :entities
    :org_hide_emphasis_markers true
+   :notifications
+   {:enabled true
+    :cron_enabled false
+    :repeater_reminder_time [0 5 10 15]
+    :deadline_warning_reminder_time [0 5 10 15]
+    :reminder_time [0 5 10 15]
+    :notifier (fn [tasks]
+                (let [utils (require :orgmode.utils)]
+                  (local result [])
+                  (each [_ task (ipairs tasks)]
+                    (utils.concat
+                      result
+                      [(string.format "# %s (%s)" task.category task.humanized_duration)
+                       (string.format "%s %s"
+                                      (string.rep :* task.level)
+                                      (if task.todo
+                                        (string.format "%s %s" task.todo task.title)
+                                        task.title))
+                       (string.format "%s: <%s>" task.type (task.time:to_string))]))
+                  (when (not (vim.tbl_isempty result))
+                    (Snacks.notifier
+                      (table.concat result "\n")
+                      :info
+                      {:timeout false}))))}
    :ui
    {:menu
     {:handler (fn [data]
