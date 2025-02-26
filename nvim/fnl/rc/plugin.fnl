@@ -88,7 +88,6 @@
                              :config (mod :hypersonic)}
    :notomo/waitevent.nvim {:config (mod :waitevent)}
 
-   ;; :stevearc/profile.nvim {:config (mod :profile)}
 
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)

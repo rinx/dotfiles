@@ -5,6 +5,8 @@
 (snacks.setup
   {:bigfile
    {:enabled true}
+   :image
+   {:enabled true}
    :notifier
    {:enabled true}
    :quickfile

@@ -18,6 +18,7 @@
   ["cd %:p:h"
    "lua Snacks.git.blame_line()"
    "lua Snacks.gitbrowse()"
+   "lua Snacks.image.hover()"
    "lua Snacks.lazygit()"
    "lua Snacks.notifier.show_history()"
    "lua Snacks.terminal.toggle()"

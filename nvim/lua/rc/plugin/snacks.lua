@@ -15,7 +15,7 @@ end
 local function _4_(self)
   return vim.cmd("stopinsert")
 end
-snacks.setup({bigfile = {enabled = true}, notifier = {enabled = true}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _1_, term_normal = {"<esc>", _4_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
+snacks.setup({bigfile = {enabled = true}, image = {enabled = true}, notifier = {enabled = true}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _1_, term_normal = {"<esc>", _4_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
 local function map__3e(toggle, key)
   return toggle:map(key)
 end

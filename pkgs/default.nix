@@ -47,6 +47,7 @@
       git
       gitsign
       gnumake
+      imagemagick
       jq
       lazygit
       neovim-unwrapped
