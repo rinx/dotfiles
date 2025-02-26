@@ -197,7 +197,8 @@
                       {:id id
                        :timeout false}))))}
    :ui
-   {:menu
+   {:input {:use_vim_ui true}
+    :menu
     {:handler (fn [data]
                 (let [m (modern-menu:new
                           {:window

@@ -7,6 +7,7 @@
    {:enabled true}
    :image
    {:enabled true}
+   :input {}
    :notifier
    {:enabled true}
    :quickfile
