@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740665499530,
+  "lastUpdate": 1740665644106,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14185,6 +14185,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 56.950303100000006,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "246b0b76e9c1d3366eac19191232851881bae152",
+          "message": "config(nvim): add notifications source to commands list\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-27T23:07:59+09:00",
+          "tree_id": "db16887d98868af2f7b14574e3d1dcfa9e9dcff4",
+          "url": "https://github.com/rinx/dotfiles/commit/246b0b76e9c1d3366eac19191232851881bae152"
+        },
+        "date": 1740665643343,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.7579562,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 56.3517001,
             "unit": "ms"
           }
         ]
