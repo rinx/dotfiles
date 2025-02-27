@@ -21,6 +21,7 @@
    "lua Snacks.lazygit()"
    "lua Snacks.notifier.hide()"
    "lua Snacks.notifier.show_history()"
+   "lua Snacks.picker.notifications()"
    "lua Snacks.terminal.toggle()"
    "lua Snacks.terminal.open()"
    :ConjureConnect
