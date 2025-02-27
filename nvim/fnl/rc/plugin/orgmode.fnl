@@ -43,8 +43,6 @@
   {:org_agenda_files [inbox
                       (->path :journal/*.org)
                       (->path :notes/**/*.org)]
-   :org_agenda_skip_scheduled_if_done true
-   :org_agenda_skip_deadline_if_done true
    :org_default_notes_file inbox
    :org_archive_location (->path "archive/%s_archive::")
    :org_todo_keywords [:TODO
