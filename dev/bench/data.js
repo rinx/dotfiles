@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740665644106,
+  "lastUpdate": 1740666418462,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14219,6 +14219,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 56.3517001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "83b4e3ca47cd8beaca0c280395150304984f921e",
+          "message": "config(nvim): add orgmode agenda skip flags\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-27T23:20:36+09:00",
+          "tree_id": "e42739ec6cc49375871d7cbd4aafebb5eced1fea",
+          "url": "https://github.com/rinx/dotfiles/commit/83b4e3ca47cd8beaca0c280395150304984f921e"
+        },
+        "date": 1740666417261,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.852255000000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 57.446584699999995,
             "unit": "ms"
           }
         ]
