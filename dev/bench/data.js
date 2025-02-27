@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740577844247,
+  "lastUpdate": 1740656719510,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14117,6 +14117,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 56.464665000000004,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "65b1384db0bc5519f39d158656b722fb25adaab7",
+          "message": "config(nvim): update daily report function not to contain schedules on\nother days\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-27T20:37:41+09:00",
+          "tree_id": "1ae62744ce522248a4231920827c84bd752ee4c0",
+          "url": "https://github.com/rinx/dotfiles/commit/65b1384db0bc5519f39d158656b722fb25adaab7"
+        },
+        "date": 1740656718325,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.1628933,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 54.59110310000001,
             "unit": "ms"
           }
         ]
