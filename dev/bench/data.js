@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740666418462,
+  "lastUpdate": 1740666656066,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14253,6 +14253,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 57.446584699999995,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "141c7c7bf7702ec9a001494e66a561f351f1a880",
+          "message": "config(nvim): add todo keyword to journal template\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-02-27T23:24:35+09:00",
+          "tree_id": "88708ab95834e34c14a19eb5ae3fd3d9b0a8d5d2",
+          "url": "https://github.com/rinx/dotfiles/commit/141c7c7bf7702ec9a001494e66a561f351f1a880"
+        },
+        "date": 1740666654826,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.053035799999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 59.075318200000005,
             "unit": "ms"
           }
         ]
