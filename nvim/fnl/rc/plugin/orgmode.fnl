@@ -319,7 +319,7 @@
                       entry.metadata.agenda_item.is_same_day)
              (-> line.content
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
-                 (string.gsub "Scheduled:%s" "")))))
+                 (string.gsub "Scheduled:%s(%u+)%s" "")))))
         (table.concat "\n"))))
 {: build_todays_agenda}
 

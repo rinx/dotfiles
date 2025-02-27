@@ -203,7 +203,7 @@ local function build_todays_agenda()
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
         if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day) then
-          val_23_auto = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s", "")
+          val_23_auto = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
         else
           val_23_auto = nil
         end
