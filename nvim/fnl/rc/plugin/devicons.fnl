@@ -7,10 +7,7 @@
 
 (devicon.setup
   {:override
-   {:fnl {:icon icontab.lua
-          :color :#c2d94c
-          :name :Fennel}
-    :hy {:icon icontab.python
+   {:hy {:icon icontab.python
          :color :#519aba
          :name :Hy}
     :Makefile {:icon icontab.large-m

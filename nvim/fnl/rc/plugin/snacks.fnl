@@ -48,3 +48,8 @@
       ":<C-u>lua Snacks.terminal.toggle()<CR>"
       {:silent true
        :desc "Open/Close terminal"})
+(map! [:n]
+      :<leader>t
+      ":<C-u>lua Snacks.picker.explorer()<CR>"
+      {:silent true
+       :desc "Open/Close explorer"})

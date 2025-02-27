@@ -64,8 +64,6 @@
                            :event [:BufEnter]}
    :akinsho/bufferline.nvim {:config (mod :bufferline)
                              :event [:BufEnter]}
-   :kyazdani42/nvim-tree.lua {:event [:VeryLazy]
-                              :config (mod :nvim-tree)}
    :lewis6991/gitsigns.nvim {:event [:VeryLazy]
                              :config (mod :gitsigns)}
    :norcalli/nvim-colorizer.lua {:config (mod :colorizer)
