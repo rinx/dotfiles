@@ -315,7 +315,8 @@
     (-> (icollect [_ item (ipairs items)]
          (let [entry (view:_build_line item agenda-day)
                line (entry:compile)]
-           (when (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
+           (when (and (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
+                      entry.metadata.agenda_item.is_same_day)
              (-> line.content
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
                  (string.gsub "Scheduled:%s" "")))))
