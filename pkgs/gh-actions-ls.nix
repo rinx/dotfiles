@@ -13,6 +13,35 @@
     rev = "0287d3081d7b74fef88824ca3bd6e9a44323a54d";
     hash = "sha256-ZWO5G33FXGO57Zca5B5i8zaE8eFbBCrEtmwwR3m1Px4=";
   };
+
+  # NOTE: use bun-baseline because the normal bun cannot run on non-avx machines
+  # See https://github.com/NixOS/nixpkgs/pull/313760
+  bunBaseline = let
+    bunVersion = "1.2.4";
+  in pkgs.bun.overrideAttrs rec {
+    version = bunVersion;
+    passthru.sources = {
+      "x86_64-linux" = pkgs.fetchurl {
+        url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-linux-x64-baseline.zip";
+        hash = "sha256-4D6yVZphrwz7es8+WSctVWE+8UB48Vb3siUSRWyqD4s=";
+      };
+      "x86_64-darwin" = pkgs.fetchurl {
+        url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-darwin-x64.zip";
+        hash = "sha256-0qTvLK5/N8FkFeenZopuhMFdiLnOj/wfu0T0P3fTC8k=";
+      };
+      # NOTE: use normal bun version for aarch64
+      "aarch64-darwin" = pkgs.fetchurl {
+        url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-darwin-aarch64.zip";
+        hash = "sha256-ErutjiXBjC9GDvb0F39AgbbsSo6zhRzpDEvDor/xRbI=";
+      };
+      "aarch64-linux" = pkgs.fetchurl {
+        url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-linux-aarch64.zip";
+        hash = "sha256-vqL/H5t0elgT9fSk0Op7Td69eP9WPY2XVo1a8sraTwM=";
+      };
+    };
+    src = passthru.sources.${pkgs.system};
+  };
+
   node_modules = stdenv.mkDerivation {
     inherit src version;
 
@@ -20,7 +49,7 @@
     impureEnvVars = lib.fetchers.proxyImpureEnvVars
       ++ [ "GIT_PROXY_COMMAND" "SOCKS_SERVER" ];
     nativeBuildInputs = [
-      pkgs.bun
+      bunBaseline
     ];
     dontConfigure = true;
     buildPhase = ''
@@ -47,7 +76,7 @@ in stdenv.mkDerivation {
   inherit src;
 
   nativeBuildInputs = [
-    pkgs.bun
+    bunBaseline
   ];
 
   buildInputs = [
@@ -69,6 +98,7 @@ in stdenv.mkDerivation {
     runHook preInstall
 
     install -D ./bin/gh-actions-language-server $out/bin/gh-actions-language-server
+    cp -R ./node_modules $out/node_modules
 
     runHook postInstall
   '';
