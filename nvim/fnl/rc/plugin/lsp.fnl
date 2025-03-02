@@ -174,6 +174,7 @@
     default-options
     {:root_dir (lsputil.root_pattern ".nfnl.fnl")}))
 (lsp.fortls.setup (core.merge default-options {}))
+(lsp.gh_actions_ls.setup (core.merge default-options {}))
 (lsp.gleam.setup (core.merge default-options {}))
 (lsp.gopls.setup (core.merge
                    default-options
