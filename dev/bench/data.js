@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740973108412,
+  "lastUpdate": 1740998811061,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14423,6 +14423,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 131.4319255,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "bc4456e3d62814b55b592f4bb15c1849d2f89ada",
+          "message": "config(nix): add gh-actions-language-server (#119)\n\n* config(nix): add gh-actions-language-server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* config(nix): fix sha256 hash for aarch64-darwin\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-03T19:36:08+09:00",
+          "tree_id": "0aff07a1cafdc0a11f56c4d0c19d7448dab5b35d",
+          "url": "https://github.com/rinx/dotfiles/commit/bc4456e3d62814b55b592f4bb15c1849d2f89ada"
+        },
+        "date": 1740998810481,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.8402358,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 137.4205922,
             "unit": "ms"
           }
         ]
