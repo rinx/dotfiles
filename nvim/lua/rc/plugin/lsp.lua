@@ -70,6 +70,7 @@ lsp.bashls.setup(core.merge(default_options, {settings = {bashIde = {shfmt = {ca
 lsp.buf_ls.setup(core.merge(default_options, {}))
 lsp.clojure_lsp.setup(core.merge(default_options, {}))
 lsp.cssls.setup(core.merge(default_options, {}))
+lsp.cue.setup(core.merge(default_options, {}))
 lsp.dagger.setup(core.merge(default_options, {}))
 lsp.denols.setup(core.merge(default_options, {init_options = {lint = true, unstable = true, suggest = {imports = {hosts = {["https://deno.land"] = true, ["https://cdn.nest.land"] = true, ["https://crux.land"] = true}}}}, root_dir = lsputil.root_pattern("deno.json", "deno.jsonc")}))
 lsp.docker_compose_language_service.setup(core.merge(default_options, {}))

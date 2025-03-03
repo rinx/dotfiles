@@ -89,6 +89,7 @@
 (lsp.buf_ls.setup (core.merge default-options {}))
 (lsp.clojure_lsp.setup (core.merge default-options {}))
 (lsp.cssls.setup (core.merge default-options {}))
+(lsp.cue.setup (core.merge default-options {}))
 (lsp.dagger.setup (core.merge default-options {}))
 (lsp.denols.setup (core.merge
                     default-options
