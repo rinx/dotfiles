@@ -21,6 +21,7 @@
   in pkgs.bun.overrideAttrs rec {
     version = bunVersion;
     passthru.sources = {
+      # NOTE: use bun-baseline version only for x86 linux
       "x86_64-linux" = pkgs.fetchurl {
         url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-linux-x64-baseline.zip";
         hash = "sha256-4D6yVZphrwz7es8+WSctVWE+8UB48Vb3siUSRWyqD4s=";
@@ -29,10 +30,9 @@
         url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-darwin-x64.zip";
         hash = "sha256-0qTvLK5/N8FkFeenZopuhMFdiLnOj/wfu0T0P3fTC8k=";
       };
-      # NOTE: use normal bun version for aarch64
       "aarch64-darwin" = pkgs.fetchurl {
         url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-darwin-aarch64.zip";
-        hash = "sha256-ErutjiXBjC9GDvb0F39AgbbsSo6zhRzpDEvDor/xRbI=";
+        hash = "sha256-/UcChwu7kRg2RppwOu58HH26/HzY/FgEKbot2hi7WqE=";
       };
       "aarch64-linux" = pkgs.fetchurl {
         url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-linux-aarch64.zip";
