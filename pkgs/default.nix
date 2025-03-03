@@ -2,8 +2,12 @@
   self,
   pkgs,
   flake-inputs,
-}: let 
+}: let
     falco = pkgs.callPackage ./falco.nix {};
+
+    gh-actions-language-server = pkgs.callPackage ./gh-actions-ls.nix {
+      inherit pkgs;
+    };
 
     google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents [
       pkgs.google-cloud-sdk.components.beta
@@ -20,6 +24,7 @@
 
     custom-pkgs = [
       falco
+      gh-actions-language-server
       google-cloud-sdk-with-components
       moralerspace-nerdfont
       rq
