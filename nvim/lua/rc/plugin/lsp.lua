@@ -11,7 +11,7 @@ local icontab = icon.tab
 local function setup_codelens_refresh(client, bufnr)
   local ok_3f, supported_3f = nil, nil
   local function _2_()
-    return client.supports_method("textDocument/codeLens")
+    return client:supports_method("textDocument/codeLens")
   end
   ok_3f, supported_3f = pcall(_2_)
   if (ok_3f and supported_3f) then
@@ -135,8 +135,4 @@ end
 vim.keymap.set("n", "<leader>rn", ":<C-u>lua vim.lsp.buf.rename()<CR>", {silent = true})
 vim.keymap.set("n", "<Leader>a", ":<C-u>lua vim.lsp.buf.code_action()<CR>", {silent = true})
 vim.keymap.set("x", "<Leader>a", ":<C-u>lua vim.lsp.buf.range_code_action()<CR>", {silent = true})
-vim.diagnostic.config({virtual_lines = true, underline = true, signs = true, virtual_text = false})
-vim.fn.sign_define("DiagnosticSignError", {text = icontab.bug, texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = icontab["exclam-circle"], texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo", {text = icontab["info-circle"], texthl = "DiagnosticSignInfo"})
-return vim.fn.sign_define("DiagnosticSignHint", {text = icontab.leaf, texthl = "DiagnosticSignHint"})
+return vim.diagnostic.config({virtual_lines = true, underline = true, signs = {text = {[vim.diagnostic.severity.ERROR] = icontab.bug, [vim.diagnostic.severity.WARN] = icontab["exclam-circle"], [vim.diagnostic.severity.INFO] = icontab["info-circle"], [vim.diagnostic.severity.HINT] = icontab.leaf}}, virtual_text = false})

@@ -117,7 +117,7 @@ end
 scrollbar_component = {static = {sbar = {"\240\159\173\182", "\240\159\173\183", "\240\159\173\184", "\240\159\173\185", "\240\159\173\186", "\240\159\173\187"}}, provider = _21_, hl = {fg = colors.hint, bg = colors.color2}}
 local lsp_component
 local function _22_()
-  local clients = core.count(vim.lsp.get_active_clients({bufnr = 0}))
+  local clients = core.count(vim.lsp.get_clients({bufnr = 0}))
   if (clients >= 2) then
     return (icontab.compas .. clients)
   else

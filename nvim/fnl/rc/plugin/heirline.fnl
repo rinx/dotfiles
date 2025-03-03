@@ -158,7 +158,7 @@
        {:condition conditions.lsp_attached
         :update [:LspAttach :LspDetach]
         :provider (fn []
-                    (let [clients (-> (vim.lsp.get_active_clients {:bufnr 0})
+                    (let [clients (-> (vim.lsp.get_clients {:bufnr 0})
                                       (core.count))]
                       (if (>= clients 2)
                           (.. icontab.compas clients)

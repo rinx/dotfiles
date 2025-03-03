@@ -15,7 +15,7 @@
   (let [(ok? supported?)
         (pcall
           (fn []
-            (client.supports_method :textDocument/codeLens)))]
+            (client:supports_method :textDocument/codeLens)))]
     (when (and ok? supported?)
       (augroup!
         init-lsp-codelens
@@ -320,17 +320,7 @@
   {:virtual_text false
    :virtual_lines true
    :underline true
-   :signs true})
-
-(vim.fn.sign_define :DiagnosticSignError
-                    {:text icontab.bug
-                     :texthl :DiagnosticSignError})
-(vim.fn.sign_define :DiagnosticSignWarn
-                    {:text icontab.exclam-circle
-                     :texthl :DiagnosticSignWarn})
-(vim.fn.sign_define :DiagnosticSignInfo
-                    {:text icontab.info-circle
-                     :texthl :DiagnosticSignInfo})
-(vim.fn.sign_define :DiagnosticSignHint
-                    {:text icontab.leaf
-                     :texthl :DiagnosticSignHint})
+   :signs {:text {vim.diagnostic.severity.ERROR icontab.bug
+                  vim.diagnostic.severity.WARN icontab.exclam-circle
+                  vim.diagnostic.severity.INFO icontab.info-circle
+                  vim.diagnostic.severity.HINT icontab.leaf}}})
