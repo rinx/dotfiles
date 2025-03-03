@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1740998811061,
+  "lastUpdate": 1741005302612,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14457,6 +14457,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 137.4205922,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "85b24825a5d8142a055d504059449a642dce869f",
+          "message": "config(nvim): remove several deprecated functions\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-03T21:23:24+09:00",
+          "tree_id": "03e75745764ced9b594be060bcbec95c3a098134",
+          "url": "https://github.com/rinx/dotfiles/commit/85b24825a5d8142a055d504059449a642dce869f"
+        },
+        "date": 1741005302015,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.9206304,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 142.99199679999998,
             "unit": "ms"
           }
         ]
