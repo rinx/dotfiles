@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1741008461087,
+  "lastUpdate": 1741082532040,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14559,6 +14559,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 123.845361,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b155ffdfaea347c384ca8478d9f88969d1619a50",
+          "message": "config(nvim): add copilot plugins\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-04T18:50:58+09:00",
+          "tree_id": "c2ed1406e0ab7fc5128be72ec6217876ae3c21cc",
+          "url": "https://github.com/rinx/dotfiles/commit/b155ffdfaea347c384ca8478d9f88969d1619a50"
+        },
+        "date": 1741082531445,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.0355162,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 138.6126082,
             "unit": "ms"
           }
         ]
