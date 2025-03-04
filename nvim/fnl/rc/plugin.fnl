@@ -89,10 +89,11 @@
 
    ;; copilot
    :zbirenbaum/copilot.lua {:config (mod :copilot)
-                            :event [:InsertEnter]}
+                            :event [:VeryLazy]}
    :CopilotC-Nvim/CopilotChat.nvim {:build "make tiktoken"
                                     :config (mod :copilot-chat)
-                                    :event [:InsertEnter]}
+                                    :cmd [:CopilotChatOpen
+                                          :CopilotChatPrompts]}
 
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)
