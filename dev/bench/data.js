@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1741082532040,
+  "lastUpdate": 1741091095686,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14593,6 +14593,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 138.6126082,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d3fce9dfe2a803a26f64f620117f15a24078a012",
+          "message": "feat(copilot): add CopilotChat plugin integration\n\n- Added CopilotChat.nvim plugin to handle chat-based interactions.\n- Configured prompts for various actions like explain, review, fix,\n  optimize, docs, and tests.\n- Updated Telescope commands to include CopilotChat actions.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-04T21:13:03+09:00",
+          "tree_id": "bd385244e2331f2287bda710b17c52216bbc8b6d",
+          "url": "https://github.com/rinx/dotfiles/commit/d3fce9dfe2a803a26f64f620117f15a24078a012"
+        },
+        "date": 1741091095096,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.576229599999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 126.78543870000001,
             "unit": "ms"
           }
         ]
