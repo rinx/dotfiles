@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1741091095686,
+  "lastUpdate": 1741091869236,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14627,6 +14627,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 126.78543870000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "992344c04757e9df3d74ebcb91387db59fb8b325",
+          "message": "config(nvim): update lazy loading for copilot plugins\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-04T21:26:04+09:00",
+          "tree_id": "2930b1d23940eb4cc6beb7025af384dd746497fc",
+          "url": "https://github.com/rinx/dotfiles/commit/992344c04757e9df3d74ebcb91387db59fb8b325"
+        },
+        "date": 1741091868502,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.310745500000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 132.99965600000002,
             "unit": "ms"
           }
         ]
