@@ -86,7 +86,8 @@
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
                              :config (mod :hypersonic)}
    :notomo/waitevent.nvim {:config (mod :waitevent)}
-
+   :zbirenbaum/copilot.lua {:config (mod :copilot)
+                            :event [:InsertEnter]}
 
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)
@@ -113,7 +114,8 @@
                                      :echasnovski/mini.snippets
                                      :mikavilpas/blink-ripgrep.nvim
                                      :moyiz/blink-emoji.nvim
-                                     :Kaiser-Yang/blink-cmp-git]
+                                     :Kaiser-Yang/blink-cmp-git
+                                     :giuxtaposition/blink-cmp-copilot]
                       :config (mod :cmp)}
 
    ;; dap

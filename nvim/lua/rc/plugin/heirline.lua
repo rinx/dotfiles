@@ -296,9 +296,31 @@ local function _61_()
   return (icontab.recording .. "[" .. vim.fn.reg_recording() .. "]" .. space)
 end
 macrorec_component = {condition = _60_, provider = _61_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
+local copilot_component
+local function _62_()
+  return (core.get(package.loaded, "copilot") ~= nil)
+end
+local function _63_()
+  local copilot = require("copilot.client")
+  local api = require("copilot.api")
+  if (not copilot.buf_is_attached(vim.api.nvim_get_current_buf()) or copilot.is_disabled()) then
+    return icontab["copilot-disabled"]
+  else
+    if (api.status.data.status == "Warning") then
+      return icontab["copilot-warning"]
+    else
+      if vim.b.copilot_suggestion_auto_trigger then
+        return icontab["copilot-sleep"]
+      else
+        return icontab["copilot-enabled"]
+      end
+    end
+  end
+end
+copilot_component = {condition = _62_, provider = _63_, hl = {fg = colors.hint, bg = colors.color2}}
 local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, git_component, skkeleton_component, denops_component, spell_component, paste_component, ruler_component, scrollbar_component}
-local standard_winbar = {cwd_component, align_component, dap_component, align_component, diagnostics_component, lsp_component}
-local function _62_(args)
+local standard_winbar = {cwd_component, align_component, dap_component, align_component, copilot_component, diagnostics_component, lsp_component}
+local function _67_(args)
   return conditions.buffer_matches({buftype = {"nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$", "^NvimTree$"}})
 end
-return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _62_}})
+return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _67_}})

@@ -15,7 +15,8 @@
                        :ripgrep
                        :emoji
                        :git
-                       :orgmode]
+                       :orgmode
+                       :copilot]
              :providers
              {:ripgrep {:module :blink-ripgrep
                         :name :Ripgrep}
@@ -38,7 +39,11 @@
                                  vim.bo.filetype))}
               :orgmode {:name :orgmode
                         :module :orgmode.org.autocompletion.blink
-                        :fallbacks [:buffer]}}}
+                        :fallbacks [:buffer]}
+              :copilot {:name :copilot
+                        :module :blink-cmp-copilot
+                        :score_offset 100
+                        :async true}}}
             :completion
             {:documentation {:auto_show true
                              :auto_show_delay_ms 500}
