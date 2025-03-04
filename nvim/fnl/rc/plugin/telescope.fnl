@@ -28,6 +28,8 @@
    :ConjureLogSplit
    :ConjureLogVSplit
    :ConjureCljDebugInit
+   :CopilotChatOpen
+   :CopilotChatPrompts
    :DapContinue
    :DapListBreakpoints
    :DapStepInto

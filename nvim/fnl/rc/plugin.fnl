@@ -86,8 +86,13 @@
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
                              :config (mod :hypersonic)}
    :notomo/waitevent.nvim {:config (mod :waitevent)}
+
+   ;; copilot
    :zbirenbaum/copilot.lua {:config (mod :copilot)
                             :event [:InsertEnter]}
+   :CopilotC-Nvim/CopilotChat.nvim {:build "make tiktoken"
+                                    :config (mod :copilot-chat)
+                                    :event [:InsertEnter]}
 
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)
