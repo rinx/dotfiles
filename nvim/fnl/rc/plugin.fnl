@@ -141,8 +141,6 @@
                                    :dependencies [:nvim-telescope/telescope-dap.nvim
                                                   :cljoly/telescope-repo.nvim
                                                   :nvim-orgmode/telescope-orgmode.nvim]}
-   :havi/telescope-toggleterm.nvim {:url "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
-                                    :event [:VeryLazy]}
 
    ;; denops.vim
    :vim-denops/denops.vim {:event [:VimEnter]}
