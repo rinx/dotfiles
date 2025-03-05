@@ -15,5 +15,5 @@ local function _2_(state)
     return command.disable()
   end
 end
-toggle = Snacks.toggle.new({id = "copilot", name = "Toggle Copilot", get = _1_, set = _2_})
+toggle = Snacks.toggle.new({id = "copilot", name = "Copilot", get = _1_, set = _2_})
 return toggle:map("<leader>c")

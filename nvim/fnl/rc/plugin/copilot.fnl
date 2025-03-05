@@ -11,7 +11,7 @@
 
 (let [toggle (Snacks.toggle.new
                {:id :copilot
-                :name "Toggle Copilot"
+                :name :Copilot
                 :get (fn []
                        (not (client.is_disabled)))
                 :set (fn [state]
