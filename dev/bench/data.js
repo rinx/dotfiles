@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1741091869236,
+  "lastUpdate": 1741135517074,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14661,6 +14661,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 132.99965600000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d5ab3f1d565148e1c5dcbe77074833d04e237e88",
+          "message": "config(nvim): remove telescope-toggleterm\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-05T09:33:54+09:00",
+          "tree_id": "50a7556ffb76c4d09524e11b72d1596e44288183",
+          "url": "https://github.com/rinx/dotfiles/commit/d5ab3f1d565148e1c5dcbe77074833d04e237e88"
+        },
+        "date": 1741135515825,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.5215208,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 119.15108769999999,
             "unit": "ms"
           }
         ]
