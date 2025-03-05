@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1741135517074,
+  "lastUpdate": 1741169496428,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14695,6 +14695,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 119.15108769999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "0a8ae17833a9c0b2552448239b2ba7ce38c32d9a",
+          "message": "config(nvim): fix name of toggle copilot option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-05T19:00:01+09:00",
+          "tree_id": "f54be8903e701ac0d16353f9ec3c452325b370e7",
+          "url": "https://github.com/rinx/dotfiles/commit/0a8ae17833a9c0b2552448239b2ba7ce38c32d9a"
+        },
+        "date": 1741169495656,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.006984499999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 133.7003845,
             "unit": "ms"
           }
         ]
