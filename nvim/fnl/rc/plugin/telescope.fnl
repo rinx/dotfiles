@@ -2,7 +2,6 @@
 
 (local telescope (require :telescope))
 (local actions (require :telescope.actions))
-(local builtin (require :telescope.builtin))
 (local finders (require :telescope.finders))
 (local pickers (require :telescope.pickers))
 (local previewers (require :telescope.previewers))
@@ -140,19 +139,7 @@
     (p:find)))
 (vim.api.nvim_create_user_command :TelescopeRoamNodesByTag telescope-roam-nodes-by-tag {:nargs 1})
 
-(fn telescope-migemo-grep []
-  (let [query (vim.fn.input "Migemo Grep: ")
-        tb (require :telescope.builtin)]
-    (when (and query (not (= query "")))
-      (tb.grep_string
-        {:prompt_title (.. "Grep for: " query)
-         :use_regex true
-         :search (vim.fn.kensaku#query query {:rxop vim.g.kensaku#rxop#javascript})}))))
-(vim.api.nvim_create_user_command :TelescopeMigemoGrep telescope-migemo-grep {})
-
 (map! [:n] ",t" ":<C-u>Telescope filetypes<CR>" {:silent true
                                                  :desc "Select filetype via telescope"})
 (map! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" {:silent true
                                                     :desc "Select action via telescope"})
-(map! [:n] ",m" ":<C-u>TelescopeMigemoGrep<CR>" {:silent true
-                                                 :desc "Migemo grep and filter result by telescope"})

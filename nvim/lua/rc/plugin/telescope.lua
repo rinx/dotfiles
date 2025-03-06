@@ -3,7 +3,6 @@ local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local telescope = require("telescope")
 local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
 local finders = require("telescope.finders")
 local pickers = require("telescope.pickers")
 local previewers = require("telescope.previewers")
@@ -44,16 +43,5 @@ local function telescope_roam_nodes_by_tag(opts)
   return p:find()
 end
 vim.api.nvim_create_user_command("TelescopeRoamNodesByTag", telescope_roam_nodes_by_tag, {nargs = 1})
-local function telescope_migemo_grep()
-  local query = vim.fn.input("Migemo Grep: ")
-  local tb = require("telescope.builtin")
-  if (query and not (query == "")) then
-    return tb.grep_string({prompt_title = ("Grep for: " .. query), use_regex = true, search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})})
-  else
-    return nil
-  end
-end
-vim.api.nvim_create_user_command("TelescopeMigemoGrep", telescope_migemo_grep, {})
 vim.keymap.set("n", ",t", ":<C-u>Telescope filetypes<CR>", {silent = true, desc = "Select filetype via telescope"})
-vim.keymap.set("n", "<Leader>h", ":<C-u>TelescopeActions<CR>", {silent = true, desc = "Select action via telescope"})
-return vim.keymap.set("n", ",m", ":<C-u>TelescopeMigemoGrep<CR>", {silent = true, desc = "Migemo grep and filter result by telescope"})
+return vim.keymap.set("n", "<Leader>h", ":<C-u>TelescopeActions<CR>", {silent = true, desc = "Select action via telescope"})
