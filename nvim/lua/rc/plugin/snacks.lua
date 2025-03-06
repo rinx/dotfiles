@@ -1,21 +1,25 @@
 -- [nfnl] Compiled from fnl/rc/plugin/snacks.fnl by https://github.com/Olical/nfnl, do not edit.
+local _local_1_ = require("nfnl.module")
+local autoload = _local_1_["autoload"]
+local core = autoload("nfnl.core")
 local snacks = require("snacks")
-local function _1_(self)
+local picker_sources = require("snacks.picker.config.sources")
+local function _2_(self)
   local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
   if (f == "") then
     return Snacks.notify.warn("No file under cursor")
   else
     self:hide()
-    local function _2_()
+    local function _3_()
       return vim.cmd(("e " .. f))
     end
-    return vim.schedule(_2_)
+    return vim.schedule(_3_)
   end
 end
-local function _4_(self)
+local function _5_(self)
   return vim.cmd("stopinsert")
 end
-snacks.setup({bigfile = {enabled = true}, image = {enabled = true}, input = {}, notifier = {enabled = true}, picker = {}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _1_, term_normal = {"<esc>", _4_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
+snacks.setup({bigfile = {enabled = true}, image = {enabled = true}, input = {}, notifier = {enabled = true}, picker = {}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _2_, term_normal = {"<esc>", _5_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
 local function map__3e(toggle, key)
   return toggle:map(key)
 end
@@ -36,4 +40,40 @@ vim.keymap.set("n", ",gc", ":<C-u>lua Snacks.picker.git_log()<CR>", {silent = tr
 vim.keymap.set("n", ",h", ":<C-u>lua Snacks.picker.help()<CR>", {silent = true, desc = "search helptags via snacks.picker"})
 vim.keymap.set("n", ",/", ":<C-u>lua Snacks.picker.lines()<CR>", {silent = true, desc = "line search via snacks.picker"})
 vim.keymap.set("n", "<Leader><Leader>", ":<C-u>lua Snacks.picker.commands()<CR>", {silent = true, desc = "select commands via snacks.picker"})
-return vim.keymap.set("n", "<C-\\>", ":<C-u>lua Snacks.picker()<CR>", {silent = true, desc = "select snacks.picker source"})
+vim.keymap.set("n", "<C-\\>", ":<C-u>lua Snacks.picker()<CR>", {silent = true, desc = "select snacks.picker source"})
+local kensaku_finder
+local function _6_(opts, ctx)
+  if (ctx.filter.search == "") then
+    local function _7_()
+    end
+    return _7_
+  else
+    local cwd = svim.fs.normalize(vim.uv.cwd())
+    local pattern = snacks.picker.util.parse(ctx.filter.search)
+    local kensaku_pattern = vim.fn["kensaku#query"](pattern, {rxop = vim.g["kensaku#rxop#javascript"]})
+    local args = {"--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--max-columns=500", "--max-columns-preview", "-g", "!.git", "--hidden", "-L", "--", kensaku_pattern}
+    local proc = require("snacks.picker.source.proc")
+    local transform
+    local function _8_(item)
+      item.cwd = cwd
+      local file, line, col, text = item.text:match("^(.+):(%d+):(%d+):(.*)$")
+      if not file then
+        if not item.text:match("WARNING") then
+          snacks.notify.error(("invalid grep output:\n" .. item.text))
+        else
+        end
+        return false
+      else
+        item.line = text
+        item.file = file
+        item.pos = {tonumber(line), tonumber(core.dec(col))}
+        return nil
+      end
+    end
+    transform = _8_
+    return proc.proc({opts, {cmd = "rg", args = args, transform = transform, notify = false}}, ctx)
+  end
+end
+kensaku_finder = _6_
+picker_sources.kensaku = {finder = kensaku_finder, regex = true, format = "file", show_empty = true, live = true, supports_live = true}
+return vim.keymap.set("n", ",k", ":<C-u>lua Snacks.picker.kensaku()<CR>", {silent = true, desc = "live kensaku via snacks.picker"})

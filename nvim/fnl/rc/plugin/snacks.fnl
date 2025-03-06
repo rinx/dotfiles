@@ -1,4 +1,8 @@
+(local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
+
 (local snacks (require :snacks))
+(local picker-sources (require :snacks.picker.config.sources))
 
 (import-macros {: map!} :rc.macros)
 
@@ -117,3 +121,61 @@
       ":<C-u>lua Snacks.picker()<CR>"
       {:silent true
        :desc "select snacks.picker source"})
+
+(local kensaku-finder
+       (fn [opts ctx]
+         (if (= ctx.filter.search "")
+             (fn [])
+             (let [cwd (svim.fs.normalize (vim.uv.cwd))
+                   pattern (snacks.picker.util.parse ctx.filter.search)
+                   kensaku-pattern (vim.fn.kensaku#query
+                                     pattern
+                                     {:rxop vim.g.kensaku#rxop#javascript})
+                   args [:--color=never
+                         :--no-heading
+                         :--with-filename
+                         :--line-number
+                         :--column
+                         :--smart-case
+                         :--max-columns=500
+                         :--max-columns-preview
+                         :-g
+                         :!.git
+                         :--hidden
+                         :-L
+                         :--
+                         kensaku-pattern]
+                   proc (require :snacks.picker.source.proc)
+                   transform (fn [item]
+                               (set item.cwd cwd)
+                               (let [(file line col text) (item.text:match "^(.+):(%d+):(%d+):(.*)$")]
+                                 (if (not file)
+                                     (do
+                                       (when (not (item.text:match :WARNING))
+                                         (snacks.notify.error (.. "invalid grep output:\n" item.text)))
+                                       false)
+                                     (do
+                                       (set item.line text)
+                                       (set item.file file)
+                                       (set item.pos [(tonumber line)
+                                                      (tonumber (core.dec col))])))))]
+               (proc.proc
+                 [opts
+                  {:notify false
+                   :cmd :rg
+                   :args args
+                   :transform transform}]
+                 ctx)))))
+
+(set picker-sources.kensaku
+     {:finder kensaku-finder
+      :regex true
+      :format :file
+      :show_empty true
+      :live true
+      :supports_live true})
+(map! [:n]
+      ",k"
+      ":<C-u>lua Snacks.picker.kensaku()<CR>"
+      {:silent true
+       :desc "live kensaku via snacks.picker"})
