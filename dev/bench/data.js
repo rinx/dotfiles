@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1741169496428,
+  "lastUpdate": 1741298566929,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14729,6 +14729,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 133.7003845,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b3843362acbd494ac656a0131acd333c9ba9acd8",
+          "message": "config(nvim): remove telescope-migemo-grep function\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-07T06:51:28+09:00",
+          "tree_id": "1c3f12b5296f45e6a8258b841c1ae7bd72bdd57e",
+          "url": "https://github.com/rinx/dotfiles/commit/b3843362acbd494ac656a0131acd333c9ba9acd8"
+        },
+        "date": 1741298566381,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.1893878,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 130.0280412,
             "unit": "ms"
           }
         ]
