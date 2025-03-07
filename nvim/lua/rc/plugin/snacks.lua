@@ -76,4 +76,18 @@ local function _6_(opts, ctx)
 end
 kensaku_finder = _6_
 picker_sources.kensaku = {finder = kensaku_finder, regex = true, format = "file", show_empty = true, live = true, supports_live = true}
-return vim.keymap.set("n", ",k", ":<C-u>lua Snacks.picker.kensaku()<CR>", {silent = true, desc = "live kensaku via snacks.picker"})
+vim.keymap.set("n", ",k", ":<C-u>lua Snacks.picker.kensaku()<CR>", {silent = true, desc = "live kensaku via snacks.picker"})
+local function _12_(ft)
+  return {name = ft, text = ft}
+end
+local function _13_(item)
+  local util = require("snacks.util")
+  local icon, hl = util.icon(item.text, "filetype")
+  return {{(icon .. " "), hl}, {item.text}}
+end
+local function _14_(picker, item)
+  picker:close()
+  return vim.cmd.set(("ft=" .. item.text))
+end
+picker_sources.filetype = {items = core.map(_12_, vim.fn.getcompletion("", "filetype")), source = "filetype", layout = "select", format = _13_, confirm = _14_}
+return vim.keymap.set("n", ",t", ":<C-u>lua Snacks.picker.filetype()<CR>", {silent = true, desc = "select filetype via snacks.picker"})

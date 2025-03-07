@@ -139,7 +139,5 @@
     (p:find)))
 (vim.api.nvim_create_user_command :TelescopeRoamNodesByTag telescope-roam-nodes-by-tag {:nargs 1})
 
-(map! [:n] ",t" ":<C-u>Telescope filetypes<CR>" {:silent true
-                                                 :desc "Select filetype via telescope"})
 (map! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" {:silent true
                                                     :desc "Select action via telescope"})

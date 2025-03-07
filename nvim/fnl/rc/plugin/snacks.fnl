@@ -179,3 +179,25 @@
       ":<C-u>lua Snacks.picker.kensaku()<CR>"
       {:silent true
        :desc "live kensaku via snacks.picker"})
+
+(set picker-sources.filetype
+     {:items (core.map
+               (fn [ft]
+                 {:name ft
+                  :text ft})
+               (vim.fn.getcompletion "" :filetype))
+      :source :filetype
+      :layout :select
+      :format (fn [item]
+                (let [util (require :snacks.util)
+                      (icon hl) (util.icon item.text :filetype)]
+                  [[(.. icon " ") hl]
+                   [item.text]]))
+      :confirm (fn [picker item]
+                 (picker:close)
+                 (vim.cmd.set (.. :ft= item.text)))})
+(map! [:n]
+      ",t"
+      ":<C-u>lua Snacks.picker.filetype()<CR>"
+      {:silent true
+       :desc "select filetype via snacks.picker"})
