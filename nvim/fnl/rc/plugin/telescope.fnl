@@ -35,7 +35,7 @@
    :DapStepOut
    :DapStepOver
    :DapToggleBreakpoint
-   :DapUIToggle
+   :DapViewToggle
    :Ghq
    :Inspect
    :InspectTree

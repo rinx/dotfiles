@@ -182,8 +182,7 @@
                    {:settings
                     {:gopls
                      {:usePlaceholders true
-                      :analyses {:fieldalignment true
-                                 :shadow true
+                      :analyses {:shadow true
                                  :useany true
                                  :unusedvariable true}
                       :hints {:assignVariableTypes true

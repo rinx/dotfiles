@@ -128,7 +128,7 @@
    :mfussenegger/nvim-dap {:config (mod :dap)
                            :event [:BufReadPost :BufAdd :BufNewFile]
                            :dependencies [:nvim-neotest/nvim-nio
-                                          :rcarriga/nvim-dap-ui]}
+                                          :igorlfs/nvim-dap-view]}
    :leoluz/nvim-dap-go {:ft [:go]
                         :config (mod :dap-go)}
    :rinx/nvim-dap-rego {:ft [:rego]

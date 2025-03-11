@@ -81,7 +81,7 @@ lsp.fennel_ls.setup(core.merge(default_options, {root_dir = lsputil.root_pattern
 lsp.fortls.setup(core.merge(default_options, {}))
 lsp.gh_actions_ls.setup(core.merge(default_options, {}))
 lsp.gleam.setup(core.merge(default_options, {}))
-lsp.gopls.setup(core.merge(default_options, {settings = {gopls = {usePlaceholders = true, analyses = {fieldalignment = true, shadow = true, useany = true, unusedvariable = true}, hints = {assignVariableTypes = true, compositeLiteralFields = true, compositeLiteralTypes = true, constantValues = true, functionTypeParameters = true, parameterNames = true, rangeVariableTypes = true}, staticcheck = true, vulncheck = "Imports", gofumpt = true}}}))
+lsp.gopls.setup(core.merge(default_options, {settings = {gopls = {usePlaceholders = true, analyses = {shadow = true, useany = true, unusedvariable = true}, hints = {assignVariableTypes = true, compositeLiteralFields = true, compositeLiteralTypes = true, constantValues = true, functionTypeParameters = true, parameterNames = true, rangeVariableTypes = true}, staticcheck = true, vulncheck = "Imports", gofumpt = true}}}))
 lsp.harper_ls.setup(core.merge(default_options, {settings = {["harper-ls"] = {userDictPath = "~/.config/harper-ls/dict.txt"}}}))
 lsp.hls.setup(core.merge(default_options, {}))
 lsp.html.setup(core.merge(default_options, {}))

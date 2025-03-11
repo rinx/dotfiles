@@ -1,7 +1,7 @@
 (local {: autoload} (require :nfnl.module))
 
 (local dap (require :dap))
-(local dapui (require :dapui))
+(local view (require :dap-view))
 
 (local color (autoload :rc.color))
 (local icon (autoload :rc.icon))
@@ -10,9 +10,8 @@
 (local colors color.colors)
 (local icontab icon.tab)
 
-(dapui.setup {:icons
-              {:expanded icontab.fold-open
-               :collapsed icontab.fold-closed}})
+(view.setup
+  {})
 
 ;; vcl
 (set dap.adapters.vcl
@@ -28,8 +27,10 @@
        :includePaths ["${workspaceFolder}"]}])
 
 ;; automatically open UI
-(set dap.listeners.before.attach.dapui_config dapui.open)
-(set dap.listeners.before.launch.dapui_config dapui.open)
+(set dap.listeners.before.attach.dap_view_config view.open)
+(set dap.listeners.before.launch.dap_view_config view.open)
+(set dap.listeners.before.event_terminated.dap_view_config view.close)
+(set dap.listeners.before.event_exited.dap_view_config view.close)
 
 (hi! :DapBreakpoint {:ctermfg :red :guifg colors.error})
 (hi! :DapLogPoint {:ctermfg :yellow :guifg colors.warn})
@@ -60,12 +61,6 @@
   :DapStepInto "lua require('dap').step_into()" {})
 (vim.api.nvim_create_user_command
   :DapStepOut "lua require('dap').step_out()" {})
-(vim.api.nvim_create_user_command
-  :DapUIOpen "lua require('dapui').open()" {})
-(vim.api.nvim_create_user_command
-  :DapUIClose "lua require('dapui').close()" {})
-(vim.api.nvim_create_user_command
-  :DapUIToggle "lua require('dapui').toggle()" {})
 
 (map! [:n] "<F5>" ":<C-u>DapContinue<CR>" {:silent true})
 (map! [:n] "<F9>" ":<C-u>DapToggleBreakpoint<CR>" {:silent true})
