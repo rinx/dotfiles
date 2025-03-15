@@ -1,10 +1,8 @@
 -- [nfnl] Compiled from fnl/rc/plugin/orgmode.fnl by https://github.com/Olical/nfnl, do not edit.
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
-local core = autoload("nfnl.core")
 local icon = autoload("rc.icon")
 local color = autoload("rc.color")
-local icontab = icon.tab
 local colors = color.colors
 local orgmode = require("orgmode")
 local roam = require("org-roam")
@@ -141,14 +139,14 @@ do
   vim.api.nvim_create_user_command("OrgJournal", open_fn(filepath), {})
 end
 local function fd_fn()
-  local tb = require("telescope.builtin")
-  return tb.find_files({cwd = basepath, no_ignore = true, no_ignore_parent = true})
+  local snacks = require("snacks")
+  return snacks.picker.files({cwd = basepath, ignored = true})
 end
 vim.api.nvim_create_user_command("OrgFind", fd_fn, {})
 local function live_grep_fn(path)
   local function _19_()
-    local tb = require("telescope.builtin")
-    return tb.live_grep({cwd = path, type_filter = "org", additional_args = {"--no-ignore-vcs"}})
+    local snacks = require("snacks")
+    return snacks.picker.grep({cwd = path, ignored = true})
   end
   return _19_
 end
@@ -156,13 +154,8 @@ vim.api.nvim_create_user_command("OrgLiveGrep", live_grep_fn(basepath), {})
 vim.api.nvim_create_user_command("RoamLiveGrep", live_grep_fn(__3epath("roam")), {})
 local function grep_fn(path)
   local function _20_()
-    local query = vim.fn.input("Grep: ")
-    local tb = require("telescope.builtin")
-    if (query and not (query == "")) then
-      return tb.grep_string({prompt_title = ("Grep for: " .. query), cwd = path, use_regex = true, additional_args = {"--no-ignore-vcs"}, search = vim.fn["kensaku#query"](query, {rxop = vim.g["kensaku#rxop#javascript"]})})
-    else
-      return nil
-    end
+    local snacks = require("snacks")
+    return snacks.picker.kensaku({cwd = path})
   end
   return _20_
 end
@@ -193,7 +186,7 @@ local function build_todays_agenda()
   local view = agenda_types.agenda:new(view_opts)
   local agenda_day = view:_get_agenda_days()[1]
   local items = agenda_day.agenda_items
-  local _22_
+  local _21_
   do
     local tbl_21_auto = {}
     local i_22_auto = 0
@@ -214,8 +207,8 @@ local function build_todays_agenda()
       else
       end
     end
-    _22_ = tbl_21_auto
+    _21_ = tbl_21_auto
   end
-  return table.concat(_22_, "\n")
+  return table.concat(_21_, "\n")
 end
 return {build_todays_agenda = build_todays_agenda}

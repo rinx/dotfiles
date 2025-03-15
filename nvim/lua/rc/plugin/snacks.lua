@@ -48,13 +48,21 @@ local function _6_(opts, ctx)
     end
     return _7_
   else
-    local cwd = svim.fs.normalize(vim.uv.cwd())
+    local cwd
+    local function _8_()
+      if (opts and opts.cwd) then
+        return opts.cwd
+      else
+        return (vim.uv.cwd() or ".")
+      end
+    end
+    cwd = svim.fs.normalize(_8_())
     local pattern = snacks.picker.util.parse(ctx.filter.search)
     local kensaku_pattern = vim.fn["kensaku#query"](pattern, {rxop = vim.g["kensaku#rxop#javascript"]})
     local args = {"--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--max-columns=500", "--max-columns-preview", "-g", "!.git", "--hidden", "-L", "--", kensaku_pattern}
     local proc = require("snacks.picker.source.proc")
     local transform
-    local function _8_(item)
+    local function _9_(item)
       item.cwd = cwd
       local file, line, col, text = item.text:match("^(.+):(%d+):(%d+):(.*)$")
       if not file then
@@ -70,24 +78,24 @@ local function _6_(opts, ctx)
         return nil
       end
     end
-    transform = _8_
+    transform = _9_
     return proc.proc({opts, {cmd = "rg", args = args, transform = transform, notify = false}}, ctx)
   end
 end
 kensaku_finder = _6_
 picker_sources.kensaku = {finder = kensaku_finder, regex = true, format = "file", show_empty = true, live = true, supports_live = true}
 vim.keymap.set("n", ",k", ":<C-u>lua Snacks.picker.kensaku()<CR>", {silent = true, desc = "live kensaku via snacks.picker"})
-local function _12_(ft)
+local function _13_(ft)
   return {name = ft, text = ft}
 end
-local function _13_(item)
+local function _14_(item)
   local util = require("snacks.util")
   local icon, hl = util.icon(item.text, "filetype")
   return {{(icon .. " "), hl}, {item.text}}
 end
-local function _14_(picker, item)
+local function _15_(picker, item)
   picker:close()
   return vim.cmd.set(("ft=" .. item.text))
 end
-picker_sources.filetype = {items = core.map(_12_, vim.fn.getcompletion("", "filetype")), source = "filetype", layout = "select", format = _13_, confirm = _14_}
+picker_sources.filetype = {items = core.map(_13_, vim.fn.getcompletion("", "filetype")), source = "filetype", layout = "select", format = _14_, confirm = _15_}
 return vim.keymap.set("n", ",t", ":<C-u>lua Snacks.picker.filetype()<CR>", {silent = true, desc = "select filetype via snacks.picker"})

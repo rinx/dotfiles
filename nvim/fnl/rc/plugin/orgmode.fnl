@@ -1,10 +1,8 @@
 (local {: autoload} (require :nfnl.module))
-(local core (autoload :nfnl.core))
 
 (local icon (autoload :rc.icon))
 (local color (autoload :rc.color))
 
-(local icontab icon.tab)
 (local colors color.colors)
 
 (local orgmode (require :orgmode))
@@ -249,34 +247,26 @@
   (vim.api.nvim_create_user_command :OrgJournal (open-fn filepath) {}))
 
 (fn fd-fn []
-  (let [tb (require :telescope.builtin)]
-    (tb.find_files
+  (let [snacks (require :snacks)]
+    (snacks.picker.files
       {:cwd basepath
-       :no_ignore true
-       :no_ignore_parent true})))
+       :ignored true})))
 (vim.api.nvim_create_user_command :OrgFind fd-fn {})
 
 (fn live-grep-fn [path]
   (fn []
-    (let [tb (require :telescope.builtin)]
-      (tb.live_grep
+    (let [snacks (require :snacks)]
+      (snacks.picker.grep
         {:cwd path
-         :type_filter :org
-         :additional_args [:--no-ignore-vcs]}))))
+         :ignored true}))))
 (vim.api.nvim_create_user_command :OrgLiveGrep (live-grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamLiveGrep (live-grep-fn (->path :roam)) {})
 
 (fn grep-fn [path]
   (fn []
-    (let [query (vim.fn.input "Grep: ")
-          tb (require :telescope.builtin)]
-      (when (and query (not (= query "")))
-        (tb.grep_string
-          {:prompt_title (.. "Grep for: " query)
-           :cwd path
-           :use_regex true
-           :additional_args [:--no-ignore-vcs]
-           :search (vim.fn.kensaku#query query {:rxop vim.g.kensaku#rxop#javascript})})))))
+    (let [snacks (require :snacks)]
+      (snacks.picker.kensaku
+        {:cwd path}))))
 (vim.api.nvim_create_user_command :OrgGrep (grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})
 
@@ -322,4 +312,3 @@
                  (string.gsub "Scheduled:%s(%u+)%s" "")))))
         (table.concat "\n"))))
 {: build_todays_agenda}
-

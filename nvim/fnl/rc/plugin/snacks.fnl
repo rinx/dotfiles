@@ -126,7 +126,10 @@
        (fn [opts ctx]
          (if (= ctx.filter.search "")
              (fn [])
-             (let [cwd (svim.fs.normalize (vim.uv.cwd))
+             (let [cwd (svim.fs.normalize
+                         (if (and opts opts.cwd)
+                             opts.cwd
+                             (or (vim.uv.cwd) :.)))
                    pattern (snacks.picker.util.parse ctx.filter.search)
                    kensaku-pattern (vim.fn.kensaku#query
                                      pattern
