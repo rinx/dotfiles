@@ -136,6 +136,7 @@
                                      {:rxop vim.g.kensaku#rxop#javascript})
                    args [:--color=never
                          :--no-heading
+                         :--no-ignore
                          :--with-filename
                          :--line-number
                          :--column

@@ -59,7 +59,7 @@ local function _6_(opts, ctx)
     cwd = svim.fs.normalize(_8_())
     local pattern = snacks.picker.util.parse(ctx.filter.search)
     local kensaku_pattern = vim.fn["kensaku#query"](pattern, {rxop = vim.g["kensaku#rxop#javascript"]})
-    local args = {"--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--max-columns=500", "--max-columns-preview", "-g", "!.git", "--hidden", "-L", "--", kensaku_pattern}
+    local args = {"--color=never", "--no-heading", "--no-ignore", "--with-filename", "--line-number", "--column", "--smart-case", "--max-columns=500", "--max-columns-preview", "-g", "!.git", "--hidden", "-L", "--", kensaku_pattern}
     local proc = require("snacks.picker.source.proc")
     local transform
     local function _9_(item)
