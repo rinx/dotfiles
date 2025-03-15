@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1742007990905,
+  "lastUpdate": 1742008086421,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -14933,6 +14933,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 158.5355441,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "edd8d129be651f610348f47b4c2bddadbcb7c1e7",
+          "message": "config(nvim): fix kensaku options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-15T11:56:42+09:00",
+          "tree_id": "9c5bf7e1c1c12e0dafae04f01ef536b3610151ed",
+          "url": "https://github.com/rinx/dotfiles/commit/edd8d129be651f610348f47b4c2bddadbcb7c1e7"
+        },
+        "date": 1742008085130,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.655049899999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 138.4814063,
             "unit": "ms"
           }
         ]
