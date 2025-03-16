@@ -86,6 +86,8 @@
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
                              :config (mod :hypersonic)}
    :notomo/waitevent.nvim {:config (mod :waitevent)}
+   :HakonHarnes/img-clip.nvim {:config (mod :img-clip)
+                               :event [:VeryLazy]}
 
    ;; copilot
    :zbirenbaum/copilot.lua {:config (mod :copilot)
