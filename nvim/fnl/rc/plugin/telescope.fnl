@@ -23,12 +23,13 @@
    "lua Snacks.picker.notifications()"
    "lua Snacks.terminal.toggle()"
    "lua Snacks.terminal.open()"
+   :AvanteAsk
+   :AvanteChat
+   :AvanteToggle
    :ConjureConnect
    :ConjureLogSplit
    :ConjureLogVSplit
    :ConjureCljDebugInit
-   :CopilotChatOpen
-   :CopilotChatPrompts
    :DapContinue
    :DapListBreakpoints
    :DapStepInto

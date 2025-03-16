@@ -90,10 +90,11 @@
    ;; copilot
    :zbirenbaum/copilot.lua {:config (mod :copilot)
                             :event [:VeryLazy]}
-   :CopilotC-Nvim/CopilotChat.nvim {:build "make tiktoken"
-                                    :config (mod :copilot-chat)
-                                    :cmd [:CopilotChatOpen
-                                          :CopilotChatPrompts]}
+   :yetone/avante.nvim {:build :make
+                        :config (mod :avante)
+                        :cmd [:AvanteAsk
+                              :AvanteChat
+                              :AvanteToggle]}
 
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)
@@ -121,6 +122,7 @@
                                      :mikavilpas/blink-ripgrep.nvim
                                      :moyiz/blink-emoji.nvim
                                      :Kaiser-Yang/blink-cmp-git
+                                     :Kaiser-Yang/blink-cmp-avante
                                      :giuxtaposition/blink-cmp-copilot]
                       :config (mod :cmp)}
 

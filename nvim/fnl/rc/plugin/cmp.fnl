@@ -16,6 +16,7 @@
                        :emoji
                        :git
                        :orgmode
+                       :avante
                        :copilot]
              :providers
              {:ripgrep {:module :blink-ripgrep
@@ -40,6 +41,8 @@
               :orgmode {:name :orgmode
                         :module :orgmode.org.autocompletion.blink
                         :fallbacks [:buffer]}
+              :avante {:name :avante
+                       :module :blink-cmp-avante}
               :copilot {:name :copilot
                         :module :blink-cmp-copilot
                         :score_offset 100
