@@ -1,11 +1,11 @@
-PATH=$PATH:$HOME/.bin
+PATH=$HOME/.nix-profile/bin:$PATH:$HOME/.bin
 BB_RC_DIR="$HOME/.config/sketchybar/rc"
 BB_MAIN="${BB_RC_DIR}/target/main.jar"
 
 if [ ! -f ${BB_MAIN} ]; then
-  pushd ${BB_RC_DIR}
-  bb build
-  popd
+    pushd ${BB_RC_DIR}
+    bb build
+    popd
 fi
 
 bb ${BB_MAIN}
