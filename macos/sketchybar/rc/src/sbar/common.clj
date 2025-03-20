@@ -7,7 +7,7 @@
   (System/getenv "HOME"))
 
 (def bb-path
-  (-> (io/file home ".bin" "bb")
+  (-> (io/file home ".nix-profile" "bin" "bb")
       (.getPath)))
 
 (def plugins-dir
