@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1742527371519,
+  "lastUpdate": 1742529241162,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -15307,6 +15307,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.11971760000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "fae7f499fae69c19dac1b42ae37aa407d0e13dc1",
+          "message": "config(sketchybar): fix kubectx widget\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-21T12:41:41+09:00",
+          "tree_id": "90676276c3b93ccb85283cee9339d0472e65817d",
+          "url": "https://github.com/rinx/dotfiles/commit/fae7f499fae69c19dac1b42ae37aa407d0e13dc1"
+        },
+        "date": 1742529239850,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.7480159,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.3973141,
             "unit": "ms"
           }
         ]
