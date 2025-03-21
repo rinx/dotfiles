@@ -19,8 +19,12 @@
      :label.font (fonts/get :Medium 12.0)})))
 
 (defn format-context-name [ctx]
-  (let [es (str/split ctx #"_")]
-    (str/join "_" [(second es) (nth es 3)])))
+  (let [es (str/split ctx #"_")
+        l (count es)]
+    (condp <= l
+      4 (str/join "/" [(second es) (nth es 3)])
+      3 (str/join "/" (rest es))
+      (str/join "/" es))))
 
 (defn contexts []
   (->> (common/sh "kubectl" "config" "get-contexts" "-o=name")
