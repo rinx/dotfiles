@@ -259,16 +259,16 @@
       (snacks.picker.grep
         {:cwd path
          :ignored true}))))
-(vim.api.nvim_create_user_command :OrgLiveGrep (live-grep-fn basepath) {})
-(vim.api.nvim_create_user_command :RoamLiveGrep (live-grep-fn (->path :roam)) {})
+(vim.api.nvim_create_user_command :OrgGrep (live-grep-fn basepath) {})
+(vim.api.nvim_create_user_command :RoamGrep (live-grep-fn (->path :roam)) {})
 
 (fn grep-fn [path]
   (fn []
     (let [snacks (require :snacks)]
       (snacks.picker.kensaku
         {:cwd path}))))
-(vim.api.nvim_create_user_command :OrgGrep (grep-fn basepath) {})
-(vim.api.nvim_create_user_command :RoamGrep (grep-fn (->path :roam)) {})
+(vim.api.nvim_create_user_command :OrgKensaku (grep-fn basepath) {})
+(vim.api.nvim_create_user_command :RoamKensaku (grep-fn (->path :roam)) {})
 
 (fn refile-to-today []
   (let [t (require :telescope)

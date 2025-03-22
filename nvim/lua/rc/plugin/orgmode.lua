@@ -150,8 +150,8 @@ local function live_grep_fn(path)
   end
   return _19_
 end
-vim.api.nvim_create_user_command("OrgLiveGrep", live_grep_fn(basepath), {})
-vim.api.nvim_create_user_command("RoamLiveGrep", live_grep_fn(__3epath("roam")), {})
+vim.api.nvim_create_user_command("OrgGrep", live_grep_fn(basepath), {})
+vim.api.nvim_create_user_command("RoamGrep", live_grep_fn(__3epath("roam")), {})
 local function grep_fn(path)
   local function _20_()
     local snacks = require("snacks")
@@ -159,8 +159,8 @@ local function grep_fn(path)
   end
   return _20_
 end
-vim.api.nvim_create_user_command("OrgGrep", grep_fn(basepath), {})
-vim.api.nvim_create_user_command("RoamGrep", grep_fn(__3epath("roam")), {})
+vim.api.nvim_create_user_command("OrgKensaku", grep_fn(basepath), {})
+vim.api.nvim_create_user_command("RoamKensaku", grep_fn(__3epath("roam")), {})
 local function refile_to_today()
   local t = require("telescope")
   local date = os.date("%Y-%m-%d %A")

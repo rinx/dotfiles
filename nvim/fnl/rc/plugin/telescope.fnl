@@ -54,13 +54,13 @@
    "Octo issue list"
    :OrgFind
    :OrgGrep
+   :OrgKensaku
    :OrgInbox
    :OrgJournal
-   :OrgLiveGrep
    :OrgRefileToToday
    :RoamCommitPush
    :RoamGrep
-   :RoamLiveGrep
+   :RoamKensaku
    :RoamPull
    :RoamStatus
    "Telescope dap list_breakpoints"
