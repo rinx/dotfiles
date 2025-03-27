@@ -118,7 +118,7 @@
    ;; completion
    :saghen/blink.cmp {:event [:InsertEnter
                               :CmdlineEnter]
-                      :version :v0.*
+                      :version :v1.*
                       :dependencies [:rafamadriz/friendly-snippets
                                      :echasnovski/mini.snippets
                                      :mikavilpas/blink-ripgrep.nvim
