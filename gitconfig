@@ -1,47 +1,34 @@
+## -- basic settings
+
+[include]
+    path = ~/.gitconfig.local
+
 [user]
     name = Rintaro Okamura
     email = rintaro.okamura@gmail.com
     signingkey = 2E26B9B26A1D5D29
 
-[include]
-    path = ~/.gitconfig.local
+[github]
+    user = rinx
 
-[push]
-    default = simple
+## -- other settings
 
 [color]
     ui = auto
     interactive = auto
 
-[diff]
-    tool = nvimdiff
-    compactionHeuristic = true
-
-[difftool]
-    prompt = false
-
-[difftool "nvimdiff"]
-    cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
-
-[merge]
-    tool = nvimdiff
-
-[mergetool]
-    prompt = false
-
-[mergetool "nvimdiff"]
-    cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
-
-[github]
-    user = rinx
+[commit]
+    template = ~/.commit_template
+    verbose = true
 
 [core]
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes_global
     pager = delta
 
-[interactive]
-    diffFilter = delta --color-only --features=interactive
+[credential]
+    helper = store --file ~/.git-credentials
+    helper = cache --timeout=360000
 
 [delta]
     features = decorations
@@ -59,6 +46,57 @@
     hunk-header-file-style = red
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
+
+[diff]
+    tool = nvimdiff
+    compactionHeuristic = true
+
+[difftool]
+    prompt = false
+
+[difftool "nvimdiff"]
+    cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+
+[fetch]
+    prune = true
+
+[ghq]
+    root = ~/local/src
+
+[init]
+    defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[merge]
+    tool = nvimdiff
+
+[mergetool]
+    prompt = false
+
+[mergetool "nvimdiff"]
+    cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+
+[pull]
+    ff = only
+
+[push]
+    default = simple
+
+[rebase]
+    autosquash = true
+
+[rerere]
+    enabled = true
+
+[submodule]
+    recurse = true
+
+[url "https://"]
+    insteadOf = git://
+
+## -- aliases
 
 [alias]
     st    = status -s -b
@@ -85,37 +123,5 @@
     br    = branch
 
     sb    = show-branch
-
-[url "https://"]
-    insteadOf = git://
-
-[credential]
-    helper = store --file ~/.git-credentials
-    helper = cache --timeout=360000
-
-[pull]
-    ff = only
-
-[submodule]
-    recurse = true
-
-[ghq]
-    root = ~/local/src
-
-[rerere]
-    enabled = true
-
-[fetch]
-    prune = true
-
-[init]
-    defaultBranch = main
-
-[commit]
-    template = ~/.commit_template
-    verbose = true
-
-[rebase]
-    autosquash = true
 
 # vim: set ft=gitconfig:
