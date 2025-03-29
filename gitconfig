@@ -13,9 +13,15 @@
 
 ## -- other settings
 
+[branch]
+    sort = -committerdate
+
 [color]
     ui = auto
     interactive = auto
+
+[column]
+    ui = auto
 
 [commit]
     template = ~/.commit_template
@@ -48,8 +54,12 @@
     hunk-header-style = file line-number syntax
 
 [diff]
-    tool = nvimdiff
+    algorithm = histogram
     compactionHeuristic = true
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+    tool = nvimdiff
 
 [difftool]
     prompt = false
@@ -59,9 +69,14 @@
 
 [fetch]
     prune = true
+    pruneTags = true
+    all = true
 
 [ghq]
     root = ~/local/src
+
+[help]
+    autocorrect = prompt
 
 [init]
     defaultBranch = main
@@ -83,15 +98,23 @@
 
 [push]
     default = simple
+    autoSetupRemote = true
+    followTags = true
 
 [rebase]
-    autosquash = true
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
 
 [rerere]
     enabled = true
+    autoupdate = true
 
 [submodule]
     recurse = true
+
+[tag]
+    sort = version:refname
 
 [url "https://"]
     insteadOf = git://
