@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743220946385,
+  "lastUpdate": 1743223082953,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -15545,6 +15545,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 69.9535125,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3044389ba9304471a119d231702d467210a411de",
+          "message": "chore(gitconfig): update gitconfig defaults\n\nreference:\nhttps://blog.gitbutler.com/how-git-core-devs-configure-git/\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-29T13:25:57+09:00",
+          "tree_id": "420ddabf9f41bf0024456f3da8418bdfe3c195be",
+          "url": "https://github.com/rinx/dotfiles/commit/3044389ba9304471a119d231702d467210a411de"
+        },
+        "date": 1743223081988,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.944823000000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.3979634,
             "unit": "ms"
           }
         ]
