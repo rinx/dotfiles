@@ -33,6 +33,7 @@
    :package "󰏗"
    :gcloud ""
    :celsius "󰔄"
+   :vpn "󰖂"
    :k8s "󱃾"
    :space "󱅃"})
 

@@ -4,7 +4,6 @@
    [sbar.fonts :as fonts]
    [sbar.items.battery :as battery]
    [sbar.items.brew :as brew]
-   [sbar.items.date :as date]
    [sbar.items.front-app :as front-app]
    [sbar.items.gcloud :as gcloud]
    [sbar.items.github :as github]
@@ -12,10 +11,9 @@
    [sbar.items.kubectx :as kubectx]
    [sbar.items.mic :as mic]
    [sbar.items.spaces :as spaces]
+   [sbar.items.tailscale :as tailscale]
    [sbar.items.time :as time]
    [sbar.items.volume :as volume]
-   [sbar.items.weather :as weather]
-   [sbar.items.wifi :as wifi]
    [sketchybar.core :as sketchybar]
    [sketchybar.extra :refer [event-loop]]))
 
@@ -64,18 +62,15 @@
 
 (defn right-items []
   (time/setup)
-  ; (date/setup)
-  ; (weather/setup)
   (battery/setup)
   (mic/setup)
   (volume/setup)
-  ; (wifi/setup)
+  (tailscale/setup)
   (kubectx/setup)
   (gcloud/setup)
   (github-pr/setup)
   (github/setup)
   (brew/setup))
-  ; (network/setup))
 
 (defn -main [& args]
   (init)
@@ -91,8 +86,6 @@
               :duration-ms 60000}
     :brew {:fn brew/update
            :duration-ms 7200000}
-    :date {:fn date/update
-           :duration-ms 60000}
     :gcloud {:fn gcloud/update
              :duration-ms 60000}
     :github {:fn github/update
@@ -101,12 +94,10 @@
                 :duration-ms 180000}
     :kubectx {:fn kubectx/update
               :duration-ms 60000}
+    :tailscale {:fn tailscale/update
+                :duration-ms 300000}
     :time {:fn time/update
-           :duration-ms 5000}
-    :weather {:fn weather/update
-              :duration-ms 3600000}
-    :wifi {:fn wifi/update
-           :duration-ms 60000}}))
+           :duration-ms 5000}}))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))
