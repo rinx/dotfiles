@@ -87,6 +87,7 @@ vim.o.termguicolors = true
 vim.cmd("syntax on")
 vim.cmd("filetype off")
 vim.cmd("filetype plugin indent on")
+vim.cmd("language en_US.utf-8")
 vim.o.modeline = true
 if (vim.fn.executable("rg") == 1) then
   vim.o.grepprg = "rg --vimgrep --no-heading"

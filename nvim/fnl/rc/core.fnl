@@ -110,6 +110,7 @@
 (vim.cmd "syntax on")
 (vim.cmd "filetype off")
 (vim.cmd "filetype plugin indent on")
+(vim.cmd "language en_US.utf-8")
 
 (set vim.o.modeline true)
 
