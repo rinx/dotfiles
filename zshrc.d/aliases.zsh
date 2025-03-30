@@ -133,7 +133,7 @@ if builtin command -v xsel > /dev/null 2>&1 ; then
 fi
 
 # git aliases
-alias gs='git status'
+alias gs='git status --no-column'
 alias gl='git l'
 
 # extract

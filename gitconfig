@@ -122,7 +122,7 @@
 ## -- aliases
 
 [alias]
-    st    = status -s -b
+    st    = status --no-column
 
     l     = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
     ll    = log --graph --stat --abbrev-commit
