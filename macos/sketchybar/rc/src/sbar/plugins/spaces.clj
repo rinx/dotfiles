@@ -12,9 +12,9 @@
     (sketchybar/exec
      (sketchybar/set
       item-name
-      {:background.border_color (colors/get (if focused?
-                                              :cyan
-                                              :transparent-black))}))))
+      {:icon.color (colors/get (if focused?
+                                 :cream
+                                 :grey))}))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

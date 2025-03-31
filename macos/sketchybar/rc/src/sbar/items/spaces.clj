@@ -28,6 +28,7 @@
          :label.font (fonts/get :Regular 12.0)
          :label.color (colors/get :cream)
          :icon.font (fonts/get :Medium 16.0)
+         :icon.color (colors/get :grey)
          :icon (nth icons/spaces (dec (Integer/parseInt idx)))
          :script (common/plugin-script "spaces.jar")})])))
 
