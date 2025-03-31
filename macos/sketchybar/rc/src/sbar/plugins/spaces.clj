@@ -1,18 +1,20 @@
 (ns sbar.plugins.spaces
   (:require
+   [clojure.string :as str]
    [sbar.colors :as colors]
    [sketchybar.core :as sketchybar]))
 
 (defn -main [& args]
-  (sketchybar/exec
-   (sketchybar/set
-    (System/getenv "NAME")
-    (into {:background.color (colors/get :transparent-black)
-           :background.border_color (colors/get :transparent-black)
-           :background.padding_left 3
-           :background.padding_right 3
-           :label.color (colors/get :cream)
-           :label (or (System/getenv "FOCUSED_WORKSPACE") "1")}))))
+  (let [item-name (System/getenv "NAME")
+        focused-idx (str/trim (System/getenv "FOCUSED_WORKSPACE"))
+        idx (str/trim (re-find #"\d+" item-name))
+        focused? (= idx focused-idx)]
+    (sketchybar/exec
+     (sketchybar/set
+      item-name
+      {:background.border_color (colors/get (if focused?
+                                              :cyan
+                                              :transparent-black))}))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))
