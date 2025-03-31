@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743427359173,
+  "lastUpdate": 1743429320593,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -15715,6 +15715,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 78.91306180000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "29e1771bd5b988ee4fba1a835e3a444cd849ddff",
+          "message": "config(sketchybar): fix icon color on spaces widget\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-03-31T22:43:42+09:00",
+          "tree_id": "cb21a05c0565b1a0a4c1954d585fa70b1cbde24f",
+          "url": "https://github.com/rinx/dotfiles/commit/29e1771bd5b988ee4fba1a835e3a444cd849ddff"
+        },
+        "date": 1743429319961,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.712905000000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.2343473,
             "unit": "ms"
           }
         ]
