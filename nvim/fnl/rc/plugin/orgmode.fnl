@@ -306,7 +306,8 @@
          (let [entry (view:_build_line item agenda-day)
                line (entry:compile)]
            (when (and (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
-                      entry.metadata.agenda_item.is_same_day)
+                      entry.metadata.agenda_item.is_same_day
+                      (not (string.match line.content :CANCELED)))
              (-> line.content
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
                  (string.gsub "Scheduled:%s(%u+)%s" "")))))

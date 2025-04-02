@@ -188,26 +188,26 @@ local function build_todays_agenda()
   local items = agenda_day.agenda_items
   local _21_
   do
-    local tbl_21_auto = {}
-    local i_22_auto = 0
+    local tbl_109_auto = {}
+    local i_110_auto = 0
     for _, item in ipairs(items) do
-      local val_23_auto
+      local val_111_auto
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
-        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day) then
-          val_23_auto = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
+        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not string.match(line.content, "CANCELED")) then
+          val_111_auto = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
         else
-          val_23_auto = nil
+          val_111_auto = nil
         end
       end
-      if (nil ~= val_23_auto) then
-        i_22_auto = (i_22_auto + 1)
-        tbl_21_auto[i_22_auto] = val_23_auto
+      if (nil ~= val_111_auto) then
+        i_110_auto = (i_110_auto + 1)
+        tbl_109_auto[i_110_auto] = val_111_auto
       else
       end
     end
-    _21_ = tbl_21_auto
+    _21_ = tbl_109_auto
   end
   return table.concat(_21_, "\n")
 end
