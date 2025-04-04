@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743769757288,
+  "lastUpdate": 1743775312038,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -15851,6 +15851,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.8724527,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "406e4c4d3edcb2049b0be83c900cf78473b19a49",
+          "message": "config(nvim): use cluade-3.7-sonnet on copilot for avante\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-04T22:49:41+09:00",
+          "tree_id": "773f1e0aee1d6dd496cbec9729cda9d736bd4013",
+          "url": "https://github.com/rinx/dotfiles/commit/406e4c4d3edcb2049b0be83c900cf78473b19a49"
+        },
+        "date": 1743775310756,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.1687758,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.12427020000001,
             "unit": "ms"
           }
         ]
