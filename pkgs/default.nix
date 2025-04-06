@@ -86,10 +86,12 @@
 
       ## languages
       babashka
+      beamMinimalPackages.erlang
+      beamMinimalPackages.rebar3
       buf
       clojure
       deno
-      gfortran
+      gleam
       go
       nodejs
       protobuf
