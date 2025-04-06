@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743775312038,
+  "lastUpdate": 1743928056493,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -15885,6 +15885,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.12427020000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "00d91ba2d930060e1af9d14e82105afe42da44cf",
+          "message": "config(pkgs): add gleam and erlang\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-06T17:15:58+09:00",
+          "tree_id": "480bf41109cbf11db7adac0539839f43c7c58360",
+          "url": "https://github.com/rinx/dotfiles/commit/00d91ba2d930060e1af9d14e82105afe42da44cf"
+        },
+        "date": 1743928055211,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.8913425,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.91142170000002,
             "unit": "ms"
           }
         ]
