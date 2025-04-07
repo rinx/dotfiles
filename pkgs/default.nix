@@ -1,7 +1,10 @@
 {
   self,
   pkgs,
+  mcp-hub,
+  mcp-servers-nix,
   flake-inputs,
+  system,
 }: let
     falco = pkgs.callPackage ./falco.nix {};
 
@@ -22,10 +25,17 @@
 
     rq = pkgs.callPackage ./rq.nix {};
 
+    mcp-servers = pkgs.callPackage ./mcp-servers.nix {
+      inherit pkgs;
+      inherit mcp-servers-nix;
+    };
+
     custom-pkgs = [
       falco
       gh-actions-language-server
       google-cloud-sdk-with-components
+      mcp-hub.packages."${system}".default
+      mcp-servers
       moralerspace-nerdfont
       rq
     ];
@@ -117,12 +127,12 @@
       marksman
       nil
       nixd
-      nodePackages.typescript-language-server
       regal
       shellcheck
       shfmt
       terraform-ls
       tflint
+      typescript-language-server
       vscode-langservers-extracted
       yaml-language-server
 

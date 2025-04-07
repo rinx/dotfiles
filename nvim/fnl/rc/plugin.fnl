@@ -96,7 +96,8 @@
                         :config (mod :avante)
                         :cmd [:AvanteAsk
                               :AvanteChat
-                              :AvanteToggle]}
+                              :AvanteToggle]
+                        :dependencies [:ravitemer/mcphub.nvim]}
 
    ;; lsp
    :neovim/nvim-lspconfig {:config (mod :lsp)

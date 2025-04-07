@@ -3,12 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    mcp-hub.url = "github:ravitemer/mcp-hub";
+    mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = inputs@{
     self,
     nixpkgs,
+    mcp-hub,
+    mcp-servers-nix,
     neovim-nightly,
   }: let
     forAllSystems = nixpkgs.lib.genAttrs [
@@ -31,7 +35,10 @@
         default = import ./pkgs {
           inherit self;
           inherit pkgs;
+          inherit mcp-hub;
+          inherit mcp-servers-nix;
           flake-inputs = inputs;
+          system = system;
         };
       }
     );
