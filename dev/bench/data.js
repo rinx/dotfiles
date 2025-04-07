@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743992545606,
+  "lastUpdate": 1744043136958,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -15953,6 +15953,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 74.47173649999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "bcafd54bcf0b208559409d76d81ec2debb56b394",
+          "message": "feat: add MCP integration for Avante\n\n- Add mcphub.nvim plugin as a dependency for avante.nvim\n\n- Add MCP configuration in avante.fnl\n\n- Setup Git, Playwright, and Fetch MCP servers\n\n- Add necessary Nix configuration for MCP integration\n\n🤖 Generated with [avante.nvim](https://github.com/yetone/avante.nvim)\n\nCo-Authored-By: avante.nvim <noreply-avante@yetone.ai>\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-08T01:12:26+09:00",
+          "tree_id": "3c29d5a0b45ce93a052a8a6dc48e1aa3576c420e",
+          "url": "https://github.com/rinx/dotfiles/commit/bcafd54bcf0b208559409d76d81ec2debb56b394"
+        },
+        "date": 1744043136112,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.3052789,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.5956128,
             "unit": "ms"
           }
         ]
