@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744043136958,
+  "lastUpdate": 1744115024495,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -15987,6 +15987,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.5956128,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "59f2a8f21b3adbf47df9751a998b6fdd08c014b5",
+          "message": "fix: fix mcp integration settings\n\n- add filesystem mcp server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-08T21:09:53+09:00",
+          "tree_id": "6d4c6abd2e89c0b6bb1244fbf3a0fa94562f2761",
+          "url": "https://github.com/rinx/dotfiles/commit/59f2a8f21b3adbf47df9751a998b6fdd08c014b5"
+        },
+        "date": 1744115023845,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.9912277,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.7400061,
             "unit": "ms"
           }
         ]
