@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744115024495,
+  "lastUpdate": 1744117443986,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16021,6 +16021,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 73.7400061,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c5b150ef03668bc4c88b44a35ebd76780df7ede2",
+          "message": "chore(pkgs): remove filesystem mcp server from mcp-servers.nix\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-08T21:27:37+09:00",
+          "tree_id": "8d3cd229f7e8145f1e18a490d445b1fb5c39cae3",
+          "url": "https://github.com/rinx/dotfiles/commit/c5b150ef03668bc4c88b44a35ebd76780df7ede2"
+        },
+        "date": 1744117442594,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.1229103,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.899704,
             "unit": "ms"
           }
         ]
