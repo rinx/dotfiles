@@ -6,6 +6,13 @@
   mcp-servers = mcp-servers-nix.lib.mkConfig pkgs {
     programs = {
       fetch.enable = true;
+      filesystem = {
+        enable = true;
+        args = [
+          "~/local/src/"
+          "~/tmp"
+        ];
+      };
       git.enable = true;
       playwright.enable = true;
     };

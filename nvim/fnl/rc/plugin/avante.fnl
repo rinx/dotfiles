@@ -2,7 +2,8 @@
 (local mcphub (require :mcphub))
 
 (mcphub.setup
-  {:config (vim.fn.expand "~/.nix-profile/config/mcp-servers.json")
+  {:auto_approve false
+   :config (vim.fn.expand "~/.nix-profile/config/mcp-servers.json")
    :extensions
    {:avante {}}})
 
@@ -23,14 +24,20 @@
                        (hub:get_active_servers_prompt)))
    :custom_tools (fn []
                    (let [ext (require :mcphub.extensions.avante)]
-                     (ext.mcp_tool)))
-   :disabled_tools [:list_files
-                    :search_files
-                    :read_file
-                    :create_file
-                    :rename_file
-                    :delete_file
+                     [(ext.mcp_tool)]))
+   :disabled_tools [:bash
                     :create_dir
-                    :rename_dir
+                    :create_file
                     :delete_dir
-                    :bash]})
+                    :delete_file
+                    :fetch
+                    :git_diff
+                    :git_commit
+                    :list_files
+                    :python
+                    :rag_search
+                    :read_file
+                    :rename_dir
+                    :rename_file
+                    :search_files
+                    :web_search]})
