@@ -5,44 +5,48 @@
   mcp-servers-nix,
   flake-inputs,
   system,
-}: let
-    falco = pkgs.callPackage ./falco.nix {};
+}:
+let
+  falco = pkgs.callPackage ./falco.nix { };
 
-    gh-actions-language-server = pkgs.callPackage ./gh-actions-ls.nix {
-      inherit pkgs;
-    };
+  gh-actions-language-server = pkgs.callPackage ./gh-actions-ls.nix {
+    inherit pkgs;
+  };
 
-    google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents [
-      pkgs.google-cloud-sdk.components.beta
-      pkgs.google-cloud-sdk.components.bq
-      pkgs.google-cloud-sdk.components.core
-      pkgs.google-cloud-sdk.components.gcloud-crc32c
-      pkgs.google-cloud-sdk.components.gsutil
-      pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
-    ];
+  google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents [
+    pkgs.google-cloud-sdk.components.beta
+    pkgs.google-cloud-sdk.components.bq
+    pkgs.google-cloud-sdk.components.core
+    pkgs.google-cloud-sdk.components.gcloud-crc32c
+    pkgs.google-cloud-sdk.components.gsutil
+    pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
+  ];
 
-    moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix {};
+  moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix { };
 
-    rq = pkgs.callPackage ./rq.nix {};
+  rq = pkgs.callPackage ./rq.nix { };
 
-    mcp-servers = pkgs.callPackage ./mcp-servers.nix {
-      inherit pkgs;
-      inherit mcp-servers-nix;
-    };
+  mcp-servers = pkgs.callPackage ./mcp-servers.nix {
+    inherit pkgs;
+    inherit mcp-servers-nix;
+  };
 
-    custom-pkgs = [
-      falco
-      gh-actions-language-server
-      google-cloud-sdk-with-components
-      mcp-hub.packages."${system}".default
-      mcp-servers
-      moralerspace-nerdfont
-      rq
-    ];
-  in pkgs.buildEnv {
-    name = "basic-packages";
+  custom-pkgs = [
+    falco
+    gh-actions-language-server
+    google-cloud-sdk-with-components
+    mcp-hub.packages."${system}".default
+    mcp-servers
+    moralerspace-nerdfont
+    rq
+  ];
+in
+pkgs.buildEnv {
+  name = "basic-packages";
 
-    paths = with pkgs; [
+  paths =
+    with pkgs;
+    [
 
       ## tools
       ast-grep
@@ -142,5 +146,6 @@
       nerd-fonts.jetbrains-mono
       nerd-fonts.monaspace
       nerd-fonts.victor-mono
-    ] ++ custom-pkgs;
-  }
+    ]
+    ++ custom-pkgs;
+}
