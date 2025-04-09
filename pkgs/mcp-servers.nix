@@ -8,6 +8,10 @@ let
     programs = {
       fetch.enable = true;
       git.enable = true;
+      github = {
+        enable = true;
+        passwordCommand = ''echo "GITHUB_PERSONAL_ACCESS_TOKEN=''$(${pkgs.gh}/bin/gh auth token)"'';
+      };
       playwright.enable = true;
     };
   };
