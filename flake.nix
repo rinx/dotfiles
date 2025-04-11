@@ -10,24 +10,39 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = inputs@{ self, nixpkgs, systems, flake-parts, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      systems,
+      flake-parts,
+      ...
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import systems;
-      perSystem = { config, self', pkgs, system, ... }: {
-        _module.args.pkgs = import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = [
-            inputs.neovim-nightly.overlays.default
-          ];
+      perSystem =
+        {
+          config,
+          self',
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = [
+              inputs.neovim-nightly.overlays.default
+            ];
+          };
+          packages.default = import ./pkgs {
+            inherit self pkgs system;
+            mcp-hub = inputs.mcp-hub;
+            mcp-servers-nix = inputs.mcp-servers-nix;
+            flake-inputs = inputs;
+          };
+          formatter = pkgs.nixfmt-rfc-style;
         };
-        packages.default = import ./pkgs {
-          inherit self pkgs system;
-          mcp-hub = inputs.mcp-hub;
-          mcp-servers-nix = inputs.mcp-servers-nix;
-          flake-inputs = inputs;
-        };
-        formatter = pkgs.nixfmt-rfc-style;
-      };
     };
 }
