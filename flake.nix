@@ -13,7 +13,6 @@
   outputs =
     inputs@{
       self,
-      nixpkgs,
       systems,
       flake-parts,
       ...
@@ -22,8 +21,6 @@
       systems = import systems;
       perSystem =
         {
-          config,
-          self',
           pkgs,
           system,
           ...
@@ -40,7 +37,6 @@
             inherit self pkgs system;
             mcp-hub = inputs.mcp-hub;
             mcp-servers-nix = inputs.mcp-servers-nix;
-            flake-inputs = inputs;
           };
           formatter = pkgs.nixfmt-rfc-style;
         };

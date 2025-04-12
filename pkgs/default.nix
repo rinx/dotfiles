@@ -3,7 +3,6 @@
   pkgs,
   mcp-hub,
   mcp-servers-nix,
-  flake-inputs,
   system,
 }:
 let
@@ -13,21 +12,25 @@ let
     inherit pkgs;
   };
 
-  google-cloud-sdk-with-components = pkgs.google-cloud-sdk.withExtraComponents [
-    pkgs.google-cloud-sdk.components.beta
-    pkgs.google-cloud-sdk.components.bq
-    pkgs.google-cloud-sdk.components.core
-    pkgs.google-cloud-sdk.components.gcloud-crc32c
-    pkgs.google-cloud-sdk.components.gsutil
-    pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
-  ];
+  google-cloud-sdk-with-components =
+    with pkgs.google-cloud-sdk;
+    withExtraComponents (
+      with components;
+      [
+        beta
+        bq
+        core
+        gcloud-crc32c
+        gsutil
+        gke-gcloud-auth-plugin
+      ]
+    );
 
   moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix { };
 
   rq = pkgs.callPackage ./rq.nix { };
 
   mcp-servers = pkgs.callPackage ./mcp-servers.nix {
-    inherit pkgs;
     inherit mcp-servers-nix;
   };
 
