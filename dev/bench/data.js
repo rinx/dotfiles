@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744446311854,
+  "lastUpdate": 1744446466863,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16225,6 +16225,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.23706150000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4680f28a3f2e652dd26d8990a08c89d9a65c2ba0",
+          "message": "fix(zshrc): fix init direnv\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-12T17:14:18+09:00",
+          "tree_id": "d2df09437720c9e1cc36c82bb532a397356eab72",
+          "url": "https://github.com/rinx/dotfiles/commit/4680f28a3f2e652dd26d8990a08c89d9a65c2ba0"
+        },
+        "date": 1744446465737,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.423786200000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.8852733,
             "unit": "ms"
           }
         ]
