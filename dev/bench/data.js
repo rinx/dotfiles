@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744446995981,
+  "lastUpdate": 1744450869370,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16293,6 +16293,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.2863906,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "cc589480187eb7ca91aceacc0bd861a5cde08f21",
+          "message": "refactor(nix): simplify pkgs/default.nix\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-12T18:28:15+09:00",
+          "tree_id": "3f5d87d20d3b9c70b7933318aa73af3ac216f460",
+          "url": "https://github.com/rinx/dotfiles/commit/cc589480187eb7ca91aceacc0bd861a5cde08f21"
+        },
+        "date": 1744450868131,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.071329199999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.6927366,
             "unit": "ms"
           }
         ]
