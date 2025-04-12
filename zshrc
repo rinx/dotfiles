@@ -150,6 +150,10 @@ export VISUAL=${EDITOR:-nvim}
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+## enable nix-direnv
+[[ ! -f ~/.nix-profile/share/nix-direnv/direnvrc ]] || source $HOME/.nix-profile/share/nix-direnv/direnvrc
+eval "$(direnv hook zsh)"
+
 zsh-defer source $HOME/.dotfiles/zshrc.d/aliases.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/compinit.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/zstyle-completions.zsh

@@ -10,4 +10,7 @@ Session.vim
 
 .nrepl-port
 
+# nix-direnv
+.envrc
+
 # vim: set ft=gitignore:

@@ -57,6 +57,7 @@ pkgs.buildEnv {
       cue
       curl
       delta
+      direnv
       docker-credential-helpers
       eza
       fd
@@ -70,6 +71,7 @@ pkgs.buildEnv {
       jq
       lazygit
       neovim-unwrapped
+      nix-direnv
       open-policy-agent
       pandoc
       pass
