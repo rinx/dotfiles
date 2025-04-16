@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744691328950,
+  "lastUpdate": 1744778884600,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16395,6 +16395,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.934993,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "662edaf7cc0765f3e6365baf1d63b35dd917064c",
+          "message": "config(nvim): remove several disable_tools settings from avante config\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-16T13:35:18+09:00",
+          "tree_id": "43057c1bbd34cfc73724470a1dee7ef1298fd798",
+          "url": "https://github.com/rinx/dotfiles/commit/662edaf7cc0765f3e6365baf1d63b35dd917064c"
+        },
+        "date": 1744778883870,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.1365521,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.6708431,
             "unit": "ms"
           }
         ]
