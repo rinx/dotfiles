@@ -30,9 +30,6 @@
                     :create_file
                     :delete_dir
                     :delete_file
-                    :fetch
-                    :git_diff
-                    :git_commit
                     :list_files
                     :python
                     :rag_search
