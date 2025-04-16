@@ -343,7 +343,8 @@
         "mcp-servers-nix": "mcp-servers-nix",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs_4",
-        "systems": "systems"
+        "systems": "systems",
+        "ysugimoto-falco": "ysugimoto-falco"
       }
     },
     "systems": {
@@ -379,6 +380,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "ysugimoto-falco": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744122269,
+        "narHash": "sha256-VnyAL5JFVx3e9XLd/3XAr/7OCEzuXhBdJ+Kb+K0inKI=",
+        "owner": "ysugimoto",
+        "repo": "falco",
+        "rev": "1d6fa7a3f05aa0782f988ea529c79510b523d0a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ysugimoto",
+        "repo": "falco",
         "type": "github"
       }
     }

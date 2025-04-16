@@ -8,6 +8,12 @@
     mcp-hub.url = "github:ravitemer/mcp-hub";
     mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+
+    # non-flake packages
+    ysugimoto-falco = {
+      url = "github:ysugimoto/falco";
+      flake = false;
+    };
   };
 
   outputs =
@@ -37,6 +43,7 @@
             inherit self pkgs system;
             mcp-hub = inputs.mcp-hub;
             mcp-servers-nix = inputs.mcp-servers-nix;
+            ysugimoto-falco = inputs.ysugimoto-falco;
           };
           formatter = pkgs.nixfmt-rfc-style;
         };

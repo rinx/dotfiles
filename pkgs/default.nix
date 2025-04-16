@@ -1,12 +1,13 @@
 {
   self,
   pkgs,
-  mcp-hub,
-  mcp-servers-nix,
   system,
-}:
+  ...
+}@inputs:
 let
-  falco = pkgs.callPackage ./falco.nix { };
+  falco = pkgs.callPackage ./falco.nix {
+    ysugimoto-falco = inputs.ysugimoto-falco;
+  };
 
   gh-actions-language-server = pkgs.callPackage ./gh-actions-ls.nix {
     inherit pkgs;
@@ -31,14 +32,14 @@ let
   rq = pkgs.callPackage ./rq.nix { };
 
   mcp-servers = pkgs.callPackage ./mcp-servers.nix {
-    inherit mcp-servers-nix;
+    mcp-servers-nix = inputs.mcp-servers-nix;
   };
 
   custom-pkgs = [
     falco
     gh-actions-language-server
     google-cloud-sdk-with-components
-    mcp-hub.packages."${system}".default
+    inputs.mcp-hub.packages."${system}".default
     mcp-servers
     moralerspace-nerdfont
     rq
