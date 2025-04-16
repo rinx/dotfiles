@@ -14,6 +14,10 @@
       url = "github:ysugimoto/falco";
       flake = false;
     };
+    charles-rq = {
+      url = "git+https://git.sr.ht/~charles/rq";
+      flake = false;
+    };
   };
 
   outputs =
@@ -44,6 +48,7 @@
             mcp-hub = inputs.mcp-hub;
             mcp-servers-nix = inputs.mcp-servers-nix;
             ysugimoto-falco = inputs.ysugimoto-falco;
+            charles-rq = inputs.charles-rq;
           };
           formatter = pkgs.nixfmt-rfc-style;
         };

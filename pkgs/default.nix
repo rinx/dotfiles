@@ -29,7 +29,9 @@ let
 
   moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix { };
 
-  rq = pkgs.callPackage ./rq.nix { };
+  rq = pkgs.callPackage ./rq.nix {
+    charles-rq = inputs.charles-rq;
+  };
 
   mcp-servers = pkgs.callPackage ./mcp-servers.nix {
     mcp-servers-nix = inputs.mcp-servers-nix;
