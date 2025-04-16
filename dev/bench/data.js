@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744804918252,
+  "lastUpdate": 1744808113029,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16497,6 +16497,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.50108540000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2b080991c0be3fd1a594de186e34e28abd65fbec",
+          "message": "refactor(nix): add non-flake git repository as flake dependency\n\n- ysugimoto/falco\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-16T21:42:19+09:00",
+          "tree_id": "ee5279b1c257d381db2edcec406114722db5a3c8",
+          "url": "https://github.com/rinx/dotfiles/commit/2b080991c0be3fd1a594de186e34e28abd65fbec"
+        },
+        "date": 1744808111710,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.486522,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 74.888384,
             "unit": "ms"
           }
         ]
