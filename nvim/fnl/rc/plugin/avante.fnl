@@ -5,7 +5,7 @@
   {:auto_approve false
    :config (vim.fn.expand "~/.nix-profile/config/mcp-servers.json")
    :extensions
-   {:avante {}}})
+   {:avante {:make_slash_commands true}}})
 
 (avante.setup
   {:provider :copilot

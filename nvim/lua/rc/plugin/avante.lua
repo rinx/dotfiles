@@ -1,7 +1,7 @@
 -- [nfnl] Compiled from fnl/rc/plugin/avante.fnl by https://github.com/Olical/nfnl, do not edit.
 local avante = require("avante")
 local mcphub = require("mcphub")
-mcphub.setup({config = vim.fn.expand("~/.nix-profile/config/mcp-servers.json"), extensions = {avante = {}}, auto_approve = false})
+mcphub.setup({config = vim.fn.expand("~/.nix-profile/config/mcp-servers.json"), extensions = {avante = {make_slash_commands = true}}, auto_approve = false})
 local function _1_()
   local hub = mcphub.get_hub_instance()
   return hub:get_active_servers_prompt()
