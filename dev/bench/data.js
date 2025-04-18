@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744971453223,
+  "lastUpdate": 1744972895042,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16633,6 +16633,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.93037919999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "95b98598d0a240a52c2495a1942872cfed56d56a",
+          "message": "refactor(orgmode): convert agenda tool to resource\n\nConvert orgmode agenda functionality from a tool-based implementation to a\nresource-based implementation. This change makes the agenda data available\nthrough the \"orgmode://agenda/today\" URI endpoint instead of a tool call.\n\nThe implementation logic remains the same, but it's now structured as a\nresource that can be directly accessed, improving API consistency and\naccessibility.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-18T19:27:28+09:00",
+          "tree_id": "0db67bd89f54b336f0ed0f63f4920668473ec916",
+          "url": "https://github.com/rinx/dotfiles/commit/95b98598d0a240a52c2495a1942872cfed56d56a"
+        },
+        "date": 1744972894324,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.362518899999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.5793075,
             "unit": "ms"
           }
         ]
