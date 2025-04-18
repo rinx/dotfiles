@@ -5,26 +5,26 @@
        {:name :orgmode
         :displayName "Orgmode"
         :capabilities
-        {:tools [{:name :get_todays_agenda
-                  :description "Get today's agenda by using orgmode agenda API"
-                  :inputSchema {}
-                  :handler (fn [req res]
-                             (let [orgmode (require :orgmode)
-                                   agenda-types (require :orgmode.agenda.types)
-                                   view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
-                                                                        :agenda_filter orgmode.agenda.filters
-                                                                        :highlighter orgmode.agenda.highlighter
-                                                                        :span :day})
-                                   view (agenda-types.agenda:new view-opts)
-                                   agenda-day (. (view:_get_agenda_days) 1)
-                                   items agenda-day.agenda_items]
-                                (-> (icollect [_ item (ipairs items)]
-                                      (let [entry (view:_build_line item agenda-day)
-                                            line (entry:compile)]
-                                        line.content))
-                                    (table.concat "\n")
-                                    (res:text))))}]
-         :resources []
+        {:tools []
+         :resources [{:name :todays_agenda
+                      :uri "orgmode://agenda/today"
+                      :description "Today's agenda"
+                      :handler (fn [req res]
+                                 (let [orgmode (require :orgmode)
+                                       agenda-types (require :orgmode.agenda.types)
+                                       view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
+                                                                            :agenda_filter orgmode.agenda.filters
+                                                                            :highlighter orgmode.agenda.highlighter
+                                                                            :span :day})
+                                       view (agenda-types.agenda:new view-opts)
+                                       agenda-day (. (view:_get_agenda_days) 1)
+                                       items agenda-day.agenda_items]
+                                    (-> (icollect [_ item (ipairs items)]
+                                          (let [entry (view:_build_line item agenda-day)
+                                                line (entry:compile)]
+                                            line.content))
+                                        (table.concat "\n")
+                                        (res:text))))}]
          :resourceTemplates []}})
 
 (mcphub.setup

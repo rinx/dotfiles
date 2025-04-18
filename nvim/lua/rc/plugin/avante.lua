@@ -11,26 +11,26 @@ local function _1_(req, res)
   local items = agenda_day.agenda_items
   local _2_
   do
-    local tbl_109_auto = {}
-    local i_110_auto = 0
+    local tbl_21_auto = {}
+    local i_22_auto = 0
     for _, item in ipairs(items) do
-      local val_111_auto
+      local val_23_auto
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
-        val_111_auto = line.content
+        val_23_auto = line.content
       end
-      if (nil ~= val_111_auto) then
-        i_110_auto = (i_110_auto + 1)
-        tbl_109_auto[i_110_auto] = val_111_auto
+      if (nil ~= val_23_auto) then
+        i_22_auto = (i_22_auto + 1)
+        tbl_21_auto[i_22_auto] = val_23_auto
       else
       end
     end
-    _2_ = tbl_109_auto
+    _2_ = tbl_21_auto
   end
   return res:text(table.concat(_2_, "\n"))
 end
-orgmode_server = {name = "orgmode", displayName = "Orgmode", capabilities = {tools = {{name = "get_todays_agenda", description = "Get today's agenda by using orgmode agenda API", inputSchema = {}, handler = _1_}}, resources = {}, resourceTemplates = {}}}
+orgmode_server = {name = "orgmode", displayName = "Orgmode", capabilities = {tools = {}, resources = {{name = "todays_agenda", uri = "orgmode://agenda/today", description = "Today's agenda", handler = _1_}}, resourceTemplates = {}}}
 mcphub.setup({config = vim.fn.expand("~/.nix-profile/config/mcp-servers.json"), extensions = {avante = {make_slash_commands = true}}, native_servers = {org = orgmode_server}, auto_approve = false})
 local function _4_()
   local hub = mcphub.get_hub_instance()
