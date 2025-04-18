@@ -4,7 +4,7 @@
      :END:
 
      #+BEGIN_QUOTE
-     schedule:
-     %(return require('rc.plugin.orgmode').build_todays_agenda())
-     tasks:
+schedule:
+%(return require('rc.plugin.orgmode').build_todays_agenda())
+tasks:
      #+END_QUOTE
