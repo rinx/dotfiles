@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744970426874,
+  "lastUpdate": 1744971453223,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16599,6 +16599,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 69.1219038,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d6a66891b8670fa9b591c7cb9666340b1eafaf3f",
+          "message": "feat(nvim): add a simple implementation of orgmode mcp server\n\nto fetch today's agenda by using orgmode api\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-18T19:04:31+09:00",
+          "tree_id": "38267d978344f44f55ce74898e4053f2d4c610d9",
+          "url": "https://github.com/rinx/dotfiles/commit/d6a66891b8670fa9b591c7cb9666340b1eafaf3f"
+        },
+        "date": 1744971452497,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.536736599999994,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.93037919999999,
             "unit": "ms"
           }
         ]
