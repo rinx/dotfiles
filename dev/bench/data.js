@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744983371007,
+  "lastUpdate": 1744983602845,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16701,6 +16701,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.27828249999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "886fa0803ab2ab32d6598749d94f68a82be53092",
+          "message": "fix(orgmode): ensure proper response sending in MCP server\n\nFix the orgmode MCP server handlers to properly send responses by explicitly\ncalling txt:send() after text generation. This ensures that responses from\nthe agenda endpoints are correctly delivered to clients.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-18T22:26:23+09:00",
+          "tree_id": "dca75f239b94a81067b6721e8d59b08a6ca107c9",
+          "url": "https://github.com/rinx/dotfiles/commit/886fa0803ab2ab32d6598749d94f68a82be53092"
+        },
+        "date": 1744983601182,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.245049199999993,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.48783879999999,
             "unit": "ms"
           }
         ]
