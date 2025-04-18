@@ -40,10 +40,12 @@ do
   end
   get_agenda = _1_
   local function _5_(req, res)
-    return res:text(get_agenda(req.params.date))
+    local txt = res:text(get_agenda(req.params.date))
+    return txt:send()
   end
   local function _6_(req, res)
-    return res:text(get_agenda())
+    local txt = res:text(get_agenda())
+    return txt:send()
   end
   orgmode_server = {name = "orgmode", displayName = "Orgmode", capabilities = {tools = {{name = "get_agenda_on_specific_date", description = "Get agenda on a specific date", inputSchema = {type = "object", properties = {date = {type = "string", description = "date formatted as '2020-01-03'"}}}, handler = _5_}}, resources = {{name = "todays_agenda", uri = "orgmode://agenda/today", description = "Today's agenda", handler = _6_}}, resourceTemplates = {}}}
 end

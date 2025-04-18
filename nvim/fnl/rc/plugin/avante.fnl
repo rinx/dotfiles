@@ -32,12 +32,14 @@
                                   {:type :string
                                    :description "date formatted as '2020-01-03'"}}}
                    :handler (fn [req res]
-                               (res:text (get-agenda req.params.date)))}]
+                               (let [txt (res:text (get-agenda req.params.date))]
+                                 (txt:send)))}]
           :resources [{:name :todays_agenda
                        :uri "orgmode://agenda/today"
                        :description "Today's agenda"
                        :handler (fn [req res]
-                                  (res:text (get-agenda)))}]
+                                  (let [txt (res:text (get-agenda))]
+                                    (txt:send)))}]
           :resourceTemplates []}}))
 
 (mcphub.setup
