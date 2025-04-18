@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744972895042,
+  "lastUpdate": 1744983371007,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16667,6 +16667,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.5793075,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "29773e39403dec461a1bd1217ef3183e5e9cb758",
+          "message": "feat(orgmode): add tool to get agenda for specific dates\n\nExtract agenda retrieval logic into a reusable function and expose it\nas a new MCP tool that allows getting agenda items for any specified date.\nThis improves the functionality of the orgmode MCP server by enabling\ndate-specific agenda queries.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-18T22:21:38+09:00",
+          "tree_id": "6dc1a371b2d108a91f5d61bd5e6720d91224f55f",
+          "url": "https://github.com/rinx/dotfiles/commit/29773e39403dec461a1bd1217ef3183e5e9cb758"
+        },
+        "date": 1744983370284,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.5506507,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.27828249999999,
             "unit": "ms"
           }
         ]
