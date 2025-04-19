@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745057215696,
+  "lastUpdate": 1745066183915,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16837,6 +16837,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.94116360000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "889c52805a958927694e5b3163c3d96d9ec4740f",
+          "message": "feat(nvim): add monthly agenda tool and this-week resource for orgmode mcp\n\nadd get_agendas_on_specific_month tool to retrieve agenda items for an entire month\nand introduce a new resource endpoint \"orgmode://agenda/this-week\" to display\nthe current week's agenda items.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-19T21:22:33+09:00",
+          "tree_id": "2a8ce59a3f1dd3bd90cac44da25cc51a8e28f599",
+          "url": "https://github.com/rinx/dotfiles/commit/889c52805a958927694e5b3163c3d96d9ec4740f"
+        },
+        "date": 1745066183057,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.949917399999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.35333,
             "unit": "ms"
           }
         ]
