@@ -19,8 +19,7 @@
                                   (let [agenda (-> (icollect [_ item (ipairs agenda-day.agenda_items)]
                                                     (let [entry (view:_build_line item agenda-day)
                                                           line (entry:compile)]
-                                                      line.content))
-                                                   (table.concat "\n"))]
+                                                      line.content)))]
                                     {:year agenda-day.day.year
                                      :month agenda-day.day.month
                                      :day agenda-day.day.day

@@ -22,7 +22,6 @@ do
       local val_23_auto
       do
         local agenda
-        local _3_
         do
           local tbl_21_auto0 = {}
           local i_22_auto0 = 0
@@ -39,9 +38,8 @@ do
             else
             end
           end
-          _3_ = tbl_21_auto0
+          agenda = tbl_21_auto0
         end
-        agenda = table.concat(_3_, "\n")
         val_23_auto = {year = agenda_day.day.year, month = agenda_day.day.month, day = agenda_day.day.day, agenda = agenda}
       end
       if (nil ~= val_23_auto) then
@@ -53,26 +51,26 @@ do
     return tbl_21_auto
   end
   get_agenda = _1_
-  local function _6_(req, res)
+  local function _5_(req, res)
     local txt = res:text(vim.json.encode(get_agenda("day", req.params.year, req.params.month, req.params.day)))
     return txt:send()
   end
-  local function _7_(req, res)
+  local function _6_(req, res)
     local txt = res:text(vim.json.encode(get_agenda("month", req.params.year, req.params.month, 1)))
     return txt:send()
   end
-  local function _8_(req, res)
+  local function _7_(req, res)
     local txt = res:text(vim.json.encode(get_agenda("day")))
     return txt:send()
   end
-  local function _9_(req, res)
+  local function _8_(req, res)
     local txt = res:text(vim.json.encode(get_agenda("week")))
     return txt:send()
   end
-  orgmode_server = {name = "orgmode", displayName = "Orgmode", capabilities = {tools = {{name = "get_agenda_on_specific_date", description = "Get agenda on a specific date", inputSchema = {type = "object", properties = {year = {type = "integer", description = "Year"}, month = {type = "integer", description = "Month"}, day = {type = "integer", description = "Day"}}}, handler = _6_}, {name = "get_agendas_on_specific_month", description = "Get agendas on a specific month", inputSchema = {type = "object", properties = {year = {type = "integer", description = "Year"}, month = {type = "integer", description = "Month"}}}, handler = _7_}}, resources = {{name = "todays_agenda", uri = "orgmode://agenda/today", description = "Today's agenda", handler = _8_}, {name = "agendas_on_this_week", uri = "orgmode://agenda/this-week", description = "Agendas on this week", handler = _9_}}, resourceTemplates = {}}}
+  orgmode_server = {name = "orgmode", displayName = "Orgmode", capabilities = {tools = {{name = "get_agenda_on_specific_date", description = "Get agenda on a specific date", inputSchema = {type = "object", properties = {year = {type = "integer", description = "Year"}, month = {type = "integer", description = "Month"}, day = {type = "integer", description = "Day"}}}, handler = _5_}, {name = "get_agendas_on_specific_month", description = "Get agendas on a specific month", inputSchema = {type = "object", properties = {year = {type = "integer", description = "Year"}, month = {type = "integer", description = "Month"}}}, handler = _6_}}, resources = {{name = "todays_agenda", uri = "orgmode://agenda/today", description = "Today's agenda", handler = _7_}, {name = "agendas_on_this_week", uri = "orgmode://agenda/this-week", description = "Agendas on this week", handler = _8_}}, resourceTemplates = {}}}
 end
 local orgroam_server
-local function _10_(req, res)
+local function _9_(req, res)
   local roam = require("org-roam")
   local ids = roam.database:ids()
   local nodes
@@ -96,20 +94,20 @@ local function _10_(req, res)
   local txt = res:text(vim.json.encode(nodes))
   return txt:send()
 end
-local function _12_(req, res)
+local function _11_(req, res)
   local roam = require("org-roam")
   local node = roam.database:get_sync(req.params.id)
   local txt = res:text(vim.fn.join(vim.fn.readfile(node.file), "\n"))
   return txt:send()
 end
-orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam nodes with its ID, title and aliases. The result should be formatted as JSON.", handler = _10_}}, resourceTemplates = {{name = "get_roam_node_content", uriTemplate = "orgroam://nodes/{id}", description = "Get roam node content by specified id. The result should be org-mode formatted text.", handler = _12_}}}}
+orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam nodes with its ID, title and aliases. The result should be formatted as JSON.", handler = _9_}}, resourceTemplates = {{name = "get_roam_node_content", uriTemplate = "orgroam://nodes/{id}", description = "Get roam node content by specified id. The result should be org-mode formatted text.", handler = _11_}}}}
 mcphub.setup({config = vim.fn.expand("~/.nix-profile/config/mcp-servers.json"), extensions = {avante = {make_slash_commands = true}}, native_servers = {org = orgmode_server, orgroam = orgroam_server}, auto_approve = false})
-local function _13_()
+local function _12_()
   local hub = mcphub.get_hub_instance()
   return hub:get_active_servers_prompt()
 end
-local function _14_()
+local function _13_()
   local ext = require("mcphub.extensions.avante")
   return {ext.mcp_tool()}
 end
-return avante.setup({provider = "copilot", behavior = {auto_apply_diff_after_generation = true, auto_set_keymaps = false, auto_suggestions = false}, copilot = {model = "claude-3.7-sonnet"}, hints = {enabled = false}, file_selector = {provider = "snacks"}, system_prompt = _13_, custom_tools = _14_, disabled_tools = {"bash", "create_dir", "create_file", "delete_dir", "delete_file", "list_files", "python", "rag_search", "read_file", "rename_dir", "rename_file", "search_files", "web_search"}})
+return avante.setup({provider = "copilot", behavior = {auto_apply_diff_after_generation = true, auto_set_keymaps = false, auto_suggestions = false}, copilot = {model = "claude-3.7-sonnet"}, hints = {enabled = false}, file_selector = {provider = "snacks"}, system_prompt = _12_, custom_tools = _13_, disabled_tools = {"bash", "create_dir", "create_file", "delete_dir", "delete_file", "list_files", "python", "rag_search", "read_file", "rename_dir", "rename_file", "search_files", "web_search"}})
