@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745066183915,
+  "lastUpdate": 1745066351709,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16871,6 +16871,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.35333,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "898d70c4501d13991d0bc0a85eaa2493384edbc8",
+          "message": "refactor(nvim): remove useless table.concat function\n\nfor formatting result of orgmode mcp tool and resources\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-19T21:25:55+09:00",
+          "tree_id": "ab8c908f4a599267eea48742cb1bbddb2851a99a",
+          "url": "https://github.com/rinx/dotfiles/commit/898d70c4501d13991d0bc0a85eaa2493384edbc8"
+        },
+        "date": 1745066350985,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.468600900000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.3747496,
             "unit": "ms"
           }
         ]
