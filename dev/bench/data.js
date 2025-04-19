@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745022053321,
+  "lastUpdate": 1745056229257,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16769,6 +16769,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 69.5794762,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "87ae4211ebe3aa1d184cbfc81985939319f61a06",
+          "message": "feat(nvim): add org-roam mcp server integration\n\nadd native org-roam mcp server to mcphub configuration with:\n- Tool to retrieve node content by id\n- Resource to list all org-roam nodes with metadata\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-19T18:36:47+09:00",
+          "tree_id": "c1dfd93e370187219661bfad2148536fd99edeb9",
+          "url": "https://github.com/rinx/dotfiles/commit/87ae4211ebe3aa1d184cbfc81985939319f61a06"
+        },
+        "date": 1745056228549,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.479808099999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.7116563,
             "unit": "ms"
           }
         ]
