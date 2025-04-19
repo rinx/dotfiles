@@ -2,25 +2,29 @@
 (local mcphub (require :mcphub))
 
 (local orgmode-server
-       (let [get-agenda (fn [date-string]
+       (let [get-agenda (fn [span year month day]
                           (let [orgmode (require :orgmode)
                                 agenda-types (require :orgmode.agenda.types)
                                 date (require :orgmode.objects.date)
-                                from (if date-string
-                                         (date.from_string date-string)
+                                from (if (and year month day)
+                                         (date.from_string (vim.fn.printf "%04d-%02d-%02d" year month day))
                                          nil)
                                 view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
                                                                      :agenda_filter orgmode.agenda.filters
                                                                      :highlighter orgmode.agenda.highlighter
-                                                                     :span :day
+                                                                     :span span
                                                                      :from from})
-                                view (agenda-types.agenda:new view-opts)
-                                agenda-day (. (view:_get_agenda_days) 1)]
-                            (-> (icollect [_ item (ipairs agenda-day.agenda_items)]
-                                  (let [entry (view:_build_line item agenda-day)
-                                        line (entry:compile)]
-                                    line.content))
-                                (table.concat "\n"))))]
+                                view (agenda-types.agenda:new view-opts)]
+                            (-> (icollect [_ agenda-day (ipairs (view:_get_agenda_days))]
+                                  (let [agenda (-> (icollect [_ item (ipairs agenda-day.agenda_items)]
+                                                    (let [entry (view:_build_line item agenda-day)
+                                                          line (entry:compile)]
+                                                      line.content))
+                                                   (table.concat "\n"))]
+                                    {:year agenda-day.day.year
+                                     :month agenda-day.day.month
+                                     :day agenda-day.day.day
+                                     :agenda agenda})))))]
         {:name :orgmode
          :displayName "Orgmode"
          :capabilities
@@ -28,17 +32,31 @@
                    :description "Get agenda on a specific date"
                    :inputSchema {:type :object
                                  :properties
-                                 {:date
-                                  {:type :string
-                                   :description "date formatted as '2020-01-03'"}}}
+                                 {:year
+                                  {:type :integer
+                                   :description :Year}
+                                  :month
+                                  {:type :integer
+                                   :description :Month}
+                                  :day
+                                  {:type :integer
+                                   :description :Day}}}
                    :handler (fn [req res]
-                               (let [txt (res:text (get-agenda req.params.date))]
+                               (let [txt (-> (get-agenda
+                                               :day
+                                               req.params.year
+                                               req.params.month
+                                               req.params.day)
+                                             (vim.json.encode)
+                                             (res:text))]
                                  (txt:send)))}]
           :resources [{:name :todays_agenda
                        :uri "orgmode://agenda/today"
                        :description "Today's agenda"
                        :handler (fn [req res]
-                                  (let [txt (res:text (get-agenda))]
+                                  (let [txt (-> (get-agenda :day)
+                                                (vim.json.encode)
+                                                (res:text))]
                                     (txt:send)))}]
           :resourceTemplates []}}))
 
