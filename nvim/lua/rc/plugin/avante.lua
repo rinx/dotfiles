@@ -52,12 +52,6 @@ end
 local orgroam_server
 local function _7_(req, res)
   local roam = require("org-roam")
-  local node = roam.database:get_sync(req.params.id)
-  local txt = res:text(vim.fn.join(vim.fn.readfile(node.file), "\n"))
-  return txt:send()
-end
-local function _8_(req, res)
-  local roam = require("org-roam")
   local ids = roam.database:ids()
   local nodes
   do
@@ -80,7 +74,13 @@ local function _8_(req, res)
   local txt = res:text(vim.json.encode(nodes))
   return txt:send()
 end
-orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {{name = "get_roam_node_content_by_id", description = "Get roam node content by specified id. The result should be org-mode formatted text.", inputSchema = {type = "object", properties = {id = {type = "string", description = "node ID"}}}, handler = _7_}}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam nodes with its ID, title and aliases. The result should be formatted as JSON.", handler = _8_}}}}
+local function _9_(req, res)
+  local roam = require("org-roam")
+  local node = roam.database:get_sync(req.params.id)
+  local txt = res:text(vim.fn.join(vim.fn.readfile(node.file), "\n"))
+  return txt:send()
+end
+orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam nodes with its ID, title and aliases. The result should be formatted as JSON.", handler = _7_}}, resourceTemplates = {{name = "get_roam_node_content", uriTemplate = "orgroam://nodes/{id}", description = "Get roam node content by specified id. The result should be org-mode formatted text.", handler = _9_}}}}
 mcphub.setup({config = vim.fn.expand("~/.nix-profile/config/mcp-servers.json"), extensions = {avante = {make_slash_commands = true}}, native_servers = {org = orgmode_server, orgroam = orgroam_server}, auto_approve = false})
 local function _10_()
   local hub = mcphub.get_hub_instance()
