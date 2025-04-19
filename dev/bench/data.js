@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745056229257,
+  "lastUpdate": 1745057215696,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16803,6 +16803,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.7116563,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d359b3445581bf640923375e3e0a2701ef7d3582",
+          "message": "refactor(nvim): convert org-roam mcp tool to resource template\n\nconvert the get_roam_node_content_by_id tool to a resource template\nwith URI orgroam://nodes/{id} for more RESTful access to org-roam\nnode contents.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-19T18:52:37+09:00",
+          "tree_id": "3eed221540fa419697d123378681c85da8a277ba",
+          "url": "https://github.com/rinx/dotfiles/commit/d359b3445581bf640923375e3e0a2701ef7d3582"
+        },
+        "date": 1745057214295,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.758403499999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.94116360000001,
             "unit": "ms"
           }
         ]
