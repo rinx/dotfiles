@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745066351709,
+  "lastUpdate": 1745069441389,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16905,6 +16905,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 73.3747496,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3fd7d4eb64c7edec29b06cfc1331fa1352fcc011",
+          "message": "config(nvim): add mcphub auto_approve toggle and set avante.nvim keymaps\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-19T22:16:48+09:00",
+          "tree_id": "ff92323e66cd3bc3aa968bc6bd8ae6eac545d893",
+          "url": "https://github.com/rinx/dotfiles/commit/3fd7d4eb64c7edec29b06cfc1331fa1352fcc011"
+        },
+        "date": 1745069440516,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.503378400000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 69.83784349999999,
             "unit": "ms"
           }
         ]
