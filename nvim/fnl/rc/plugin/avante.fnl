@@ -42,13 +42,49 @@
                                     (txt:send)))}]
           :resourceTemplates []}}))
 
+(local orgroam-server
+       {:name :orgroam
+        :displayName "Org-roam"
+        :capabilities
+        {:tools [{:name :get_roam_node_content_by_id
+                  :description "Get roam node content by specified id. The result should be org-mode formatted text."
+                  :inputSchema {:type :object
+                                :properties
+                                {:id
+                                 {:type :string
+                                  :description "node ID"}}}
+                  :handler (fn [req res]
+                             (let [roam (require :org-roam)
+                                   node (roam.database:get_sync req.params.id)
+                                   txt (-> node.file
+                                           (vim.fn.readfile)
+                                           (vim.fn.join "\n")
+                                           (res:text))]
+                               (txt:send)))}]
+         :resources [{:name :list_roam_nodes
+                      :uri "orgroam://nodes"
+                      :description "List all org-roam nodes with its ID, title and aliases. The result should be formatted as JSON."
+                      :handler (fn [req res]
+                                 (let [roam (require :org-roam)
+                                       ids (roam.database:ids)
+                                       nodes (icollect [_ id (ipairs ids)]
+                                               (let [node (roam.database:get_sync id)]
+                                                 {:id id
+                                                  :title node.title
+                                                  :aliases node.aliases}))]
+                                   (let [txt (-> nodes
+                                                 (vim.json.encode)
+                                                 (res:text))]
+                                     (txt:send))))}]}})
+
 (mcphub.setup
   {:auto_approve false
    :config (vim.fn.expand "~/.nix-profile/config/mcp-servers.json")
    :extensions
    {:avante {:make_slash_commands true}}
    :native_servers
-   {:org orgmode-server}})
+   {:org orgmode-server
+    :orgroam orgroam-server}})
 
 (avante.setup
   {:provider :copilot
