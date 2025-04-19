@@ -127,6 +127,18 @@
    {:org orgmode-server
     :orgroam orgroam-server}})
 
+;; add mcphub_auto_approve
+(let [toggle (Snacks.toggle.new
+               {:id :mcphub_auto_approve
+                :name "MCPHub auto_approve"
+                :get (fn []
+                       (= vim.g.mcphub_auto_approve true))
+                :set (fn [state]
+                       (if state
+                           (set vim.g.mcphub_auto_approve true)
+                           (set vim.g.mcphub_auto_approve false)))})]
+  (toggle:map :<leader>AA))
+
 (avante.setup
   {:provider :copilot
    :behavior
@@ -139,6 +151,23 @@
    {:enabled false}
    :file_selector
    {:provider :snacks}
+   :mappings
+   {:ask :<leader>Aa
+    :edit :<leader>Ae
+    :refresh :<leader>Ar
+    :focus :<leader>Af
+    :stop :<leader>AS
+    :toggle
+    {:default :<leader>At
+     :debug :<leader>Ad
+     :hint :<leader>Ah
+     :suggestion :<leader>As
+     :repomap :<leader>AR}
+    :files
+    {:add_current :<leader>Ac
+     :add_all_buffers :<leader>AB}
+    :select_model :<leader>A?
+    :select_history :<leader>AH}
    :system_prompt (fn []
                      (let [hub (mcphub.get_hub_instance)]
                        (hub:get_active_servers_prompt)))
