@@ -49,12 +49,39 @@
                                                req.params.day)
                                              (vim.json.encode)
                                              (res:text))]
-                                 (txt:send)))}]
+                                 (txt:send)))}
+                  {:name :get_agendas_on_specific_month
+                   :description "Get agendas on a specific month"
+                   :inputSchema {:type :object
+                                 :properties
+                                 {:year
+                                  {:type :integer
+                                   :description :Year}
+                                  :month
+                                  {:type :integer
+                                   :description :Month}}}
+                   :handler (fn [req res]
+                              (let [txt (-> (get-agenda
+                                              :month
+                                              req.params.year
+                                              req.params.month
+                                              1)
+                                            (vim.json.encode)
+                                            (res:text))]
+                                (txt:send)))}]
           :resources [{:name :todays_agenda
                        :uri "orgmode://agenda/today"
                        :description "Today's agenda"
                        :handler (fn [req res]
                                   (let [txt (-> (get-agenda :day)
+                                                (vim.json.encode)
+                                                (res:text))]
+                                    (txt:send)))}
+                      {:name :agendas_on_this_week
+                       :uri "orgmode://agenda/this-week"
+                       :description "Agendas on this week"
+                       :handler (fn [req res]
+                                  (let [txt (-> (get-agenda :week)
                                                 (vim.json.encode)
                                                 (res:text))]
                                     (txt:send)))}]
