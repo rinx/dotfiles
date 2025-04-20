@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745116672880,
+  "lastUpdate": 1745116922205,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16973,6 +16973,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.6238533,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "265a284dbd4569a987b9eacaf96808c7275a3a3f",
+          "message": "config(nix): remove zellij and add duckdb\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-20T11:27:39+09:00",
+          "tree_id": "37307ac361bdbb2adcd45f25ff14a5c7c55c60d5",
+          "url": "https://github.com/rinx/dotfiles/commit/265a284dbd4569a987b9eacaf96808c7275a3a3f"
+        },
+        "date": 1745116921497,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.485320899999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.2081468,
             "unit": "ms"
           }
         ]
