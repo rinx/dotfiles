@@ -331,16 +331,18 @@ local function refresh_roam_vector_indices()
   end
   return vim.system({"plamo-embedding-1b.py", "documents"}, {stdin = nodes, text = true}, _32_)
 end
-local function search_roam_nodes_by_vector(query)
+local function search_roam_nodes_by_vector(query, limit)
   local function _36_(job)
     if not (job.code == 0) then
       return vim.notify(job.stderr)
     else
       local query_embedding = job.stdout
-      local sql = ("SELECT id, array_cosine_distance(vector, " .. query_embedding .. "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT 3;")
+      local sql = ("SELECT id, array_cosine_distance(vector, " .. query_embedding .. "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT " .. limit .. ";")
       local function _37_(job0)
         if (job0.code == 0) then
-          return vim.notify(job0.stdout)
+          local results = vim.json.decode(job0.stdout)
+          local fst = results[1]
+          return vim.notify(fst.id)
         else
           return vim.notify(job0.stderr)
         end

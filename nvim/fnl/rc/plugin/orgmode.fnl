@@ -391,7 +391,7 @@
                          (vim.notify (.. "finished: took " took-sec "s")))
                         (vim.notify job.stderr)))))))))))
 
-(fn search_roam_nodes_by_vector [query]
+(fn search_roam_nodes_by_vector [query limit]
   (vim.system
     [:plamo-embedding-1b.py :query]
     {:stdin query
@@ -402,14 +402,18 @@
         (let [query-embedding job.stdout
               sql (.. "SELECT id, array_cosine_distance(vector, "
                       query-embedding
-                      "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT 3;")]
+                      "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT "
+                      limit
+                      ";")]
           (vim.system
             [:duckdb duckdb-file :--json]
             {:stdin sql
              :text true}
             (fn [job]
               (if (= job.code 0)
-                (vim.notify job.stdout)
+                (let [results (vim.json.decode job.stdout)
+                      fst (. results 1)]
+                  (vim.notify fst.id))
                 (vim.notify job.stderr)))))))))
 
 {: build_todays_agenda
