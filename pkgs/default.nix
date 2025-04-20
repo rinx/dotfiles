@@ -65,6 +65,7 @@ pkgs.buildEnv {
       delta
       direnv
       docker-credential-helpers
+      duckdb
       eza
       fd
       fzf
@@ -89,7 +90,6 @@ pkgs.buildEnv {
       tree-sitter
       wget
       yq-go
-      zellij
       zsh
 
       ## k8s
