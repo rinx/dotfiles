@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745120270138,
+  "lastUpdate": 1745157058603,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17041,6 +17041,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.38820460000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "04cc35b700ebde09c25f4cf0bf5c98a36a2b8cd2",
+          "message": "feat(nvim): add vector search for org-roam nodes\n\nAdd integration with plamo-embedding-1b model to create vector embeddings for\norg-roam nodes and store them in DuckDB. This enables semantic search of\norg-roam nodes using vector similarity.\n\n- Enhance plamo-embedding-1b.py to handle multiple documents at once\n- Add functions to refresh vector indices in DuckDB\n- Implement vector search functionality using cosine similarity\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-20T22:35:52+09:00",
+          "tree_id": "b29d39f4d7a2cddf4746019037685f0383a33b5f",
+          "url": "https://github.com/rinx/dotfiles/commit/04cc35b700ebde09c25f4cf0bf5c98a36a2b8cd2"
+        },
+        "date": 1745157057270,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.162055700000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.50662870000001,
             "unit": "ms"
           }
         ]
