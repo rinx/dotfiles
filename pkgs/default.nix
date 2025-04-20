@@ -5,11 +5,11 @@
   ...
 }@inputs:
 let
-  falco = pkgs.callPackage ./falco.nix {
+  falco = pkgs.callPackage ./tools/falco {
     ysugimoto-falco = inputs.ysugimoto-falco;
   };
 
-  gh-actions-language-server = pkgs.callPackage ./gh-actions-ls.nix {
+  gh-actions-language-server = pkgs.callPackage ./tools/gh-actions-ls {
     inherit pkgs;
   };
 
@@ -27,13 +27,13 @@ let
       ]
     );
 
-  moralerspace-nerdfont = pkgs.callPackage ./moralerspace-nerdfont.nix { };
+  moralerspace-nerdfont = pkgs.callPackage ./fonts/moralerspace-nerdfont { };
 
-  rq = pkgs.callPackage ./rq.nix {
+  rq = pkgs.callPackage ./tools/rq {
     charles-rq = inputs.charles-rq;
   };
 
-  mcp-servers = pkgs.callPackage ./mcp-servers.nix {
+  mcp-servers = pkgs.callPackage ./settings/mcp-servers {
     mcp-servers-nix = inputs.mcp-servers-nix;
   };
 
