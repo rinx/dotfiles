@@ -21,11 +21,19 @@ def encode_query(args):
     vec = query_embedding.cpu().squeeze().numpy().tolist()
     print(json.dumps(vec, separators=(',', ":")))
 
-def encode_document(args):
+def encode_documents(args):
+    # must be formatted as {:id :string :title :string :aliases [:string]}
+    inputs = json.loads(sys.stdin.read())
+    titles = [doc["title"] for doc in inputs]
+
     with torch.inference_mode():
-        document_embeddings = model.encode_document([sys.stdin.read()], tokenizer)
-    vec = document_embeddings[0].cpu().squeeze().numpy().tolist()
-    print(json.dumps(vec, separators=(',', ":")))
+        document_embeddings = model.encode_document(titles, tokenizer)
+        results = []
+        for doc, doc_embedding in zip(inputs, document_embeddings):
+            id = doc["id"]
+            vec = doc_embedding.cpu().squeeze().numpy().tolist()
+            results.append({"id": id, "vector": vec})
+        print(json.dumps(results, separators=(',', ':')))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="calculate embeddings for given text by using pfnet/plamo-embedding-1b")
@@ -34,8 +42,8 @@ if __name__ == '__main__':
     query_parser = subparsers.add_parser("query", help="encode query to embedding")
     query_parser.set_defaults(handler=encode_query)
 
-    document_parser = subparsers.add_parser("document", help="encode document to embedding")
-    document_parser.set_defaults(handler=encode_document)
+    documents_parser = subparsers.add_parser("documents", help="encode documents to embeddings")
+    documents_parser.set_defaults(handler=encode_documents)
 
     args = parser.parse_args()
 
