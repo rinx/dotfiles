@@ -312,4 +312,44 @@
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
                  (string.gsub "Scheduled:%s(%u+)%s" "")))))
         (table.concat "\n"))))
-{: build_todays_agenda}
+
+(fn get_agenda [span year month day]
+  (let [orgmode (require :orgmode)
+        agenda-types (require :orgmode.agenda.types)
+        date (require :orgmode.objects.date)
+        from (if (and year month day)
+                 (date.from_string (vim.fn.printf "%04d-%02d-%02d" year month day))
+                 nil)
+        view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
+                                             :agenda_filter orgmode.agenda.filters
+                                             :highlighter orgmode.agenda.highlighter
+                                             :span span
+                                             :from from})
+        view (agenda-types.agenda:new view-opts)]
+    (-> (icollect [_ agenda-day (ipairs (view:_get_agenda_days))]
+          (let [agenda (-> (icollect [_ item (ipairs agenda-day.agenda_items)]
+                            (let [entry (view:_build_line item agenda-day)
+                                  line (entry:compile)]
+                              line.content)))]
+            {:year agenda-day.day.year
+             :month agenda-day.day.month
+             :day agenda-day.day.day
+             :agenda agenda})))))
+
+(fn get_all_roam_nodes []
+  (let [roam (require :org-roam)
+        ids (roam.database:ids)]
+    (icollect [_ id (ipairs ids)]
+      (let [node (roam.database:get_sync id)]
+        {:id id
+         :title node.title
+         :aliases node.aliases}))))
+
+(fn get_roam_node_by_id [id]
+  (let [roam (require :org-roam)]
+    (roam.database:get_sync id)))
+
+{: build_todays_agenda
+ : get_agenda
+ : get_all_roam_nodes
+ : get_roam_node_by_id}
