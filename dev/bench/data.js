@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745157058603,
+  "lastUpdate": 1745157961192,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17075,6 +17075,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.50662870000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "698f90b3cec3d474da4fe4700c385c6454011b1a",
+          "message": "fix(nvim): fix search_roam_nodes_by_vector function\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-20T22:53:12+09:00",
+          "tree_id": "014dbaabfa71fbddd05ae5a0a73e268e41c3cd97",
+          "url": "https://github.com/rinx/dotfiles/commit/698f90b3cec3d474da4fe4700c385c6454011b1a"
+        },
+        "date": 1745157960273,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.102508699999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.4557161,
             "unit": "ms"
           }
         ]
