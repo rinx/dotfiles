@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745069441389,
+  "lastUpdate": 1745116672880,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -16939,6 +16939,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 69.83784349999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5e84e680355154713d29e814326e3e0d9f3d8a73",
+          "message": "refactor(nix): make pkgs directory structured\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-20T11:25:17+09:00",
+          "tree_id": "364fe09766cc1963b66d8aac5ba82f1decf08e92",
+          "url": "https://github.com/rinx/dotfiles/commit/5e84e680355154713d29e814326e3e0d9f3d8a73"
+        },
+        "date": 1745116672203,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.6097186,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.6238533,
             "unit": "ms"
           }
         ]
