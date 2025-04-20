@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745116922205,
+  "lastUpdate": 1745120270138,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17007,6 +17007,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.2081468,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "986b4d72aa0560c2f6b6f1987d0fb6592d409d83",
+          "message": "feat(nix): add plamo-embedding-1b script to calculate embedding vector\n\nfor given stdin text\n\nthis will be useful for composing simple rag service\nto search documents in org-roam\n\nreferences:\n- https://tech.preferred.jp/ja/blog/plamo-embedding-1b/\n- https://voluntas.ghost.io/slug-quick-custom-rag/\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-20T12:23:25+09:00",
+          "tree_id": "608cfebe9f7202611c080731ac3d1716ae4ef37b",
+          "url": "https://github.com/rinx/dotfiles/commit/986b4d72aa0560c2f6b6f1987d0fb6592d409d83"
+        },
+        "date": 1745120269474,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.7105367,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.38820460000002,
             "unit": "ms"
           }
         ]
