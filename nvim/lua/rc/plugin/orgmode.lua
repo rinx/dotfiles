@@ -189,26 +189,26 @@ local function build_todays_agenda()
   local items = agenda_day.agenda_items
   local _21_
   do
-    local tbl_109_auto = {}
-    local i_110_auto = 0
+    local tbl_21_auto = {}
+    local i_22_auto = 0
     for _, item in ipairs(items) do
-      local val_111_auto
+      local val_23_auto
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
         if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not string.match(line.content, "CANCELED")) then
-          val_111_auto = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
+          val_23_auto = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
         else
-          val_111_auto = nil
+          val_23_auto = nil
         end
       end
-      if (nil ~= val_111_auto) then
-        i_110_auto = (i_110_auto + 1)
-        tbl_109_auto[i_110_auto] = val_111_auto
+      if (nil ~= val_23_auto) then
+        i_22_auto = (i_22_auto + 1)
+        tbl_21_auto[i_22_auto] = val_23_auto
       else
       end
     end
-    _21_ = tbl_109_auto
+    _21_ = tbl_21_auto
   end
   return table.concat(_21_, "\n")
 end
@@ -224,58 +224,58 @@ local function get_agenda(span, year, month, day)
   end
   local view_opts = vim.tbl_extend("force", {}, {files = orgmode0.agenda.files, agenda_filter = orgmode0.agenda.filters, highlighter = orgmode0.agenda.highlighter, span = span, from = from})
   local view = agenda_types.agenda:new(view_opts)
-  local tbl_109_auto = {}
-  local i_110_auto = 0
+  local tbl_21_auto = {}
+  local i_22_auto = 0
   for _, agenda_day in ipairs(view:_get_agenda_days()) do
-    local val_111_auto
+    local val_23_auto
     do
       local agenda
       do
-        local tbl_109_auto0 = {}
-        local i_110_auto0 = 0
+        local tbl_21_auto0 = {}
+        local i_22_auto0 = 0
         for _0, item in ipairs(agenda_day.agenda_items) do
-          local val_111_auto0
+          local val_23_auto0
           do
             local entry = view:_build_line(item, agenda_day)
             local line = entry:compile()
-            val_111_auto0 = line.content
+            val_23_auto0 = line.content
           end
-          if (nil ~= val_111_auto0) then
-            i_110_auto0 = (i_110_auto0 + 1)
-            tbl_109_auto0[i_110_auto0] = val_111_auto0
+          if (nil ~= val_23_auto0) then
+            i_22_auto0 = (i_22_auto0 + 1)
+            tbl_21_auto0[i_22_auto0] = val_23_auto0
           else
           end
         end
-        agenda = tbl_109_auto0
+        agenda = tbl_21_auto0
       end
-      val_111_auto = {year = agenda_day.day.year, month = agenda_day.day.month, day = agenda_day.day.day, agenda = agenda}
+      val_23_auto = {year = agenda_day.day.year, month = agenda_day.day.month, day = agenda_day.day.day, agenda = agenda}
     end
-    if (nil ~= val_111_auto) then
-      i_110_auto = (i_110_auto + 1)
-      tbl_109_auto[i_110_auto] = val_111_auto
+    if (nil ~= val_23_auto) then
+      i_22_auto = (i_22_auto + 1)
+      tbl_21_auto[i_22_auto] = val_23_auto
     else
     end
   end
-  return tbl_109_auto
+  return tbl_21_auto
 end
 local function get_all_roam_nodes()
   local roam0 = require("org-roam")
   local ids = roam0.database:ids()
-  local tbl_109_auto = {}
-  local i_110_auto = 0
+  local tbl_21_auto = {}
+  local i_22_auto = 0
   for _, id in ipairs(ids) do
-    local val_111_auto
+    local val_23_auto
     do
       local node = roam0.database:get_sync(id)
-      val_111_auto = {id = id, title = node.title, aliases = node.aliases}
+      val_23_auto = {id = id, title = node.title, aliases = node.aliases}
     end
-    if (nil ~= val_111_auto) then
-      i_110_auto = (i_110_auto + 1)
-      tbl_109_auto[i_110_auto] = val_111_auto
+    if (nil ~= val_23_auto) then
+      i_22_auto = (i_22_auto + 1)
+      tbl_21_auto[i_22_auto] = val_23_auto
     else
     end
   end
-  return tbl_109_auto
+  return tbl_21_auto
 end
 local function get_roam_node_by_id(id)
   local roam0 = require("org-roam")
@@ -287,7 +287,7 @@ if not (vim.fn.isdirectory(duckdb_dir) == 1) then
   vim.fn.mkdir(duckdb_dir, "p")
 else
 end
-local function refresh_roam_vector_indices()
+local function roam_refresh_vector_index()
   local started_time = os.time()
   local async_system = async.wrap(vim.system, 3)
   local __3esql
@@ -295,17 +295,17 @@ local function refresh_roam_vector_indices()
     local inserts
     local _30_
     do
-      local tbl_109_auto = {}
-      local i_110_auto = 0
+      local tbl_21_auto = {}
+      local i_22_auto = 0
       for _, result in ipairs(results) do
-        local val_111_auto = ("INSERT INTO roam_nodes (id, vector) VALUES ('" .. result.id .. "', " .. vim.json.encode(result.vector) .. ")")
-        if (nil ~= val_111_auto) then
-          i_110_auto = (i_110_auto + 1)
-          tbl_109_auto[i_110_auto] = val_111_auto
+        local val_23_auto = ("INSERT INTO roam_nodes (id, vector) VALUES ('" .. result.id .. "', " .. vim.json.encode(result.vector) .. ")")
+        if (nil ~= val_23_auto) then
+          i_22_auto = (i_22_auto + 1)
+          tbl_21_auto[i_22_auto] = val_23_auto
         else
         end
       end
-      _30_ = tbl_109_auto
+      _30_ = tbl_21_auto
     end
     inserts = table.concat(_30_, ";")
     return table.concat({"INSTALL vss", "LOAD vss", "CREATE TABLE IF NOT EXISTS roam_nodes (id TEXT, vector FLOAT[2048])", inserts}, ";")
@@ -326,7 +326,7 @@ local function refresh_roam_vector_indices()
       if (db_job.code == 0) then
         local current_time = os.time()
         local took_sec = (current_time - started_time)
-        return vim.notify(("finished: took " .. took_sec .. "s"), "info")
+        return vim.notify(("roam refresh vector index: took " .. took_sec .. "s"), "info")
       else
         return vim.notify(db_job.stderr, "error")
       end
@@ -338,6 +338,7 @@ local function refresh_roam_vector_indices()
   end
   return async.run(_32_, nil, _35_)
 end
+vim.api.nvim_create_user_command("RoamRefreshVectorIndex", roam_refresh_vector_index, {})
 local function search_roam_nodes_by_vector(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esql
@@ -396,5 +397,5 @@ local function search_roam_nodes_by_vector(query, limit, cb, errcb)
   end
   return async.run(_43_, nil, _46_)
 end
---[[ (refresh_roam_vector_indices) (search_roam_nodes_by_vector "Neovim" 10 print print) ]]
+--[[ (roam-refresh-vector-index) (search_roam_nodes_by_vector "Neovim" 10 print print) ]]
 return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, search_roam_nodes_by_vector = search_roam_nodes_by_vector}

@@ -356,7 +356,7 @@
 (when (not (= (vim.fn.isdirectory duckdb-dir) 1))
   (vim.fn.mkdir duckdb-dir :p))
 
-(fn refresh_roam_vector_indices []
+(fn roam-refresh-vector-index []
   (let [started-time (os.time)
         async-system (async.wrap vim.system 3)
         ->sql (fn [results]
@@ -396,12 +396,13 @@
                 (if (= db-job.code 0)
                     (let [current-time (os.time)
                           took-sec (- current-time started-time)]
-                      (vim.notify (.. "finished: took " took-sec "s") :info))
+                      (vim.notify (.. "roam refresh vector index: took " took-sec "s") :info))
                     (vim.notify db-job.stderr :error))))))
       nil
       (fn [err]
         (async.util.scheduler)
         (vim.notify (.. "Error in refresh_roam_vector_indices: " (tostring err)) :error)))))
+(vim.api.nvim_create_user_command :RoamRefreshVectorIndex roam-refresh-vector-index {})
 
 (fn search_roam_nodes_by_vector [query limit cb errcb]
   (let [async-system (async.wrap vim.system 3)
@@ -450,7 +451,7 @@
         (errcb (.. "Error: " (tostring err)))))))
 
 (comment
-  (refresh_roam_vector_indices)
+  (roam-refresh-vector-index)
   (search_roam_nodes_by_vector :Neovim 10 print print))
 
 {: build_todays_agenda
