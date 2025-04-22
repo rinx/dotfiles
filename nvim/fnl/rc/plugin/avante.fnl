@@ -72,10 +72,32 @@
        {:name :orgroam
         :displayName "Org-roam"
         :capabilities
-        {:tools []
+        {:tools [{:name :semantic_search_roam_nodes
+                  :description "Semantic search for org-roam notes. The result should be formatted as JSON. It returns IDs and distances for limited number of notes."
+                  :inputSchema {:type :object
+                                :properties
+                                {:query
+                                 {:type :string
+                                  :description "Query string used for semantic search"}
+                                 :limit
+                                 {:type :integer
+                                  :description "The number of top-k result"}}}
+                  :handler (fn [req res]
+                             (let [orgrc (require :rc.plugin.orgmode)
+                                   callback (fn [result]
+                                              (let [txt (res:text result)]
+                                                (txt:send)))
+                                   ecallback (fn [e]
+                                               (let [err (res:error e)]
+                                                 (err:send)))]
+                               (orgrc.search_roam_nodes_by_vector
+                                 req.params.query
+                                 req.params.limit
+                                 callback
+                                 ecallback)))}]
          :resources [{:name :list_roam_nodes
                       :uri "orgroam://nodes"
-                      :description "List all org-roam nodes with its ID, title and aliases. The result should be formatted as JSON."
+                      :description "List all org-roam notes with its ID, title and aliases. The result should be formatted as JSON."
                       :handler (fn [req res]
                                  (let [orgrc (require :rc.plugin.orgmode)
                                        nodes (orgrc.get_all_roam_nodes)]
@@ -85,7 +107,7 @@
                                      (txt:send))))}]
          :resourceTemplates [{:name :get_roam_node_content
                               :uriTemplate "orgroam://nodes/{id}"
-                              :description "Get roam node content by specified id. The result should be org-mode formatted text."
+                              :description "Get roam note content by specified id. The result should be org-mode formatted text."
                               :handler (fn [req res]
                                          (let [orgrc (require :rc.plugin.orgmode)
                                                node (orgrc.get_roam_node_by_id req.params.id)

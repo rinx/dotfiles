@@ -26,24 +26,40 @@ orgmode_server = {name = "orgmode", displayName = "Orgmode", capabilities = {too
 local orgroam_server
 local function _5_(req, res)
   local orgrc = require("rc.plugin.orgmode")
+  local callback
+  local function _6_(result)
+    local txt = res:text(result)
+    return txt:send()
+  end
+  callback = _6_
+  local ecallback
+  local function _7_(e)
+    local err = res:error(e)
+    return err:send()
+  end
+  ecallback = _7_
+  return orgrc.search_roam_nodes_by_vector(req.params.query, req.params.limit, callback, ecallback)
+end
+local function _8_(req, res)
+  local orgrc = require("rc.plugin.orgmode")
   local nodes = orgrc.get_all_roam_nodes()
   local txt = res:text(vim.json.encode(nodes))
   return txt:send()
 end
-local function _6_(req, res)
+local function _9_(req, res)
   local orgrc = require("rc.plugin.orgmode")
   local node = orgrc.get_roam_node_by_id(req.params.id)
   local txt = res:text(vim.fn.join(vim.fn.readfile(node.file), "\n"))
   return txt:send()
 end
-orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam nodes with its ID, title and aliases. The result should be formatted as JSON.", handler = _5_}}, resourceTemplates = {{name = "get_roam_node_content", uriTemplate = "orgroam://nodes/{id}", description = "Get roam node content by specified id. The result should be org-mode formatted text.", handler = _6_}}}}
+orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {{name = "semantic_search_roam_nodes", description = "Semantic search for org-roam notes. The result should be formatted as JSON. It returns IDs and distances for limited number of notes.", inputSchema = {type = "object", properties = {query = {type = "string", description = "Query string used for semantic search"}, limit = {type = "integer", description = "The number of top-k result"}}}, handler = _5_}}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam notes with its ID, title and aliases. The result should be formatted as JSON.", handler = _8_}}, resourceTemplates = {{name = "get_roam_node_content", uriTemplate = "orgroam://nodes/{id}", description = "Get roam note content by specified id. The result should be org-mode formatted text.", handler = _9_}}}}
 mcphub.setup({config = vim.fn.expand("~/.nix-profile/config/mcp-servers.json"), extensions = {avante = {make_slash_commands = true}}, native_servers = {org = orgmode_server, orgroam = orgroam_server}, auto_approve = false})
 do
   local toggle
-  local function _7_()
+  local function _10_()
     return (vim.g.mcphub_auto_approve == true)
   end
-  local function _8_(state)
+  local function _11_(state)
     if state then
       vim.g.mcphub_auto_approve = true
       return nil
@@ -52,15 +68,15 @@ do
       return nil
     end
   end
-  toggle = Snacks.toggle.new({id = "mcphub_auto_approve", name = "MCPHub auto_approve", get = _7_, set = _8_})
+  toggle = Snacks.toggle.new({id = "mcphub_auto_approve", name = "MCPHub auto_approve", get = _10_, set = _11_})
   toggle:map("<leader>AA")
 end
-local function _10_()
+local function _13_()
   local hub = mcphub.get_hub_instance()
   return hub:get_active_servers_prompt()
 end
-local function _11_()
+local function _14_()
   local ext = require("mcphub.extensions.avante")
   return {ext.mcp_tool()}
 end
-return avante.setup({provider = "copilot", behavior = {auto_apply_diff_after_generation = true, auto_set_keymaps = false, auto_suggestions = false}, copilot = {model = "claude-3.7-sonnet"}, vendors = {["copilot-gemini-2.5-pro"] = {__inherited_from = "copilot", model = "gemini-2.5-pro"}, ["copilot-gpt-4.1"] = {__inherited_from = "copilot", model = "gpt-4.1"}, ["copilot-gpt-4o"] = {__inherited_from = "copilot", model = "gpt-4o"}}, hints = {enabled = false}, file_selector = {provider = "snacks"}, mappings = {ask = "<leader>Aa", edit = "<leader>Ae", refresh = "<leader>Ar", focus = "<leader>Af", stop = "<leader>AS", toggle = {default = "<leader>At", debug = "<leader>Ad", hint = "<leader>Ah", suggestion = "<leader>As", repomap = "<leader>AR"}, files = {add_current = "<leader>Ac", add_all_buffers = "<leader>AB"}, select_model = "<leader>A?", select_history = "<leader>AH"}, system_prompt = _10_, custom_tools = _11_, disabled_tools = {"bash", "create_dir", "create_file", "delete_dir", "delete_file", "list_files", "python", "rag_search", "read_file", "rename_dir", "rename_file", "search_files", "web_search"}})
+return avante.setup({provider = "copilot", behavior = {auto_apply_diff_after_generation = true, auto_set_keymaps = false, auto_suggestions = false}, copilot = {model = "claude-3.7-sonnet"}, vendors = {["copilot-gemini-2.5-pro"] = {__inherited_from = "copilot", model = "gemini-2.5-pro"}, ["copilot-gpt-4.1"] = {__inherited_from = "copilot", model = "gpt-4.1"}, ["copilot-gpt-4o"] = {__inherited_from = "copilot", model = "gpt-4o"}}, hints = {enabled = false}, file_selector = {provider = "snacks"}, mappings = {ask = "<leader>Aa", edit = "<leader>Ae", refresh = "<leader>Ar", focus = "<leader>Af", stop = "<leader>AS", toggle = {default = "<leader>At", debug = "<leader>Ad", hint = "<leader>Ah", suggestion = "<leader>As", repomap = "<leader>AR"}, files = {add_current = "<leader>Ac", add_all_buffers = "<leader>AB"}, select_model = "<leader>A?", select_history = "<leader>AH"}, system_prompt = _13_, custom_tools = _14_, disabled_tools = {"bash", "create_dir", "create_file", "delete_dir", "delete_file", "list_files", "python", "rag_search", "read_file", "rename_dir", "rename_file", "search_files", "web_search"}})
