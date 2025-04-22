@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745201470783,
+  "lastUpdate": 1745296576559,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17143,6 +17143,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.49063430000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "33d6671da8d60b39aceb4ee0ad587651f613fbea",
+          "message": "config(nvim): add avante alternative models\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-22T13:23:24+09:00",
+          "tree_id": "ff400d6f68ef500003eb5665e2a8ecbf09090f88",
+          "url": "https://github.com/rinx/dotfiles/commit/33d6671da8d60b39aceb4ee0ad587651f613fbea"
+        },
+        "date": 1745296575975,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.2139229,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.7388243,
             "unit": "ms"
           }
         ]
