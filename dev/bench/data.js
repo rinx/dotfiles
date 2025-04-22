@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745332629291,
+  "lastUpdate": 1745334230857,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17245,6 +17245,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.48594010000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1db206e62006c3de63a65f4955f30ee1392b9723",
+          "message": "feat(nvim): include node aliases in org-roam vector index generation\n\nAdd support for indexing org-roam node aliases alongside their titles in the\nvector database. This improvement allows semantic search to find nodes not only\nby their primary titles but also through any of their aliases, enhancing\nthe discoverability of notes with alternative references.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-22T23:48:28+09:00",
+          "tree_id": "a68c3e3ecdc914f0c9104e3a7e63689f218e5aad",
+          "url": "https://github.com/rinx/dotfiles/commit/1db206e62006c3de63a65f4955f30ee1392b9723"
+        },
+        "date": 1745334230083,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.3082088,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.3931871,
             "unit": "ms"
           }
         ]
