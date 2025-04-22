@@ -373,7 +373,16 @@
     (async.run
       (fn []
         (vim.fn.delete duckdb-file)
-        (let [nodes (-> (get_all_roam_nodes)
+        (let [flatten-nodes (fn [nodes]
+                              (local tbl [])
+                              (icollect [_ node (ipairs nodes)]
+                                (do
+                                  (table.insert tbl {:id node.id :title node.title})
+                                  (icollect [_ alias (ipairs node.aliases)]
+                                    (table.insert tbl {:id node.id :title alias}))))
+                              tbl)
+              nodes (-> (get_all_roam_nodes)
+                        (flatten-nodes)
                         (vim.json.encode))
               embedding-job (async-system
                                [:plamo-embedding-1b.py :documents]
