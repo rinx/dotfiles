@@ -388,7 +388,6 @@
                                [:plamo-embedding-1b.py :documents]
                                {:stdin nodes
                                 :text true})]
-
           (if (not (= embedding-job.code 0))
               (do
                 (async.util.scheduler)
@@ -400,7 +399,6 @@
                               [:duckdb duckdb-file]
                               {:stdin sql
                                :text true})]
-
                 (async.util.scheduler)
                 (if (= db-job.code 0)
                     (let [current-time (os.time)
@@ -445,7 +443,6 @@
                              (values false "No results found")))
                          (values false job.stderr)))))]
     (async.run
-
       (fn []
         (let [vec (->embedding)]
           (when vec
