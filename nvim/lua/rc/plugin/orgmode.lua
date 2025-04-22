@@ -3,6 +3,7 @@ local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local icon = autoload("rc.icon")
 local color = autoload("rc.color")
+local async = autoload("plenary.async")
 local colors = color.colors
 local orgmode = require("orgmode")
 local roam = require("org-roam")
@@ -288,6 +289,7 @@ else
 end
 local function refresh_roam_vector_indices()
   local started_time = os.time()
+  local async_system = async.wrap(vim.system, 3)
   local __3esql
   local function _29_(results)
     local inserts
@@ -309,47 +311,90 @@ local function refresh_roam_vector_indices()
     return table.concat({"INSTALL vss", "LOAD vss", "CREATE TABLE IF NOT EXISTS roam_nodes (id TEXT, vector FLOAT[2048])", inserts}, ";")
   end
   __3esql = _29_
-  vim.fn.delete(duckdb_file)
-  local nodes = vim.json.encode(get_all_roam_nodes())
-  local function _32_(job)
-    if not (job.code == 0) then
-      return vim.notify(job.stderr)
+  local function _32_()
+    vim.fn.delete(duckdb_file)
+    local nodes = vim.json.encode(get_all_roam_nodes())
+    local embedding_job = async_system({"plamo-embedding-1b.py", "documents"}, {stdin = nodes, text = true})
+    if not (embedding_job.code == 0) then
+      async.util.scheduler()
+      return vim.notify(embedding_job.stderr, "error")
     else
-      local results = vim.json.decode(job.stdout)
+      local results = vim.json.decode(embedding_job.stdout)
       local sql = __3esql(results)
-      local function _33_(job0)
-        if (job0.code == 0) then
-          local current_time = os.time()
-          local took_sec = (current_time - started_time)
-          return vim.notify(("finished: took " .. took_sec .. "s"))
-        else
-          return vim.notify(job0.stderr)
-        end
+      local db_job = async_system({"duckdb", duckdb_file}, {stdin = sql, text = true})
+      async.util.scheduler()
+      if (db_job.code == 0) then
+        local current_time = os.time()
+        local took_sec = (current_time - started_time)
+        return vim.notify(("finished: took " .. took_sec .. "s"), "info")
+      else
+        return vim.notify(db_job.stderr, "error")
       end
-      return vim.system({"duckdb", duckdb_file}, {stdin = sql, text = true}, _33_)
     end
   end
-  return vim.system({"plamo-embedding-1b.py", "documents"}, {stdin = nodes, text = true}, _32_)
+  local function _35_(err)
+    async.util.scheduler()
+    return vim.notify(("Error in refresh_roam_vector_indices: " .. tostring(err)), "error")
+  end
+  return async.run(_32_, nil, _35_)
 end
-local function search_roam_nodes_by_vector(query, limit)
-  local function _36_(job)
-    if not (job.code == 0) then
-      return vim.notify(job.stderr)
+local function search_roam_nodes_by_vector(query, limit, cb, errcb)
+  local async_system = async.wrap(vim.system, 3)
+  local __3esql
+  local function _36_(vec, limit0)
+    return ("SELECT id, array_cosine_distance(vector, " .. vec .. "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT " .. limit0 .. ";")
+  end
+  __3esql = _36_
+  local __3eembedding
+  local function _37_()
+    local job = async_system({"plamo-embedding-1b.py", "query"}, {stdin = query, text = true})
+    if (job.code == 0) then
+      return job.stdout
     else
-      local query_embedding = job.stdout
-      local sql = ("SELECT id, array_cosine_distance(vector, " .. query_embedding .. "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT " .. limit .. ";")
-      local function _37_(job0)
-        if (job0.code == 0) then
-          local results = vim.json.decode(job0.stdout)
-          local fst = results[1]
-          return vim.notify(fst.id)
-        else
-          return vim.notify(job0.stderr)
-        end
-      end
-      return vim.system({"duckdb", duckdb_file, "--json"}, {stdin = sql, text = true}, _37_)
+      async.util.scheduler()
+      errcb(job.stderr)
+      return false
     end
   end
-  return vim.system({"plamo-embedding-1b.py", "query"}, {stdin = query, text = true}, _36_)
+  __3eembedding = _37_
+  local __3esearch
+  local function _39_(vec)
+    if vec then
+      local job = async_system({"duckdb", duckdb_file, "--json"}, {stdin = __3esql(vec, limit), text = true})
+      if (job.code == 0) then
+        local results = vim.json.decode(job.stdout)
+        if (results and (#results > 0)) then
+          return true, vim.json.encode(results)
+        else
+          return false, "No results found"
+        end
+      else
+        return false, job.stderr
+      end
+    else
+      return nil
+    end
+  end
+  __3esearch = _39_
+  local function _43_()
+    local vec = __3eembedding()
+    if vec then
+      local ok_3f, result = __3esearch(vec)
+      async.util.scheduler()
+      if ok_3f then
+        return cb(result)
+      else
+        return errcb(result)
+      end
+    else
+      return nil
+    end
+  end
+  local function _46_(err)
+    async.util.scheduler()
+    return errcb(("Error: " .. tostring(err)))
+  end
+  return async.run(_43_, nil, _46_)
 end
-return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id}
+--[[ (refresh_roam_vector_indices) (search_roam_nodes_by_vector "Neovim" 10 print print) ]]
+return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, search_roam_nodes_by_vector = search_roam_nodes_by_vector}

@@ -2,6 +2,7 @@
 
 (local icon (autoload :rc.icon))
 (local color (autoload :rc.color))
+(local async (autoload :plenary.async))
 
 (local colors color.colors)
 
@@ -357,6 +358,7 @@
 
 (fn refresh_roam_vector_indices []
   (let [started-time (os.time)
+        async-system (async.wrap vim.system 3)
         ->sql (fn [results]
                 (let [inserts (-> (icollect [_ result (ipairs results)]
                                      (.. "INSERT INTO roam_nodes (id, vector) VALUES ('"
@@ -368,55 +370,91 @@
                        "CREATE TABLE IF NOT EXISTS roam_nodes (id TEXT, vector FLOAT[2048])"
                        inserts]
                       (table.concat ";"))))]
-    (vim.fn.delete duckdb-file)
-    (let [nodes (-> (get_all_roam_nodes)
-                    (vim.json.encode))]
-      (vim.system
-        [:plamo-embedding-1b.py :documents]
-        {:stdin nodes
-         :text true}
-        (fn [job]
-          (if (not (= job.code 0))
-              (vim.notify job.stderr)
-              (let [results (vim.json.decode job.stdout)
-                    sql (->sql results)]
-                (vim.system
-                  [:duckdb duckdb-file]
-                  {:stdin sql
-                   :text true}
-                  (fn [job]
-                    (if (= job.code 0)
-                        (let [current-time (os.time)
-                              took-sec (- current-time started-time)]
-                         (vim.notify (.. "finished: took " took-sec "s")))
-                        (vim.notify job.stderr)))))))))))
+    (async.run
+      (fn []
+        (vim.fn.delete duckdb-file)
+        (let [nodes (-> (get_all_roam_nodes)
+                        (vim.json.encode))
+              embedding-job (async-system
+                               [:plamo-embedding-1b.py :documents]
+                               {:stdin nodes
+                                :text true})]
 
-(fn search_roam_nodes_by_vector [query limit]
-  (vim.system
-    [:plamo-embedding-1b.py :query]
-    {:stdin query
-     :text true}
-    (fn [job]
-      (if (not (= job.code 0))
-        (vim.notify job.stderr)
-        (let [query-embedding job.stdout
-              sql (.. "SELECT id, array_cosine_distance(vector, "
-                      query-embedding
-                      "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT "
-                      limit
-                      ";")]
-          (vim.system
-            [:duckdb duckdb-file :--json]
-            {:stdin sql
-             :text true}
-            (fn [job]
-              (if (= job.code 0)
-                (let [results (vim.json.decode job.stdout)
-                      fst (. results 1)]
-                  (vim.notify fst.id))
-                (vim.notify job.stderr)))))))))
+          (if (not (= embedding-job.code 0))
+              (do
+                (async.util.scheduler)
+                (vim.notify embedding-job.stderr :error))
+
+              (let [results (vim.json.decode embedding-job.stdout)
+                    sql (->sql results)
+                    db-job (async-system
+                              [:duckdb duckdb-file]
+                              {:stdin sql
+                               :text true})]
+
+                (async.util.scheduler)
+                (if (= db-job.code 0)
+                    (let [current-time (os.time)
+                          took-sec (- current-time started-time)]
+                      (vim.notify (.. "finished: took " took-sec "s") :info))
+                    (vim.notify db-job.stderr :error))))))
+      nil
+      (fn [err]
+        (async.util.scheduler)
+        (vim.notify (.. "Error in refresh_roam_vector_indices: " (tostring err)) :error)))))
+
+(fn search_roam_nodes_by_vector [query limit cb errcb]
+  (let [async-system (async.wrap vim.system 3)
+        ->sql (fn [vec limit]
+                (.. "SELECT id, array_cosine_distance(vector, "
+                    vec
+                    "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT "
+                    limit
+                    ";"))
+        ->embedding (fn []
+                      (let [job (async-system
+                                  [:plamo-embedding-1b.py :query]
+                                  {:stdin query
+                                   :text true})]
+                        (if (= job.code 0)
+                            job.stdout
+                            (do
+                              (async.util.scheduler)
+                              (errcb job.stderr)
+                              false))))
+        ->search (fn [vec]
+                   (when vec
+                     (let [job (async-system
+                                 [:duckdb duckdb-file :--json]
+                                 {:stdin (->sql vec limit)
+                                  :text true})]
+                       (if (= job.code 0)
+                         (let [results (vim.json.decode job.stdout)]
+                           (if (and results (> (length results) 0))
+                             (values true (vim.json.encode results))
+                             (values false "No results found")))
+                         (values false job.stderr)))))]
+    (async.run
+
+      (fn []
+        (let [vec (->embedding)]
+          (when vec
+            (let [(ok? result) (->search vec)]
+              (async.util.scheduler)
+              (if ok?
+                  (cb result)
+                  (errcb result))))))
+      nil
+      (fn [err]
+        (async.util.scheduler)
+        (errcb (.. "Error: " (tostring err)))))))
+
+(comment
+  (refresh_roam_vector_indices)
+  (search_roam_nodes_by_vector :Neovim 10 print print))
 
 {: build_todays_agenda
  : get_agenda
  : get_all_roam_nodes
- : get_roam_node_by_id}
+ : get_roam_node_by_id
+ : search_roam_nodes_by_vector}
