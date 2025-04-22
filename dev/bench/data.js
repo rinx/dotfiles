@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745334230857,
+  "lastUpdate": 1745336523569,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17279,6 +17279,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.3931871,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b2424a7f16a9408410846d4b2e1974e05e7bff9f",
+          "message": "refactor(nvim): remove unneeded blank lines\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-23T00:29:19+09:00",
+          "tree_id": "98bb8efd22ea9089b5cb6500c3d89a96ef145859",
+          "url": "https://github.com/rinx/dotfiles/commit/b2424a7f16a9408410846d4b2e1974e05e7bff9f"
+        },
+        "date": 1745336523028,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.795560400000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.6147996,
             "unit": "ms"
           }
         ]
