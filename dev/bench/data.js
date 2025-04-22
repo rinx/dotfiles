@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745296576559,
+  "lastUpdate": 1745332208914,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17177,6 +17177,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.7388243,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7d5be5c69fd8849a34f04fd7e4cd95b3bdcccd1a",
+          "message": "feat(nvim): add mcp functionality of semantic vector search for org-roam notes\n\nAdd semantic_search_roam_nodes tool to the orgroam MCP server\nto enable vector-based semantic search functionality for org-roam notes.\nThe tool returns IDs and distances for a limited number of notes\nbased on semantic similarity to the query.\n\nAlso improve descriptions by changing \"nodes\" to \"notes\" for clarity.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-22T23:15:06+09:00",
+          "tree_id": "0ab660f3321743eb67172fe937ad3e053f239d9f",
+          "url": "https://github.com/rinx/dotfiles/commit/7d5be5c69fd8849a34f04fd7e4cd95b3bdcccd1a"
+        },
+        "date": 1745332207448,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.653104099999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.76615799999999,
             "unit": "ms"
           }
         ]
