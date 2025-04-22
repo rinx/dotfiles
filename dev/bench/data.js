@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745332208914,
+  "lastUpdate": 1745332629291,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17211,6 +17211,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.76615799999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "fefc44b4155fc326f92ee8f5c02281dc801fb444",
+          "message": "feat(nvim): add user command for roam vector index refresh\n\nrename `refresh_roam_vector_indices` to `roam-refresh-vector-index`\nfor better naming consistency and expose it as a user command\n`:RoamRefreshVectorIndex`.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-22T23:23:05+09:00",
+          "tree_id": "d3f4c218d126781f7c43320f290a1b0c8603ff15",
+          "url": "https://github.com/rinx/dotfiles/commit/fefc44b4155fc326f92ee8f5c02281dc801fb444"
+        },
+        "date": 1745332628718,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.356463800000007,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.48594010000001,
             "unit": "ms"
           }
         ]
