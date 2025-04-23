@@ -10,14 +10,15 @@
                   :inputSchema {:type :object
                                 :properties
                                 {:year
-                                 {:type :integer
+                                 {:type :number
                                   :description :Year}
                                  :month
-                                 {:type :integer
+                                 {:type :number
                                   :description :Month}
                                  :day
-                                 {:type :integer
-                                  :description :Day}}}
+                                 {:type :number
+                                  :description :Day}}
+                                :required [:year :month :day]}
                   :handler (fn [req res]
                               (let [orgrc (require :rc.plugin.orgmode)
                                     txt (-> (orgrc.get_agenda
@@ -33,11 +34,12 @@
                   :inputSchema {:type :object
                                 :properties
                                 {:year
-                                 {:type :integer
+                                 {:type :number
                                   :description :Year}
                                  :month
-                                 {:type :integer
-                                  :description :Month}}}
+                                 {:type :number
+                                  :description :Month}}
+                                :required [:year :month]}
                   :handler (fn [req res]
                              (let [orgrc (require :rc.plugin.orgmode)
                                    txt (-> (orgrc.get_agenda
@@ -80,8 +82,9 @@
                                  {:type :string
                                   :description "Query string used for semantic search"}
                                  :limit
-                                 {:type :integer
-                                  :description "The number of top-k result"}}}
+                                 {:type :number
+                                  :description "The number of top-k result"}}
+                                :required [:query :limit]}
                   :handler (fn [req res]
                              (let [orgrc (require :rc.plugin.orgmode)
                                    callback (fn [result]
