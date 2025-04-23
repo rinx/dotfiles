@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745336523569,
+  "lastUpdate": 1745370716562,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17313,6 +17313,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.6147996,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "0453ac78ce8ce9ad2bdc129d13b346e1309f7907",
+          "message": "fix(nvim): fix mcp input schema for native servers\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-23T09:58:58+09:00",
+          "tree_id": "a09e362906be77b741b0c13f68c385a614dc8baf",
+          "url": "https://github.com/rinx/dotfiles/commit/0453ac78ce8ce9ad2bdc129d13b346e1309f7907"
+        },
+        "date": 1745370715826,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.9091878,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.9377287,
             "unit": "ms"
           }
         ]
