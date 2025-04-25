@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745499392804,
+  "lastUpdate": 1745584696934,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17381,6 +17381,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 75.6508447,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8432ff7dcef1ed14f54451ab232f88eb3a44c976",
+          "message": "chore(zshrc): remove unused path\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-25T21:25:15+09:00",
+          "tree_id": "bad1a95ec2a8e2b305dcdd22d4331aaf7b94da49",
+          "url": "https://github.com/rinx/dotfiles/commit/8432ff7dcef1ed14f54451ab232f88eb3a44c976"
+        },
+        "date": 1745584696369,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.2536275,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.9879702,
             "unit": "ms"
           }
         ]
