@@ -17,6 +17,8 @@ let
     inherit pkgs;
   };
 
+  git-switcher = pkgs.callPackage ./tools/git-switcher { };
+
   google-cloud-sdk-with-components =
     with pkgs.google-cloud-sdk;
     withExtraComponents (
@@ -48,6 +50,7 @@ let
     falco
     gctx
     gh-actions-language-server
+    git-switcher
     google-cloud-sdk-with-components
     inputs.mcp-hub.packages."${system}".default
     mcp-servers
