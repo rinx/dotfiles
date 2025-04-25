@@ -19,15 +19,6 @@
        (string/join "\n")
        (print)))
 
-(defn fzy [ss]
-  (let [proc (p/process ["fzy"]
-                        {:in (->> ss
-                                  (string/join "\n"))
-                         :err :inherit
-                         :out :string})]
-    (string/trim-newline
-     (:out @proc))))
-
 (defn fzf [ss]
   (let [proc (p/process ["fzf" "-m"]
                         {:in (->> ss
@@ -57,11 +48,11 @@
 
 (defn show-current-config []
   (->> (get-entries)
-    (filter (fn [e]
-              (= (:active? e) "True")))
-    (first)
-    :name
-    (print)))
+       (filter (fn [e]
+                 (= (:active? e) "True")))
+       (first)
+       :name
+       (print)))
 
 (defn select-config []
   (let [entries (get-entries)]

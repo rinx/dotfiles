@@ -11,8 +11,10 @@ stdenv.mkDerivation {
 
   dontConfigure = true;
 
-  buildInputs = [
-    pkgs.babashka
+  buildInputs = with pkgs; [
+    babashka
+    fzf
+    git
   ];
 
   installPhase = ''

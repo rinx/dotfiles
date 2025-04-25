@@ -17,15 +17,6 @@
 (def git-profiles-edn
   (str (System/getenv "HOME") "/.git-profiles.edn"))
 
-(defn fzy [ss]
-  (let [proc (p/process ["fzy"]
-                        {:in (->> ss
-                                  (string/join "\n"))
-                         :err :inherit
-                         :out :string})]
-    (string/trim-newline
-     (:out @proc))))
-
 (defn fzf [ss]
   (let [proc (p/process ["fzf" "-m"]
                         {:in (->> ss
