@@ -5,6 +5,8 @@
   ...
 }@inputs:
 let
+  aws-sts-token = pkgs.callPackage ./tools/aws-sts-token { };
+
   falco = pkgs.callPackage ./tools/falco {
     ysugimoto-falco = inputs.ysugimoto-falco;
   };
@@ -40,6 +42,7 @@ let
   };
 
   custom-pkgs = [
+    aws-sts-token
     falco
     gh-actions-language-server
     google-cloud-sdk-with-components
