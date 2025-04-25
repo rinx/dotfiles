@@ -13,8 +13,6 @@ HISTFILE=$HOME/.dotfiles.local/zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-export PATH=$PATH:~/.bin
-
 ## https://github.com/mattmc3/zsh_unplugged
 ## clone a plugin, identify its init file, source it, and add it to your fpath
 function plugin-load() {
