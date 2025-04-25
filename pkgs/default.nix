@@ -11,6 +11,8 @@ let
     ysugimoto-falco = inputs.ysugimoto-falco;
   };
 
+  gctx = pkgs.callPackage ./tools/gctx { };
+
   gh-actions-language-server = pkgs.callPackage ./tools/gh-actions-ls {
     inherit pkgs;
   };
@@ -44,6 +46,7 @@ let
   custom-pkgs = [
     aws-sts-token
     falco
+    gctx
     gh-actions-language-server
     google-cloud-sdk-with-components
     inputs.mcp-hub.packages."${system}".default
