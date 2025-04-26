@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745585125167,
+  "lastUpdate": 1745656136394,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17449,6 +17449,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.44643740000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "05e518300438e81c0f02e0ac84a8fe4013a53679",
+          "message": "chore(deps): lock file maintenance\n\n- fix rq vendorHash\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-26T17:15:39+09:00",
+          "tree_id": "a2eae4b3e40e1a22f934806d89e51423a1ceda8f",
+          "url": "https://github.com/rinx/dotfiles/commit/05e518300438e81c0f02e0ac84a8fe4013a53679"
+        },
+        "date": 1745656135656,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.095896900000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 69.92846740000002,
             "unit": "ms"
           }
         ]
