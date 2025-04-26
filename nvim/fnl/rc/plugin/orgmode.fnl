@@ -232,7 +232,10 @@
         :target "book%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}
     :s {:description " scrap"
         :template (->tmplstr :roam/scrap.org)
-        :target "scrap/%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}}})
+        :target "scrap/%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}}
+   :immediate
+   {:target "immediate%[sep]%<%Y%m%d%H%M%S>-%[slug].org"
+    :template (->tmplstr :roam/immediate.org)}})
 
 (bullets.setup
   {:concealcursor false
@@ -350,6 +353,20 @@
   (let [roam (require :org-roam)]
     (roam.database:get_sync id)))
 
+(fn create_roam_node [title body cb]
+  (let [roam (require :org-roam)
+        promise (roam.api.capture_node
+                  {:immediate true
+                   :origin false
+                   :title title})]
+    (promise:next
+      (fn [id]
+        (let [node (get_roam_node_by_id id)]
+          (-> body
+              (vim.fn.split "\n")
+              (vim.fn.writefile node.file :a))
+          (cb id))))))
+
 (local duckdb-dir (vim.fn.expand "~/.cache/nvim/roam_duckdb"))
 (local duckdb-file (.. duckdb-dir :/roam.duckdb))
 
@@ -464,4 +481,5 @@
  : get_agenda
  : get_all_roam_nodes
  : get_roam_node_by_id
+ : create_roam_node
  : search_roam_nodes_by_vector}

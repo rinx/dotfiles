@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/orgmode.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/orgmode.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local icon = autoload("rc.icon")
@@ -123,7 +123,7 @@ local function _17_(data)
   return m:open(data)
 end
 orgmode.setup({org_agenda_files = {inbox, __3epath("journal/*.org"), __3epath("notes/**/*.org")}, org_default_notes_file = inbox, org_archive_location = __3epath("archive/%s_archive::"), org_todo_keywords = {"TODO", "PENDING", "IN_REVIEW", "|", "DONE", "CANCELED"}, org_todo_keyword_faces = {TODO = (":foreground " .. colors.color5 .. " :background " .. colors.color8 .. " :underline on"), WAITING = (":foreground " .. colors.color5 .. " :background " .. colors.color10), PENDING = (":foreground " .. colors.color5 .. " :background " .. colors.color10), IN_REVIEW = (":foreground " .. colors.color5 .. " :background " .. colors.color10), DONE = (":foreground " .. colors.color5 .. " :background " .. colors.color13), CANCELED = (":foreground " .. colors.color5 .. " :background " .. colors.color9)}, org_startup_folded = "overview", org_capture_templates = {t = {description = "\239\128\140 Add a new task to inbox", template = __3etmplstr("task.org"), target = inbox, headline = "Tasks"}, n = {description = "\239\137\137 Add a new note to inbox", subtemplates = {c = {description = "\243\176\133\180 code-reading note", template = __3etmplstr("code-note.org"), target = inbox, headline = "Notes"}, d = {description = "\239\137\137 default note", template = __3etmplstr("note.org"), target = inbox, headline = "Notes"}, l = {description = "\239\145\140 with link", template = __3etmplstr("link.org"), target = inbox, headline = "Notes"}, p = {description = "\239\129\191 with clipboard content", template = __3etmplstr("paste.org"), target = inbox, headline = "Notes"}}}, i = {description = "\239\144\128 Add a new idea", template = __3etmplstr("idea.org"), target = inbox, headline = "Ideas"}, s = {description = "\239\128\133 Add a new topic", template = __3etmplstr("topic.org"), target = inbox, headline = "Topics"}, j = {description = "\243\176\131\173 Add a new note to journal", template = __3etmplstr("journal.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}, d = {description = "\243\176\131\173 Add a new daily report to journal", template = __3etmplstr("daily-report.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}, r = {description = "\243\176\141\163 Add a new review task to journal", template = __3etmplstr("task-review.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}}, calendar_week_start_day = 0, org_deadline_warning_days = 7, org_tags_column = 90, org_id_link_to_org_use_id = true, org_custom_exports = {c = {label = "Export whole document to clipboard", action = _4_}, x = {label = "Export closest headline to clipboard", action = _8_}, d = {label = "Export to PDF file via pandoc & xelatex", action = _12_}}, win_split_mode = "auto", org_highlight_latex_and_related = "entities", org_hide_emphasis_markers = true, notifications = {enabled = true, repeater_reminder_time = {0, 5, 10, 15}, deadline_warning_reminder_time = {0, 5, 10, 15}, reminder_time = {0, 5, 10, 15}, notifier = _15_, cron_enabled = false}, ui = {input = {use_vim_ui = true}, menu = {handler = _17_}}})
-roam.setup({directory = __3epath("roam"), org_files = {inbox, __3epath("journal/*.org")}, templates = {f = {description = "\243\176\142\154 fleeting", template = __3etmplstr("roam/fleeting.org"), target = "fleeting%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, w = {description = "\243\176\150\172 wiki", template = __3etmplstr("roam/wiki.org"), target = "wiki%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, p = {description = "\239\148\131 project", template = __3etmplstr("roam/project.org"), target = "project%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, c = {description = "\239\132\161 code", template = __3etmplstr("roam/code.org"), target = "code%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, b = {description = "\239\144\133 book", template = __3etmplstr("roam/book.org"), target = "book%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, s = {description = "\239\132\174 scrap", template = __3etmplstr("roam/scrap.org"), target = "scrap/%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}}})
+roam.setup({directory = __3epath("roam"), org_files = {inbox, __3epath("journal/*.org")}, templates = {f = {description = "\243\176\142\154 fleeting", template = __3etmplstr("roam/fleeting.org"), target = "fleeting%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, w = {description = "\243\176\150\172 wiki", template = __3etmplstr("roam/wiki.org"), target = "wiki%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, p = {description = "\239\148\131 project", template = __3etmplstr("roam/project.org"), target = "project%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, c = {description = "\239\132\161 code", template = __3etmplstr("roam/code.org"), target = "code%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, b = {description = "\239\144\133 book", template = __3etmplstr("roam/book.org"), target = "book%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, s = {description = "\239\132\174 scrap", template = __3etmplstr("roam/scrap.org"), target = "scrap/%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}}, immediate = {target = "immediate%[sep]%<%Y%m%d%H%M%S>-%[slug].org", template = __3etmplstr("roam/immediate.org")}})
 bullets.setup({symbols = icon["org-bullets"], concealcursor = false})
 local function open_fn(filepath)
   local function _18_()
@@ -189,26 +189,26 @@ local function build_todays_agenda()
   local items = agenda_day.agenda_items
   local _21_
   do
-    local tbl_21_auto = {}
-    local i_22_auto = 0
+    local tbl_21_ = {}
+    local i_22_ = 0
     for _, item in ipairs(items) do
-      local val_23_auto
+      local val_23_
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
         if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not string.match(line.content, "CANCELED")) then
-          val_23_auto = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
+          val_23_ = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
         else
-          val_23_auto = nil
+          val_23_ = nil
         end
       end
-      if (nil ~= val_23_auto) then
-        i_22_auto = (i_22_auto + 1)
-        tbl_21_auto[i_22_auto] = val_23_auto
+      if (nil ~= val_23_) then
+        i_22_ = (i_22_ + 1)
+        tbl_21_[i_22_] = val_23_
       else
       end
     end
-    _21_ = tbl_21_auto
+    _21_ = tbl_21_
   end
   return table.concat(_21_, "\n")
 end
@@ -224,62 +224,72 @@ local function get_agenda(span, year, month, day)
   end
   local view_opts = vim.tbl_extend("force", {}, {files = orgmode0.agenda.files, agenda_filter = orgmode0.agenda.filters, highlighter = orgmode0.agenda.highlighter, span = span, from = from})
   local view = agenda_types.agenda:new(view_opts)
-  local tbl_21_auto = {}
-  local i_22_auto = 0
+  local tbl_21_ = {}
+  local i_22_ = 0
   for _, agenda_day in ipairs(view:_get_agenda_days()) do
-    local val_23_auto
+    local val_23_
     do
       local agenda
       do
-        local tbl_21_auto0 = {}
-        local i_22_auto0 = 0
+        local tbl_21_0 = {}
+        local i_22_0 = 0
         for _0, item in ipairs(agenda_day.agenda_items) do
-          local val_23_auto0
+          local val_23_0
           do
             local entry = view:_build_line(item, agenda_day)
             local line = entry:compile()
-            val_23_auto0 = line.content
+            val_23_0 = line.content
           end
-          if (nil ~= val_23_auto0) then
-            i_22_auto0 = (i_22_auto0 + 1)
-            tbl_21_auto0[i_22_auto0] = val_23_auto0
+          if (nil ~= val_23_0) then
+            i_22_0 = (i_22_0 + 1)
+            tbl_21_0[i_22_0] = val_23_0
           else
           end
         end
-        agenda = tbl_21_auto0
+        agenda = tbl_21_0
       end
-      val_23_auto = {year = agenda_day.day.year, month = agenda_day.day.month, day = agenda_day.day.day, agenda = agenda}
+      val_23_ = {year = agenda_day.day.year, month = agenda_day.day.month, day = agenda_day.day.day, agenda = agenda}
     end
-    if (nil ~= val_23_auto) then
-      i_22_auto = (i_22_auto + 1)
-      tbl_21_auto[i_22_auto] = val_23_auto
+    if (nil ~= val_23_) then
+      i_22_ = (i_22_ + 1)
+      tbl_21_[i_22_] = val_23_
     else
     end
   end
-  return tbl_21_auto
+  return tbl_21_
 end
 local function get_all_roam_nodes()
   local roam0 = require("org-roam")
   local ids = roam0.database:ids()
-  local tbl_21_auto = {}
-  local i_22_auto = 0
+  local tbl_21_ = {}
+  local i_22_ = 0
   for _, id in ipairs(ids) do
-    local val_23_auto
+    local val_23_
     do
       local node = roam0.database:get_sync(id)
-      val_23_auto = {id = id, title = node.title, aliases = node.aliases}
+      val_23_ = {id = id, title = node.title, aliases = node.aliases}
     end
-    if (nil ~= val_23_auto) then
-      i_22_auto = (i_22_auto + 1)
-      tbl_21_auto[i_22_auto] = val_23_auto
+    if (nil ~= val_23_) then
+      i_22_ = (i_22_ + 1)
+      tbl_21_[i_22_] = val_23_
     else
     end
   end
-  return tbl_21_auto
+  return tbl_21_
 end
 local function get_roam_node_by_id(id)
   local roam0 = require("org-roam")
   return roam0.database:get_sync(id)
+end
+local function create_roam_node(title, body, cb)
+  local roam0 = require("org-roam")
+  local promise = roam0.api.capture_node({immediate = true, title = title, origin = false})
+  local function _28_(id)
+    local node = get_roam_node_by_id(id)
+    vim.fn.writefile(vim.fn.split(body, "\n"), node.file, "a")
+    return cb(id)
+  end
+  return promise:next(_28_)
 end
 local duckdb_dir = vim.fn.expand("~/.cache/nvim/roam_duckdb")
 local duckdb_file = (duckdb_dir .. "/roam.duckdb")
@@ -291,60 +301,60 @@ local function roam_refresh_vector_index()
   local started_time = os.time()
   local async_system = async.wrap(vim.system, 3)
   local __3esql
-  local function _29_(results)
+  local function _30_(results)
     local inserts
-    local _30_
+    local _31_
     do
-      local tbl_21_auto = {}
-      local i_22_auto = 0
+      local tbl_21_ = {}
+      local i_22_ = 0
       for _, result in ipairs(results) do
-        local val_23_auto = ("INSERT INTO roam_nodes (id, vector) VALUES ('" .. result.id .. "', " .. vim.json.encode(result.vector) .. ")")
-        if (nil ~= val_23_auto) then
-          i_22_auto = (i_22_auto + 1)
-          tbl_21_auto[i_22_auto] = val_23_auto
+        local val_23_ = ("INSERT INTO roam_nodes (id, vector) VALUES ('" .. result.id .. "', " .. vim.json.encode(result.vector) .. ")")
+        if (nil ~= val_23_) then
+          i_22_ = (i_22_ + 1)
+          tbl_21_[i_22_] = val_23_
         else
         end
       end
-      _30_ = tbl_21_auto
+      _31_ = tbl_21_
     end
-    inserts = table.concat(_30_, ";")
+    inserts = table.concat(_31_, ";")
     return table.concat({"INSTALL vss", "LOAD vss", "CREATE TABLE IF NOT EXISTS roam_nodes (id TEXT, vector FLOAT[2048])", inserts}, ";")
   end
-  __3esql = _29_
-  local function _32_()
+  __3esql = _30_
+  local function _33_()
     vim.fn.delete(duckdb_file)
     local flatten_nodes
-    local function _33_(nodes)
+    local function _34_(nodes)
       local tbl = {}
       do
-        local tbl_21_auto = {}
-        local i_22_auto = 0
+        local tbl_21_ = {}
+        local i_22_ = 0
         for _, node in ipairs(nodes) do
-          local val_23_auto
+          local val_23_
           do
             table.insert(tbl, {id = node.id, title = node.title})
-            local tbl_21_auto0 = {}
-            local i_22_auto0 = 0
+            local tbl_21_0 = {}
+            local i_22_0 = 0
             for _0, alias in ipairs(node.aliases) do
-              local val_23_auto0 = table.insert(tbl, {id = node.id, title = alias})
-              if (nil ~= val_23_auto0) then
-                i_22_auto0 = (i_22_auto0 + 1)
-                tbl_21_auto0[i_22_auto0] = val_23_auto0
+              local val_23_0 = table.insert(tbl, {id = node.id, title = alias})
+              if (nil ~= val_23_0) then
+                i_22_0 = (i_22_0 + 1)
+                tbl_21_0[i_22_0] = val_23_0
               else
               end
             end
-            val_23_auto = tbl_21_auto0
+            val_23_ = tbl_21_0
           end
-          if (nil ~= val_23_auto) then
-            i_22_auto = (i_22_auto + 1)
-            tbl_21_auto[i_22_auto] = val_23_auto
+          if (nil ~= val_23_) then
+            i_22_ = (i_22_ + 1)
+            tbl_21_[i_22_] = val_23_
           else
           end
         end
       end
       return tbl
     end
-    flatten_nodes = _33_
+    flatten_nodes = _34_
     local nodes = vim.json.encode(flatten_nodes(get_all_roam_nodes()))
     local embedding_job = async_system({"plamo-embedding-1b.py", "documents"}, {stdin = nodes, text = true})
     if not (embedding_job.code == 0) then
@@ -364,22 +374,22 @@ local function roam_refresh_vector_index()
       end
     end
   end
-  local function _38_(err)
+  local function _39_(err)
     async.util.scheduler()
     return vim.notify(("Error in refresh_roam_vector_indices: " .. tostring(err)), "error")
   end
-  return async.run(_32_, nil, _38_)
+  return async.run(_33_, nil, _39_)
 end
 vim.api.nvim_create_user_command("RoamRefreshVectorIndex", roam_refresh_vector_index, {})
 local function search_roam_nodes_by_vector(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esql
-  local function _39_(vec, limit0)
+  local function _40_(vec, limit0)
     return ("SELECT id, array_cosine_distance(vector, " .. vec .. "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT " .. limit0 .. ";")
   end
-  __3esql = _39_
+  __3esql = _40_
   local __3eembedding
-  local function _40_()
+  local function _41_()
     local job = async_system({"plamo-embedding-1b.py", "query"}, {stdin = query, text = true})
     if (job.code == 0) then
       return job.stdout
@@ -389,9 +399,9 @@ local function search_roam_nodes_by_vector(query, limit, cb, errcb)
       return false
     end
   end
-  __3eembedding = _40_
+  __3eembedding = _41_
   local __3esearch
-  local function _42_(vec)
+  local function _43_(vec)
     if vec then
       local job = async_system({"duckdb", duckdb_file, "--json"}, {stdin = __3esql(vec, limit), text = true})
       if (job.code == 0) then
@@ -408,8 +418,8 @@ local function search_roam_nodes_by_vector(query, limit, cb, errcb)
       return nil
     end
   end
-  __3esearch = _42_
-  local function _46_()
+  __3esearch = _43_
+  local function _47_()
     local vec = __3eembedding()
     if vec then
       local ok_3f, result = __3esearch(vec)
@@ -423,11 +433,11 @@ local function search_roam_nodes_by_vector(query, limit, cb, errcb)
       return nil
     end
   end
-  local function _49_(err)
+  local function _50_(err)
     async.util.scheduler()
     return errcb(("Error: " .. tostring(err)))
   end
-  return async.run(_46_, nil, _49_)
+  return async.run(_47_, nil, _50_)
 end
 --[[ (roam-refresh-vector-index) (search_roam_nodes_by_vector "Neovim" 10 print print) ]]
-return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, search_roam_nodes_by_vector = search_roam_nodes_by_vector}
+return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, search_roam_nodes_by_vector = search_roam_nodes_by_vector}

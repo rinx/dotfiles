@@ -1,0 +1,4 @@
+#+FILETAGS: :immediate:
+#+CAPTURED: %U
+
+

@@ -97,7 +97,27 @@
                                  req.params.query
                                  req.params.limit
                                  callback
-                                 ecallback)))}]
+                                 ecallback)))}
+                 {:name :create_roam_node
+                  :description "Create a new org-roam note. The result should be roam node ID."
+                  :inputSchema {:type :object
+                                :properties
+                                {:title
+                                 {:type :string
+                                  :description "Title of the newly created note"}
+                                 :body
+                                 {:type :string
+                                  :description "Body of the newly created note. It should be formatted as org-mode style."}}
+                                :required [:title :body]}
+                  :handler (fn [req res]
+                             (let [orgrc (require :rc.plugin.orgmode)
+                                   body (.. "#+AUTHOR: avante.nvim\n\n"
+                                            req.params.body)
+                                   callback (fn [id]
+                                              (let [txt (res:text id)]
+                                                (txt:send)))]
+                               (orgrc.create_roam_node
+                                 req.params.title body callback)))}]
          :resources [{:name :list_roam_nodes
                       :uri "orgroam://nodes"
                       :description "List all org-roam notes with its ID, title and aliases. The result should be formatted as JSON."
