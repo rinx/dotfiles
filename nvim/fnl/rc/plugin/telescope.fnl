@@ -48,6 +48,7 @@
    :LspRestart
    :LspStart
    :LspStop
+   :MCPHub
    :NvimTreeRefresh
    :NvimTreeToggle
    "Octo pr list"
