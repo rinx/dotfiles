@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745656260263,
+  "lastUpdate": 1745663197408,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17517,6 +17517,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.116794,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "51ff0a84511cb19165ebeea7c5a38ee75a8fc619",
+          "message": "feat(nvim): add org-roam note creation capability to mcp server\n\nAdd `create_roam_node` tool to org-roam MCP server to create notes.\nThis enables direct note creation from MCP clients like\navante.nvim without going through the capture process.\n\n- Add immediate template for org-roam notes\n- Implement create_roam_node function in orgmode.fnl\n- Expose the function through org-roam MCP server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-26T19:11:49+09:00",
+          "tree_id": "a4f49ece20e62c404f963bf9b1c8ffd1326cf858",
+          "url": "https://github.com/rinx/dotfiles/commit/51ff0a84511cb19165ebeea7c5a38ee75a8fc619"
+        },
+        "date": 1745663196894,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.189267200000007,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.2285701,
             "unit": "ms"
           }
         ]
