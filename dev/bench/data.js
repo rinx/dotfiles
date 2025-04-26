@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745656136394,
+  "lastUpdate": 1745656260263,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17483,6 +17483,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 69.92846740000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "321337474fb6a2829c30178e43f476870e8ebeb9",
+          "message": "config(nvim): add mcphub command to command palette\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-26T17:18:03+09:00",
+          "tree_id": "18952fb9821d3646e12e4a77cce31a4cd4633831",
+          "url": "https://github.com/rinx/dotfiles/commit/321337474fb6a2829c30178e43f476870e8ebeb9"
+        },
+        "date": 1745656259701,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.516589600000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.116794,
             "unit": "ms"
           }
         ]
