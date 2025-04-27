@@ -156,18 +156,23 @@
 
    ;; languages
    :gpanders/nvim-parinfer {:ft [:clojure
-                                 :fennel]}
+                                 :fennel
+                                 :hy]}
    :julienvincent/nvim-paredit {:ft [:clojure
-                                     :fennel]}
+                                     :fennel
+                                     :hy]}
    :dundalek/parpar.nvim {:ft [:clojure
-                               :fennel]
+                               :fennel
+                               :hy]
                           :dependencies [:gpanders/nvim-parinfer
                                          :julienvincent/nvim-paredit]
                           :config (mod :parpar)}
    :Olical/conjure {:ft [:clojure
-                         :fennel]}
+                         :fennel
+                         :hy]}
    :Olical/nfnl {:ft [:fennel]
                  :config (mod :nfnl)}
+   :hylang/vim-hy {:ft [:hy]}
 
    ;; treesitter
    :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)

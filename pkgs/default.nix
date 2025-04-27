@@ -35,6 +35,7 @@ let
 
   moralerspace-nerdfont = pkgs.callPackage ./fonts/moralerspace-nerdfont { };
 
+  org-search-utils = pkgs.callPackage ./tools/org-search-utils { };
   plamo-embedding = pkgs.callPackage ./tools/plamo-embedding { };
 
   rq = pkgs.callPackage ./tools/rq {
@@ -55,6 +56,7 @@ let
     inputs.mcp-hub.packages."${system}".default
     mcp-servers
     moralerspace-nerdfont
+    org-search-utils
     plamo-embedding
     rq
   ];
