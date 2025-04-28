@@ -75,13 +75,11 @@
                   (conn.sql
                     "DELETE FROM roam_doc WHERE node_id = ?;"
                     :params [node-id])
-                  (conn.execute
-                    "INSERT OR REPLACE INTO roam_doc_md5 (node_id, md5) VALUES (?, ?);"
-                    [node-id md5])
                   (convert node-id path))
                 [])]
     {"node_id" node-id
      "path" path
+     "md5" md5
      "elems" elems}))
 
 (defn init-db []
@@ -102,10 +100,18 @@
        (get elem "content")
        (get elem "content_v")])))
 
+(defn upsert-md5 [conn node-id md5]
+  (conn.execute
+    "INSERT OR REPLACE INTO roam_doc_md5 (node_id, md5) VALUES (?, ?);"
+    [node-id md5]))
+
 (defn ->db [conn files]
   (for [file files]
-    (let [elems (get file "elems")]
-      (insert-roam-doc conn elems))))
+    (let [elems (get file "elems")
+          node-id (get file "node_id")
+          md5 (get file "md5")]
+      (insert-roam-doc conn elems)
+      (upsert-md5 conn node-id md5))))
 
 (let [inputs (-> (sys.stdin.read)
                  (json.loads))
