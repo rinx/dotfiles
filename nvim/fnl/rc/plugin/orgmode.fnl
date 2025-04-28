@@ -367,92 +367,51 @@
               (vim.fn.writefile node.file :a))
           (cb id))))))
 
-(local duckdb-dir (vim.fn.expand "~/.cache/nvim/roam_duckdb"))
-(local duckdb-file (.. duckdb-dir :/roam.duckdb))
-
-(when (not (= (vim.fn.isdirectory duckdb-dir) 1))
-  (vim.fn.mkdir duckdb-dir :p))
-
 (fn roam-refresh-vector-index []
+  (vim.notify "start roam refresh vector index" :info)
   (let [started-time (os.time)
         async-system (async.wrap vim.system 3)
-        ->sql (fn [results]
-                (let [inserts (-> (icollect [_ result (ipairs results)]
-                                     (.. "INSERT INTO roam_nodes (id, vector) VALUES ('"
-                                         result.id
-                                         "', " (vim.json.encode result.vector) ")"))
-                                  (table.concat ";"))]
-                  (-> ["INSTALL vss"
-                       "LOAD vss"
-                       "CREATE TABLE IF NOT EXISTS roam_nodes (id TEXT, vector FLOAT[2048])"
-                       inserts]
-                      (table.concat ";"))))]
+        nodes->info (fn [nodes]
+                      (local tbl [])
+                      (icollect [_ node (ipairs nodes)]
+                        (let [info (get_roam_node_by_id node.id)]
+                          (table.insert tbl {:node-id node.id
+                                             :path info.file})))
+                      tbl)
+        nodes (-> (get_all_roam_nodes)
+                  (nodes->info)
+                  (vim.json.encode))
+        index (fn [nodes]
+                (when (> (length nodes) 0)
+                  (let [job (async-system
+                              [:org-search-utils-index]
+                              {:stdin nodes
+                               :text true})]
+                    (if (= job.code 0)
+                      (values true "success!")
+                      (values false job.stderr)))))]
     (async.run
       (fn []
-        (vim.fn.delete duckdb-file)
-        (let [flatten-nodes (fn [nodes]
-                              (local tbl [])
-                              (icollect [_ node (ipairs nodes)]
-                                (do
-                                  (table.insert tbl {:id node.id :title node.title})
-                                  (icollect [_ alias (ipairs node.aliases)]
-                                    (table.insert tbl {:id node.id :title alias}))))
-                              tbl)
-              nodes (-> (get_all_roam_nodes)
-                        (flatten-nodes)
-                        (vim.json.encode))
-              embedding-job (async-system
-                               [:plamo-embedding-1b.py :documents]
-                               {:stdin nodes
-                                :text true})]
-          (if (not (= embedding-job.code 0))
-              (do
-                (async.util.scheduler)
-                (vim.notify embedding-job.stderr :error))
-
-              (let [results (vim.json.decode embedding-job.stdout)
-                    sql (->sql results)
-                    db-job (async-system
-                              [:duckdb duckdb-file]
-                              {:stdin sql
-                               :text true})]
-                (async.util.scheduler)
-                (if (= db-job.code 0)
-                    (let [current-time (os.time)
-                          took-sec (- current-time started-time)]
-                      (vim.notify (.. "roam refresh vector index: took " took-sec "s") :info))
-                    (vim.notify db-job.stderr :error))))))
+        (let [(ok? err) (index nodes)]
+          (async.util.scheduler)
+          (if ok?
+            (let [current-time (os.time)
+                  took (- current-time started-time)]
+              (vim.notify (.. "refresh vector index: took " took :s) :info))
+            (vim.notify (.. "Error on refresh vector index: " err)))))
       nil
       (fn [err]
         (async.util.scheduler)
-        (vim.notify (.. "Error in refresh_roam_vector_indices: " (tostring err)) :error)))))
+        (vim.notify (.. "Error on refresh vector index: " (tostring err)))))))
 (vim.api.nvim_create_user_command :RoamRefreshVectorIndex roam-refresh-vector-index {})
 
-(fn search_roam_nodes_by_vector [query limit cb errcb]
+(fn query_roam_fragments [query limit cb errcb]
   (let [async-system (async.wrap vim.system 3)
-        ->sql (fn [vec limit]
-                (.. "SELECT id, array_cosine_distance(vector, "
-                    vec
-                    "::FLOAT[2048]) AS distance FROM roam_nodes ORDER BY distance LIMIT "
-                    limit
-                    ";"))
-        ->embedding (fn []
-                      (let [job (async-system
-                                  [:plamo-embedding-1b.py :query]
-                                  {:stdin query
-                                   :text true})]
-                        (if (= job.code 0)
-                            job.stdout
-                            (do
-                              (async.util.scheduler)
-                              (errcb job.stderr)
-                              false))))
-        ->search (fn [vec]
-                   (when vec
+        ->search (fn [query]
+                   (when query
                      (let [job (async-system
-                                 [:duckdb duckdb-file :--json]
-                                 {:stdin (->sql vec limit)
-                                  :text true})]
+                                 [:org-search-utils-search query limit]
+                                 {:text true})]
                        (if (= job.code 0)
                          (let [results (vim.json.decode job.stdout)]
                            (if (and results (> (length results) 0))
@@ -461,13 +420,11 @@
                          (values false job.stderr)))))]
     (async.run
       (fn []
-        (let [vec (->embedding)]
-          (when vec
-            (let [(ok? result) (->search vec)]
-              (async.util.scheduler)
-              (if ok?
-                  (cb result)
-                  (errcb result))))))
+        (let [(ok? result) (->search query limit)]
+          (async.util.scheduler)
+          (if ok?
+            (cb result)
+            (errcb result))))
       nil
       (fn [err]
         (async.util.scheduler)
@@ -475,11 +432,11 @@
 
 (comment
   (roam-refresh-vector-index)
-  (search_roam_nodes_by_vector :Neovim 10 print print))
+  (query_roam_fragments :Neovim 10 print print))
 
 {: build_todays_agenda
  : get_agenda
  : get_all_roam_nodes
  : get_roam_node_by_id
  : create_roam_node
- : search_roam_nodes_by_vector}
+ : query_roam_fragments}
