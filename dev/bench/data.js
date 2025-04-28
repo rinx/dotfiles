@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745813539230,
+  "lastUpdate": 1745853194620,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17585,6 +17585,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.70203280000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "eca4afecd9567b3256b73acf582afe1709a9c623",
+          "message": "feat(nix): add org-search-utils package (#145)\n\n* feat(nix): add org-search-utils package\n\n- built with Hy\n- using LangChain and Unstructured\n- index and search utils are provided\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* feat(nvim): update mcp integration for roam search\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* chore(nix): remove plamo-embedding script\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-28T15:00:14Z",
+          "tree_id": "38323f9dd5c7ddf10f8c11e7f3fd31750fb6154c",
+          "url": "https://github.com/rinx/dotfiles/commit/eca4afecd9567b3256b73acf582afe1709a9c623"
+        },
+        "date": 1745853193678,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.7459518,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.96866220000001,
             "unit": "ms"
           }
         ]
