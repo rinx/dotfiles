@@ -28,10 +28,10 @@
           (.numpy)
           (.tolist)))))
 
-(defn q [conn vec]
+(defn q [conn vec limit]
   (let [results (-> (conn.sql
-                      "SELECT node_id, element_id, category, content, array_cosine_distance(content_v, ?::FLOAT[2048]) as distance FROM roam_doc ORDER BY distance;"
-                      :params [vec])
+                      "SELECT node_id, element_id, category, content, array_cosine_distance(content_v, ?::FLOAT[2048]) as distance FROM roam_doc ORDER BY distance LIMIT ?;"
+                      :params [vec limit])
                     (.fetchall))]
     (lfor result results
       {"node_id" (get result 0)
@@ -40,16 +40,17 @@
        "content" (get result 3)
        "distance" (get result 4)})))
 
-(defn search [conn query]
+(defn search [conn query limit]
   (let [vec (->vec query)]
-    (q conn vec)))
+    (q conn vec limit)))
 
 (let [parser (argparse.ArgumentParser :description "search")
       _ (parser.add_argument "query")
+      _ (parser.add_argument "limit")
       args (parser.parse_args)
-      conn (duckdb.connect "~/.cache/nvim/roam_duckdb/db")]
+      conn (duckdb.connect "~/.cache/nvim/roam_duckdb.db")]
   (-> conn
-      (search args.query)
+      (search args.query args.limit)
       (json.dumps
         :separators ["," ":"]
         :ensure_ascii False)

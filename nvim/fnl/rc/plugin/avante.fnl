@@ -93,7 +93,7 @@
                                    ecallback (fn [e]
                                                (let [err (res:error e)]
                                                  (err:send)))]
-                               (orgrc.search_roam_nodes_by_vector
+                               (orgrc.query_roam_fragments
                                  req.params.query
                                  req.params.limit
                                  callback

@@ -38,7 +38,7 @@ local function _5_(req, res)
     return err:send()
   end
   ecallback = _7_
-  return orgrc.search_roam_nodes_by_vector(req.params.query, req.params.limit, callback, ecallback)
+  return orgrc.query_roam_fragments(req.params.query, req.params.limit, callback, ecallback)
 end
 local function _8_(req, res)
   local orgrc = require("rc.plugin.orgmode")

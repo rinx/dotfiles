@@ -4,6 +4,7 @@
 
 (import json)
 (import sys)
+(import os)
 (import hashlib)
 
 (import torch)
@@ -84,7 +85,7 @@
      "elems" elems}))
 
 (defn init-db []
-  (let [conn (duckdb.connect "~/.cache/nvim/roam_duckdb/db")]
+  (let [conn (duckdb.connect "~/.cache/nvim/roam_duckdb.db")]
     (conn.sql "INSTALL vss;")
     (conn.sql "LOAD vss;")
     (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc_md5 (node_id TEXT, md5 TEXT, PRIMARY KEY (node_id));")
