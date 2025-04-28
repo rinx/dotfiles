@@ -36,7 +36,6 @@ let
   moralerspace-nerdfont = pkgs.callPackage ./fonts/moralerspace-nerdfont { };
 
   org-search-utils = pkgs.callPackage ./tools/org-search-utils { };
-  plamo-embedding = pkgs.callPackage ./tools/plamo-embedding { };
 
   rq = pkgs.callPackage ./tools/rq {
     charles-rq = inputs.charles-rq;
@@ -57,7 +56,6 @@ let
     mcp-servers
     moralerspace-nerdfont
     org-search-utils
-    plamo-embedding
     rq
   ];
 in
