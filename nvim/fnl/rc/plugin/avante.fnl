@@ -74,8 +74,8 @@
        {:name :orgroam
         :displayName "Org-roam"
         :capabilities
-        {:tools [{:name :semantic_search_roam_nodes
-                  :description "Semantic search for org-roam notes. The result should be formatted as JSON. It returns IDs and distances for limited number of notes."
+        {:tools [{:name :semantic_search_roam_node_fragments
+                  :description "Semantic search for org-roam note fragments. The result should be formatted as JSON. It returns node ID, element ID, category, content and distances for limited number of results."
                   :inputSchema {:type :object
                                 :properties
                                 {:query
