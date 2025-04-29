@@ -6,6 +6,7 @@
 (import sys)
 (import os)
 (import hashlib)
+(import functools [reduce])
 
 (import torch)
 (import transformers [AutoModel AutoTokenizer])
@@ -25,7 +26,40 @@
         :mode "elements")
       (.load)))
 
-(defn embeddings [docs]
+(defn chunks [lst n]
+  (lfor i (range 0 (len lst) n)
+        (cut lst i (min (+ i n) (len lst)))))
+
+(defn flatten [lst]
+  (reduce
+    (fn [a b]
+      (let [n (.extend a b)]
+        a))
+    lst []))
+
+(defn insert-doc [conn node-id doc emb]
+  (let [element-id (get doc.metadata "element_id")
+        category (get doc.metadata "category")
+        content doc.page_content
+        vector (-> emb
+                   (.cpu)
+                   (.squeeze)
+                   (.numpy)
+                   (.tolist))]
+    (conn.execute
+      "INSERT INTO roam_doc (node_id, element_id, category, content, content_v) VALUES (?, ?, ?, ?, ?);"
+      [node-id
+       element-id
+       category
+       content
+       vector])
+    {"node_id" node-id
+     "element_id" element-id
+     "category" category
+     "content" content
+     "content_v" vector}))
+
+(defn insert-embeddings [conn node-id docs]
   (let [tokenizer (AutoTokenizer.from_pretrained
                     "pfnet/plamo-embedding-1b"
                     :trust_remote_code True)
@@ -36,27 +70,20 @@
                          "cuda"
                          "cpu")))]
     (with [_ (torch.inference_mode)]
-      (-> (lfor doc docs
-           (. doc page_content))
-          (model.encode_document tokenizer)))))
+      (-> (lfor chunk (chunks docs 10)
+            (let [embs (-> (lfor doc chunk
+                            (. doc page_content))
+                           (model.encode_document tokenizer))]
+              (setv results [])
+              (for [[doc emb] (zip chunk embs)]
+                (results.append
+                  (insert-doc conn node-id doc emb)))
+              results))
+          (flatten)))))
 
-(defn convert [node-id path]
+(defn unstructured-and-insert [conn node-id path]
   (let [docs (unstructured-org-content path)]
-    (setv results [])
-    (let [embs (embeddings docs)]
-      (for [[doc emb] (zip docs embs)]
-        (results.append {"node_id" node-id
-                         "element_id" (-> (. doc metadata)
-                                          (get "element_id"))
-                         "category" (-> (. doc metadata)
-                                        (get "category"))
-                         "content" (. doc page_content)
-                         "content_v" (-> emb
-                                         (.cpu)
-                                         (.squeeze)
-                                         (.numpy)
-                                         (.tolist))}))
-      results)))
+    (insert-embeddings conn node-id docs)))
 
 (defn query-md5 [conn node-id]
   (let [results (-> (conn.sql
@@ -75,7 +102,7 @@
                   (conn.sql
                     "DELETE FROM roam_doc WHERE node_id = ?;"
                     :params [node-id])
-                  (convert node-id path))
+                  (unstructured-and-insert conn node-id path))
                 [])]
     {"node_id" node-id
      "path" path
@@ -90,27 +117,15 @@
     (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc (node_id TEXT, element_id TEXT, category TEXT, content TEXT, content_v FLOAT[2048], PRIMARY KEY (node_id, element_id));")
     conn))
 
-(defn insert-roam-doc [conn elems]
-  (for [elem elems]
-    (conn.execute
-      "INSERT INTO roam_doc (node_id, element_id, category, content, content_v) VALUES (?, ?, ?, ?, ?);"
-      [(get elem "node_id")
-       (get elem "element_id")
-       (get elem "category")
-       (get elem "content")
-       (get elem "content_v")])))
-
 (defn upsert-md5 [conn node-id md5]
   (conn.execute
     "INSERT OR REPLACE INTO roam_doc_md5 (node_id, md5) VALUES (?, ?);"
     [node-id md5]))
 
-(defn ->db [conn files]
+(defn commit [conn files]
   (for [file files]
-    (let [elems (get file "elems")
-          node-id (get file "node_id")
+    (let [node-id (get file "node_id")
           md5 (get file "md5")]
-      (insert-roam-doc conn elems)
       (upsert-md5 conn node-id md5))))
 
 (let [inputs (-> (sys.stdin.read)
@@ -121,4 +136,4 @@
                     path (get inp "path")
                     md5 (->md5 path)]
                 (process conn node-id path md5)))]
-  (->db conn files))
+  (commit conn files))
