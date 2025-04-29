@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745853194620,
+  "lastUpdate": 1745921270667,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17619,6 +17619,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 73.96866220000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ea9e36bd6b9713e9bb9531efa166db157b7aebe9",
+          "message": "config(nvim): update the description about roam search tools\n\nto tell the correct usage to avante.nvim\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-29T18:54:11+09:00",
+          "tree_id": "642c254298fb9845128a80c7f5a2929924fde779",
+          "url": "https://github.com/rinx/dotfiles/commit/ea9e36bd6b9713e9bb9531efa166db157b7aebe9"
+        },
+        "date": 1745921270085,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.107822500000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.06935619999999,
             "unit": "ms"
           }
         ]
