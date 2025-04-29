@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745933706340,
+  "lastUpdate": 1745939804365,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17721,6 +17721,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 73.0899248,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7cc8bd02d613e348279b934ec6545f256ad1f491",
+          "message": "feat(org-search-utils): add reranker model to search script (#146)\n\n* feat(org-search-utils): add reranker model to search script\n\nadd a cross-encoder based reranker to improve search result quality.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* feat(org-search-utils): convert hy to py during build phase\n\nImprove build process of org-search-utils.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-30T00:04:14+09:00",
+          "tree_id": "3dfc4ecb24be9980b3df66de088f4e95bb8674c3",
+          "url": "https://github.com/rinx/dotfiles/commit/7cc8bd02d613e348279b934ec6545f256ad1f491"
+        },
+        "date": 1745939803624,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.767823100000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.50455430000001,
             "unit": "ms"
           }
         ]
