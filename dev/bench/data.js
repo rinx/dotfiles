@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745931865325,
+  "lastUpdate": 1745933706340,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17687,6 +17687,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 76.4822188,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5a14f18d2d0c5f6e12fbb7ac0e346b4e817e0b92",
+          "message": "feat(nvim): add open_roam_node tool for mcp server\n\nAdd a new MCP tool for the org-roam server that allows opening org-roam notes\ndirectly in a neovim buffer by specifying the note ID. The tool will open\nthe note in a vertical split and return success or error depending on whether\nthe file was found.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-29T22:19:02+09:00",
+          "tree_id": "c55328ad63950c3ead31656605c1fbd6b91feb81",
+          "url": "https://github.com/rinx/dotfiles/commit/5a14f18d2d0c5f6e12fbb7ac0e346b4e817e0b92"
+        },
+        "date": 1745933705042,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.0850014,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.0899248,
             "unit": "ms"
           }
         ]
