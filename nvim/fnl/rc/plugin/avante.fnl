@@ -117,7 +117,26 @@
                                               (let [txt (res:text id)]
                                                 (txt:send)))]
                                (orgrc.create_roam_node
-                                 req.params.title body callback)))}]
+                                 req.params.title body callback)))}
+                 {:name :open_roam_node
+                  :description "Open specified org-roam note as a neovim buffer."
+                  :inputSchema {:type :object
+                                :properties
+                                {:id
+                                 {:type :string
+                                  :description "node ID"}}
+                                :required [:id]}
+                  :handler (fn [req res]
+                             (let [orgrc (require :rc.plugin.orgmode)
+                                   node (orgrc.get_roam_node_by_id req.params.id)]
+
+                               (if (vim.uv.fs_stat node.file)
+                                 (do
+                                   (vim.cmd.vsplit node.file)
+                                   (let [txt (res:text "opened")]
+                                     (txt:send)))
+                                 (let [txt (res:error "not found")]
+                                   (txt:send)))))}]
          :resources [{:name :list_roam_nodes
                       :uri "orgroam://nodes"
                       :description "List all org-roam notes with its ID, title and aliases. The result should be formatted as JSON."
