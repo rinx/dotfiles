@@ -111,8 +111,8 @@
 
 (defn init-db []
   (let [conn (duckdb.connect "~/.cache/nvim/roam_duckdb.db")]
-    (conn.sql "INSTALL vss;")
-    (conn.sql "LOAD vss;")
+    (conn.install_extension "vss")
+    (conn.load_extension "vss")
     (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc_md5 (node_id TEXT, md5 TEXT, PRIMARY KEY (node_id));")
     (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc (node_id TEXT, element_id TEXT, category TEXT, content TEXT, content_v FLOAT[2048], PRIMARY KEY (node_id, element_id));")
     conn))
