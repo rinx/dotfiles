@@ -20,6 +20,7 @@ stdenv.mkDerivation {
       langchain
       langchain-community
       pypandoc
+      sentence-transformers
       sentencepiece
       torch
       transformers
