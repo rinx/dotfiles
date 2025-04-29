@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745921270667,
+  "lastUpdate": 1745931865325,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17653,6 +17653,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.06935619999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b37a6bc0bad26edbb511964ecd275d2bce632057",
+          "message": "refactor(org-search-utils): fix to use duckdb sdk builtin functions\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-29T21:50:20+09:00",
+          "tree_id": "c29568914efe951730fd6daeee68eed2ed04e68c",
+          "url": "https://github.com/rinx/dotfiles/commit/b37a6bc0bad26edbb511964ecd275d2bce632057"
+        },
+        "date": 1745931864128,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.460413199999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 76.4822188,
             "unit": "ms"
           }
         ]
