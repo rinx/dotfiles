@@ -11,6 +11,13 @@ stdenv.mkDerivation {
 
   dontConfigure = true;
 
+  nativeBuildInputs = with pkgs; [
+    (python3.withPackages (python-pkgs: with python-pkgs; [
+      hy
+      hyrule
+    ]))
+  ];
+
   buildInputs = with pkgs; [
     pandoc
     (python3.withPackages (python-pkgs: with python-pkgs; [
@@ -20,6 +27,7 @@ stdenv.mkDerivation {
       langchain
       langchain-community
       pypandoc
+      sentence-transformers
       sentencepiece
       torch
       transformers
@@ -27,11 +35,22 @@ stdenv.mkDerivation {
     ]))
   ];
 
+  buildPhase = ''
+    runHook preBuild
+
+    echo "#!/usr/bin/env python" > index.py
+    hy2py index.hy >> index.py
+    echo "#!/usr/bin/env python" > search.py
+    hy2py search.hy >> search.py
+
+    runHook postBuild
+  '';
+
   installPhase = ''
     runHook preInstall
 
-    install -D index.hy $out/bin/org-search-utils-index
-    install -D search.hy $out/bin/org-search-utils-search
+    install -D ./index.py $out/bin/org-search-utils-index
+    install -D ./search.py $out/bin/org-search-utils-search
 
     runHook postInstall
   '';

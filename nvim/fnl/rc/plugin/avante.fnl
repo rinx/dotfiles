@@ -75,7 +75,7 @@
         :displayName "Org-roam"
         :capabilities
         {:tools [{:name :semantic_search_roam_node_fragments
-                  :description "Semantic search for org-roam note fragments. The result should be formatted as JSON. It returns node ID, element ID, category, content and distances for limited number of results."
+                  :description "Semantic search for org-roam note fragments. The result should be formatted as JSON. It returns node ID, element ID, category, content and score for limited number of results."
                   :inputSchema {:type :object
                                 :properties
                                 {:query
