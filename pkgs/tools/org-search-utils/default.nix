@@ -16,6 +16,7 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = with pkgs; [
+    duckdb
     pandoc
     (python3.withPackages (python-pkgs: with python-pkgs; [
       duckdb
