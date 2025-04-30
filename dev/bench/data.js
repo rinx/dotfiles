@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746018612020,
+  "lastUpdate": 1746019479622,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17823,6 +17823,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.0840547,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a8fedee9dd077a2e8a604d12c15a545a941f3e81",
+          "message": "config(org-search-utils): fix the runtime dependency\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-30T22:11:08+09:00",
+          "tree_id": "74be167d5ef704f7ef457f71cae1e41436a4b0f1",
+          "url": "https://github.com/rinx/dotfiles/commit/a8fedee9dd077a2e8a604d12c15a545a941f3e81"
+        },
+        "date": 1746019479068,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.6232081,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 74.2918013,
             "unit": "ms"
           }
         ]
