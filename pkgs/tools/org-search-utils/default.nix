@@ -12,10 +12,7 @@ stdenv.mkDerivation {
   dontConfigure = true;
 
   nativeBuildInputs = with pkgs; [
-    (python3.withPackages (python-pkgs: with python-pkgs; [
-      hy
-      hyrule
-    ]))
+    hy
   ];
 
   buildInputs = with pkgs; [
