@@ -2,8 +2,14 @@
   lib,
   pkgs,
   stdenv,
-}:
-stdenv.mkDerivation {
+}: let
+  python = pkgs.python3.override {
+    self = python;
+    packageOverrides = pyfinal: pyprev: {
+      lindera-py = pyfinal.callPackage ./lindera { };
+    };
+  };
+in stdenv.mkDerivation {
   name = "org-search-utils";
   version = "0.1.0";
 
@@ -15,15 +21,16 @@ stdenv.mkDerivation {
     hy
   ];
 
-  buildInputs = with pkgs; [
-    duckdb
-    pandoc
-    (python3.withPackages (python-pkgs: with python-pkgs; [
+  buildInputs = [
+    pkgs.duckdb
+    pkgs.pandoc
+    (python.withPackages (python-pkgs: with python-pkgs; [
       duckdb
       hy
       hyrule
       langchain
       langchain-community
+      lindera-py
       pypandoc
       sentence-transformers
       sentencepiece

@@ -11,8 +11,29 @@
 (import torch)
 (import transformers [AutoModel AutoTokenizer])
 (import langchain_community.document_loaders [UnstructuredOrgModeLoader])
+(import lindera_py [Segmenter Tokenizer load_dictionary])
 
 (import duckdb)
+
+(setv vec-tokenizer (AutoTokenizer.from_pretrained
+                      "pfnet/plamo-embedding-1b"
+                      :trust_remote_code True))
+(setv vec-model (-> (AutoModel.from_pretrained
+                      "pfnet/plamo-embedding-1b"
+                      :trust_remote_code True)
+                    (.to (if (torch.cuda.is_available)
+                           "cuda"
+                           "cpu"))))
+
+(setv ja-tokenizer (let [dictionary (load_dictionary "ipadic")
+                         segmenter (Segmenter "normal" dictionary)]
+                     (Tokenizer segmenter)))
+
+(defn ja-tokens [txt]
+  (let [ts (ja-tokenizer.tokenize txt)]
+    (->> (lfor t ts
+           t.text)
+         (.join " "))))
 
 (defn ->md5 [path]
   (with [f (open path "rb")]
@@ -45,41 +66,35 @@
                    (.cpu)
                    (.squeeze)
                    (.numpy)
-                   (.tolist))]
+                   (.tolist))
+        tokens (ja-tokens content)]
     (conn.execute
-      "INSERT INTO roam_doc (node_id, element_id, category, content, content_v) VALUES (?, ?, ?, ?, ?);"
+      "INSERT INTO roam_doc (node_id, element_id, category, content, content_v, content_t) VALUES (?, ?, ?, ?, ?, ?);"
       [node-id
        element-id
        category
        content
-       vector])
+       vector
+       tokens])
     {"node_id" node-id
      "element_id" element-id
      "category" category
      "content" content
-     "content_v" vector}))
+     "content_v" vector
+     "content_t" tokens}))
 
 (defn insert-embeddings [conn node-id docs]
-  (let [tokenizer (AutoTokenizer.from_pretrained
-                    "pfnet/plamo-embedding-1b"
-                    :trust_remote_code True)
-        model (-> (AutoModel.from_pretrained
-                    "pfnet/plamo-embedding-1b"
-                    :trust_remote_code True)
-                  (.to (if (torch.cuda.is_available)
-                         "cuda"
-                         "cpu")))]
-    (with [_ (torch.inference_mode)]
-      (-> (lfor chunk (chunks docs 10)
-            (let [embs (-> (lfor doc chunk
-                            (. doc page_content))
-                           (model.encode_document tokenizer))]
-              (setv results [])
-              (for [[doc emb] (zip chunk embs)]
-                (results.append
-                  (insert-doc conn node-id doc emb)))
-              results))
-          (flatten)))))
+  (with [_ (torch.inference_mode)]
+    (-> (lfor chunk (chunks docs 10)
+          (let [embs (-> (lfor doc chunk
+                          (. doc page_content))
+                         (vec-model.encode_document vec-tokenizer))]
+            (setv results [])
+            (for [[doc emb] (zip chunk embs)]
+              (results.append
+                (insert-doc conn node-id doc emb)))
+            results))
+        (flatten))))
 
 (defn unstructured-and-insert [conn node-id path]
   (let [docs (unstructured-org-content path)]
@@ -113,8 +128,10 @@
   (let [conn (duckdb.connect "~/.cache/nvim/roam_duckdb.db")]
     (conn.install_extension "vss")
     (conn.load_extension "vss")
+    (conn.install_extension "fts")
+    (conn.load_extension "fts")
     (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc_md5 (node_id TEXT, md5 TEXT, PRIMARY KEY (node_id));")
-    (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc (node_id TEXT, element_id TEXT, category TEXT, content TEXT, content_v FLOAT[2048], PRIMARY KEY (node_id, element_id));")
+    (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc (node_id TEXT, element_id TEXT, category TEXT, content TEXT, content_v FLOAT[2048], content_t TEXT, PRIMARY KEY (node_id, element_id));")
     conn))
 
 (defn upsert-md5 [conn node-id md5]
