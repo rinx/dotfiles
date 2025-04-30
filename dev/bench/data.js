@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746015897891,
+  "lastUpdate": 1746018612020,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17789,6 +17789,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.69617199999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "bfe24be444a75016f217fd70bf42db7d88ec4fba",
+          "message": "feat(nvim): add capabilities to search roam node links from org-roam mcp server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-30T21:56:48+09:00",
+          "tree_id": "53c026691b2d5bc716ceb4f144567a5639cdffdb",
+          "url": "https://github.com/rinx/dotfiles/commit/bfe24be444a75016f217fd70bf42db7d88ec4fba"
+        },
+        "date": 1746018611430,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.493838,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.0840547,
             "unit": "ms"
           }
         ]
