@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745939804365,
+  "lastUpdate": 1746015897891,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17755,6 +17755,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.50455430000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "32088c743697f20f00cd793a7f7e6ae6e70b8a98",
+          "message": "refactor(org-search-utils): remove useless build dependency\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-04-30T21:11:34+09:00",
+          "tree_id": "81586f07c63f5a3edba6484418f17ac79a778014",
+          "url": "https://github.com/rinx/dotfiles/commit/32088c743697f20f00cd793a7f7e6ae6e70b8a98"
+        },
+        "date": 1746015897307,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.6974897,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.69617199999999,
             "unit": "ms"
           }
         ]
