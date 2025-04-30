@@ -75,14 +75,26 @@ local function _13_(req, res)
   local txt = res:text(vim.fn.join(vim.fn.readfile(node.file), "\n"))
   return txt:send()
 end
-orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {{name = "semantic_search_roam_node_fragments", description = "Semantic search for org-roam note fragments. The result should be formatted as JSON. It returns node ID, element ID, category, content and score for limited number of results.", inputSchema = {type = "object", properties = {query = {type = "string", description = "Query string used for semantic search"}, limit = {type = "number", description = "The number of top-k result"}}, required = {"query", "limit"}}, handler = _5_}, {name = "create_roam_node", description = "Create a new org-roam note. The result should be roam node ID.", inputSchema = {type = "object", properties = {title = {type = "string", description = "Title of the newly created note"}, body = {type = "string", description = "Body of the newly created note. It should be formatted as org-mode style."}}, required = {"title", "body"}}, handler = _8_}, {name = "open_roam_node", description = "Open specified org-roam note as a neovim buffer.", inputSchema = {type = "object", properties = {id = {type = "string", description = "node ID"}}, required = {"id"}}, handler = _10_}}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam notes with its ID, title and aliases. The result should be formatted as JSON.", handler = _12_}}, resourceTemplates = {{name = "get_roam_node_content", uriTemplate = "orgroam://nodes/{id}", description = "Get roam note content by specified id. The result should be org-mode formatted text.", handler = _13_}}}}
+local function _14_(req, res)
+  local orgrc = require("rc.plugin.orgmode")
+  local links = orgrc.get_roam_node_links(req.params.id)
+  local txt = res:text(vim.json.encode(links))
+  return txt:send()
+end
+local function _15_(req, res)
+  local orgrc = require("rc.plugin.orgmode")
+  local backlinks = orgrc.get_roam_node_backlinks(req.params.id)
+  local txt = res:text(vim.json.encode(backlinks))
+  return txt:send()
+end
+orgroam_server = {name = "orgroam", displayName = "Org-roam", capabilities = {tools = {{name = "semantic_search_roam_node_fragments", description = "Semantic search for org-roam note fragments. The result should be formatted as JSON. It returns node ID, element ID, category, content and score for limited number of results.", inputSchema = {type = "object", properties = {query = {type = "string", description = "Query string used for semantic search"}, limit = {type = "number", description = "The number of top-k result"}}, required = {"query", "limit"}}, handler = _5_}, {name = "create_roam_node", description = "Create a new org-roam note. The result should be roam node ID.", inputSchema = {type = "object", properties = {title = {type = "string", description = "Title of the newly created note"}, body = {type = "string", description = "Body of the newly created note. It should be formatted as org-mode style."}}, required = {"title", "body"}}, handler = _8_}, {name = "open_roam_node", description = "Open specified org-roam note as a neovim buffer.", inputSchema = {type = "object", properties = {id = {type = "string", description = "node ID"}}, required = {"id"}}, handler = _10_}}, resources = {{name = "list_roam_nodes", uri = "orgroam://nodes", description = "List all org-roam notes with its ID, title and aliases. The result should be formatted as JSON.", handler = _12_}}, resourceTemplates = {{name = "get_roam_node_content", uriTemplate = "orgroam://nodes/{id}", description = "Get roam note content by specified id. The result should be org-mode formatted text.", handler = _13_}, {name = "get_roam_node_links", uriTemplate = "orgroam://nodes/{id}/links", description = "Get roam note links. The result should be formatted as JSON. Key-value pairs of node id and distance.", handler = _14_}, {name = "get_roam_node_backlinks", uriTemplate = "orgroam://nodes/{id}/backlinks", description = "Get roam note backlinks. The result should be formatted as JSON. Key-value pairs of node id and distance.", handler = _15_}}}}
 mcphub.setup({config = vim.fn.expand("~/.nix-profile/config/mcp-servers.json"), extensions = {avante = {make_slash_commands = true}}, native_servers = {org = orgmode_server, orgroam = orgroam_server}, auto_approve = false})
 do
   local toggle
-  local function _14_()
+  local function _16_()
     return (vim.g.mcphub_auto_approve == true)
   end
-  local function _15_(state)
+  local function _17_(state)
     if state then
       vim.g.mcphub_auto_approve = true
       return nil
@@ -91,15 +103,15 @@ do
       return nil
     end
   end
-  toggle = Snacks.toggle.new({id = "mcphub_auto_approve", name = "MCPHub auto_approve", get = _14_, set = _15_})
+  toggle = Snacks.toggle.new({id = "mcphub_auto_approve", name = "MCPHub auto_approve", get = _16_, set = _17_})
   toggle:map("<leader>AA")
 end
-local function _17_()
+local function _19_()
   local hub = mcphub.get_hub_instance()
   return hub:get_active_servers_prompt()
 end
-local function _18_()
+local function _20_()
   local ext = require("mcphub.extensions.avante")
   return {ext.mcp_tool()}
 end
-return avante.setup({provider = "copilot", behavior = {auto_apply_diff_after_generation = true, auto_set_keymaps = false, auto_suggestions = false}, copilot = {model = "claude-3.7-sonnet"}, vendors = {["copilot-gemini-2.5-pro"] = {__inherited_from = "copilot", model = "gemini-2.5-pro"}, ["copilot-gpt-4.1"] = {__inherited_from = "copilot", model = "gpt-4.1"}, ["copilot-gpt-4o"] = {__inherited_from = "copilot", model = "gpt-4o"}}, hints = {enabled = false}, file_selector = {provider = "snacks"}, mappings = {ask = "<leader>Aa", edit = "<leader>Ae", refresh = "<leader>Ar", focus = "<leader>Af", stop = "<leader>AS", toggle = {default = "<leader>At", debug = "<leader>Ad", hint = "<leader>Ah", suggestion = "<leader>As", repomap = "<leader>AR"}, files = {add_current = "<leader>Ac", add_all_buffers = "<leader>AB"}, select_model = "<leader>A?", select_history = "<leader>AH"}, system_prompt = _17_, custom_tools = _18_, disabled_tools = {"bash", "create_dir", "create_file", "delete_dir", "delete_file", "list_files", "python", "rag_search", "read_file", "rename_dir", "rename_file", "search_files", "web_search"}})
+return avante.setup({provider = "copilot", behavior = {auto_apply_diff_after_generation = true, auto_set_keymaps = false, auto_suggestions = false}, copilot = {model = "claude-3.7-sonnet"}, vendors = {["copilot-gemini-2.5-pro"] = {__inherited_from = "copilot", model = "gemini-2.5-pro"}, ["copilot-gpt-4.1"] = {__inherited_from = "copilot", model = "gpt-4.1"}, ["copilot-gpt-4o"] = {__inherited_from = "copilot", model = "gpt-4o"}}, hints = {enabled = false}, file_selector = {provider = "snacks"}, mappings = {ask = "<leader>Aa", edit = "<leader>Ae", refresh = "<leader>Ar", focus = "<leader>Af", stop = "<leader>AS", toggle = {default = "<leader>At", debug = "<leader>Ad", hint = "<leader>Ah", suggestion = "<leader>As", repomap = "<leader>AR"}, files = {add_current = "<leader>Ac", add_all_buffers = "<leader>AB"}, select_model = "<leader>A?", select_history = "<leader>AH"}, system_prompt = _19_, custom_tools = _20_, disabled_tools = {"bash", "create_dir", "create_file", "delete_dir", "delete_file", "list_files", "python", "rag_search", "read_file", "rename_dir", "rename_file", "search_files", "web_search"}})

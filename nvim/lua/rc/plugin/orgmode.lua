@@ -387,4 +387,14 @@ local function query_roam_fragments(query, limit, cb, errcb)
   return async.run(_41_, nil, _43_)
 end
 --[[ (roam-refresh-vector-index) (query_roam_fragments "Neovim" 10 print print) ]]
-return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments}
+local function get_roam_node_links(id)
+  local roam0 = require("org-roam")
+  local node = roam0.database:get_sync(id)
+  return roam0.database:get_file_links_sync(node.file)
+end
+local function get_roam_node_backlinks(id)
+  local roam0 = require("org-roam")
+  local node = roam0.database:get_sync(id)
+  return roam0.database:get_file_backlinks_sync(node.file)
+end
+return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks}

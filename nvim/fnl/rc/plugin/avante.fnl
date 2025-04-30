@@ -157,6 +157,26 @@
                                                        (vim.fn.readfile)
                                                        (vim.fn.join "\n")
                                                        (res:text))]
+                                           (txt:send)))}
+                             {:name :get_roam_node_links
+                              :uriTemplate "orgroam://nodes/{id}/links"
+                              :description "Get roam note links. The result should be formatted as JSON. Key-value pairs of node id and distance."
+                              :handler (fn [req res]
+                                         (let [orgrc (require :rc.plugin.orgmode)
+                                               links (orgrc.get_roam_node_links req.params.id)
+                                               txt (-> links
+                                                       (vim.json.encode)
+                                                       (res:text))]
+                                           (txt:send)))}
+                             {:name :get_roam_node_backlinks
+                              :uriTemplate "orgroam://nodes/{id}/backlinks"
+                              :description "Get roam note backlinks. The result should be formatted as JSON. Key-value pairs of node id and distance."
+                              :handler (fn [req res]
+                                         (let [orgrc (require :rc.plugin.orgmode)
+                                               backlinks (orgrc.get_roam_node_backlinks req.params.id)
+                                               txt (-> backlinks
+                                                       (vim.json.encode)
+                                                       (res:text))]
                                            (txt:send)))}]}})
 
 (mcphub.setup

@@ -434,9 +434,21 @@
   (roam-refresh-vector-index)
   (query_roam_fragments :Neovim 10 print print))
 
+(fn get_roam_node_links [id]
+  (let [roam (require :org-roam)
+        node (roam.database:get_sync id)]
+    (roam.database:get_file_links_sync node.file)))
+
+(fn get_roam_node_backlinks [id]
+  (let [roam (require :org-roam)
+        node (roam.database:get_sync id)]
+    (roam.database:get_file_backlinks_sync node.file)))
+
 {: build_todays_agenda
  : get_agenda
  : get_all_roam_nodes
  : get_roam_node_by_id
  : create_roam_node
- : query_roam_fragments}
+ : query_roam_fragments
+ : get_roam_node_links
+ : get_roam_node_backlinks}
