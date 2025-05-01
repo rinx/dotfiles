@@ -131,7 +131,7 @@
     (conn.install_extension "fts")
     (conn.load_extension "fts")
     (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc_md5 (node_id TEXT, md5 TEXT, PRIMARY KEY (node_id));")
-    (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc (node_id TEXT, element_id TEXT, category TEXT, content TEXT, content_v FLOAT[2048], content_t TEXT, PRIMARY KEY (node_id, element_id));")
+    (conn.sql "CREATE TABLE IF NOT EXISTS roam_doc (element_id TEXT, node_id TEXT, category TEXT, content TEXT, content_v FLOAT[2048], content_t TEXT, PRIMARY KEY (element_id));")
     conn))
 
 (defn upsert-md5 [conn node-id md5]
@@ -139,7 +139,11 @@
     "INSERT OR REPLACE INTO roam_doc_md5 (node_id, md5) VALUES (?, ?);"
     [node-id md5]))
 
+(defn update-fts-index [conn]
+  (conn.sql "PRAGMA create_fts_index('roam_doc', 'element_id', 'content_t', stemmer = 'none', stopwords = 'none', ignore = '', lower = false, strip_accents = false);"))
+
 (defn commit [conn files]
+  (update-fts-index conn)
   (for [file files]
     (let [node-id (get file "node_id")
           md5 (get file "md5")]
