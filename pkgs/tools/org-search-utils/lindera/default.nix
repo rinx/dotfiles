@@ -1,13 +1,12 @@
 {
   lib,
+  stdenv,
   buildPythonPackage,
   fetchPypi,
-  rustPlatform,
   setuptools,
   wheel,
   pip,
-  rustc,
-  cargo,
+  openssl,
 }:
 buildPythonPackage rec {
   pname = "lindera_py";
@@ -15,27 +14,36 @@ buildPythonPackage rec {
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-jhWWQfmNh03rvI+b/d63VF0bQYHPzkppPu+yvEaNUD4=";
+    format = "wheel";
+    dist = "cp312";
+    python = "cp312";
+    abi = "cp312";
+    platform = if stdenv.isDarwin then
+      if stdenv.isAarch64 then "macosx_11_0_arm64"
+      else "macosx_10_12_x86_64"
+    else if stdenv.isLinux then
+      if stdenv.isAarch64 then "manylinux_2_17_x86_64.manylinux2014_aarch64"
+      else "manylinux_2_17_x86_64.manylinux2014_x86_64"
+    else throw "Unsupported platform";
+    sha256 = if stdenv.isDarwin then
+      if stdenv.isAarch64 then "sha256-Eji52U0h0wB3us1gkuEY+SdRNx0YXNF6x06s6M3AkgU="
+      else "sha256-scKDF1cS7EWPr+zqSN8fblE3qxsxYuch8iFbpeLKP6E="
+    else if stdenv.isLinux then
+      if stdenv.isAarch64 then "sha256-dpU8Ri2sZGflukLW4G0igWJP2APhcMxwrB73uZ4dTv8="
+      else "sha256-U5W3hRlhbTQIcMNfUg4smEnsfgvcNEtepks2akGQiJw="
+    else throw "Unsupported platform";
   };
 
-  cargoDeps = rustPlatform.fetchCargoVendor {
-    inherit src;
-    name = "${pname}-${version}";
-    hash = "sha256-6M1M6AGhPFpsXWg/AOPw84kuY5BCA/HPThdsMmHNV3w=";
-  };
-
-  format = "pyproject";
-
-  maturinBuildFlags = "--features=ipadic";
+  format = "wheel";
 
   nativeBuildInputs = [
     setuptools
     wheel
     pip
-    rustPlatform.cargoSetupHook
-    rustPlatform.maturinBuildHook
-    rustc
-    cargo
+  ];
+
+  buildInputs = [
+    openssl
   ];
 
   pythonImportsCheck = [ "lindera_py" ];
