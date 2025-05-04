@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746065353845,
+  "lastUpdate": 1746372240669,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -17891,6 +17891,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.1227697,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b86a9f6daddef98e60b9385bc6cf75bbf2bc4145",
+          "message": "feat(org-search-utils): add lindera tokenizer for full text search capability (#148)\n\n* feat(org-search-utils): add lindera tokenizer for full text search capability\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* fix(org-search-utils): fix to add fts index\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* fix(org-search-utils): install binary release for lindera-py\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* chore(org-search-utils): nix fmt\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* feat(org-search-utils): add full-text search capability using lindera tokenizer\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* fix(org-search-utils): fix to add index overwrite option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* fix(org-search-utils): fix element-id definition\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-04T15:11:27Z",
+          "tree_id": "3bc2acdbe07529bbaf160370a60a13293e0ccbe5",
+          "url": "https://github.com/rinx/dotfiles/commit/b86a9f6daddef98e60b9385bc6cf75bbf2bc4145"
+        },
+        "date": 1746372240071,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.849091500000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.05684679999999,
             "unit": "ms"
           }
         ]
