@@ -59,7 +59,7 @@
     lst []))
 
 (defn insert-doc [conn node-id doc emb]
-  (let [element-id (get doc.metadata "element_id")
+  (let [element-id (.join ":" [node-id (get doc.metadata "element_id")])
         category (get doc.metadata "category")
         content doc.page_content
         vector (-> emb
