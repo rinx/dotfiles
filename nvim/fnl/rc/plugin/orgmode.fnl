@@ -432,7 +432,12 @@
 
 (comment
   (roam-refresh-vector-index)
-  (query_roam_fragments :Neovim 10 print print))
+  (query_roam_fragments :Neovim 10 print print)
+  (-> (icollect [_ node (ipairs (get_all_roam_nodes))]
+        (let [n (get_roam_node_by_id node.id)]
+          {:node-id node.id
+           :path n.file}))
+      (vim.json.encode)))
 
 (fn get_roam_node_links [id]
   (let [roam (require :org-roam)

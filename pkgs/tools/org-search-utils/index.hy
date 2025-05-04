@@ -140,7 +140,7 @@
     [node-id md5]))
 
 (defn update-fts-index [conn]
-  (conn.sql "PRAGMA create_fts_index('roam_doc', 'element_id', 'content_t', stemmer = 'none', stopwords = 'none', ignore = '', lower = false, strip_accents = false);"))
+  (conn.sql "PRAGMA create_fts_index('roam_doc', 'element_id', 'content_t', stemmer = 'none', stopwords = 'none', ignore = '', lower = false, strip_accents = false, overwrite = true);"))
 
 (defn commit [conn files]
   (update-fts-index conn)

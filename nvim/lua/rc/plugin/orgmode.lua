@@ -386,7 +386,7 @@ local function query_roam_fragments(query, limit, cb, errcb)
   end
   return async.run(_41_, nil, _43_)
 end
---[[ (roam-refresh-vector-index) (query_roam_fragments "Neovim" 10 print print) ]]
+--[[ (roam-refresh-vector-index) (query_roam_fragments "Neovim" 10 print print) (-> (icollect [_ node (ipairs (get_all_roam_nodes))] (let [n (get_roam_node_by_id node.id)] {:node-id node.id :path n.file})) (vim.json.encode)) ]]
 local function get_roam_node_links(id)
   local roam0 = require("org-roam")
   local node = roam0.database:get_sync(id)
