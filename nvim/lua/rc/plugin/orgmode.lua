@@ -291,8 +291,8 @@ local function create_roam_node(title, body, cb)
   end
   return promise:next(_28_)
 end
-local function roam_refresh_vector_index()
-  vim.notify("start roam refresh vector index", "info")
+local function roam_refresh_search_index()
+  vim.notify("start roam refresh search index", "info")
   local started_time = os.time()
   local async_system = async.wrap(vim.system, 3)
   local nodes__3einfo
@@ -340,16 +340,16 @@ local function roam_refresh_vector_index()
       local took = (current_time - started_time)
       return vim.notify(("refresh vector index: took " .. took .. "s"), "info")
     else
-      return vim.notify(("Error on refresh vector index: " .. err))
+      return vim.notify(("Error on refresh search index: " .. err))
     end
   end
   local function _36_(err)
     async.util.scheduler()
-    return vim.notify(("Error on refresh vector index: " .. tostring(err)))
+    return vim.notify(("Error on refresh search index: " .. tostring(err)))
   end
   return async.run(_34_, nil, _36_)
 end
-vim.api.nvim_create_user_command("RoamRefreshVectorIndex", roam_refresh_vector_index, {})
+vim.api.nvim_create_user_command("RoamRefreshSearchIndex", roam_refresh_search_index, {})
 local function query_roam_fragments(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esearch
@@ -386,7 +386,7 @@ local function query_roam_fragments(query, limit, cb, errcb)
   end
   return async.run(_41_, nil, _43_)
 end
---[[ (roam-refresh-vector-index) (query_roam_fragments "Neovim" 10 print print) (-> (icollect [_ node (ipairs (get_all_roam_nodes))] (let [n (get_roam_node_by_id node.id)] {:node-id node.id :path n.file})) (vim.json.encode)) ]]
+--[[ (roam-refresh-search-index) (query_roam_fragments "Neovim" 10 print print) (-> (icollect [_ node (ipairs (get_all_roam_nodes))] (let [n (get_roam_node_by_id node.id)] {:node-id node.id :path n.file})) (vim.json.encode)) ]]
 local function get_roam_node_links(id)
   local roam0 = require("org-roam")
   local node = roam0.database:get_sync(id)

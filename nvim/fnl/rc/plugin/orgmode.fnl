@@ -367,8 +367,8 @@
               (vim.fn.writefile node.file :a))
           (cb id))))))
 
-(fn roam-refresh-vector-index []
-  (vim.notify "start roam refresh vector index" :info)
+(fn roam-refresh-search-index []
+  (vim.notify "start roam refresh search index" :info)
   (let [started-time (os.time)
         async-system (async.wrap vim.system 3)
         nodes->info (fn [nodes]
@@ -398,12 +398,12 @@
             (let [current-time (os.time)
                   took (- current-time started-time)]
               (vim.notify (.. "refresh vector index: took " took :s) :info))
-            (vim.notify (.. "Error on refresh vector index: " err)))))
+            (vim.notify (.. "Error on refresh search index: " err)))))
       nil
       (fn [err]
         (async.util.scheduler)
-        (vim.notify (.. "Error on refresh vector index: " (tostring err)))))))
-(vim.api.nvim_create_user_command :RoamRefreshVectorIndex roam-refresh-vector-index {})
+        (vim.notify (.. "Error on refresh search index: " (tostring err)))))))
+(vim.api.nvim_create_user_command :RoamRefreshSearchIndex roam-refresh-search-index {})
 
 (fn query_roam_fragments [query limit cb errcb]
   (let [async-system (async.wrap vim.system 3)
@@ -431,7 +431,7 @@
         (errcb (.. "Error: " (tostring err)))))))
 
 (comment
-  (roam-refresh-vector-index)
+  (roam-refresh-search-index)
   (query_roam_fragments :Neovim 10 print print)
   (-> (icollect [_ node (ipairs (get_all_roam_nodes))]
         (let [n (get_roam_node_by_id node.id)]
