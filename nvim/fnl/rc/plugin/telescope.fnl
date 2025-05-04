@@ -63,7 +63,7 @@
    :RoamGrep
    :RoamKensaku
    :RoamPull
-   :RoamRefreshVectorIndex
+   :RoamRefreshSearchIndex
    :RoamStatus
    "Telescope dap list_breakpoints"
    "Telescope repo list"
