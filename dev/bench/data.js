@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746412225114,
+  "lastUpdate": 1746432979254,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18027,6 +18027,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.8155071,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e2d3bb4a38651274d69e215a5c9fdb3a5fbb06b5",
+          "message": "chore(nix): add git-hooks-nix to run pre-commit hook\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-05T17:02:43+09:00",
+          "tree_id": "3719c2449968da3ed2a106c3e32749b5a46a5d05",
+          "url": "https://github.com/rinx/dotfiles/commit/e2d3bb4a38651274d69e215a5c9fdb3a5fbb06b5"
+        },
+        "date": 1746432978321,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.759684500000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.8629642,
             "unit": "ms"
           }
         ]
