@@ -1,5 +1,6 @@
 .clj-kondo
 .cache/tree-sitter
+.pre-commit-config.yaml
 
 macos/sketchybar/rc/target
 

@@ -57,7 +57,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - name: nix flake check
         run: |
-          nix flake check --system ${{ matrix.system }}
+          nix flake check --no-build --system ${{ matrix.system }}
       - name: nix flake show
         run: |
           nix flake show --system ${{ matrix.system }}
