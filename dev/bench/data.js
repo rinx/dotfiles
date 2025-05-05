@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746432979254,
+  "lastUpdate": 1746433230416,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18061,6 +18061,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 73.8629642,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "82853aa4ca5dae73eae8722cd18cd090a4810b3a",
+          "message": "chore(nix): fix to remove .pre-commit-config.yaml\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-05T17:07:32+09:00",
+          "tree_id": "35c5f69e0f9e837055b3d19b80107c2676d086d5",
+          "url": "https://github.com/rinx/dotfiles/commit/82853aa4ca5dae73eae8722cd18cd090a4810b3a"
+        },
+        "date": 1746433229785,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.797903400000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.67415150000001,
             "unit": "ms"
           }
         ]
