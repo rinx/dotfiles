@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746434213233,
+  "lastUpdate": 1746435177743,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18129,6 +18129,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 74.3149759,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "69fc98550514398be5c4c811fc89516ed46d431d",
+          "message": "Revert \"chore(deps): lock file maintenance (#151)\"\n\nThis reverts commit 26ccdd4fa3183104de4b93250ead0a927d97739d.",
+          "timestamp": "2025-05-05T17:37:15+09:00",
+          "tree_id": "55e8bd1f51ba40880feed1492af2180e5bce0ca2",
+          "url": "https://github.com/rinx/dotfiles/commit/69fc98550514398be5c4c811fc89516ed46d431d"
+        },
+        "date": 1746435177113,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.613188499999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.8845748,
             "unit": "ms"
           }
         ]
