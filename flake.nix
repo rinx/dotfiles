@@ -6,6 +6,7 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
 
     mcp-hub.url = "github:ravitemer/mcp-hub";
@@ -32,6 +33,7 @@
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
+        inputs.treefmt-nix.flakeModule
         inputs.git-hooks-nix.flakeModule
       ];
       systems = import systems;
@@ -57,7 +59,6 @@
             ysugimoto-falco = inputs.ysugimoto-falco;
             charles-rq = inputs.charles-rq;
           };
-          formatter = pkgs.nixfmt-rfc-style;
           pre-commit = {
             check.enable = true;
             settings = {
@@ -71,6 +72,11 @@
               config.pre-commit.devShell
             ];
             packages = [ ];
+          };
+          treefmt = {
+            programs = {
+              nixfmt.enable = true;
+            };
           };
         };
     };
