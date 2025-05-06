@@ -74,7 +74,31 @@
        {:name :orgroam
         :displayName "Org-roam"
         :capabilities
-        {:tools [{:name :search_roam_node_fragments
+        {:tools [{:name :search_roam_node_headings
+                  :description "Search for org-roam note headings. This search function is hybrid of vector similarity search and full-text search. The result should be formatted as JSON. It returns node ID, category, content and score for limited number of results."
+                  :inputSchema {:type :object
+                                :properties
+                                {:query
+                                 {:type :string
+                                  :description "Query string used for semantic search"}
+                                 :limit
+                                 {:type :number
+                                  :description "The number of top-k result"}}
+                                :required [:query :limit]}
+                  :handler (fn [req res]
+                             (let [orgrc (require :rc.plugin.orgmode)
+                                   callback (fn [result]
+                                              (let [txt (res:text result)]
+                                                (txt:send)))
+                                   ecallback (fn [e]
+                                               (let [err (res:error e)]
+                                                 (err:send)))]
+                               (orgrc.query_roam_headings
+                                 req.params.query
+                                 req.params.limit
+                                 callback
+                                 ecallback)))}
+                 {:name :search_roam_node_fragments
                   :description "Search for org-roam note fragments. This search function is hybrid of vector similarity search and full-text search. The result should be formatted as JSON. It returns node ID, category, content and score for limited number of results."
                   :inputSchema {:type :object
                                 :properties

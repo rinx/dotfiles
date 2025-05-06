@@ -386,6 +386,42 @@ local function query_roam_fragments(query, limit, cb, errcb)
   end
   return async.run(_41_, nil, _43_)
 end
+local function query_roam_headings(query, limit, cb, errcb)
+  local async_system = async.wrap(vim.system, 3)
+  local __3esearch
+  local function _44_(query0)
+    if query0 then
+      local job = async_system({"org-search-utils-search", "--title_only", query0, limit}, {text = true})
+      if (job.code == 0) then
+        local results = vim.json.decode(job.stdout)
+        if (results and (#results > 0)) then
+          return true, vim.json.encode(results)
+        else
+          return false, "No results found"
+        end
+      else
+        return false, job.stderr
+      end
+    else
+      return nil
+    end
+  end
+  __3esearch = _44_
+  local function _48_()
+    local ok_3f, result = __3esearch(query, limit)
+    async.util.scheduler()
+    if ok_3f then
+      return cb(result)
+    else
+      return errcb(result)
+    end
+  end
+  local function _50_(err)
+    async.util.scheduler()
+    return errcb(("Error: " .. tostring(err)))
+  end
+  return async.run(_48_, nil, _50_)
+end
 --[[ (roam-refresh-search-index) (query_roam_fragments "Neovim" 10 print print) (-> (icollect [_ node (ipairs (get_all_roam_nodes))] (let [n (get_roam_node_by_id node.id)] {:node-id node.id :path n.file})) (vim.json.encode)) ]]
 local function get_roam_node_links(id)
   local roam0 = require("org-roam")
@@ -397,4 +433,4 @@ local function get_roam_node_backlinks(id)
   local node = roam0.database:get_sync(id)
   return roam0.database:get_file_backlinks_sync(node.file)
 end
-return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks}
+return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, query_roam_headings = query_roam_headings, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks}

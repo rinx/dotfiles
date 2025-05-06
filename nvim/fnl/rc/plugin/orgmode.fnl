@@ -430,6 +430,31 @@
         (async.util.scheduler)
         (errcb (.. "Error: " (tostring err)))))))
 
+(fn query_roam_headings [query limit cb errcb]
+  (let [async-system (async.wrap vim.system 3)
+        ->search (fn [query]
+                   (when query
+                     (let [job (async-system
+                                 [:org-search-utils-search :--title_only query limit]
+                                 {:text true})]
+                       (if (= job.code 0)
+                         (let [results (vim.json.decode job.stdout)]
+                           (if (and results (> (length results) 0))
+                             (values true (vim.json.encode results))
+                             (values false "No results found")))
+                         (values false job.stderr)))))]
+    (async.run
+      (fn []
+        (let [(ok? result) (->search query limit)]
+          (async.util.scheduler)
+          (if ok?
+            (cb result)
+            (errcb result))))
+      nil
+      (fn [err]
+        (async.util.scheduler)
+        (errcb (.. "Error: " (tostring err)))))))
+
 (comment
   (roam-refresh-search-index)
   (query_roam_fragments :Neovim 10 print print)
@@ -455,5 +480,6 @@
  : get_roam_node_by_id
  : create_roam_node
  : query_roam_fragments
+ : query_roam_headings
  : get_roam_node_links
  : get_roam_node_backlinks}

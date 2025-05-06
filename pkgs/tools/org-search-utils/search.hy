@@ -42,10 +42,14 @@
            t.text)
          (.join " "))))
 
-(defn vq [conn vec limit]
-  (let [results (-> (conn.sql
-                      "SELECT node_id, element_id, category, content, array_cosine_distance(content_v, ?::FLOAT[2048]) as distance FROM roam_doc ORDER BY distance LIMIT ?;"
-                      :params [vec limit])
+(defn vq [conn vec limit title-only]
+  (let [results (-> (if title-only
+                      (conn.sql
+                        "SELECT node_id, element_id, category, content, array_cosine_distance(content_v, ?::FLOAT[2048]) as distance FROM roam_doc WHERE category = 'Title' ORDER BY distance LIMIT ?;"
+                        :params [vec limit])
+                      (conn.sql
+                        "SELECT node_id, element_id, category, content, array_cosine_distance(content_v, ?::FLOAT[2048]) as distance FROM roam_doc ORDER BY distance LIMIT ?;"
+                        :params [vec limit]))
                     (.fetchall))]
     (lfor result results
       {:node-id (get result 0)
@@ -54,10 +58,14 @@
        :content (get result 3)
        :distance (get result 4)})))
 
-(defn tq [conn tok limit]
-  (let [results (-> (conn.sql
-                      "SELECT node_id, element_id, category, content, fts_main_roam_doc.match_bm25(element_id, ?) AS score FROM roam_doc WHERE score IS NOT NULL ORDER BY score DESC LIMIT ?;"
-                      :params [tok limit])
+(defn tq [conn tok limit title-only]
+  (let [results (-> (if title-only
+                      (conn.sql
+                        "SELECT node_id, element_id, category, content, fts_main_roam_doc.match_bm25(element_id, ?) AS score FROM roam_doc WHERE score IS NOT NULL AND category = 'Title' ORDER BY score DESC LIMIT ?;"
+                        :params [tok limit])
+                      (conn.sql
+                        "SELECT node_id, element_id, category, content, fts_main_roam_doc.match_bm25(element_id, ?) AS score FROM roam_doc WHERE score IS NOT NULL ORDER BY score DESC LIMIT ?;"
+                        :params [tok limit]))
                     (.fetchall))]
     (lfor result results
       {:node-id (get result 0)
@@ -66,11 +74,11 @@
        :content (get result 3)
        :score (get result 4)})))
 
-(defn search [conn query limit]
+(defn search [conn query limit title-only]
   (let [vec (->vec query)
         tok (ja-tokens query)
-        vr (vq conn vec limit)
-        tr (tq conn tok limit)
+        vr (vq conn vec limit title-only)
+        tr (tq conn tok limit title-only)
         seen (set)]
     ;; merge results
     (+
@@ -129,10 +137,11 @@
 (let [parser (argparse.ArgumentParser :description "search")
       _ (parser.add_argument "query")
       _ (parser.add_argument "limit")
+      _ (parser.add_argument "--title_only" :action "store_true")
       args (parser.parse_args)
       conn (init-db)]
   (-> conn
-      (search args.query args.limit)
+      (search args.query args.limit args.title_only)
       (rerank args.query args.limit)
       (fmt)
       (print)))
