@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746450791504,
+  "lastUpdate": 1746526508437,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18197,6 +18197,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.9779068,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5234cfb53fe16decdfbcbb5ff664ea62b1a069e9",
+          "message": "chore(nix): add treefmt module\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-06T18:41:49+09:00",
+          "tree_id": "696fdcc5792ed4d05b6c2b810c40a03f7f00dbb0",
+          "url": "https://github.com/rinx/dotfiles/commit/5234cfb53fe16decdfbcbb5ff664ea62b1a069e9"
+        },
+        "date": 1746526507227,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.414338899999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.4166498,
             "unit": "ms"
           }
         ]
