@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746533648606,
+  "lastUpdate": 1746534357999,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18265,6 +18265,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.5076996,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e03390737a085957c4a2438d39059f5b207784a0",
+          "message": "config(nvim): use badd instead of vsplit on mcp tool\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-06T21:13:00+09:00",
+          "tree_id": "9202a5d7ab91c2b428693098677cf8d02bbf61fa",
+          "url": "https://github.com/rinx/dotfiles/commit/e03390737a085957c4a2438d39059f5b207784a0"
+        },
+        "date": 1746534357182,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.265333199999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.9660772,
             "unit": "ms"
           }
         ]
