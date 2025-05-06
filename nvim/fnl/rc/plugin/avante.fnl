@@ -132,7 +132,7 @@
 
                                (if (vim.uv.fs_stat node.file)
                                  (do
-                                   (vim.cmd.vsplit node.file)
+                                   (vim.cmd.badd node.file)
                                    (let [txt (res:text "opened")]
                                      (txt:send)))
                                  (let [txt (res:error "not found")]

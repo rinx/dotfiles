@@ -55,7 +55,7 @@ local function _10_(req, res)
   local orgrc = require("rc.plugin.orgmode")
   local node = orgrc.get_roam_node_by_id(req.params.id)
   if vim.uv.fs_stat(node.file) then
-    vim.cmd.vsplit(node.file)
+    vim.cmd.badd(node.file)
     local txt = res:text("opened")
     return txt:send()
   else
