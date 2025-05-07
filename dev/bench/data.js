@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746536615183,
+  "lastUpdate": 1746617474156,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18333,6 +18333,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.13894080000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "6cb453a8dcf7cfdcf082ea591a18eda2847d38d2",
+          "message": "feat(nvim): add heading content retrieval functionality for org-roam mcp\n\nAdd new MCP tool `get_roam_heading_content` to retrieve detailed heading\ncontent from org-roam notes by node ID and heading title.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-07T20:17:04+09:00",
+          "tree_id": "7c54c11a8e95a1b8188b3f70c81a0dca45ee9f5f",
+          "url": "https://github.com/rinx/dotfiles/commit/6cb453a8dcf7cfdcf082ea591a18eda2847d38d2"
+        },
+        "date": 1746617473539,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.097589699999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 70.4622505,
             "unit": "ms"
           }
         ]
