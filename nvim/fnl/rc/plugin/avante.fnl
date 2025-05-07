@@ -160,7 +160,24 @@
                                    (let [txt (res:text "opened")]
                                      (txt:send)))
                                  (let [txt (res:error "not found")]
-                                   (txt:send)))))}]
+                                   (txt:send)))))}
+                 {:name :get_roam_heading_content
+                  :description "Get roam note heading content by specified id and heading title. The result should be a JSON formatted list of found objects. The object is composed by node metadata, file path, heading title, heading level, content lines, children headings and position."
+                  :inputSchema {:type :object
+                                :properties
+                                {:id
+                                 {:type :string
+                                  :description "node ID"}
+                                 :title
+                                 {:type :string
+                                  :description "title of the heading"}}
+                                :required [:id :title]}
+                  :handler (fn [req res]
+                             (let [orgrc (require :rc.plugin.orgmode)
+                                   txt (-> (orgrc.get_roam_heading_content req.params.id req.params.title)
+                                           (vim.json.encode)
+                                           (res:text))]
+                               (txt:send)))}]
          :resources [{:name :list_roam_nodes
                       :uri "orgroam://nodes"
                       :description "List all org-roam notes with its ID, title and aliases. The result should be formatted as JSON."

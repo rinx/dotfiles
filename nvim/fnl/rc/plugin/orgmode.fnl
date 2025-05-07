@@ -474,6 +474,29 @@
         node (roam.database:get_sync id)]
     (roam.database:get_file_backlinks_sync node.file)))
 
+(fn get_roam_heading_content [id title]
+  (let [org-api (require :orgmode.api)
+        node (get_roam_node_by_id id)
+        org-file (org-api.load node.file)]
+    (icollect [_ headline (ipairs org-file.headlines)]
+      (when (= headline.title title)
+        (let [lines (icollect [i l (ipairs org-file._file.lines)]
+                      (when (and (<= headline.position.start_line i)
+                                 (>= headline.position.end_line i))
+                        l))
+              children (icollect [_ child (ipairs headline.headlines)]
+                         {:title child.title
+                          :level child.level})]
+          {:node {:id node.id
+                  :title node.title}
+           :file node.file
+           :title title
+           :level headline.level
+           :lines lines
+           :children children
+           :position {:start_line headline.position.start_line
+                      :end_line headline.position.end_line}})))))
+
 {: build_todays_agenda
  : get_agenda
  : get_all_roam_nodes
@@ -482,4 +505,5 @@
  : query_roam_fragments
  : query_roam_headings
  : get_roam_node_links
- : get_roam_node_backlinks}
+ : get_roam_node_backlinks
+ : get_roam_heading_content}

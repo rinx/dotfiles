@@ -433,4 +433,58 @@ local function get_roam_node_backlinks(id)
   local node = roam0.database:get_sync(id)
   return roam0.database:get_file_backlinks_sync(node.file)
 end
-return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, query_roam_headings = query_roam_headings, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks}
+local function get_roam_heading_content(id, title)
+  local org_api = require("orgmode.api")
+  local node = get_roam_node_by_id(id)
+  local org_file = org_api.load(node.file)
+  local tbl_21_ = {}
+  local i_22_ = 0
+  for _, headline in ipairs(org_file.headlines) do
+    local val_23_
+    if (headline.title == title) then
+      local lines
+      do
+        local tbl_21_0 = {}
+        local i_22_0 = 0
+        for i, l in ipairs(org_file._file.lines) do
+          local val_23_0
+          if ((headline.position.start_line <= i) and (headline.position.end_line >= i)) then
+            val_23_0 = l
+          else
+            val_23_0 = nil
+          end
+          if (nil ~= val_23_0) then
+            i_22_0 = (i_22_0 + 1)
+            tbl_21_0[i_22_0] = val_23_0
+          else
+          end
+        end
+        lines = tbl_21_0
+      end
+      local children
+      do
+        local tbl_21_0 = {}
+        local i_22_0 = 0
+        for _0, child in ipairs(headline.headlines) do
+          local val_23_0 = {title = child.title, level = child.level}
+          if (nil ~= val_23_0) then
+            i_22_0 = (i_22_0 + 1)
+            tbl_21_0[i_22_0] = val_23_0
+          else
+          end
+        end
+        children = tbl_21_0
+      end
+      val_23_ = {node = {id = node.id, title = node.title}, file = node.file, title = title, level = headline.level, lines = lines, children = children, position = {start_line = headline.position.start_line, end_line = headline.position.end_line}}
+    else
+      val_23_ = nil
+    end
+    if (nil ~= val_23_) then
+      i_22_ = (i_22_ + 1)
+      tbl_21_[i_22_] = val_23_
+    else
+    end
+  end
+  return tbl_21_
+end
+return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, query_roam_headings = query_roam_headings, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks, get_roam_heading_content = get_roam_heading_content}
