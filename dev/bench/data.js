@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746617474156,
+  "lastUpdate": 1746752831382,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18367,6 +18367,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 70.4622505,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ab79b4516f4920afa0a66f684e51d6398b3df61f",
+          "message": "feat(nix): update fennel-ls\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-09T09:53:41+09:00",
+          "tree_id": "8a42491bf40999f1d7f6ce08e860deab2460a790",
+          "url": "https://github.com/rinx/dotfiles/commit/ab79b4516f4920afa0a66f684e51d6398b3df61f"
+        },
+        "date": 1746752829948,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.1734895,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 72.13581050000002,
             "unit": "ms"
           }
         ]
