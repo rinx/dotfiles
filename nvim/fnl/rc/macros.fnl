@@ -1,3 +1,4 @@
+;; fennel-ls: macro-file
 ;; [nfnl-macro]
 
 (fn time! [...]

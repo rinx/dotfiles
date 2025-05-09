@@ -2,6 +2,7 @@
 .cache/tree-sitter
 .pre-commit-config.yaml
 
+nvim/flsproject.lua
 macos/sketchybar/rc/target
 
 result

@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/waitevent.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/waitevent.fnl
 do
   local waitevent = require("waitevent")
   local function _1_(ctx, path)

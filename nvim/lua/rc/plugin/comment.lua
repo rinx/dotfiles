@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/comment.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/comment.fnl
 local cm = require("Comment")
 local ts_commentstring = require("ts_context_commentstring.internal")
 local function _1_(ctx)

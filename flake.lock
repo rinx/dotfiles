@@ -16,6 +16,22 @@
         "url": "https://git.sr.ht/~charles/rq"
       }
     },
+    "fennel-ls": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745705188,
+        "narHash": "sha256-kVgNlC7wayznmoHzV1/TuXCggqgvS43B+O7f8S2JSLc=",
+        "ref": "refs/heads/main",
+        "rev": "39fdd0c282bcaf0d74c6996e97c65ba37437eb77",
+        "revCount": 431,
+        "type": "git",
+        "url": "https://git.sr.ht/~xerool/fennel-ls"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.sr.ht/~xerool/fennel-ls"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -444,6 +460,7 @@
     "root": {
       "inputs": {
         "charles-rq": "charles-rq",
+        "fennel-ls": "fennel-ls",
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",
         "mcp-hub": "mcp-hub",

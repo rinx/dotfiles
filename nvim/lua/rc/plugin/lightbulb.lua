@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/lightbulb.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/lightbulb.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local lightbulb = require("nvim-lightbulb")

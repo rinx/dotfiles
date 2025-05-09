@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/mini.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/mini.fnl
 do
   local align = require("mini.align")
   align.setup()

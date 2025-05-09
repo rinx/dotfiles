@@ -11,6 +11,10 @@ let
     ysugimoto-falco = inputs.ysugimoto-falco;
   };
 
+  fennel-ls = pkgs.callPackage ./tools/fennel-ls {
+    fennel-ls = inputs.fennel-ls;
+  };
+
   gctx = pkgs.callPackage ./tools/gctx { };
 
   gh-actions-language-server = pkgs.callPackage ./tools/gh-actions-ls {
@@ -48,6 +52,7 @@ let
   custom-pkgs = [
     aws-sts-token
     falco
+    fennel-ls
     gctx
     gh-actions-language-server
     git-switcher
@@ -141,7 +146,6 @@ pkgs.buildEnv {
       docker-compose-language-service
       dockerfile-language-server-nodejs
       efm-langserver
-      fennel-ls
       fortls
       gitlint
       gopls

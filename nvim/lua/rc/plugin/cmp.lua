@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/cmp.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/cmp.fnl
 local cmp = require("blink.cmp")
 local mini_snippets = require("mini.snippets")
 local function _1_()

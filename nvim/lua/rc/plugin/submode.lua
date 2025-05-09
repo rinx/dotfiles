@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/submode.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/submode.fnl
 vim.cmd("silent call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')")
 vim.cmd("silent call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')")
 vim.cmd("silent call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')")

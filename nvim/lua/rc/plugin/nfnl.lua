@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/nfnl.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/nfnl.fnl
 local function compile_all_files()
   local nfnl = require("nfnl.api")
   return nfnl["compile-all-files"]()

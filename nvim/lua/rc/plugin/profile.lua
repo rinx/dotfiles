@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/profile.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/profile.fnl
 local profile = require("profile")
 if not (vim.NIL == vim.fn.getenv("NVIM_PROFILE")) then
   profile.instrument_autocmds()

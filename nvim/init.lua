@@ -1,4 +1,4 @@
--- [nfnl] Compiled from init.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] init.fnl
 local lazypath = (vim.fn.stdpath("data") .. "/lazy")
 local function ensure(user, repo)
   local install_path = string.format("%s/%s", lazypath, repo)
@@ -6,7 +6,7 @@ local function ensure(user, repo)
     vim.api.nvim_command(string.format("!git clone --filter=blob:none --single-branch https://github.com/%s/%s %s", user, repo, install_path))
   else
   end
-  return (vim.opt.runtimepath):prepend(install_path)
+  return vim.opt.runtimepath:prepend(install_path)
 end
 ensure("folke", "lazy.nvim")
 ensure("Olical", "nfnl")

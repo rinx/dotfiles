@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/bufferline.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/bufferline.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local bufferline = require("bufferline")
@@ -7,7 +7,7 @@ local icon = autoload("rc.icon")
 local colors = color.colors
 local icontab = icon.tab
 local function _2_(count, level, dict, ctx)
-  if (ctx.buffer):current() then
+  if ctx.buffer:current() then
     return ""
   else
     return (" " .. icontab["exclam-circle"] .. count)

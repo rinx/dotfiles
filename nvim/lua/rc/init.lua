@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/init.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/init.fnl
 require("rc.core")
 require("rc.filetypes")
 require("rc.mapping")

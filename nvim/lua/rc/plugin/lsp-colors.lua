@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/lsp-colors.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/lsp-colors.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local lsp_colors = require("lsp-colors")

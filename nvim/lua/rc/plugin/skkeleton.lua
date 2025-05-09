@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/skkeleton.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/skkeleton.fnl
 vim.keymap.set("i", "<C-j>", "<Plug>(skkeleton-toggle)", {})
 vim.keymap.set("c", "<C-j>", "<Plug>(skkeleton-toggle)", {})
 local function initialize()

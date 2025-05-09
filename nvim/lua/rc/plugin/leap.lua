@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/leap.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/leap.fnl
 vim.keymap.del("n", "ZQ")
 vim.keymap.del("n", "ZZ")
 do

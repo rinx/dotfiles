@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/which-key.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/which-key.fnl
 local wk = require("which-key")
 local function which_key_show()
   return wk.show({global = false})

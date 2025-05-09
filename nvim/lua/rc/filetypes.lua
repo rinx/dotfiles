@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/filetypes.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/filetypes.fnl
 do
   local group_5_auto = vim.api.nvim_create_augroup("init-filetype-detect", {clear = true})
   vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufWinEnter"}, {command = "setf cue", group = group_5_auto, pattern = "*.cue"})

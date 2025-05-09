@@ -22,6 +22,10 @@
       url = "git+https://git.sr.ht/~charles/rq";
       flake = false;
     };
+    fennel-ls = {
+      url = "git+https://git.sr.ht/~xerool/fennel-ls";
+      flake = false;
+    };
   };
 
   outputs =
@@ -58,6 +62,7 @@
             mcp-servers-nix = inputs.mcp-servers-nix;
             ysugimoto-falco = inputs.ysugimoto-falco;
             charles-rq = inputs.charles-rq;
+            fennel-ls = inputs.fennel-ls;
           };
           pre-commit = {
             check.enable = true;

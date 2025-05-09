@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/plugin/copilot.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/copilot.fnl
 local copilot = require("copilot")
 local command = require("copilot.command")
 local client = require("copilot.client")

@@ -1,3 +1,3 @@
--- [nfnl] Compiled from fnl/rc/plugin/hypersonic.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/plugin/hypersonic.fnl
 local hypersonic = require("hypersonic")
 return hypersonic.setup({})

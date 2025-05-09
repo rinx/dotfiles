@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/rc/mapping.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/rc/mapping.fnl
 vim.g.mapleader = "\\"
 do
   vim.keymap.set("n", ";", ":", {})
