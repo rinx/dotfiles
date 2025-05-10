@@ -4,7 +4,6 @@ on:
     branches:
       - main
   pull_request:
-
 jobs:
   sg-scan:
     name: Scan using ast-grep
@@ -28,7 +27,6 @@ jobs:
           reporter: ${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }}
           filter_mode: nofilter
           reviewdog_flags: -tee
-
   test-sg-rules:
     name: Test ast-grep rules
     runs-on: ubuntu-latest

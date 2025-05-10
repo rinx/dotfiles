@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ast-grep/ast-grep/main/schemas/rule.json
-
 id: use-map-macro-instead-of-vim-keymap-set
 message: Use `map!` macro instead of `vim.keymap.set`
 severity: warning

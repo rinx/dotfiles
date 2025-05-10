@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ast-grep/ast-grep/main/schemas/rule.json
-
 id: prefer-lambda-alias
 message: It is preferred to use `λ` instead of `lambda`.
 severity: info # error, warning, info, hint

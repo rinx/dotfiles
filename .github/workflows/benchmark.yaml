@@ -1,11 +1,9 @@
 name: benchmark
-
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-
 jobs:
   benchmark:
     runs-on: ubuntu-latest
@@ -33,7 +31,7 @@ jobs:
           bb --version
       - name: Setup dotfiles
         run: |
-          make DOTDIR=$(pwd) deploy
+          make DOTDIR="$(pwd)" deploy
       - name: Install zsh plugins
         run: |
           zsh -i -c exit

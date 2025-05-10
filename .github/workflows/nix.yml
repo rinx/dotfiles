@@ -6,7 +6,6 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   build:
     name: nix build
@@ -31,7 +30,6 @@ jobs:
       - name: nix build
         run: |
           nix build
-
   check:
     name: nix flake check
     runs-on: ubuntu-latest

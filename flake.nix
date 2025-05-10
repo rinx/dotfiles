@@ -98,7 +98,10 @@
           };
           treefmt = {
             programs = {
+              actionlint.enable = true;
               nixfmt.enable = true;
+              jsonfmt.enable = true;
+              yamlfmt.enable = true;
             };
           };
         };
