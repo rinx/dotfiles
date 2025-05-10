@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746752831382,
+  "lastUpdate": 1746849428015,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18401,6 +18401,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 72.13581050000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f7ea21e2b3b558664b89c800a9c4374174a41e23",
+          "message": "config(nvim): add macro path for flsproject.fnl\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-10T12:44:04+09:00",
+          "tree_id": "35d82f268274528d292237ab4a93b08833d9f0e7",
+          "url": "https://github.com/rinx/dotfiles/commit/f7ea21e2b3b558664b89c800a9c4374174a41e23"
+        },
+        "date": 1746849427252,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.1869756,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 71.5713481,
             "unit": "ms"
           }
         ]
