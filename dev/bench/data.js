@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746885225774,
+  "lastUpdate": 1746885686574,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18605,6 +18605,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.44908530000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ba521fb2ceb020a7149ec475b9aedbb6e2a2ff1b",
+          "message": "chore(nvim): update k8s schema version\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-10T22:48:26+09:00",
+          "tree_id": "a40a3a2e82eaf723f03f7e3e078d6de1c5cac8ca",
+          "url": "https://github.com/rinx/dotfiles/commit/ba521fb2ceb020a7149ec475b9aedbb6e2a2ff1b"
+        },
+        "date": 1746885685537,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.5377702,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.670797,
             "unit": "ms"
           }
         ]
