@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746888602814,
+  "lastUpdate": 1746919490358,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18707,6 +18707,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.55967999999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c17da5422a5d75668f4df26481731eebc990de26",
+          "message": "config(nix): add formatters\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-11T08:12:24+09:00",
+          "tree_id": "fecd7aec945173b840724ba460f0fe0ff9a12bba",
+          "url": "https://github.com/rinx/dotfiles/commit/c17da5422a5d75668f4df26481731eebc990de26"
+        },
+        "date": 1746919489533,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.8678748,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.0100434,
             "unit": "ms"
           }
         ]
