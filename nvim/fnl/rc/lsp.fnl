@@ -193,7 +193,7 @@
              :rootMarkers [".github/"]}]}
           :lintDebounce :300ms}}
    :erlangls {}
-   :fennel_ls {:root_dir (root_pattern :.nfnl.fnl)}
+   :fennel_ls {:root_dir (root-pattern :.nfnl.fnl)}
    :fortls {}
    :gh_actions_ls {}
    :gleam {}
