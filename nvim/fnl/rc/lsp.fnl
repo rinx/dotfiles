@@ -125,7 +125,10 @@
    :denols {:init_options
             {:lint true
              :unstable true}
-            :root_dir (root-pattern :deno.json :deno.jsonc :deps.ts)}
+            :root_dir (root-pattern
+                        :deno.json
+                        :deno.jsonc
+                        :deps.ts)}
    :docker_compose_language_service {}
    :dockerls {}
    :efm {:filetypes
@@ -193,7 +196,9 @@
              :rootMarkers [".github/"]}]}
           :lintDebounce :300ms}}
    :erlangls {}
-   :fennel_ls {:root_dir (root-pattern :.nfnl.fnl)}
+   :fennel_ls {:root_dir (root-pattern
+                           :.nfnl.fnl
+                           :flsproject.fnl)}
    :fortls {}
    :gh_actions_ls {}
    :gleam {}
@@ -234,7 +239,10 @@
                    :prefillRequiredFields true}}}
    :tflint {}
    :texlab {:filetypes [:tex :bib :plaintex]}
-   :ts_ls {:root_dir (root-pattern :package.json :tsconfig.json :jsconfig.json)}
+   :ts_ls {:root_dir (root-pattern
+                       :package.json
+                       :tsconfig.json
+                       :jsconfig.json)}
    :yamlls {:settings
             {:yaml
              {:schemas
