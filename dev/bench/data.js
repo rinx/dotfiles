@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746850211081,
+  "lastUpdate": 1746850547821,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18469,6 +18469,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 75.0936678,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "68dcb06a4bf5ac71898edc43f58d0ebf6e709c9d",
+          "message": "chore(docs): add deepwiki badge\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-10T13:02:30+09:00",
+          "tree_id": "2a671660b59ab35eb3589c7861b8b7b675e29e07",
+          "url": "https://github.com/rinx/dotfiles/commit/68dcb06a4bf5ac71898edc43f58d0ebf6e709c9d"
+        },
+        "date": 1746850546823,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.043501400000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 73.4155659,
             "unit": "ms"
           }
         ]
