@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746850547821,
+  "lastUpdate": 1746867576186,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18503,6 +18503,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 73.4155659,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8748111ba742e432523ab6d14dedeaf4a9da253c",
+          "message": "config(nvim): use nvim 0.11 LSP API (#153)\n\n* refactor(nvim): use nvim 0.11 LSP API\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* fix(nvim): fix syntax error\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* config(nvim): add root-pattern for tsls\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* config(nvim): add fennel-ls root pattern\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-10T08:47:09Z",
+          "tree_id": "a78f913666bb3c677d77ecd30c9972177c0bb65f",
+          "url": "https://github.com/rinx/dotfiles/commit/8748111ba742e432523ab6d14dedeaf4a9da253c"
+        },
+        "date": 1746867575572,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.0165818,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.77693629999999,
             "unit": "ms"
           }
         ]
