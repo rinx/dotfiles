@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746867576186,
+  "lastUpdate": 1746882059408,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18537,6 +18537,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.77693629999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3c47aff8593ef8b9390e6a92302451235db3c8d9",
+          "message": "chore(nvim): remove unused lua file\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-10T21:47:37+09:00",
+          "tree_id": "75b4d36847fe38ad203e989181347f4389cab856",
+          "url": "https://github.com/rinx/dotfiles/commit/3c47aff8593ef8b9390e6a92302451235db3c8d9"
+        },
+        "date": 1746882058034,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.178832200000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.48293460000001,
             "unit": "ms"
           }
         ]
