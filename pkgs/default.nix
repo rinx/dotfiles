@@ -102,8 +102,6 @@ pkgs.buildEnv {
       passExtensions.pass-otp
       ripgrep
       sad
-      tmux
-      tmux-xpanes
       tree-sitter
       wget
       yq-go
