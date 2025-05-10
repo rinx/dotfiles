@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746849428015,
+  "lastUpdate": 1746850211081,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18435,6 +18435,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 71.5713481,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "57aaca0608fe907c0a310d7738856f3b664b0b0e",
+          "message": "chore(deps): lock file maintenance (#152)\n\n* chore(deps): lock file maintenance\n\n* fix(pkgs/tools/falco): update vendor hash\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-10T03:56:45Z",
+          "tree_id": "44236f4bb20e15fde2927ff30de7a10bf00a92d7",
+          "url": "https://github.com/rinx/dotfiles/commit/57aaca0608fe907c0a310d7738856f3b664b0b0e"
+        },
+        "date": 1746850209648,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.242798899999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 75.0936678,
             "unit": "ms"
           }
         ]
