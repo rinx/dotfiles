@@ -118,7 +118,7 @@ local function alter_cmd(exec, nixpkg)
 end
 local _14_
 do
-  local k8s_prefix = table.concat({"https://raw.githubusercontent.com/", "yannh/", "kubernetes-json-schema/", "master/", "v1.31.0-standalone"})
+  local k8s_prefix = table.concat({"https://raw.githubusercontent.com/", "yannh/", "kubernetes-json-schema/", "master/", "v1.33.0-standalone"})
   local __3ek8s
   local function _15_(x)
     return table.concat({k8s_prefix, x}, "/")

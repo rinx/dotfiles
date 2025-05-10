@@ -264,7 +264,7 @@
                                               "yannh/"
                                               "kubernetes-json-schema/"
                                               "master/"
-                                              "v1.31.0-standalone"])
+                                              "v1.33.0-standalone"])
                     ->k8s (fn [x]
                             (table.concat [k8s-prefix x] :/))
                     schemastore-prefix "https://json.schemastore.org"
