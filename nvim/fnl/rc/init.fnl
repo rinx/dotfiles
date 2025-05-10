@@ -3,3 +3,4 @@
 (require :rc.mapping)
 (require :rc.plugin)
 (require :rc.colorscheme)
+(require :rc.lsp)

@@ -101,21 +101,14 @@
                         :dependencies [:ravitemer/mcphub.nvim]}
 
    ;; lsp
-   :neovim/nvim-lspconfig {:config (mod :lsp)
-                           :dependencies [:ray-x/lsp_signature.nvim
-                                          :b0o/schemastore.nvim]
-                           :event [:BufReadPre]}
+   :neovim/nvim-lspconfig {}
+   :b0o/schemastore.nvim {:lazy true}
    :kosayoda/nvim-lightbulb {:config (mod :lightbulb)
                              :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/trouble.nvim {:config (mod :trouble)
                         :event [:BufReadPost :BufAdd :BufNewFile]}
-   :folke/lsp-colors.nvim {:config (mod :lsp-colors)
-                           :event [:BufReadPost :BufAdd :BufNewFile]}
    :folke/todo-comments.nvim {:config (mod :todo-comments)
                               :event [:BufReadPost :BufAdd :BufNewFile]}
-   :whynothugo/lsp_lines.nvim {:url "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-                               :config (mod :lsp-lines)
-                               :event [:BufReadPost :BufAdd :BufNewFile]}
 
    ;; completion
    :saghen/blink.cmp {:event [:InsertEnter
