@@ -234,7 +234,7 @@
                    :prefillRequiredFields true}}}
    :tflint {}
    :texlab {:filetypes [:tex :bib :plaintex]}
-   :ts_ls {}
+   :ts_ls {:root_dir (root-pattern :package.json :tsconfig.json :jsconfig.json)}
    :yamlls {:settings
             {:yaml
              {:schemas
