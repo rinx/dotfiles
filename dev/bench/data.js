@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746882059408,
+  "lastUpdate": 1746885225774,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18571,6 +18571,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.48293460000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "27dd311be3b27802c6428e577dd9de1926950da6",
+          "message": "feat(nvim): add alter-cmd function to lsp settings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-10T22:40:15+09:00",
+          "tree_id": "48ae436c69e27fd91e1a4185da475fac4a7350c9",
+          "url": "https://github.com/rinx/dotfiles/commit/27dd311be3b27802c6428e577dd9de1926950da6"
+        },
+        "date": 1746885224619,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.274460100000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.44908530000001,
             "unit": "ms"
           }
         ]
