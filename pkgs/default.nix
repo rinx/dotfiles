@@ -146,12 +146,10 @@ pkgs.buildEnv {
       docker-compose-language-service
       dockerfile-language-server-nodejs
       efm-langserver
-      fortls
       gitlint
       gopls
       hadolint
       harper
-      jq-lsp
       marksman
       nil
       nixd

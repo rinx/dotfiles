@@ -113,13 +113,19 @@
               (vim.fs.dirname)
               (callback)))))))
 
+(fn alter-cmd [exec nixpkg]
+  (if (= (vim.fn.executable (. exec 1)) 1)
+      exec
+      [:nix :run (.. :nixpkgs# nixpkg) :-- (unpack exec 2)]))
+
 (use
   {:ast_grep {:filetypes [:*]}
-   :bash_ls {:settings
-             {:bashIde
-              {:shfmt {:caseIndent true}}}}
+   :bashls {:settings
+            {:bashIde
+             {:shfmt {:caseIndent true}}}}
    :buf_ls {}
    :clojure_lsp {}
+   :cssls {}
    :cue {}
    :dagger {}
    :denols {:init_options
@@ -195,11 +201,17 @@
              :requireMarker true
              :rootMarkers [".github/"]}]}
           :lintDebounce :300ms}}
-   :erlangls {}
+   :erlangls {:cmd (alter-cmd [:erlang_ls] :beamMinimal27Packages.erlang-ls)}
    :fennel_ls {:root_dir (root-pattern
                            :.nfnl.fnl
                            :flsproject.fnl)}
-   :fortls {}
+   :fortls {:cmd (alter-cmd
+                   [:fortls
+                    :--notify_init
+                    :--hover_signature
+                    :--hover_language=fortran
+                    :--use_signature_help]
+                   :fortls)}
    :gh_actions_ls {}
    :gleam {}
    :gopls {:settings
@@ -221,24 +233,26 @@
    :harper_ls {:settings
                {:harper-ls
                 {:userDictPath "~/.config/harper-ls/dict.txt"}}}
-   :jqls {}
+   :helm_ls {:cmd (alter-cmd [:helm_ls :serve] :helm-ls)}
+   :jqls {:cmd (alter-cmd [:jq-lsp] :jq-lsp)}
    :jsonls {:settings
             {:json
              {:schemas (schemastore.json.schemas)}}}
+   :lua_ls {:cmd (alter-cmd [:lua-language-server] :lua-language-server)}
    :marksman {}
+   :nginx_language_server {:cmd (alter-cmd [:nginx-language-server] :nginx-language-server)}
    :nil_ls {}
    :nixd {}
-   :pylsp {}
+   :pylsp {:cmd (alter-cmd [:pylsp] :python313Packages.python-lsp-server)}
    :regal {:init_options
            {:enableDebugCodelens true
             :evalCodelensDisplayInline true}}
-   :rust_analyzer {}
+   :rust_analyzer {:cmd (alter-cmd [:rust-analyzer] :rust-analyzer)}
    :terraformls {:init_options
                  {:experimentalFeatures
                   {:validateOnSave true
                    :prefillRequiredFields true}}}
    :tflint {}
-   :texlab {:filetypes [:tex :bib :plaintex]}
    :ts_ls {:root_dir (root-pattern
                        :package.json
                        :tsconfig.json
