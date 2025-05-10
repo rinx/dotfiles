@@ -8,6 +8,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rinx/dotfiles?style=flat-square)
 ![GitHub repo size](https://img.shields.io/github/repo-size/rinx/dotfiles?style=flat-square)
 ![GitHub commit year activity](https://img.shields.io/github/commit-activity/y/rinx/dotfiles?style=flat-square)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rinx/dotfiles)
 
 ## Usage
 
