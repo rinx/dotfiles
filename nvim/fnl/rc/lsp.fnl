@@ -119,7 +119,24 @@
       [:nix :run (.. :nixpkgs# nixpkg) :-- (unpack exec 2)]))
 
 (use
-  {:ast_grep {:filetypes [:*]}
+  {:ast_grep {:filetypes [:c
+                          :cpp
+                          :css
+                          :dart
+                          :fennel
+                          :go
+                          :html
+                          :java
+                          :javascript
+                          :javascript.jsx
+                          :javascriptreact
+                          :kotlin
+                          :lua
+                          :python
+                          :rust
+                          :typescript
+                          :typescript.tsx
+                          :typescriptreact]}
    :bashls {:settings
             {:bashIde
              {:shfmt {:caseIndent true}}}}
