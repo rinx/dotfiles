@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746919490358,
+  "lastUpdate": 1747059244271,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18741,6 +18741,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.0100434,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a42f795d959b683e6fd3a10811ee5636b765f1ef",
+          "message": "fix(nvim): fix lsp filetypes for ast-grep\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-12T23:00:45+09:00",
+          "tree_id": "f4b03c26625e794e2e7492dba7089ed4821b9fd1",
+          "url": "https://github.com/rinx/dotfiles/commit/a42f795d959b683e6fd3a10811ee5636b765f1ef"
+        },
+        "date": 1747059243212,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.153672600000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 85.6597601,
             "unit": "ms"
           }
         ]
