@@ -20,7 +20,7 @@ stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    install -D gctx $out/bin/gctx
+    install -D gctx.clj $out/bin/gctx
 
     runHook postInstall
   '';

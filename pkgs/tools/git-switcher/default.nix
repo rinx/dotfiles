@@ -20,7 +20,7 @@ stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    install -D git-switcher $out/bin/git-switcher
+    install -D git-switcher.clj $out/bin/git-switcher
 
     runHook postInstall
   '';

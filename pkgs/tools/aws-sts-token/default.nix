@@ -18,7 +18,7 @@ stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    install -D aws-sts-token $out/bin/aws-sts-token
+    install -D aws-sts-token.clj $out/bin/aws-sts-token
 
     runHook postInstall
   '';
