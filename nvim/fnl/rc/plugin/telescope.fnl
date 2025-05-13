@@ -49,8 +49,6 @@
    :LspStart
    :LspStop
    :MCPHub
-   :NvimTreeRefresh
-   :NvimTreeToggle
    "Octo pr list"
    "Octo issue list"
    :OrgFind
@@ -59,11 +57,13 @@
    :OrgInbox
    :OrgJournal
    :OrgRefileToToday
+   :PasteImage
    :RoamCommitPush
    :RoamGrep
    :RoamKensaku
    :RoamPull
    :RoamRefreshSearchIndex
+   :RoamReset
    :RoamStatus
    "Telescope dap list_breakpoints"
    "Telescope repo list"
