@@ -1,9 +1,9 @@
 (local avante (require :avante))
 (local mcphub (require :mcphub))
 
-(local orgmode-server
-       {:name :orgmode
-        :displayName "Orgmode"
+(local org-mode-server
+       {:name :org-mode
+        :displayName "Org-mode"
         :capabilities
         {:tools [{:name :get_agenda_on_specific_date
                   :description "Get agenda on a specific date"
@@ -70,8 +70,8 @@
                                    (txt:send)))}]
          :resourceTemplates []}})
 
-(local orgroam-server
-       {:name :orgroam
+(local org-roam-server
+       {:name :org-roam
         :displayName "Org-roam"
         :capabilities
         {:tools [{:name :search_roam_node_headings
@@ -280,13 +280,15 @@
 
 (mcphub.setup
   {:auto_approve false
+   :auto_toggle_mcp_servers true
    :config (vim.fn.expand "~/.nix-profile/config/mcp-servers.json")
    :extensions
-   {:avante {:enabled true
-             :make_slash_commands true}}
+   {:avante
+    {:enabled true
+     :make_slash_commands true}}
    :native_servers
-   {:org-mode orgmode-server
-    :org-roam orgroam-server}})
+   {:org-mode org-mode-server
+    :org-roam org-roam-server}})
 
 ;; add mcphub_auto_approve
 (let [toggle (Snacks.toggle.new
