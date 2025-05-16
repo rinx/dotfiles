@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747148397484,
+  "lastUpdate": 1747403151836,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18911,6 +18911,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.35601669999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9fe84eb9d9d90d687bf86361287fc1325d67d0f4",
+          "message": "config(nix): remove playwright mcp server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-16T22:33:43+09:00",
+          "tree_id": "f3c8206ac0f2abf7cbf3e9c969f8f8e05204d406",
+          "url": "https://github.com/rinx/dotfiles/commit/9fe84eb9d9d90d687bf86361287fc1325d67d0f4"
+        },
+        "date": 1747403150772,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.8042863,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.5474232,
             "unit": "ms"
           }
         ]
