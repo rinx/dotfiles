@@ -226,8 +226,8 @@
    :extensions
    {:avante {:make_slash_commands true}}
    :native_servers
-   {:org orgmode-server
-    :orgroam orgroam-server}})
+   {:org-mode orgmode-server
+    :org-roam orgroam-server}})
 
 ;; add mcphub_auto_approve
 (let [toggle (Snacks.toggle.new
@@ -286,8 +286,7 @@
    :custom_tools (fn []
                    (let [ext (require :mcphub.extensions.avante)]
                      [(ext.mcp_tool)]))
-   :disabled_tools [:bash
-                    :create_dir
+   :disabled_tools [:create_dir
                     :create_file
                     :delete_dir
                     :delete_file
