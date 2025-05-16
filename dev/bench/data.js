@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747405227409,
+  "lastUpdate": 1747406294303,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -18979,6 +18979,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.0062999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5fa09eded19096cd0f7838a73fffcf4e0b022a3c",
+          "message": "refactor(nvim): refactor avante settings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-16T23:25:48+09:00",
+          "tree_id": "7db1926233394d333450fbba18d3a1d6c2b61bc7",
+          "url": "https://github.com/rinx/dotfiles/commit/5fa09eded19096cd0f7838a73fffcf4e0b022a3c"
+        },
+        "date": 1747406293440,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.1452245,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.7828483,
             "unit": "ms"
           }
         ]
