@@ -220,27 +220,6 @@
                                                        (res:text))]
                                            (txt:send)))}]}})
 
-(mcphub.setup
-  {:auto_approve false
-   :config (vim.fn.expand "~/.nix-profile/config/mcp-servers.json")
-   :extensions
-   {:avante {:make_slash_commands true}}
-   :native_servers
-   {:org-mode orgmode-server
-    :org-roam orgroam-server}})
-
-;; add mcphub_auto_approve
-(let [toggle (Snacks.toggle.new
-               {:id :mcphub_auto_approve
-                :name "MCPHub auto_approve"
-                :get (fn []
-                       (= vim.g.mcphub_auto_approve true))
-                :set (fn [state]
-                       (if state
-                           (set vim.g.mcphub_auto_approve true)
-                           (set vim.g.mcphub_auto_approve false)))})]
-  (toggle:map :<leader>AA))
-
 (avante.setup
   {:provider :copilot
    :behavior
@@ -298,3 +277,25 @@
                     :rename_file
                     :search_files
                     :web_search]})
+
+(mcphub.setup
+  {:auto_approve false
+   :config (vim.fn.expand "~/.nix-profile/config/mcp-servers.json")
+   :extensions
+   {:avante {:enabled true
+             :make_slash_commands true}}
+   :native_servers
+   {:org-mode orgmode-server
+    :org-roam orgroam-server}})
+
+;; add mcphub_auto_approve
+(let [toggle (Snacks.toggle.new
+               {:id :mcphub_auto_approve
+                :name "MCPHub auto_approve"
+                :get (fn []
+                       (= vim.g.mcphub_auto_approve true))
+                :set (fn [state]
+                       (if state
+                           (set vim.g.mcphub_auto_approve true)
+                           (set vim.g.mcphub_auto_approve false)))})]
+  (toggle:map :<leader>AA))
