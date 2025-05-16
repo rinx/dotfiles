@@ -3,7 +3,7 @@
 
 (local org-mode-server
        {:name :org-mode
-        :displayName "Org-mode"
+        :displayName :Org-mode
         :capabilities
         {:tools [{:name :get_agenda_on_specific_date
                   :description "Get agenda on a specific date"
@@ -72,7 +72,7 @@
 
 (local org-roam-server
        {:name :org-roam
-        :displayName "Org-roam"
+        :displayName :Org-roam
         :capabilities
         {:tools [{:name :search_roam_node_headings
                   :description "Search for org-roam note headings. This search function is hybrid of vector similarity search and full-text search. The result should be formatted as JSON. It returns node ID, category, content and score for limited number of results."
@@ -225,7 +225,8 @@
    :behavior
    {:auto_set_keymaps false
     :auto_suggestions false
-    :auto_apply_diff_after_generation true}
+    :auto_apply_diff_after_generation true
+    :enable_cursor_planning_mode true}
    :copilot
    {:model :claude-3.7-sonnet}
    :vendors
