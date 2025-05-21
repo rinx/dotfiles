@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747744561889,
+  "lastUpdate": 1747835795238,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19149,6 +19149,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.0849537,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ba4097a9475e83f6b11dbb2914271753448a4246",
+          "message": "chore(deps): lock file maintenance (#156)\n\n* chore(deps): lock file maintenance\n\n* chore(nix): update rq vendor hash\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-21T13:44:19Z",
+          "tree_id": "b6259beb1b12242ef649968aa607c3f5764709ed",
+          "url": "https://github.com/rinx/dotfiles/commit/ba4097a9475e83f6b11dbb2914271753448a4246"
+        },
+        "date": 1747835793725,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.389707000000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.9951468,
             "unit": "ms"
           }
         ]
