@@ -8,5 +8,5 @@ buildGoModule {
 
   src = charles-rq;
 
-  vendorHash = "sha256-fOq62QRx7BoE7RJielTnu1dtvkLy2FkzG59uuMQVLc4=";
+  vendorHash = "sha256-YQ/uqudChgbXch8hn3zMsn2CeG/NytXdHV1JsRlU5aA=";
 }
