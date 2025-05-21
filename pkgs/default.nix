@@ -8,11 +8,11 @@ let
   aws-sts-token = pkgs.callPackage ./tools/aws-sts-token { };
 
   falco = pkgs.callPackage ./tools/falco {
-    ysugimoto-falco = inputs.ysugimoto-falco;
+    source = inputs.ysugimoto-falco;
   };
 
   fennel-ls = pkgs.callPackage ./tools/fennel-ls {
-    fennel-ls = inputs.fennel-ls;
+    source = inputs.fennel-ls;
   };
 
   gctx = pkgs.callPackage ./tools/gctx { };
@@ -42,7 +42,7 @@ let
   org-search-utils = pkgs.callPackage ./tools/org-search-utils { };
 
   rq = pkgs.callPackage ./tools/rq {
-    charles-rq = inputs.charles-rq;
+    source = inputs.charles-rq;
   };
 
   mcp-servers = pkgs.callPackage ./settings/mcp-servers {

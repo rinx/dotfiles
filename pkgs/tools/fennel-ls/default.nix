@@ -1,7 +1,7 @@
 {
   lib,
   stdenv,
-  fennel-ls,
+  source,
   lua,
   luaPackages,
   pandoc,
@@ -10,7 +10,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "fennel-ls";
   version = "0.2.0";
 
-  src = fennel-ls;
+  src = source;
 
   nativeBuildInputs = [
     pandoc

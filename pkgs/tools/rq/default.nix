@@ -1,12 +1,12 @@
 {
   lib,
   buildGoModule,
-  charles-rq,
+  source,
 }:
 buildGoModule {
   name = "rq";
 
-  src = charles-rq;
+  src = source;
 
   vendorHash = "sha256-YQ/uqudChgbXch8hn3zMsn2CeG/NytXdHV1JsRlU5aA=";
 }
