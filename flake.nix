@@ -94,7 +94,13 @@
             inputsFrom = [
               config.pre-commit.devShell
             ];
-            packages = [ ];
+            packages = [
+              pkgs.babashka
+              pkgs.tree-sitter
+            ];
+            shellHook = ''
+              bb build
+            '';
           };
           treefmt = {
             programs = {
