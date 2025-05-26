@@ -196,7 +196,7 @@ local function build_todays_agenda()
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
-        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not string.match(line.content, "CANCELED")) then
+        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not (entry.metadata.agenda_item.label == "Scheduled:") and not string.match(line.content, "CANCELED")) then
           val_23_ = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s(%u+)%s", "")
         else
           val_23_ = nil
@@ -212,6 +212,39 @@ local function build_todays_agenda()
   end
   return table.concat(_21_, "\n")
 end
+local function build_todays_tasks()
+  local orgmode0 = require("orgmode")
+  local agenda_types = require("orgmode.agenda.types")
+  local view_opts = vim.tbl_extend("force", {}, {files = orgmode0.agenda.files, agenda_filter = orgmode0.agenda.filters, highlighter = orgmode0.agenda.highlighter, span = "day"})
+  local view = agenda_types.agenda:new(view_opts)
+  local agenda_day = view:_get_agenda_days()[1]
+  local items = agenda_day.agenda_items
+  local _24_
+  do
+    local tbl_21_ = {}
+    local i_22_ = 0
+    for _, item in ipairs(items) do
+      local val_23_
+      do
+        local entry = view:_build_line(item, agenda_day)
+        local line = entry:compile()
+        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and (entry.metadata.agenda_item.label == "Scheduled:") and not string.match(line.content, "CANCELED")) then
+          val_23_ = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:(%s+)(%u+)%s", "- ")
+        else
+          val_23_ = nil
+        end
+      end
+      if (nil ~= val_23_) then
+        i_22_ = (i_22_ + 1)
+        tbl_21_[i_22_] = val_23_
+      else
+      end
+    end
+    _24_ = tbl_21_
+  end
+  return table.concat(_24_, "\n")
+end
+--[[ (build_todays_agenda) (build_todays_tasks) ]]
 local function get_agenda(span, year, month, day)
   local orgmode0 = require("orgmode")
   local agenda_types = require("orgmode.agenda.types")
@@ -284,19 +317,19 @@ end
 local function create_roam_node(title, body, cb)
   local roam0 = require("org-roam")
   local promise = roam0.api.capture_node({immediate = true, title = title, origin = false})
-  local function _28_(id)
+  local function _31_(id)
     local node = get_roam_node_by_id(id)
     vim.fn.writefile(vim.fn.split(body, "\n"), node.file, "a")
     return cb(id)
   end
-  return promise:next(_28_)
+  return promise:next(_31_)
 end
 local function roam_refresh_search_index()
   vim.notify("start roam refresh search index", "info")
   local started_time = os.time()
   local async_system = async.wrap(vim.system, 3)
   local nodes__3einfo
-  local function _29_(nodes)
+  local function _32_(nodes)
     local tbl = {}
     do
       local tbl_21_ = {}
@@ -316,10 +349,10 @@ local function roam_refresh_search_index()
     end
     return tbl
   end
-  nodes__3einfo = _29_
+  nodes__3einfo = _32_
   local nodes = vim.json.encode(nodes__3einfo(get_all_roam_nodes()))
   local index
-  local function _31_(nodes0)
+  local function _34_(nodes0)
     if (#nodes0 > 0) then
       local job = async_system({"org-search-utils-index"}, {stdin = nodes0, text = true})
       if (job.code == 0) then
@@ -331,8 +364,8 @@ local function roam_refresh_search_index()
       return nil
     end
   end
-  index = _31_
-  local function _34_()
+  index = _34_
+  local function _37_()
     local ok_3f, err = index(nodes)
     async.util.scheduler()
     if ok_3f then
@@ -343,17 +376,17 @@ local function roam_refresh_search_index()
       return vim.notify(("Error on refresh search index: " .. err))
     end
   end
-  local function _36_(err)
+  local function _39_(err)
     async.util.scheduler()
     return vim.notify(("Error on refresh search index: " .. tostring(err)))
   end
-  return async.run(_34_, nil, _36_)
+  return async.run(_37_, nil, _39_)
 end
 vim.api.nvim_create_user_command("RoamRefreshSearchIndex", roam_refresh_search_index, {})
 local function query_roam_fragments(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esearch
-  local function _37_(query0)
+  local function _40_(query0)
     if query0 then
       local job = async_system({"org-search-utils-search", query0, limit}, {text = true})
       if (job.code == 0) then
@@ -370,8 +403,8 @@ local function query_roam_fragments(query, limit, cb, errcb)
       return nil
     end
   end
-  __3esearch = _37_
-  local function _41_()
+  __3esearch = _40_
+  local function _44_()
     local ok_3f, result = __3esearch(query, limit)
     async.util.scheduler()
     if ok_3f then
@@ -380,16 +413,16 @@ local function query_roam_fragments(query, limit, cb, errcb)
       return errcb(result)
     end
   end
-  local function _43_(err)
+  local function _46_(err)
     async.util.scheduler()
     return errcb(("Error: " .. tostring(err)))
   end
-  return async.run(_41_, nil, _43_)
+  return async.run(_44_, nil, _46_)
 end
 local function query_roam_headings(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esearch
-  local function _44_(query0)
+  local function _47_(query0)
     if query0 then
       local job = async_system({"org-search-utils-search", "--title_only", query0, limit}, {text = true})
       if (job.code == 0) then
@@ -406,8 +439,8 @@ local function query_roam_headings(query, limit, cb, errcb)
       return nil
     end
   end
-  __3esearch = _44_
-  local function _48_()
+  __3esearch = _47_
+  local function _51_()
     local ok_3f, result = __3esearch(query, limit)
     async.util.scheduler()
     if ok_3f then
@@ -416,11 +449,11 @@ local function query_roam_headings(query, limit, cb, errcb)
       return errcb(result)
     end
   end
-  local function _50_(err)
+  local function _53_(err)
     async.util.scheduler()
     return errcb(("Error: " .. tostring(err)))
   end
-  return async.run(_48_, nil, _50_)
+  return async.run(_51_, nil, _53_)
 end
 --[[ (roam-refresh-search-index) (query_roam_fragments "Neovim" 10 print print) (-> (icollect [_ node (ipairs (get_all_roam_nodes))] (let [n (get_roam_node_by_id node.id)] {:node-id node.id :path n.file})) (vim.json.encode)) ]]
 local function get_roam_node_links(id)
@@ -487,4 +520,4 @@ local function get_roam_heading_content(id, title)
   end
   return tbl_21_
 end
-return {build_todays_agenda = build_todays_agenda, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, query_roam_headings = query_roam_headings, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks, get_roam_heading_content = get_roam_heading_content}
+return {build_todays_agenda = build_todays_agenda, build_todays_tasks = build_todays_tasks, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, query_roam_headings = query_roam_headings, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks, get_roam_heading_content = get_roam_heading_content}

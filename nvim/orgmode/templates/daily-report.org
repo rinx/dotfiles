@@ -7,4 +7,5 @@
 schedule:
 %(return require('rc.plugin.orgmode').build_todays_agenda())
 tasks:
+%(return require('rc.plugin.orgmode').build_todays_tasks())
      #+END_QUOTE

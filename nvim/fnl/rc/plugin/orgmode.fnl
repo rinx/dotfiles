@@ -311,11 +311,39 @@
                line (entry:compile)]
            (when (and (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
                       entry.metadata.agenda_item.is_same_day
+                      (not (= entry.metadata.agenda_item.label "Scheduled:"))
                       (not (string.match line.content :CANCELED)))
              (-> line.content
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
                  (string.gsub "Scheduled:%s(%u+)%s" "")))))
         (table.concat "\n"))))
+
+(fn build_todays_tasks []
+  (let [orgmode (require :orgmode)
+        agenda-types (require :orgmode.agenda.types)
+        view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
+                                             :agenda_filter orgmode.agenda.filters
+                                             :highlighter orgmode.agenda.highlighter
+                                             :span :day})
+        view (agenda-types.agenda:new view-opts)
+        agenda-day (. (view:_get_agenda_days) 1)
+        items agenda-day.agenda_items]
+    (-> (icollect [_ item (ipairs items)]
+         (let [entry (view:_build_line item agenda-day)
+               line (entry:compile)]
+           (when (and (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
+                      entry.metadata.agenda_item.is_same_day
+                      (= entry.metadata.agenda_item.label "Scheduled:")
+                      (not (string.match line.content :CANCELED)))
+             (-> line.content
+                 (string.gsub "^(%s+)([^%s]+):(%s+)" "")
+                 (string.gsub "Scheduled:(%s+)(%u+)%s" "- ")))))
+        (table.concat "\n"))))
+
+
+(comment
+  (build_todays_agenda)
+  (build_todays_tasks))
 
 (fn get_agenda [span year month day]
   (let [orgmode (require :orgmode)
@@ -498,6 +526,7 @@
                       :end_line headline.position.end_line}})))))
 
 {: build_todays_agenda
+ : build_todays_tasks
  : get_agenda
  : get_all_roam_nodes
  : get_roam_node_by_id
