@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1748231411017,
+  "lastUpdate": 1748255252074,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19285,6 +19285,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.64629579999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4fa29358e67f03761f3c22a7647e63fa42cb0f43",
+          "message": "config(nvim): add build_todays_tasks function to orgmode internal apis\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-26T19:14:49+09:00",
+          "tree_id": "1c105e2b1981d06c58f03987861edd830cb065d6",
+          "url": "https://github.com/rinx/dotfiles/commit/4fa29358e67f03761f3c22a7647e63fa42cb0f43"
+        },
+        "date": 1748255251458,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.071516399999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.50248389999999,
             "unit": "ms"
           }
         ]
