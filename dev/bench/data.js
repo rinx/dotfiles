@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1748477740791,
+  "lastUpdate": 1748659361797,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19387,6 +19387,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 78.77737169999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2ac6eaa58a1d1282b8506d1d0b855ea2f6748154",
+          "message": "refactor(nvim): refactor build-todays-agenda and build-todays-tasks fns\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-05-31T11:29:49+09:00",
+          "tree_id": "04f505de81815e7d6038065dc524bb2af22bea8f",
+          "url": "https://github.com/rinx/dotfiles/commit/2ac6eaa58a1d1282b8506d1d0b855ea2f6748154"
+        },
+        "date": 1748659360573,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.852756899999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.5427624,
             "unit": "ms"
           }
         ]
