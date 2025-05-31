@@ -228,8 +228,8 @@ local function build_todays_tasks()
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
-        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and (entry.metadata.agenda_item.label == "Scheduled:") and not string.match(line.content, "CANCELED")) then
-          val_23_ = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:(%s+)(%u+)%s", "- ")
+        if (entry.metadata.agenda_item.is_same_day and ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") or (entry.metadata.agenda_item.headline_date.type == "DEADLINE")) and ((entry.metadata.agenda_item.label == "Scheduled:") or (entry.metadata.agenda_item.label == "Deadline:")) and not string.match(line.content, "CANCELED")) then
+          val_23_ = string.gsub(string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:(%s+)(%u+)%s", "- "), "Deadline:(%s+)(%u+)%s", "- ")
         else
           val_23_ = nil
         end
