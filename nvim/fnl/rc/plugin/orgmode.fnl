@@ -296,7 +296,7 @@
                                      :interactive false}))
 (vim.api.nvim_create_user_command :RoamStatus roam-status {})
 
-(fn build_todays_agenda []
+(fn build-todays-agenda-helper []
   (let [orgmode (require :orgmode)
         agenda-types (require :orgmode.agenda.types)
         view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
@@ -304,8 +304,15 @@
                                              :highlighter orgmode.agenda.highlighter
                                              :span :day})
         view (agenda-types.agenda:new view-opts)
-        agenda-day (. (view:_get_agenda_days) 1)
-        items agenda-day.agenda_items]
+        agenda-day (. (view:_get_agenda_days) 1)]
+    {:view view
+     :agenda-day agenda-day
+     :items agenda-day.agenda_items}))
+
+(fn build_todays_agenda []
+  (let [{: view
+         : agenda-day
+         : items} (build-todays-agenda-helper)]
     (-> (icollect [_ item (ipairs items)]
          (let [entry (view:_build_line item agenda-day)
                line (entry:compile)]
@@ -319,15 +326,9 @@
         (table.concat "\n"))))
 
 (fn build_todays_tasks []
-  (let [orgmode (require :orgmode)
-        agenda-types (require :orgmode.agenda.types)
-        view-opts (vim.tbl_extend :force {} {:files orgmode.agenda.files
-                                             :agenda_filter orgmode.agenda.filters
-                                             :highlighter orgmode.agenda.highlighter
-                                             :span :day})
-        view (agenda-types.agenda:new view-opts)
-        agenda-day (. (view:_get_agenda_days) 1)
-        items agenda-day.agenda_items]
+  (let [{: view
+         : agenda-day
+         : items} (build-todays-agenda-helper)]
     (-> (icollect [_ item (ipairs items)]
          (let [entry (view:_build_line item agenda-day)
                line (entry:compile)]
@@ -344,6 +345,7 @@
         (table.concat "\n"))))
 
 (comment
+  (build-todays-agenda-helper)
   (build_todays_agenda)
   (build_todays_tasks))
 
