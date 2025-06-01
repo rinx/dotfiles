@@ -61,24 +61,6 @@ $(HOME)/.commit_template:
 	@$(call cyan, "--\> .commit_template")
 	ln -s $(DOTDIR)/.commit_template $(HOME)/.commit_template
 
-.PHONY: tmux-deploy
-tmux-deploy: \
-    tmux.conf \
-    tpm
-	@$(call red, "tmux-deploy has been done")
-
-.PHONY: tmux.conf
-tmux.conf: $(HOME)/.tmux.conf
-$(HOME)/.tmux.conf:
-	@$(call cyan, "--\> tmux.conf")
-	ln -s $(DOTDIR)/tmux.conf $(HOME)/.tmux.conf
-
-.PHONY: tpm
-tpm: $(HOME)/.tmux/plugins/tpm
-$(HOME)/.tmux/plugins/tpm:
-	mkdir -p $(HOME)/.tmux/plugins
-	git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
-
 .PHONY: zsh-deploy
 zsh-deploy: \
     zshrc \
