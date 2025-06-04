@@ -322,7 +322,7 @@
                       (not (string.match line.content :CANCELED)))
              (-> line.content
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
-                 (string.gsub "Scheduled:%s(%u+)%s" "")))))
+                 (string.gsub "Scheduled:%s([%u_]+)%s" "")))))
         (table.concat "\n"))))
 
 (fn build_todays_tasks []
@@ -340,8 +340,8 @@
                       (not (string.match line.content :CANCELED)))
              (-> line.content
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
-                 (string.gsub "Scheduled:(%s+)(%u+)%s" "- ")
-                 (string.gsub "Deadline:(%s+)(%u+)%s" "- ")))))
+                 (string.gsub "Scheduled:(%s+)([%u_]+)%s" "- ")
+                 (string.gsub "Deadline:(%s+)([%u_]+)%s" "- ")))))
         (table.concat "\n"))))
 
 (comment
