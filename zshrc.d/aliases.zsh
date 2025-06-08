@@ -55,11 +55,6 @@ fi
 
 if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --reverse --cycle"
-    if [ ! -z $TMUX ] && [ -z $VIMRUNTIME ]; then
-        if builtin command -v fzf-tmux > /dev/null 2>&1 ; then
-            alias fzf='fzf-tmux -p'
-        fi
-    fi
 
     fzf-search-history() {
       BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
@@ -118,12 +113,6 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
             print -z "git commit --signoff -m \"$target \""
         fi
     }
-fi
-
-if builtin command -v fzy > /dev/null 2>&1 ; then
-    if builtin command -v fzy-tmux > /dev/null 2>&1 ; then
-        alias fzy=fzy-tmux
-    fi
 fi
 
 # xsel (linux only)
