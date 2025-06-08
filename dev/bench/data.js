@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1749172982503,
+  "lastUpdate": 1749346920180,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19523,6 +19523,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 77.9225505,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2151cadc9cac9611bb94575f0dcd6822349f8d27",
+          "message": "Revert \"chore: remove tmux.conf\"\n\nThis reverts commit 20e655ba71b57248908860264cfc0f4b8f47c65d.",
+          "timestamp": "2025-06-08T10:29:42+09:00",
+          "tree_id": "1963b959cab45973fa8af774ff6d63423cd0753f",
+          "url": "https://github.com/rinx/dotfiles/commit/2151cadc9cac9611bb94575f0dcd6822349f8d27"
+        },
+        "date": 1749346919524,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.9069663,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.8253277,
             "unit": "ms"
           }
         ]
