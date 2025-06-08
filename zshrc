@@ -136,6 +136,12 @@ edit_current_line() {
 zle -N edit_current_line
 bindkey '^O' edit_current_line
 
+function precmd() {
+    if [ ! -z $TMUX ]; then
+        tmux refresh-client -S
+    fi
+}
+
 export EDITOR=${EDITOR:-nvim}
 export GIT_EDITOR=${GIT_EDITOR:-nvim}
 export VISUAL=${EDITOR:-nvim}
