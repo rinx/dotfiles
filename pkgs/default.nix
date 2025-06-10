@@ -135,6 +135,7 @@ pkgs.buildEnv {
       nodejs
       protobuf
       typescript
+      typst
 
       ## LSP / DAP / Linter / Formatter
       actionlint
@@ -158,6 +159,7 @@ pkgs.buildEnv {
       shfmt
       terraform-ls
       tflint
+      tinymist
       typescript-language-server
       vscode-langservers-extracted
       yaml-language-server

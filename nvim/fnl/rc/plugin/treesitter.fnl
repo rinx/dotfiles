@@ -87,6 +87,7 @@
    :toml
    :tsx
    :typescript
+   :typst
    :vim
    :vimdoc
    :vrl
