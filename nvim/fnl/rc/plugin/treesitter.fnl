@@ -83,9 +83,11 @@
    :strace
    :teal
    :terraform
+   :tmux
    :toml
    :tsx
    :typescript
+   :typst
    :vim
    :vimdoc
    :vrl

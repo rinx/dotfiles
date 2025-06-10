@@ -150,11 +150,11 @@
                      (tmp:close)
                      (exporter cmd "" on-success on-error)))))}
     :d
-    {:label "Export to PDF file via pandoc & xelatex"
+    {:label "Export to PDF file via pandoc & typst"
      :action (fn [exporter]
                (let [current (vim.api.nvim_buf_get_name 0)
                      target (.. (vim.fn.fnamemodify current ":p:r") ".pdf")
-                     cmd [:pandoc current :--from=org :--to=pdf :--pdf-engine=xelatex :-V :documentclass=bxjsarticle :-V :classoption=pandoc :-o target]
+                     cmd [:pandoc current :--from=org :--to=pdf :--pdf-engine=typst :-o target]
                      on-success (fn [output]
                                   (vim.notify (.. "Successfully saved to: " target)))
                      on-error (fn [err]
