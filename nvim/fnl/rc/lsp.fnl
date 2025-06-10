@@ -271,6 +271,7 @@
                   {:validateOnSave true
                    :prefillRequiredFields true}}}
    :tflint {}
+   :tinymist {}
    :ts_ls {:root_dir (root-pattern
                        :package.json
                        :tsconfig.json
