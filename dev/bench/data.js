@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1749563276520,
+  "lastUpdate": 1749564407458,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19761,6 +19761,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.2214127,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c3045f45bb432906f0f1e2bf037c93d93d7aa480",
+          "message": "config(nvim): add a typst template for org-export command\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-06-10T22:54:02+09:00",
+          "tree_id": "16a453c0b427f0d2258ea444d5112a9c40d87ea8",
+          "url": "https://github.com/rinx/dotfiles/commit/c3045f45bb432906f0f1e2bf037c93d93d7aa480"
+        },
+        "date": 1749564406384,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.3689633,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.7207881,
             "unit": "ms"
           }
         ]
