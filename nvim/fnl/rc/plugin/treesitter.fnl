@@ -83,6 +83,7 @@
    :strace
    :teal
    :terraform
+   :tmux
    :toml
    :tsx
    :typescript
