@@ -45,15 +45,14 @@
    :org_default_notes_file inbox
    :org_archive_location (->path "archive/%s_archive::")
    :org_todo_keywords [:TODO
-                       :PENDING
+                       :WIP
                        :IN_REVIEW
                        :|
                        :DONE
                        :CANCELED]
    :org_todo_keyword_faces
    {:TODO (.. ":foreground " colors.color5 " :background " colors.color8 " :underline on")
-    :WAITING (.. ":foreground " colors.color5 " :background " colors.color10)
-    :PENDING (.. ":foreground " colors.color5 " :background " colors.color10)
+    :WIP (.. ":foreground " colors.color5 " :background " colors.warn)
     :IN_REVIEW (.. ":foreground " colors.color5 " :background " colors.color10)
     :DONE (.. ":foreground " colors.color5 " :background " colors.color13)
     :CANCELED (.. ":foreground " colors.color5 " :background " colors.color9)}
@@ -328,7 +327,15 @@
 (fn build_todays_tasks []
   (let [{: view
          : agenda-day
-         : items} (build-todays-agenda-helper)]
+         : items} (build-todays-agenda-helper)
+        add-task-postfix (fn [line]
+                           (if (string.match line :WIP)
+                             (.. line " (wip)")
+                             (if (string.match line :IN_REVIEW)
+                               (.. line " (in review)")
+                               (if (string.match line :DONE)
+                                 (.. line " (done)")
+                                 line))))]
     (-> (icollect [_ item (ipairs items)]
          (let [entry (view:_build_line item agenda-day)
                line (entry:compile)]
@@ -339,6 +346,7 @@
                           (= entry.metadata.agenda_item.label "Deadline:"))
                       (not (string.match line.content :CANCELED)))
              (-> line.content
+                 (add-task-postfix)
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
                  (string.gsub "Scheduled:(%s+)([%u_]+)%s" "- ")
                  (string.gsub "Deadline:(%s+)([%u_]+)%s" "- ")))))
