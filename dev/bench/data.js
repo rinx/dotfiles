@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1749556204082,
+  "lastUpdate": 1749559078830,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19693,6 +19693,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 78.8987685,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7705e5e160bd763f00a6341e51b8cd9ea26d07e0",
+          "message": "feat(nix): add typst and tinymist\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-06-10T21:25:30+09:00",
+          "tree_id": "009e712db2abb784c4c29ce7da8c93cd81382574",
+          "url": "https://github.com/rinx/dotfiles/commit/7705e5e160bd763f00a6341e51b8cd9ea26d07e0"
+        },
+        "date": 1749559077873,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.0087957,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.9511994,
             "unit": "ms"
           }
         ]
