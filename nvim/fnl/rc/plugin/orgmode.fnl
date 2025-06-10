@@ -154,11 +154,15 @@
      :action (fn [exporter]
                (let [current (vim.api.nvim_buf_get_name 0)
                      target (.. (vim.fn.fnamemodify current ":p:r") ".pdf")
-                     cmd [:pandoc current :--from=org :--to=pdf :--pdf-engine=typst :-o target]
+                     template-path (.. (vim.fn.tempname) :.typ)
+                     template (io.open template-path :w)
+                     cmd [:pandoc current :--from=org :--to=pdf :--pdf-engine=typst (.. :--template= template-path) :-o target]
                      on-success (fn [output]
                                   (vim.notify (.. "Successfully saved to: " target)))
                      on-error (fn [err]
                                 (vim.notify (.. "Error: " err)))]
+                 (template:write "$body$")
+                 (template:close)
                  (exporter cmd target on-success on-error)))}}
    :win_split_mode :auto
    :org_highlight_latex_and_related :entities

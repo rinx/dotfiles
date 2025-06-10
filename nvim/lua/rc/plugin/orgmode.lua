@@ -91,7 +91,9 @@ end
 local function _12_(exporter)
   local current = vim.api.nvim_buf_get_name(0)
   local target = (vim.fn.fnamemodify(current, ":p:r") .. ".pdf")
-  local cmd = {"pandoc", current, "--from=org", "--to=pdf", "--pdf-engine=typst", "-o", target}
+  local template_path = (vim.fn.tempname() .. ".typ")
+  local template = io.open(template_path, "w")
+  local cmd = {"pandoc", current, "--from=org", "--to=pdf", "--pdf-engine=typst", ("--template=" .. template_path), "-o", target}
   local on_success
   local function _13_(output)
     return vim.notify(("Successfully saved to: " .. target))
@@ -102,6 +104,8 @@ local function _12_(exporter)
     return vim.notify(("Error: " .. err))
   end
   on_error = _14_
+  template:write("$body$")
+  template:close()
   return exporter(cmd, target, on_success, on_error)
 end
 local function _15_(tasks)
