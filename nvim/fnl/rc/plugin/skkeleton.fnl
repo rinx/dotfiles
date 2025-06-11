@@ -24,4 +24,12 @@
    :callback initialize}
   {:events [:User]
    :pattern :skkeleton-mode-changed
-   :command :redrawstatus})
+   :command :redrawstatus}
+  {:events [:User]
+   :pattern :skkeleton-enable-pre
+   :callback (fn []
+               (set vim.b.completion false))}
+  {:events [:User]
+   :pattern :skkeleton-disable-pre
+   :callback (fn []
+               (set vim.b.completion true))})

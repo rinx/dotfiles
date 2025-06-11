@@ -6,4 +6,14 @@ local function initialize()
 end
 local group_5_auto = vim.api.nvim_create_augroup("init-skkeleton", {clear = true})
 vim.api.nvim_create_autocmd({"User"}, {callback = initialize, group = group_5_auto, pattern = "skkeleton-initialize-pre"})
-return vim.api.nvim_create_autocmd({"User"}, {command = "redrawstatus", group = group_5_auto, pattern = "skkeleton-mode-changed"})
+vim.api.nvim_create_autocmd({"User"}, {command = "redrawstatus", group = group_5_auto, pattern = "skkeleton-mode-changed"})
+local function _1_()
+  vim.b.completion = false
+  return nil
+end
+vim.api.nvim_create_autocmd({"User"}, {callback = _1_, group = group_5_auto, pattern = "skkeleton-enable-pre"})
+local function _2_()
+  vim.b.completion = true
+  return nil
+end
+return vim.api.nvim_create_autocmd({"User"}, {callback = _2_, group = group_5_auto, pattern = "skkeleton-disable-pre"})
