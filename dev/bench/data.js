@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1749569601978,
+  "lastUpdate": 1749649050142,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19829,6 +19829,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.3098818,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d9fc9fd5a769fd73d367fc81ab8339a337bb3674",
+          "message": "config(nvim): disable completion while using skkeleton\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-06-11T22:24:43+09:00",
+          "tree_id": "64a5c91be096847f5278e53eaaebc5ec87e79a90",
+          "url": "https://github.com/rinx/dotfiles/commit/d9fc9fd5a769fd73d367fc81ab8339a337bb3674"
+        },
+        "date": 1749649049200,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.787060500000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 86.3893624,
             "unit": "ms"
           }
         ]
