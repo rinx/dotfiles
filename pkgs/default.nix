@@ -150,7 +150,6 @@ pkgs.buildEnv {
       gitlint
       gopls
       hadolint
-      harper
       marksman
       nil
       nixd

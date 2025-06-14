@@ -248,9 +248,6 @@
              :staticcheck true
              :vulncheck :Imports
              :gofumpt true}}}
-   :harper_ls {:settings
-               {:harper-ls
-                {:userDictPath "~/.config/harper-ls/dict.txt"}}}
    :helm_ls {:cmd (alter-cmd [:helm_ls :serve] :helm-ls)}
    :jqls {:cmd (alter-cmd [:jq-lsp] :jq-lsp)}
    :jsonls {:settings
