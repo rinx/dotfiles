@@ -37,8 +37,6 @@ let
       ]
     );
 
-  moralerspace-nerdfont = pkgs.callPackage ./fonts/moralerspace-nerdfont { };
-
   org-search-utils = pkgs.callPackage ./tools/org-search-utils { };
 
   rq = pkgs.callPackage ./tools/rq {
@@ -59,7 +57,6 @@ let
     google-cloud-sdk-with-components
     inputs.mcp-hub.packages."${system}".default
     mcp-servers
-    moralerspace-nerdfont
     org-search-utils
     rq
   ];
@@ -165,6 +162,8 @@ pkgs.buildEnv {
 
       ## fonts
       hackgen-nf-font
+      moralerspace-nf
+      moralerspace-hwnf
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.monaspace
