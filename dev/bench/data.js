@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1749909167729,
+  "lastUpdate": 1749997279516,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19931,6 +19931,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.03560970000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7a653fb6c133f8b1a3e5f26e2804b348d73fdd17",
+          "message": "config(nix): use moralerspace in nixpkgs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-06-15T23:08:53+09:00",
+          "tree_id": "abd8e3c99e2db73d981aa8c2ac987168a25cd747",
+          "url": "https://github.com/rinx/dotfiles/commit/7a653fb6c133f8b1a3e5f26e2804b348d73fdd17"
+        },
+        "date": 1749997278615,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.3891997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.18380090000001,
             "unit": "ms"
           }
         ]
