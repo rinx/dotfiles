@@ -8,16 +8,11 @@
 (local icontab icon.tab)
 
 (fn setup-codelens-refresh [client bufnr]
-  (let [(ok? supported?)
-        (pcall
-          (fn []
-            (client:supports_method :textDocument/codeLens)))]
-    (when (and ok? supported?)
-      (augroup!
-        init-lsp-codelens
-        {:events [:CursorHold :CursorHoldI]
-         :buffer bufnr
-         :callback vim.lsp.codelens.refresh}))))
+  (augroup!
+    init-lsp-codelens
+    {:events [:CursorHold :CursorHoldI]
+     :buffer bufnr
+     :callback vim.lsp.codelens.refresh}))
 
 (fn setup-inlay-hints [client bufnr]
   (when client.server_capabilities.inlayHintProvider

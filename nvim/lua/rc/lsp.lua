@@ -6,17 +6,8 @@ local schemastore = autoload("schemastore")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
 local function setup_codelens_refresh(client, bufnr)
-  local ok_3f, supported_3f = nil, nil
-  local function _2_()
-    return client:supports_method("textDocument/codeLens")
-  end
-  ok_3f, supported_3f = pcall(_2_)
-  if (ok_3f and supported_3f) then
-    local group_5_auto = vim.api.nvim_create_augroup("init-lsp-codelens", {clear = true})
-    return vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {buffer = bufnr, callback = vim.lsp.codelens.refresh, group = group_5_auto})
-  else
-    return nil
-  end
+  local group_5_auto = vim.api.nvim_create_augroup("init-lsp-codelens", {clear = true})
+  return vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {buffer = bufnr, callback = vim.lsp.codelens.refresh, group = group_5_auto})
 end
 local function setup_inlay_hints(client, bufnr)
   if client.server_capabilities.inlayHintProvider then
@@ -35,20 +26,20 @@ local function setup_document_formatting(client, bufnr)
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("lsp-attach", {clear = true})
-  local function _6_(args)
+  local function _4_(args)
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     setup_codelens_refresh(client, bufnr)
     setup_inlay_hints(client, bufnr)
     return setup_document_formatting(client, bufnr)
   end
-  vim.api.nvim_create_autocmd({"LspAttach"}, {callback = _6_, group = group_5_auto})
+  vim.api.nvim_create_autocmd({"LspAttach"}, {callback = _4_, group = group_5_auto})
 end
 do
   local group_5_auto = vim.api.nvim_create_augroup("lsp-progress", {clear = true})
-  local function _7_(ev)
+  local function _5_(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    local function _8_(notif)
+    local function _6_(notif)
       if (ev.data.params.value.kind == "end") then
         notif.icon = icontab.check
       else
@@ -56,9 +47,9 @@ do
       end
       return nil
     end
-    return vim.notify(vim.lsp.status(), "info", {id = "lsp_progress", title = client.name, opts = _8_})
+    return vim.notify(vim.lsp.status(), "info", {id = "lsp_progress", title = client.name, opts = _6_})
   end
-  vim.api.nvim_create_autocmd({"LspProgress"}, {callback = _7_, group = group_5_auto})
+  vim.api.nvim_create_autocmd({"LspProgress"}, {callback = _5_, group = group_5_auto})
 end
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
@@ -99,7 +90,7 @@ local function use(cfgs)
 end
 local function root_pattern(...)
   local filenames = {...}
-  local function _11_(bufnr, callback)
+  local function _9_(bufnr, callback)
     local found_dirs = vim.fs.find(filenames, {upward = true, path = vim.fs.dirname(vim.fs.normalize(vim.api.nvim_buf_get_name(bufnr)))})
     if (core.count(found_dirs) > 0) then
       return callback(vim.fs.dirname(found_dirs[1]))
@@ -107,7 +98,7 @@ local function root_pattern(...)
       return nil
     end
   end
-  return _11_
+  return _9_
 end
 local function alter_cmd(exec, nixpkg)
   if (vim.fn.executable(exec[1]) == 1) then
@@ -116,20 +107,20 @@ local function alter_cmd(exec, nixpkg)
     return {"nix", "run", ("nixpkgs#" .. nixpkg), "--", unpack(exec, 2)}
   end
 end
-local _14_
+local _12_
 do
   local k8s_prefix = table.concat({"https://raw.githubusercontent.com/", "yannh/", "kubernetes-json-schema/", "master/", "v1.33.0-standalone"})
   local __3ek8s
-  local function _15_(x)
+  local function _13_(x)
     return table.concat({k8s_prefix, x}, "/")
   end
-  __3ek8s = _15_
+  __3ek8s = _13_
   local schemastore_prefix = "https://json.schemastore.org"
   local __3eschemastore
-  local function _16_(x)
+  local function _14_(x)
     return table.concat({schemastore_prefix, x}, "/")
   end
-  __3eschemastore = _16_
-  _14_ = {[__3ek8s("all.json")] = "k8s/**/*.yaml", [__3ek8s("clusterrole.json")] = "clusterrole.yaml", [__3ek8s("clusterrolebinding.json")] = "clusterrolebinding.yaml", [__3ek8s("configmap.json")] = "configmap.yaml", [__3ek8s("cronjob.json")] = "cronjob.yaml", [__3ek8s("daemonset.json")] = "daemonset.yaml", [__3ek8s("deployment.json")] = "deployment.yaml", [__3ek8s("horizontalpodautoscaler.json")] = "hpa.yaml", [__3ek8s("ingress.json")] = "ingress.yaml", [__3ek8s("ingressclass.json")] = "ingressclass.yaml", [__3ek8s("job.json")] = "job.yaml", [__3ek8s("namespace.json")] = "namespace.yaml", [__3ek8s("networkpolicy.json")] = "networkpolicy.yaml", [__3ek8s("poddisruptionbudget.json")] = "pdb.yaml", [__3ek8s("podsecuritycontext.json")] = "podsecuritycontext.yaml", [__3ek8s("podsecuritypolicy.json")] = {"podsecuritypolicy.yaml", "psp.yaml"}, [__3ek8s("priorityclass.json")] = "priorityclass.yaml", [__3ek8s("secret.json")] = "secret.yaml", [__3ek8s("securitycontext.json")] = "securitycontext.yaml", [__3ek8s("service.json")] = {"service.yaml", "svc.yaml"}, [__3ek8s("serviceaccount.json")] = "serviceaccount.yaml", [__3ek8s("statefulset.json")] = "statefulset.yaml", [__3ek8s("storageclass.json")] = "storageclass.yaml", [__3eschemastore("kustomization")] = "kustomization.yaml", [__3eschemastore("helmfile.json")] = "helmfile.yaml", [__3eschemastore("github-workflow.json")] = "/.github/workflows/*", [__3eschemastore("circleciconfig.json")] = "/.circleci/*", [__3eschemastore("golangci-lint.json")] = ".golangci.yml"}
+  __3eschemastore = _14_
+  _12_ = {[__3ek8s("all.json")] = "k8s/**/*.yaml", [__3ek8s("clusterrole.json")] = "clusterrole.yaml", [__3ek8s("clusterrolebinding.json")] = "clusterrolebinding.yaml", [__3ek8s("configmap.json")] = "configmap.yaml", [__3ek8s("cronjob.json")] = "cronjob.yaml", [__3ek8s("daemonset.json")] = "daemonset.yaml", [__3ek8s("deployment.json")] = "deployment.yaml", [__3ek8s("horizontalpodautoscaler.json")] = "hpa.yaml", [__3ek8s("ingress.json")] = "ingress.yaml", [__3ek8s("ingressclass.json")] = "ingressclass.yaml", [__3ek8s("job.json")] = "job.yaml", [__3ek8s("namespace.json")] = "namespace.yaml", [__3ek8s("networkpolicy.json")] = "networkpolicy.yaml", [__3ek8s("poddisruptionbudget.json")] = "pdb.yaml", [__3ek8s("podsecuritycontext.json")] = "podsecuritycontext.yaml", [__3ek8s("podsecuritypolicy.json")] = {"podsecuritypolicy.yaml", "psp.yaml"}, [__3ek8s("priorityclass.json")] = "priorityclass.yaml", [__3ek8s("secret.json")] = "secret.yaml", [__3ek8s("securitycontext.json")] = "securitycontext.yaml", [__3ek8s("service.json")] = {"service.yaml", "svc.yaml"}, [__3ek8s("serviceaccount.json")] = "serviceaccount.yaml", [__3ek8s("statefulset.json")] = "statefulset.yaml", [__3ek8s("storageclass.json")] = "storageclass.yaml", [__3eschemastore("kustomization")] = "kustomization.yaml", [__3eschemastore("helmfile.json")] = "helmfile.yaml", [__3eschemastore("github-workflow.json")] = "/.github/workflows/*", [__3eschemastore("circleciconfig.json")] = "/.circleci/*", [__3eschemastore("golangci-lint.json")] = ".golangci.yml"}
 end
-return use({ast_grep = {filetypes = {"c", "cpp", "css", "dart", "fennel", "go", "html", "java", "javascript", "javascript.jsx", "javascriptreact", "kotlin", "lua", "python", "rust", "typescript", "typescript.tsx", "typescriptreact"}}, bashls = {settings = {bashIde = {shfmt = {caseIndent = true}}}}, buf_ls = {}, clojure_lsp = {}, cssls = {}, cue = {}, dagger = {}, denols = {init_options = {lint = true, unstable = true}, root_dir = root_pattern("deno.json", "deno.jsonc", "deps.ts")}, docker_compose_language_service = {}, dockerls = {}, efm = {filetypes = {"dockerfile", "gitcommit", "proto", "rego", "vcl", "yaml.github-actions"}, init_options = {codeAction = true, completion = true, documentFormatting = true, documentSymbol = true, hover = true}, settings = {languages = {dockerfile = {{lintCommand = "hadolint --no-color", lintSource = "efm/hadolint", lintAfterOpen = true, lintFormats = {"%f:%l %m"}}}, gitcommit = {{lintCommand = "gitlint --config ~/.dotfiles/.gitlint", lintStdin = true, lintSource = "efm/gitlint", lintAfterOpen = true, lintFormats = {"%l: %m: \"%r\"", "%l: %m"}}}, proto = {{lintCommand = "buf lint --path", lintSource = "efm/buf-lint", lintAfterOpen = true, lintFormats = {"%f:%l:%c:%m"}, lintSeverity = 2, rootMarkers = {"buf.yaml"}}}, rego = {{lintCommand = "opa check --strict", lintIgnoreExitCode = true, lintSource = "efm/opa-check-strict", lintAfterOpen = true, lintFormats = {"%m: %f:%l: %m", "%f:%l: %m"}}}, vcl = {{lintCommand = "falco -vv lint ${INPUT} 2>&1", lintIgnoreExitCode = true, lintSource = "efm/falco", lintAfterOpen = true, lintFormats = {"%E\240\159\146\165 %m", "%E\240\159\148\165 [ERROR] %m", "%W\226\157\151\239\184\143 [WARNING] %m", "%I\240\159\148\136 [INFO] %m", "%Zin %f at line %l, position %c", "%-G%.%#"}}}, ["yaml.github-actions"] = {{lintCommand = "actionlint -no-color -oneline -stdin-filename \"${INPUT}\" -", lintStdin = true, lintSource = "efm/actionlint", lintAfterOpen = true, lintFormats = {"%f:%l:%c: %.%#: SC%n:%trror:%m", "%f:%l:%c: %.%#: SC%n:%tarning:%m", "%f:%l:%c: %.%#: SC%n:%tnfo:%m", "%f:%l:%c: %m"}, requireMarker = true, rootMarkers = {".github/"}}}}, lintDebounce = "300ms"}}, erlangls = {cmd = alter_cmd({"erlang_ls"}, "beamMinimal27Packages.erlang-ls")}, fennel_ls = {root_dir = root_pattern(".nfnl.fnl", "flsproject.fnl")}, fortls = {cmd = alter_cmd({"fortls", "--notify_init", "--hover_signature", "--hover_language=fortran", "--use_signature_help"}, "fortls")}, gh_actions_ls = {}, gleam = {}, gopls = {settings = {gopls = {usePlaceholders = true, analyses = {shadow = true, useany = true, unusedvariable = true}, hints = {assignVariableTypes = true, compositeLiteralFields = true, compositeLiteralTypes = true, constantValues = true, functionTypeParameters = true, parameterNames = true, rangeVariableTypes = true}, staticcheck = true, vulncheck = "Imports", gofumpt = true}}}, helm_ls = {cmd = alter_cmd({"helm_ls", "serve"}, "helm-ls")}, jqls = {cmd = alter_cmd({"jq-lsp"}, "jq-lsp")}, jsonls = {settings = {json = {schemas = schemastore.json.schemas()}}}, lua_ls = {cmd = alter_cmd({"lua-language-server"}, "lua-language-server")}, marksman = {}, nginx_language_server = {cmd = alter_cmd({"nginx-language-server"}, "nginx-language-server")}, nil_ls = {}, nixd = {}, pylsp = {cmd = alter_cmd({"pylsp"}, "python313Packages.python-lsp-server")}, regal = {init_options = {enableDebugCodelens = true, evalCodelensDisplayInline = true}}, rust_analyzer = {cmd = alter_cmd({"rust-analyzer"}, "rust-analyzer")}, terraformls = {init_options = {experimentalFeatures = {validateOnSave = true, prefillRequiredFields = true}}}, tflint = {}, tinymist = {}, ts_ls = {root_dir = root_pattern("package.json", "tsconfig.json", "jsconfig.json")}, yamlls = {settings = {yaml = {schemas = _14_, validate = true}, single_file_support = true}}})
+return use({ast_grep = {filetypes = {"c", "cpp", "css", "dart", "fennel", "go", "html", "java", "javascript", "javascript.jsx", "javascriptreact", "kotlin", "lua", "python", "rust", "typescript", "typescript.tsx", "typescriptreact"}}, bashls = {settings = {bashIde = {shfmt = {caseIndent = true}}}}, buf_ls = {}, clojure_lsp = {}, cssls = {}, cue = {}, dagger = {}, denols = {init_options = {lint = true, unstable = true}, root_dir = root_pattern("deno.json", "deno.jsonc", "deps.ts")}, docker_compose_language_service = {}, dockerls = {}, efm = {filetypes = {"dockerfile", "gitcommit", "proto", "rego", "vcl", "yaml.github-actions"}, init_options = {codeAction = true, completion = true, documentFormatting = true, documentSymbol = true, hover = true}, settings = {languages = {dockerfile = {{lintCommand = "hadolint --no-color", lintSource = "efm/hadolint", lintAfterOpen = true, lintFormats = {"%f:%l %m"}}}, gitcommit = {{lintCommand = "gitlint --config ~/.dotfiles/.gitlint", lintStdin = true, lintSource = "efm/gitlint", lintAfterOpen = true, lintFormats = {"%l: %m: \"%r\"", "%l: %m"}}}, proto = {{lintCommand = "buf lint --path", lintSource = "efm/buf-lint", lintAfterOpen = true, lintFormats = {"%f:%l:%c:%m"}, lintSeverity = 2, rootMarkers = {"buf.yaml"}}}, rego = {{lintCommand = "opa check --strict", lintIgnoreExitCode = true, lintSource = "efm/opa-check-strict", lintAfterOpen = true, lintFormats = {"%m: %f:%l: %m", "%f:%l: %m"}}}, vcl = {{lintCommand = "falco -vv lint ${INPUT} 2>&1", lintIgnoreExitCode = true, lintSource = "efm/falco", lintAfterOpen = true, lintFormats = {"%E\240\159\146\165 %m", "%E\240\159\148\165 [ERROR] %m", "%W\226\157\151\239\184\143 [WARNING] %m", "%I\240\159\148\136 [INFO] %m", "%Zin %f at line %l, position %c", "%-G%.%#"}}}, ["yaml.github-actions"] = {{lintCommand = "actionlint -no-color -oneline -stdin-filename \"${INPUT}\" -", lintStdin = true, lintSource = "efm/actionlint", lintAfterOpen = true, lintFormats = {"%f:%l:%c: %.%#: SC%n:%trror:%m", "%f:%l:%c: %.%#: SC%n:%tarning:%m", "%f:%l:%c: %.%#: SC%n:%tnfo:%m", "%f:%l:%c: %m"}, requireMarker = true, rootMarkers = {".github/"}}}}, lintDebounce = "300ms"}}, erlangls = {cmd = alter_cmd({"erlang_ls"}, "beamMinimal27Packages.erlang-ls")}, fennel_ls = {root_dir = root_pattern(".nfnl.fnl", "flsproject.fnl")}, fortls = {cmd = alter_cmd({"fortls", "--notify_init", "--hover_signature", "--hover_language=fortran", "--use_signature_help"}, "fortls")}, gh_actions_ls = {}, gleam = {}, gopls = {settings = {gopls = {usePlaceholders = true, analyses = {shadow = true, useany = true, unusedvariable = true}, hints = {assignVariableTypes = true, compositeLiteralFields = true, compositeLiteralTypes = true, constantValues = true, functionTypeParameters = true, parameterNames = true, rangeVariableTypes = true}, staticcheck = true, vulncheck = "Imports", gofumpt = true}}}, helm_ls = {cmd = alter_cmd({"helm_ls", "serve"}, "helm-ls")}, jqls = {cmd = alter_cmd({"jq-lsp"}, "jq-lsp")}, jsonls = {settings = {json = {schemas = schemastore.json.schemas()}}}, lua_ls = {cmd = alter_cmd({"lua-language-server"}, "lua-language-server")}, marksman = {}, nginx_language_server = {cmd = alter_cmd({"nginx-language-server"}, "nginx-language-server")}, nil_ls = {}, nixd = {}, pylsp = {cmd = alter_cmd({"pylsp"}, "python313Packages.python-lsp-server")}, regal = {init_options = {enableDebugCodelens = true, evalCodelensDisplayInline = true}}, rust_analyzer = {cmd = alter_cmd({"rust-analyzer"}, "rust-analyzer")}, terraformls = {init_options = {experimentalFeatures = {validateOnSave = true, prefillRequiredFields = true}}}, tflint = {}, tinymist = {}, ts_ls = {root_dir = root_pattern("package.json", "tsconfig.json", "jsconfig.json")}, yamlls = {settings = {yaml = {schemas = _12_, validate = true}, single_file_support = true}}})
