@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1749997279516,
+  "lastUpdate": 1750166628019,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19965,6 +19965,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.18380090000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2a2203758ae397ff01de161507ad0d73d566560c",
+          "message": "config(nvim): remove useless check for codelens capability\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-06-17T22:11:06+09:00",
+          "tree_id": "1a67af9fe03a995775ae462b11463dcee9750945",
+          "url": "https://github.com/rinx/dotfiles/commit/2a2203758ae397ff01de161507ad0d73d566560c"
+        },
+        "date": 1750166626942,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.5955595,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.40970759999999,
             "unit": "ms"
           }
         ]
