@@ -163,6 +163,33 @@
                                 (vim.notify (.. "Error: " err)))]
                  (template:write "$body$")
                  (template:close)
+                 (exporter cmd target on-success on-error)))}
+    :v
+    {:label "Export closest headline to PDF file via pandoc & typst"
+     :action (fn [exporter]
+               (let [org-api (require :orgmode.api)
+                     current (org-api.current)
+                     target (.. (vim.fn.fnamemodify (vim.api.nvim_buf_get_name 0) ":p:r") ".pdf")
+                     headline (current:get_closest_headline)
+                     lines (vim.api.nvim_buf_get_lines
+                             0
+                             (- headline.position.start_line 1)
+                             headline.position.end_line
+                             false)
+                     content (table.concat lines "\n")
+                     tmppath (vim.fn.tempname)
+                     tmp (io.open tmppath :w)
+                     template-path (.. (vim.fn.tempname) :.typ)
+                     template (io.open template-path :w)
+                     cmd [:pandoc tmppath :--from=org :--to=pdf :--pdf-engine=typst (.. :--template= template-path) :-o target]
+                     on-success (fn [output]
+                                  (vim.notify (.. "Successfully saved to: " target)))
+                     on-error (fn [err]
+                                (vim.notify (.. "Error: " err)))]
+                 (template:write "$body$")
+                 (template:close)
+                 (tmp:write content)
+                 (tmp:close)
                  (exporter cmd target on-success on-error)))}}
    :win_split_mode :auto
    :org_highlight_latex_and_related :entities
