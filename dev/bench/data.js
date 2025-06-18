@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1750166628019,
+  "lastUpdate": 1750250498140,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -19999,6 +19999,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 78.40970759999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "38079883fd4af7497dc77e0d141107e336d5b9e7",
+          "message": "feat(nix): add pngpaste (#166)\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-06-18T12:28:37Z",
+          "tree_id": "80ca634fb62b0d249120979796278d0ab70d3ca6",
+          "url": "https://github.com/rinx/dotfiles/commit/38079883fd4af7497dc77e0d141107e336d5b9e7"
+        },
+        "date": 1750250496494,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.576350099999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 82.9579219,
             "unit": "ms"
           }
         ]
