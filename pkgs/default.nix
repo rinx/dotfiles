@@ -60,6 +60,14 @@ let
     org-search-utils
     rq
   ];
+
+  darwin-pkgs =
+    if pkgs.stdenv.isDarwin then
+      [
+        pkgs.pngpaste
+      ]
+    else
+      [ ];
 in
 pkgs.buildEnv {
   name = "basic-packages";
@@ -169,5 +177,6 @@ pkgs.buildEnv {
       nerd-fonts.monaspace
       nerd-fonts.victor-mono
     ]
-    ++ custom-pkgs;
+    ++ custom-pkgs
+    ++ darwin-pkgs;
 }
