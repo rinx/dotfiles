@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Free disk space
         uses: wimpysworld/nothing-but-nix@7024aede12666f4c03704df6ae740a4adf9b6682 # v6
+        with:
+          hatchet-protocol: 'rampage'
       - name: Generate github token
         id: generate_token
         uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
