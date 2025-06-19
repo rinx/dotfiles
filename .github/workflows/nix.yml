@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Free disk space
         if: matrix.os == 'ubuntu-latest'
-        uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be # v1.3.1
+        uses: wimpysworld/nothing-but-nix@7024aede12666f4c03704df6ae740a4adf9b6682 # v6
       - name: Generate github token
         id: generate_token
         uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
