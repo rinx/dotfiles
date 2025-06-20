@@ -220,6 +220,13 @@ local function build_todays_agenda_helper()
   local agenda_day = view:_get_agenda_days()[1]
   return {view = view, ["agenda-day"] = agenda_day, items = agenda_day.agenda_items}
 end
+local function agenda_ignored_3f(entry)
+  local ignored_3f = false
+  for _, t in ipairs(entry.tokens) do
+    ignored_3f = (ignored_3f or ((t.hl_group == "@org.agenda.tag") and string.match(t.content, "ignored")))
+  end
+  return ignored_3f
+end
 local function build_todays_agenda()
   local _let_24_ = build_todays_agenda_helper()
   local view = _let_24_["view"]
@@ -234,7 +241,7 @@ local function build_todays_agenda()
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
-        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not (entry.metadata.agenda_item.label == "Scheduled:") and not string.match(line.content, "CANCELED")) then
+        if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not (entry.metadata.agenda_item.label == "Scheduled:") and not string.match(line.content, "CANCELED") and not agenda_ignored_3f(entry)) then
           val_23_ = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s([%u_]+)%s", "")
         else
           val_23_ = nil
@@ -281,7 +288,7 @@ local function build_todays_tasks()
       do
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
-        if (entry.metadata.agenda_item.is_same_day and ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") or (entry.metadata.agenda_item.headline_date.type == "DEADLINE")) and ((entry.metadata.agenda_item.label == "Scheduled:") or (entry.metadata.agenda_item.label == "Deadline:")) and not string.match(line.content, "CANCELED")) then
+        if (entry.metadata.agenda_item.is_same_day and ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") or (entry.metadata.agenda_item.headline_date.type == "DEADLINE")) and ((entry.metadata.agenda_item.label == "Scheduled:") or (entry.metadata.agenda_item.label == "Deadline:")) and not string.match(line.content, "CANCELED") and not agenda_ignored_3f(entry)) then
           val_23_ = string.gsub(string.gsub(string.gsub(add_task_postfix(line.content), "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:(%s+)([%u_]+)%s", "- "), "Deadline:(%s+)([%u_]+)%s", "- ")
         else
           val_23_ = nil

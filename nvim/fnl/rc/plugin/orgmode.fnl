@@ -339,6 +339,13 @@
      :agenda-day agenda-day
      :items agenda-day.agenda_items}))
 
+(fn agenda-ignored? [entry]
+  (accumulate [ignored? false
+               _ t (ipairs entry.tokens)]
+    (or ignored?
+        (and (= t.hl_group "@org.agenda.tag")
+             (string.match t.content :ignored)))))
+
 (fn build_todays_agenda []
   (let [{: view
          : agenda-day
@@ -349,7 +356,8 @@
            (when (and (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
                       entry.metadata.agenda_item.is_same_day
                       (not (= entry.metadata.agenda_item.label "Scheduled:"))
-                      (not (string.match line.content :CANCELED)))
+                      (not (string.match line.content :CANCELED))
+                      (not (agenda-ignored? entry)))
              (-> line.content
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
                  (string.gsub "Scheduled:%s([%u_]+)%s" "")))))
@@ -375,7 +383,8 @@
                           (= entry.metadata.agenda_item.headline_date.type :DEADLINE))
                       (or (= entry.metadata.agenda_item.label "Scheduled:")
                           (= entry.metadata.agenda_item.label "Deadline:"))
-                      (not (string.match line.content :CANCELED)))
+                      (not (string.match line.content :CANCELED))
+                      (not (agenda-ignored? entry)))
              (-> line.content
                  (add-task-postfix)
                  (string.gsub "^(%s+)([^%s]+):(%s+)" "")
