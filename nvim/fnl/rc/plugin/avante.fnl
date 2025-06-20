@@ -227,18 +227,18 @@
     :auto_suggestions false
     :auto_apply_diff_after_generation true
     :enable_cursor_planning_mode true}
-   :copilot
-   {:model :claude-3.7-sonnet}
-   :vendors
-   {:copilot-gemini-2.5-pro
-    {:__inherited_from :copilot
-     :model :gemini-2.5-pro}
+   :providers
+   {:copilot
+    {:model :claude-3.7-sonnet}
+    :copilot-gemini-2.5-pro
+     {:__inherited_from :copilot
+      :model :gemini-2.5-pro}
     :copilot-gpt-4.1
-    {:__inherited_from :copilot
-     :model :gpt-4.1}
+     {:__inherited_from :copilot
+      :model :gpt-4.1}
     :copilot-gpt-4o
-    {:__inherited_from :copilot
-     :model :gpt-4o}}
+     {:__inherited_from :copilot
+      :model :gpt-4o}}
    :hints
    {:enabled false}
    :file_selector
