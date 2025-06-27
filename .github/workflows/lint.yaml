@@ -20,7 +20,7 @@ jobs:
           parser_dir: .cache/tree-sitter/parser
           parser_repository: alexmozaidze/tree-sitter-fennel
       - name: Run ast-grep with reviewdog
-        uses: reviewdog/action-ast-grep@a2a1c81ce5b1b180d1ff2ff51008b41801279c48 # v1.35.0
+        uses: reviewdog/action-ast-grep@079ffd5d4e4998795d1fb2e7bedc3d4ae12dedb4 # v1.35.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: info
