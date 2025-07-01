@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Free disk space
         if: matrix.os == 'ubuntu-latest'
-        uses: wimpysworld/nothing-but-nix@7024aede12666f4c03704df6ae740a4adf9b6682 # v6
+        uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b # v6
         with:
           hatchet-protocol: 'rampage'
       - name: Generate github token
