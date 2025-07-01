@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Free disk space
         if: matrix.os == 'ubuntu-latest'
-        uses: wimpysworld/nothing-but-nix@7024aede12666f4c03704df6ae740a4adf9b6682 # v6
+        uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b # v6
         with:
           hatchet-protocol: 'rampage'
       - name: Generate github token
@@ -28,10 +28,9 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: cachix/install-nix-action@f0fe604f8a612776892427721526b4c7cfb23aba # v31
+      - uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v17
         with:
-          github_access_token: ${{ steps.generate_token.outputs.token }}
-          nix_path: nixpkgs=channel:nixos-unstable
+          github-token: ${{ steps.generate_token.outputs.token }}
       - name: nix build
         run: |
           nix build
@@ -54,10 +53,9 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: cachix/install-nix-action@f0fe604f8a612776892427721526b4c7cfb23aba # v31
+      - uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v17
         with:
-          github_access_token: ${{ steps.generate_token.outputs.token }}
-          nix_path: nixpkgs=channel:nixos-unstable
+          github-token: ${{ steps.generate_token.outputs.token }}
       - name: nix flake check
         run: |
           nix flake check --no-build --system ${{ matrix.system }}
