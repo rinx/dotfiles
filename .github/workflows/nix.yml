@@ -10,6 +10,7 @@ jobs:
   build:
     name: nix build
     strategy:
+      fail-fast: false
       matrix:
         os:
           - ubuntu-latest
