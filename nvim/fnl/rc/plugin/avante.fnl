@@ -231,14 +231,22 @@
    {:copilot
     {:model :claude-3.7-sonnet}
     :copilot-gemini-2.5-pro
-     {:__inherited_from :copilot
-      :model :gemini-2.5-pro}
+    {:__inherited_from :copilot
+     :model :gemini-2.5-pro}
     :copilot-gpt-4.1
-     {:__inherited_from :copilot
-      :model :gpt-4.1}
+    {:__inherited_from :copilot
+     :model :gpt-4.1}
     :copilot-gpt-4o
-     {:__inherited_from :copilot
-      :model :gpt-4o}}
+    {:__inherited_from :copilot
+     :model :gpt-4o}
+    :bedrock
+    {:model "apac.anthropic.claude-sonnet-4-20250514-v1:0"
+     :aws_profile :bedrock-claude-sonnet4
+     :aws_region :ap-northeast-1
+     :context_window 200000
+     :extra_request_body
+     {:temperature 0.75
+      :max_tokens 64000}}}
    :hints
    {:enabled false}
    :file_selector
