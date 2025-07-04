@@ -130,8 +130,6 @@ pkgs.buildEnv {
 
       ## languages
       babashka
-      beamMinimalPackages.erlang
-      beamMinimalPackages.rebar3
       buf
       clojure
       deno
@@ -139,7 +137,7 @@ pkgs.buildEnv {
       go
       nodejs
       protobuf
-      typescript
+      typescript-go
       typst
 
       ## LSP / DAP / Linter / Formatter
@@ -169,13 +167,11 @@ pkgs.buildEnv {
       yaml-language-server
 
       ## fonts
-      hackgen-nf-font
       moralerspace-nf
       moralerspace-hwnf
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.monaspace
-      nerd-fonts.victor-mono
     ]
     ++ custom-pkgs
     ++ darwin-pkgs;
