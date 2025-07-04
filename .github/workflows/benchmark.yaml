@@ -15,6 +15,7 @@ jobs:
           hatchet-protocol: 'rampage'
           root-safe-haven: '3072' # Reserve 3GB on the / filesystem
           mnt-safe-haven: '2048' # Reserve 2GB on the /mnt filesystem
+          nix-permission-edict: true
       - name: Generate github token
         id: generate_token
         uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
