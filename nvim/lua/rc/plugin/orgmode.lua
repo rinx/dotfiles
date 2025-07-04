@@ -40,7 +40,7 @@ local function _4_(exporter)
     local content = table.concat(lines, "\n")
     local tmppath = vim.fn.tempname()
     local tmp = io.open(tmppath, "w")
-    local cmd = {"pandoc", tmppath, "--from=org", ("--to=" .. export_type)}
+    local cmd = {"pandoc", tmppath, "--wrap=preserve", "--from=org", ("--to=" .. export_type)}
     local on_success
     local function _5_(output)
       vim.fn.setreg("+", output)
@@ -69,7 +69,7 @@ local function _8_(exporter)
     local content = table.concat(lines, "\n")
     local tmppath = vim.fn.tempname()
     local tmp = io.open(tmppath, "w")
-    local cmd = {"pandoc", tmppath, "--from=org", ("--to=" .. export_type)}
+    local cmd = {"pandoc", tmppath, "--wrap=preserve", "--from=org", ("--to=" .. export_type)}
     local on_success
     local function _9_(output)
       vim.fn.setreg("+", output)

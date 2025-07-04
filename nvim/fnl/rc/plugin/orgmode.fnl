@@ -115,7 +115,7 @@
                          content (table.concat lines "\n")
                          tmppath (vim.fn.tempname)
                          tmp (io.open tmppath :w)
-                         cmd [:pandoc tmppath :--from=org (.. :--to= export-type)]
+                         cmd [:pandoc tmppath :--wrap=preserve :--from=org (.. :--to= export-type)]
                          on-success (fn [output]
                                       (vim.fn.setreg :+ output)
                                       (vim.notify "Successfully copied into clipboard"))
@@ -140,7 +140,7 @@
                          content (table.concat lines "\n")
                          tmppath (vim.fn.tempname)
                          tmp (io.open tmppath :w)
-                         cmd [:pandoc tmppath :--from=org (.. :--to= export-type)]
+                         cmd [:pandoc tmppath :--wrap=preserve :--from=org (.. :--to= export-type)]
                          on-success (fn [output]
                                       (vim.fn.setreg :+ output)
                                       (vim.notify "Successfully copied into clipboard"))
