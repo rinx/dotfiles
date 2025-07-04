@@ -13,6 +13,8 @@ jobs:
         uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b # v6
         with:
           hatchet-protocol: 'rampage'
+          root-safe-haven: '3072' # Reserve 3GB on the / filesystem
+          mnt-safe-haven: '2048' # Reserve 2GB on the /mnt filesystem
       - name: Generate github token
         id: generate_token
         uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
