@@ -27,6 +27,7 @@ jobs:
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
           nix_path: nixpkgs=channel:nixos-unstable
+          install_options: --no-daemon
       - name: Install dependencies
         run: |
           nix profile install .
