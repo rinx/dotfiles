@@ -36,7 +36,7 @@ jobs:
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
           nix_path: nixpkgs=channel:nixos-unstable
-          install_options: --no-daemon
+          install_options: ${{ matrix.os == 'ubuntu-latest' && '--no-daemon' || '' }}
       - name: nix build
         run: |
           nix build
