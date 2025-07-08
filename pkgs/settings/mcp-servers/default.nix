@@ -6,7 +6,6 @@
 let
   mcp-servers = mcp-servers-nix.lib.mkConfig pkgs {
     programs = {
-      fetch.enable = true;
       git.enable = true;
       github = {
         enable = true;
