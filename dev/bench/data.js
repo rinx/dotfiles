@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1751854854974,
+  "lastUpdate": 1751952038741,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20067,6 +20067,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.6673655,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d8a07cd5c8fa00b6dd465f39897f7ea70191e174",
+          "message": "config(nvim): add cue ft autocmds\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-07-08T12:55:05+09:00",
+          "tree_id": "c42beca961e5a0fd424cba7fc59eb7b031d9eb00",
+          "url": "https://github.com/rinx/dotfiles/commit/d8a07cd5c8fa00b6dd465f39897f7ea70191e174"
+        },
+        "date": 1751952037878,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.032494099999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.727511,
             "unit": "ms"
           }
         ]
