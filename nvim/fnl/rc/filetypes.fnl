@@ -133,6 +133,24 @@
    :command "normal! mtgg=G't"})
 
 (augroup!
+  init-cue
+  {:events [:FileType]
+   :pattern :cue
+   :command "setl colorcolumn=120"}
+  {:events [:FileType]
+   :pattern :cue
+   :command "setl noexpandtab"}
+  {:events [:FileType]
+   :pattern :cue
+   :command "setl shiftwidth=4"}
+  {:events [:FileType]
+   :pattern :cue
+   :command "setl tabstop=4"}
+  {:events [:FileType]
+   :pattern :cue
+   :command "setl softtabstop=4"})
+
+(augroup!
   init-rego
   {:events [:FileType]
    :pattern :rego
