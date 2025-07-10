@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1751989789738,
+  "lastUpdate": 1752160492563,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20203,6 +20203,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.7612917,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a4517e9ad6d319a4f55343f0f88d2879f3067ade",
+          "message": "chore(nix): update mcp-hub\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-07-10T22:41:29+09:00",
+          "tree_id": "c2752c85fc14acda1e9f5c032a604b334e54c7a6",
+          "url": "https://github.com/rinx/dotfiles/commit/a4517e9ad6d319a4f55343f0f88d2879f3067ade"
+        },
+        "date": 1752160490706,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.700926300000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 89.55002479999999,
             "unit": "ms"
           }
         ]
