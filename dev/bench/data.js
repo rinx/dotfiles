@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1752201126043,
+  "lastUpdate": 1752290329785,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20271,6 +20271,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.5431261,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8aee950b48cb5e6d7e85a83173dbd09176c435cd",
+          "message": "chore(deps): update cachix/install-nix-action digest to cebd211 (#183)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2025-07-12T01:52:45Z",
+          "tree_id": "af3416be110a8a566b8ad0d1886c9daa11b25326",
+          "url": "https://github.com/rinx/dotfiles/commit/8aee950b48cb5e6d7e85a83173dbd09176c435cd"
+        },
+        "date": 1752290328204,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.131896300000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 87.95108090000001,
             "unit": "ms"
           }
         ]
