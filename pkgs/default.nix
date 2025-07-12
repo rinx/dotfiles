@@ -162,7 +162,6 @@ pkgs.buildEnv {
       terraform-ls
       tflint
       tinymist
-      typescript-language-server
       vscode-langservers-extracted
       yaml-language-server
 

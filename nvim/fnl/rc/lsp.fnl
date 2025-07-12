@@ -264,10 +264,17 @@
                    :prefillRequiredFields true}}}
    :tflint {}
    :tinymist {}
-   :ts_ls {:root_dir (root-pattern
-                       :package.json
-                       :tsconfig.json
-                       :jsconfig.json)}
+   :tsgo {:cmd [:tsgo :--lsp :--stdio]
+          :filetypes [:javascript
+                      :javascriptreact
+                      :javascript.jsx
+                      :typescript
+                      :typescriptreact
+                      :typescript.tsx]
+          :root_dir (root-pattern
+                      :package.json
+                      :tsconfig.json
+                      :jsconfig.json)}
    :yamlls {:settings
             {:yaml
              {:schemas
