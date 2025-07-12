@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1752290329785,
+  "lastUpdate": 1752311847757,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20305,6 +20305,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 87.95108090000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ee5fbaa7fa8b982918ebebc2de7271a6f483a70c",
+          "message": "config(nvim): remove typescript-language-server and use tsgo instead\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-07-12T16:52:32+09:00",
+          "tree_id": "b2bb5dd90de9c37ed41618eef015c32652493b5b",
+          "url": "https://github.com/rinx/dotfiles/commit/ee5fbaa7fa8b982918ebebc2de7271a6f483a70c"
+        },
+        "date": 1752311846259,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.585869799999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.4103785,
             "unit": "ms"
           }
         ]
