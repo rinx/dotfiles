@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1752589300357,
+  "lastUpdate": 1752589465944,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20441,6 +20441,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.36007529999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "0277acb4163df7c5981343568ca6c9f32a34d8d4",
+          "message": "chore(ci): use cachix/install-nix-action instead of Detsys installer\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-07-15T21:59:13+09:00",
+          "tree_id": "285018e6f256a0c49a395146c113ca2e332d26c9",
+          "url": "https://github.com/rinx/dotfiles/commit/0277acb4163df7c5981343568ca6c9f32a34d8d4"
+        },
+        "date": 1752589464932,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.9171282,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 82.56821350000001,
             "unit": "ms"
           }
         ]
