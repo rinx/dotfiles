@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1752573016887,
+  "lastUpdate": 1752589300357,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20407,6 +20407,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.52038739999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7f27cb40b692f61f1a5261ea272269d443d9bade",
+          "message": "chore(aerospace): use after-startup-command option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-07-15T21:54:35+09:00",
+          "tree_id": "c88d1b09d8659137430efdc24781894eb659b3b7",
+          "url": "https://github.com/rinx/dotfiles/commit/7f27cb40b692f61f1a5261ea272269d443d9bade"
+        },
+        "date": 1752589299339,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.7578819,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.36007529999999,
             "unit": "ms"
           }
         ]
