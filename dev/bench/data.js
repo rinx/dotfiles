@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1752338328309,
+  "lastUpdate": 1752573016887,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20373,6 +20373,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.34308539999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "82c2621c1da3c1a000a5533d46ce4819dd0162ea",
+          "message": "chore(aerospace): remove removed options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-07-15T17:25:10+09:00",
+          "tree_id": "30efa21d8afad83c8a3e30cf98ab01e55452e3e7",
+          "url": "https://github.com/rinx/dotfiles/commit/82c2621c1da3c1a000a5533d46ce4819dd0162ea"
+        },
+        "date": 1752573015954,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.100431400000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 82.52038739999999,
             "unit": "ms"
           }
         ]
