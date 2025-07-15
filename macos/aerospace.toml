@@ -1,14 +1,6 @@
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
-# You can use it to add commands that run after login to macOS user session.
-# 'start-at-login' needs to be 'true' for 'after-login-command' to work
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = [
-    'exec-and-forget sketchybar',
-    'exec-and-forget borders active_color=0xffe1e3e4 width=3.0'
-]
-
 ## TODO: implement sketchybar functions
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -16,9 +8,11 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 ]
 
 # You can use it to add commands that run after AeroSpace startup.
-# 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+    'exec-and-forget sketchybar',
+    'exec-and-forget borders active_color=0xffe1e3e4 width=3.0'
+]
 
 # Start AeroSpace at login
 start-at-login = true
