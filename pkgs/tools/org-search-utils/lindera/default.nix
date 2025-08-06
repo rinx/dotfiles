@@ -10,7 +10,7 @@
 }:
 buildPythonPackage rec {
   pname = "lindera_py";
-  version = "0.44.0";
+  version = "0.45.0";
 
   src = fetchPypi {
     inherit pname version;
@@ -31,14 +31,14 @@ buildPythonPackage rec {
     sha256 =
       if stdenv.isDarwin then
         if stdenv.isAarch64 then
-          "sha256-EFZfdNkgVqdDy4O0hdSCol8xwhviLbHaloY13k5cF1c="
+          "sha256-nXETwzXKdAKRXPAk4Ynzwb63qW8cp/+mKOvipNolI0Y="
         else
-          "sha256-KX/S7hXWFvz2uv4N/8oyY4lSAI2xuGy/rHvGMhmnwuw="
+          "sha256-0WtinvWaK+c2N6Dg2xwmN630Zqp53AUqLfXaREzPjhs="
       else if stdenv.isLinux then
         if stdenv.isAarch64 then
-          "sha256-S4DfTytfzI7S0x5hM1cqqEzkKgSGYUlwuCRj5PDDWg8="
+          "sha256-48xUuQwZQiloMv0EwhR7spCwH6LTVKgnBOCvjZbD1DE="
         else
-          "sha256-BtCqeKoZoVNIYx82G8iCpoQ1E6qhVTApiW87zbElVz8="
+          "sha256-ZQeUvDixPJy7Ae/TmNI+RWWO8UiMiW/BvMsNyubh/ow="
       else
         throw "Unsupported platform";
   };
