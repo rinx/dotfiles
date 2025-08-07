@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1754483011919,
+  "lastUpdate": 1754533136147,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20679,6 +20679,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.4546956,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c9e4d1750e4aba11bccd676ca597a8749fcc025f",
+          "message": "chore(deps): update actions/download-artifact action to v5 (#191)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2025-08-07T09:52:33+09:00",
+          "tree_id": "2d516aebff9610a7a76a1809a63c084cf35ac742",
+          "url": "https://github.com/rinx/dotfiles/commit/c9e4d1750e4aba11bccd676ca597a8749fcc025f"
+        },
+        "date": 1754533135209,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.7179887,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 81.51420869999998,
             "unit": "ms"
           }
         ]
