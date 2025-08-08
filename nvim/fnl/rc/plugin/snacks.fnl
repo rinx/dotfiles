@@ -57,7 +57,7 @@
 ;; picker
 (map! [:n]
       :<leader>t
-      ":<C-u>lua Snacks.picker.explorer()<CR>"
+      ":<C-u>lua Snacks.picker.explorer({ hidden = true, ignored = true })<CR>"
       {:silent true
        :desc "Open/Close explorer"})
 
@@ -91,6 +91,11 @@
       ":<C-u>lua Snacks.picker.git_files()<CR>"
       {:silent true
        :desc "select git file via snacks.picker"})
+(map! [:n]
+      ",gg"
+      ":<C-u>lua Snacks.picker.git_grep()<CR>"
+      {:silent true
+       :desc "git-grep via snacks.picker"})
 (map! [:n]
       ",gb"
       ":<C-u>lua Snacks.picker.git_branches()<CR>"
