@@ -13,7 +13,7 @@ jobs:
       checks: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
       - name: Install tree-sitter grammar for fennel
         uses: rinx/setup-tree-sitter-parser@e0242ba833bf1c7f89d758f46da25653b2feba12 # v1.0.1
         with:
@@ -37,7 +37,7 @@ jobs:
         with:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
       - uses: cachix/install-nix-action@c134e4c9e34bac6cab09cf239815f9339aaaf84e # v31
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
