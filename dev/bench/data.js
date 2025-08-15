@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1755020296072,
+  "lastUpdate": 1755263275617,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -20951,6 +20951,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 85.5439876,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3254020dbf124d6a725e76218bcbeabcbf0b3dee",
+          "message": "chore-deps(nix): update nixpkgs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-08-15T21:53:23+09:00",
+          "tree_id": "4bc92beb778647d88c60e9d7acbadef78a883807",
+          "url": "https://github.com/rinx/dotfiles/commit/3254020dbf124d6a725e76218bcbeabcbf0b3dee"
+        },
+        "date": 1755263274693,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.776166000000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 83.2439,
             "unit": "ms"
           }
         ]
