@@ -4,9 +4,12 @@
   stdenv,
 }:
 let
-  python = pkgs.python312.override {
+  python = pkgs.python313.override {
     self = python;
     packageOverrides = pyfinal: pyprev: {
+      accelerate = pyprev.accelerate.overridePythonAttrs (_: {
+        doCheck = false;
+      });
       lindera-py = pyfinal.callPackage ./lindera { };
     };
   };

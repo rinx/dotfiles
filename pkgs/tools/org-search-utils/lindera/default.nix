@@ -15,9 +15,9 @@ buildPythonPackage rec {
   src = fetchPypi {
     inherit pname version;
     format = "wheel";
-    dist = "cp312";
-    python = "cp312";
-    abi = "cp312";
+    dist = "cp313";
+    python = "cp313";
+    abi = "cp313";
     platform =
       if stdenv.isDarwin then
         if stdenv.isAarch64 then "macosx_11_0_arm64" else "macosx_10_12_x86_64"
@@ -31,14 +31,14 @@ buildPythonPackage rec {
     sha256 =
       if stdenv.isDarwin then
         if stdenv.isAarch64 then
-          "sha256-nXETwzXKdAKRXPAk4Ynzwb63qW8cp/+mKOvipNolI0Y="
+          "sha256-7EBn7JKxes2IN0L7WQlHv0PBa4VSQLYVP6AMb+aKXOo="
         else
-          "sha256-0WtinvWaK+c2N6Dg2xwmN630Zqp53AUqLfXaREzPjhs="
+          "sha256-DxuQe36utYXv5jqBZoQP2idKHnfnUs4YyC5Rs/SD5wQ="
       else if stdenv.isLinux then
         if stdenv.isAarch64 then
-          "sha256-48xUuQwZQiloMv0EwhR7spCwH6LTVKgnBOCvjZbD1DE="
+          "sha256-sj4OA8YAica9j/WXsTeeib9SyY2lzsrJA8wscVUXlRc="
         else
-          "sha256-ZQeUvDixPJy7Ae/TmNI+RWWO8UiMiW/BvMsNyubh/ow="
+          "sha256-Gi5JKpgisKzmxmfO99U1r+1uH1dtTnEqRGJs/P72BVg="
       else
         throw "Unsupported platform";
   };
