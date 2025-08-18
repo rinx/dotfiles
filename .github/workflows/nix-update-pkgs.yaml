@@ -76,7 +76,7 @@ jobs:
           git commit -m "$(head -1 commit.md)"
           git push origin "${BRANCH}"
 
-          echo "title=$(head -l commit.md)" >> "$GITHUB_OUTPUT"
+          echo "title=$(head -1 commit.md)" >> "$GITHUB_OUTPUT"
       - name: Create Pull Request
         if: steps.check-changes.outputs.updated == 'yes'
         id: create-pr
