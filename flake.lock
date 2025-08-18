@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "fennel-ls": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1751681930,
-        "narHash": "sha256-6dU7TN4Gt2petjF3kX9l6o5EQM3rKhoEteXFeosPXzk=",
-        "ref": "refs/heads/main",
-        "rev": "f52962befc61315a69e5c9395b0f3c3c80bdbc07",
-        "revCount": 459,
-        "type": "git",
-        "url": "https://git.sr.ht/~xerool/fennel-ls"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.sr.ht/~xerool/fennel-ls"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -333,7 +317,6 @@
     },
     "root": {
       "inputs": {
-        "fennel-ls": "fennel-ls",
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",
         "mcp-hub": "mcp-hub",

@@ -1,16 +1,21 @@
 {
   lib,
   stdenv,
-  source,
   lua,
   luaPackages,
   pandoc,
+  fetchFromSourcehut,
 }:
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation (finalAttrs: rec {
   pname = "fennel-ls";
-  version = "0.2.0";
+  version = "e355534d8d9d9168dc9d0fd19ba59d4b69d3e776";
 
-  src = source;
+  src = fetchFromSourcehut {
+    owner = "~xerool";
+    repo = "fennel-ls";
+    rev = "${version}";
+    hash = "sha256-6ZbGRTBBRktudGVBZ+UMn8l0+wKa8f5dg7UOwLhOT7E=";
+  };
 
   nativeBuildInputs = [
     pandoc

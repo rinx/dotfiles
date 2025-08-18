@@ -11,10 +11,6 @@ let
     source = inputs.ysugimoto-falco;
   };
 
-  fennel-ls = pkgs.callPackage ./tools/fennel-ls {
-    source = inputs.fennel-ls;
-  };
-
   gctx = pkgs.callPackage ./tools/gctx { };
 
   gh-actions-language-server = pkgs.callPackage ./tools/gh-actions-ls {
@@ -46,11 +42,11 @@ let
   custom-pkgs = [
     aws-sts-token
     falco
-    fennel-ls
     gctx
     gh-actions-language-server
     git-switcher
     google-cloud-sdk-with-components
+    inputs.fennel-ls
     inputs.mcp-hub.packages."${system}".default
     inputs.rq
     mcp-servers

@@ -35,10 +35,6 @@
       url = "github:ysugimoto/falco";
       flake = false;
     };
-    fennel-ls = {
-      url = "git+https://git.sr.ht/~xerool/fennel-ls";
-      flake = false;
-    };
   };
 
   outputs =
@@ -71,13 +67,16 @@
           };
           packages = rec {
             rq = pkgs.callPackage ./pkgs/tools/rq { };
+            fennel-ls = pkgs.callPackage ./pkgs/tools/fennel-ls { };
 
             default = import ./pkgs {
               inherit self pkgs system;
+
               mcp-hub = inputs.mcp-hub;
               mcp-servers-nix = inputs.mcp-servers-nix;
               ysugimoto-falco = inputs.ysugimoto-falco;
-              fennel-ls = inputs.fennel-ls;
+
+              fennel-ls = fennel-ls;
               rq = rq;
             };
           };
