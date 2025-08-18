@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "charles-rq": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1749528825,
-        "narHash": "sha256-udnTm8ESLDVPI+ZrIS8iMgbvW2xvWUfROPZMDEIkfd4=",
-        "ref": "refs/heads/master",
-        "rev": "c14578ce5c6d576c23c82c875ebf036d08560541",
-        "revCount": 434,
-        "type": "git",
-        "url": "https://git.sr.ht/~charles/rq"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.sr.ht/~charles/rq"
-      }
-    },
     "fennel-ls": {
       "flake": false,
       "locked": {
@@ -349,7 +333,6 @@
     },
     "root": {
       "inputs": {
-        "charles-rq": "charles-rq",
         "fennel-ls": "fennel-ls",
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",

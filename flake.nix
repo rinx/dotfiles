@@ -35,10 +35,6 @@
       url = "github:ysugimoto/falco";
       flake = false;
     };
-    charles-rq = {
-      url = "git+https://git.sr.ht/~charles/rq";
-      flake = false;
-    };
     fennel-ls = {
       url = "git+https://git.sr.ht/~xerool/fennel-ls";
       flake = false;
@@ -73,13 +69,17 @@
               inputs.neovim-nightly.overlays.default
             ];
           };
-          packages.default = import ./pkgs {
-            inherit self pkgs system;
-            mcp-hub = inputs.mcp-hub;
-            mcp-servers-nix = inputs.mcp-servers-nix;
-            ysugimoto-falco = inputs.ysugimoto-falco;
-            charles-rq = inputs.charles-rq;
-            fennel-ls = inputs.fennel-ls;
+          packages = rec {
+            rq = pkgs.callPackage ./pkgs/tools/rq { };
+
+            default = import ./pkgs {
+              inherit self pkgs system;
+              mcp-hub = inputs.mcp-hub;
+              mcp-servers-nix = inputs.mcp-servers-nix;
+              ysugimoto-falco = inputs.ysugimoto-falco;
+              fennel-ls = inputs.fennel-ls;
+              rq = rq;
+            };
           };
           pre-commit = {
             check.enable = true;

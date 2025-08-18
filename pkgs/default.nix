@@ -39,10 +39,6 @@ let
 
   org-search-utils = pkgs.callPackage ./tools/org-search-utils { };
 
-  rq = pkgs.callPackage ./tools/rq {
-    source = inputs.charles-rq;
-  };
-
   mcp-servers = pkgs.callPackage ./settings/mcp-servers {
     mcp-servers-nix = inputs.mcp-servers-nix;
   };
@@ -56,9 +52,9 @@ let
     git-switcher
     google-cloud-sdk-with-components
     inputs.mcp-hub.packages."${system}".default
+    inputs.rq
     mcp-servers
     org-search-utils
-    rq
   ];
 
   darwin-pkgs =
