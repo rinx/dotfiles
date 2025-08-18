@@ -7,10 +7,6 @@
 let
   aws-sts-token = pkgs.callPackage ./tools/aws-sts-token { };
 
-  falco = pkgs.callPackage ./tools/falco {
-    source = inputs.ysugimoto-falco;
-  };
-
   gctx = pkgs.callPackage ./tools/gctx { };
 
   gh-actions-language-server = pkgs.callPackage ./tools/gh-actions-ls {
@@ -41,11 +37,11 @@ let
 
   custom-pkgs = [
     aws-sts-token
-    falco
     gctx
     gh-actions-language-server
     git-switcher
     google-cloud-sdk-with-components
+    inputs.falco
     inputs.fennel-ls
     inputs.mcp-hub.packages."${system}".default
     inputs.rq

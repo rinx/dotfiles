@@ -29,12 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-
-    # non-flake packages
-    ysugimoto-falco = {
-      url = "github:ysugimoto/falco";
-      flake = false;
-    };
   };
 
   outputs =
@@ -68,14 +62,15 @@
           packages = rec {
             rq = pkgs.callPackage ./pkgs/tools/rq { };
             fennel-ls = pkgs.callPackage ./pkgs/tools/fennel-ls { };
+            falco = pkgs.callPackage ./pkgs/tools/falco { };
 
             default = import ./pkgs {
               inherit self pkgs system;
 
               mcp-hub = inputs.mcp-hub;
               mcp-servers-nix = inputs.mcp-servers-nix;
-              ysugimoto-falco = inputs.ysugimoto-falco;
 
+              falco = falco;
               fennel-ls = fennel-ls;
               rq = rq;
             };
