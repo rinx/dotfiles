@@ -1,0 +1,99 @@
+name: Update nix packages
+on:
+  schedule:
+    - cron: '0 18 * * 0'
+  workflow_dispatch:
+jobs:
+  update-pkgs:
+    name: Update nix packages
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg:
+          - falco
+          - fennel-ls
+          - rq
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Free disk space
+        uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b # v6
+        with:
+          hatchet-protocol: 'rampage'
+          root-safe-haven: '3072' # Reserve 3GB on the / filesystem
+          mnt-safe-haven: '2048' # Reserve 2GB on the /mnt filesystem
+          nix-permission-edict: true
+      - name: Generate github token
+        id: generate_token
+        uses: actions/create-github-app-token@a8d616148505b5069dccd32f177bb87d7f39123b # v2.1.1
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+      - uses: cachix/install-nix-action@c134e4c9e34bac6cab09cf239815f9339aaaf84e # v31
+        with:
+          github_access_token: ${{ steps.generate_token.outputs.token }}
+          nix_path: nixpkgs=channel:nixos-unstable
+          install_options: --no-daemon
+      - name: Configure
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          APP_SLUG: ${{ steps.generate_token.outputs.app-slug }}
+        run: |
+          ID=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)
+          git config --global user.name "${APP_SLUG}[bot]"
+          git config --global user.email "${ID}+${APP_SLUG}[bot]@users.noreply.github.com"
+      - name: Create branch
+        id: create-branch
+        env:
+          BRANCH: deps/nix/update/${{ matrix.pkg }}/${{ github.run_number }}${{ github.run_attempt }}
+        run: |
+          git switch -c "${BRANCH}"
+          echo "name=${BRANCH}" >> "$GITHUB_OUTPUT"
+      - name: Update package
+        env:
+          PKG: ${{ matrix.pkg }}
+        run: |
+          nix run 'github:Mic92/nix-update' -- --flake "${PKG}" --write-commit-message commit.md
+      - name: Check changes
+        id: check-changes
+        run: |
+          if [ ! -f commit.md ]; then
+            echo "updated=no" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "updated=yes" >> "$GITHUB_OUTPUT"
+      - name: Commit and Push
+        if: steps.check-changes.outputs.updated == 'yes'
+        id: commit
+        env:
+          BRANCH: ${{ steps.create-branch.outputs.name }}
+        run: |
+          git add pkgs
+          git commit -m "$(head -1 commit.md)"
+          git push origin "${BRANCH}"
+
+          echo "title=$(head -l commit.md)" >> "$GITHUB_OUTPUT"
+      - name: Create Pull Request
+        if: steps.check-changes.outputs.updated == 'yes'
+        id: create-pr
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          gh pr create \
+            -B main \
+            -t '${{ steps.commit.outputs.title }}' \
+            -F commit.md
+      - name: Auto-merge
+        if: steps.check-changes.outputs.updated == 'yes'
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          BRANCH: ${{ steps.create-branch.outputs.name }}
+        run: |
+          gh pr merge \
+            --auto \
+            --squash \
+            "${BRANCH}"
