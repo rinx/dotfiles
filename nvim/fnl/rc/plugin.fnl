@@ -167,11 +167,9 @@
                  :config (mod :nfnl)}
    :hylang/vim-hy {:ft [:hy]}
 
-   ;; treesitter
-   :nvim-treesitter/nvim-treesitter {:build (cmd->fn :TSUpdate)
+   :nvim-treesitter/nvim-treesitter {:branch :main
                                      :config (mod :treesitter)
-                                     :event [:BufEnter]
-                                     :dependencies [:JoosepAlviste/nvim-ts-context-commentstring]}
+                                     :event [:BufEnter]}
 
    ;; orgmode
    :nvim-orgmode/orgmode {:config (mod :orgmode)
