@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1755515986462,
+  "lastUpdate": 1755516186235,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -21053,6 +21053,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.7210104,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f219adf749a894bd6cd331fd7ecbbf73d690918a",
+          "message": "fix(ci): fix typo on nix-update-pkgs workflow\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-08-18T20:08:40+09:00",
+          "tree_id": "86d1f9733b06417853807475b01325a063bd551a",
+          "url": "https://github.com/rinx/dotfiles/commit/f219adf749a894bd6cd331fd7ecbbf73d690918a"
+        },
+        "date": 1755516185238,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.5049487,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 82.494894,
             "unit": "ms"
           }
         ]
