@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1755518219383,
+  "lastUpdate": 1755522341764,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -21155,6 +21155,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.8565458,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "76f20907d9500bf5edfb877d2cd815fffddc5a0d",
+          "message": "config(nvim): use treesitter main branch (#201)\n\n* config(nvim): use treesitter main branch\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* chore(ci): run benchmark on pull-request\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-08-18T21:52:33+09:00",
+          "tree_id": "c6afdd31dd1f96fd72d636a50480ff651c0e5b9c",
+          "url": "https://github.com/rinx/dotfiles/commit/76f20907d9500bf5edfb877d2cd815fffddc5a0d"
+        },
+        "date": 1755522340747,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.364623100000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 127.54304649999999,
             "unit": "ms"
           }
         ]
