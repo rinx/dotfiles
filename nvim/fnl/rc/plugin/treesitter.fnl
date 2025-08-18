@@ -1,5 +1,6 @@
-(local configs (require :nvim-treesitter.configs))
-(local commentstring (require :ts_context_commentstring))
+(local ts (require :nvim-treesitter))
+
+(import-macros {: augroup!} :rc.macros)
 
 (local languages
   [:bash
@@ -96,20 +97,18 @@
    :yaml
    :zig])
 
-(configs.setup
-  {:ensure_installed languages
-   :highlight {:enable true
-               :disable []
-               :additional_vim_regex_highlighting [:org]}
-   :indent {:enable true
-            :disable []}})
+(ts.setup {})
+(ts.install languages)
 
-;; context-commentstring
-(set vim.g.skip_ts_context_commentstring_module true)
-(commentstring.setup
-  {:enable_autocmd false})
+(augroup!
+  init-treesitter
+  {:events [:FileType]
+   :callback (fn [ctx]
+               (pcall vim.treesitter.start)
+               (set vim.wo.foldexpr "v:lua.vim.treesitter.foldexpr()")
+               (set vim.bo.indentexpr "v:lua.require'nvim-treesitter'.indentexpr()"))})
 
 (fn ensure-installed []
-  (each [_ lang (ipairs languages)]
-    (vim.cmd (string.format "TSInstallSync! %s" lang))))
+  (let [installer (ts.install languages)]
+    (installer:wait 300000)))
 (vim.api.nvim_create_user_command :TSInstallEnsure ensure-installed {})
