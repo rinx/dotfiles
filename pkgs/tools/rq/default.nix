@@ -5,7 +5,7 @@
 }:
 buildGoModule rec {
   pname = "rq";
-  version = "0.0.10";
+  version = "0.0.14";
 
   src = fetchFromSourcehut {
     owner = "~charles";
