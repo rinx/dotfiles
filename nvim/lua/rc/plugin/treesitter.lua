@@ -8,8 +8,12 @@ do
   local function _1_(ctx)
     pcall(vim.treesitter.start)
     vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    return nil
+    if (vim.bo.indentexpr == "") then
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      return nil
+    else
+      return nil
+    end
   end
   vim.api.nvim_create_autocmd({"FileType"}, {callback = _1_, group = group_5_auto})
 end

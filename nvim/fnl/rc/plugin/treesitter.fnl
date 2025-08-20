@@ -106,7 +106,8 @@
    :callback (fn [ctx]
                (pcall vim.treesitter.start)
                (set vim.wo.foldexpr "v:lua.vim.treesitter.foldexpr()")
-               (set vim.bo.indentexpr "v:lua.require'nvim-treesitter'.indentexpr()"))})
+               (when (= vim.bo.indentexpr "")
+                 (set vim.bo.indentexpr "v:lua.require'nvim-treesitter'.indentexpr()")))})
 
 (fn ensure-installed []
   (let [installer (ts.install languages)]
