@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1755568763282,
+  "lastUpdate": 1755685460492,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -21223,6 +21223,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 105.439445,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b05e60b1c60c3df0918b92b655eeea7959c6c741",
+          "message": "config(nvim): add when condition for treesitter indentexpr\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-08-20T19:11:03+09:00",
+          "tree_id": "d927007771a57fe18bca4519178da122c6995338",
+          "url": "https://github.com/rinx/dotfiles/commit/b05e60b1c60c3df0918b92b655eeea7959c6c741"
+        },
+        "date": 1755685459300,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.456887299999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 117.464457,
             "unit": "ms"
           }
         ]
