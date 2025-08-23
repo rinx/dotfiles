@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1755841271131,
+  "lastUpdate": 1755932267812,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -21291,6 +21291,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 105.66279469999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "56918d4ff535846fa69d17ee9f149bfed180daf7",
+          "message": "chore(nix): cleanup flake.lock\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-08-23T15:34:33+09:00",
+          "tree_id": "17dc3034ec4b55cb8d3b02d6b09ff4518bbfcfd5",
+          "url": "https://github.com/rinx/dotfiles/commit/56918d4ff535846fa69d17ee9f149bfed180daf7"
+        },
+        "date": 1755932266215,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.827992300000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 109.1285249,
             "unit": "ms"
           }
         ]
