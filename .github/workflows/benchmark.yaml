@@ -50,6 +50,10 @@ jobs:
           nvim --headless -c 'qall'
           # Install other plugins
           nvim --headless -c 'Lazy! sync' -c 'qall'
+          # Treesitter
+          nvim --headless -c 'TSInstallEnsure' -c 'qall'
+          # workaround: Ensure installed correctly
+          nvim --headless -c 'TSInstallEnsure' -c 'qall'
           nvim --headless -c 'TSInstallEnsure' -c 'qall'
       - name: Confirm all neovim plugins installed
         run: |
