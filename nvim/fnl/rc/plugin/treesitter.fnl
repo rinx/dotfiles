@@ -110,6 +110,6 @@
                  (set vim.bo.indentexpr "v:lua.require'nvim-treesitter'.indentexpr()")))})
 
 (fn ensure-installed []
-  (let [installer (ts.install languages)]
-    (installer:wait 300000)))
+  (each [_ lang (ipairs languages)]
+    (vim.cmd (string.format "TSInstallSync! %s" lang))))
 (vim.api.nvim_create_user_command :TSInstallEnsure ensure-installed {})

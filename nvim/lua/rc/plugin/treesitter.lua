@@ -18,7 +18,9 @@ do
   vim.api.nvim_create_autocmd({"FileType"}, {callback = _1_, group = group_5_auto})
 end
 local function ensure_installed()
-  local installer = ts.install(languages)
-  return installer:wait(300000)
+  for _, lang in ipairs(languages) do
+    vim.cmd(string.format("TSInstallSync! %s", lang))
+  end
+  return nil
 end
 return vim.api.nvim_create_user_command("TSInstallEnsure", ensure_installed, {})
