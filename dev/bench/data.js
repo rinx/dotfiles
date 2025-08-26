@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1756127624024,
+  "lastUpdate": 1756204719745,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -21393,6 +21393,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 92.57278849999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "dd1ff6d6198e6bb64fd0127313225c37b815d6ae",
+          "message": "chore(ci): run nix-update-pkgs everyday\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-08-26T19:23:03+09:00",
+          "tree_id": "3cba67b2f6b567fdf3798d1f03aa2134af51d899",
+          "url": "https://github.com/rinx/dotfiles/commit/dd1ff6d6198e6bb64fd0127313225c37b815d6ae"
+        },
+        "date": 1756204718678,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.617327,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 93.8143944,
             "unit": "ms"
           }
         ]
