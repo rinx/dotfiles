@@ -112,7 +112,8 @@
                (let [export-type (vim.fn.input "Export type: ")]
                  (when (and export-type (not (= export-type "")))
                    (let [lines (vim.api.nvim_buf_get_lines 0 0 -1 false)
-                         content (table.concat lines "\n")
+                         content (->> (table.concat lines "\n")
+                                      (string.format "#+OPTIONS: ^:nil\n#+OPTIONS: H:9\n%s"))
                          tmppath (vim.fn.tempname)
                          tmp (io.open tmppath :w)
                          cmd [:pandoc tmppath :--wrap=preserve :--from=org (.. :--to= export-type)]
@@ -137,7 +138,8 @@
                                  (- headline.position.start_line 1)
                                  headline.position.end_line
                                  false)
-                         content (table.concat lines "\n")
+                         content (->> (table.concat lines "\n")
+                                      (string.format "#+OPTIONS: ^:nil\n#+OPTIONS: H:9\n%s"))
                          tmppath (vim.fn.tempname)
                          tmp (io.open tmppath :w)
                          cmd [:pandoc tmppath :--wrap=preserve :--from=org (.. :--to= export-type)]
