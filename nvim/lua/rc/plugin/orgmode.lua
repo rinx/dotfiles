@@ -37,7 +37,7 @@ local function _4_(exporter)
   local export_type = vim.fn.input("Export type: ")
   if (export_type and not (export_type == "")) then
     local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-    local content = table.concat(lines, "\n")
+    local content = string.format("#+OPTIONS: ^:nil\n#+OPTIONS: H:9\n%s", table.concat(lines, "\n"))
     local tmppath = vim.fn.tempname()
     local tmp = io.open(tmppath, "w")
     local cmd = {"pandoc", tmppath, "--wrap=preserve", "--from=org", ("--to=" .. export_type)}
@@ -66,7 +66,7 @@ local function _8_(exporter)
     local current = org_api.current()
     local headline = current:get_closest_headline()
     local lines = vim.api.nvim_buf_get_lines(0, (headline.position.start_line - 1), headline.position.end_line, false)
-    local content = table.concat(lines, "\n")
+    local content = string.format("#+OPTIONS: ^:nil\n#+OPTIONS: H:9\n%s", table.concat(lines, "\n"))
     local tmppath = vim.fn.tempname()
     local tmp = io.open(tmppath, "w")
     local cmd = {"pandoc", tmppath, "--wrap=preserve", "--from=org", ("--to=" .. export_type)}
