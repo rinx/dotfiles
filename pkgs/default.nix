@@ -154,8 +154,8 @@ pkgs.buildEnv {
       yaml-language-server
 
       ## fonts
-      moralerspace-nf
-      moralerspace-hwnf
+      moralerspace
+      moralerspace-hw
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.monaspace
