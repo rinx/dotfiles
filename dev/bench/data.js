@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757587391150,
+  "lastUpdate": 1757658577337,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -21801,6 +21801,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 93.75999619999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c511630fc810b4daba629f476d76cb8677a5d1f3",
+          "message": "chore(deps): lock file maintenance (#216)\n\n* chore(deps): lock file maintenance\n\n* fix(nix): use moralerspace instead of moralerspace-nf\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-09-12T06:14:55Z",
+          "tree_id": "e453925374c898f7649a8ceb45d3ca2bf1bb0422",
+          "url": "https://github.com/rinx/dotfiles/commit/c511630fc810b4daba629f476d76cb8677a5d1f3"
+        },
+        "date": 1757658575543,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.6406658,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 92.24369779999999,
             "unit": "ms"
           }
         ]
