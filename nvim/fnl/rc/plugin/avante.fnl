@@ -229,16 +229,7 @@
     :enable_cursor_planning_mode true}
    :providers
    {:copilot
-    {:model :claude-3.7-sonnet}
-    :copilot-gemini-2.5-pro
-    {:__inherited_from :copilot
-     :model :gemini-2.5-pro}
-    :copilot-gpt-4.1
-    {:__inherited_from :copilot
-     :model :gpt-4.1}
-    :copilot-gpt-4o
-    {:__inherited_from :copilot
-     :model :gpt-4o}
+    {:model :claude-sonnet-4}
     :bedrock
     {:model "apac.anthropic.claude-sonnet-4-20250514-v1:0"
      :aws_profile :bedrock-claude-sonnet4
