@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757658577337,
+  "lastUpdate": 1757767752980,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -21835,6 +21835,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 92.24369779999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "5c7654024623f065e55e33e4d028c52b41606225",
+          "message": "config: use claude-sonnet-4 for default copilot model\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-09-13T21:34:10+09:00",
+          "tree_id": "f29e31b8659072290ff1194f726c156781766532",
+          "url": "https://github.com/rinx/dotfiles/commit/5c7654024623f065e55e33e4d028c52b41606225"
+        },
+        "date": 1757767751921,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.656278300000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 94.1036734,
             "unit": "ms"
           }
         ]
