@@ -108,6 +108,7 @@
               nixfmt.enable = true;
               jsonfmt.enable = true;
               yamlfmt.enable = true;
+              zizmor.enable = true;
             };
           };
         };

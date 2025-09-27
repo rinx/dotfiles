@@ -152,6 +152,7 @@ pkgs.buildEnv {
       tinymist
       vscode-langservers-extracted
       yaml-language-server
+      zizmor
 
       ## fonts
       moralerspace
