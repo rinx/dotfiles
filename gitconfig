@@ -59,13 +59,23 @@
     colorMoved = plain
     mnemonicPrefix = true
     renames = true
-    tool = nvimdiff
+
+    # Use kitty for difftool
+    tool = kitty
+    guitool = kitty.gui
 
 [difftool]
     prompt = false
+    trustExitCode = true
 
-[difftool "nvimdiff"]
+[difftool "nvim"]
     cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+
+[difftool "kitty"]
+    cmd = "kitten diff \"$LOCAL\" \"$REMOTE\""
+
+[difftool "kitty.gui"]
+    cmd = "kitten diff \"$LOCAL\" \"$REMOTE\""
 
 [fetch]
     prune = true
