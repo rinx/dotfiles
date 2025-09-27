@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1758881183599,
+  "lastUpdate": 1758965561228,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22107,6 +22107,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 94.222227,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "eae97b811b42d33e57557fc75a3e6ebba1953968",
+          "message": "chore(nix): remove k3d and kubecolor\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-09-27T18:12:31+09:00",
+          "tree_id": "44c471a8f528be9fde4ccb22c48f70f0fc92cd54",
+          "url": "https://github.com/rinx/dotfiles/commit/eae97b811b42d33e57557fc75a3e6ebba1953968"
+        },
+        "date": 1758965559975,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 18.589088600000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 75.55436019999999,
             "unit": "ms"
           }
         ]
