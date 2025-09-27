@@ -103,9 +103,7 @@ pkgs.buildEnv {
       zsh
 
       ## k8s
-      k3d
       k9s
-      kubecolor
       kubectl
       kubectx
       kubernetes-helm
@@ -136,7 +134,7 @@ pkgs.buildEnv {
       cuelsp
       delve
       docker-compose-language-service
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       efm-langserver
       gitlint
       gopls

@@ -164,7 +164,3 @@ extract () {
 # kitty aliases
 alias icat='kitty +kitten icat'
 alias vdiff="kitty +kitten diff"
-
-if builtin command -v kubecolor > /dev/null 2>&1 ; then
-    alias k=kubecolor
-fi
