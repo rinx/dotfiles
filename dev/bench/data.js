@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759642593832,
+  "lastUpdate": 1759675461847,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22277,6 +22277,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 94.4934896,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "6f7bf0302f45d925feeabe0dd388ef68ff30d6bd",
+          "message": "config(nix): use copilot-ls for copilot.lua\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-05T23:23:24+09:00",
+          "tree_id": "6a8c38d67c0c7dc37f3ef529283d919c8e6ccce3",
+          "url": "https://github.com/rinx/dotfiles/commit/6f7bf0302f45d925feeabe0dd388ef68ff30d6bd"
+        },
+        "date": 1759675460725,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.5281832,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 94.48285130000002,
             "unit": "ms"
           }
         ]
