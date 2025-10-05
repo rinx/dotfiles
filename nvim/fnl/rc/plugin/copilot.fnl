@@ -4,7 +4,14 @@
 
 (copilot.setup
   {:suggestion {:enabled false}
-   :panel {:enabled false}})
+   :panel {:enabled false}
+   :server_opts_overrides
+   {:cmd [:copilot-language-server :--stdio]
+    :trace :verbose
+    :settings
+    {:advanced
+     {:listCount 10
+      :inlineSuggestCount 3}}}})
 
 ;; disable by default
 (command.disable)

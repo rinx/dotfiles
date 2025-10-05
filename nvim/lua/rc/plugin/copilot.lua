@@ -2,7 +2,7 @@
 local copilot = require("copilot")
 local command = require("copilot.command")
 local client = require("copilot.client")
-copilot.setup({suggestion = {enabled = false}, panel = {enabled = false}})
+copilot.setup({suggestion = {enabled = false}, panel = {enabled = false}, server_opts_overrides = {cmd = {"copilot-language-server", "--stdio"}, trace = "verbose", settings = {advanced = {listCount = 10, inlineSuggestCount = 3}}}})
 command.disable()
 local toggle
 local function _1_()

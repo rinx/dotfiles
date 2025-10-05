@@ -131,6 +131,7 @@ pkgs.buildEnv {
       bash-language-server
       clj-kondo
       clojure-lsp
+      copilot-language-server
       cuelsp
       delve
       docker-compose-language-service
