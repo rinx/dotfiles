@@ -89,6 +89,7 @@ outer.right =      12
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 alt-enter = 'exec-and-forget kitty @ --to unix:/tmp/kitty.sock launch --type os-window > /dev/null'
+alt-shift-enter = 'exec-and-forget kitten quick-access-terminal > /dev/null'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
