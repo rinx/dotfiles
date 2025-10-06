@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759757431630,
+  "lastUpdate": 1759757678815,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22413,6 +22413,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.14068900000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f952040f2fb97310308cc2f44d3668325e0aeb40",
+          "message": "config(aerospace): fix kitty quick-access-terminal initial options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-06T22:13:02+09:00",
+          "tree_id": "c8a8c667be0e6f271cc28be663a76fa71db2860b",
+          "url": "https://github.com/rinx/dotfiles/commit/f952040f2fb97310308cc2f44d3668325e0aeb40"
+        },
+        "date": 1759757677028,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.6971319,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 99.61065400000001,
             "unit": "ms"
           }
         ]
