@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759756039403,
+  "lastUpdate": 1759757431630,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22379,6 +22379,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 95.1389919,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "48a4d275932df5b9c8853a96a2a24b12f5d2e6b1",
+          "message": "config(aerospace): add kitten quick-access-terminal shortcut key\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-06T22:08:39+09:00",
+          "tree_id": "30d034af63b6bb9cd8c7ea74fad3dae232c8ac02",
+          "url": "https://github.com/rinx/dotfiles/commit/48a4d275932df5b9c8853a96a2a24b12f5d2e6b1"
+        },
+        "date": 1759757429885,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.907926100000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.14068900000001,
             "unit": "ms"
           }
         ]
