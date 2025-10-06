@@ -353,16 +353,17 @@
          : agenda-day
          : items} (build-todays-agenda-helper)]
     (-> (icollect [_ item (ipairs items)]
-         (let [entry (view:_build_line item agenda-day)
-               line (entry:compile)]
-           (when (and (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
-                      entry.metadata.agenda_item.is_same_day
-                      (not (= entry.metadata.agenda_item.label "Scheduled:"))
-                      (not (string.match line.content :CANCELED))
-                      (not (agenda-ignored? entry)))
-             (-> line.content
-                 (string.gsub "^(%s+)([^%s]+):(%s+)" "")
-                 (string.gsub "Scheduled:%s([%u_]+)%s" "")))))
+         (when item.index
+           (let [entry (view:_build_line item agenda-day)
+                   line (entry:compile)]
+               (when (and (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
+                          entry.metadata.agenda_item.is_same_day
+                          (not (= entry.metadata.agenda_item.label "Scheduled:"))
+                          (not (string.match line.content :CANCELED))
+                          (not (agenda-ignored? entry)))
+                 (-> line.content
+                     (string.gsub "^(%s+)([^%s]+):(%s+)" "")
+                     (string.gsub "Scheduled:%s([%u_]+)%s" ""))))))
         (table.concat "\n"))))
 
 (fn build_todays_tasks []
@@ -378,20 +379,21 @@
                                  (.. line " (done)")
                                  line))))]
     (-> (icollect [_ item (ipairs items)]
-         (let [entry (view:_build_line item agenda-day)
-               line (entry:compile)]
-           (when (and entry.metadata.agenda_item.is_same_day
-                      (or (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
-                          (= entry.metadata.agenda_item.headline_date.type :DEADLINE))
-                      (or (= entry.metadata.agenda_item.label "Scheduled:")
-                          (= entry.metadata.agenda_item.label "Deadline:"))
-                      (not (string.match line.content :CANCELED))
-                      (not (agenda-ignored? entry)))
-             (-> line.content
-                 (add-task-postfix)
-                 (string.gsub "^(%s+)([^%s]+):(%s+)" "")
-                 (string.gsub "Scheduled:(%s+)([%u_]+)%s" "- ")
-                 (string.gsub "Deadline:(%s+)([%u_]+)%s" "- ")))))
+         (when item.index
+           (let [entry (view:_build_line item agenda-day)
+                   line (entry:compile)]
+               (when (and entry.metadata.agenda_item.is_same_day
+                          (or (= entry.metadata.agenda_item.headline_date.type :SCHEDULED)
+                              (= entry.metadata.agenda_item.headline_date.type :DEADLINE))
+                          (or (= entry.metadata.agenda_item.label "Scheduled:")
+                              (= entry.metadata.agenda_item.label "Deadline:"))
+                          (not (string.match line.content :CANCELED))
+                          (not (agenda-ignored? entry)))
+                 (-> line.content
+                     (add-task-postfix)
+                     (string.gsub "^(%s+)([^%s]+):(%s+)" "")
+                     (string.gsub "Scheduled:(%s+)([%u_]+)%s" "- ")
+                     (string.gsub "Deadline:(%s+)([%u_]+)%s" "- "))))))
         (table.concat "\n"))))
 
 (comment
