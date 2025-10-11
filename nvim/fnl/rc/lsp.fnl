@@ -70,6 +70,8 @@
 (map! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" {:silent true})
 (map! [:n] :gs ":<C-u>lua vim.lsp.buf.signature_help()<CR>" {:silent true})
 
+(map! [:n] "<Leader>f" ":<C-u>lua vim.lsp.buf.format()<CR>" {:silent true})
+
 (map! [:n] :<leader>l ":<C-u>lua vim.lsp.codelens.run()<CR>" {:silent true})
 
 (map! [:n :i] "<F2>" ":<C-u>lua vim.lsp.buf.rename()<CR>" {:silent true})
