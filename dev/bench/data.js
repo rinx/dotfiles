@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759974663776,
+  "lastUpdate": 1760191432677,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22481,6 +22481,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 93.96645009999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2ba6b533545637af6b69db94e0436d926d09b4e4",
+          "message": "config(nvim): add lsp format keymap\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-11T22:45:05+09:00",
+          "tree_id": "855bfae2f2eb426b7503e9659a508ba6d6cc1bb3",
+          "url": "https://github.com/rinx/dotfiles/commit/2ba6b533545637af6b69db94e0436d926d09b4e4"
+        },
+        "date": 1760191431401,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.304149799999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 94.49212159999999,
             "unit": "ms"
           }
         ]
