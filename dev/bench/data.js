@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760424042058,
+  "lastUpdate": 1760522055409,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22617,6 +22617,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 94.6692173,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "773aa86fd7d7dc11690a8c20664ed638bc8b6bee",
+          "message": "chore(deps): update cachix/install-nix-action digest to fd24c48 (#236)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2025-10-15T18:32:38+09:00",
+          "tree_id": "e2cc75c0e3d0d49b67dbae648190b282a9849e11",
+          "url": "https://github.com/rinx/dotfiles/commit/773aa86fd7d7dc11690a8c20664ed638bc8b6bee"
+        },
+        "date": 1760522054000,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.7316325,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 99.4389186,
             "unit": "ms"
           }
         ]
