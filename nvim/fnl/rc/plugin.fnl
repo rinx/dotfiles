@@ -74,8 +74,6 @@
                        :config (mod :leap)}
    :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
-   :kana/vim-submode {:event [:BufReadPost :BufAdd :BufNewFile]
-                      :config (mod :submode)}
    :LennyPhoenix/project.nvim {:branch :fix-get_clients
                                :config (mod :project)
                                :event [:BufRead :BufNewFile]}
