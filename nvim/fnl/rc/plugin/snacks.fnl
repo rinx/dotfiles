@@ -12,6 +12,8 @@
    :image
    {:enabled true}
    :input {}
+   :indent
+   {:enabled true}
    :notifier
    {:enabled true}
    :picker {}
