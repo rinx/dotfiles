@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761453460871,
+  "lastUpdate": 1761453949349,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22821,6 +22821,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 93.4059833,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2407b7a2bf310afa80bb66438b6682818484b122",
+          "message": "config(nvim): add undo picker keymap\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-26T13:26:41+09:00",
+          "tree_id": "c8684e3118520762f0613e02d03e7e916d23f961",
+          "url": "https://github.com/rinx/dotfiles/commit/2407b7a2bf310afa80bb66438b6682818484b122"
+        },
+        "date": 1761453947551,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.5561486,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 94.6598174,
             "unit": "ms"
           }
         ]
