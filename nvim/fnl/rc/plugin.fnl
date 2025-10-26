@@ -74,9 +74,6 @@
                        :config (mod :leap)}
    :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
-   :LennyPhoenix/project.nvim {:branch :fix-get_clients
-                               :config (mod :project)
-                               :event [:BufRead :BufNewFile]}
    :pwntester/octo.nvim {:cmd [:Octo]
                          :config (mod :octo)}
    :ghillb/cybu.nvim {:config (mod :cybu)

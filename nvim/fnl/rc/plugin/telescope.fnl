@@ -67,7 +67,6 @@
    :RoamStatus
    "Telescope dap list_breakpoints"
    "Telescope repo list"
-   "Telescope projects"
    "Telescope orgmode refile_heading"
    "Telescope orgmode search_headings"
    "Telescope orgmode insert_link"
@@ -100,7 +99,6 @@
      :override_file_sorter true}}})
 
 (telescope.load_extension :dap)
-(telescope.load_extension :projects)
 (telescope.load_extension :repo)
 (telescope.load_extension :orgmode)
 
