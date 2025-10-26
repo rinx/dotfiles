@@ -39,6 +39,7 @@ vim.keymap.set("n", ",gg", ":<C-u>lua Snacks.picker.git_grep()<CR>", {silent = t
 vim.keymap.set("n", ",gb", ":<C-u>lua Snacks.picker.git_branches()<CR>", {silent = true, desc = "switch git branch via snacks.picker"})
 vim.keymap.set("n", ",gc", ":<C-u>lua Snacks.picker.git_log()<CR>", {silent = true, desc = "select git commit via snacks.picker"})
 vim.keymap.set("n", ",h", ":<C-u>lua Snacks.picker.help()<CR>", {silent = true, desc = "search helptags via snacks.picker"})
+vim.keymap.set("n", ",u", ":<C-u>lua Snacks.picker.undo()<CR>", {silent = true, desc = "undo history via snacks.picker"})
 vim.keymap.set("n", ",/", ":<C-u>lua Snacks.picker.lines()<CR>", {silent = true, desc = "line search via snacks.picker"})
 vim.keymap.set("n", "<Leader><Leader>", ":<C-u>lua Snacks.picker.commands()<CR>", {silent = true, desc = "select commands via snacks.picker"})
 vim.keymap.set("n", "<C-\\>", ":<C-u>lua Snacks.picker()<CR>", {silent = true, desc = "select snacks.picker source"})

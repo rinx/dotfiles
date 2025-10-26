@@ -114,6 +114,11 @@
       {:silent true
        :desc "search helptags via snacks.picker"})
 (map! [:n]
+      ",u"
+      ":<C-u>lua Snacks.picker.undo()<CR>"
+      {:silent true
+       :desc "undo history via snacks.picker"})
+(map! [:n]
       ",/"
       ":<C-u>lua Snacks.picker.lines()<CR>"
       {:silent true
