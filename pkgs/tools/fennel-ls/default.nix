@@ -8,13 +8,13 @@
 }:
 stdenv.mkDerivation (finalAttrs: rec {
   pname = "fennel-ls";
-  version = "e355534d8d9d9168dc9d0fd19ba59d4b69d3e776";
+  version = "0.2.2";
 
   src = fetchFromSourcehut {
     owner = "~xerool";
     repo = "fennel-ls";
     rev = "${version}";
-    hash = "sha256-6ZbGRTBBRktudGVBZ+UMn8l0+wKa8f5dg7UOwLhOT7E=";
+    hash = "sha256-N1530u8Kq7ljdEdTFk0CJJyMLMVX5huQWXjyoMBJN5E=";
   };
 
   nativeBuildInputs = [
