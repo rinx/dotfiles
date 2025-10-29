@@ -69,7 +69,7 @@ pkgs.buildEnv {
       bat
       cmakeMinimal
       conftest
-      cosign
+      # cosign
       cue
       curl
       delta
@@ -82,7 +82,7 @@ pkgs.buildEnv {
       gh
       ghq
       git
-      gitsign
+      # gitsign
       gnumake
       imagemagick
       jq
