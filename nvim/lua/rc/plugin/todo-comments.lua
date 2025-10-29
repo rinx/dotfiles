@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/todo-comments.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local tdc = require("todo-comments")
 local color = autoload("rc.color")
 local icon = autoload("rc.icon")

@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/heirline.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local heirline = autoload("heirline")
 local conditions = autoload("heirline.conditions")
@@ -218,11 +218,11 @@ end
 dap_component = {condition = _44_, provider = _45_, hl = {fg = colors.color4}}
 local denops_component
 local function _46_()
-  local _47_ = vim.fn["denops#server#status"]()
-  if (_47_ == "running") then
+  local case_47_ = vim.fn["denops#server#status"]()
+  if (case_47_ == "running") then
     return (icontab.dinosaur .. space)
   else
-    local _ = _47_
+    local _ = case_47_
     return ""
   end
 end
@@ -231,21 +231,21 @@ local skkeleton_component
 local function _49_()
   local mode
   do
-    local _50_ = vim.fn["skkeleton#mode"]()
-    if (_50_ == "hira") then
+    local case_50_ = vim.fn["skkeleton#mode"]()
+    if (case_50_ == "hira") then
       mode = "\227\129\130"
-    elseif (_50_ == "kata") then
+    elseif (case_50_ == "kata") then
       mode = "\227\130\162"
-    elseif (_50_ == "hankata") then
+    elseif (case_50_ == "hankata") then
       mode = "\239\189\167\239\189\177"
-    elseif (_50_ == "ascii") then
+    elseif (case_50_ == "ascii") then
       mode = "aA"
-    elseif (_50_ == "zenei") then
+    elseif (case_50_ == "zenei") then
       mode = "\239\189\129"
-    elseif (_50_ == "abbrev") then
+    elseif (case_50_ == "abbrev") then
       mode = "a\227\129\130"
     else
-      local _ = _50_
+      local _ = case_50_
       mode = nil
     end
   end

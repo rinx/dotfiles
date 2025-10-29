@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/bufferline.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local bufferline = require("bufferline")
 local color = autoload("rc.color")
 local icon = autoload("rc.icon")

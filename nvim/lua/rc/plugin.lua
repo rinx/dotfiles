@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local lazy = require("lazy")
 local icon = autoload("rc.icon")

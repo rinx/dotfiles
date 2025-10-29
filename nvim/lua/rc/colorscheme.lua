@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/colorscheme.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local nightfox = require("nightfox")
 local color = autoload("rc.color")
 local colors = color.colors

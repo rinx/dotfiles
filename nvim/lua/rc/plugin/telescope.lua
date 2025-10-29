@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/telescope.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local finders = require("telescope.finders")

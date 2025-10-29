@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/snacks.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local snacks = require("snacks")
 local picker_sources = require("snacks.picker.config.sources")
@@ -19,7 +19,7 @@ end
 local function _5_(self)
   return vim.cmd("stopinsert")
 end
-snacks.setup({bigfile = {enabled = true}, image = {enabled = true}, indent = {enabled = true}, input = {}, notifier = {enabled = true}, picker = {}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _2_, term_normal = {"<esc>", _5_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
+snacks.setup({bigfile = {enabled = true}, image = {enabled = true}, input = {}, indent = {enabled = true}, notifier = {enabled = true}, picker = {}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _2_, term_normal = {"<esc>", _5_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
 local function map__3e(toggle, key)
   return toggle:map(key)
 end

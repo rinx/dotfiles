@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/dap-go.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local dap_go = require("dap-go")
 dap_go.setup({})
 vim.api.nvim_create_user_command("DapGoTest", "lua require('dap-go').debug_test()", {})

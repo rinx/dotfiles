@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/lsp.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local schemastore = autoload("schemastore")
 local icon = autoload("rc.icon")
@@ -72,17 +72,17 @@ vim.diagnostic.config({virtual_lines = true, underline = true, signs = {text = {
 local function use(cfgs)
   local lsps
   do
-    local tbl_21_ = {}
-    local i_22_ = 0
+    local tbl_26_ = {}
+    local i_27_ = 0
     for name, _ in pairs(cfgs) do
-      local val_23_ = name
-      if (nil ~= val_23_) then
-        i_22_ = (i_22_ + 1)
-        tbl_21_[i_22_] = val_23_
+      local val_28_ = name
+      if (nil ~= val_28_) then
+        i_27_ = (i_27_ + 1)
+        tbl_26_[i_27_] = val_28_
       else
       end
     end
-    lsps = tbl_21_
+    lsps = tbl_26_
   end
   for lsp, config in pairs(cfgs) do
     vim.lsp.config(lsp, config)

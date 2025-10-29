@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/devicons.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local devicon = require("nvim-web-devicons")
 local icon = autoload("rc.icon")
 local icontab = icon.tab

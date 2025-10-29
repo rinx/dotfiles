@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/trouble.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local trouble = require("trouble")
 trouble.setup({auto_close = true})
 do

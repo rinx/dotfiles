@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/dap.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local dap = require("dap")
 local view = require("dap-view")
 local color = autoload("rc.color")

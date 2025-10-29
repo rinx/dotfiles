@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/core.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local icon = autoload("rc.icon")
 vim.o.viminfo = "'1000,<100,f1,h,s100"

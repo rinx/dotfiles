@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/lsp-colors.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local lsp_colors = require("lsp-colors")
 local color = autoload("rc.color")
 local colors = color.colors

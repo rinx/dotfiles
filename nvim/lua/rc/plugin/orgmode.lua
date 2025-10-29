@@ -1,6 +1,6 @@
 -- [nfnl] fnl/rc/plugin/orgmode.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local icon = autoload("rc.icon")
 local color = autoload("rc.color")
 local async = autoload("plenary.async")
@@ -229,41 +229,41 @@ local function agenda_ignored_3f(entry)
 end
 local function build_todays_agenda()
   local _let_24_ = build_todays_agenda_helper()
-  local view = _let_24_["view"]
+  local view = _let_24_.view
   local agenda_day = _let_24_["agenda-day"]
-  local items = _let_24_["items"]
+  local items = _let_24_.items
   local _25_
   do
-    local tbl_21_ = {}
-    local i_22_ = 0
+    local tbl_26_ = {}
+    local i_27_ = 0
     for _, item in ipairs(items) do
-      local val_23_
+      local val_28_
       if item.index then
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
         if ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") and entry.metadata.agenda_item.is_same_day and not (entry.metadata.agenda_item.label == "Scheduled:") and not string.match(line.content, "CANCELED") and not agenda_ignored_3f(entry)) then
-          val_23_ = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s([%u_]+)%s", "")
+          val_28_ = string.gsub(string.gsub(line.content, "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:%s([%u_]+)%s", "")
         else
-          val_23_ = nil
+          val_28_ = nil
         end
       else
-        val_23_ = nil
+        val_28_ = nil
       end
-      if (nil ~= val_23_) then
-        i_22_ = (i_22_ + 1)
-        tbl_21_[i_22_] = val_23_
+      if (nil ~= val_28_) then
+        i_27_ = (i_27_ + 1)
+        tbl_26_[i_27_] = val_28_
       else
       end
     end
-    _25_ = tbl_21_
+    _25_ = tbl_26_
   end
   return table.concat(_25_, "\n")
 end
 local function build_todays_tasks()
   local _let_29_ = build_todays_agenda_helper()
-  local view = _let_29_["view"]
+  local view = _let_29_.view
   local agenda_day = _let_29_["agenda-day"]
-  local items = _let_29_["items"]
+  local items = _let_29_.items
   local add_task_postfix
   local function _30_(line)
     if string.match(line, "WIP") then
@@ -283,28 +283,28 @@ local function build_todays_tasks()
   add_task_postfix = _30_
   local _34_
   do
-    local tbl_21_ = {}
-    local i_22_ = 0
+    local tbl_26_ = {}
+    local i_27_ = 0
     for _, item in ipairs(items) do
-      local val_23_
+      local val_28_
       if item.index then
         local entry = view:_build_line(item, agenda_day)
         local line = entry:compile()
         if (entry.metadata.agenda_item.is_same_day and ((entry.metadata.agenda_item.headline_date.type == "SCHEDULED") or (entry.metadata.agenda_item.headline_date.type == "DEADLINE")) and ((entry.metadata.agenda_item.label == "Scheduled:") or (entry.metadata.agenda_item.label == "Deadline:")) and not string.match(line.content, "CANCELED") and not agenda_ignored_3f(entry)) then
-          val_23_ = string.gsub(string.gsub(string.gsub(add_task_postfix(line.content), "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:(%s+)([%u_]+)%s", "- "), "Deadline:(%s+)([%u_]+)%s", "- ")
+          val_28_ = string.gsub(string.gsub(string.gsub(add_task_postfix(line.content), "^(%s+)([^%s]+):(%s+)", ""), "Scheduled:(%s+)([%u_]+)%s", "- "), "Deadline:(%s+)([%u_]+)%s", "- ")
         else
-          val_23_ = nil
+          val_28_ = nil
         end
       else
-        val_23_ = nil
+        val_28_ = nil
       end
-      if (nil ~= val_23_) then
-        i_22_ = (i_22_ + 1)
-        tbl_21_[i_22_] = val_23_
+      if (nil ~= val_28_) then
+        i_27_ = (i_27_ + 1)
+        tbl_26_[i_27_] = val_28_
       else
       end
     end
-    _34_ = tbl_21_
+    _34_ = tbl_26_
   end
   return table.concat(_34_, "\n")
 end
@@ -321,58 +321,58 @@ local function get_agenda(span, year, month, day)
   end
   local view_opts = vim.tbl_extend("force", {}, {files = orgmode0.agenda.files, agenda_filter = orgmode0.agenda.filters, highlighter = orgmode0.agenda.highlighter, span = span, from = from})
   local view = agenda_types.agenda:new(view_opts)
-  local tbl_21_ = {}
-  local i_22_ = 0
+  local tbl_26_ = {}
+  local i_27_ = 0
   for _, agenda_day in ipairs(view:_get_agenda_days()) do
-    local val_23_
+    local val_28_
     do
       local agenda
       do
-        local tbl_21_0 = {}
-        local i_22_0 = 0
+        local tbl_26_0 = {}
+        local i_27_0 = 0
         for _0, item in ipairs(agenda_day.agenda_items) do
-          local val_23_0
+          local val_28_0
           do
             local entry = view:_build_line(item, agenda_day)
             local line = entry:compile()
-            val_23_0 = line.content
+            val_28_0 = line.content
           end
-          if (nil ~= val_23_0) then
-            i_22_0 = (i_22_0 + 1)
-            tbl_21_0[i_22_0] = val_23_0
+          if (nil ~= val_28_0) then
+            i_27_0 = (i_27_0 + 1)
+            tbl_26_0[i_27_0] = val_28_0
           else
           end
         end
-        agenda = tbl_21_0
+        agenda = tbl_26_0
       end
-      val_23_ = {year = agenda_day.day.year, month = agenda_day.day.month, day = agenda_day.day.day, agenda = agenda}
+      val_28_ = {year = agenda_day.day.year, month = agenda_day.day.month, day = agenda_day.day.day, agenda = agenda}
     end
-    if (nil ~= val_23_) then
-      i_22_ = (i_22_ + 1)
-      tbl_21_[i_22_] = val_23_
+    if (nil ~= val_28_) then
+      i_27_ = (i_27_ + 1)
+      tbl_26_[i_27_] = val_28_
     else
     end
   end
-  return tbl_21_
+  return tbl_26_
 end
 local function get_all_roam_nodes()
   local roam0 = require("org-roam")
   local ids = roam0.database:ids()
-  local tbl_21_ = {}
-  local i_22_ = 0
+  local tbl_26_ = {}
+  local i_27_ = 0
   for _, id in ipairs(ids) do
-    local val_23_
+    local val_28_
     do
       local node = roam0.database:get_sync(id)
-      val_23_ = {id = id, title = node.title, aliases = node.aliases}
+      val_28_ = {id = id, title = node.title, aliases = node.aliases}
     end
-    if (nil ~= val_23_) then
-      i_22_ = (i_22_ + 1)
-      tbl_21_[i_22_] = val_23_
+    if (nil ~= val_28_) then
+      i_27_ = (i_27_ + 1)
+      tbl_26_[i_27_] = val_28_
     else
     end
   end
-  return tbl_21_
+  return tbl_26_
 end
 local function get_roam_node_by_id(id)
   local roam0 = require("org-roam")
@@ -396,17 +396,17 @@ local function roam_refresh_search_index()
   local function _43_(nodes)
     local tbl = {}
     do
-      local tbl_21_ = {}
-      local i_22_ = 0
+      local tbl_26_ = {}
+      local i_27_ = 0
       for _, node in ipairs(nodes) do
-        local val_23_
+        local val_28_
         do
           local info = get_roam_node_by_id(node.id)
-          val_23_ = table.insert(tbl, {["node-id"] = node.id, path = info.file})
+          val_28_ = table.insert(tbl, {["node-id"] = node.id, path = info.file})
         end
-        if (nil ~= val_23_) then
-          i_22_ = (i_22_ + 1)
-          tbl_21_[i_22_] = val_23_
+        if (nil ~= val_28_) then
+          i_27_ = (i_27_ + 1)
+          tbl_26_[i_27_] = val_28_
         else
         end
       end
@@ -534,54 +534,54 @@ local function get_roam_heading_content(id, title)
   local org_api = require("orgmode.api")
   local node = get_roam_node_by_id(id)
   local org_file = org_api.load(node.file)
-  local tbl_21_ = {}
-  local i_22_ = 0
+  local tbl_26_ = {}
+  local i_27_ = 0
   for _, headline in ipairs(org_file.headlines) do
-    local val_23_
+    local val_28_
     if (headline.title == title) then
       local lines
       do
-        local tbl_21_0 = {}
-        local i_22_0 = 0
+        local tbl_26_0 = {}
+        local i_27_0 = 0
         for i, l in ipairs(org_file._file.lines) do
-          local val_23_0
+          local val_28_0
           if ((headline.position.start_line <= i) and (headline.position.end_line >= i)) then
-            val_23_0 = l
+            val_28_0 = l
           else
-            val_23_0 = nil
+            val_28_0 = nil
           end
-          if (nil ~= val_23_0) then
-            i_22_0 = (i_22_0 + 1)
-            tbl_21_0[i_22_0] = val_23_0
+          if (nil ~= val_28_0) then
+            i_27_0 = (i_27_0 + 1)
+            tbl_26_0[i_27_0] = val_28_0
           else
           end
         end
-        lines = tbl_21_0
+        lines = tbl_26_0
       end
       local children
       do
-        local tbl_21_0 = {}
-        local i_22_0 = 0
+        local tbl_26_0 = {}
+        local i_27_0 = 0
         for _0, child in ipairs(headline.headlines) do
-          local val_23_0 = {title = child.title, level = child.level}
-          if (nil ~= val_23_0) then
-            i_22_0 = (i_22_0 + 1)
-            tbl_21_0[i_22_0] = val_23_0
+          local val_28_0 = {title = child.title, level = child.level}
+          if (nil ~= val_28_0) then
+            i_27_0 = (i_27_0 + 1)
+            tbl_26_0[i_27_0] = val_28_0
           else
           end
         end
-        children = tbl_21_0
+        children = tbl_26_0
       end
-      val_23_ = {node = {id = node.id, title = node.title}, file = node.file, title = title, level = headline.level, lines = lines, children = children, position = {start_line = headline.position.start_line, end_line = headline.position.end_line}}
+      val_28_ = {node = {id = node.id, title = node.title}, file = node.file, title = title, level = headline.level, lines = lines, children = children, position = {start_line = headline.position.start_line, end_line = headline.position.end_line}}
     else
-      val_23_ = nil
+      val_28_ = nil
     end
-    if (nil ~= val_23_) then
-      i_22_ = (i_22_ + 1)
-      tbl_21_[i_22_] = val_23_
+    if (nil ~= val_28_) then
+      i_27_ = (i_27_ + 1)
+      tbl_26_[i_27_] = val_28_
     else
     end
   end
-  return tbl_21_
+  return tbl_26_
 end
 return {build_todays_agenda = build_todays_agenda, build_todays_tasks = build_todays_tasks, get_agenda = get_agenda, get_all_roam_nodes = get_all_roam_nodes, get_roam_node_by_id = get_roam_node_by_id, create_roam_node = create_roam_node, query_roam_fragments = query_roam_fragments, query_roam_headings = query_roam_headings, get_roam_node_links = get_roam_node_links, get_roam_node_backlinks = get_roam_node_backlinks, get_roam_heading_content = get_roam_heading_content}
