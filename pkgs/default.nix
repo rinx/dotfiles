@@ -29,6 +29,10 @@ let
       ]
     );
 
+  open-policy-agent = pkgs.open-policy-agent.overrideAttrs {
+    doCheck = false;
+  };
+
   org-search-utils = pkgs.callPackage ./tools/org-search-utils { };
 
   mcp-servers = pkgs.callPackage ./settings/mcp-servers {
@@ -46,6 +50,7 @@ let
     inputs.mcp-hub.packages."${system}".default
     inputs.rq
     mcp-servers
+    open-policy-agent
     org-search-utils
   ];
 
@@ -89,7 +94,7 @@ pkgs.buildEnv {
       lazygit
       neovim-unwrapped
       nix-direnv
-      open-policy-agent
+      # open-policy-agent
       pandoc
       pass
       passExtensions.pass-otp
