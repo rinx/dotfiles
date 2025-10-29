@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761714028110,
+  "lastUpdate": 1761716694241,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23093,6 +23093,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.6209816,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1dd627c17183c94344b1bfef5098a92ffd9c8020",
+          "message": "fix(nvim): fix macro path to compile fnl codes\n\ncannot resolve macro path and it causes compile failure.\nthe problem related to Olical/nfnl#62 and Olical/nfnl#63.\n\nthis commit introduces a workaround fot it.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-29T14:26:33+09:00",
+          "tree_id": "6b8ea6f08ef031df9d840dd057735f83af37da1b",
+          "url": "https://github.com/rinx/dotfiles/commit/1dd627c17183c94344b1bfef5098a92ffd9c8020"
+        },
+        "date": 1761716692501,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.245331699999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.7592034,
             "unit": "ms"
           }
         ]
