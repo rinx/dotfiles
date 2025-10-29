@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761718529455,
+  "lastUpdate": 1761749453535,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23161,6 +23161,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 93.83231750000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1c57e205a055412e9a44f258b93dcd93bc8ac52e",
+          "message": "config(kitty): enable tab management mappings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-29T23:34:53+09:00",
+          "tree_id": "736778e85439785b41767b8d431ddf8ece22462e",
+          "url": "https://github.com/rinx/dotfiles/commit/1c57e205a055412e9a44f258b93dcd93bc8ac52e"
+        },
+        "date": 1761749452404,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.2755132,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 97.1350163,
             "unit": "ms"
           }
         ]
