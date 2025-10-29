@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761702682832,
+  "lastUpdate": 1761704219181,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -22991,6 +22991,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 92.8147886,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b2a3e5b79060360fcd5d4a413546708a986d7bc1",
+          "message": "config(nix): disable opa build checks\n\ndue to opa 1.9.0 build on macos broken\nhttps://github.com/NixOS/nixpkgs/pull/446360\nhttps://github.com/rinx/dotfiles/actions/runs/18894312438/job/53928475773?pr=234\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-10-29T10:53:52+09:00",
+          "tree_id": "64615f42dd698698cecbe3ff4d5130c47bd1e618",
+          "url": "https://github.com/rinx/dotfiles/commit/b2a3e5b79060360fcd5d4a413546708a986d7bc1"
+        },
+        "date": 1761704218047,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.084032999999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 97.055772,
             "unit": "ms"
           }
         ]
