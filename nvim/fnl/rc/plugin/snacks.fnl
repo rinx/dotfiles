@@ -10,7 +10,10 @@
   {:bigfile
    {:enabled true}
    :image
-   {:enabled true}
+   {:enabled true
+    :doc
+    {:inline false
+     :float true}}
    :input {}
    :indent
    {:enabled true}
