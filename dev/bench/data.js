@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761966921554,
+  "lastUpdate": 1762076742756,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23263,6 +23263,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.65749730000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f82110ac3c9bc341879dc3d6c139d7e637acc5a6",
+          "message": "config(nvim): remove octo and use snacks.gh instead\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-02T18:29:55+09:00",
+          "tree_id": "c020e5fd2c00556b793298e58ef87018f33fd984",
+          "url": "https://github.com/rinx/dotfiles/commit/f82110ac3c9bc341879dc3d6c139d7e637acc5a6"
+        },
+        "date": 1762076741390,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.6781308,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.82490959999998,
             "unit": "ms"
           }
         ]
