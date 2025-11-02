@@ -74,8 +74,6 @@
                        :config (mod :leap)}
    :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
-   :pwntester/octo.nvim {:cmd [:Octo]
-                         :config (mod :octo)}
    :ghillb/cybu.nvim {:config (mod :cybu)
                       :event [:BufReadPost :BufAdd :BufNewFile]}
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
