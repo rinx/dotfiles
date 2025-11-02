@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1762076742756,
+  "lastUpdate": 1762076904042,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23297,6 +23297,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.82490959999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7faa0f45fc42a940c2b632fcb1cf07c5fe6ea07f",
+          "message": "chore(nix): remove useless input overrides\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-02T18:32:43+09:00",
+          "tree_id": "af4db5122d0a8da0ebb48f9ccca328f04389358a",
+          "url": "https://github.com/rinx/dotfiles/commit/7faa0f45fc42a940c2b632fcb1cf07c5fe6ea07f"
+        },
+        "date": 1762076902723,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.1685293,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 93.75841,
             "unit": "ms"
           }
         ]
