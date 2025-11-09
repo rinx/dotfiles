@@ -416,13 +416,17 @@
         view (agenda-types.agenda:new view-opts)]
     (-> (icollect [_ agenda-day (ipairs (view:_get_agenda_days))]
           (let [agenda (-> (icollect [_ item (ipairs agenda-day.agenda_items)]
-                            (let [entry (view:_build_line item agenda-day)
-                                  line (entry:compile)]
-                              line.content)))]
+                            (when item.index
+                              (let [entry (view:_build_line item agenda-day)
+                                    line (entry:compile)]
+                                line.content))))]
             {:year agenda-day.day.year
              :month agenda-day.day.month
              :day agenda-day.day.day
              :agenda agenda})))))
+
+(comment
+  (get_agenda :month 2025 11 1))
 
 (fn get_all_roam_nodes []
   (let [roam (require :org-roam)
