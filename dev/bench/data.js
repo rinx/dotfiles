@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1762140908082,
+  "lastUpdate": 1762650762824,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23365,6 +23365,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 93.89461320000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "524b749a979900c53b62e04b7b428cf0157c1ca2",
+          "message": "fix(nvim): remove workaround related to 1dd627c17183c94344b1bfef5098a92ffd9c8020\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-09T09:55:32+09:00",
+          "tree_id": "a0c9e982b994ff579c6eda4e610c29ca9751ab85",
+          "url": "https://github.com/rinx/dotfiles/commit/524b749a979900c53b62e04b7b428cf0157c1ca2"
+        },
+        "date": 1762650761560,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.8156566,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.56883080000003,
             "unit": "ms"
           }
         ]
