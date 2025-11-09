@@ -137,6 +137,7 @@
       {:silent true
        :desc "select snacks.picker source"})
 
+;; reference: https://github.com/folke/snacks.nvim/blob/eec6503bc0eda50b3151bf2739453aea4cd528b0/lua/snacks/picker/source/grep.lua#L105
 (local kensaku-finder
        (fn [opts ctx]
          (if (= ctx.filter.search "")
@@ -179,11 +180,11 @@
                                        (set item.pos [(tonumber line)
                                                       (tonumber (core.dec col))])))))]
                (proc.proc
-                 [opts
+                 (ctx:opts
                   {:notify false
                    :cmd :rg
                    :args args
-                   :transform transform}]
+                   :transform transform})
                  ctx)))))
 
 (set picker-sources.kensaku

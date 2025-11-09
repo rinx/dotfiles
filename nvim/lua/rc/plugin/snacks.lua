@@ -81,7 +81,7 @@ local function _6_(opts, ctx)
       end
     end
     transform = _9_
-    return proc.proc({opts, {cmd = "rg", args = args, transform = transform, notify = false}}, ctx)
+    return proc.proc(ctx:opts({cmd = "rg", args = args, transform = transform, notify = false}), ctx)
   end
 end
 kensaku_finder = _6_
