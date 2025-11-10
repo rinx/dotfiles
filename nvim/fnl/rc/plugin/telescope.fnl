@@ -53,8 +53,6 @@
    :LspStart
    :LspStop
    :MCPHub
-   "Octo pr list"
-   "Octo issue list"
    :OrgFind
    :OrgGrep
    :OrgKensaku
