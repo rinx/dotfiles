@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1763365615003,
+  "lastUpdate": 1763431365648,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23569,6 +23569,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 94.42261979999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "20bf91889fd77b073c89f6a04df259e455c4c255",
+          "message": "chore(deps): update actions/checkout action to v5.0.1 (#249)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2025-11-18T10:49:25+09:00",
+          "tree_id": "d90f4bb88b7d5d2809a39b1906eaceaf091aab5b",
+          "url": "https://github.com/rinx/dotfiles/commit/20bf91889fd77b073c89f6a04df259e455c4c255"
+        },
+        "date": 1763431364401,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 20.610572599999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.17324249999999,
             "unit": "ms"
           }
         ]
