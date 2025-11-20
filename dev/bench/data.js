@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1763648420402,
+  "lastUpdate": 1763653570952,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23739,6 +23739,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 95.5904568,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "eeb78a346386dc55582275c48d354e15eb7b9c8d",
+          "message": "config(nvim): replace todo trouble command\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-21T00:31:44+09:00",
+          "tree_id": "e25ae030afe1af93294db01bf2d2d4039968d02c",
+          "url": "https://github.com/rinx/dotfiles/commit/eeb78a346386dc55582275c48d354e15eb7b9c8d"
+        },
+        "date": 1763653569030,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.633001099999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.8483042,
             "unit": "ms"
           }
         ]
