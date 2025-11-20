@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1763607788643,
+  "lastUpdate": 1763633078630,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23671,6 +23671,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 95.07454329999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a6f9a8c81d678218f0d771e678fc927b394b1c2e",
+          "message": "config(nvim): fix trouble related shortcuts\n\nand add picker option used for trouble\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-20T18:46:24+09:00",
+          "tree_id": "1ac67ed0c67b0100b41095278b93f87ce2b76681",
+          "url": "https://github.com/rinx/dotfiles/commit/a6f9a8c81d678218f0d771e678fc927b394b1c2e"
+        },
+        "date": 1763633077259,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.3753471,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 97.6516104,
             "unit": "ms"
           }
         ]
