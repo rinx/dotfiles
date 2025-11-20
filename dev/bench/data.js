@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1763633078630,
+  "lastUpdate": 1763648420402,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23705,6 +23705,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.6516104,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4c10287a5b0c257f9b817250daf3e72486543701",
+          "message": "config(nvim): add klines picker\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-20T23:06:20+09:00",
+          "tree_id": "1b25101abb028caf4f3777808a66d1d53e6f5625",
+          "url": "https://github.com/rinx/dotfiles/commit/4c10287a5b0c257f9b817250daf3e72486543701"
+        },
+        "date": 1763648418636,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.015763800000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.5904568,
             "unit": "ms"
           }
         ]
