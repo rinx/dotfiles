@@ -150,29 +150,43 @@
        (fn [opts ctx]
          (if (= ctx.filter.search "")
              (fn [])
-             (let [cwd (svim.fs.normalize
-                         (if (and opts opts.cwd)
-                             opts.cwd
-                             (or (vim.uv.cwd) :.)))
+             (let [cwd (when (not opts.buffers)
+                         (svim.fs.normalize
+                           (if (and opts opts.cwd)
+                               opts.cwd
+                               (or (vim.uv.cwd) :.))))
+                   paths (if opts.buffers
+                           (->> (icollect [_ buf (ipairs (vim.api.nvim_list_bufs))]
+                                  (let [name (vim.api.nvim_buf_get_name buf)]
+                                    (when (and (~= name "")
+                                               (let [b (core.get vim.bo buf)]
+                                                 b.buflisted)
+                                               (vim.uv.fs_stat name))
+                                      name)))
+                                (core.filter (fn [x] (not (core.nil? x))))
+                                (core.map svim.fs.normalize))
+                           [])
                    pattern (snacks.picker.util.parse ctx.filter.search)
                    kensaku-pattern (vim.fn.kensaku#query
                                      pattern
                                      {:rxop vim.g.kensaku#rxop#javascript})
-                   args [:--color=never
-                         :--no-heading
-                         :--no-ignore
-                         :--with-filename
-                         :--line-number
-                         :--column
-                         :--smart-case
-                         :--max-columns=500
-                         :--max-columns-preview
-                         :-g
-                         :!.git
-                         :--hidden
-                         :-L
-                         :--
-                         kensaku-pattern]
+                   args (core.concat
+                          [:--color=never
+                           :--no-heading
+                           :--no-ignore
+                           :--with-filename
+                           :--line-number
+                           :--column
+                           :--smart-case
+                           :--max-columns=500
+                           :--max-columns-preview
+                           :-g
+                           :!.git
+                           :--hidden
+                           :-L
+                           :--
+                           kensaku-pattern]
+                          paths)
                    proc (require :snacks.picker.source.proc)
                    transform (fn [item]
                                (set item.cwd cwd)
@@ -207,6 +221,23 @@
       ":<C-u>lua Snacks.picker.kensaku()<CR>"
       {:silent true
        :desc "live kensaku via snacks.picker"})
+
+(set picker-sources.klines
+     {:finder kensaku-finder
+      :regex true
+      :format :file
+      :show_empty true
+      :live true
+      :supports_live true
+      :buffers true
+      :layout
+      {:preview :main
+       :preset :ivy}})
+(map! [:n]
+      ",K"
+      ":<C-u>lua Snacks.picker.klines()<CR>"
+      {:silent true
+       :desc "live kensaku for buffers via snacks.picker"})
 
 (set picker-sources.filetype
      {:items (core.map
