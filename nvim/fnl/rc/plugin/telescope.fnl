@@ -78,14 +78,14 @@
    "TelescopeRoamNodesByTag project"
    "TelescopeRoamNodesByTag scrap"
    "TelescopeRoamNodesByTag wiki"
-   :TodoTrouble
    "Trouble diagnostics"
    "Trouble loclist"
    "Trouble lsp"
    "Trouble lsp_references"
    "Trouble quickfix"
    "Trouble snacks"
-   "Trouble snacks_files"])
+   "Trouble snacks_files"
+   "Trouble todo"])
 
 (telescope.setup
   {:defaults
