@@ -4,6 +4,7 @@ local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local snacks = require("snacks")
 local picker_sources = require("snacks.picker.config.sources")
+local trouble_source_snacks = autoload("trouble.sources.snacks")
 local function _2_(self)
   local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
   if (f == "") then
@@ -19,7 +20,7 @@ end
 local function _5_(self)
   return vim.cmd("stopinsert")
 end
-snacks.setup({bigfile = {enabled = true}, image = {enabled = true, doc = {float = true, inline = false}}, input = {}, indent = {enabled = true}, notifier = {enabled = true}, picker = {}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _2_, term_normal = {"<esc>", _5_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
+snacks.setup({bigfile = {enabled = true}, image = {enabled = true, doc = {float = true, inline = false}}, input = {}, indent = {enabled = true}, notifier = {enabled = true}, picker = {actions = trouble_source_snacks.actions, win = {input = {keys = {["<c-t>"] = {"trouble_open", mode = {"n", "i"}}}}}}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _2_, term_normal = {"<esc>", _5_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
 local function map__3e(toggle, key)
   return toggle:map(key)
 end

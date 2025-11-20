@@ -29,11 +29,6 @@
       {:silent true
        :desc "Trouble: toggle lsp sidebar"})
 (map! [:n]
-      "<leader>xs"
-      ":<C-u>Trouble symbols toggle focus=false<CR>"
-      {:silent true
-       :desc "Trouble: toggle symbols"})
-(map! [:n]
       "<leader>xq"
       ":<C-u>Trouble qflist toggle<CR>"
       {:silent true

@@ -3,6 +3,7 @@
 
 (local snacks (require :snacks))
 (local picker-sources (require :snacks.picker.config.sources))
+(local trouble-source-snacks (autoload :trouble.sources.snacks))
 
 (import-macros {: map!} :rc.macros)
 
@@ -19,7 +20,14 @@
    {:enabled true}
    :notifier
    {:enabled true}
-   :picker {}
+   :picker
+   {:actions trouble-source-snacks.actions
+    :win
+    {:input
+     {:keys
+      {:<c-t>
+       {1 :trouble_open
+        :mode [:n :i]}}}}}
    :quickfile
    {:enabled true}
    :terminal

@@ -79,12 +79,13 @@
    "TelescopeRoamNodesByTag scrap"
    "TelescopeRoamNodesByTag wiki"
    :TodoTrouble
-   :TroubleToggle
-   "TroubleToggle loclist"
-   "TroubleToggle lsp_document_diagnostics"
-   "TroubleToggle lsp_references"
-   "TroubleToggle lsp_workspace_diagnostics"
-   "TroubleToggle quickfix"])
+   "Trouble diagnostics"
+   "Trouble loclist"
+   "Trouble lsp"
+   "Trouble lsp_references"
+   "Trouble quickfix"
+   "Trouble snacks"
+   "Trouble snacks_files"])
 
 (telescope.setup
   {:defaults
