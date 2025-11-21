@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1763735734134,
+  "lastUpdate": 1763735792608,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -23875,6 +23875,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.0514793,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "804165b86d516f1d2b2703cf2c39b35fcb9388c0",
+          "message": "config(nix): use its own nixpkgs revision for mcp-servers-nix\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-21T23:22:14+09:00",
+          "tree_id": "6a21768df3bd20c897d13716ea61d2f7f03f9beb",
+          "url": "https://github.com/rinx/dotfiles/commit/804165b86d516f1d2b2703cf2c39b35fcb9388c0"
+        },
+        "date": 1763735791531,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.7642198,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.9086572,
             "unit": "ms"
           }
         ]
