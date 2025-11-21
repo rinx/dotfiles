@@ -47,64 +47,61 @@ vim.keymap.set("n", "<C-\\>", ":<C-u>lua Snacks.picker()<CR>", {silent = true, d
 local kensaku_finder
 local function _6_(opts, ctx)
   if (ctx.filter.search == "") then
-    local function _7_()
+    if opts["current-buf"] then
+      local l = require("snacks.picker.source.lines")
+      return l.lines(opts, ctx)
+    else
+      local function _7_()
+      end
+      return _7_
     end
-    return _7_
   else
     local cwd
-    if not opts.buffers then
-      local function _8_()
+    if not opts["current-buf"] then
+      local function _9_()
         if (opts and opts.cwd) then
           return opts.cwd
         else
           return (vim.uv.cwd() or ".")
         end
       end
-      cwd = svim.fs.normalize(_8_())
+      cwd = svim.fs.normalize(_9_())
     else
       cwd = nil
     end
+    local buf
+    do
+      local buf0 = ctx.filter.current_buf
+      if (buf0 == 0) then
+        buf = vim.api.nvim_get_current_buf()
+      else
+        buf = buf0
+      end
+    end
     local paths
-    if opts.buffers then
-      local function _10_(x)
-        return not core["nil?"](x)
+    if opts["current-buf"] then
+      local name = vim.api.nvim_buf_get_name(buf)
+      if vim.uv.fs_stat(name) then
+        paths = {svim.fs.normalize(name)}
+      else
+        paths = {}
       end
-      local function _11_()
-        local tbl_26_ = {}
-        local i_27_ = 0
-        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-          local val_28_
-          do
-            local name = vim.api.nvim_buf_get_name(buf)
-            local and_12_ = (name ~= "")
-            if and_12_ then
-              local b = core.get(vim.bo, buf)
-              and_12_ = b.buflisted
-            end
-            if (and_12_ and vim.uv.fs_stat(name)) then
-              val_28_ = name
-            else
-              val_28_ = nil
-            end
-          end
-          if (nil ~= val_28_) then
-            i_27_ = (i_27_ + 1)
-            tbl_26_[i_27_] = val_28_
-          else
-          end
-        end
-        return tbl_26_
-      end
-      paths = core.map(svim.fs.normalize, core.filter(_10_, _11_()))
     else
       paths = {}
+    end
+    local extmarks
+    if opts["current-buf"] then
+      local hl = require("snacks.picker.util.highlight")
+      extmarks = hl.get_highlights({buf = buf, extmarks = true})
+    else
+      extmarks = nil
     end
     local pattern = snacks.picker.util.parse(ctx.filter.search)
     local kensaku_pattern = vim.fn["kensaku#query"](pattern, {rxop = vim.g["kensaku#rxop#javascript"]})
     local args = core.concat({"--color=never", "--no-heading", "--no-ignore", "--with-filename", "--line-number", "--column", "--smart-case", "--max-columns=500", "--max-columns-preview", "-g", "!.git", "--hidden", "-L", "--", kensaku_pattern}, paths)
     local proc = require("snacks.picker.source.proc")
     local transform
-    local function _17_(item)
+    local function _15_(item)
       item.cwd = cwd
       local file, line, col, text = item.text:match("^(.+):(%d+):(%d+):(.*)$")
       if not file then
@@ -114,21 +111,33 @@ local function _6_(opts, ctx)
         end
         return false
       else
-        item.line = text
-        item.file = file
-        item.pos = {tonumber(line), tonumber(core.dec(col))}
-        return nil
+        if opts["current-buf"] then
+          item.buf = buf
+          item.text = text
+          item.pos = {tonumber(line), tonumber(core.dec(col))}
+          if extmarks then
+            item.highlights = core.get(extmarks, tonumber(line))
+            return nil
+          else
+            return nil
+          end
+        else
+          item.line = text
+          item.file = file
+          item.pos = {tonumber(line), tonumber(core.dec(col))}
+          return nil
+        end
       end
     end
-    transform = _17_
+    transform = _15_
     return proc.proc(ctx:opts({cmd = "rg", args = args, transform = transform, notify = false}), ctx)
   end
 end
 kensaku_finder = _6_
 picker_sources.kensaku = {finder = kensaku_finder, regex = true, format = "file", show_empty = true, live = true, supports_live = true}
 vim.keymap.set("n", ",k", ":<C-u>lua Snacks.picker.kensaku()<CR>", {silent = true, desc = "live kensaku via snacks.picker"})
-picker_sources.klines = {finder = kensaku_finder, regex = true, format = "file", show_empty = true, live = true, supports_live = true, buffers = true, layout = {preview = "main", preset = "ivy"}}
-vim.keymap.set("n", ",K", ":<C-u>lua Snacks.picker.klines()<CR>", {silent = true, desc = "live kensaku for buffers via snacks.picker"})
+picker_sources.klines = {finder = kensaku_finder, regex = true, format = "lines", show_empty = true, live = true, supports_live = true, ["current-buf"] = true, layout = {preview = "main", preset = "ivy"}}
+vim.keymap.set("n", ",K", ":<C-u>lua Snacks.picker.klines()<CR>", {silent = true, desc = "live kensaku for current buffer via snacks.picker"})
 local function _21_(ft)
   return {name = ft, text = ft}
 end

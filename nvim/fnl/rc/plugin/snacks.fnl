@@ -149,23 +149,30 @@
 (local kensaku-finder
        (fn [opts ctx]
          (if (= ctx.filter.search "")
-             (fn [])
-             (let [cwd (when (not opts.buffers)
+             (if opts.current-buf
+               (let [l (require :snacks.picker.source.lines)]
+                 (l.lines opts ctx))
+               (fn []))
+             (let [cwd (when (not opts.current-buf)
                          (svim.fs.normalize
                            (if (and opts opts.cwd)
                                opts.cwd
                                (or (vim.uv.cwd) :.))))
-                   paths (if opts.buffers
-                           (->> (icollect [_ buf (ipairs (vim.api.nvim_list_bufs))]
-                                  (let [name (vim.api.nvim_buf_get_name buf)]
-                                    (when (and (~= name "")
-                                               (let [b (core.get vim.bo buf)]
-                                                 b.buflisted)
-                                               (vim.uv.fs_stat name))
-                                      name)))
-                                (core.filter (fn [x] (not (core.nil? x))))
-                                (core.map svim.fs.normalize))
+                   buf (let [buf ctx.filter.current_buf]
+                         (if (= buf 0)
+                           (vim.api.nvim_get_current_buf)
+                           buf))
+                   paths (if opts.current-buf
+                           (let [name (vim.api.nvim_buf_get_name buf)]
+                             (if (vim.uv.fs_stat name)
+                              [(svim.fs.normalize name)]
+                              []))
                            [])
+                   extmarks (when opts.current-buf
+                              (let [hl (require :snacks.picker.util.highlight)]
+                                (hl.get_highlights
+                                  {:buf buf
+                                   :extmarks true})))
                    pattern (snacks.picker.util.parse ctx.filter.search)
                    kensaku-pattern (vim.fn.kensaku#query
                                      pattern
@@ -196,11 +203,20 @@
                                        (when (not (item.text:match :WARNING))
                                          (snacks.notify.error (.. "invalid grep output:\n" item.text)))
                                        false)
-                                     (do
-                                       (set item.line text)
-                                       (set item.file file)
-                                       (set item.pos [(tonumber line)
-                                                      (tonumber (core.dec col))])))))]
+                                     (if opts.current-buf
+                                       (do
+                                        (set item.buf buf)
+                                        (set item.text text)
+                                        (set item.pos [(tonumber line)
+                                                       (tonumber (core.dec col))])
+                                        (when extmarks
+                                          (set item.highlights (core.get extmarks (tonumber line)))))
+                                       (do
+                                        (set item.line text)
+                                        (set item.file file)
+                                        (set item.pos [(tonumber line)
+                                                       (tonumber (core.dec col))]))))))]
+
                (proc.proc
                  (ctx:opts
                   {:notify false
@@ -225,11 +241,11 @@
 (set picker-sources.klines
      {:finder kensaku-finder
       :regex true
-      :format :file
+      :format :lines
       :show_empty true
       :live true
       :supports_live true
-      :buffers true
+      :current-buf true
       :layout
       {:preview :main
        :preset :ivy}})
@@ -237,7 +253,7 @@
       ",K"
       ":<C-u>lua Snacks.picker.klines()<CR>"
       {:silent true
-       :desc "live kensaku for buffers via snacks.picker"})
+       :desc "live kensaku for current buffer via snacks.picker"})
 
 (set picker-sources.filetype
      {:items (core.map
