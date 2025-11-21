@@ -22,7 +22,6 @@
     };
     mcp-servers-nix = {
       url = "github:natsukium/mcp-servers-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
