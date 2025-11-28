@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764324372502,
+  "lastUpdate": 1764341424636,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24113,6 +24113,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 95.45761129999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "97981431c2588e12433a767868f8daec5b5929ff",
+          "message": "config(nvim): override lsp-related mappings with snacks picker\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-28T23:35:53+09:00",
+          "tree_id": "ce23d9e8155710fe5e58d7ed60bec9b9565be47c",
+          "url": "https://github.com/rinx/dotfiles/commit/97981431c2588e12433a767868f8daec5b5929ff"
+        },
+        "date": 1764341422751,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.333904399999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.9988668,
             "unit": "ms"
           }
         ]
