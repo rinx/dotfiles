@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764182405506,
+  "lastUpdate": 1764324372502,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24079,6 +24079,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.74562,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "706155ae85ace4786a478586fd4fc834af7591d6",
+          "message": "config(nvim): add several picker mappings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-28T18:51:52+09:00",
+          "tree_id": "2d58cd0c49333f552a2bfeea9061865d101166bb",
+          "url": "https://github.com/rinx/dotfiles/commit/706155ae85ace4786a478586fd4fc834af7591d6"
+        },
+        "date": 1764324370609,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.631937299999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.45761129999998,
             "unit": "ms"
           }
         ]
