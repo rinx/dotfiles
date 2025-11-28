@@ -85,6 +85,11 @@
       {:silent true
        :desc "select command from history via snacks.picker"})
 (map! [:n]
+      ",x"
+      ":<C-u>lua Snacks.picker.diagnostics()<CR>"
+      {:silent true
+       :desc "select diagnostics via snacks.picker"})
+(map! [:n]
       ",f"
       ":<C-u>lua Snacks.picker.files()<CR>"
       {:silent true
@@ -124,6 +129,16 @@
       ":<C-u>lua Snacks.picker.help()<CR>"
       {:silent true
        :desc "search helptags via snacks.picker"})
+(map! [:n]
+      ",r"
+      ":<C-u>lua Snacks.picker.resume()<CR>"
+      {:silent true
+       :desc "resume last picker"})
+(map! [:n]
+      ",s"
+      ":<C-u>lua Snacks.picker.search_history()<CR>"
+      {:silent true
+       :desc "select search history via snacks.picker"})
 (map! [:n]
       ",u"
       ":<C-u>lua Snacks.picker.undo()<CR>"
