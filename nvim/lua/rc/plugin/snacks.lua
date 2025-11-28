@@ -40,6 +40,8 @@ vim.keymap.set("n", ",gf", ":<C-u>lua Snacks.picker.git_files()<CR>", {silent = 
 vim.keymap.set("n", ",gg", ":<C-u>lua Snacks.picker.git_grep()<CR>", {silent = true, desc = "git-grep via snacks.picker"})
 vim.keymap.set("n", ",gb", ":<C-u>lua Snacks.picker.git_branches()<CR>", {silent = true, desc = "switch git branch via snacks.picker"})
 vim.keymap.set("n", ",gc", ":<C-u>lua Snacks.picker.git_log()<CR>", {silent = true, desc = "select git commit via snacks.picker"})
+vim.keymap.set("n", ",ghi", ":<C-u>lua Snacks.picker.gh_issue()<CR>", {silent = true, desc = "select github issue via snacks.picker"})
+vim.keymap.set("n", ",ghp", ":<C-u>lua Snacks.picker.gh_pr()<CR>", {silent = true, desc = "select github pr via snacks.picker"})
 vim.keymap.set("n", ",h", ":<C-u>lua Snacks.picker.help()<CR>", {silent = true, desc = "search helptags via snacks.picker"})
 vim.keymap.set("n", ",r", ":<C-u>lua Snacks.picker.resume()<CR>", {silent = true, desc = "resume last picker"})
 vim.keymap.set("n", ",s", ":<C-u>lua Snacks.picker.search_history()<CR>", {silent = true, desc = "select search history via snacks.picker"})

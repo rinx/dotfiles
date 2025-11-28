@@ -125,6 +125,16 @@
       {:silent true
        :desc "select git commit via snacks.picker"})
 (map! [:n]
+      ",ghi"
+      ":<C-u>lua Snacks.picker.gh_issue()<CR>"
+      {:silent true
+       :desc "select github issue via snacks.picker"})
+(map! [:n]
+      ",ghp"
+      ":<C-u>lua Snacks.picker.gh_pr()<CR>"
+      {:silent true
+       :desc "select github pr via snacks.picker"})
+(map! [:n]
       ",h"
       ":<C-u>lua Snacks.picker.help()<CR>"
       {:silent true

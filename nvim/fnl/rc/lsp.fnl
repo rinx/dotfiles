@@ -64,10 +64,33 @@
      (vim.lsp.with vim.lsp.handlers.signature_help {:border "rounded"}))
 
 (map! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" {:silent true})
-(map! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" {:silent true})
-(map! [:n] :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>" {:silent true})
-(map! [:n] :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>" {:silent true})
-(map! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" {:silent true})
+
+; (map! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" {:silent true})
+; (map! [:n] :gD ":<C-u>lua vim.lsp.buf.declaration()<CR>" {:silent true})
+; (map! [:n] :gi ":<C-u>lua vim.lsp.buf.implementation()<CR>" {:silent true})
+; (map! [:n] :gr ":<C-u>lua vim.lsp.buf.references()<CR>" {:silent true})
+
+(map! [:n]
+      :gd
+      ":<C-u>lua Snacks.picker.lsp_definitions({layout = {preset = \"bottom\"}})<CR>"
+      {:silent true
+       :desc "show lsp definitions"})
+(map! [:n]
+      :gD
+      ":<C-u>lua Snacks.picker.lsp_declarations({layout = {preset = \"bottom\"}})<CR>"
+      {:silent true
+       :desc "show lsp declarations"})
+(map! [:n]
+      :gi
+      ":<C-u>lua Snacks.picker.lsp_implementations({layout = {preset = \"bottom\"}})<CR>"
+      {:silent true
+       :desc "show lsp implementations"})
+(map! [:n]
+      :gr
+      ":<C-u>lua Snacks.picker.lsp_references({layout = {preset = \"bottom\"}})<CR>"
+      {:silent true
+       :desc "show lsp references"})
+
 (map! [:n] :gs ":<C-u>lua vim.lsp.buf.signature_help()<CR>" {:silent true})
 
 (map! [:n] "<Leader>f" ":<C-u>lua vim.lsp.buf.format()<CR>" {:silent true})
