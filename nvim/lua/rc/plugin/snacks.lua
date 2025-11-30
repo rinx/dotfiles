@@ -156,4 +156,18 @@ local function _23_(picker, item)
   return vim.cmd.set(("ft=" .. item.text))
 end
 picker_sources.filetype = {items = core.map(_21_, vim.fn.getcompletion("", "filetype")), source = "filetype", layout = "select", format = _22_, confirm = _23_}
-return vim.keymap.set("n", ",t", ":<C-u>lua Snacks.picker.filetype()<CR>", {silent = true, desc = "select filetype via snacks.picker"})
+vim.keymap.set("n", ",t", ":<C-u>lua Snacks.picker.filetype()<CR>", {silent = true, desc = "select filetype via snacks.picker"})
+local confirm_cmd
+local function _24_(picker, item)
+  picker:close()
+  if (item and item.cmd) then
+    vim.fn.histadd("cmd", item.cmd)
+    return vim.cmd(item.cmd)
+  else
+    return nil
+  end
+end
+confirm_cmd = _24_
+picker_sources.command_history.confirm = confirm_cmd
+picker_sources.commands.confirm = confirm_cmd
+return nil

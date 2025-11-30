@@ -301,3 +301,14 @@
       ":<C-u>lua Snacks.picker.filetype()<CR>"
       {:silent true
        :desc "select filetype via snacks.picker"})
+
+(local confirm-cmd
+       (fn [picker item]
+         (picker:close)
+         (when (and item item.cmd)
+           (vim.fn.histadd :cmd item.cmd)
+           (vim.cmd item.cmd))))
+
+;; override command picker confirm action
+(set picker-sources.command_history.confirm confirm-cmd)
+(set picker-sources.commands.confirm confirm-cmd)
