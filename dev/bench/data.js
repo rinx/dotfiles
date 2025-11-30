@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764341424636,
+  "lastUpdate": 1764471916547,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24147,6 +24147,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.9988668,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "53124f3e313c2b4244b7fb96a7531c5866ed9403",
+          "message": "config(nvim): override confirm function for command pickers\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-11-30T11:50:54+09:00",
+          "tree_id": "d65795294d1c321506c37dcf0d756e07f5f43d1e",
+          "url": "https://github.com/rinx/dotfiles/commit/53124f3e313c2b4244b7fb96a7531c5866ed9403"
+        },
+        "date": 1764471914834,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.4963278,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 94.3985291,
             "unit": "ms"
           }
         ]
