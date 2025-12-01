@@ -47,7 +47,7 @@ vim.keymap.set("n", ",r", ":<C-u>lua Snacks.picker.resume()<CR>", {silent = true
 vim.keymap.set("n", ",s", ":<C-u>lua Snacks.picker.search_history()<CR>", {silent = true, desc = "select search history via snacks.picker"})
 vim.keymap.set("n", ",u", ":<C-u>lua Snacks.picker.undo()<CR>", {silent = true, desc = "undo history via snacks.picker"})
 vim.keymap.set("n", ",/", ":<C-u>lua Snacks.picker.lines()<CR>", {silent = true, desc = "line search via snacks.picker"})
-vim.keymap.set("n", "<Leader><Leader>", ":<C-u>lua Snacks.picker.commands()<CR>", {silent = true, desc = "select commands via snacks.picker"})
+vim.keymap.set("n", "<Leader><Leader>", ":<C-u>lua Snacks.picker.commands({ layout = { preset = \"vscode\"}})<CR>", {silent = true, desc = "select commands via snacks.picker"})
 vim.keymap.set("n", "<C-\\>", ":<C-u>lua Snacks.picker()<CR>", {silent = true, desc = "select snacks.picker source"})
 local kensaku_finder
 local function _6_(opts, ctx)

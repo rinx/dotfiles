@@ -161,7 +161,7 @@
        :desc "line search via snacks.picker"})
 (map! [:n]
       :<Leader><Leader>
-      ":<C-u>lua Snacks.picker.commands()<CR>"
+      ":<C-u>lua Snacks.picker.commands({ layout = { preset = \"vscode\"}})<CR>"
       {:silent true
        :desc "select commands via snacks.picker"})
 (map! [:n]
