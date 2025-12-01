@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764597291401,
+  "lastUpdate": 1764598077580,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24351,6 +24351,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.9588123,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "dfeba9a2bd6410c66397b4501add2d0ef3347255",
+          "message": "config(nvim): use snacks.bufdelete for buffer delete mappings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-01T22:52:24+09:00",
+          "tree_id": "6f7f3c551a0076a8f3128fd9e60f3bd403f1d1fe",
+          "url": "https://github.com/rinx/dotfiles/commit/dfeba9a2bd6410c66397b4501add2d0ef3347255"
+        },
+        "date": 1764598076127,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.6733211,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 105.9074147,
             "unit": "ms"
           }
         ]
