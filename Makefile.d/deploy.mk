@@ -6,6 +6,7 @@ prepare-deploy:
 neovim-deploy: \
     init.lua \
     nvim-lua \
+    nvim-snippets \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
 
@@ -22,6 +23,13 @@ $(HOME)/.config/nvim/lua:
 	@$(call cyan, "--\> nvim/lua directory for nvim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/nvim/lua $(HOME)/.config/nvim/lua
+
+.PHONY: nvim-snippets
+nvim-snippets: $(HOME)/.config/nvim/snippets
+$(HOME)/.config/nvim/snippets:
+	@$(call cyan, "--\> nvim/snippets directory for nvim")
+	mkdir -p $(HOME)/.config/nvim
+	ln -s $(DOTDIR)/nvim/snippets $(HOME)/.config/nvim/snippets
 
 .PHONY: skk-jisyo-large
 skk-jisyo-large: $(HOME)/.SKK-JISYO.L

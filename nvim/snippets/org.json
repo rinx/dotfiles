@@ -1,0 +1,9 @@
+{
+  "caption": {
+    "description": "#+CAPTION attribute",
+    "prefix": "caption",
+    "body": [
+      "#+CAPTION: ${1:caption}"
+    ]
+  }
+}
