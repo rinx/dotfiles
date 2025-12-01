@@ -312,3 +312,97 @@
 ;; override command picker confirm action
 (set picker-sources.command_history.confirm confirm-cmd)
 (set picker-sources.commands.confirm confirm-cmd)
+
+(local custom-actions
+  ["cd %:p:h"
+   "lua Snacks.git.blame_line()"
+   "lua Snacks.gitbrowse()"
+   "lua Snacks.lazygit()"
+   "lua Snacks.notifier.hide()"
+   "lua Snacks.notifier.show_history()"
+   "lua Snacks.picker.gh_issue()"
+   "lua Snacks.picker.gh_issue({ state = \"all\" })"
+   "lua Snacks.picker.gh_pr()"
+   "lua Snacks.picker.gh_pr({ state = \"all\" })"
+   "lua Snacks.picker.notifications()"
+   "lua Snacks.terminal.toggle()"
+   "lua Snacks.terminal.open()"
+   :AvanteAsk
+   :AvanteChat
+   :AvanteToggle
+   :ConjureConnect
+   :ConjureLogSplit
+   :ConjureLogVSplit
+   :ConjureCljDebugInit
+   :DapContinue
+   :DapListBreakpoints
+   :DapStepInto
+   :DapStepOut
+   :DapStepOver
+   :DapToggleBreakpoint
+   :DapViewToggle
+   :Ghq
+   :Inspect
+   :InspectTree
+   :Lazy
+   "Lazy check"
+   "Lazy update"
+   "Lazy profile"
+   :LspInfo
+   :LspRestart
+   :LspStart
+   :LspStop
+   :MCPHub
+   :OrgFind
+   :OrgGrep
+   :OrgKensaku
+   :OrgInbox
+   :OrgJournal
+   :OrgRefileToToday
+   :PasteImage
+   :RoamCommitPush
+   :RoamGrep
+   :RoamKensaku
+   :RoamPull
+   :RoamRefreshSearchIndex
+   :RoamReset
+   :RoamStatus
+   "Telescope dap list_breakpoints"
+   "Telescope repo list"
+   "Telescope orgmode refile_heading"
+   "Telescope orgmode search_headings"
+   "Telescope orgmode insert_link"
+   "TelescopeRoamNodesByTag book"
+   "TelescopeRoamNodesByTag code"
+   "TelescopeRoamNodesByTag fleeting"
+   "TelescopeRoamNodesByTag project"
+   "TelescopeRoamNodesByTag scrap"
+   "TelescopeRoamNodesByTag wiki"
+   "Trouble diagnostics"
+   "Trouble loclist"
+   "Trouble lsp"
+   "Trouble lsp_references"
+   "Trouble quickfix"
+   "Trouble snacks"
+   "Trouble snacks_files"
+   "Trouble todo"])
+
+(set picker-sources.custom_actions
+     {:items (core.map
+               (fn [cmd]
+                 {:name cmd
+                  :text cmd
+                  :cmd cmd})
+               custom-actions)
+      :layout {:preset :vscode}
+      :preview :none
+      :format (fn [item]
+                [[]
+                 [item.name]])
+      :confirm confirm-cmd})
+
+(map! [:n]
+      :<Leader>h
+      ":<C-u>lua Snacks.picker.custom_actions()<CR>"
+      {:silent true
+       :desc "select custom action via snacks.picker"})

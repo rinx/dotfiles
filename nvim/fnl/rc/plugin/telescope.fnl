@@ -13,80 +13,6 @@
 
 (local icontab icon.tab)
 
-(local action-cmds
-  ["cd %:p:h"
-   "lua Snacks.git.blame_line()"
-   "lua Snacks.gitbrowse()"
-   "lua Snacks.lazygit()"
-   "lua Snacks.notifier.hide()"
-   "lua Snacks.notifier.show_history()"
-   "lua Snacks.picker.gh_issue()"
-   "lua Snacks.picker.gh_issue({ state = \"all\" })"
-   "lua Snacks.picker.gh_pr()"
-   "lua Snacks.picker.gh_pr({ state = \"all\" })"
-   "lua Snacks.picker.notifications()"
-   "lua Snacks.terminal.toggle()"
-   "lua Snacks.terminal.open()"
-   :AvanteAsk
-   :AvanteChat
-   :AvanteToggle
-   :ConjureConnect
-   :ConjureLogSplit
-   :ConjureLogVSplit
-   :ConjureCljDebugInit
-   :DapContinue
-   :DapListBreakpoints
-   :DapStepInto
-   :DapStepOut
-   :DapStepOver
-   :DapToggleBreakpoint
-   :DapViewToggle
-   :Ghq
-   :Inspect
-   :InspectTree
-   :Lazy
-   "Lazy check"
-   "Lazy update"
-   "Lazy profile"
-   :LspInfo
-   :LspRestart
-   :LspStart
-   :LspStop
-   :MCPHub
-   :OrgFind
-   :OrgGrep
-   :OrgKensaku
-   :OrgInbox
-   :OrgJournal
-   :OrgRefileToToday
-   :PasteImage
-   :RoamCommitPush
-   :RoamGrep
-   :RoamKensaku
-   :RoamPull
-   :RoamRefreshSearchIndex
-   :RoamReset
-   :RoamStatus
-   "Telescope dap list_breakpoints"
-   "Telescope repo list"
-   "Telescope orgmode refile_heading"
-   "Telescope orgmode search_headings"
-   "Telescope orgmode insert_link"
-   "TelescopeRoamNodesByTag book"
-   "TelescopeRoamNodesByTag code"
-   "TelescopeRoamNodesByTag fleeting"
-   "TelescopeRoamNodesByTag project"
-   "TelescopeRoamNodesByTag scrap"
-   "TelescopeRoamNodesByTag wiki"
-   "Trouble diagnostics"
-   "Trouble loclist"
-   "Trouble lsp"
-   "Trouble lsp_references"
-   "Trouble quickfix"
-   "Trouble snacks"
-   "Trouble snacks_files"
-   "Trouble todo"])
-
 (telescope.setup
   {:defaults
    {:mappings
@@ -110,18 +36,6 @@
     {:search_dirs ["~/local/src"]}))
 (vim.api.nvim_create_user_command :Ghq telescope-ghq {})
 
-(fn telescope-actions []
-  (let [p (pickers.new
-            (themes.get_dropdown {})
-            {:prompt_title :Actions
-             :finder (finders.new_table {:results action-cmds})
-             :sorter (sorters.get_fzy_sorter)
-             :attach_mappings (fn [_ map]
-                                (map :i :<CR> actions.set_command_line)
-                                true)})]
-    (p:find)))
-(vim.api.nvim_create_user_command :TelescopeActions telescope-actions {})
-
 (fn telescope-roam-nodes-by-tag [opts]
   (let [tag (. opts.fargs 1)
         roam (require :org-roam)
@@ -142,6 +56,3 @@
              :previewer (previewers.cat.new {})})]
     (p:find)))
 (vim.api.nvim_create_user_command :TelescopeRoamNodesByTag telescope-roam-nodes-by-tag {:nargs 1})
-
-(map! [:n] :<Leader>h ":<C-u>TelescopeActions<CR>" {:silent true
-                                                    :desc "Select action via telescope"})
