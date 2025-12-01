@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764594109827,
+  "lastUpdate": 1764596133135,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24283,6 +24283,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.7317382,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ec12dfb261f0ed64485c8408aae10469fd88e69b",
+          "message": "chore(nvim): remove useless fnl/lua file\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-01T22:20:28+09:00",
+          "tree_id": "99a4d3765bbef7db29877eb8ac17f44605077191",
+          "url": "https://github.com/rinx/dotfiles/commit/ec12dfb261f0ed64485c8408aae10469fd88e69b"
+        },
+        "date": 1764596131982,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.606521800000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.4349657,
             "unit": "ms"
           }
         ]
