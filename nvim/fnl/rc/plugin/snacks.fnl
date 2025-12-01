@@ -60,6 +60,18 @@
 (map-> (snacks.toggle.option :relativenumber {:name "Relative number"}) :<leader>r)
 (map-> (snacks.toggle.inlay_hints) :<leader>i)
 
+;; bufdelete
+(map! [:n]
+      ",bd"
+      ":<C-u>lua Snacks.bufdelete()<CR>"
+      {:silent true
+       :desc "delete current buffer"})
+(map! [:n]
+      ",bD"
+      ":<C-u>lua Snacks.bufdelete.other()<CR>"
+      {:silent true
+       :desc "delete all buffers except for current one"})
+
 ;; terminal
 (map! [:n]
       :<leader>w
@@ -75,7 +87,7 @@
        :desc "Open/Close explorer"})
 
 (map! [:n]
-      ",b"
+      ",B"
       ":<C-u>lua Snacks.picker.buffers()<CR>"
       {:silent true
        :desc "select buffer via snacks.picker"})

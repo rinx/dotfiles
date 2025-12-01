@@ -21,16 +21,4 @@ vim.keymap.set("n", ",be", ":<C-u>BufferLineSortByExtension<CR>", {silent = true
 vim.keymap.set("n", ",bn", ":<C-u>BufferLineCycleNext<CR>", {silent = true})
 vim.keymap.set("n", ",bp", ":<C-u>BufferLineCyclePrev<CR>", {silent = true})
 vim.keymap.set("n", ",bN", ":<C-u>BufferLineMoveNext<CR>", {silent = true})
-vim.keymap.set("n", ",bP", ":<C-u>BufferLineMovePrev<CR>", {silent = true})
-local function buffer_close(opts)
-  local bn = vim.fn.bufnr("%")
-  local abn = vim.fn.bufnr("#")
-  if not (abn == -1) then
-    vim.cmd("silent bnext")
-  else
-    vim.cmd("silent enew")
-  end
-  return vim.cmd(("silent bdelete " .. bn))
-end
-vim.api.nvim_create_user_command("BufferClose", buffer_close, {})
-return vim.keymap.set("n", ",bd", ":<C-u>BufferClose<CR>", {silent = true})
+return vim.keymap.set("n", ",bP", ":<C-u>BufferLineMovePrev<CR>", {silent = true})

@@ -159,13 +159,3 @@
 (map! [:n] ",bp" ":<C-u>BufferLineCyclePrev<CR>" {:silent true})
 (map! [:n] ",bN" ":<C-u>BufferLineMoveNext<CR>" {:silent true})
 (map! [:n] ",bP" ":<C-u>BufferLineMovePrev<CR>" {:silent true})
-
-(fn buffer-close [opts]
-  (let [bn (vim.fn.bufnr :%)
-        abn (vim.fn.bufnr :#)]
-    (if (not (= abn -1))
-      (vim.cmd "silent bnext")
-      (vim.cmd "silent enew"))
-    (vim.cmd (.. "silent bdelete " bn))))
-(vim.api.nvim_create_user_command :BufferClose buffer-close {})
-(map! [:n] ",bd" ":<C-u>BufferClose<CR>" {:silent true})
