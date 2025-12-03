@@ -35,24 +35,3 @@
   (telescope.extensions.repo.list
     {:search_dirs ["~/local/src"]}))
 (vim.api.nvim_create_user_command :Ghq telescope-ghq {})
-
-(fn telescope-roam-nodes-by-tag [opts]
-  (let [tag (. opts.fargs 1)
-        roam (require :org-roam)
-        results (roam.database:find_nodes_by_tag_sync tag)
-        entry-maker (fn [entry]
-                      {:value entry
-                       :ordinal (.. entry.title
-                                    ","
-                                    (table.concat entry.aliases ","))
-                       :display entry.title
-                       :path entry.file})
-        p (pickers.new
-            {}
-            {:prompt_title "Find roam nodes by tag"
-             :finder (finders.new_table {:results results
-                                         :entry_maker entry-maker})
-             :sorter (sorters.get_fzy_sorter)
-             :previewer (previewers.cat.new {})})]
-    (p:find)))
-(vim.api.nvim_create_user_command :TelescopeRoamNodesByTag telescope-roam-nodes-by-tag {:nargs 1})

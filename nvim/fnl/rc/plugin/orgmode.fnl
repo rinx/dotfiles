@@ -1,4 +1,5 @@
 (local {: autoload} (require :nfnl.module))
+(local core (autoload :nfnl.core))
 
 (local icon (autoload :rc.icon))
 (local color (autoload :rc.color))
@@ -327,6 +328,23 @@
   (Snacks.terminal.open "bb status" {:cwd (->path :roam)
                                      :interactive false}))
 (vim.api.nvim_create_user_command :RoamStatus roam-status {})
+
+(fn roam-search-by-tag [opts]
+  (let [tag (. opts.fargs 1)
+        roam (require :org-roam)
+        results (roam.database:find_nodes_by_tag_sync tag)
+        items (core.map
+                (fn [item]
+                  {:file item.file
+                   :text (.. item.title
+                             ","
+                             (table.concat item.aliases ","))})
+                results)]
+    (Snacks.picker
+      {:title (.. "Find roam nodes by tag: " tag)
+       :format :file
+       :items items})))
+(vim.api.nvim_create_user_command :RoamSearchByTag roam-search-by-tag {:nargs 1})
 
 (fn build-todays-agenda-helper []
   (let [orgmode (require :orgmode)

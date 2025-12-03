@@ -1,6 +1,7 @@
 -- [nfnl] fnl/rc/plugin/orgmode.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_.autoload
+local core = autoload("nfnl.core")
 local icon = autoload("rc.icon")
 local color = autoload("rc.color")
 local async = autoload("plenary.async")
@@ -212,6 +213,18 @@ local function roam_status()
   return Snacks.terminal.open("bb status", {cwd = __3epath("roam"), interactive = false})
 end
 vim.api.nvim_create_user_command("RoamStatus", roam_status, {})
+local function roam_search_by_tag(opts)
+  local tag = opts.fargs[1]
+  local roam0 = require("org-roam")
+  local results = roam0.database:find_nodes_by_tag_sync(tag)
+  local items
+  local function _24_(item)
+    return {file = item.file, text = (item.title .. "," .. table.concat(item.aliases, ","))}
+  end
+  items = core.map(_24_, results)
+  return Snacks.picker({title = ("Find roam nodes by tag: " .. tag), format = "file", items = items})
+end
+vim.api.nvim_create_user_command("RoamSearchByTag", roam_search_by_tag, {nargs = 1})
 local function build_todays_agenda_helper()
   local orgmode0 = require("orgmode")
   local agenda_types = require("orgmode.agenda.types")
@@ -228,11 +241,11 @@ local function agenda_ignored_3f(entry)
   return ignored_3f
 end
 local function build_todays_agenda()
-  local _let_24_ = build_todays_agenda_helper()
-  local view = _let_24_.view
-  local agenda_day = _let_24_["agenda-day"]
-  local items = _let_24_.items
-  local _25_
+  local _let_25_ = build_todays_agenda_helper()
+  local view = _let_25_.view
+  local agenda_day = _let_25_["agenda-day"]
+  local items = _let_25_.items
+  local _26_
   do
     local tbl_26_ = {}
     local i_27_ = 0
@@ -255,17 +268,17 @@ local function build_todays_agenda()
       else
       end
     end
-    _25_ = tbl_26_
+    _26_ = tbl_26_
   end
-  return table.concat(_25_, "\n")
+  return table.concat(_26_, "\n")
 end
 local function build_todays_tasks()
-  local _let_29_ = build_todays_agenda_helper()
-  local view = _let_29_.view
-  local agenda_day = _let_29_["agenda-day"]
-  local items = _let_29_.items
+  local _let_30_ = build_todays_agenda_helper()
+  local view = _let_30_.view
+  local agenda_day = _let_30_["agenda-day"]
+  local items = _let_30_.items
   local add_task_postfix
-  local function _30_(line)
+  local function _31_(line)
     if string.match(line, "WIP") then
       return (line .. " (wip)")
     else
@@ -280,8 +293,8 @@ local function build_todays_tasks()
       end
     end
   end
-  add_task_postfix = _30_
-  local _34_
+  add_task_postfix = _31_
+  local _35_
   do
     local tbl_26_ = {}
     local i_27_ = 0
@@ -304,9 +317,9 @@ local function build_todays_tasks()
       else
       end
     end
-    _34_ = tbl_26_
+    _35_ = tbl_26_
   end
-  return table.concat(_34_, "\n")
+  return table.concat(_35_, "\n")
 end
 --[[ (build-todays-agenda-helper) (build_todays_agenda) (build_todays_tasks) ]]
 local function get_agenda(span, year, month, day)
@@ -384,19 +397,19 @@ end
 local function create_roam_node(title, body, cb)
   local roam0 = require("org-roam")
   local promise = roam0.api.capture_node({immediate = true, title = title, origin = false})
-  local function _43_(id)
+  local function _44_(id)
     local node = get_roam_node_by_id(id)
     vim.fn.writefile(vim.fn.split(body, "\n"), node.file, "a")
     return cb(id)
   end
-  return promise:next(_43_)
+  return promise:next(_44_)
 end
 local function roam_refresh_search_index()
   vim.notify("start roam refresh search index", "info")
   local started_time = os.time()
   local async_system = async.wrap(vim.system, 3)
   local nodes__3einfo
-  local function _44_(nodes)
+  local function _45_(nodes)
     local tbl = {}
     do
       local tbl_26_ = {}
@@ -416,10 +429,10 @@ local function roam_refresh_search_index()
     end
     return tbl
   end
-  nodes__3einfo = _44_
+  nodes__3einfo = _45_
   local nodes = vim.json.encode(nodes__3einfo(get_all_roam_nodes()))
   local index
-  local function _46_(nodes0)
+  local function _47_(nodes0)
     if (#nodes0 > 0) then
       local job = async_system({"org-search-utils-index"}, {stdin = nodes0, text = true})
       if (job.code == 0) then
@@ -431,8 +444,8 @@ local function roam_refresh_search_index()
       return nil
     end
   end
-  index = _46_
-  local function _49_()
+  index = _47_
+  local function _50_()
     local ok_3f, err = index(nodes)
     async.util.scheduler()
     if ok_3f then
@@ -443,17 +456,17 @@ local function roam_refresh_search_index()
       return vim.notify(("Error on refresh search index: " .. err))
     end
   end
-  local function _51_(err)
+  local function _52_(err)
     async.util.scheduler()
     return vim.notify(("Error on refresh search index: " .. tostring(err)))
   end
-  return async.run(_49_, nil, _51_)
+  return async.run(_50_, nil, _52_)
 end
 vim.api.nvim_create_user_command("RoamRefreshSearchIndex", roam_refresh_search_index, {})
 local function query_roam_fragments(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esearch
-  local function _52_(query0)
+  local function _53_(query0)
     if query0 then
       local job = async_system({"org-search-utils-search", query0, limit}, {text = true})
       if (job.code == 0) then
@@ -470,8 +483,8 @@ local function query_roam_fragments(query, limit, cb, errcb)
       return nil
     end
   end
-  __3esearch = _52_
-  local function _56_()
+  __3esearch = _53_
+  local function _57_()
     local ok_3f, result = __3esearch(query, limit)
     async.util.scheduler()
     if ok_3f then
@@ -480,16 +493,16 @@ local function query_roam_fragments(query, limit, cb, errcb)
       return errcb(result)
     end
   end
-  local function _58_(err)
+  local function _59_(err)
     async.util.scheduler()
     return errcb(("Error: " .. tostring(err)))
   end
-  return async.run(_56_, nil, _58_)
+  return async.run(_57_, nil, _59_)
 end
 local function query_roam_headings(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esearch
-  local function _59_(query0)
+  local function _60_(query0)
     if query0 then
       local job = async_system({"org-search-utils-search", "--title_only", query0, limit}, {text = true})
       if (job.code == 0) then
@@ -506,8 +519,8 @@ local function query_roam_headings(query, limit, cb, errcb)
       return nil
     end
   end
-  __3esearch = _59_
-  local function _63_()
+  __3esearch = _60_
+  local function _64_()
     local ok_3f, result = __3esearch(query, limit)
     async.util.scheduler()
     if ok_3f then
@@ -516,11 +529,11 @@ local function query_roam_headings(query, limit, cb, errcb)
       return errcb(result)
     end
   end
-  local function _65_(err)
+  local function _66_(err)
     async.util.scheduler()
     return errcb(("Error: " .. tostring(err)))
   end
-  return async.run(_63_, nil, _65_)
+  return async.run(_64_, nil, _66_)
 end
 --[[ (roam-refresh-search-index) (query_roam_fragments "Neovim" 10 print print) (-> (icollect [_ node (ipairs (get_all_roam_nodes))] (let [n (get_roam_node_by_id node.id)] {:node-id node.id :path n.file})) (vim.json.encode)) ]]
 local function get_roam_node_links(id)

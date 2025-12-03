@@ -17,17 +17,4 @@ telescope.load_extension("orgmode")
 local function telescope_ghq()
   return telescope.extensions.repo.list({search_dirs = {"~/local/src"}})
 end
-vim.api.nvim_create_user_command("Ghq", telescope_ghq, {})
-local function telescope_roam_nodes_by_tag(opts)
-  local tag = opts.fargs[1]
-  local roam = require("org-roam")
-  local results = roam.database:find_nodes_by_tag_sync(tag)
-  local entry_maker
-  local function _2_(entry)
-    return {value = entry, ordinal = (entry.title .. "," .. table.concat(entry.aliases, ",")), display = entry.title, path = entry.file}
-  end
-  entry_maker = _2_
-  local p = pickers.new({}, {prompt_title = "Find roam nodes by tag", finder = finders.new_table({results = results, entry_maker = entry_maker}), sorter = sorters.get_fzy_sorter(), previewer = previewers.cat.new({})})
-  return p:find()
-end
-return vim.api.nvim_create_user_command("TelescopeRoamNodesByTag", telescope_roam_nodes_by_tag, {nargs = 1})
+return vim.api.nvim_create_user_command("Ghq", telescope_ghq, {})
