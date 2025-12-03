@@ -326,8 +326,7 @@
 (set picker-sources.commands.confirm confirm-cmd)
 
 (local custom-actions
-  ["cd %:p:h"
-   "lua Snacks.git.blame_line()"
+  ["lua Snacks.git.blame_line()"
    "lua Snacks.gitbrowse()"
    "lua Snacks.lazygit()"
    "lua Snacks.notifier.hide()"
@@ -387,6 +386,7 @@
    "TelescopeRoamNodesByTag book"
    "TelescopeRoamNodesByTag code"
    "TelescopeRoamNodesByTag fleeting"
+   "TelescopeRoamNodesByTag local"
    "TelescopeRoamNodesByTag project"
    "TelescopeRoamNodesByTag scrap"
    "TelescopeRoamNodesByTag wiki"
