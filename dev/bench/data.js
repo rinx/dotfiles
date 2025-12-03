@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764756940176,
+  "lastUpdate": 1764766845389,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24487,6 +24487,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.45309869999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2f9df44e342b6299fb4ef09ce3b1416896b01146",
+          "message": "config(nvim): add mini.ai setup\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-03T21:45:38+09:00",
+          "tree_id": "3cb041674eda063ebe85b4dadcd5990a75941fb5",
+          "url": "https://github.com/rinx/dotfiles/commit/2f9df44e342b6299fb4ef09ce3b1416896b01146"
+        },
+        "date": 1764766844029,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.136960499999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.61247940000001,
             "unit": "ms"
           }
         ]
