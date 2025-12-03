@@ -1,3 +1,14 @@
+(let [ai (require :mini.ai)
+      extra (require :mini.extra)
+      gas extra.gen_ai_spec]
+  (ai.setup
+    {:custom_textobjects
+     {:B (gas.buffer)
+      :D (gas.diagnostic)
+      :I (gas.indent)
+      :L (gas.line)
+      :N (gas.number)}}))
+
 (let [align (require :mini.align)]
   (align.setup))
 
