@@ -307,6 +307,37 @@
 (vim.api.nvim_create_user_command :OrgKensaku (grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamKensaku (grep-fn (->path :roam)) {})
 
+(fn search-headlines []
+  (local items [])
+  (let [files (orgmode.files:all)]
+    (each [_ file (ipairs files)]
+      (each [_ headline (ipairs (file:get_headlines))]
+        (let [text (.. (string.rep :* (headline:get_level))
+                       " "
+                       (headline:get_title))
+              score (if (and (headline:is_todo)
+                             (not (headline:is_done)))
+                        100
+                        0)
+              pos (let [range (headline:get_range)]
+                    [range.start_line
+                     range.end_line])]
+          (table.insert
+            items
+            {:file file.filename
+             :line text
+             :text text
+             :score score
+             :pos pos}))))
+    (Snacks.picker
+      {:title "Org headlines"
+       :format :file
+       :formatters
+       {:file {:filename_only true}
+        :text {:ft :org}}
+       :items items})))
+(vim.api.nvim_create_user_command :OrgSearchHeadlines search-headlines {})
+
 (fn refile-to-today []
   (let [t (require :telescope)
         date (os.date "%Y-%m-%d %A")]

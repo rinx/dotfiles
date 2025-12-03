@@ -370,6 +370,7 @@
    :OrgInbox
    :OrgJournal
    :OrgRefileToToday
+   :OrgSearchHeadlines
    :PasteImage
    :RoamCommitPush
    :RoamGrep
