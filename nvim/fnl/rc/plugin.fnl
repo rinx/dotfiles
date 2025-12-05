@@ -127,13 +127,6 @@
                         :config (mod :dap-rego)}
                         ; :dir (vim.fn.expand "~/local/src/github.com/rinx/nvim-dap-rego")}
 
-   ;; telescope
-   :nvim-telescope/telescope.nvim {:config (mod :telescope)
-                                   :event [:VeryLazy]
-                                   :dependencies [:nvim-telescope/telescope-dap.nvim
-                                                  :cljoly/telescope-repo.nvim
-                                                  :nvim-orgmode/telescope-orgmode.nvim]}
-
    ;; denops.vim
    :vim-denops/denops.vim {:event [:VimEnter]}
    :vim-skk/skkeleton {:config (mod :skkeleton)

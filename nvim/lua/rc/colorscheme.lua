@@ -29,7 +29,5 @@ vim.cmd(("highlight " .. ((("DiagnosticFloatingHint" .. " " .. ("ctermfg" .. "="
 vim.cmd(("highlight " .. ((("DiagnosticInfo" .. " " .. ("ctermfg" .. "=" .. "green")) .. " " .. ("guifg" .. "=" .. colors.color13)) .. " " .. ("guibg" .. "=" .. colors.color5))))
 vim.cmd(("highlight " .. ((("DiagnosticFloatingInfo" .. " " .. ("ctermfg" .. "=" .. "green")) .. " " .. ("guifg" .. "=" .. colors.color13)) .. " " .. ("guibg" .. "=" .. colors.color5))))
 vim.cmd(("highlight " .. ((("LspCodeLens" .. " " .. ("gui" .. "=" .. "bold,italic,underline")) .. " " .. ("guifg" .. "=" .. colors.color2)) .. " " .. ("guibg" .. "=" .. colors.color10))))
-vim.cmd(("highlight " .. (((("TelescopeBorder" .. " " .. ("ctermbg=" .. "none" .. " guibg=" .. "none")) .. " " .. ("blend" .. "=" .. "0")) .. " " .. ("ctermfg" .. "=" .. "blue")) .. " " .. ("guifg" .. "=" .. colors.color10))))
-vim.cmd(("highlight " .. (("TelescopePromptPrefix" .. " " .. ("ctermfg" .. "=" .. "blue")) .. " " .. ("guifg" .. "=" .. colors.color10))))
 vim.cmd(("highlight " .. (("Conceal" .. " " .. ("ctermfg" .. "=" .. "white")) .. " " .. ("guifg" .. "=" .. colors.color4))))
 return vim.cmd(("highlight " .. ("@markup.underline" .. " " .. ("gui" .. "=" .. "underline"))))

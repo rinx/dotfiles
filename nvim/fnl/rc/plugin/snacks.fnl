@@ -352,7 +352,6 @@
    :DapStepOver
    :DapToggleBreakpoint
    :DapViewToggle
-   :Ghq
    :Inspect
    :InspectTree
    :Lazy
@@ -368,7 +367,9 @@
    :OrgGrep
    :OrgKensaku
    :OrgInbox
+   :OrgInsertLink
    :OrgJournal
+   :OrgRefileHeadline
    :OrgRefileToToday
    :OrgSearchHeadlines
    :PasteImage
@@ -386,11 +387,6 @@
    "RoamSearchByTag project"
    "RoamSearchByTag scrap"
    "RoamSearchByTag wiki"
-   "Telescope dap list_breakpoints"
-   "Telescope repo list"
-   "Telescope orgmode refile_heading"
-   "Telescope orgmode search_headings"
-   "Telescope orgmode insert_link"
    "Trouble diagnostics"
    "Trouble loclist"
    "Trouble lsp"

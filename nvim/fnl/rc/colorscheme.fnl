@@ -112,15 +112,6 @@
       :guifg colors.color2
       :guibg colors.color10})
 
-(hi! :TelescopeBorder
-     {:bg :none
-      :blend :0
-      :ctermfg :blue
-      :guifg colors.color10})
-(hi! :TelescopePromptPrefix
-     {:ctermfg :blue
-      :guifg colors.color10})
-
 (hi! :Conceal
      {:ctermfg :white
       :guifg colors.color4})
