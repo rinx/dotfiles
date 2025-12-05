@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764772596302,
+  "lastUpdate": 1764922233057,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24555,6 +24555,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.06347600000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3c59967bd437a2816faee3c8a8328c8e1164b31e",
+          "message": "chore(zsh): remove useless alias\n\nadd `exact` option to fzf search history\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-05T16:53:55+09:00",
+          "tree_id": "541535c01fab07a41ca966b8e3a88cdf7e533853",
+          "url": "https://github.com/rinx/dotfiles/commit/3c59967bd437a2816faee3c8a8328c8e1164b31e"
+        },
+        "date": 1764922231208,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.2760066,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 99.79401000000001,
             "unit": "ms"
           }
         ]
