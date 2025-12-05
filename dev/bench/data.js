@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764922233057,
+  "lastUpdate": 1764944869676,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24589,6 +24589,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.79401000000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "6837a2aba4bab0e0086ef6c49fed325fd9d695e7",
+          "message": "config(nvim): replace telescope with snacks.picker completely\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-05T23:12:37+09:00",
+          "tree_id": "232ff1ebfc166d4d03e8fa1015df36664cdb8a1d",
+          "url": "https://github.com/rinx/dotfiles/commit/6837a2aba4bab0e0086ef6c49fed325fd9d695e7"
+        },
+        "date": 1764944867704,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.1877721,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 97.0562678,
             "unit": "ms"
           }
         ]
