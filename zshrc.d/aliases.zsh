@@ -62,7 +62,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     fi
 
     fzf-search-history() {
-      BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+      BUFFER=$(history -n -r 1 | fzf --exact --no-sort +m --query "$LBUFFER" --prompt="History > ")
       CURSOR=${#BUFFER}
     }
     zle -N fzf-search-history
@@ -111,13 +111,6 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
             fi
         }
     fi
-
-    devmoji() {
-        target=$(cat ~/.devmojis | fzf -m | awk '{print $1,$3}')
-        if [[ "$target" != "" ]]; then
-            print -z "git commit --signoff -m \"$target \""
-        fi
-    }
 fi
 
 if builtin command -v fzy > /dev/null 2>&1 ; then
