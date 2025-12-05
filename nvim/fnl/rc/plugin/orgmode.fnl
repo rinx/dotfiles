@@ -307,7 +307,7 @@
 (vim.api.nvim_create_user_command :OrgKensaku (grep-fn basepath) {})
 (vim.api.nvim_create_user_command :RoamKensaku (grep-fn (->path :roam)) {})
 
-(fn search-headlines []
+(fn pick-headline [opts]
   (local items [])
   (let [files (orgmode.files:all)]
     (each [_ file (ipairs files)]
@@ -326,23 +326,69 @@
             items
             {:file file.filename
              :line text
+             :title (headline:get_title)
              :text text
              :score score
              :pos pos}))))
     (Snacks.picker
-      {:title "Org headlines"
-       :format :file
-       :formatters
-       {:file {:filename_only true}
-        :text {:ft :org}}
-       :items items})))
+      (core.merge
+        {:format :file
+         :formatters
+         {:file {:filename_only true}
+          :text {:ft :org}}
+         :items items}
+        opts))))
+(fn search-headlines []
+  (pick-headline
+    {:title "Org headlines"}))
 (vim.api.nvim_create_user_command :OrgSearchHeadlines search-headlines {})
 
+(fn -refile-headline [opts]
+  (when (= vim.bo.filetype :org)
+    (let [org-api (require :orgmode.api)
+          current (org-api.current)
+          closest (current:get_closest_headline)]
+      (pick-headline
+        (core.merge
+          {:title "Org refile headline"
+           :pattern "test"
+           :confirm (fn [picker item]
+                      (picker:close)
+                      (when (and item item.file)
+                        (let [f (org-api.load item.file)
+                              l (core.get item.pos 1)]
+                          (each [_ headline (ipairs f.headlines)]
+                            (when (= headline.position.start_line l)
+                              (org-api.refile
+                                {:source closest
+                                 :destination headline}))))))}
+          opts)))))
+(fn refile-headline []
+  (-refile-headline {}))
+(vim.api.nvim_create_user_command :OrgRefileHeadline refile-headline {})
+
+(fn insert-link []
+  (let [org-api (require :orgmode.api)
+        origin-buf (vim.api.nvim_get_current_buf)
+        origin-file (vim.api.nvim_buf_get_name origin-buf)]
+    (pick-headline
+      {:title "Org insert link"
+       :confirm (fn [picker item]
+                  (picker:close)
+                  (when (and item item.file)
+                    (if (= item.file origin-file)
+                      (org-api.insert_link (.. :* item.title))
+                      (let [f (org-api.load item.file)
+                            l (core.get item.pos 1)]
+                        (each [_ headline (ipairs f.headlines)]
+                          (when (= headline.position.start_line l)
+                            (-> (headline:get_link)
+                                (org-api.insert_link))))))))})))
+(vim.api.nvim_create_user_command :OrgInsertLink insert-link {})
+
 (fn refile-to-today []
-  (let [t (require :telescope)
-        date (os.date "%Y-%m-%d %A")]
-    (t.extensions.orgmode.refile_heading
-      {:default_text date})))
+  (let [date (os.date "%Y-%m-%d %A")]
+    (-refile-headline {:pattern date})))
 (vim.api.nvim_create_user_command :OrgRefileToToday refile-to-today {})
 
 (fn roam-pull []
