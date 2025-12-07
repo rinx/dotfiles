@@ -66,7 +66,7 @@
                              :event [:BufEnter]}
    :lewis6991/gitsigns.nvim {:event [:VeryLazy]
                              :config (mod :gitsigns)}
-   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)
+   :catgoose/nvim-colorizer.lua {:config (mod :colorizer)
                                  :event [:BufEnter]}
    :andyg/leap.nvim {:url "https://codeberg.org/andyg/leap.nvim.git"
                      :event [:VeryLazy]
