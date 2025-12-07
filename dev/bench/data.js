@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765102146073,
+  "lastUpdate": 1765105406868,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24657,6 +24657,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.23763389999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "6f0dc916c7ef8c195a7dfd0598923ad25e4287db",
+          "message": "config(nvim): update nvim-colorizer upstream repository\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-07T19:47:07+09:00",
+          "tree_id": "1268defd454b3a4423d72001b46799787c0c4061",
+          "url": "https://github.com/rinx/dotfiles/commit/6f0dc916c7ef8c195a7dfd0598923ad25e4287db"
+        },
+        "date": 1765105405557,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.1096795,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 94.6596008,
             "unit": "ms"
           }
         ]
