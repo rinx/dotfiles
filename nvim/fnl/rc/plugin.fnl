@@ -70,8 +70,9 @@
                                  :event [:BufEnter]}
    :lukas-reineke/indent-blankline.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                                          :config (mod :indent-blankline)}
-   :ggandor/leap.nvim {:event [:VeryLazy]
-                       :config (mod :leap)}
+   :andyg/leap.nvim {:url "https://codeberg.org/andyg/leap.nvim.git"
+                     :event [:VeryLazy]
+                     :config (mod :leap)}
    :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
    :ghillb/cybu.nvim {:config (mod :cybu)
