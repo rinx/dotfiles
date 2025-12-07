@@ -21,4 +21,6 @@ vim.keymap.set("n", ",be", ":<C-u>BufferLineSortByExtension<CR>", {silent = true
 vim.keymap.set("n", ",bn", ":<C-u>BufferLineCycleNext<CR>", {silent = true})
 vim.keymap.set("n", ",bp", ":<C-u>BufferLineCyclePrev<CR>", {silent = true})
 vim.keymap.set("n", ",bN", ":<C-u>BufferLineMoveNext<CR>", {silent = true})
-return vim.keymap.set("n", ",bP", ":<C-u>BufferLineMovePrev<CR>", {silent = true})
+vim.keymap.set("n", ",bP", ":<C-u>BufferLineMovePrev<CR>", {silent = true})
+vim.keymap.set("n", "gt", ":<C-u>BufferLineCycleNext<CR>", {silent = true})
+return vim.keymap.set("n", "gT", ":<C-u>BufferLineCyclePrev<CR>", {silent = true})

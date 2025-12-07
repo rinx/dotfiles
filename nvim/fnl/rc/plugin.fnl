@@ -73,8 +73,6 @@
                      :config (mod :leap)}
    :numToStr/Comment.nvim {:event [:BufReadPost :BufAdd :BufNewFile]
                            :config (mod :comment)}
-   :ghillb/cybu.nvim {:config (mod :cybu)
-                      :event [:BufReadPost :BufAdd :BufNewFile]}
    :tomiis4/Hypersonic.nvim {:cmd [:Hypersonic]
                              :config (mod :hypersonic)}
    :notomo/waitevent.nvim {:config (mod :waitevent)}

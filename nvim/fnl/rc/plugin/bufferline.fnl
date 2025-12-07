@@ -159,3 +159,6 @@
 (map! [:n] ",bp" ":<C-u>BufferLineCyclePrev<CR>" {:silent true})
 (map! [:n] ",bN" ":<C-u>BufferLineMoveNext<CR>" {:silent true})
 (map! [:n] ",bP" ":<C-u>BufferLineMovePrev<CR>" {:silent true})
+
+(map! [:n] :gt ":<C-u>BufferLineCycleNext<CR>" {:silent true})
+(map! [:n] :gT ":<C-u>BufferLineCyclePrev<CR>" {:silent true})
