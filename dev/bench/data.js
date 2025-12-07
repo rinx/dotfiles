@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1764944869676,
+  "lastUpdate": 1765102146073,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24623,6 +24623,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.0562678,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "d4e7ccb9ad12a1f0d5b36c573e077ed35314529e",
+          "message": "chore(nvim): leap.nvim moved to codeberg\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-07T18:53:09+09:00",
+          "tree_id": "05c22270b5f86198b39439237ed4d466ad61e5f3",
+          "url": "https://github.com/rinx/dotfiles/commit/d4e7ccb9ad12a1f0d5b36c573e077ed35314529e"
+        },
+        "date": 1765102144165,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.445885500000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 104.23763389999999,
             "unit": "ms"
           }
         ]
