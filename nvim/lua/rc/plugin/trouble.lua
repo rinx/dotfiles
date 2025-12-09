@@ -14,4 +14,5 @@ vim.keymap.set("n", "<leader>xx", ":<C-u>Trouble diagnostics toggle<CR>", {silen
 vim.keymap.set("n", "<leader>xX", ":<C-u>Trouble diagnostics toggle filter.buf=0<CR>", {silent = true, desc = "Trouble: toggle diagnostics for current buffer"})
 vim.keymap.set("n", "<leader>xd", ":<C-u>Trouble lsp toggle focus=false win.position=right<CR>", {silent = true, desc = "Trouble: toggle lsp sidebar"})
 vim.keymap.set("n", "<leader>xq", ":<C-u>Trouble qflist toggle<CR>", {silent = true, desc = "Trouble: toggle quickfix"})
-return vim.keymap.set("n", "<leader>xl", ":<C-u>Trouble loclist toggle<CR>", {silent = true, desc = "Trouble: toggle loclist"})
+vim.keymap.set("n", "<leader>xl", ":<C-u>Trouble loclist toggle<CR>", {silent = true, desc = "Trouble: toggle loclist"})
+return vim.keymap.set("n", "<leader>xt", ":<C-u>Trouble todo toggle<CR>", {silent = true, desc = "Trouble: toggle todo"})

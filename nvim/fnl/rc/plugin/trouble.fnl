@@ -38,3 +38,8 @@
       ":<C-u>Trouble loclist toggle<CR>"
       {:silent true
        :desc "Trouble: toggle loclist"})
+(map! [:n]
+      "<leader>xt"
+      ":<C-u>Trouble todo toggle<CR>"
+      {:silent true
+       :desc "Trouble: toggle todo"})
