@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765243263256,
+  "lastUpdate": 1765270648221,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24759,6 +24759,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.4000383,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9008e2f7c0ce95128a3e24822012ef5fe29fb9fc",
+          "message": "config(nvim): add trouble todo toggle mapping\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-09T17:42:04+09:00",
+          "tree_id": "818b5c6b005eddd222af485aa4d48e7153a7b7af",
+          "url": "https://github.com/rinx/dotfiles/commit/9008e2f7c0ce95128a3e24822012ef5fe29fb9fc"
+        },
+        "date": 1765270647064,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.5747859,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 97.3191196,
             "unit": "ms"
           }
         ]
