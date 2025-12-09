@@ -242,7 +242,7 @@ local function _refile_headline(opts)
         return nil
       end
     end
-    return pick_headline(core.merge({title = "Org refile headline", pattern = "test", confirm = _25_}, opts))
+    return pick_headline(core.merge({title = "Org refile headline", confirm = _25_}, opts))
   else
     return nil
   end

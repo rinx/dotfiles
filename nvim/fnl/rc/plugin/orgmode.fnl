@@ -351,7 +351,6 @@
       (pick-headline
         (core.merge
           {:title "Org refile headline"
-           :pattern "test"
            :confirm (fn [picker item]
                       (picker:close)
                       (when (and item item.file)
