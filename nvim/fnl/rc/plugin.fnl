@@ -153,6 +153,8 @@
    :nvim-treesitter/nvim-treesitter {:branch :main
                                      :config (mod :treesitter)
                                      :event [:BufEnter]}
+   :wurli/contextindent.nvim {:opts {:pattern :*}
+                              :dependencies [:nvim-treesitter/nvim-treesitter]}
 
    ;; orgmode
    :nvim-orgmode/orgmode {:config (mod :orgmode)
