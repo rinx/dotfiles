@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765370362894,
+  "lastUpdate": 1765378585260,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24895,6 +24895,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.28336650000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "626b8bf9917b71c9e8f499bb66e210ab5d6882a2",
+          "message": "fix(nvim): remove indentexpr\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-10T23:41:31+09:00",
+          "tree_id": "b56acc3a32c16bc822c8725cfa7f8386e1ff673d",
+          "url": "https://github.com/rinx/dotfiles/commit/626b8bf9917b71c9e8f499bb66e210ab5d6882a2"
+        },
+        "date": 1765378583674,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.242899599999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 84.5392217,
             "unit": "ms"
           }
         ]
