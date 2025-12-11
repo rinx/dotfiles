@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765378585260,
+  "lastUpdate": 1765414782303,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24929,6 +24929,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 84.5392217,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e4cef998d799be51e712041aeb82506b98557e36",
+          "message": "config(nvim): disable lazy for treesitter\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-11T09:43:49+09:00",
+          "tree_id": "123960255a6df2dbe05a56a225e66dd53948c0fc",
+          "url": "https://github.com/rinx/dotfiles/commit/e4cef998d799be51e712041aeb82506b98557e36"
+        },
+        "date": 1765414779829,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.717873700000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 100.82493769999999,
             "unit": "ms"
           }
         ]
