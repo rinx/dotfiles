@@ -338,31 +338,12 @@
    "lua Snacks.picker.notifications()"
    "lua Snacks.terminal.toggle()"
    "lua Snacks.terminal.open()"
-   :AvanteAsk
-   :AvanteChat
-   :AvanteToggle
-   :ConjureConnect
-   :ConjureLogSplit
-   :ConjureLogVSplit
-   :ConjureCljDebugInit
-   :DapContinue
-   :DapListBreakpoints
-   :DapStepInto
-   :DapStepOut
-   :DapStepOver
-   :DapToggleBreakpoint
-   :DapViewToggle
    :Inspect
    :InspectTree
    :Lazy
    "Lazy check"
    "Lazy update"
    "Lazy profile"
-   :LspInfo
-   :LspRestart
-   :LspStart
-   :LspStop
-   :MCPHub
    :OrgFind
    :OrgGrep
    :OrgKensaku
@@ -405,9 +386,8 @@
                custom-actions)
       :layout {:preset :vscode}
       :preview :none
-      :format (fn [item]
-                [[]
-                 [item.name]])
+      :format :text
+      :formatters {:text {:ft :vim}}
       :confirm confirm-cmd})
 
 (map! [:n]
