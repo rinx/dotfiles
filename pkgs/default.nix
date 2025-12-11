@@ -100,8 +100,6 @@ pkgs.buildEnv {
       passExtensions.pass-otp
       ripgrep
       sad
-      tmux
-      tmux-xpanes
       tree-sitter
       wget
       yq-go
@@ -113,7 +111,6 @@ pkgs.buildEnv {
       kubectx
       kubernetes-helm
       kustomize
-      stern
 
       ## cloud development
       awscli2
