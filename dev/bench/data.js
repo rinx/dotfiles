@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765414782303,
+  "lastUpdate": 1765461492412,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -24963,6 +24963,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 100.82493769999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c81d647463def87c29d82af2a9e09e9fbfeacd93",
+          "message": "config(nvim): update custom-actions palette\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-11T22:41:52+09:00",
+          "tree_id": "ee656d4ff2b9b91e19e58005a398cac033ed973c",
+          "url": "https://github.com/rinx/dotfiles/commit/c81d647463def87c29d82af2a9e09e9fbfeacd93"
+        },
+        "date": 1765461490532,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.3154181,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.7392389,
             "unit": "ms"
           }
         ]
