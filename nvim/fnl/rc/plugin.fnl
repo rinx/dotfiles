@@ -151,8 +151,8 @@
    :hylang/vim-hy {:ft [:hy]}
 
    :nvim-treesitter/nvim-treesitter {:branch :main
-                                     :config (mod :treesitter)
-                                     :event [:BufEnter]}
+                                     :lazy false
+                                     :config (mod :treesitter)}
 
    ;; orgmode
    :nvim-orgmode/orgmode {:config (mod :orgmode)
