@@ -5,13 +5,13 @@
 }:
 buildGoModule rec {
   pname = "falco";
-  version = "1.21.1";
+  version = "2.0.0";
 
   src = fetchFromGitHub {
     owner = "ysugimoto";
     repo = "falco";
     rev = "v${version}";
-    hash = "sha256-Ni2MWS/oOfQCvFclyi79DRzFc5Z8/8Q4/nL8T/jWmVg=";
+    hash = "sha256-MhXNkS4JGbj3Fd1gfmO/EJX0hCwzNQYy9cAOMCfH0sI=";
   };
 
   vendorHash = "sha256-pCkbDAvbBXzs5TViUT9QMlbiGFPadXZi4cphW6F4ZfA=";
