@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765624520802,
+  "lastUpdate": 1765626038529,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25133,6 +25133,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.0461481,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f048cde0ba4a769c07a5e1e55952d0e26ba495c1",
+          "message": "config(nvim): update lazy-lock.json\n\nand add lazy-lock.json to treefmt excludes\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-13T20:24:20+09:00",
+          "tree_id": "40a0567556620016947a18a8da6b139c39cb62eb",
+          "url": "https://github.com/rinx/dotfiles/commit/f048cde0ba4a769c07a5e1e55952d0e26ba495c1"
+        },
+        "date": 1765626036544,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.340344400000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 110.2138561,
             "unit": "ms"
           }
         ]
