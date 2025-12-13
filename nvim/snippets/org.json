@@ -5,5 +5,13 @@
     "body": [
       "#+CAPTION: ${1:caption}"
     ]
+  },
+  "results": {
+    "description": "#+RESULTS: block",
+    "prefix": "results",
+    "body": [
+      "#+RESULTS:",
+      ": $0"
+    ]
   }
 }
