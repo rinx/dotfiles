@@ -105,6 +105,13 @@
               yamlfmt.enable = true;
               zizmor.enable = true;
             };
+            settings = {
+              formatter = {
+                jsonfmt.excludes = [
+                  "nvim/lazy-lock.json"
+                ];
+              };
+            };
           };
         };
     };
