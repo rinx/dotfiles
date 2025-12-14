@@ -15,11 +15,6 @@ if builtin command -v eza > /dev/null 2>&1 ; then
     alias lsa='eza -a'
     alias lsl='eza -l'
     alias lsal='eza -a -l'
-elif builtin command -v exa > /dev/null 2>&1 ; then
-    alias ls='exa'
-    alias lsa='exa -a'
-    alias lsl='exa -l'
-    alias lsal='exa -a -l'
 else
     if ls --color > /dev/null 2>&1 ; then
             alias ls='ls --color -F'
@@ -34,7 +29,6 @@ else
 fi
 
 alias vi='nvim'
-alias nvui='nvui --ext_multigrid --detached'
 
 alias q='exit'
 
@@ -111,18 +105,6 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
             fi
         }
     fi
-fi
-
-if builtin command -v fzy > /dev/null 2>&1 ; then
-    if builtin command -v fzy-tmux > /dev/null 2>&1 ; then
-        alias fzy=fzy-tmux
-    fi
-fi
-
-# xsel (linux only)
-if builtin command -v xsel > /dev/null 2>&1 ; then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
 fi
 
 # git aliases
