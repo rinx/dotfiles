@@ -90,6 +90,7 @@
               config.pre-commit.devShell
             ];
             packages = [
+              pkgs.ast-grep
               pkgs.babashka
               pkgs.tree-sitter
             ];
@@ -107,6 +108,16 @@
             };
             settings = {
               formatter = {
+                ast-grep = {
+                  command = "${pkgs.ast-grep}/bin/ast-grep";
+                  options = [
+                    "scan"
+                    "--error"
+                  ];
+                  includes = [
+                    "*.fnl"
+                  ];
+                };
                 jsonfmt.excludes = [
                   "nvim/lazy-lock.json"
                 ];
