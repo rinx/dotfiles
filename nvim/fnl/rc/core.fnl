@@ -28,7 +28,7 @@
 
 (set vim.o.confirm true)
 
-(set vim.o.clipboard "unnamed,unnamedplus")
+(set vim.o.clipboard :unnamedplus)
 
 (set vim.o.mouse "a")
 
