@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765626440971,
+  "lastUpdate": 1765675073744,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25201,6 +25201,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.4660201,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "16035e6fd5e11c29969eed4abf2430a6c124e064",
+          "message": "config(nvim): add ast-grep as treefmt custom formatter\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-14T10:02:53+09:00",
+          "tree_id": "c300403a05f78e2254eb69e2b4e01563f2828e57",
+          "url": "https://github.com/rinx/dotfiles/commit/16035e6fd5e11c29969eed4abf2430a6c124e064"
+        },
+        "date": 1765675072500,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.380202299999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.38014970000002,
             "unit": "ms"
           }
         ]
