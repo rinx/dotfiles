@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1765675414321,
+  "lastUpdate": 1765676142974,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25269,6 +25269,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.9306482,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ad8fb632ac85595276b0e3167cce9136850f218d",
+          "message": "config(nvim): remove clipboard unnamed option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-14T10:19:27+09:00",
+          "tree_id": "adfc0d880716b6846b1f9e4dc63e08789042befc",
+          "url": "https://github.com/rinx/dotfiles/commit/ad8fb632ac85595276b0e3167cce9136850f218d"
+        },
+        "date": 1765676141607,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.072920399999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 93.8052006,
             "unit": "ms"
           }
         ]
