@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1766022140111,
+  "lastUpdate": 1766066128175,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25405,6 +25405,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.70166250000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "581c32da9809571f7296250968c78ed9c9797d45",
+          "message": "chore(nvim): update lock file\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-18T22:21:34+09:00",
+          "tree_id": "fec82e729d89238efca9896198739c061393727f",
+          "url": "https://github.com/rinx/dotfiles/commit/581c32da9809571f7296250968c78ed9c9797d45"
+        },
+        "date": 1766066126919,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.501733299999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.0124866,
             "unit": "ms"
           }
         ]
