@@ -1,0 +1,39 @@
+name: Report nix diff
+on:
+  pull_request:
+    paths:
+      - flake.lock
+jobs:
+  dix:
+    name: nix diff
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Free disk space
+        uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b # v6
+        with:
+          hatchet-protocol: 'rampage'
+          root-safe-haven: '3072' # Reserve 3GB on the / filesystem
+          mnt-safe-haven: '2048' # Reserve 2GB on the /mnt filesystem
+          nix-permission-edict: true
+      - name: Generate github token
+        id: generate_token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15 # v31
+        with:
+          github_access_token: ${{ steps.generate_token.outputs.token }}
+          nix_path: nixpkgs=channel:nixos-unstable
+          install_options: --no-daemon
+      - uses: natsukium/nix-diff-action@88dda3e67a3eca1b77a9c37d9b1670dc3578b473 # v1.0.0
+        with:
+          attributes: |
+            - displayName: packages
+              attribute: default
