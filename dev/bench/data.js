@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1766066128175,
+  "lastUpdate": 1766068936437,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25439,6 +25439,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.0124866,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a77f901a7e3531df6d363620567eb709512c272a",
+          "message": "chore(ci): add nix-diff-action (#270)\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-18T14:27:34Z",
+          "tree_id": "5637808ee3872997a730167e1434b894d3156638",
+          "url": "https://github.com/rinx/dotfiles/commit/a77f901a7e3531df6d363620567eb709512c272a"
+        },
+        "date": 1766068935025,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.799115699999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.06216140000001,
             "unit": "ms"
           }
         ]
