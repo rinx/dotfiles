@@ -59,6 +59,7 @@
    :EdenEast/nightfox.nvim {:build (cmd->fn :NightfoxCompile)
                             :lazy true
                             :priority 1000}
+   :tpope/vim-repeat {:event [:VeryLazy]}
    :kyazdani42/nvim-web-devicons {:config (mod :devicons)}
    :rebelot/heirline.nvim {:config (mod :heirline)
                            :event [:BufEnter]}
