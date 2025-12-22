@@ -237,6 +237,13 @@
                     (.. icontab.play-circle space (dap.status)))
         :hl {:fg colors.color4}})
 
+(local org-clock-component
+       {:condition (fn []
+                     (~= _G.orgmode nil))
+        :provider (fn []
+                    (_G.orgmode.statusline))
+        :hl {:fg colors.purple}})
+
 (local denops-component
        {:provider (fn []
                     (match (vim.fn.denops#server#status)
@@ -348,6 +355,7 @@
        [cwd-component
         align-component
         dap-component
+        org-clock-component
         align-component
         copilot-component
         diagnostics-component
