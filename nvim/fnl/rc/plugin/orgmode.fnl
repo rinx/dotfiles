@@ -197,6 +197,9 @@
    :win_split_mode :auto
    :org_highlight_latex_and_related :entities
    :org_hide_emphasis_markers true
+   :mappings
+   {:org
+    {:org_toggle_checkbox :cic}}
    :notifications
    {:enabled true
     :cron_enabled false
