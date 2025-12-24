@@ -80,6 +80,12 @@
             check.enable = true;
             settings = {
               hooks = {
+                check-merge-conflicts.enable = true;
+                check-symlinks.enable = true;
+                gitleaks = {
+                  enable = true;
+                  entry = "${pkgs.gitleaks}/bin/gitleaks protect --staged";
+                };
                 nixfmt-rfc-style.enable = true;
                 treefmt.enable = true;
               };
@@ -89,10 +95,11 @@
             inputsFrom = [
               config.pre-commit.devShell
             ];
-            packages = [
-              pkgs.ast-grep
-              pkgs.babashka
-              pkgs.tree-sitter
+            packages = with pkgs; [
+              ast-grep
+              babashka
+              gitleaks
+              tree-sitter
             ];
             shellHook = ''
               bb build
