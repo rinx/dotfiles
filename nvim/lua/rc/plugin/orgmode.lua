@@ -137,32 +137,68 @@ local function _15_(exporter)
   tmp:close()
   return exporter(cmd, target, on_success, on_error)
 end
-local function _18_(tasks)
+local function _18_()
+  return "gh"
+end
+local function _19_(self, link)
+  if vim.startswith(link, "gh:") then
+    local url
+    do
+      local case_20_, case_21_, case_22_ = string.match(link, "gh:(%S+)/(%S+)#(%d+)")
+      if ((nil ~= case_20_) and (nil ~= case_21_) and (nil ~= case_22_)) then
+        local org = case_20_
+        local name = case_21_
+        local num = case_22_
+        url = ("gh://" .. org .. "/" .. name .. "/issue/" .. num)
+      else
+        local _ = case_20_
+        local case_23_, case_24_, case_25_ = string.match(link, "gh:(%S+)/(%S+)@(%d+)")
+        if ((nil ~= case_23_) and (nil ~= case_24_) and (nil ~= case_25_)) then
+          local org = case_23_
+          local name = case_24_
+          local num = case_25_
+          url = ("gh://" .. org .. "/" .. name .. "/pr/" .. num)
+        else
+          local _0 = case_23_
+          url = link
+        end
+      end
+    end
+    vim.cmd(("e " .. url))
+    return true
+  else
+    return false
+  end
+end
+local function _29_(self, link)
+  return {}
+end
+local function _30_(tasks)
   for _, task in ipairs(tasks) do
     local id = string.format("%s:%s", task.original_time:to_string(), task.title)
-    local function _19_()
+    local function _31_()
       if task.todo then
         return string.format("%s %s", task.todo, task.title)
       else
         return task.title
       end
     end
-    Snacks.notifier(table.concat({string.format("# %s (%s)", task.category, task.humanized_duration), string.format("%s %s", string.rep("*", task.level), _19_()), string.format("%s: <%s>", task.type, task.time:to_string())}, "\n"), "info", {id = id, timeout = false})
+    Snacks.notifier(table.concat({string.format("# %s (%s)", task.category, task.humanized_duration), string.format("%s %s", string.rep("*", task.level), _31_()), string.format("%s: <%s>", task.type, task.time:to_string())}, "\n"), "info", {id = id, timeout = false})
   end
   return nil
 end
-local function _20_(data)
+local function _32_(data)
   local m = modern_menu:new({window = {margin = {1, 0, 1, 0}, padding = {0, 1, 0, 1}, title_pos = "center", border = "single", zindex = 1000}, icons = {separator = "\226\158\156"}})
   return m:open(data)
 end
-orgmode.setup({org_agenda_files = {inbox, __3epath("journal/*.org"), __3epath("notes/**/*.org")}, org_default_notes_file = inbox, org_archive_location = __3epath("archive/%s_archive::"), org_todo_keywords = {"TODO", "WIP", "IN_REVIEW", "|", "DONE", "CANCELED"}, org_todo_keyword_faces = {TODO = (":foreground " .. colors.color5 .. " :background " .. colors.color8 .. " :underline on"), WIP = (":foreground " .. colors.color5 .. " :background " .. colors.warn), IN_REVIEW = (":foreground " .. colors.color5 .. " :background " .. colors.color10), DONE = (":foreground " .. colors.color5 .. " :background " .. colors.color13), CANCELED = (":foreground " .. colors.color5 .. " :background " .. colors.color9)}, org_startup_folded = "overview", org_capture_templates = {t = {description = "\239\128\140 Add a new task to inbox", template = __3etmplstr("task.org"), target = inbox, headline = "Tasks"}, n = {description = "\239\137\137 Add a new note to inbox", subtemplates = {c = {description = "\243\176\133\180 code-reading note", template = __3etmplstr("code-note.org"), target = inbox, headline = "Notes"}, d = {description = "\239\137\137 default note", template = __3etmplstr("note.org"), target = inbox, headline = "Notes"}, l = {description = "\239\145\140 with link", template = __3etmplstr("link.org"), target = inbox, headline = "Notes"}, p = {description = "\239\129\191 with clipboard content", template = __3etmplstr("paste.org"), target = inbox, headline = "Notes"}}}, i = {description = "\239\144\128 Add a new idea", template = __3etmplstr("idea.org"), target = inbox, headline = "Ideas"}, s = {description = "\239\128\133 Add a new topic", template = __3etmplstr("topic.org"), target = inbox, headline = "Topics"}, j = {description = "\243\176\131\173 Add a new note to journal", template = __3etmplstr("journal.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}, d = {description = "\243\176\131\173 Add a new daily report to journal", template = __3etmplstr("daily-report.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}, r = {description = "\243\176\141\163 Add a new review task to journal", template = __3etmplstr("task-review.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}}, calendar_week_start_day = 0, org_deadline_warning_days = 7, org_tags_column = 90, org_id_link_to_org_use_id = true, org_custom_exports = {c = {label = "Export whole document to clipboard", action = _4_}, x = {label = "Export closest headline to clipboard", action = _8_}, d = {label = "Export to PDF file via pandoc & typst", action = _12_}, v = {label = "Export closest headline to PDF file via pandoc & typst", action = _15_}}, win_split_mode = "auto", org_highlight_latex_and_related = "entities", org_hide_emphasis_markers = true, mappings = {org = {org_toggle_checkbox = "cic"}}, notifications = {enabled = true, repeater_reminder_time = {0, 5, 10, 15}, deadline_warning_reminder_time = {0, 5, 10, 15}, reminder_time = {0, 5, 10, 15}, notifier = _18_, cron_enabled = false}, ui = {input = {use_vim_ui = true}, menu = {handler = _20_}}})
+orgmode.setup({org_agenda_files = {inbox, __3epath("journal/*.org"), __3epath("notes/**/*.org")}, org_default_notes_file = inbox, org_archive_location = __3epath("archive/%s_archive::"), org_todo_keywords = {"TODO", "WIP", "IN_REVIEW", "|", "DONE", "CANCELED"}, org_todo_keyword_faces = {TODO = (":foreground " .. colors.color5 .. " :background " .. colors.color8 .. " :underline on"), WIP = (":foreground " .. colors.color5 .. " :background " .. colors.warn), IN_REVIEW = (":foreground " .. colors.color5 .. " :background " .. colors.color10), DONE = (":foreground " .. colors.color5 .. " :background " .. colors.color13), CANCELED = (":foreground " .. colors.color5 .. " :background " .. colors.color9)}, org_startup_folded = "overview", org_capture_templates = {t = {description = "\239\128\140 Add a new task to inbox", template = __3etmplstr("task.org"), target = inbox, headline = "Tasks"}, n = {description = "\239\137\137 Add a new note to inbox", subtemplates = {c = {description = "\243\176\133\180 code-reading note", template = __3etmplstr("code-note.org"), target = inbox, headline = "Notes"}, d = {description = "\239\137\137 default note", template = __3etmplstr("note.org"), target = inbox, headline = "Notes"}, l = {description = "\239\145\140 with link", template = __3etmplstr("link.org"), target = inbox, headline = "Notes"}, p = {description = "\239\129\191 with clipboard content", template = __3etmplstr("paste.org"), target = inbox, headline = "Notes"}}}, i = {description = "\239\144\128 Add a new idea", template = __3etmplstr("idea.org"), target = inbox, headline = "Ideas"}, s = {description = "\239\128\133 Add a new topic", template = __3etmplstr("topic.org"), target = inbox, headline = "Topics"}, j = {description = "\243\176\131\173 Add a new note to journal", template = __3etmplstr("journal.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}, d = {description = "\243\176\131\173 Add a new daily report to journal", template = __3etmplstr("daily-report.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}, r = {description = "\243\176\141\163 Add a new review task to journal", template = __3etmplstr("task-review.org"), target = __3epath("journal/%<%Y-%m>.org"), datetree = {tree_type = "day"}}}, calendar_week_start_day = 0, org_deadline_warning_days = 7, org_tags_column = 90, org_id_link_to_org_use_id = true, org_custom_exports = {c = {label = "Export whole document to clipboard", action = _4_}, x = {label = "Export closest headline to clipboard", action = _8_}, d = {label = "Export to PDF file via pandoc & typst", action = _12_}, v = {label = "Export closest headline to PDF file via pandoc & typst", action = _15_}}, win_split_mode = "auto", org_highlight_latex_and_related = "entities", org_hide_emphasis_markers = true, mappings = {org = {org_toggle_checkbox = "cic"}}, hyperlinks = {sources = {{get_name = _18_, follow = _19_, autocomplete = _29_}}}, notifications = {enabled = true, repeater_reminder_time = {0, 5, 10, 15}, deadline_warning_reminder_time = {0, 5, 10, 15}, reminder_time = {0, 5, 10, 15}, notifier = _30_, cron_enabled = false}, ui = {input = {use_vim_ui = true}, menu = {handler = _32_}}})
 roam.setup({directory = __3epath("roam"), org_files = {inbox, __3epath("journal/*.org")}, templates = {f = {description = "\243\176\142\154 fleeting", template = __3etmplstr("roam/fleeting.org"), target = "fleeting%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, w = {description = "\243\176\150\172 wiki", template = __3etmplstr("roam/wiki.org"), target = "wiki%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, p = {description = "\239\148\131 project", template = __3etmplstr("roam/project.org"), target = "project%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, c = {description = "\239\132\161 code", template = __3etmplstr("roam/code.org"), target = "code%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, b = {description = "\239\144\133 book", template = __3etmplstr("roam/book.org"), target = "book%[sep]%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}, s = {description = "\239\132\174 scrap", template = __3etmplstr("roam/scrap.org"), target = "scrap/%<%Y%m%d%H%M%S>-%[slug]%^{filename suffix?||.local}.org"}}, immediate = {target = "immediate%[sep]%<%Y%m%d%H%M%S>-%[slug].org", template = __3etmplstr("roam/immediate.org")}})
 bullets.setup({symbols = icon["org-bullets"], concealcursor = false})
 local function open_fn(filepath)
-  local function _21_()
+  local function _33_()
     return vim.cmd(("e " .. filepath))
   end
-  return _21_
+  return _33_
 end
 do
   local filepath = __3epath("inbox.org")
@@ -178,20 +214,20 @@ local function fd_fn()
 end
 vim.api.nvim_create_user_command("OrgFind", fd_fn, {})
 local function live_grep_fn(path)
-  local function _22_()
+  local function _34_()
     local snacks = require("snacks")
     return snacks.picker.grep({cwd = path, ignored = true})
   end
-  return _22_
+  return _34_
 end
 vim.api.nvim_create_user_command("OrgGrep", live_grep_fn(basepath), {})
 vim.api.nvim_create_user_command("RoamGrep", live_grep_fn(__3epath("roam")), {})
 local function grep_fn(path)
-  local function _23_()
+  local function _35_()
     local snacks = require("snacks")
     return snacks.picker.kensaku({cwd = path})
   end
-  return _23_
+  return _35_
 end
 vim.api.nvim_create_user_command("OrgKensaku", grep_fn(basepath), {})
 vim.api.nvim_create_user_command("RoamKensaku", grep_fn(__3epath("roam")), {})
@@ -226,7 +262,7 @@ local function _refile_headline(opts)
     local org_api = require("orgmode.api")
     local current = org_api.current()
     local closest = current:get_closest_headline()
-    local function _25_(picker, item)
+    local function _37_(picker, item)
       picker:close()
       if (item and item.file) then
         local f = org_api.load(item.file)
@@ -242,7 +278,7 @@ local function _refile_headline(opts)
         return nil
       end
     end
-    return pick_headline(core.merge({title = "Org refile headline", confirm = _25_}, opts))
+    return pick_headline(core.merge({title = "Org refile headline", confirm = _37_}, opts))
   else
     return nil
   end
@@ -255,7 +291,7 @@ local function insert_link()
   local org_api = require("orgmode.api")
   local origin_buf = vim.api.nvim_get_current_buf()
   local origin_file = vim.api.nvim_buf_get_name(origin_buf)
-  local function _29_(picker, item)
+  local function _41_(picker, item)
     picker:close()
     if (item and item.file) then
       if (item.file == origin_file) then
@@ -275,7 +311,7 @@ local function insert_link()
       return nil
     end
   end
-  return pick_headline({title = "Org insert link", confirm = _29_})
+  return pick_headline({title = "Org insert link", confirm = _41_})
 end
 vim.api.nvim_create_user_command("OrgInsertLink", insert_link, {})
 local function refile_to_today()
@@ -300,10 +336,10 @@ local function roam_search_by_tag(opts)
   local roam0 = require("org-roam")
   local results = roam0.database:find_nodes_by_tag_sync(tag)
   local items
-  local function _33_(item)
+  local function _45_(item)
     return {file = item.file, text = (item.title .. "," .. table.concat(item.aliases, ","))}
   end
-  items = core.map(_33_, results)
+  items = core.map(_45_, results)
   return Snacks.picker({title = ("Find roam nodes by tag: " .. tag), format = "file", items = items})
 end
 vim.api.nvim_create_user_command("RoamSearchByTag", roam_search_by_tag, {nargs = 1})
@@ -323,11 +359,11 @@ local function agenda_ignored_3f(entry)
   return ignored_3f
 end
 local function build_todays_agenda()
-  local _let_34_ = build_todays_agenda_helper()
-  local view = _let_34_.view
-  local agenda_day = _let_34_["agenda-day"]
-  local items = _let_34_.items
-  local _35_
+  local _let_46_ = build_todays_agenda_helper()
+  local view = _let_46_.view
+  local agenda_day = _let_46_["agenda-day"]
+  local items = _let_46_.items
+  local _47_
   do
     local tbl_26_ = {}
     local i_27_ = 0
@@ -350,17 +386,17 @@ local function build_todays_agenda()
       else
       end
     end
-    _35_ = tbl_26_
+    _47_ = tbl_26_
   end
-  return table.concat(_35_, "\n")
+  return table.concat(_47_, "\n")
 end
 local function build_todays_tasks()
-  local _let_39_ = build_todays_agenda_helper()
-  local view = _let_39_.view
-  local agenda_day = _let_39_["agenda-day"]
-  local items = _let_39_.items
+  local _let_51_ = build_todays_agenda_helper()
+  local view = _let_51_.view
+  local agenda_day = _let_51_["agenda-day"]
+  local items = _let_51_.items
   local add_task_postfix
-  local function _40_(line)
+  local function _52_(line)
     if string.match(line, "WIP") then
       return (line .. " (wip)")
     else
@@ -375,8 +411,8 @@ local function build_todays_tasks()
       end
     end
   end
-  add_task_postfix = _40_
-  local _44_
+  add_task_postfix = _52_
+  local _56_
   do
     local tbl_26_ = {}
     local i_27_ = 0
@@ -399,9 +435,9 @@ local function build_todays_tasks()
       else
       end
     end
-    _44_ = tbl_26_
+    _56_ = tbl_26_
   end
-  return table.concat(_44_, "\n")
+  return table.concat(_56_, "\n")
 end
 --[[ (build-todays-agenda-helper) (build_todays_agenda) (build_todays_tasks) ]]
 local function get_agenda(span, year, month, day)
@@ -479,19 +515,19 @@ end
 local function create_roam_node(title, body, cb)
   local roam0 = require("org-roam")
   local promise = roam0.api.capture_node({immediate = true, title = title, origin = false})
-  local function _53_(id)
+  local function _65_(id)
     local node = get_roam_node_by_id(id)
     vim.fn.writefile(vim.fn.split(body, "\n"), node.file, "a")
     return cb(id)
   end
-  return promise:next(_53_)
+  return promise:next(_65_)
 end
 local function roam_refresh_search_index()
   vim.notify("start roam refresh search index", "info")
   local started_time = os.time()
   local async_system = async.wrap(vim.system, 3)
   local nodes__3einfo
-  local function _54_(nodes)
+  local function _66_(nodes)
     local tbl = {}
     do
       local tbl_26_ = {}
@@ -511,10 +547,10 @@ local function roam_refresh_search_index()
     end
     return tbl
   end
-  nodes__3einfo = _54_
+  nodes__3einfo = _66_
   local nodes = vim.json.encode(nodes__3einfo(get_all_roam_nodes()))
   local index
-  local function _56_(nodes0)
+  local function _68_(nodes0)
     if (#nodes0 > 0) then
       local job = async_system({"org-search-utils-index"}, {stdin = nodes0, text = true})
       if (job.code == 0) then
@@ -526,8 +562,8 @@ local function roam_refresh_search_index()
       return nil
     end
   end
-  index = _56_
-  local function _59_()
+  index = _68_
+  local function _71_()
     local ok_3f, err = index(nodes)
     async.util.scheduler()
     if ok_3f then
@@ -538,17 +574,17 @@ local function roam_refresh_search_index()
       return vim.notify(("Error on refresh search index: " .. err))
     end
   end
-  local function _61_(err)
+  local function _73_(err)
     async.util.scheduler()
     return vim.notify(("Error on refresh search index: " .. tostring(err)))
   end
-  return async.run(_59_, nil, _61_)
+  return async.run(_71_, nil, _73_)
 end
 vim.api.nvim_create_user_command("RoamRefreshSearchIndex", roam_refresh_search_index, {})
 local function query_roam_fragments(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esearch
-  local function _62_(query0)
+  local function _74_(query0)
     if query0 then
       local job = async_system({"org-search-utils-search", query0, limit}, {text = true})
       if (job.code == 0) then
@@ -565,8 +601,8 @@ local function query_roam_fragments(query, limit, cb, errcb)
       return nil
     end
   end
-  __3esearch = _62_
-  local function _66_()
+  __3esearch = _74_
+  local function _78_()
     local ok_3f, result = __3esearch(query, limit)
     async.util.scheduler()
     if ok_3f then
@@ -575,16 +611,16 @@ local function query_roam_fragments(query, limit, cb, errcb)
       return errcb(result)
     end
   end
-  local function _68_(err)
+  local function _80_(err)
     async.util.scheduler()
     return errcb(("Error: " .. tostring(err)))
   end
-  return async.run(_66_, nil, _68_)
+  return async.run(_78_, nil, _80_)
 end
 local function query_roam_headings(query, limit, cb, errcb)
   local async_system = async.wrap(vim.system, 3)
   local __3esearch
-  local function _69_(query0)
+  local function _81_(query0)
     if query0 then
       local job = async_system({"org-search-utils-search", "--title_only", query0, limit}, {text = true})
       if (job.code == 0) then
@@ -601,8 +637,8 @@ local function query_roam_headings(query, limit, cb, errcb)
       return nil
     end
   end
-  __3esearch = _69_
-  local function _73_()
+  __3esearch = _81_
+  local function _85_()
     local ok_3f, result = __3esearch(query, limit)
     async.util.scheduler()
     if ok_3f then
@@ -611,11 +647,11 @@ local function query_roam_headings(query, limit, cb, errcb)
       return errcb(result)
     end
   end
-  local function _75_(err)
+  local function _87_(err)
     async.util.scheduler()
     return errcb(("Error: " .. tostring(err)))
   end
-  return async.run(_73_, nil, _75_)
+  return async.run(_85_, nil, _87_)
 end
 --[[ (roam-refresh-search-index) (query_roam_fragments "Neovim" 10 print print) (-> (icollect [_ node (ipairs (get_all_roam_nodes))] (let [n (get_roam_node_by_id node.id)] {:node-id node.id :path n.file})) (vim.json.encode)) ]]
 local function get_roam_node_links(id)

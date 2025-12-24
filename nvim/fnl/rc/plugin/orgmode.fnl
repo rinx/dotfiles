@@ -200,6 +200,25 @@
    :mappings
    {:org
     {:org_toggle_checkbox :cic}}
+   :hyperlinks
+   {:sources
+    [{:get_name (fn []
+                  :gh)
+      :follow (fn [self link]
+                ;; NOTE: supports gh link types such as:
+                ;; gh:rinx/dotfiles#53  ... issue 53 in rinx/dotfiles
+                ;; gh:rinx/dotfiles@272 ... pr 272 in rinx/dotfiles
+                (if (vim.startswith link "gh:")
+                  (let [url (case (string.match link "gh:(%S+)/(%S+)#(%d+)")
+                              (org name num) (.. "gh://" org :/ name :/issue/ num)
+                              _ (case (string.match link "gh:(%S+)/(%S+)@(%d+)")
+                                  (org name num) (.. "gh://" org :/ name :/pr/ num)
+                                  _ link))]
+                    (vim.cmd (.. "e " url))
+                    true)
+                  false))
+      :autocomplete (fn [self link]
+                      [])}]}
    :notifications
    {:enabled true
     :cron_enabled false
