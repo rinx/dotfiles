@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1766498700393,
+  "lastUpdate": 1766587594386,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25609,6 +25609,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.54367169999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ea38e2c9077b539b3119c5b8fd23d928003279c8",
+          "message": "feat(nvim): add gh custom link type for orgmode\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-24T23:31:23+09:00",
+          "tree_id": "7720309ff875e830ba267a230272ff8017e38a45",
+          "url": "https://github.com/rinx/dotfiles/commit/ea38e2c9077b539b3119c5b8fd23d928003279c8"
+        },
+        "date": 1766587593185,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.775445,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 247.4273821,
             "unit": "ms"
           }
         ]
