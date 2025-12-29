@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1766991180154,
+  "lastUpdate": 1766999253123,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25745,6 +25745,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.63173420000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b33d0de304d6bada97d92bdf7ee62530a74e910f",
+          "message": "feat(nvim): add gh_yank_org action for gh pickers\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-29T17:53:11+09:00",
+          "tree_id": "4cb7fc4dd393058c588ea92de4f094aef3d2c0c9",
+          "url": "https://github.com/rinx/dotfiles/commit/b33d0de304d6bada97d92bdf7ee62530a74e910f"
+        },
+        "date": 1766999251905,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.640711000000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 93.49513820000001,
             "unit": "ms"
           }
         ]
