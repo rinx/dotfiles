@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1766999253123,
+  "lastUpdate": 1767019909564,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25779,6 +25779,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 93.49513820000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ee824e618d4ef05c1b5eb37316eb618abb4dfb6b",
+          "message": "config(nvim): add fold toggle mapping\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2025-12-29T23:37:00+09:00",
+          "tree_id": "953122f35fe4366ab636d4785ed1acf4c28db853",
+          "url": "https://github.com/rinx/dotfiles/commit/ee824e618d4ef05c1b5eb37316eb618abb4dfb6b"
+        },
+        "date": 1767019907611,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.700718799999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.6074072,
             "unit": "ms"
           }
         ]
