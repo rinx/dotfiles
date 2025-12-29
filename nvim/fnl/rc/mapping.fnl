@@ -78,6 +78,8 @@
 (map! [:n] :ZQ :<Nop> {})
 (map! [:n] :Q :<Nop> {})
 
+(map! [:n] :<S-Tab> :zA {})
+
 (map! [:n] :H "H<Plug>(H)" {})
 (map! [:n] :L "L<Plug>(L)" {})
 (map! [:n] "<Plug>(H)H" "<PageUp><Plug>(H)" {})
