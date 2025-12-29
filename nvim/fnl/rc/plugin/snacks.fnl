@@ -335,6 +335,7 @@
    "lua Snacks.picker.gh_issue({ state = \"all\" })"
    "lua Snacks.picker.gh_pr()"
    "lua Snacks.picker.gh_pr({ state = \"all\" })"
+   "lua Snacks.picker.gh_review_requested()"
    "lua Snacks.picker.notifications()"
    "lua Snacks.terminal.toggle()"
    "lua Snacks.terminal.open()"
@@ -395,3 +396,26 @@
       ":<C-u>lua Snacks.picker.custom_actions()<CR>"
       {:silent true
        :desc "select custom action via snacks.picker"})
+
+(set picker-sources.gh_review_requested
+     {:title "  Review Requested PRs"
+      :finder (fn [opts ctx]
+                (let [api (require :snacks.gh.api)
+                      Item (require :snacks.gh.item)]
+                  (fn [cb]
+                    (let [spawn (api.cmd
+                                  (fn [proc data]
+                                      (when data
+                                        (each [_ item (ipairs (proc:json data))]
+                                          (-> (Item.new item {:type :pr
+                                                              :text [:author :label :text :title]})
+                                              (cb)))))
+                                 {:args [:search :prs :--state=open "--review-requested=@me" "--json=repository,url,title,number,author,labels,isDraft,state"]})]
+                      (spawn:wait)))))
+      :format :gh_format
+      :preview :gh_preview
+      :confirm :gh_actions
+      :win
+      {:input
+       {:keys
+        {:<c-y> {1 :gh_yank :mode [:n :i]}}}}})

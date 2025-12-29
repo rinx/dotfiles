@@ -172,9 +172,31 @@ end
 confirm_cmd = _24_
 picker_sources.command_history.confirm = confirm_cmd
 picker_sources.commands.confirm = confirm_cmd
-local custom_actions = {"lua Snacks.git.blame_line()", "lua Snacks.gitbrowse()", "lua Snacks.lazygit()", "lua Snacks.notifier.hide()", "lua Snacks.notifier.show_history()", "lua Snacks.picker.gh_issue()", "lua Snacks.picker.gh_issue({ state = \"all\" })", "lua Snacks.picker.gh_pr()", "lua Snacks.picker.gh_pr({ state = \"all\" })", "lua Snacks.picker.notifications()", "lua Snacks.terminal.toggle()", "lua Snacks.terminal.open()", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "OrgFind", "OrgGrep", "OrgKensaku", "OrgInbox", "OrgInsertLink", "OrgJournal", "OrgRefileHeadline", "OrgRefileToToday", "OrgSearchHeadlines", "PasteImage", "RoamCommitPush", "RoamGrep", "RoamKensaku", "RoamPull", "RoamRefreshSearchIndex", "RoamReset", "RoamStatus", "RoamSearchByTag book", "RoamSearchByTag code", "RoamSearchByTag fleeting", "RoamSearchByTag local", "RoamSearchByTag project", "RoamSearchByTag scrap", "RoamSearchByTag wiki", "Trouble diagnostics", "Trouble loclist", "Trouble lsp", "Trouble lsp_references", "Trouble quickfix", "Trouble snacks", "Trouble snacks_files", "Trouble todo"}
+local custom_actions = {"lua Snacks.git.blame_line()", "lua Snacks.gitbrowse()", "lua Snacks.lazygit()", "lua Snacks.notifier.hide()", "lua Snacks.notifier.show_history()", "lua Snacks.picker.gh_issue()", "lua Snacks.picker.gh_issue({ state = \"all\" })", "lua Snacks.picker.gh_pr()", "lua Snacks.picker.gh_pr({ state = \"all\" })", "lua Snacks.picker.gh_review_requested()", "lua Snacks.picker.notifications()", "lua Snacks.terminal.toggle()", "lua Snacks.terminal.open()", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "OrgFind", "OrgGrep", "OrgKensaku", "OrgInbox", "OrgInsertLink", "OrgJournal", "OrgRefileHeadline", "OrgRefileToToday", "OrgSearchHeadlines", "PasteImage", "RoamCommitPush", "RoamGrep", "RoamKensaku", "RoamPull", "RoamRefreshSearchIndex", "RoamReset", "RoamStatus", "RoamSearchByTag book", "RoamSearchByTag code", "RoamSearchByTag fleeting", "RoamSearchByTag local", "RoamSearchByTag project", "RoamSearchByTag scrap", "RoamSearchByTag wiki", "Trouble diagnostics", "Trouble loclist", "Trouble lsp", "Trouble lsp_references", "Trouble quickfix", "Trouble snacks", "Trouble snacks_files", "Trouble todo"}
 local function _26_(cmd)
   return {name = cmd, text = cmd, cmd = cmd}
 end
 picker_sources.custom_actions = {items = core.map(_26_, custom_actions), layout = {preset = "vscode"}, preview = "none", format = "text", formatters = {text = {ft = "vim"}}, confirm = confirm_cmd}
-return vim.keymap.set("n", "<Leader>h", ":<C-u>lua Snacks.picker.custom_actions()<CR>", {silent = true, desc = "select custom action via snacks.picker"})
+vim.keymap.set("n", "<Leader>h", ":<C-u>lua Snacks.picker.custom_actions()<CR>", {silent = true, desc = "select custom action via snacks.picker"})
+local function _27_(opts, ctx)
+  local api = require("snacks.gh.api")
+  local Item = require("snacks.gh.item")
+  local function _28_(cb)
+    local spawn
+    local function _29_(proc, data)
+      if data then
+        for _, item in ipairs(proc:json(data)) do
+          cb(Item.new(item, {type = "pr", text = {"author", "label", "text", "title"}}))
+        end
+        return nil
+      else
+        return nil
+      end
+    end
+    spawn = api.cmd(_29_, {args = {"search", "prs", "--state=open", "--review-requested=@me", "--json=repository,url,title,number,author,labels,isDraft,state"}})
+    return spawn:wait()
+  end
+  return _28_
+end
+picker_sources.gh_review_requested = {title = "\238\156\137  Review Requested PRs", finder = _27_, format = "gh_format", preview = "gh_preview", confirm = "gh_actions", win = {input = {keys = {["<c-y>"] = {"gh_yank", mode = {"n", "i"}}}}}}
+return nil
