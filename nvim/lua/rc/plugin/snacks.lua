@@ -5,22 +5,62 @@ local core = autoload("nfnl.core")
 local snacks = require("snacks")
 local picker_sources = require("snacks.picker.config.sources")
 local trouble_source_snacks = autoload("trouble.sources.snacks")
-local function _2_(self)
+local gh_yank_org
+local function _2_(picker, item)
+  local selected = picker:selected()
+  local items
+  if (#selected > 0) then
+    items = selected
+  else
+    items = {item}
+  end
+  local l = #items
+  if (l > 0) then
+    local fst = core.first(items)
+    if (fst.file and vim.startswith(fst.file, "gh:")) then
+      picker:close()
+      local uris
+      local function _4_(x)
+        local separator
+        do
+          local case_5_ = x.type
+          if (case_5_ == "issue") then
+            separator = "#"
+          elseif (case_5_ == "pr") then
+            separator = "@"
+          else
+            separator = nil
+          end
+        end
+        return ("[[gh:" .. x.repo .. separator .. x.number .. "]]")
+      end
+      uris = core.concat(core.map(_4_, items), "\n")
+      vim.fn.setreg((vim.v.register or "+"), uris, "l")
+      return Snacks.notify.info(("Yanked " .. l .. " URL(s)"))
+    else
+      return nil
+    end
+  else
+    return nil
+  end
+end
+gh_yank_org = {desc = "Yank Org-style Link to clipboard", action = _2_}
+local function _9_(self)
   local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
   if (f == "") then
     return Snacks.notify.warn("No file under cursor")
   else
     self:hide()
-    local function _3_()
+    local function _10_()
       return vim.cmd(("e " .. f))
     end
-    return vim.schedule(_3_)
+    return vim.schedule(_10_)
   end
 end
-local function _5_(self)
+local function _12_(self)
   return vim.cmd("stopinsert")
 end
-snacks.setup({bigfile = {enabled = true}, image = {enabled = true, doc = {float = true, inline = false}}, input = {}, indent = {enabled = true}, notifier = {enabled = true}, picker = {actions = trouble_source_snacks.actions, win = {input = {keys = {["<c-t>"] = {"trouble_open", mode = {"n", "i"}}}}}}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _2_, term_normal = {"<esc>", _5_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
+snacks.setup({bigfile = {enabled = true}, image = {enabled = true, doc = {float = true, inline = false}}, input = {}, indent = {enabled = true}, notifier = {enabled = true}, picker = {actions = core.merge({gh_yank_org = gh_yank_org}, trouble_source_snacks.actions), win = {input = {keys = {["<c-t>"] = {"trouble_open", mode = {"n", "i"}}, ["<c-o>"] = {"gh_yank_org", mode = {"n", "i"}}}}}}, quickfile = {enabled = true}, terminal = {win = {style = {bo = {filetype = "snacks_terminal"}, wo = {}, keys = {gf = _9_, term_normal = {"<esc>", _12_, mode = "t", expr = true, desc = "escape to normal mode"}}}}}})
 local function map__3e(toggle, key)
   return toggle:map(key)
 end
@@ -52,27 +92,27 @@ vim.keymap.set("n", ",/", ":<C-u>lua Snacks.picker.lines()<CR>", {silent = true,
 vim.keymap.set("n", "<Leader><Leader>", ":<C-u>lua Snacks.picker.commands({ layout = { preset = \"vscode\"}})<CR>", {silent = true, desc = "select commands via snacks.picker"})
 vim.keymap.set("n", "<C-\\>", ":<C-u>lua Snacks.picker()<CR>", {silent = true, desc = "select snacks.picker source"})
 local kensaku_finder
-local function _6_(opts, ctx)
+local function _13_(opts, ctx)
   if (ctx.filter.search == "") then
     if opts["current-buf"] then
       local l = require("snacks.picker.source.lines")
       return l.lines(opts, ctx)
     else
-      local function _7_()
+      local function _14_()
       end
-      return _7_
+      return _14_
     end
   else
     local cwd
     if not opts["current-buf"] then
-      local function _9_()
+      local function _16_()
         if (opts and opts.cwd) then
           return opts.cwd
         else
           return (vim.uv.cwd() or ".")
         end
       end
-      cwd = svim.fs.normalize(_9_())
+      cwd = svim.fs.normalize(_16_())
     else
       cwd = nil
     end
@@ -108,7 +148,7 @@ local function _6_(opts, ctx)
     local args = core.concat({"--color=never", "--no-heading", "--no-ignore", "--with-filename", "--line-number", "--column", "--smart-case", "--max-columns=500", "--max-columns-preview", "-g", "!.git", "--hidden", "-L", "--", kensaku_pattern}, paths)
     local proc = require("snacks.picker.source.proc")
     local transform
-    local function _15_(item)
+    local function _22_(item)
       item.cwd = cwd
       local file, line, col, text = item.text:match("^(.+):(%d+):(%d+):(.*)$")
       if not file then
@@ -136,31 +176,31 @@ local function _6_(opts, ctx)
         end
       end
     end
-    transform = _15_
+    transform = _22_
     return proc.proc(ctx:opts({cmd = "rg", args = args, transform = transform, notify = false}), ctx)
   end
 end
-kensaku_finder = _6_
+kensaku_finder = _13_
 picker_sources.kensaku = {finder = kensaku_finder, regex = true, format = "file", show_empty = true, live = true, supports_live = true}
 vim.keymap.set("n", ",k", ":<C-u>lua Snacks.picker.kensaku()<CR>", {silent = true, desc = "live kensaku via snacks.picker"})
 picker_sources.klines = {finder = kensaku_finder, regex = true, format = "lines", show_empty = true, live = true, supports_live = true, ["current-buf"] = true, layout = {preview = "main", preset = "ivy"}}
 vim.keymap.set("n", ",K", ":<C-u>lua Snacks.picker.klines()<CR>", {silent = true, desc = "live kensaku for current buffer via snacks.picker"})
-local function _21_(ft)
+local function _28_(ft)
   return {name = ft, text = ft}
 end
-local function _22_(item)
+local function _29_(item)
   local util = require("snacks.util")
   local icon, hl = util.icon(item.text, "filetype")
   return {{(icon .. " "), hl}, {item.text}}
 end
-local function _23_(picker, item)
+local function _30_(picker, item)
   picker:close()
   return vim.cmd.set(("ft=" .. item.text))
 end
-picker_sources.filetype = {items = core.map(_21_, vim.fn.getcompletion("", "filetype")), source = "filetype", layout = "select", format = _22_, confirm = _23_}
+picker_sources.filetype = {items = core.map(_28_, vim.fn.getcompletion("", "filetype")), source = "filetype", layout = "select", format = _29_, confirm = _30_}
 vim.keymap.set("n", ",t", ":<C-u>lua Snacks.picker.filetype()<CR>", {silent = true, desc = "select filetype via snacks.picker"})
 local confirm_cmd
-local function _24_(picker, item)
+local function _31_(picker, item)
   picker:close()
   if (item and item.cmd) then
     vim.fn.histadd("cmd", item.cmd)
@@ -169,21 +209,21 @@ local function _24_(picker, item)
     return nil
   end
 end
-confirm_cmd = _24_
+confirm_cmd = _31_
 picker_sources.command_history.confirm = confirm_cmd
 picker_sources.commands.confirm = confirm_cmd
 local custom_actions = {"lua Snacks.git.blame_line()", "lua Snacks.gitbrowse()", "lua Snacks.lazygit()", "lua Snacks.notifier.hide()", "lua Snacks.notifier.show_history()", "lua Snacks.picker.gh_issue()", "lua Snacks.picker.gh_issue({ state = \"all\" })", "lua Snacks.picker.gh_pr()", "lua Snacks.picker.gh_pr({ state = \"all\" })", "lua Snacks.picker.gh_review_requested()", "lua Snacks.picker.notifications()", "lua Snacks.terminal.toggle()", "lua Snacks.terminal.open()", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "OrgFind", "OrgGrep", "OrgKensaku", "OrgInbox", "OrgInsertLink", "OrgJournal", "OrgRefileHeadline", "OrgRefileToToday", "OrgSearchHeadlines", "PasteImage", "RoamCommitPush", "RoamGrep", "RoamKensaku", "RoamPull", "RoamRefreshSearchIndex", "RoamReset", "RoamStatus", "RoamSearchByTag book", "RoamSearchByTag code", "RoamSearchByTag fleeting", "RoamSearchByTag local", "RoamSearchByTag project", "RoamSearchByTag scrap", "RoamSearchByTag wiki", "Trouble diagnostics", "Trouble loclist", "Trouble lsp", "Trouble lsp_references", "Trouble quickfix", "Trouble snacks", "Trouble snacks_files", "Trouble todo"}
-local function _26_(cmd)
+local function _33_(cmd)
   return {name = cmd, text = cmd, cmd = cmd}
 end
-picker_sources.custom_actions = {items = core.map(_26_, custom_actions), layout = {preset = "vscode"}, preview = "none", format = "text", formatters = {text = {ft = "vim"}}, confirm = confirm_cmd}
+picker_sources.custom_actions = {items = core.map(_33_, custom_actions), layout = {preset = "vscode"}, preview = "none", format = "text", formatters = {text = {ft = "vim"}}, confirm = confirm_cmd}
 vim.keymap.set("n", "<Leader>h", ":<C-u>lua Snacks.picker.custom_actions()<CR>", {silent = true, desc = "select custom action via snacks.picker"})
-local function _27_(opts, ctx)
+local function _34_(opts, ctx)
   local api = require("snacks.gh.api")
   local Item = require("snacks.gh.item")
-  local function _28_(cb)
+  local function _35_(cb)
     local spawn
-    local function _29_(proc, data)
+    local function _36_(proc, data)
       if data then
         for _, item in ipairs(proc:json(data)) do
           cb(Item.new(item, {type = "pr", text = {"author", "label", "text", "title"}}))
@@ -193,10 +233,43 @@ local function _27_(opts, ctx)
         return nil
       end
     end
-    spawn = api.cmd(_29_, {args = {"search", "prs", "--state=open", "--review-requested=@me", "--json=repository,url,title,number,author,labels,isDraft,state"}})
+    spawn = api.cmd(_36_, {args = {"search", "prs", "--state=open", "--review-requested=@me", "--json=repository,url,title,number,author,labels,isDraft,state"}})
     return spawn:wait()
   end
-  return _28_
+  return _35_
 end
-picker_sources.gh_review_requested = {title = "\238\156\137  Review Requested PRs", finder = _27_, format = "gh_format", preview = "gh_preview", confirm = "gh_actions", win = {input = {keys = {["<c-y>"] = {"gh_yank", mode = {"n", "i"}}}}}}
+local function _38_(picker, item)
+  picker:close()
+  local selected = picker:selected()
+  local items
+  if (#selected > 0) then
+    items = selected
+  else
+    items = {item}
+  end
+  local l = #items
+  if (l > 0) then
+    local uris
+    local function _40_(x)
+      local separator
+      do
+        local case_41_ = x.type
+        if (case_41_ == "issue") then
+          separator = "#"
+        elseif (case_41_ == "pr") then
+          separator = "@"
+        else
+          separator = nil
+        end
+      end
+      return ("[[gh:" .. x.repo .. separator .. x.number .. "]]")
+    end
+    uris = core.concat(core.map(_40_, items), "\n")
+    vim.fn.setreg((vim.v.register or "+"), uris, "l")
+    return Snacks.notify.info(("Yanked " .. l .. " URL(s)"))
+  else
+    return nil
+  end
+end
+picker_sources.gh_review_requested = {title = "\238\156\137  Review Requested PRs", finder = _34_, format = "gh_format", preview = "gh_preview", confirm = "gh_actions", actions = {gh_yank_org = _38_}, win = {input = {keys = {["<c-y>"] = {"gh_yank", mode = {"n", "i"}}}}}}
 return nil

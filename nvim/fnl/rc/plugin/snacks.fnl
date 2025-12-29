@@ -7,6 +7,31 @@
 
 (import-macros {: map!} :rc.macros)
 
+(local gh_yank_org
+       {:desc "Yank Org-style Link to clipboard"
+        :action
+        (fn [picker item]
+          (let [selected (picker:selected)
+                items (if (> (length selected) 0)
+                          selected
+                          [item])
+                l (length items)]
+            (when (> l 0)
+              (let [fst (core.first items)]
+                (when (and fst.file
+                           (vim.startswith fst.file "gh:"))
+                  (picker:close)
+                  (let [uris (-> (->> items
+                                  (core.map
+                                    (fn [x]
+                                      (let [separator (case x.type
+                                                        :issue :#
+                                                        :pr "@")]
+                                        (.. "[[gh:" x.repo separator x.number "]]")))))
+                                 (core.concat "\n"))]
+                    (vim.fn.setreg (or vim.v.register :+) uris :l)
+                    (Snacks.notify.info (.. "Yanked " l " URL(s)"))))))))})
+
 (snacks.setup
   {:bigfile
    {:enabled true}
@@ -21,12 +46,18 @@
    :notifier
    {:enabled true}
    :picker
-   {:actions trouble-source-snacks.actions
+   {:actions
+    (core.merge
+      {:gh_yank_org gh_yank_org}
+      trouble-source-snacks.actions)
     :win
     {:input
      {:keys
       {:<c-t>
        {1 :trouble_open
+        :mode [:n :i]}
+       :<c-o>
+       {1 :gh_yank_org
         :mode [:n :i]}}}}}
    :quickfile
    {:enabled true}
@@ -415,6 +446,25 @@
       :format :gh_format
       :preview :gh_preview
       :confirm :gh_actions
+      :actions
+      {:gh_yank_org (fn [picker item]
+                      (picker:close)
+                      (let [selected (picker:selected)
+                            items (if (> (length selected) 0)
+                                      selected
+                                      [item])
+                            l (length items)]
+                        (when (> l 0)
+                          (let [uris (-> (->> items
+                                          (core.map
+                                            (fn [x]
+                                              (let [separator (case x.type
+                                                                :issue :#
+                                                                :pr "@")]
+                                                (.. "[[gh:" x.repo separator x.number "]]")))))
+                                         (core.concat "\n"))]
+                            (vim.fn.setreg (or vim.v.register :+) uris :l)
+                            (Snacks.notify.info (.. "Yanked " l " URL(s)"))))))}
       :win
       {:input
        {:keys
