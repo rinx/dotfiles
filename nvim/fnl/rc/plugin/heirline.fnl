@@ -343,6 +343,7 @@
         search-component
         macrorec-component
         align-component
+        org-clock-component
         git-component
         skkeleton-component
         denops-component
@@ -355,7 +356,6 @@
        [cwd-component
         align-component
         dap-component
-        org-clock-component
         align-component
         copilot-component
         diagnostics-component
