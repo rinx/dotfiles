@@ -268,6 +268,7 @@
              :staticcheck true
              :vulncheck :Imports
              :gofumpt true}}}
+   :harper_ls {:cmd (alter-cmd [:harper :--stdio] :harper)}
    :helm_ls {:cmd (alter-cmd [:helm_ls :serve] :helm-ls)}
    :jqls {:cmd (alter-cmd [:jq-lsp] :jq-lsp)}
    :jsonls {:settings
