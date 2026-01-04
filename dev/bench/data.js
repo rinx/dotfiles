@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1767430852178,
+  "lastUpdate": 1767500782516,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -25915,6 +25915,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.8684768,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e2e5d8f630b17114df1a4b8587d8422865ed4b2f",
+          "message": "feat(zsh): add gwa alias\n\nRef: https://zenn.dev/ras96/scraps/98ea3f3cd2bcf1\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-01-04T13:11:30+09:00",
+          "tree_id": "39edfe44aeb88c74526c0f5bc769450a0789011a",
+          "url": "https://github.com/rinx/dotfiles/commit/e2e5d8f630b17114df1a4b8587d8422865ed4b2f"
+        },
+        "date": 1767500781260,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.7395265,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 100.55267629999999,
             "unit": "ms"
           }
         ]
