@@ -104,6 +104,29 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
                 cd "`ghq root`/$dir"
             fi
         }
+
+        git-worktree-add() {
+            branch=$(git branch --sort=-committerdate --all --format='%(refname:short)' | fzf +m | tr -d '[:space:]')
+            if [[ -z "$branch" ]]; then
+                return 1
+            fi
+
+            repo=$(git rev-parse --show-toplevel)
+            repo=${repo%+*}
+            repo="${repo}+${branch//\//_}"
+            if [[ -d "$repo" ]]; then
+                echo "${repo} already exists" >&2
+                echo $repo
+                return 0
+            fi
+
+            git worktree add -q $repo $branch
+            echo $repo
+        }
+
+        gwa() {
+            cd $(git-worktree-add)
+        }
     fi
 fi
 
