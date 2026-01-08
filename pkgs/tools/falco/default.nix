@@ -11,7 +11,7 @@ buildGoModule rec {
     owner = "ysugimoto";
     repo = "falco";
     rev = "v${version}";
-    hash = "sha256-MhXNkS4JGbj3Fd1gfmO/EJX0hCwzNQYy9cAOMCfH0sI=";
+    hash = "sha256-bf5uxRBT4/FJG9ufxJD09LWkBhZL2W21l3MLJmAVsJw=";
   };
 
   vendorHash = "sha256-pCkbDAvbBXzs5TViUT9QMlbiGFPadXZi4cphW6F4ZfA=";
