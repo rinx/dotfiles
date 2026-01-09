@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1767882102285,
+  "lastUpdate": 1767922574037,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26051,6 +26051,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 95.88424469999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "116073707+rinx-app[bot]@users.noreply.github.com",
+            "name": "rinx-app[bot]",
+            "username": "rinx-app[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e20d13d08343b43a187c987321ea9ae22083fe53",
+          "message": "falco: 2.0.0 -> 2.0.1 (#284)\n\n* falco: 2.0.0 -> 2.0.1\n\n* chore(falco): update hash\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n* chore-deps(falco): update vendor hash\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: rinx-app[bot] <116073707+rinx-app[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-01-09T01:22:12Z",
+          "tree_id": "ecad0cd65b0bfaac7e01e2f5b993d0c6f962e304",
+          "url": "https://github.com/rinx/dotfiles/commit/e20d13d08343b43a187c987321ea9ae22083fe53"
+        },
+        "date": 1767922572612,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.672936099999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.242418,
             "unit": "ms"
           }
         ]
