@@ -98,7 +98,8 @@
    :zig])
 
 (ts.setup {})
-(ts.install languages)
+(when (not (= vim.env.NVIM_DISABLE_TS_PARSER_INSTALL :1))
+  (ts.install languages))
 
 (augroup!
   init-treesitter
