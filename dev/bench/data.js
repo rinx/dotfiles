@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1768180949275,
+  "lastUpdate": 1768196824702,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26153,6 +26153,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.71662709999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "98850ae7ff54dd81c2817596a8e6059f6131b34b",
+          "message": "config(nvim): add NVIM_DISABLE_TS_PARSER_INSTALL environment variable\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-01-12T14:33:09+09:00",
+          "tree_id": "558cd32f4d8853b054dec9b5e6eaf6699c2dcbc1",
+          "url": "https://github.com/rinx/dotfiles/commit/98850ae7ff54dd81c2817596a8e6059f6131b34b"
+        },
+        "date": 1768196823448,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 20.4233713,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 78.28046789999999,
             "unit": "ms"
           }
         ]
