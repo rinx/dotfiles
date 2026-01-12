@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1768179348136,
+  "lastUpdate": 1768180949275,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26119,6 +26119,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.2785976,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ef1c3ef8e2133a6b9fc81b991dc7e6e22e2b4bdc",
+          "message": "chore(nix): use nixfmt instead of nixfmt-rfc-style\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-01-12T10:07:44+09:00",
+          "tree_id": "9eac47509bc7abc136e8ada6f0a63f5a61e3b36f",
+          "url": "https://github.com/rinx/dotfiles/commit/ef1c3ef8e2133a6b9fc81b991dc7e6e22e2b4bdc"
+        },
+        "date": 1768180947404,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.0008742,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.71662709999998,
             "unit": "ms"
           }
         ]
