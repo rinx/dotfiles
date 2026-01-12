@@ -86,7 +86,7 @@
                   enable = true;
                   entry = "${pkgs.gitleaks}/bin/gitleaks protect --staged";
                 };
-                nixfmt-rfc-style.enable = true;
+                nixfmt.enable = true;
                 treefmt.enable = true;
               };
             };
