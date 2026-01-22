@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Free disk space
-        uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b # v6
+        uses: wimpysworld/nothing-but-nix@b1f25dc23e36f5c9ce4956828cf3a3108d73eb1c # v8
         with:
           hatchet-protocol: 'rampage'
           root-safe-haven: '3072' # Reserve 3GB on the / filesystem
