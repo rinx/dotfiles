@@ -12,7 +12,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Free disk space
-        uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b # v6
+        uses: wimpysworld/nothing-but-nix@a77b09ee91691223ff188d8fb6a87d699d457b4f # v7
         with:
           hatchet-protocol: 'rampage'
           root-safe-haven: '3072' # Reserve 3GB on the / filesystem
