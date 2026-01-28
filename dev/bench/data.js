@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1768198905902,
+  "lastUpdate": 1769568495268,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26221,6 +26221,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.35363679999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "6f9453b732dbfc5bf50661a0bcc1192b9a02a8d9",
+          "message": "fix(org-search-utils): use lindera-python instead of lindera-py\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-01-28T11:33:36+09:00",
+          "tree_id": "ddb2bf936a402c76c876da3df10400b47142800f",
+          "url": "https://github.com/rinx/dotfiles/commit/6f9453b732dbfc5bf50661a0bcc1192b9a02a8d9"
+        },
+        "date": 1769568493793,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.719327399999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.9876298,
             "unit": "ms"
           }
         ]
