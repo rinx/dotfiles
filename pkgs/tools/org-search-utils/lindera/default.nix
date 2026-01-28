@@ -9,15 +9,15 @@
   openssl,
 }:
 buildPythonPackage rec {
-  pname = "lindera_py";
-  version = "0.45.0";
+  pname = "lindera_python_ipadic";
+  version = "2.0.0";
 
   src = fetchPypi {
     inherit pname version;
     format = "wheel";
-    dist = "cp313";
-    python = "cp313";
-    abi = "cp313";
+    dist = "cp310";
+    python = "cp310";
+    abi = "abi3";
     platform =
       if stdenv.isDarwin then
         if stdenv.isAarch64 then "macosx_11_0_arm64" else "macosx_10_12_x86_64"
@@ -31,14 +31,14 @@ buildPythonPackage rec {
     sha256 =
       if stdenv.isDarwin then
         if stdenv.isAarch64 then
-          "sha256-7EBn7JKxes2IN0L7WQlHv0PBa4VSQLYVP6AMb+aKXOo="
+          "sha256-1uNWk0xjs8VKy8l+l3Qs9sp8xORU2aixStcuehj8yrU="
         else
-          "sha256-DxuQe36utYXv5jqBZoQP2idKHnfnUs4YyC5Rs/SD5wQ="
+          "sha256-/22b5UNbpZ3hLDZYKRBmthlwIYbdC5Aw1N4x+nwUHwE="
       else if stdenv.isLinux then
         if stdenv.isAarch64 then
-          "sha256-sj4OA8YAica9j/WXsTeeib9SyY2lzsrJA8wscVUXlRc="
+          "sha256-qavMxmu7b476AXJJxGyh0ShZbOcHtTIhUi6fexSHki4="
         else
-          "sha256-Gi5JKpgisKzmxmfO99U1r+1uH1dtTnEqRGJs/P72BVg="
+          "sha256-S/NXXcSuIWDnTFtMr/yqjeNO8Jir4ZPoi2FR3yEWMoo="
       else
         throw "Unsupported platform";
   };
@@ -55,5 +55,5 @@ buildPythonPackage rec {
     openssl
   ];
 
-  pythonImportsCheck = [ "lindera_py" ];
+  pythonImportsCheck = [ "lindera" ];
 }

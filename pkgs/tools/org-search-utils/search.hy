@@ -7,7 +7,7 @@
 
 (import torch)
 (import transformers [AutoModel AutoTokenizer])
-(import lindera_py [Segmenter Tokenizer load_dictionary])
+(import lindera [TokenizerBuilder])
 (import sentence_transformers [CrossEncoder])
 
 (import duckdb)
@@ -22,9 +22,10 @@
                            "cuda"
                            "cpu"))))
 
-(setv ja-tokenizer (let [dictionary (load_dictionary "ipadic")
-                         segmenter (Segmenter "normal" dictionary)]
-                     (Tokenizer segmenter)))
+(setv ja-tokenizer (let [builder (TokenizerBuilder)]
+                     (builder.set_mode "normal")
+                     (builder.set_dictionary "embedded://ipadic")
+                     (builder.build)))
 
 (defn ->vec [query]
   (with [_ (torch.inference_mode)]
@@ -39,7 +40,7 @@
 (defn ja-tokens [txt]
   (let [ts (ja-tokenizer.tokenize txt)]
     (->> (lfor t ts
-           t.text)
+           (get t "surface"))
          (.join " "))))
 
 (defn vq [conn vec limit title-only]
