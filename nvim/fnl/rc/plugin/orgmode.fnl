@@ -264,6 +264,7 @@
                            :icons
                            {:separator "➜"}})]
                   (m:open data)))}}})
+(vim.lsp.enable :org)
 
 (roam.setup
   {:directory (->path :roam)

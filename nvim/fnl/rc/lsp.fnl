@@ -239,7 +239,6 @@
              :requireMarker true
              :rootMarkers [".github/"]}]}
           :lintDebounce :300ms}}
-   :erlangls {:cmd (alter-cmd [:erlang_ls] :beamMinimal27Packages.erlang-ls)}
    :fennel_ls {:root_dir (root-pattern
                            :.nfnl.fnl
                            :flsproject.fnl)}

@@ -15,7 +15,6 @@
                        :ripgrep
                        :emoji
                        :git
-                       :orgmode
                        :avante
                        :copilot]
              :providers
@@ -38,9 +37,6 @@
                                   :gitcommit
                                   :markdown]
                                  vim.bo.filetype))}
-              :orgmode {:name :orgmode
-                        :module :orgmode.org.autocompletion.blink
-                        :fallbacks [:buffer]}
               :avante {:name :avante
                        :module :blink-cmp-avante}
               :copilot {:name :copilot
