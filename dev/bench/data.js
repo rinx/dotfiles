@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1769604620938,
+  "lastUpdate": 1769725672699,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26391,6 +26391,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 78.2487969,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b826a681f933129006bd3a3f4420920a637ba7c1",
+          "message": "chore(nvim): update lockfile and enable orgmode language server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-01-30T07:12:24+09:00",
+          "tree_id": "49dca4e49fc039d33acaf03797d1b834b6f19ef7",
+          "url": "https://github.com/rinx/dotfiles/commit/b826a681f933129006bd3a3f4420920a637ba7c1"
+        },
+        "date": 1769725670521,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.6351424,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 95.89096909999999,
             "unit": "ms"
           }
         ]
