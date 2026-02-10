@@ -1,5 +1,6 @@
 (local {: autoload} (require :nfnl.module))
 (local core (autoload :nfnl.core))
+(local str (autoload :nfnl.string))
 
 (local snacks (require :snacks))
 (local picker-sources (require :snacks.picker.config.sources))
@@ -364,6 +365,7 @@
    "lua Snacks.notifier.show_history()"
    "lua Snacks.picker.gh_issue()"
    "lua Snacks.picker.gh_issue({ state = \"all\" })"
+   "lua Snacks.picker.gh_notifications()"
    "lua Snacks.picker.gh_pr()"
    "lua Snacks.picker.gh_pr({ state = \"all\" })"
    "lua Snacks.picker.gh_review_requested()"
@@ -441,31 +443,41 @@
                                           (-> (Item.new item {:type :pr
                                                               :text [:author :label :text :title]})
                                               (cb)))))
-                                 {:args [:search :prs :--state=open "--review-requested=@me" "--json=repository,url,title,number,author,labels,isDraft,state"]})]
+                                  {:args [:search :prs :--state=open "--review-requested=@me" "--json=repository,url,title,number,author,labels,isDraft,state"]})]
                       (spawn:wait)))))
       :format :gh_format
       :preview :gh_preview
-      :confirm :gh_actions
-      :actions
-      {:gh_yank_org (fn [picker item]
-                      (picker:close)
-                      (let [selected (picker:selected)
-                            items (if (> (length selected) 0)
-                                      selected
-                                      [item])
-                            l (length items)]
-                        (when (> l 0)
-                          (let [uris (-> (->> items
-                                          (core.map
-                                            (fn [x]
-                                              (let [separator (case x.type
-                                                                :issue :#
-                                                                :pr "@")]
-                                                (.. "[[gh:" x.repo separator x.number "]]")))))
-                                         (core.concat "\n"))]
-                            (vim.fn.setreg (or vim.v.register :+) uris :l)
-                            (Snacks.notify.info (.. "Yanked " l " URL(s)"))))))}
-      :win
-      {:input
-       {:keys
-        {:<c-y> {1 :gh_yank :mode [:n :i]}}}}})
+      :confirm :gh_actions})
+
+(set picker-sources.gh_notifications
+     {:title "  Notifications"
+      :finder (fn [opts ctx]
+                (let [api (require :snacks.gh.api)
+                      Item (require :snacks.gh.item)]
+                  (fn [cb]
+                    (let [spawn (api.cmd
+                                  (fn [proc data]
+                                      (when data
+                                        (each [_ item (ipairs (proc:json data))]
+                                          (let [type (case (core.get-in item [:subject :type])
+                                                       :Issue :issue
+                                                       :PullRequest :pr)]
+                                            (when (or (= :pr type) (= :issue type))
+                                              (let [title (core.get-in item [:subject :title])
+                                                    repo (core.get-in item [:repository :full_name])
+                                                    number (-> (core.get-in item [:subject :url])
+                                                               (str.split :/)
+                                                             (core.last))]
+                                                  (-> {:title title
+                                                       :file (.. "gh://" repo :/ type :/ number)
+                                                       :type type
+                                                       :repo repo
+                                                       :number number}
+                                                      (Item.new {:type type
+                                                                 :text [:title]})
+                                                      (cb))))))))
+                                  {:args [:api :notifications]})]
+                      (spawn:wait)))))
+      :format :gh_format
+      :preview :gh_preview
+      :confirm :gh_actions})

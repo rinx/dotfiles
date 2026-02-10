@@ -2,6 +2,7 @@
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
+local str = autoload("nfnl.string")
 local snacks = require("snacks")
 local picker_sources = require("snacks.picker.config.sources")
 local trouble_source_snacks = autoload("trouble.sources.snacks")
@@ -212,7 +213,7 @@ end
 confirm_cmd = _31_
 picker_sources.command_history.confirm = confirm_cmd
 picker_sources.commands.confirm = confirm_cmd
-local custom_actions = {"lua Snacks.git.blame_line()", "lua Snacks.gitbrowse()", "lua Snacks.lazygit()", "lua Snacks.notifier.hide()", "lua Snacks.notifier.show_history()", "lua Snacks.picker.gh_issue()", "lua Snacks.picker.gh_issue({ state = \"all\" })", "lua Snacks.picker.gh_pr()", "lua Snacks.picker.gh_pr({ state = \"all\" })", "lua Snacks.picker.gh_review_requested()", "lua Snacks.picker.notifications()", "lua Snacks.terminal.toggle()", "lua Snacks.terminal.open()", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "OrgFind", "OrgGrep", "OrgKensaku", "OrgInbox", "OrgInsertLink", "OrgJournal", "OrgRefileHeadline", "OrgRefileToToday", "OrgSearchHeadlines", "PasteImage", "RoamCommitPush", "RoamGrep", "RoamKensaku", "RoamPull", "RoamRefreshSearchIndex", "RoamReset", "RoamStatus", "RoamSearchByTag book", "RoamSearchByTag code", "RoamSearchByTag fleeting", "RoamSearchByTag local", "RoamSearchByTag project", "RoamSearchByTag scrap", "RoamSearchByTag wiki", "Trouble diagnostics", "Trouble loclist", "Trouble lsp", "Trouble lsp_references", "Trouble quickfix", "Trouble snacks", "Trouble snacks_files", "Trouble todo"}
+local custom_actions = {"lua Snacks.git.blame_line()", "lua Snacks.gitbrowse()", "lua Snacks.lazygit()", "lua Snacks.notifier.hide()", "lua Snacks.notifier.show_history()", "lua Snacks.picker.gh_issue()", "lua Snacks.picker.gh_issue({ state = \"all\" })", "lua Snacks.picker.gh_notifications()", "lua Snacks.picker.gh_pr()", "lua Snacks.picker.gh_pr({ state = \"all\" })", "lua Snacks.picker.gh_review_requested()", "lua Snacks.picker.notifications()", "lua Snacks.terminal.toggle()", "lua Snacks.terminal.open()", "Inspect", "InspectTree", "Lazy", "Lazy check", "Lazy update", "Lazy profile", "OrgFind", "OrgGrep", "OrgKensaku", "OrgInbox", "OrgInsertLink", "OrgJournal", "OrgRefileHeadline", "OrgRefileToToday", "OrgSearchHeadlines", "PasteImage", "RoamCommitPush", "RoamGrep", "RoamKensaku", "RoamPull", "RoamRefreshSearchIndex", "RoamReset", "RoamStatus", "RoamSearchByTag book", "RoamSearchByTag code", "RoamSearchByTag fleeting", "RoamSearchByTag local", "RoamSearchByTag project", "RoamSearchByTag scrap", "RoamSearchByTag wiki", "Trouble diagnostics", "Trouble loclist", "Trouble lsp", "Trouble lsp_references", "Trouble quickfix", "Trouble snacks", "Trouble snacks_files", "Trouble todo"}
 local function _33_(cmd)
   return {name = cmd, text = cmd, cmd = cmd}
 end
@@ -238,38 +239,43 @@ local function _34_(opts, ctx)
   end
   return _35_
 end
-local function _38_(picker, item)
-  picker:close()
-  local selected = picker:selected()
-  local items
-  if (#selected > 0) then
-    items = selected
-  else
-    items = {item}
-  end
-  local l = #items
-  if (l > 0) then
-    local uris
-    local function _40_(x)
-      local separator
-      do
-        local case_41_ = x.type
-        if (case_41_ == "issue") then
-          separator = "#"
-        elseif (case_41_ == "pr") then
-          separator = "@"
-        else
-          separator = nil
+picker_sources.gh_review_requested = {title = "\238\156\137  Review Requested PRs", finder = _34_, format = "gh_format", preview = "gh_preview", confirm = "gh_actions"}
+local function _38_(opts, ctx)
+  local api = require("snacks.gh.api")
+  local Item = require("snacks.gh.item")
+  local function _39_(cb)
+    local spawn
+    local function _40_(proc, data)
+      if data then
+        for _, item in ipairs(proc:json(data)) do
+          local type
+          do
+            local case_41_ = core["get-in"](item, {"subject", "type"})
+            if (case_41_ == "Issue") then
+              type = "issue"
+            elseif (case_41_ == "PullRequest") then
+              type = "pr"
+            else
+              type = nil
+            end
+          end
+          if (("pr" == type) or ("issue" == type)) then
+            local title = core["get-in"](item, {"subject", "title"})
+            local repo = core["get-in"](item, {"repository", "full_name"})
+            local number = core.last(str.split(core["get-in"](item, {"subject", "url"}), "/"))
+            cb(Item.new({title = title, file = ("gh://" .. repo .. "/" .. type .. "/" .. number), type = type, repo = repo, number = number}, {type = type, text = {"title"}}))
+          else
+          end
         end
+        return nil
+      else
+        return nil
       end
-      return ("[[gh:" .. x.repo .. separator .. x.number .. "]]")
     end
-    uris = core.concat(core.map(_40_, items), "\n")
-    vim.fn.setreg((vim.v.register or "+"), uris, "l")
-    return Snacks.notify.info(("Yanked " .. l .. " URL(s)"))
-  else
-    return nil
+    spawn = api.cmd(_40_, {args = {"api", "notifications"}})
+    return spawn:wait()
   end
+  return _39_
 end
-picker_sources.gh_review_requested = {title = "\238\156\137  Review Requested PRs", finder = _34_, format = "gh_format", preview = "gh_preview", confirm = "gh_actions", actions = {gh_yank_org = _38_}, win = {input = {keys = {["<c-y>"] = {"gh_yank", mode = {"n", "i"}}}}}}
+picker_sources.gh_notifications = {title = "\238\156\137  Notifications", finder = _38_, format = "gh_format", preview = "gh_preview", confirm = "gh_actions"}
 return nil
