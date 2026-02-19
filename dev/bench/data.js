@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771267846802,
+  "lastUpdate": 1771466054871,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26663,6 +26663,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.89773009999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fcae44364fbe2ebea703d6dd3a14bb4ce497af78",
+          "message": "chore(deps): update wimpysworld/nothing-but-nix action to v10 (#300)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-02-19T10:38:47+09:00",
+          "tree_id": "e7714c40b0690155522f59cab91782de74eda761",
+          "url": "https://github.com/rinx/dotfiles/commit/fcae44364fbe2ebea703d6dd3a14bb4ce497af78"
+        },
+        "date": 1771466053602,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.8356226,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.61850050000001,
             "unit": "ms"
           }
         ]
