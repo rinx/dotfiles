@@ -77,3 +77,7 @@ fi
 if builtin command -v sg > /dev/null 2>&1 ; then
     source <(sg completions zsh)
 fi
+
+if builtin command -v limactl > /dev/null 2>&1 ; then
+    source <(limactl completions zsh)
+fi
