@@ -249,7 +249,6 @@
                     :--hover_language=fortran
                     :--use_signature_help]
                    :fortls)}
-   :gh_actions_ls {}
    :gleam {}
    :gopls {:settings
            {:gopls

@@ -9,10 +9,6 @@ let
 
   gctx = pkgs.callPackage ./tools/gctx { };
 
-  gh-actions-language-server = pkgs.callPackage ./tools/gh-actions-ls {
-    inherit pkgs;
-  };
-
   git-switcher = pkgs.callPackage ./tools/git-switcher { };
 
   google-cloud-sdk-with-components =
@@ -42,7 +38,6 @@ let
   custom-pkgs = [
     aws-sts-token
     gctx
-    gh-actions-language-server
     git-switcher
     google-cloud-sdk-with-components
     inputs.falco
