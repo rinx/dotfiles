@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771738811072,
+  "lastUpdate": 1771751318032,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26833,6 +26833,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.0932289,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4aba24a461752fcd814186f5575b89b14ea8f742",
+          "message": "config(zsh): add limactl completions\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-22T17:53:48+09:00",
+          "tree_id": "50902b4d9b405f5ca7f86fab2f52e05d849a6007",
+          "url": "https://github.com/rinx/dotfiles/commit/4aba24a461752fcd814186f5575b89b14ea8f742"
+        },
+        "date": 1771751316511,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.6355321,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.7711973,
             "unit": "ms"
           }
         ]
