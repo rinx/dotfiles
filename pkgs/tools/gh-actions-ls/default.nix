@@ -71,6 +71,8 @@ let
     outputHash =
       if stdenv.isLinux then
         "sha256-HfMP9OI07CpiOQw5xkpcRPKPv/MflU1FjtSMOuCkYtg="
+      else if stdenv.isAarch64 then
+        "sha256-n90RjIFixubLmgFS5zFKxaQihVqazOU7BJN6y6YBuMM="
       else
         "sha256-d8u+crJ6B1vI3141QAqcuFLXRPzzMRUr3KrO0hTdPrg=";
     outputHashAlgo = "sha256";
