@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771751318032,
+  "lastUpdate": 1771752058708,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26867,6 +26867,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.7711973,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7a8476c97d1f47cba3436ddd9f2908e8393c2f98",
+          "message": "chore(nix): fix gh-actions-ls hash\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-22T18:06:54+09:00",
+          "tree_id": "9ebf5ea550cba9e4ba3452024b7268b4fb5fea77",
+          "url": "https://github.com/rinx/dotfiles/commit/7a8476c97d1f47cba3436ddd9f2908e8393c2f98"
+        },
+        "date": 1771752057433,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.946878400000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.77730679999999,
             "unit": "ms"
           }
         ]
