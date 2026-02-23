@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771804758888,
+  "lastUpdate": 1771849820571,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -26935,6 +26935,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.89549539999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "87a58688782a4002802fead2e373a6ad465439c5",
+          "message": "feat(nix): add lima nixos configurations (prototype)\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-23T21:15:07+09:00",
+          "tree_id": "94f80cd22275bd0a8269c2d2c18a496d2a23ef3d",
+          "url": "https://github.com/rinx/dotfiles/commit/87a58688782a4002802fead2e373a6ad465439c5"
+        },
+        "date": 1771849819175,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.8435183,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.8250494,
             "unit": "ms"
           }
         ]
