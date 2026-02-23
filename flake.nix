@@ -15,6 +15,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-lima = {
+      url = "github:nixos-lima/nixos-lima";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +48,20 @@
       flake-parts,
       ...
     }:
+    let
+      dev-packages =
+        { pkgs, system, ... }:
+        import ./pkgs {
+          inherit self pkgs system;
+
+          mcp-hub = inputs.mcp-hub;
+          mcp-servers-nix = inputs.mcp-servers-nix;
+
+          falco = pkgs.callPackage ./pkgs/tools/falco { };
+          fennel-ls = pkgs.callPackage ./pkgs/tools/fennel-ls { };
+          rq = pkgs.callPackage ./pkgs/tools/rq { };
+        };
+    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.treefmt-nix.flakeModule
@@ -51,7 +74,7 @@
           pkgs,
           system,
           ...
-        }:
+        }@attrs:
         {
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
@@ -60,21 +83,9 @@
               inputs.neovim-nightly.overlays.default
             ];
           };
-          packages = rec {
-            rq = pkgs.callPackage ./pkgs/tools/rq { };
-            fennel-ls = pkgs.callPackage ./pkgs/tools/fennel-ls { };
-            falco = pkgs.callPackage ./pkgs/tools/falco { };
-
-            default = import ./pkgs {
-              inherit self pkgs system;
-
-              mcp-hub = inputs.mcp-hub;
-              mcp-servers-nix = inputs.mcp-servers-nix;
-
-              falco = falco;
-              fennel-ls = fennel-ls;
-              rq = rq;
-            };
+          packages = {
+            default = dev-packages attrs;
+            dev-packages = dev-packages attrs;
           };
           pre-commit = {
             check.enable = true;
@@ -132,5 +143,38 @@
             };
           };
         };
+      flake = {
+        nixosConfigurations = {
+          lima-vm-aarch64 = inputs.nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = inputs;
+            modules = [
+              ./nix/hosts/lima/lima.nix
+            ];
+          };
+        };
+        homeConfigurations = {
+          lima =
+            let
+              system = "aarch64-linux";
+            in
+            inputs.home-manager.lib.homeManagerConfiguration {
+              pkgs = import inputs.nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
+                overlays = [
+                  inputs.neovim-nightly.overlays.default
+                ];
+              };
+              modules = [
+                ./nix/hosts/lima/home.nix
+              ];
+              extraSpecialArgs = {
+                inherit inputs;
+                dev-packages = { pkgs }: dev-packages { inherit system pkgs; };
+              };
+            };
+        };
+      };
     };
 }
