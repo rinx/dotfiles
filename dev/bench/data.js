@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771893539347,
+  "lastUpdate": 1771894484871,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27105,6 +27105,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.4090162,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7e233654f2fc44855473d38a8ce0c178eb169af3",
+          "message": "fix(nvim): fix statusline for search history\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-24T09:39:44+09:00",
+          "tree_id": "71cbd4fe979d47861b9b6eca7b7eeaaa7cf44989",
+          "url": "https://github.com/rinx/dotfiles/commit/7e233654f2fc44855473d38a8ce0c178eb169af3"
+        },
+        "date": 1771894483401,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.3768647,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.358439,
             "unit": "ms"
           }
         ]
