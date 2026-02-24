@@ -90,7 +90,36 @@
                   falco = falco;
                   rq = rq;
                 }
+                ++ import ./nix/pkgs/k8s { inherit pkgs; }
                 ++ import ./nix/pkgs/fonts { inherit pkgs; };
+            };
+
+            dev-packages = pkgs.buildEnv {
+              name = "dev-packages";
+              paths = import ./nix/pkgs/dev {
+                inherit pkgs;
+                fennel-ls = fennel-ls;
+              };
+            };
+            extra-packages = pkgs.buildEnv {
+              name = "extra-packages";
+              paths = import ./nix/pkgs/extra {
+                inherit pkgs system;
+
+                mcp-hub = inputs.mcp-hub;
+                mcp-servers-nix = inputs.mcp-servers-nix;
+
+                falco = falco;
+                rq = rq;
+              };
+            };
+            k8s-packages = pkgs.buildEnv {
+              name = "k8s-packages";
+              paths = import ./nix/pkgs/k8s { inherit pkgs; };
+            };
+            fonts-packages = pkgs.buildEnv {
+              name = "fonts-packages";
+              paths = import ./nix/pkgs/fonts { inherit pkgs; };
             };
           };
           pre-commit = {
