@@ -61,6 +61,7 @@
   # pkgs
   environment.systemPackages = with pkgs; [
     gcc
+    kitty # to install xterm-kitty terminfo
   ];
 
   users.users.rinx = {

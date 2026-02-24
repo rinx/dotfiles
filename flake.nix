@@ -48,20 +48,6 @@
       flake-parts,
       ...
     }:
-    let
-      dev-packages =
-        { pkgs, system, ... }:
-        import ./pkgs {
-          inherit self pkgs system;
-
-          mcp-hub = inputs.mcp-hub;
-          mcp-servers-nix = inputs.mcp-servers-nix;
-
-          falco = pkgs.callPackage ./pkgs/tools/falco { };
-          fennel-ls = pkgs.callPackage ./pkgs/tools/fennel-ls { };
-          rq = pkgs.callPackage ./pkgs/tools/rq { };
-        };
-    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.treefmt-nix.flakeModule
@@ -74,7 +60,7 @@
           pkgs,
           system,
           ...
-        }@attrs:
+        }:
         {
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
@@ -83,9 +69,29 @@
               inputs.neovim-nightly.overlays.default
             ];
           };
-          packages = {
-            default = dev-packages attrs;
-            dev-packages = dev-packages attrs;
+          packages = rec {
+            falco = pkgs.callPackage ./pkgs/tools/falco { };
+            fennel-ls = pkgs.callPackage ./pkgs/tools/fennel-ls { };
+            rq = pkgs.callPackage ./pkgs/tools/rq { };
+
+            default = pkgs.buildEnv {
+              name = "basic-packages";
+              paths =
+                import ./nix/pkgs/dev {
+                  inherit pkgs;
+                  fennel-ls = fennel-ls;
+                }
+                ++ import ./nix/pkgs/extra {
+                  inherit pkgs system;
+
+                  mcp-hub = inputs.mcp-hub;
+                  mcp-servers-nix = inputs.mcp-servers-nix;
+
+                  falco = falco;
+                  rq = rq;
+                }
+                ++ import ./nix/pkgs/fonts { inherit pkgs; };
+            };
           };
           pre-commit = {
             check.enable = true;
@@ -171,7 +177,7 @@
               ];
               extraSpecialArgs = {
                 inherit inputs;
-                dev-packages = { pkgs }: dev-packages { inherit system pkgs; };
+                dev-packages = import ./nix/pkgs/dev;
               };
             };
         };
