@@ -13,12 +13,7 @@
 (local modern-menu (require :org-modern.menu))
 
 (local basepath (vim.fn.expand "~/notes/org"))
-(local templates
-       ;; get current filepath and concatinate
-       (let [info (debug.getinfo 1)]
-         (vim.fn.expand
-           (.. (vim.fn.fnamemodify (info.source:sub 2) ":h")
-               :/../../../orgmode/templates))))
+(local templates (vim.fn.expand "~/.dotfiles/nvim/orgmode/templates"))
 
 (fn ->path [path]
   (.. basepath :/ path))

@@ -11,11 +11,7 @@ local roam = require("org-roam")
 local bullets = require("org-bullets")
 local modern_menu = require("org-modern.menu")
 local basepath = vim.fn.expand("~/notes/org")
-local templates
-do
-  local info = debug.getinfo(1)
-  templates = vim.fn.expand((vim.fn.fnamemodify(info.source:sub(2), ":h") .. "/../../../orgmode/templates"))
-end
+local templates = vim.fn.expand("~/.dotfiles/nvim/orgmode/templates")
 local function __3epath(path)
   return (basepath .. "/" .. path)
 end
