@@ -74,6 +74,7 @@ setopt no_menu_complete
 
 setopt extended_glob
 setopt glob_dots
+setopt no_nomatch
 
 setopt no_correct
 setopt no_correct_all
