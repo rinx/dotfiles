@@ -76,22 +76,12 @@
 
             default = pkgs.buildEnv {
               name = "basic-packages";
-              paths =
-                import ./nix/pkgs/dev {
-                  inherit pkgs;
-                  fennel-ls = fennel-ls;
-                }
-                ++ import ./nix/pkgs/extra {
-                  inherit pkgs system;
-
-                  mcp-hub = inputs.mcp-hub;
-                  mcp-servers-nix = inputs.mcp-servers-nix;
-
-                  falco = falco;
-                  rq = rq;
-                }
-                ++ import ./nix/pkgs/k8s { inherit pkgs; }
-                ++ import ./nix/pkgs/fonts { inherit pkgs; };
+              paths = [
+                dev-packages
+                extra-packages
+                k8s-packages
+                fonts-packages
+              ];
             };
 
             dev-packages = pkgs.buildEnv {
