@@ -70,9 +70,9 @@
             ];
           };
           packages = rec {
-            falco = pkgs.callPackage ./pkgs/tools/falco { };
-            fennel-ls = pkgs.callPackage ./pkgs/tools/fennel-ls { };
-            rq = pkgs.callPackage ./pkgs/tools/rq { };
+            falco = pkgs.callPackage ./nix/pkgs/tools/falco { };
+            fennel-ls = pkgs.callPackage ./nix/pkgs/tools/fennel-ls { };
+            rq = pkgs.callPackage ./nix/pkgs/tools/rq { };
 
             default = pkgs.buildEnv {
               name = "basic-packages";
