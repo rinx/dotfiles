@@ -293,22 +293,26 @@ local function _59_(self)
   end
 end
 local function _61_(self)
-  return string.format((icontab.search .. self.word .. "[%d/%d]" .. space), self.search.current, math.min(self.search.total, self.search.maxcount))
+  if self.word then
+    return string.format((icontab.search .. self.word .. "[%d/%d]" .. space), self.search.current, math.min(self.search.total, self.search.maxcount))
+  else
+    return nil
+  end
 end
 search_component = {condition = _58_, init = _59_, provider = _61_, hl = {fg = colors.hint, bg = colors.color2}}
 local macrorec_component
-local function _62_()
+local function _63_()
   return (vim.fn.reg_recording() ~= "")
 end
-local function _63_()
+local function _64_()
   return (icontab.recording .. "[" .. vim.fn.reg_recording() .. "]" .. space)
 end
-macrorec_component = {condition = _62_, provider = _63_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
+macrorec_component = {condition = _63_, provider = _64_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
 local copilot_component
-local function _64_()
+local function _65_()
   return (core.get(package.loaded, "copilot") ~= nil)
 end
-local function _65_()
+local function _66_()
   local copilot = require("copilot.client")
   local api = require("copilot.api")
   if (not copilot.buf_is_attached(vim.api.nvim_get_current_buf()) or copilot.is_disabled()) then
@@ -325,10 +329,10 @@ local function _65_()
     end
   end
 end
-copilot_component = {condition = _64_, provider = _65_, hl = {fg = colors.hint, bg = colors.color2}}
+copilot_component = {condition = _65_, provider = _66_, hl = {fg = colors.hint, bg = colors.color2}}
 local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, org_clock_component, git_component, skkeleton_component, denops_component, spell_component, paste_component, ruler_component, scrollbar_component}
 local standard_winbar = {cwd_component, align_component, dap_component, align_component, copilot_component, diagnostics_component, lsp_component}
-local function _69_(args)
+local function _70_(args)
   return conditions.buffer_matches({buftype = {"nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$", "^NvimTree$"}})
 end
-return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _69_}})
+return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _70_}})

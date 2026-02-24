@@ -292,15 +292,16 @@
                     (set self.search search)
                     (set self.word word))))
         :provider (fn [self]
-                    (string.format
-                      (.. icontab.search
-                          self.word
-                          "[%d/%d]"
-                          space)
-                      self.search.current
-                      (math.min
-                        self.search.total
-                        self.search.maxcount)))
+                    (when self.word
+                      (string.format
+                        (.. icontab.search
+                            self.word
+                            "[%d/%d]"
+                            space)
+                        self.search.current
+                        (math.min
+                          self.search.total
+                          self.search.maxcount))))
         :hl {:fg colors.hint
              :bg colors.color2}})
 
