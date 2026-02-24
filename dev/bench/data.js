@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771884368381,
+  "lastUpdate": 1771892621574,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27037,6 +27037,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.61796219999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2650cea3d7d76b41f4c04644f65c7e44a9521e71",
+          "message": "fixup! refactor(nix): split basic-packages into several categories\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-24T09:09:22+09:00",
+          "tree_id": "61177f3f2512fe869116ec23eb725fb3c3ed3017",
+          "url": "https://github.com/rinx/dotfiles/commit/2650cea3d7d76b41f4c04644f65c7e44a9521e71"
+        },
+        "date": 1771892619666,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.285138999999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 96.64999689999999,
             "unit": "ms"
           }
         ]
