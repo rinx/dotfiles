@@ -197,7 +197,7 @@
               extraSpecialArgs = {
                 inherit inputs;
                 additional-packages = [
-                  inputs.self.outputs.packages."${system}".dev-packages
+                  self.outputs.packages."${system}".dev-packages
                 ];
               };
             };
