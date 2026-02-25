@@ -196,7 +196,9 @@
               ];
               extraSpecialArgs = {
                 inherit inputs;
-                dev-packages = import ./nix/pkgs/dev;
+                additional-packages = [
+                  inputs.self.outputs.packages."${system}".dev-packages
+                ];
               };
             };
         };

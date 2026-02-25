@@ -28,10 +28,9 @@
     ".p10k.zsh".source = ../../../p10k.zsh;
   };
 
-  home.packages = inputs.dev-packages {
-    inherit pkgs;
-    fennel-ls = pkgs.callPackage ../../pkgs/tools/fennel-ls { };
-  };
+  home.packages = [
+  ]
+  ++ inputs.additional-packages;
 
   home.stateVersion = "25.11";
 
