@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771979037120,
+  "lastUpdate": 1771980042888,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27207,6 +27207,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.80635290000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "07fb807db151161cb140047575a3b693ebfe82ad",
+          "message": "refactor(nix): remove duplicated statements on homeConfigurations\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-25T09:26:10+09:00",
+          "tree_id": "edaf7aa6ee42b517bd285ed0bdc5ebba19867138",
+          "url": "https://github.com/rinx/dotfiles/commit/07fb807db151161cb140047575a3b693ebfe82ad"
+        },
+        "date": 1771980040661,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.3581026,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.84780620000001,
             "unit": "ms"
           }
         ]
