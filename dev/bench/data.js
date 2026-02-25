@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771980042888,
+  "lastUpdate": 1771980266364,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27241,6 +27241,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.84780620000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "de4d0aecc5f2d20aa79986dff45314e01b1a67ed",
+          "message": "refactor(nix): remove useless attribute\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-25T09:29:33+09:00",
+          "tree_id": "c50fe13e7bd11d62773af1109146a29fc39595b6",
+          "url": "https://github.com/rinx/dotfiles/commit/de4d0aecc5f2d20aa79986dff45314e01b1a67ed"
+        },
+        "date": 1771980264760,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.897527500000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.75303590000001,
             "unit": "ms"
           }
         ]
