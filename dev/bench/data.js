@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771980266364,
+  "lastUpdate": 1772090420093,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27275,6 +27275,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.75303590000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "cf34297281f3ba5f6f612a729cd672c30ee7079a",
+          "message": "refactor(nix): add gcc as dev-packages dependency\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-26T16:04:03+09:00",
+          "tree_id": "5d53a804080f5a4dc9097d7066317bccbea70f6b",
+          "url": "https://github.com/rinx/dotfiles/commit/cf34297281f3ba5f6f612a729cd672c30ee7079a"
+        },
+        "date": 1772090418725,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.350656199999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.12953030000001,
             "unit": "ms"
           }
         ]
