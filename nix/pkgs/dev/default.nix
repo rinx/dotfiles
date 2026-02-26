@@ -77,6 +77,7 @@ with pkgs;
   babashka
   clojure
   deno
+  gcc
   gleam
   go
   nodejs
