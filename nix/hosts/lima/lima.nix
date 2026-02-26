@@ -63,10 +63,5 @@
     kitty # to install xterm-kitty terminfo
   ];
 
-  users.users.rinx = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
   system.stateVersion = "25.11";
 }
