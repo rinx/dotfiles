@@ -170,7 +170,7 @@
         };
       flake = {
         nixosConfigurations = {
-          lima-vm-aarch64 = inputs.nixpkgs.lib.nixosSystem {
+          lima-vm = inputs.nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
             specialArgs = inputs;
             modules = [
