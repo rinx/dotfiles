@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772234274768,
+  "lastUpdate": 1772234373541,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27411,6 +27411,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 108.3201367,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ec1922090014ec5b0c0e058838cd21b984206b8f",
+          "message": "chore: add symbolic link to nixos.yaml\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-28T08:03:44+09:00",
+          "tree_id": "37e908e2f7d6306b41df9622f1f64d1ca3bc8fd4",
+          "url": "https://github.com/rinx/dotfiles/commit/ec1922090014ec5b0c0e058838cd21b984206b8f"
+        },
+        "date": 1772234371819,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.785679200000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.97543100000001,
             "unit": "ms"
           }
         ]
