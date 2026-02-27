@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772151952771,
+  "lastUpdate": 1772234274768,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27377,6 +27377,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.9159541,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e2c19212daf9d4105b92c72a6264cb704d6ade87",
+          "message": "feat(macos/nixos.yaml): add config file for lima-vm\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-02-27T17:36:10+09:00",
+          "tree_id": "3937a24d43b495c217f4105e16f3991ba0186efb",
+          "url": "https://github.com/rinx/dotfiles/commit/e2c19212daf9d4105b92c72a6264cb704d6ade87"
+        },
+        "date": 1772234273428,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.5710015,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 108.3201367,
             "unit": "ms"
           }
         ]
