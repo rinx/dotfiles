@@ -61,8 +61,9 @@
   # pkgs
   environment.systemPackages = with pkgs; [
     kitty # to install xterm-kitty terminfo
-    zsh
   ];
+
+  programs.zsh.enable = true;
 
   system.stateVersion = "25.11";
 }
