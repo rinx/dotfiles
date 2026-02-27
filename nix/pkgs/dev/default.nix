@@ -54,6 +54,7 @@ with pkgs;
   ghq
   git
   gnumake
+  gnupg
   imagemagick
   jq
   lazygit
