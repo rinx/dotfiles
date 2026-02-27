@@ -17,11 +17,6 @@ mounts:
     writable: true
     9p:
       cache: "mmap"
-  - location: "~/.gnupg"
-    mountPoint: "{{.Home}}/.gnupg"
-    writable: false
-    9p:
-      cache: "mmap"
   - location: "~/.dotfiles"
     writable: true
     9p:
@@ -54,3 +49,5 @@ portForwards:
 containerd:
   system: false
   user: false
+ssh:
+  forwardAgent: true
