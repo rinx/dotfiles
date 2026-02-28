@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772234482099,
+  "lastUpdate": 1772318382942,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27479,6 +27479,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 102.97342880000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "600c4b7925438387e335cab7bed95ba97064593e",
+          "message": "config(lima/nixos): add port-forwarding for gpg-agent\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-01T07:13:41+09:00",
+          "tree_id": "f185930fa2eb00b70fbcf0de74372c762e14fe8c",
+          "url": "https://github.com/rinx/dotfiles/commit/600c4b7925438387e335cab7bed95ba97064593e"
+        },
+        "date": 1772318380724,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.823706899999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.60778919999998,
             "unit": "ms"
           }
         ]
