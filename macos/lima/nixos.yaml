@@ -46,6 +46,10 @@ portForwards:
     guestPort: 68
     guestIP: 0.0.0.0
     ignore: true
+  # gpg-agent forwarding
+  - hostSocket: "{{.Home}}/.gnupg/S.gpg-agent.extra"
+    guestSocket: "{{.Home}}/.S.gpg-agent.host"
+    reverse: true
 containerd:
   system: false
   user: false
