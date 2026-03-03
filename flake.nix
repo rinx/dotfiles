@@ -23,6 +23,10 @@
       url = "github:nixos-lima/nixos-lima";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
@@ -111,7 +115,23 @@
               name = "fonts-packages";
               paths = import ./nix/pkgs/fonts { inherit pkgs; };
             };
-          };
+
+          }
+          // (
+            if pkgs.stdenv.isLinux then
+              {
+                lima-img = inputs.nixos-generators.nixosGenerate {
+                  inherit pkgs;
+                  specialArgs = inputs;
+                  modules = [
+                    ./nix/hosts/lima/lima.nix
+                  ];
+                  format = "qcow-efi";
+                };
+              }
+            else
+              { }
+          );
           pre-commit = {
             check.enable = true;
             settings = {
