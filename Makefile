@@ -25,7 +25,6 @@ deploy: \
     prepare-deploy \
     neovim-deploy \
     git-deploy \
-    tmux-deploy \
     zsh-deploy \
     others-deploy
 	@$(call cyan, "Done: deploy")
@@ -33,8 +32,7 @@ deploy: \
 .PHONY: init
 ## initialize all configures
 init: \
-    prepare-init \
-    tmux-init
+    prepare-init
 	@$(call cyan, "Done: initialize")
 
 include Makefile.d/*.mk

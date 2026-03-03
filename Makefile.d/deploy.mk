@@ -77,24 +77,6 @@ $(HOME)/.commit_template:
 	@$(call cyan, "--\> .commit_template")
 	ln -s $(DOTDIR)/.commit_template $(HOME)/.commit_template
 
-.PHONY: tmux-deploy
-tmux-deploy: \
-    tmux.conf \
-    tpm
-	@$(call red, "tmux-deploy has been done")
-
-.PHONY: tmux.conf
-tmux.conf: $(HOME)/.tmux.conf
-$(HOME)/.tmux.conf:
-	@$(call cyan, "--\> tmux.conf")
-	ln -s $(DOTDIR)/tmux.conf $(HOME)/.tmux.conf
-
-.PHONY: tpm
-tpm: $(HOME)/.tmux/plugins/tpm
-$(HOME)/.tmux/plugins/tpm:
-	mkdir -p $(HOME)/.tmux/plugins
-	git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
-
 .PHONY: zsh-deploy
 zsh-deploy: \
     zshrc \
@@ -116,7 +98,6 @@ $(HOME)/.p10k.zsh:
 .PHONY: others-deploy
 others-deploy: \
     kitty.conf \
-    Xdefaults \
     rofi-config \
     hyprland-config \
     dotfiles-local \
@@ -129,12 +110,6 @@ $(HOME)/.config/kitty/kitty.conf:
 	@$(call cyan, "--\> kitty.conf")
 	mkdir -p $(HOME)/.config/kitty
 	ln -s $(DOTDIR)/kitty.conf $(HOME)/.config/kitty/kitty.conf
-
-.PHONY: Xdefaults
-Xdefaults: $(HOME)/.Xdefaults
-$(HOME)/.Xdefaults:
-	@$(call cyan, "--\> Xdefaults")
-	ln -s $(DOTDIR)/Xdefaults $(HOME)/.Xdefaults
 
 .PHONY: rofi-config
 rofi-config: \
