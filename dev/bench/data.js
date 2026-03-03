@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772540026688,
+  "lastUpdate": 1772540868502,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27853,6 +27853,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 106.5607975,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9da908d4ffad01b8eab3b913ae776f1d64aba157",
+          "message": "config(lima-nixos): update base image\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T21:12:02+09:00",
+          "tree_id": "822702ae1ae98deb7bba7872b716facb8d78731b",
+          "url": "https://github.com/rinx/dotfiles/commit/9da908d4ffad01b8eab3b913ae776f1d64aba157"
+        },
+        "date": 1772540867052,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.8281095,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 104.3981131,
             "unit": "ms"
           }
         ]
