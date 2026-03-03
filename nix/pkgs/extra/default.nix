@@ -6,6 +6,8 @@
 let
   org-search-utils = pkgs.callPackage ../tools/org-search-utils { };
 
+  osc52-copy = pkgs.callPackage ../tools/osc52-copy { };
+
   mcp-servers = pkgs.callPackage ../settings/mcp-servers {
     mcp-servers-nix = inputs.mcp-servers-nix;
   };
@@ -18,13 +20,15 @@ let
     org-search-utils
   ];
 
-  darwin-pkgs =
+  os-specific-pkgs =
     if pkgs.stdenv.isDarwin then
       [
         pkgs.pngpaste
       ]
     else
-      [ ];
+      [
+        osc52-copy
+      ];
 in
 with pkgs;
 [
@@ -44,4 +48,4 @@ with pkgs;
   tinymist
 ]
 ++ custom-pkgs
-++ darwin-pkgs
+++ os-specific-pkgs
