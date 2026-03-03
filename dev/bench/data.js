@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772538179237,
+  "lastUpdate": 1772539381172,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27751,6 +27751,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 106.4664984,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e0b4360ff7612a7d4b30582bd4b25cb294b7e871",
+          "message": "fix(nvim): remove deprecated jsonc treesitter parser\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T20:47:44+09:00",
+          "tree_id": "b88d1c199d8085874bfcc0424efce046faa95381",
+          "url": "https://github.com/rinx/dotfiles/commit/e0b4360ff7612a7d4b30582bd4b25cb294b7e871"
+        },
+        "date": 1772539379524,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.469452199999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 104.11237630000001,
             "unit": "ms"
           }
         ]
