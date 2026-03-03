@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772529593994,
+  "lastUpdate": 1772537213642,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27649,6 +27649,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 107.7955848,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ef1c9106e95946fb3205b21377b226f38181d9ba",
+          "message": "config(nvim): enable osc52 clipboard options\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T20:11:02+09:00",
+          "tree_id": "5fa6c0708dca675891c664648f60390ec7577f88",
+          "url": "https://github.com/rinx/dotfiles/commit/ef1c9106e95946fb3205b21377b226f38181d9ba"
+        },
+        "date": 1772537212051,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.7516368,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 114.27458729999998,
             "unit": "ms"
           }
         ]
