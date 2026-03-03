@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772540868502,
+  "lastUpdate": 1772542178100,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27887,6 +27887,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.3981131,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "476afb29c62118c22aa2b728576adcb10365a29f",
+          "message": "config(lima-nixos): place SKK-JISYO.L in home directory\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T21:33:51+09:00",
+          "tree_id": "4bd770fd3ca8786cb8b82e32841e595b0c2f52ee",
+          "url": "https://github.com/rinx/dotfiles/commit/476afb29c62118c22aa2b728576adcb10365a29f"
+        },
+        "date": 1772542176630,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.630569700000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 102.6897377,
             "unit": "ms"
           }
         ]
