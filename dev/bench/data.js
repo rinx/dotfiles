@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772581509652,
+  "lastUpdate": 1772582351930,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28023,6 +28023,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 100.5452025,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "fc3dbcd69005d0b50aa39ba905106cf604e6b4ba",
+          "message": "chore!: remove unused resources\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-04T08:43:50+09:00",
+          "tree_id": "7da4a693513fc6a1eb11455294578401b05895f8",
+          "url": "https://github.com/rinx/dotfiles/commit/fc3dbcd69005d0b50aa39ba905106cf604e6b4ba"
+        },
+        "date": 1772582349722,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.536227500000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 102.88418040000002,
             "unit": "ms"
           }
         ]
