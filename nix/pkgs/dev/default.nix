@@ -41,6 +41,7 @@ with pkgs;
   ## tools
   bat
   cmakeMinimal
+  comma
   conftest
   cue
   curl
