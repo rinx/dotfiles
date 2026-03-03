@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772537605431,
+  "lastUpdate": 1772538179237,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27717,6 +27717,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 105.6502076,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a0a151e2bb3a8e8a8a49c45234b62647efe52b4c",
+          "message": "ci: add sha256 digests for release artifacts\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T20:27:19+09:00",
+          "tree_id": "7d54fc2ea9fb180bb386c351e94ca76f1fee8145",
+          "url": "https://github.com/rinx/dotfiles/commit/a0a151e2bb3a8e8a8a49c45234b62647efe52b4c"
+        },
+        "date": 1772538177238,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.318508400000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 106.4664984,
             "unit": "ms"
           }
         ]
