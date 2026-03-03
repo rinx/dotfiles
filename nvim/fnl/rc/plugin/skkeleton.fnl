@@ -13,7 +13,7 @@
      :selectCandidateKeys :asdfjkl
      :setUndoPoint true
      :showCandidatesCount 4
-     :userDictionary "~/.skk-jisyo"
+     :userDictionary "~/.dotfiles.local/skk-jisyo"
      :databasePath "~/.cache/nvim/skkeleton.db"
      :sources [:deno_kv :skk_dictionary]}))
 

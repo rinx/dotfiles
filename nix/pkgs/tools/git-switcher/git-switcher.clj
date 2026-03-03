@@ -1,6 +1,6 @@
 #!/usr/bin/env bb
 
-;; create ~/.git-profiles.edn first.
+;; create ~/.dotfiles.local/git-profiles.edn first.
 ;;
 ;; $ cat ~/.git-profiles.edn
 ;; {:default {:name "Rintaro Okamura"
@@ -15,7 +15,7 @@
          '[clojure.string :as string])
 
 (def git-profiles-edn
-  (str (System/getenv "HOME") "/.git-profiles.edn"))
+  (str (System/getenv "HOME") "/.dotfiles.local/git-profiles.edn"))
 
 (defn fzf [ss]
   (let [proc (p/process ["fzf" "-m"]

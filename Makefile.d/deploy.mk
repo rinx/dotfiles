@@ -225,24 +225,21 @@ $(HOME)/.config/i3status/config:
 .PHONY: dotfiles-local
 dotfiles-local: \
 	$(HOME)/.dotfiles.local \
-	$(HOME)/.gitconfig.local \
-	$(HOME)/.git-profiles.edn \
-	$(HOME)/.skk-jisyo
+	$(HOME)/.dotfiles.local/gitconfig.local \
+	$(HOME)/.dotfiles.local/git-profiles.edn \
+	$(HOME)/.dotfiles.local/skk-jisyo
 
 $(HOME)/.dotfiles.local:
 	mkdir -p $(HOME)/.dotfiles.local
 
-$(HOME)/.gitconfig.local:
+$(HOME)/.dotfiles.local/gitconfig.local: $(HOME)/.dotfiles.local
 	touch $(HOME)/.dotfiles.local/gitconfig.local
-	ln -s $(HOME)/.dotfiles.local/gitconfig.local $(HOME)/.gitconfig.local
 
-$(HOME)/.git-profiles.edn:
+$(HOME)/.dotfiles.local/git-profiles.edn: $(HOME)/.dotfiles.local
 	touch $(HOME)/.dotfiles.local/git-profiles.edn
-	ln -s $(HOME)/.dotfiles.local/git-profiles.edn $(HOME)/.git-profiles.edn
 
-$(HOME)/.skk-jisyo:
+$(HOME)/.dotfiles.local/skk-jisyo: $(HOME)/.dotfiles.local
 	touch $(HOME)/.dotfiles.local/skk-jisyo
-	ln -s $(HOME)/.dotfiles.local/skk-jisyo $(HOME)/.skk-jisyo
 
 ifeq ($(UNAME),Darwin)
 .PHONY: macos

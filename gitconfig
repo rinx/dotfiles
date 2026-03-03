@@ -1,7 +1,7 @@
 ## -- basic settings
 
 [include]
-    path = ~/.gitconfig.local
+    path = ~/.dotfiles.local/gitconfig.local
 
 [user]
     name = Rintaro Okamura
