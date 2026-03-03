@@ -88,4 +88,5 @@ jobs:
             nixos-lima-aarch64.qcow2 \
             nixos-lima-x86_64.qcow2 \
             nixos-lima-aarch64.qcow2.sha256 \
-            nixos-lima-x86_64.qcow2.sha256
+            nixos-lima-x86_64.qcow2.sha256 \
+            --title ${{ github.ref_name }}
