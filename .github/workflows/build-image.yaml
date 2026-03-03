@@ -75,6 +75,10 @@ jobs:
         uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         with:
           name: nixos-lima-x86_64.qcow2
+      - name: Calculate digests
+        run: |
+          sha256sum nixos-lima-aarch64.qcow2 > nixos-lima-aarch64.qcow2.sha256
+          sha256sum nixos-lima-x86_64.qcow2 > nixos-lima-x86_64.qcow2.sha256
       - name: Create release
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
@@ -82,4 +86,6 @@ jobs:
           gh release create \
             ${{ github.ref_name }} \
             nixos-lima-aarch64.qcow2 \
-            nixos-lima-x86_64.qcow2
+            nixos-lima-x86_64.qcow2 \
+            nixos-lima-aarch64.qcow2.sha256 \
+            nixos-lima-x86_64.qcow2.sha256
