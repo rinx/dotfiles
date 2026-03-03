@@ -17,6 +17,11 @@
     ".config/nvim/snippets".source = ../../../nvim/snippets;
     ".config/nvim/lazy-lock.json".source = ../../../nvim/lazy-lock.json;
 
+    ".SKK-JISYO.L".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/skk-users-jp/dic-mirror/gh-pages/SKK-JISYO.L";
+      sha256 = "2a26bf823943768056d3f128e9ec40549d0a3d46df5d99b76752a99a4d55a286";
+    };
+
     # Git
     ".gitconfig".source = ../../../gitconfig;
     ".gitignore".source = ../../../gitignore;
