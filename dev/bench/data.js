@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772539381172,
+  "lastUpdate": 1772539598389,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27785,6 +27785,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.11237630000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "19a126b971103b4c2b1b7711cd01c7b5b01bf877",
+          "message": "fix(ci): use sha512sum for lima-nixos images\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T20:51:35+09:00",
+          "tree_id": "af3b3f4035c04e95a256d25d3494f063c2ac9993",
+          "url": "https://github.com/rinx/dotfiles/commit/19a126b971103b4c2b1b7711cd01c7b5b01bf877"
+        },
+        "date": 1772539596279,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.1152626,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.0534336,
             "unit": "ms"
           }
         ]
