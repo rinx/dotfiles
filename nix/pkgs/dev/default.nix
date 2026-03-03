@@ -27,6 +27,7 @@ let
     doCheck = false;
   };
 
+  osc52-copy = pkgs.callPackage ../tools/osc52-copy { };
   custom-pkgs = [
     aws-sts-token
     gctx
@@ -35,6 +36,14 @@ let
     inputs.fennel-ls
     open-policy-agent
   ];
+
+  os-specific-pkgs =
+    if pkgs.stdenv.isDarwin then
+      [ ]
+    else
+      [
+        osc52-copy
+      ];
 in
 with pkgs;
 [
@@ -110,3 +119,4 @@ with pkgs;
   zizmor
 ]
 ++ custom-pkgs
+++ os-specific-pkgs
