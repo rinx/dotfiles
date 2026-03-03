@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772503544632,
+  "lastUpdate": 1772529593994,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27615,6 +27615,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.3145515,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9731c9e1349a1f676193108aeac8599772f2d12e",
+          "message": "ci(nix): add image-build (#311)\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T09:04:06Z",
+          "tree_id": "ad7fb487059bc9526097da171e6c7ecd1cd4bb5a",
+          "url": "https://github.com/rinx/dotfiles/commit/9731c9e1349a1f676193108aeac8599772f2d12e"
+        },
+        "date": 1772529592566,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.690347100000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 107.7955848,
             "unit": "ms"
           }
         ]
