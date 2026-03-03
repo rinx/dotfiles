@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772539598389,
+  "lastUpdate": 1772540026688,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -27819,6 +27819,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.0534336,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4202811dc3f7483af661f74a78c5c4814e7e37d6",
+          "message": "refactor(nix): move osc52-copy to dev-pkgs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-03T20:57:41+09:00",
+          "tree_id": "0ffb4333ae3e36aef69ca5908905d39aa19b154e",
+          "url": "https://github.com/rinx/dotfiles/commit/4202811dc3f7483af661f74a78c5c4814e7e37d6"
+        },
+        "date": 1772540025239,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.299101200000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 106.5607975,
             "unit": "ms"
           }
         ]
