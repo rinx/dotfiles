@@ -193,6 +193,7 @@
               };
               modules = [
                 ./nix/hosts/lima/home.nix
+                ./nix/hosts/lima/services.nix
               ];
               extraSpecialArgs = {
                 inherit inputs;

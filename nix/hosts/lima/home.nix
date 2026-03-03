@@ -33,12 +33,4 @@
   ++ inputs.additional-packages;
 
   home.stateVersion = "25.11";
-
-  programs.direnv = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-
-    nix-direnv.enable = true;
-  };
 }
