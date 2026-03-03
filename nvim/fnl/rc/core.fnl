@@ -29,6 +29,19 @@
 (set vim.o.confirm true)
 
 (set vim.o.clipboard :unnamedplus)
+(let [osc52 (require :vim.ui.clipboard.osc52)
+      copy (fn [reg]
+             (osc52.copy reg))
+      paste (fn []
+              [(-> (vim.fn.getreg "")
+                   (vim.fn.split "\n"))
+               (vim.fn.getregtype "")])]
+  (set vim.g.clipboard
+       {:name "OSC 52"
+        :copy {:+ (copy :+)
+               :* (copy :*)}
+        :paste {:+ paste
+                :* paste}}))
 
 (set vim.o.mouse "a")
 

@@ -20,6 +20,20 @@ vim.o.smartindent = true
 vim.o.breakindent = true
 vim.o.confirm = true
 vim.o.clipboard = "unnamedplus"
+do
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local copy
+  local function _2_(reg)
+    return osc52.copy(reg)
+  end
+  copy = _2_
+  local paste
+  local function _3_()
+    return {vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("")}
+  end
+  paste = _3_
+  vim.g.clipboard = {name = "OSC 52", copy = {["+"] = copy("+"), ["*"] = copy("*")}, paste = {["+"] = paste, ["*"] = paste}}
+end
 vim.o.mouse = "a"
 vim.o.foldmethod = "marker"
 vim.o.foldlevel = 99
@@ -104,10 +118,10 @@ do
     size = "h12"
   end
   local guifonts
-  local function _9_(font)
+  local function _11_(font)
     return (font .. ":" .. size)
   end
-  guifonts = table.concat(core.map(_9_, fonts), ",")
+  guifonts = table.concat(core.map(_11_, fonts), ",")
   vim.o.guifont = guifonts
 end
 if vim.g.neovide then
