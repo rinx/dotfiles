@@ -60,12 +60,12 @@ jobs:
           time nvim --headless -V -c 'qall'
       - name: Run benchmark
         run: |
-          bb ./.github/scripts/benchmark.clj | tee result.json
+          bb ./.github/scripts/benchmark.clj | tee benchmark-result.json
       - name: Upload benchmark result
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: benchmark-result
-          path: result.json
+          path: benchmark-result.json
+          archive: false
   upload:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -84,13 +84,12 @@ jobs:
         id: download_result
         uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         with:
-          name: benchmark-result
-          path: result
+          name: benchmark-result.json
       - name: Upload benchmark
         uses: benchmark-action/github-action-benchmark@a7bc2366eda11037936ea57d811a43b3418d3073 # v1.21.0
         with:
           tool: customSmallerIsBetter
-          output-file-path: ${{ steps.download_result.outputs.download-path }}/result.json
+          output-file-path: benchmark-result.json
           gh-pages-branch: gh-pages
           github-token: ${{ steps.generate_token.outputs.token }}
           auto-push: true
