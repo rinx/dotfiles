@@ -60,14 +60,17 @@ message: |
 
       limactl shell nixos -- nix run nixpkgs#home-manager -- --flake github:rinx/dotfiles#lima switch
 
-  Import GPG pubkey and ownertrust.
+  Login to the VM.
+
+      limactl shell nixos -- zsh
+      ## or, export host environment variables like
+      # limactl shell nixos -- GH_TOKEN=$(gh auth token) zsh
+
+  Fix `gpg-agent` socket.
+
+      echo "%Assuan%\nsocket=${HOME}/.S.gpg-agent.host" > $(gpgconf --list-dir agent-socket)
+
+  After that, import GPG pubkey and ownertrust.
 
        gpg --export --armor 54CEC37D516CF1E59A560DEA2E26B9B26A1D5D29 | limactl shell nixos -- gpg --import
        gpg --export-ownertrust | limactl shell nixos -- gpg --import-ownertrust
-
-  After that, login to the VM.
-
-      limactl shell nixos -- zsh
-
-  Fix `gpg-agent` socket.
-      echo "%Assuan%\nsocket=${HOME}/.S.gpg-agent.host" > $(gpgconf --list-dir agent-socket)
