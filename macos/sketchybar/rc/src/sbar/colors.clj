@@ -9,6 +9,7 @@
    :red "0xfff87070"
    :green "0xff37d99e"
    :light-green "0xff9dd274"
+   :lima-green "0xffa9cf38"
    :blue "0xff7ab0df"
    :cyan "0xff50cad2"
    :yellow "0xffffe59e"

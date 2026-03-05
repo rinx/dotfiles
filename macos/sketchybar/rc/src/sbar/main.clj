@@ -9,6 +9,7 @@
    [sbar.items.github :as github]
    [sbar.items.github-pr :as github-pr]
    [sbar.items.kubectx :as kubectx]
+   [sbar.items.lima :as lima]
    [sbar.items.mic :as mic]
    [sbar.items.spaces :as spaces]
    [sbar.items.tailscale :as tailscale]
@@ -66,6 +67,7 @@
   (mic/setup)
   (volume/setup)
   (tailscale/setup)
+  (lima/setup)
   (kubectx/setup)
   (gcloud/setup)
   (github-pr/setup)
@@ -94,6 +96,8 @@
                 :duration-ms 180000}
     :kubectx {:fn kubectx/update
               :duration-ms 60000}
+    :lima {:fn lima/update
+           :duration-ms 300000}
     :tailscale {:fn tailscale/update
                 :duration-ms 300000}
     :time {:fn time/update

@@ -33,6 +33,10 @@
    :package "󰏗"
    :gcloud ""
    :celsius "󰔄"
+   :vm {:exist ""
+        :active ""
+        :connect ""
+        :outline ""}
    :vpn "󰖂"
    :k8s "󱃾"
    :space "󱅃"})
