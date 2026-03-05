@@ -1,4 +1,5 @@
 {
+  self,
   config,
   modulesPath,
   pkgs,
@@ -10,6 +11,7 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     nixos-lima.nixosModules.lima
+    self.nixosModules.lima-docker-fix
   ];
 
   nix.settings.experimental-features = [
@@ -23,6 +25,8 @@
 
   # Read Lima configuration at boot time and run the Lima guest agent
   services.lima.enable = true;
+
+  services.lima-docker-fix.enable = true;
 
   # ssh
   services.openssh.enable = true;
@@ -64,6 +68,10 @@
   ];
 
   programs.zsh.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+  };
 
   system.stateVersion = "25.11";
 }

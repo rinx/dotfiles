@@ -222,6 +222,11 @@
               };
             };
         };
+        nixosModules = {
+          lima-docker-fix = {
+            imports = [ ./nix/hosts/lima/docker-fix.nix ];
+          };
+        };
       };
     };
 }
