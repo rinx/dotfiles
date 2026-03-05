@@ -1,0 +1,11 @@
+#+TITLE: dotfiles
+
+#+HTML: <a href="https://github.com/rinx/dotfiles/actions/workflows/nix.yml"><img src="https://img.shields.io/github/actions/workflow/status/rinx/dotfiles/nix.yml?style=flat-square&label=nix%20build&logo=nixos" alt="build status" /></a>
+#+HTML: <a href="https://rinx.github.io/dotfiles/dev/bench/"><img src="https://img.shields.io/github/actions/workflow/status/rinx/dotfiles/benchmark.yaml?style=flat-square&logo=neovim&label=benchmark%20for%20zsh%2Fneovim" alt="benchmark status" /></a>
+
+#+HTML: <a href=""><img src="https://img.shields.io/github/languages/code-size/rinx/dotfiles?style=flat-square" alt="code size in bytes" /></a>
+#+HTML: <a href=""><img src="https://img.shields.io/github/repo-size/rinx/dotfiles?style=flat-square" alt="repo size" /></a>
+#+HTML: <a href=""><img src="https://img.shields.io/github/commit-activity/y/rinx/dotfiles?style=flat-square" alt="commit year activity" /></a>
+#+HTML: <a href="https://deepwiki.com/rinx/dotfiles"><img src="https://deepwiki.com/badge.svg" alt="DeepWiki" /></a>
+
+A comprehensive collection of configuration files and scripts, including Nix configurations.
