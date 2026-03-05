@@ -28,9 +28,9 @@
      :icon.color (colors/get :cyan)})))
 
 (defn update []
-  (let [opts (if (exists?)
+  (let [opts (if (and (exists?) (online?))
                {:drawing :on
-                :label (if (online?) "online" "offline")}
+                :label "on"}
                {:drawing :off})]
     (sketchybar/exec
      (sketchybar/set :tailscale opts))))
