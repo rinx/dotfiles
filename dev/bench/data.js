@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772582351930,
+  "lastUpdate": 1772670406015,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28057,6 +28057,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 102.88418040000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a135b3271484daa7fa621aac2f9c8ef44b369121",
+          "message": "chore(sketchybar): update tailscale component\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-05T09:07:25+09:00",
+          "tree_id": "bbc57139e96fc1fb3d396b24cb233e23eb476c08",
+          "url": "https://github.com/rinx/dotfiles/commit/a135b3271484daa7fa621aac2f9c8ef44b369121"
+        },
+        "date": 1772670403192,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.3466203,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 99.4927584,
             "unit": "ms"
           }
         ]
