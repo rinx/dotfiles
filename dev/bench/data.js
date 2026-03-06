@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772671671351,
+  "lastUpdate": 1772839283447,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28125,6 +28125,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.7265912,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "904d9ca5d2b6a425c9736bf62f4ee6d2bf017e21",
+          "message": "feat(lima-nixos): add docker support (#314)\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-06T23:07:45Z",
+          "tree_id": "c6eb74d83d46e4e49407b38e04a52eaad0285fe3",
+          "url": "https://github.com/rinx/dotfiles/commit/904d9ca5d2b6a425c9736bf62f4ee6d2bf017e21"
+        },
+        "date": 1772839281233,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 20.9025355,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 84.4029199,
             "unit": "ms"
           }
         ]
