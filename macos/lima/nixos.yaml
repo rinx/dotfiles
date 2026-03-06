@@ -50,11 +50,17 @@ portForwards:
   - hostSocket: "{{.Home}}/.gnupg/S.gpg-agent.extra"
     guestSocket: "{{.Home}}/.S.gpg-agent.host"
     reverse: true
+  # docker
+  - hostSocket: "{{.Dir}}/sock/docker.sock"
+    guestSocket: "/var/run/docker.sock"
 containerd:
   system: false
   user: false
 ssh:
   forwardAgent: true
+user:
+  name: rinx
+  shell: /run/current-system/sw/bin/zsh
 message: |
   To initialize the VM environment, execute `home-manager switch`.
 
@@ -72,5 +78,12 @@ message: |
 
   After that, import GPG pubkey and ownertrust.
 
-       gpg --export --armor 54CEC37D516CF1E59A560DEA2E26B9B26A1D5D29 | limactl shell nixos -- gpg --import
-       gpg --export-ownertrust | limactl shell nixos -- gpg --import-ownertrust
+      gpg --export --armor 54CEC37D516CF1E59A560DEA2E26B9B26A1D5D29 | limactl shell nixos -- gpg --import
+      gpg --export-ownertrust | limactl shell nixos -- gpg --import-ownertrust
+
+  ---
+
+  To use `docker` on the host, run the follwing commands.
+
+      docker context create lima-{{.Name}} --docker "host=unix://{{.Dir}}/sock/docker.sock"
+      docker context use lima-{{.Name}}
