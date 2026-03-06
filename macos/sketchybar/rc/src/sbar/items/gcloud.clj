@@ -13,6 +13,7 @@
    (sketchybar/set
     :gcloud.current
     {:click_script "sketchybar --set $NAME popup.drawing=toggle"
+     :drawing :off
      :icon (icons/get :gcloud)
      :icon.font (fonts/get :Medium 12.0)
      :icon.color (colors/get :green)
@@ -52,5 +53,9 @@
 (defn update []
   (sketchybar/exec
    ["--remove" "/gcloud.list\\.*/"]
-   (sketchybar/set :gcloud.current {:label (current-context)})
+   (sketchybar/set
+    :gcloud.current
+    (let [current (current-context)]
+      {:label current
+       :drawing (if (str/starts-with? current "default") :off :on)}))
    (map-indexed ->element (contexts))))
