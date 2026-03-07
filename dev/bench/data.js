@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772884341391,
+  "lastUpdate": 1772885656033,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28363,6 +28363,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.21013980000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8c8d208ab7183915ed94b18a5d62aa699231e5b9",
+          "message": "docs(lima-nixos): add instruction comments\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-07T12:00:12Z",
+          "tree_id": "9f6ff572675d67638a166c8272737ea6402ebdc8",
+          "url": "https://github.com/rinx/dotfiles/commit/8c8d208ab7183915ed94b18a5d62aa699231e5b9"
+        },
+        "date": 1772885654565,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 20.4120373,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.8306535,
             "unit": "ms"
           }
         ]
