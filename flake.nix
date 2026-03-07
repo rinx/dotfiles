@@ -1,5 +1,5 @@
 {
-  description = "A flake that installs basic development tools.";
+  description = "A flake for managing development environments.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

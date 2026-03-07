@@ -87,3 +87,10 @@ message: |
 
       docker context create lima-{{.Name}} --docker "host=unix://{{.Dir}}/sock/docker.sock"
       docker context use lima-{{.Name}}
+
+  ---
+
+  To install extra packages, run the following commands
+
+      limactl shell {{.Name}} -- nix profile add github:rinx/dotfiles#extra-packages
+      limactl shell {{.Name}} -- nix profile add github:rinx/dotfiles#k8s-packages
