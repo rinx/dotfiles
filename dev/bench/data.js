@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772842247867,
+  "lastUpdate": 1772842453930,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28227,6 +28227,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.42302399999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b9ab0b651f3c1d973511d161810fed89316a44e2",
+          "message": "chore(lima-nixos): use template variable for messages\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-07T08:59:21+09:00",
+          "tree_id": "c7309bd16aeb738245dd0c61a7f0f2765fc0cd2a",
+          "url": "https://github.com/rinx/dotfiles/commit/b9ab0b651f3c1d973511d161810fed89316a44e2"
+        },
+        "date": 1772842452318,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.561684300000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.36274390000001,
             "unit": "ms"
           }
         ]
