@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772845056207,
+  "lastUpdate": 1772884341391,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28329,6 +28329,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 102.3394519,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f021fe886b5f4fceecf37431a24004cf972b166d",
+          "message": "config(lima-nixos): add zshenv for lima-nixos\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-07T11:36:54Z",
+          "tree_id": "a62bc048abfa6f1bdee97e910c61ecc0c7e50770",
+          "url": "https://github.com/rinx/dotfiles/commit/f021fe886b5f4fceecf37431a24004cf972b166d"
+        },
+        "date": 1772884339924,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.047675200000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.21013980000001,
             "unit": "ms"
           }
         ]
