@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772839283447,
+  "lastUpdate": 1772841909243,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28159,6 +28159,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 84.4029199,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "73f666d0aae9885e54765346dd1cd2f7837278e1",
+          "message": "feat(sketchybar): disable gcloud component when it is not needed\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-07T08:49:09+09:00",
+          "tree_id": "fe687e8d506b34771ab2b360ec24eb4c33e97ff3",
+          "url": "https://github.com/rinx/dotfiles/commit/73f666d0aae9885e54765346dd1cd2f7837278e1"
+        },
+        "date": 1772841907800,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.303790600000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.90060759999999,
             "unit": "ms"
           }
         ]
