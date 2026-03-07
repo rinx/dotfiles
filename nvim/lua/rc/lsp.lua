@@ -51,8 +51,6 @@ do
   end
   vim.api.nvim_create_autocmd({"LspProgress"}, {callback = _5_, group = group_5_auto})
 end
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
 vim.keymap.set("n", "K", ":<C-u>lua vim.lsp.buf.hover()<CR>", {silent = true})
 vim.keymap.set("n", "gd", ":<C-u>lua Snacks.picker.lsp_definitions({layout = {preset = \"bottom\"}})<CR>", {silent = true, desc = "show lsp definitions"})
 vim.keymap.set("n", "gD", ":<C-u>lua Snacks.picker.lsp_declarations({layout = {preset = \"bottom\"}})<CR>", {silent = true, desc = "show lsp declarations"})

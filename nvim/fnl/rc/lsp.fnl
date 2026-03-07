@@ -58,11 +58,6 @@
                                                  (* 1e6 80))
                                               (core.count icon.spinners))))))))})))})
 
-(set vim.lsp.handlers.textDocument/hover
-     (vim.lsp.with vim.lsp.handlers.hover {:border "rounded"}))
-(set vim.lsp.handlers.textDocument/signatureHelp
-     (vim.lsp.with vim.lsp.handlers.signature_help {:border "rounded"}))
-
 (map! [:n] :K ":<C-u>lua vim.lsp.buf.hover()<CR>" {:silent true})
 
 ; (map! [:n] :gd ":<C-u>lua vim.lsp.buf.definition()<CR>" {:silent true})
