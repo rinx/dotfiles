@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773019783658,
+  "lastUpdate": 1773141589336,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28431,6 +28431,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.3299526,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "084eef8094da80585e9c2e9786a1a213327c833e",
+          "message": "feat(zsh)!: add zeno.zsh as a dependency\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-10T11:04:06Z",
+          "tree_id": "e2c4c67250847334ec92abfaa9f6192ed743a740",
+          "url": "https://github.com/rinx/dotfiles/commit/084eef8094da80585e9c2e9786a1a213327c833e"
+        },
+        "date": 1773141587865,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.872814100000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.79170289999999,
             "unit": "ms"
           }
         ]
