@@ -30,9 +30,29 @@ snippets:
   - name: git log
     keyword: gl
     snippet: git log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-  - name: git log (long)
+  - name: git log (details)
     keyword: gll
     snippet: git log --graph --stat --abbrev-commit --show-signature
+  - name: git status
+    keyword: s
+    snippet: status --no-column
+    context:
+      lbuffer: '^git\s+'
+  - name: git status
+    keyword: st
+    snippet: status --no-column
+    context:
+      lbuffer: '^git\s+'
+  - name: git log
+    keyword: l
+    snippet: log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    context:
+      lbuffer: '^git\s+'
+  - name: git log (details)
+    keyword: ll
+    snippet: log --graph --stat --abbrev-commit --show-signature
+    context:
+      lbuffer: '^git\s+'
   - name: git add
     keyword: ad
     snippet: add
