@@ -123,9 +123,6 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
 
-bindkey '^R' history-incremental-search-backward
-bindkey '^E' history-incremental-search-forward
-
 edit_current_line() {
     local tmpfile=$(mktemp)
     echo "$BUFFER" > $tmpfile

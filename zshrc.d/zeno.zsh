@@ -15,5 +15,6 @@ if [[ -n $ZENO_LOADED ]]; then
   bindkey '^x ' zeno-insert-space
   bindkey '^x^m' accept-line
 
-  bindkey '^f' zeno-smart-history-selection
+  bindkey '^f' zeno-history-selection
+  bindkey '^r' zeno-smart-history-selection
 fi
