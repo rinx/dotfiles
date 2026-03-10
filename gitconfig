@@ -129,32 +129,4 @@
 [url "https://"]
     insteadOf = git://
 
-## -- aliases
-
-[alias]
-    st    = status --no-column
-
-    l     = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-    ll    = log --graph --stat --abbrev-commit
-
-    ad    = add
-
-    cm    = commit --signoff
-    ca    = commit --signoff --amend --no-edit
-    cae   = commit --signoff --amend
-
-    ps    = push
-    psf   = push --force-with-lease --force-if-includes
-    psa   = push --all
-
-    pl    = pull
-
-    co    = checkout
-    sw    = switch
-    rs    = restore
-
-    br    = branch
-
-    sb    = show-branch
-
 # vim: set ft=gitconfig:

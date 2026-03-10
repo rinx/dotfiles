@@ -54,6 +54,7 @@ plugins=(
     hlissner/zsh-autopair
     mollifier/cd-gitroot
     peterhurford/up.zsh
+    yuki-yano/zeno.zsh
 
     zdharma-continuum/fast-syntax-highlighting
 )
@@ -158,6 +159,7 @@ fi
 zsh-defer source $HOME/.dotfiles/zshrc.d/aliases.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/compinit.zsh
 zsh-defer source $HOME/.dotfiles/zshrc.d/zstyle-completions.zsh
+zsh-defer source $HOME/.dotfiles/zshrc.d/zeno.zsh
 
 if [ ! -f "$HOME/.zshrc.zwc" -o "$HOME/.zshrc" -nt "$HOME/.zshrc.zwc" ]; then
     zcompile $HOME/.zshrc

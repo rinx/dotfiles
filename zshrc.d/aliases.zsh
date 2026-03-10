@@ -1,14 +1,5 @@
 alias rm='rm -i'
 alias mv='mv -i'
-alias rr='rm -ri'
-alias rrf='rm -rf'
-
-alias u='cd ../'
-alias uu='cd ../../'
-alias uuu='cd ../../../'
-alias uuuu='cd ../../../../'
-alias cdr='cd -'
-alias cdg='cd-gitroot'
 
 if builtin command -v eza > /dev/null 2>&1 ; then
     alias ls='eza'
@@ -30,8 +21,6 @@ fi
 
 alias vi='nvim'
 
-alias q='exit'
-
 if builtin command -v grep > /dev/null 2>&1 ; then
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
@@ -50,13 +39,7 @@ fi
 if builtin command -v fzf > /dev/null 2>&1 ; then
     export FZF_DEFAULT_OPTS="--ansi --select-1 --exit-0 --reverse --cycle"
 
-    fzf-search-history() {
-      BUFFER=$(history -n -r 1 | fzf --exact --no-sort +m --query "$LBUFFER" --prompt="History > ")
-      CURSOR=${#BUFFER}
-    }
-    zle -N fzf-search-history
-    bindkey '^F' fzf-search-history
-
+    # TODO: migrate to zeno.zsh
     fzf-git-hash() {
         hash=$(git -c color.ui=always log --pretty=format:'%C(yellow)%h%Creset %s %C(white)- %an, %ar%Creset'| fzf --ansi +m | awk '{print $1}')
         LBUFFER="${LBUFFER}${hash}"
@@ -64,6 +47,7 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     zle -N fzf-git-hash
     bindkey '^G' fzf-git-hash
 
+    # TODO: migrate to zeno.zsh
     if builtin command -v fd > /dev/null 2>&1 ; then
         fzf-select-file() {
             dir=$(fd 2> /dev/null | fzf +m)
@@ -125,10 +109,6 @@ if builtin command -v fzf > /dev/null 2>&1 ; then
     fi
 fi
 
-# git aliases
-alias gs='git status --no-column'
-alias gl='git l'
-
 # extract
 extract () {
     if [ -f $1 ] ; then
@@ -153,7 +133,3 @@ extract () {
         echo "'$1' is not a valid file!"
     fi
 }
-
-# kitty aliases
-alias icat='kitty +kitten icat'
-alias vdiff="kitty +kitten diff"

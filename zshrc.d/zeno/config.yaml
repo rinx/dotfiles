@@ -1,0 +1,92 @@
+snippets:
+  - name: q -> exit mapping
+    keyword: q
+    snippet: exit
+  - name: cd -
+    keyword: cdr
+    snippet: cd -
+  - name: cd-gitroot
+    keyword: cdg
+    snippet: cd-gitroot
+  - name: cd upper
+    keyword: u
+    snippet: cd ../
+  - name: cd upper x2
+    keyword: uu
+    snippet: cd ../../
+  - name: cd upper x3
+    keyword: uuu
+    snippet: cd ../../../
+  - name: cd upper x4
+    keyword: uuuu
+    snippet: cd ../../../../
+  - name: rm -rf
+    keyword: rrf
+    snippet: rm -rf
+  # git related snippets
+  - name: git status
+    keyword: gs
+    snippet: git status --no-column
+  - name: git log
+    keyword: gl
+    snippet: git log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+  - name: git log (long)
+    keyword: gll
+    snippet: git log --graph --stat --abbrev-commit --show-signature
+  - name: git add
+    keyword: ad
+    snippet: add
+    context:
+      lbuffer: '^git\s+'
+  - name: git commit
+    keyword: cm
+    snippet: commit --signoff
+    context:
+      lbuffer: '^git\s+'
+  - name: git commit amend with no-edit
+    keyword: ca
+    snippet: commit --signoff --amend --no-edit
+    context:
+      lbuffer: '^git\s+'
+  - name: git commit amend
+    keyword: cae
+    snippet: commit --signoff --amend
+    context:
+      lbuffer: '^git\s+'
+  - name: git push
+    keyword: ps
+    snippet: push
+    context:
+      lbuffer: '^git\s+'
+  - name: git push force
+    keyword: psf
+    snippet: push --force-with-lease --force-if-includes
+    context:
+      lbuffer: '^git\s+'
+  - name: git pull
+    keyword: pl
+    snippet: pull
+    context:
+      lbuffer: '^git\s+'
+  - name: git checkout
+    keyword: co
+    snippet: checkout
+    context:
+      lbuffer: '^git\s+'
+  - name: git switch
+    keyword: sw
+    snippet: switch
+    context:
+      lbuffer: '^git\s+'
+  - name: git branch
+    keyword: br
+    snippet: branch
+    context:
+      lbuffer: '^git\s+'
+  # kitty snippets
+  - name: kitty icat
+    keyword: icat
+    snippet: kitty +kitten icat
+  - name: kitty diff
+    keyword: vdiff
+    snippet: kitty +kitten diff
