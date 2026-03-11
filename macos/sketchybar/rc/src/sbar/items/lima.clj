@@ -1,15 +1,16 @@
 (ns sbar.items.lima
   (:require
-   [clojure.string :as str]
+   [camel-snake-kebab.core :as csk]
+   [cheshire.core :as json]
    [sbar.colors :as colors]
    [sbar.common :as common]
    [sbar.fonts :as fonts]
    [sbar.icons :as icons]
    [sketchybar.core :as sketchybar]))
 
-(defn running? []
-  (-> (common/sh "limactl" "list" "--yq" ".name,.status")
-      (str/starts-with? "nixos Running")))
+(defn statuses []
+  (-> (common/sh "limactl" "list" "--yq" "[{\"name\": .name, \"status\": .status}]")
+      (json/parse-string csk/->kebab-case-keyword)))
 
 (defn setup []
   (sketchybar/exec
@@ -22,9 +23,19 @@
      :icon.color (colors/get :lima-green)})))
 
 (defn update []
-  (let [opts (if (running?)
-               {:drawing :on
-                :label "nixos"}
+  (let [status (-> (statuses)
+                   (first))
+        opts (if status
+               (merge
+                (case (:status status)
+                  "Running" {:icon (icons/get :vm :active)
+                             :icon.color (colors/get :lima-green)}
+                  "Stopped" {:icon (icons/get :vm :exist)
+                             :icon.color (colors/get :light-grey)}
+                  {:icon (icons/get :vm :outline)
+                   :icon.color (colors/get :light-grey)})
+                {:drawing :on
+                 :label (:name status)})
                {:drawing :off})]
     (sketchybar/exec
      (sketchybar/set :lima.vm opts))))
