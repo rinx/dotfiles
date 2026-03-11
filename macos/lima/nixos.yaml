@@ -1,12 +1,12 @@
 # Template using nixos-lima
 # ref: https://github.com/nixos-lima/nixos-lima
 images:
-  - location: "https://github.com/rinx/dotfiles/releases/download/2026.03.07/nixos-lima-aarch64.qcow2"
+  - location: "https://github.com/rinx/dotfiles/releases/download/2026.03.11-4/nixos-lima-aarch64.qcow2"
     arch: "aarch64"
-    digest: "sha512:2131d71f5230621e447d8db168e18633e0b3447ae79c58de47e0243e0083ccee600244ce4eac87a286eb4cf54392a1bc90ec6c941ae94f8b7f2f3e5d5bc560b8"
-  - location: "https://github.com/rinx/dotfiles/releases/download/2026.03.07/nixos-lima-x86_64.qcow2"
+    digest: "sha512:bd246af78cce07667258f056978445a7e35f06f1c3d12c2935f278b6ea0abe334447fcc8e8b496e62ee0869d676ecb4220cb86e3a6264f4470b3ade2ebf39e18"
+  - location: "https://github.com/rinx/dotfiles/releases/download/2026.03.11-4/nixos-lima-x86_64.qcow2"
     arch: "x86_64"
-    digest: "sha512:ce920f4c444f450eceffed991fb8d79b214b87f25a15b7e3ebde692ad55260bfc8f1c33ba14a4b68202f756e5958d97d954497a8b25e34e04da56afebc42e5cb"
+    digest: "sha512:95b2ef4f4564953ba227766ee3f1c7d6a4471a11108473d0eefc44ce929896b32315bdc02952a1ffc48de8363a0117c677344b24dcefc32f28f9cb410f8587aa"
 mounts:
   - location: "~"
     writable: false
