@@ -162,6 +162,7 @@ jobs:
           gh pr create \
             -B main \
             -t '${{ steps.commit.outputs.title }}' \
+            -b 'update lima-nixos images to ${{ github.ref_name }}'
       - name: Auto-merge
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
