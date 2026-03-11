@@ -141,9 +141,9 @@ jobs:
       - name: Update images
         run: |
           yq -i '.images[] |= select(.arch == "aarch64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-aarch64.qcow2"' macos/lima/nixos.yaml
-          yq -i '.images[] |= select(.arch == "aarch64").digest = "${{ steps.digests.outputs.aarch64 }}"' macos/lima/nixos.yaml
+          yq -i '.images[] |= select(.arch == "aarch64").digest = "sha512:${{ steps.digests.outputs.aarch64 }}"' macos/lima/nixos.yaml
           yq -i '.images[] |= select(.arch == "x86_64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-x86_64.qcow2"' macos/lima/nixos.yaml
-          yq -i '.images[] |= select(.arch == "x86_64").digest = "${{ steps.digests.outputs.x86_64 }}"' macos/lima/nixos.yaml
+          yq -i '.images[] |= select(.arch == "x86_64").digest = "sha512:${{ steps.digests.outputs.x86_64 }}"' macos/lima/nixos.yaml
       - name: Commit and Push
         id: commit
         env:
