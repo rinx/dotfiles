@@ -34,6 +34,11 @@
     ".zshenv".text = ''
       export GOPATH="''${HOME}/local"
     '';
+
+    # GPG
+    ".gnupg/gpg.conf".text = ''
+      no-autostart
+    '';
   };
 
   home.packages = [
