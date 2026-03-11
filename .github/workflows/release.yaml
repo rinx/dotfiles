@@ -1,11 +1,11 @@
-name: Build NixOS Lima image
+name: Release
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    tags:
+      - '*.*.*'
+      - 'v*.*.*'
+      - '*.*.*-*'
+      - 'v*.*.*-*'
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -47,3 +47,40 @@ jobs:
         with:
           path: nixos-lima-${{ env.ARCH }}.qcow2
           archive: false
+  release:
+    runs-on: ubuntu-slim
+    needs:
+      - build
+    steps:
+      - name: Generate github token
+        id: generate_token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+      - name: Download image (aarch64)
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          name: nixos-lima-aarch64.qcow2
+      - name: Download image (x86_64)
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          name: nixos-lima-x86_64.qcow2
+      - name: Calculate digests
+        run: |
+          sha512sum nixos-lima-aarch64.qcow2 > nixos-lima-aarch64.qcow2.sha512
+          sha512sum nixos-lima-x86_64.qcow2 > nixos-lima-x86_64.qcow2.sha512
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          gh release create \
+            ${{ github.ref_name }} \
+            nixos-lima-aarch64.qcow2 \
+            nixos-lima-x86_64.qcow2 \
+            nixos-lima-aarch64.qcow2.sha512 \
+            nixos-lima-x86_64.qcow2.sha512 \
+            --title ${{ github.ref_name }}
