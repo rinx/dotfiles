@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773214567585,
+  "lastUpdate": 1773215458580,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28635,6 +28635,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 105.1248264,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b958314a3301fa850b3ec97df10be6f168042598",
+          "message": "fix(ci): fix digest field extraction\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-11T07:36:07Z",
+          "tree_id": "9baf6d5749ea79f8d32a3b233b927ec53b1d725b",
+          "url": "https://github.com/rinx/dotfiles/commit/b958314a3301fa850b3ec97df10be6f168042598"
+        },
+        "date": 1773215456504,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.0773702,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 104.1050637,
             "unit": "ms"
           }
         ]
