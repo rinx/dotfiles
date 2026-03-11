@@ -47,6 +47,14 @@ jobs:
         with:
           path: nixos-lima-${{ env.ARCH }}.qcow2
           archive: false
+      - name: Calculate digest
+        run: |
+          sha512sum nixos-lima-${{ env.ARCH }}.qcow2 > nixos-lima-${{ env.ARCH }}.qcow2.sha512
+      - name: Upload digest
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          path: nixos-lima-${{ env.ARCH }}.qcow2.sha512
+          archive: false
   release:
     runs-on: ubuntu-slim
     needs:
@@ -69,10 +77,14 @@ jobs:
         uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         with:
           name: nixos-lima-x86_64.qcow2
-      - name: Calculate digests
-        run: |
-          sha512sum nixos-lima-aarch64.qcow2 > nixos-lima-aarch64.qcow2.sha512
-          sha512sum nixos-lima-x86_64.qcow2 > nixos-lima-x86_64.qcow2.sha512
+      - name: Download digest (aarch64)
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          name: nixos-lima-aarch64.qcow2.sha512
+      - name: Download digest (x86_64)
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          name: nixos-lima-x86_64.qcow2.sha512
       - name: Create release
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
@@ -84,3 +96,78 @@ jobs:
             nixos-lima-aarch64.qcow2.sha512 \
             nixos-lima-x86_64.qcow2.sha512 \
             --title ${{ github.ref_name }}
+  update-images:
+    runs-on: ubuntu-slim
+    needs:
+      - release
+    steps:
+      - name: Generate github token
+        id: generate_token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+      - name: Configure
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          APP_SLUG: ${{ steps.generate_token.outputs.app-slug }}
+        run: |
+          ID=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)
+          git config --global user.name "${APP_SLUG}[bot]"
+          git config --global user.email "${ID}+${APP_SLUG}[bot]@users.noreply.github.com"
+      - name: Download digest (aarch64)
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          name: nixos-lima-aarch64.qcow2.sha512
+      - name: Download digest (x86_64)
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          name: nixos-lima-x86_64.qcow2.sha512
+      - name: digests
+        id: digests
+        run: |
+          echo "aarch64=$(cat nixos-lima-aarch64.qcow2.sha512)" >> "$GITHUB_OUTPUT"
+          echo "x86_64=$(cat nixos-lima-x86_64.qcow2.sha512)" >> "$GITHUB_OUTPUT"
+      - name: Create branch
+        id: create-branch
+        env:
+          BRANCH: deps/lima-nixos/update/images/${{ github.run_number }}${{ github.run_attempt }}
+        run: |
+          git switch -c "${BRANCH}"
+          echo "name=${BRANCH}" >> "$GITHUB_OUTPUT"
+      - name: Update images
+        run: |
+          yq -i '.images[] |= select(.arch == "aarch64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-aarch64.qcow2"' macos/lima/nixos.yaml
+          yq -i '.images[] |= select(.arch == "aarch64").digest = "${{ steps.digests.outputs.aarch64 }}"' macos/lima/nixos.yaml
+          yq -i '.images[] |= select(.arch == "x86_64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-x86_64.qcow2"' macos/lima/nixos.yaml
+          yq -i '.images[] |= select(.arch == "x86_64").digest = "${{ steps.digests.outputs.x86_64 }}"' macos/lima/nixos.yaml
+      - name: Commit and Push
+        id: commit
+        env:
+          BRANCH: ${{ steps.create-branch.outputs.name }}
+        run: |
+          git add macos/lima/nixos.yaml
+          git commit -m "chore(lima-nixos): update lima-nixos images to ${{ github.ref_name }}"
+          git push origin "${BRANCH}"
+
+          echo "title=chore(lima-nixos): update lima-nixos images to ${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+      - name: Create Pull Request
+        id: create-pr
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          gh pr create \
+            -B main \
+            -t '${{ steps.commit.outputs.title }}' \
+      - name: Auto-merge
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          BRANCH: ${{ steps.create-branch.outputs.name }}
+        run: |
+          gh pr merge \
+            --auto \
+            --squash \
+            "${BRANCH}"
