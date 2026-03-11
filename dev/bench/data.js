@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773229589013,
+  "lastUpdate": 1773230625989,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28737,6 +28737,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.44231730000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "da2ffd09a52c4b63b88f6cfddc9e4810143e7df9",
+          "message": "feat(sketchybar): show lima vm statuses on the component\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-11T20:48:23+09:00",
+          "tree_id": "d7a11251f3e5ef0002070652a9c20fa14a66eb84",
+          "url": "https://github.com/rinx/dotfiles/commit/da2ffd09a52c4b63b88f6cfddc9e4810143e7df9"
+        },
+        "date": 1773230623819,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.348860100000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.5470536,
             "unit": "ms"
           }
         ]
