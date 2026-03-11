@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773211630306,
+  "lastUpdate": 1773213242530,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28567,6 +28567,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 109.25883040000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3296f5f804f398b3aa5e54894736d2541e084e34",
+          "message": "feat(ci): update nixos images automatically\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-11T15:59:22+09:00",
+          "tree_id": "3e2b055ef9ad919031ffa9614822bea7286f717d",
+          "url": "https://github.com/rinx/dotfiles/commit/3296f5f804f398b3aa5e54894736d2541e084e34"
+        },
+        "date": 1773213240259,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.320429400000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 100.81735900000001,
             "unit": "ms"
           }
         ]
