@@ -1,4 +1,4 @@
-export ZENO_HOME=$HOME/.dotfiles/zshrc.d/zeno
+export ZENO_HOME=$HOME/.config/zsh/rc/zeno
 
 export ZENO_GIT_CAT="bat --color=always"
 export ZENO_GIT_TREE="eza --tree"

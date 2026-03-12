@@ -13,7 +13,7 @@
 (local modern-menu (require :org-modern.menu))
 
 (local basepath (vim.fn.expand "~/notes/org"))
-(local templates (vim.fn.expand "~/.dotfiles/nvim/orgmode/templates"))
+(local templates (vim.fn.expand "~/.config/nvim/orgmode/templates"))
 
 (fn ->path [path]
   (.. basepath :/ path))

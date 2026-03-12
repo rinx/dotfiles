@@ -153,10 +153,10 @@ if [[ -f ~/.nix-profile/share/nix-direnv/direnvrc ]]; then
     eval "$(direnv hook zsh)"
 fi
 
-zsh-defer source $HOME/.dotfiles/zshrc.d/aliases.zsh
-zsh-defer source $HOME/.dotfiles/zshrc.d/compinit.zsh
-zsh-defer source $HOME/.dotfiles/zshrc.d/zstyle-completions.zsh
-zsh-defer source $HOME/.dotfiles/zshrc.d/zeno.zsh
+zsh-defer source $HOME/.config/zsh/rc/aliases.zsh
+zsh-defer source $HOME/.config/zsh/rc/compinit.zsh
+zsh-defer source $HOME/.config/zsh/rc/zstyle-completions.zsh
+zsh-defer source $HOME/.config/zsh/rc/zeno.zsh
 
 if [ ! -f "$HOME/.zshrc.zwc" -o "$HOME/.zshrc" -nt "$HOME/.zshrc.zwc" ]; then
     zcompile $HOME/.zshrc

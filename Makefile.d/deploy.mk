@@ -7,6 +7,7 @@ neovim-deploy: \
     init.lua \
     nvim-lua \
     nvim-snippets \
+    nvim-org \
     lazy-lock \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
@@ -31,6 +32,13 @@ $(HOME)/.config/nvim/snippets:
 	@$(call cyan, "--\> nvim/snippets directory for nvim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/nvim/snippets $(HOME)/.config/nvim/snippets
+
+.PHONY: nvim-org
+nvim-org: $(HOME)/.config/nvim/orgmode
+$(HOME)/.config/nvim/orgmode:
+	@$(call cyan, "--\> nvim/orgmode directory for nvim")
+	mkdir -p $(HOME)/.config/nvim
+	ln -s $(DOTDIR)/nvim/orgmode $(HOME)/.config/nvim/orgmode
 
 .PHONY: lazy-lock
 lazy-lock: $(HOME)/.config/nvim/lazy-lock.json
@@ -80,6 +88,7 @@ $(HOME)/.commit_template:
 .PHONY: zsh-deploy
 zsh-deploy: \
     zshrc \
+    zshrc.d \
     p10k.zsh
 	@$(call red, "zsh-deploy has been done")
 
@@ -88,6 +97,13 @@ zshrc: $(HOME)/.zshrc
 $(HOME)/.zshrc:
 	@$(call cyan, "--\> zshrc")
 	ln -s $(DOTDIR)/zshrc $(HOME)/.zshrc
+
+.PHONY: zshrc.d
+zshrc.d: $(HOME)/.config/zsh/rc
+$(HOME)/.config/zsh/rc:
+	@$(call cyan, "--\> zshrc.d")
+	mkdir -p $(HOME)/.config/zsh
+	ln -s $(DOTDIR)/zshrc.d $(HOME)/.config/zsh/rc
 
 .PHONY: p10k.zsh
 p10k.zsh: $(HOME)/.p10k.zsh
