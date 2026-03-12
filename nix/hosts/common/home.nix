@@ -8,9 +8,18 @@
   home.file = {
     # Neovim
     ".config/nvim/init.lua".source = ../../../nvim/init.lua;
-    ".config/nvim/lua".source = ../../../nvim/lua;
-    ".config/nvim/snippets".source = ../../../nvim/snippets;
-    ".config/nvim/orgmode".source = ../../../nvim/orgmode;
+    ".config/nvim/lua" = {
+      source = ../../../nvim/lua;
+      recursive = true;
+    };
+    ".config/nvim/snippets" = {
+      source = ../../../nvim/snippets;
+      recursive = true;
+    };
+    ".config/nvim/orgmode" = {
+      source = ../../../nvim/orgmode;
+      recursive = true;
+    };
     ".config/nvim/lazy-lock.json".source = ../../../nvim/lazy-lock.json;
 
     ".SKK-JISYO.L".source = pkgs.fetchurl {
@@ -26,7 +35,10 @@
 
     # Zsh
     ".zshrc".source = ../../../zshrc;
-    ".config/zsh/rc".source = ../../../zshrc.d;
+    ".config/zsh/rc" = {
+      source = ../../../zshrc.d;
+      recursive = true;
+    };
     ".p10k.zsh".source = ../../../p10k.zsh;
   };
 }
