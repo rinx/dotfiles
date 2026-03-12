@@ -52,6 +52,17 @@
       flake-parts,
       ...
     }:
+    let
+      overlayed-pkgs =
+        { system, ... }:
+        import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [
+            inputs.neovim-nightly.overlays.default
+          ];
+        };
+    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.treefmt-nix.flakeModule
@@ -66,12 +77,8 @@
           ...
         }:
         {
-          _module.args.pkgs = import inputs.nixpkgs {
+          _module.args.pkgs = overlayed-pkgs {
             inherit system;
-            config.allowUnfree = true;
-            overlays = [
-              inputs.neovim-nightly.overlays.default
-            ];
           };
           packages = rec {
             falco = pkgs.callPackage ./nix/pkgs/tools/falco { };
@@ -203,12 +210,8 @@
               system = "aarch64-linux";
             in
             inputs.home-manager.lib.homeManagerConfiguration {
-              pkgs = import inputs.nixpkgs {
+              pkgs = overlayed-pkgs {
                 inherit system;
-                config.allowUnfree = true;
-                overlays = [
-                  inputs.neovim-nightly.overlays.default
-                ];
               };
               modules = [
                 ./nix/hosts/common/home.nix
