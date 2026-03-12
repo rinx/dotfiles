@@ -211,6 +211,7 @@
                 ];
               };
               modules = [
+                ./nix/hosts/common/home.nix
                 ./nix/hosts/lima/home.nix
                 ./nix/hosts/lima/services.nix
               ];
