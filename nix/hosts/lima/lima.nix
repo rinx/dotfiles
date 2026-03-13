@@ -73,5 +73,7 @@
     enable = true;
   };
 
+  time.timeZone = "Asia/Tokyo";
+
   system.stateVersion = "25.11";
 }
