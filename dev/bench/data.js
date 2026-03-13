@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773406068531,
+  "lastUpdate": 1773407431022,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -28975,6 +28975,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 102.89555260000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "31b3e9e729fc4872dc7844e1eaf2f78138afbe14",
+          "message": "fix(zsh): fix to load plugin correctly\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-13T21:57:21+09:00",
+          "tree_id": "876b70a91bbee66137a41fe2d726a3e76306079e",
+          "url": "https://github.com/rinx/dotfiles/commit/31b3e9e729fc4872dc7844e1eaf2f78138afbe14"
+        },
+        "date": 1773407428880,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 20.794246800000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 80.73774929999999,
             "unit": "ms"
           }
         ]
