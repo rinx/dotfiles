@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773407431022,
+  "lastUpdate": 1773455885277,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29009,6 +29009,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.73774929999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2f4ba356429cb9874f8e3ad76f25f06f3b6803b2",
+          "message": "chore(deps): update actions/create-github-app-token action to v3 (#326)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-03-14T11:23:29+09:00",
+          "tree_id": "32a4bc4eb0b4057ed3aefe06e96bb1b761d6c3f7",
+          "url": "https://github.com/rinx/dotfiles/commit/2f4ba356429cb9874f8e3ad76f25f06f3b6803b2"
+        },
+        "date": 1773455883470,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.6480548,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.96239690000002,
             "unit": "ms"
           }
         ]
