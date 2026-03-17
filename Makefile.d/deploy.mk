@@ -236,9 +236,7 @@ ifeq ($(UNAME),Darwin)
 .PHONY: macos
 macos: \
 	aerospace \
-	yabairc \
-	sketchybar \
-	skhdrc
+	sketchybar
 	@$(call green, "macos-deploy")
 else
 .PHONY: macos
@@ -252,20 +250,8 @@ $(HOME)/.aerospace.toml:
 	@$(call cyan, "--\> .aerospace.toml")
 	ln -s $(DOTDIR)/macos/aerospace.toml $(HOME)/.aerospace.toml
 
-.PHONY: yabairc
-yabairc: $(HOME)/.yabairc
-$(HOME)/.yabairc:
-	@$(call cyan, "--\> .yabairc")
-	ln -s $(DOTDIR)/macos/yabairc $(HOME)/.yabairc
-
 .PHONY: sketchybar
 sketchybar: $(HOME)/.config/sketchybar
 $(HOME)/.config/sketchybar:
 	@$(call cyan, "--\> $(HOME)/.config/sketchybar")
 	ln -s $(DOTDIR)/macos/sketchybar $(HOME)/.config/sketchybar
-
-.PHONY: skhdrc
-skhdrc: $(HOME)/.skhdrc
-$(HOME)/.skhdrc:
-	@$(call cyan, "--\> .skhdrc")
-	ln -s $(DOTDIR)/macos/skhdrc $(HOME)/.skhdrc
