@@ -167,45 +167,6 @@ $(HOME)/.config/waybar/style.css:
 	ln -s $(DOTDIR)/waybar/style.css $(HOME)/.config/waybar/style.css
 endif
 
-.PHONY: wallpapers
-wallpapers: \
-    $(HOME)/.wallpapers/pexels-photo-15286.jpg \
-    $(HOME)/.wallpapers/pexels-photo-2559941.jpg \
-    $(HOME)/.wallpapers/pexels-photo-417074.jpg \
-    $(HOME)/.wallpapers/pexels-photo-167699.jpg \
-    $(HOME)/.wallpapers/pexels-photo-531321.jpg \
-    $(HOME)/.wallpapers/pexels-photo-460621.jpg \
-    $(HOME)/.wallpapers/pexels-photo-2049422.jpg \
-    $(HOME)/.wallpapers/pexels-photo-635279.jpg \
-    $(HOME)/.wallpapers/pexels-photo-1933239.jpg
-$(HOME)/.wallpapers/pexels-photo-15286.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/15286/pexels-photo.jpg --output $(HOME)/.wallpapers/pexels-photo-15286.jpg
-$(HOME)/.wallpapers/pexels-photo-2559941.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg --output $(HOME)/.wallpapers/pexels-photo-2559941.jpg
-$(HOME)/.wallpapers/pexels-photo-417074.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg --output $(HOME)/.wallpapers/pexels-photo-417074.jpg
-$(HOME)/.wallpapers/pexels-photo-167699.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg --output $(HOME)/.wallpapers/pexels-photo-167699.jpg
-$(HOME)/.wallpapers/pexels-photo-531321.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/531321/pexels-photo-531321.jpeg --output $(HOME)/.wallpapers/pexels-photo-531321.jpg
-$(HOME)/.wallpapers/pexels-photo-460621.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/460621/pexels-photo-460621.jpeg --output $(HOME)/.wallpapers/pexels-photo-460621.jpg
-$(HOME)/.wallpapers/pexels-photo-2049422.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/2049422/pexels-photo-2049422.jpeg --output $(HOME)/.wallpapers/pexels-photo-2049422.jpg
-$(HOME)/.wallpapers/pexels-photo-635279.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg --output $(HOME)/.wallpapers/pexels-photo-635279.jpg
-$(HOME)/.wallpapers/pexels-photo-1933239.jpg:
-	mkdir -p $(HOME)/.wallpapers
-	curl -sL https://images.pexels.com/photos/1933239/pexels-photo-1933239.jpeg --output $(HOME)/.wallpapers/pexels-photo-1933239.jpg
-
 .PHONY: i3status-config
 i3status-config: \
     $(HOME)/.config/i3status/config
