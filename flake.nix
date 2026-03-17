@@ -27,6 +27,7 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-on-droid.url = "github:nix-community/nix-on-droid/release-24.05";
 
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
@@ -248,6 +249,20 @@
                   self.outputs.packages."${system}".dev-packages
                 ];
               };
+            };
+        };
+        nixOnDroidConfigurations = {
+          bigme-b7 =
+            let
+              system = "aarch64-linux";
+            in
+            inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+              pkgs = overlayed-pkgs {
+                inherit system;
+              };
+              modules = [
+                ./nix/hosts/droid/nix-on-droid.nix
+              ];
             };
         };
         nixosModules = {
