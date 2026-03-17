@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773710936835,
+  "lastUpdate": 1773734097373,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29077,6 +29077,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 100.83868619999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "74893e297142aeb6949a5de44f5f5700e79f9d90",
+          "message": "feat(nix): add home-manager config for ro-mba2025\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-17T16:39:15+09:00",
+          "tree_id": "51fdba1e8c30c28f105d045765c64636544e0e1b",
+          "url": "https://github.com/rinx/dotfiles/commit/74893e297142aeb6949a5de44f5f5700e79f9d90"
+        },
+        "date": 1773734094805,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.1269118,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.8990775,
             "unit": "ms"
           }
         ]
