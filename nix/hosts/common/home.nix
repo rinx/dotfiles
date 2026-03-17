@@ -20,7 +20,8 @@
       source = ../../../nvim/orgmode;
       recursive = true;
     };
-    ".config/nvim/lazy-lock.json".source = ../../../nvim/lazy-lock.json;
+    ".config/nvim/lazy-lock.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/local/src/github.com/rinx/dotfiles/nvim/lazy-lock.json";
 
     ".SKK-JISYO.L".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/skk-users-jp/dic-mirror/gh-pages/SKK-JISYO.L";

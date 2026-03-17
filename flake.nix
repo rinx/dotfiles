@@ -122,7 +122,6 @@
               name = "fonts-packages";
               paths = import ./nix/pkgs/fonts { inherit pkgs; };
             };
-
           }
           // (
             if pkgs.stdenv.isLinux then
@@ -205,6 +204,30 @@
           };
         };
         homeConfigurations = {
+          ro-mba2025 =
+            let
+              system = "aarch64-darwin";
+            in
+            inputs.home-manager.lib.homeManagerConfiguration {
+              pkgs = overlayed-pkgs {
+                inherit system;
+              };
+              modules = [
+                ./nix/hosts/common/home.nix
+                ./nix/hosts/common/services.nix
+                ./nix/hosts/darwin/home.nix
+              ];
+              extraSpecialArgs = {
+                inherit inputs;
+                username = "rinx";
+                additional-packages = [
+                  self.outputs.packages."${system}".dev-packages
+                  self.outputs.packages."${system}".extra-packages
+                  self.outputs.packages."${system}".k8s-packages
+                  self.outputs.packages."${system}".fonts-packages
+                ];
+              };
+            };
           lima =
             let
               system = "aarch64-linux";
@@ -215,6 +238,7 @@
               };
               modules = [
                 ./nix/hosts/common/home.nix
+                ./nix/hosts/common/services.nix
                 ./nix/hosts/lima/home.nix
                 ./nix/hosts/lima/services.nix
               ];
