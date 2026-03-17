@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773734097373,
+  "lastUpdate": 1773747557447,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29111,6 +29111,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.8990775,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c14583e326c4f7022f7b332c99b70ecfb3380551",
+          "message": "feat(nix): add bigme-b7 configurations (#329)\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-17T20:24:46+09:00",
+          "tree_id": "3e5e4bf0e6fecebb3dac2bf53424cd1093d814c1",
+          "url": "https://github.com/rinx/dotfiles/commit/c14583e326c4f7022f7b332c99b70ecfb3380551"
+        },
+        "date": 1773747555025,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.7675365,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.18817290000001,
             "unit": "ms"
           }
         ]
