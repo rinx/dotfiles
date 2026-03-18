@@ -27,7 +27,13 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-on-droid.url = "github:nix-community/nix-on-droid/release-24.05";
+    nixpkgs-droid.url = "github:NixOS/nixpkgs/nixos-24.05";
+    # NOTE: workaround nix-community/nix-on-droid#495
+    nixpkgs-unstable-droid.url = "github:NixOS/nixpkgs/88d3861";
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-droid";
+    };
 
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
@@ -257,8 +263,12 @@
               system = "aarch64-linux";
             in
             inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-              pkgs = overlayed-pkgs {
+              pkgs = import inputs.nixpkgs-unstable-droid {
                 inherit system;
+                config.allowUnfree = true;
+                overlays = [
+                  inputs.neovim-nightly.overlays.default
+                ];
               };
               modules = [
                 ./nix/hosts/droid/nix-on-droid.nix
