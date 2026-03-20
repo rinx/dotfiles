@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773994146876,
+  "lastUpdate": 1774001837863,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29213,6 +29213,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 118.50507520000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "39c19734a91d1dabe355eee26d21c1ae214eb660",
+          "message": "config(nix): add direnv hook for droi config\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-20T19:00:45+09:00",
+          "tree_id": "cc1de0653a2f95ea79db5517d2fc0ef370f5d7a4",
+          "url": "https://github.com/rinx/dotfiles/commit/39c19734a91d1dabe355eee26d21c1ae214eb660"
+        },
+        "date": 1774001835570,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.6030027,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 102.06692530000001,
             "unit": "ms"
           }
         ]
