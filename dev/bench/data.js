@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774001837863,
+  "lastUpdate": 1774002635528,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29247,6 +29247,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 102.06692530000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "510953d72eac71162a3ae8317ae1d16b9a2c3c6e",
+          "message": "refactor(nix): replace deprecated package\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-20T19:11:21+09:00",
+          "tree_id": "417e770081330d8523d19857305bcb2ca567222c",
+          "url": "https://github.com/rinx/dotfiles/commit/510953d72eac71162a3ae8317ae1d16b9a2c3c6e"
+        },
+        "date": 1774002633348,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.053857700000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.61933819999999,
             "unit": "ms"
           }
         ]
