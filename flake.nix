@@ -263,16 +263,21 @@
               system = "aarch64-linux";
             in
             inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-              pkgs = import inputs.nixpkgs-unstable-droid {
+              pkgs = import inputs.nixpkgs-droid {
                 inherit system;
-                config.allowUnfree = true;
-                overlays = [
-                  inputs.neovim-nightly.overlays.default
-                ];
               };
               modules = [
                 ./nix/hosts/droid/nix-on-droid.nix
               ];
+              extraSpecialArgs = {
+                pkgs-unstable = import inputs.nixpkgs-unstable-droid {
+                  inherit system;
+                  config.allowUnfree = true;
+                  overlays = [
+                    inputs.neovim-nightly.overlays.default
+                  ];
+                };
+              };
             };
         };
         nixosModules = {

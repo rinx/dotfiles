@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 {
@@ -10,13 +11,12 @@
   android-integration.termux-reload-settings.enable = true;
   android-integration.termux-setup-storage.enable = true;
 
-  environment.packages = with pkgs; [
+  environment.packages = with pkgs-unstable; [
     babashka
     bat
     curl
     delta
     deno
-    direnv
     eza
     fd
     fzf
@@ -27,7 +27,6 @@
     gnumake
     jq
     neovim-unwrapped
-    nix-direnv
     nodejs
     ripgrep
     tree-sitter
@@ -71,9 +70,15 @@
     experimental-features = nix-command flakes
   '';
 
-  terminal.font = "${pkgs.moralerspace-hw}/share/fonts/moralerspace-hw/MoralerspaceNeonHW-Regular.ttf";
+  terminal.font = "${pkgs-unstable.moralerspace-hw}/share/fonts/moralerspace-hw/MoralerspaceNeonHW-Regular.ttf";
 
   time.timeZone = "Asia/Tokyo";
 
-  user.shell = "${pkgs.zsh}/bin/zsh";
+  user.shell = "${pkgs-unstable.zsh}/bin/zsh";
+
+  home-manager = {
+    useGlobalPkgs = false;
+    useUserPackages = true;
+    config = ./home.nix;
+  };
 }
