@@ -20,6 +20,8 @@
       export GPG_TTY=''$(tty)
 
       export GOPATH="''${HOME}/local"
+
+      eval "''$(direnv hook zsh)"
     '';
   };
 
