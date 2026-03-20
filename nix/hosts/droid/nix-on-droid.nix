@@ -48,7 +48,7 @@
     killall
     diffutils
     findutils
-    utillinux
+    util-linux
     tzdata
     hostname
     gnugrep
