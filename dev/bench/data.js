@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773834446214,
+  "lastUpdate": 1773994146876,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29179,6 +29179,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.4694801,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "eb17546815683820d7af1d2047647a6cd3cd4c7b",
+          "message": "config(nix): use home-manager for droid\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-20T16:52:15+09:00",
+          "tree_id": "bc95679df46ab90cd2fea364e39e1fc004598ec8",
+          "url": "https://github.com/rinx/dotfiles/commit/eb17546815683820d7af1d2047647a6cd3cd4c7b"
+        },
+        "date": 1773994145011,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.485152799999994,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 118.50507520000001,
             "unit": "ms"
           }
         ]
