@@ -5,7 +5,7 @@
   ...
 }@inputs:
 {
-  home.username = "rinx";
+  home.username = inputs.username;
   home.homeDirectory = lib.mkForce "/home/${config.home.username}.linux";
 
   home.file = {

@@ -251,6 +251,7 @@
               ];
               extraSpecialArgs = {
                 inherit inputs;
+                username = "rinx";
                 additional-packages = [
                   self.outputs.packages."${system}".dev-packages
                 ];
