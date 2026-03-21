@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774002635528,
+  "lastUpdate": 1774092481596,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29281,6 +29281,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.61933819999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ac5fec68ee821baa76d8a63946fcbce03a34ab9e",
+          "message": "chore(lima-nixos): add gpg-agent socket initialization script to zshenv\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-21T20:10:58+09:00",
+          "tree_id": "a7ebdececca874d7b83afd2513ce86c0eccc8b6b",
+          "url": "https://github.com/rinx/dotfiles/commit/ac5fec68ee821baa76d8a63946fcbce03a34ab9e"
+        },
+        "date": 1774092479750,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.1534875,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 104.15669030000001,
             "unit": "ms"
           }
         ]
