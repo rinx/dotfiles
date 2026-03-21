@@ -12,6 +12,8 @@
     # Zsh
     ".zshenv".text = ''
       export GOPATH="''${HOME}/local"
+
+      echo "%Assuan%\nsocket=''${HOME}/.S.gpg-agent.host" > $(gpgconf --list-dir agent-socket)
     '';
 
     # GPG

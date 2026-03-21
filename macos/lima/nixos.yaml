@@ -62,20 +62,16 @@ message: |
 
       limactl shell {{.Name}} -- nix run nixpkgs#home-manager -- --flake github:rinx/dotfiles#lima switch
 
+  Import GPG pubkey and ownertrust.
+
+      gpg --export --armor 54CEC37D516CF1E59A560DEA2E26B9B26A1D5D29 | limactl shell {{.Name}} -- gpg --import
+      gpg --export-ownertrust | limactl shell {{.Name}} -- gpg --import-ownertrust
+
   Login to the VM.
 
       limactl shell {{.Name}} -- zsh
       ## or, export host environment variables like
       # limactl shell {{.Name}} -- GH_TOKEN=$(gh auth token) zsh
-
-  Fix `gpg-agent` socket.
-
-      echo "%Assuan%\nsocket=${HOME}/.S.gpg-agent.host" > $(gpgconf --list-dir agent-socket)
-
-  After that, import GPG pubkey and ownertrust.
-
-      gpg --export --armor 54CEC37D516CF1E59A560DEA2E26B9B26A1D5D29 | limactl shell {{.Name}} -- gpg --import
-      gpg --export-ownertrust | limactl shell {{.Name}} -- gpg --import-ownertrust
 
   ---
 
