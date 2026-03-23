@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774245981854,
+  "lastUpdate": 1774303736847,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29383,6 +29383,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.8088721,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "849290771f9c33ea69a0ebaabf151a14f4cbe9d3",
+          "message": "chore(ci)!: remove x86_64-darwin from check targets\n\nbecause it is deprecated and will be removed soon.\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-24T06:53:43+09:00",
+          "tree_id": "97173c78bbf94810567e56c43f9ca37fd5a7963c",
+          "url": "https://github.com/rinx/dotfiles/commit/849290771f9c33ea69a0ebaabf151a14f4cbe9d3"
+        },
+        "date": 1774303734661,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.7735226,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.38936290000001,
             "unit": "ms"
           }
         ]
