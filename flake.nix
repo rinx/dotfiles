@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-lima = {
-      url = "github:nixos-lima/nixos-lima";
+      url = "github:nixos-lima/nixos-lima/b5732ca76b7a0f735195a686d2d6d8c8a7d32feb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-generators = {
