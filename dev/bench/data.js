@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774836745412,
+  "lastUpdate": 1774856003282,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29553,6 +29553,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 85.61458050000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7b7b0d40b8b9aa77917982825e7070315866f198",
+          "message": "config(nix): add secretive ssh-auth-sock\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-03-30T16:16:40+09:00",
+          "tree_id": "5b29c072740702884587dbc5ae37fd1e35f7f4a8",
+          "url": "https://github.com/rinx/dotfiles/commit/7b7b0d40b8b9aa77917982825e7070315866f198"
+        },
+        "date": 1774856001679,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.4727379,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 100.7498654,
             "unit": "ms"
           }
         ]
