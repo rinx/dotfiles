@@ -18,8 +18,13 @@
 
     # Zsh
     ".zshenv".text = ''
+      # brew
       eval "$(/opt/homebrew/bin/brew shellenv)"
+
       export GOPATH="''${HOME}/local"
+
+      # secretive
+      export SSH_AUTH_SOCK="''${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
     '';
   };
 
