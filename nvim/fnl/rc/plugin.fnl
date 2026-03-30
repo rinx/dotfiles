@@ -90,6 +90,7 @@
                               :AvanteToggle
                               :MCPHub]
                         :dependencies [:ravitemer/mcphub.nvim]}
+   :lambdalisue/nvim-aibo {:config (mod :aibo)}
 
    ;; lsp
    :neovim/nvim-lspconfig {}
@@ -159,6 +160,5 @@
    :nvim-orgmode/orgmode {:config (mod :orgmode)
                           :event [:VeryLazy]
                           :ft [:org]
-                          :dependencies [:nvim-orgmode/org-bullets.nvim
-                                         :danilshvalov/org-modern.nvim
+                          :dependencies [:danilshvalov/org-modern.nvim
                                          :chipsenkbeil/org-roam.nvim]}})

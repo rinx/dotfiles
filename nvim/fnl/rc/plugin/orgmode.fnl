@@ -9,7 +9,6 @@
 
 (local orgmode (require :orgmode))
 (local roam (require :org-roam))
-(local bullets (require :org-bullets))
 (local modern-menu (require :org-modern.menu))
 
 (local basepath (vim.fn.expand "~/notes/org"))
@@ -287,10 +286,6 @@
    :immediate
    {:target "immediate%[sep]%<%Y%m%d%H%M%S>-%[slug].org"
     :template (->tmplstr :roam/immediate.org)}})
-
-(bullets.setup
-  {:concealcursor false
-   :symbols icon.org-bullets})
 
 (fn open-fn [filepath]
   (fn []
