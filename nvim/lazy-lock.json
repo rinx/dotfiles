@@ -38,7 +38,6 @@
   "nvim-parinfer": { "branch": "master", "commit": "3968e669d9f02589aa311d33cb475b16b27c5fbb" },
   "nvim-treesitter": { "branch": "main", "commit": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c" },
   "nvim-web-devicons": { "branch": "master", "commit": "d7462543c9e366c0d196c7f67a945eaaf5d99414" },
-  "org-bullets.nvim": { "branch": "main", "commit": "21437cfa99c70f2c18977bffd423f912a7b832ea" },
   "org-modern.nvim": { "branch": "main", "commit": "c024900b7ee78a0274036025569b47001ef3e6aa" },
   "org-roam.nvim": { "branch": "main", "commit": "6c21c867b178a80fb4ad243c445545e5583d8232" },
   "orgmode": { "branch": "master", "commit": "9deee54eb3dfc0fc2aebb3346c317ed198f423cb" },
