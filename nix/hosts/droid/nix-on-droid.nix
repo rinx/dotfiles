@@ -44,6 +44,9 @@
     moralerspace-hw
     hackgen-nf-font
 
+    claude-code
+    ollama
+
     procps
     killall
     diffutils
