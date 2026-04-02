@@ -333,6 +333,6 @@ copilot_component = {condition = _65_, provider = _66_, hl = {fg = colors.hint, 
 local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, org_clock_component, git_component, skkeleton_component, denops_component, spell_component, paste_component, ruler_component, scrollbar_component}
 local standard_winbar = {cwd_component, align_component, dap_component, align_component, copilot_component, diagnostics_component, lsp_component}
 local function _70_(args)
-  return conditions.buffer_matches({buftype = {"nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$", "^NvimTree$"}})
+  return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
 end
 return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _70_}})

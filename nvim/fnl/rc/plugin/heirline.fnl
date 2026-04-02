@@ -368,7 +368,8 @@
    :opts {:colors palette
           :disable_winbar_cb (fn [args]
                                (conditions.buffer_matches
-                                 {:buftype [:nofile
+                                 {:buftype [:acwrite ;; nvim-aibo prompt window
+                                            :nofile
                                             :prompt
                                             :help
                                             :quickfix
@@ -379,5 +380,4 @@
                                              :^dapui_watches$
                                              :^dapui_stacks$
                                              :^dapui_breakpoints$
-                                             :^dapui_scopes$
-                                             :^NvimTree$]}))}})
+                                             :^dapui_scopes$]}))}})
