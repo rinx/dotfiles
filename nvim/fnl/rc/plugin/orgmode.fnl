@@ -188,7 +188,7 @@
                  (tmp:write content)
                  (tmp:close)
                  (exporter cmd target on-success on-error)))}}
-   :win_split_mode :auto
+   :win_split_mode :float
    :org_highlight_latex_and_related :entities
    :org_hide_emphasis_markers true
    :mappings
