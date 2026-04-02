@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775137028235,
+  "lastUpdate": 1775137934716,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29757,6 +29757,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.565799,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7a5d5a625c0b6eddd6b5a25894f2fedc94e3c99d",
+          "message": "config(nvim): fix winbar disable condition\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-02T22:38:16+09:00",
+          "tree_id": "764dd0cf438f897b38144bd44821b203caae851a",
+          "url": "https://github.com/rinx/dotfiles/commit/7a5d5a625c0b6eddd6b5a25894f2fedc94e3c99d"
+        },
+        "date": 1775137932929,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 20.654026,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 83.09623050000002,
             "unit": "ms"
           }
         ]
