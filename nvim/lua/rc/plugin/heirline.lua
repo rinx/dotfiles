@@ -126,7 +126,7 @@ local function _22_()
 end
 local function _24_()
   local function _25_()
-    return vim.cmd("LspInfo")
+    return vim.cmd(":checkhealth vim.lsp")
   end
   return vim.defer_fn(_25_, 100)
 end

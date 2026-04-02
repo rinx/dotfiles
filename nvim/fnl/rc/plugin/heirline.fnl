@@ -166,7 +166,7 @@
         :on_click {:callback (fn []
                                (vim.defer_fn
                                  (fn []
-                                   (vim.cmd :LspInfo))
+                                   (vim.cmd ":checkhealth vim.lsp"))
                                  100))
                    :name :heirline_LSP}
         :hl {:fg colors.info}})
