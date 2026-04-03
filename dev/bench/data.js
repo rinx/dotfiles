@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775223191134,
+  "lastUpdate": 1775223975227,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29825,6 +29825,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.4568384,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ff66fb32a21ea96502c67cc3b4e051610fd40d0b",
+          "message": "fix(ci): fix auto-update script\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-03T22:30:54+09:00",
+          "tree_id": "11b7f97139676f41d67a017eed3ad41f4faaaa09",
+          "url": "https://github.com/rinx/dotfiles/commit/ff66fb32a21ea96502c67cc3b4e051610fd40d0b"
+        },
+        "date": 1775223973645,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.285787700000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 106.0353157,
             "unit": "ms"
           }
         ]
