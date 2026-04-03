@@ -41,8 +41,7 @@
     nil
     nixd
 
-    moralerspace-hw
-    hackgen-nf-font
+    maple-mono.NF-CN-unhinted
 
     claude-code
     ollama
@@ -73,7 +72,7 @@
     experimental-features = nix-command flakes
   '';
 
-  terminal.font = "${pkgs-unstable.moralerspace-hw}/share/fonts/moralerspace-hw/MoralerspaceNeonHW-Regular.ttf";
+  terminal.font = "${pkgs-unstable.maple-mono.NF-CN-unhinted}/share/fonts/truetype/MapleMono-NF-CN-Regular.ttf";
 
   time.timeZone = "Asia/Tokyo";
 
