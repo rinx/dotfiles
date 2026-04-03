@@ -72,7 +72,7 @@ jobs:
         env:
           BRANCH: ${{ steps.create-branch.outputs.name }}
         run: |
-          git add pkgs
+          git add nix/pkgs/tools
           git commit -m "$(head -1 commit.md)"
           git push origin "${BRANCH}"
 
