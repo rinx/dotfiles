@@ -57,6 +57,12 @@ ssh:
 user:
   name: rinx
   shell: /run/current-system/sw/bin/zsh
+vmType: vz
+vmOpts:
+  vz:
+    rosetta:
+      enabled: true
+      binfmt: true
 message: |
   To initialize the VM environment, execute `home-manager switch`.
 
