@@ -306,7 +306,6 @@
         :update [:RecordingEnter :RecordingLeave]})
 
 (local copilot-component
-
        {:condition (fn []
                      (~= (core.get package.loaded :copilot) nil))
         :provider (fn []
@@ -314,7 +313,7 @@
                             api (require :copilot.api)]
                         (if (or (not (copilot.buf_is_attached (vim.api.nvim_get_current_buf)))
                                 (copilot.is_disabled))
-                            icontab.copilot-disabled
+                            ""
                             (if (= api.status.data.status :Warning)
                                 icontab.copilot-warning
                                 (if vim.b.copilot_suggestion_auto_trigger
@@ -343,10 +342,10 @@
         align-component
         dap-component
         align-component
-        denops-component
         copilot-component
         diagnostics-component
-        lsp-component])
+        lsp-component
+        denops-component])
 
 (heirline.setup
   {:statusline [default-statusline]

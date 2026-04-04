@@ -308,7 +308,7 @@ local function _65_()
   local copilot = require("copilot.client")
   local api = require("copilot.api")
   if (not copilot.buf_is_attached(vim.api.nvim_get_current_buf()) or copilot.is_disabled()) then
-    return icontab["copilot-disabled"]
+    return ""
   else
     if (api.status.data.status == "Warning") then
       return icontab["copilot-warning"]
@@ -323,7 +323,7 @@ local function _65_()
 end
 copilot_component = {condition = _64_, provider = _65_, hl = {fg = colors.hint, bg = colors.color2}}
 local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, org_clock_component, git_component, skkeleton_component, spell_component, paste_component, ruler_component}
-local standard_winbar = {cwd_component, align_component, dap_component, align_component, denops_component, copilot_component, diagnostics_component, lsp_component}
+local standard_winbar = {cwd_component, align_component, dap_component, align_component, copilot_component, diagnostics_component, lsp_component, denops_component}
 local function _69_(args)
   return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
 end
