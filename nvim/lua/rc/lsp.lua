@@ -5,9 +5,8 @@ local core = autoload("nfnl.core")
 local schemastore = autoload("schemastore")
 local icon = autoload("rc.icon")
 local icontab = icon.tab
-local function setup_codelens_refresh(client, bufnr)
-  local group_5_auto = vim.api.nvim_create_augroup("init-lsp-codelens", {clear = true})
-  return vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {buffer = bufnr, callback = vim.lsp.codelens.refresh, group = group_5_auto})
+local function setup_codelens(client, bufnr)
+  return vim.lsp.codelens.enable(true, {bufnr = bufnr})
 end
 local function setup_inlay_hints(client, bufnr)
   if client.server_capabilities.inlayHintProvider then
@@ -29,7 +28,7 @@ do
   local function _4_(args)
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    setup_codelens_refresh(client, bufnr)
+    setup_codelens(client, bufnr)
     setup_inlay_hints(client, bufnr)
     return setup_document_formatting(client, bufnr)
   end

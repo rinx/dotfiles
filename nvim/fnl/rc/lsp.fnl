@@ -7,12 +7,8 @@
 (local icon (autoload :rc.icon))
 (local icontab icon.tab)
 
-(fn setup-codelens-refresh [client bufnr]
-  (augroup!
-    init-lsp-codelens
-    {:events [:CursorHold :CursorHoldI]
-     :buffer bufnr
-     :callback vim.lsp.codelens.refresh}))
+(fn setup-codelens [client bufnr]
+  (vim.lsp.codelens.enable true {:bufnr bufnr}))
 
 (fn setup-inlay-hints [client bufnr]
   (when client.server_capabilities.inlayHintProvider
@@ -32,7 +28,7 @@
    :callback (fn [args]
                (let [bufnr args.buf
                      client (vim.lsp.get_client_by_id args.data.client_id)]
-                 (setup-codelens-refresh client bufnr)
+                 (setup-codelens client bufnr)
                  (setup-inlay-hints client bufnr)
                  (setup-document-formatting client bufnr)))})
 
