@@ -334,7 +334,6 @@
         org-clock-component
         git-component
         skkeleton-component
-        denops-component
         spell-component
         paste-component
         ruler-component])
@@ -344,6 +343,7 @@
         align-component
         dap-component
         align-component
+        denops-component
         copilot-component
         diagnostics-component
         lsp-component])
