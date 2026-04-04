@@ -41,7 +41,7 @@
     nil
     nixd
 
-    maple-mono.NF-CN-unhinted
+    maple-mono.NF-CN
 
     claude-code
     ollama
@@ -72,7 +72,7 @@
     experimental-features = nix-command flakes
   '';
 
-  terminal.font = "${pkgs-unstable.maple-mono.NF-CN-unhinted}/share/fonts/truetype/MapleMono-NF-CN-Regular.ttf";
+  terminal.font = "${pkgs-unstable.maple-mono.NF-CN}/share/fonts/truetype/MapleMono-NF-CN-Regular.ttf";
 
   time.timeZone = "Asia/Tokyo";
 
