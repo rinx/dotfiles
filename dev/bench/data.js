@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775304982153,
+  "lastUpdate": 1775305928588,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30097,6 +30097,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 102.5475436,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "df0467232105bd88d8a79d565554db3b14f51a14",
+          "message": "config(nvim): show deno status on winbar\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-04T21:04:39+09:00",
+          "tree_id": "6d0f4319256bb0659a1954d6e2283145320addf4",
+          "url": "https://github.com/rinx/dotfiles/commit/df0467232105bd88d8a79d565554db3b14f51a14"
+        },
+        "date": 1775305927053,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.763483099999995,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 99.8443796,
             "unit": "ms"
           }
         ]
