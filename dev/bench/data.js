@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775264488507,
+  "lastUpdate": 1775266177873,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30029,6 +30029,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.1732493,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4f2985db66731e4057d0a40c5a12f56fb500eacb",
+          "message": "chore: use nix for ast-grep config management (#341)\n\nRefs: https://zenn.dev/comamoca/articles/2026-04-02-search-gleam-source-code-with-ast-grep\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-04T10:15:14+09:00",
+          "tree_id": "c9c0665fb77c789746331c48fb257d3fac0ebaeb",
+          "url": "https://github.com/rinx/dotfiles/commit/4f2985db66731e4057d0a40c5a12f56fb500eacb"
+        },
+        "date": 1775266176270,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.090312500000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 98.1174073,
             "unit": "ms"
           }
         ]
