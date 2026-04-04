@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775308660526,
+  "lastUpdate": 1775309852576,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30165,6 +30165,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.4807515,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2e3515db1b43ec62e9d4ad6b9ecccc67079fc498",
+          "message": "fix(nvim): remove deprecated vim.lsp.codelens.refresh call\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-04T22:22:42+09:00",
+          "tree_id": "55eef7e21b928d3ea87717ebac3510baca8085ac",
+          "url": "https://github.com/rinx/dotfiles/commit/2e3515db1b43ec62e9d4ad6b9ecccc67079fc498"
+        },
+        "date": 1775309850787,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.3758244,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 100.49209010000001,
             "unit": "ms"
           }
         ]
