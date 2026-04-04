@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775261682236,
+  "lastUpdate": 1775264488507,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -29995,6 +29995,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.31450720000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "67702b2496b26a3f18026445dd76e4c53edd7c90",
+          "message": "config(lima-nixos)!: rename home directory\n\nfor Lima >= 2.1.0\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-04T09:45:31+09:00",
+          "tree_id": "ffbe351442578055f924d9a84ca4cc2bb02b87c0",
+          "url": "https://github.com/rinx/dotfiles/commit/67702b2496b26a3f18026445dd76e4c53edd7c90"
+        },
+        "date": 1775264486105,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.5786223,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 99.1732493,
             "unit": "ms"
           }
         ]
