@@ -6,7 +6,7 @@
 }@inputs:
 {
   home.username = inputs.username;
-  home.homeDirectory = lib.mkForce "/home/${config.home.username}.linux";
+  home.homeDirectory = lib.mkForce "/home/${config.home.username}.guest";
 
   home.file = {
     # Zsh
