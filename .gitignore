@@ -1,6 +1,7 @@
 .clj-kondo
 .cache/tree-sitter
 .pre-commit-config.yaml
+sgconfig.yml
 
 nvim/flsproject.lua
 macos/sketchybar/rc/target
