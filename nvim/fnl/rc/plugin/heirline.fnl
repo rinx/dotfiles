@@ -141,19 +141,6 @@
         :hl {:fg colors.hint
              :bg colors.color2}})
 
-(local scrollbar-component
-       {:static {:sbar ["🭶" "🭷" "🭸" "🭹" "🭺" "🭻"]}
-        :provider (fn [self]
-                    (let [curr-line (core.get (vim.api.nvim_win_get_cursor 0) 1)
-                          lines (vim.api.nvim_buf_line_count 0)
-                          i (core.inc
-                              (math.floor
-                                (* (/ (core.dec curr-line) lines)
-                                   (core.count self.sbar))))]
-                      (string.rep (core.get self.sbar i) 2)))
-        :hl {:fg colors.hint
-             :bg colors.color2}})
-
 (local lsp-component
        {:condition conditions.lsp_attached
         :update [:LspAttach :LspDetach]
@@ -247,7 +234,7 @@
 (local denops-component
        {:provider (fn []
                     (match (vim.fn.denops#server#status)
-                      :running (.. icontab.dinosaur space)
+                      :running (.. icontab.denojs space)
                       _ ""))
         :hl {:fg colors.color4
              :bg colors.color2}})
@@ -350,8 +337,7 @@
         denops-component
         spell-component
         paste-component
-        ruler-component
-        scrollbar-component])
+        ruler-component])
 
 (local standard-winbar
        [cwd-component

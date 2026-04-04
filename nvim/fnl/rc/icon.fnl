@@ -146,7 +146,7 @@
    :sticky-note " "
    :server " "
    :opensuse " "
-   :dinosaur "🦕"
+   :denojs " "
    :ghost "󰊠 " 
    :whale "󰡨 "
    :ruby " "
