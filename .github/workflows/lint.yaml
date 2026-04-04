@@ -13,12 +13,18 @@ jobs:
       checks: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Install tree-sitter grammar for fennel
-        uses: rinx/setup-tree-sitter-parser@e0242ba833bf1c7f89d758f46da25653b2feba12 # v1.0.1
+      - name: Generate github token
+        id: generate_token
+        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
         with:
-          parser_dir: .cache/tree-sitter/parser
-          parser_repository: alexmozaidze/tree-sitter-fennel
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: cachix/install-nix-action@96951a368ba55167b55f1c916f7d416bac6505fe # v31
+        with:
+          github_access_token: ${{ steps.generate_token.outputs.token }}
+          nix_path: nixpkgs=channel:nixos-unstable
+      - uses: nicknovitski/nix-develop@9be7cfb4b10451d3390a75dc18ad0465bed4932a # v1.2.1
       - name: Run ast-grep with reviewdog
         uses: reviewdog/action-ast-grep@14690d058ff47b2fa9f155d69dbd3e1fb5695bbe # v1.53.5
         with:
@@ -42,14 +48,7 @@ jobs:
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
           nix_path: nixpkgs=channel:nixos-unstable
-      - name: Install dependencies
-        run: |
-          nix profile install 'nixpkgs#ast-grep'
-      - name: Install tree-sitter grammar for fennel
-        uses: rinx/setup-tree-sitter-parser@e0242ba833bf1c7f89d758f46da25653b2feba12 # v1.0.1
-        with:
-          parser_dir: .cache/tree-sitter/parser
-          parser_repository: alexmozaidze/tree-sitter-fennel
+      - uses: nicknovitski/nix-develop@9be7cfb4b10451d3390a75dc18ad0465bed4932a # v1.2.1
       - name: Run ast-grep rule tests
         run: |
           ast-grep test

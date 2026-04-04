@@ -162,20 +162,36 @@
               };
             };
           };
-          devShells.default = pkgs.mkShell {
-            inputsFrom = [
-              config.pre-commit.devShell
-            ];
-            packages = with pkgs; [
-              ast-grep
-              babashka
-              gitleaks
-              tree-sitter
-            ];
-            shellHook = ''
-              bb build
-            '';
-          };
+          devShells.default =
+            let
+              sgconfig = (pkgs.formats.yaml { }).generate "sgconfig.yml" {
+                ruleDirs = [ "./.config/rules" ];
+                testConfigs = [
+                  {
+                    testDir = "./.config/rule-tests";
+                  }
+                ];
+                customLanguages = {
+                  fennel = {
+                    libraryPath = "${pkgs.vimPlugins.nvim-treesitter-parsers.fennel}/parser/fennel.so";
+                    extensions = [ "fnl" ];
+                  };
+                };
+              };
+            in
+            pkgs.mkShell {
+              inputsFrom = [
+                config.pre-commit.devShell
+              ];
+              packages = with pkgs; [
+                ast-grep
+                gitleaks
+                tree-sitter
+              ];
+              shellHook = ''
+                ln -sf ${sgconfig} sgconfig.yml
+              '';
+            };
           treefmt = {
             programs = {
               actionlint.enable = true;
