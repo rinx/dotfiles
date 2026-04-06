@@ -103,7 +103,7 @@ local function _16_()
   end
   trail = _19_
   local cwd = trail(shorten(vim.fn.fnamemodify(vim.fn.getcwd(0), ":~")))
-  return (icontab.directory .. space .. cwd .. space)
+  return (icontab.directory .. cwd .. space)
 end
 cwd_component = {provider = _16_, hl = {fg = colors.hint}}
 local ruler_component = {provider = "[%l/%L] ", hl = {fg = colors.hint, bg = colors.color2}}
@@ -111,9 +111,9 @@ local lsp_component
 local function _21_()
   local clients = core.count(vim.lsp.get_clients({bufnr = 0}))
   if (clients >= 2) then
-    return (icontab.compas .. clients)
+    return (icontab.compas .. clients .. space)
   else
-    return icontab.compas
+    return (icontab.compas .. space)
   end
 end
 local function _23_()
@@ -220,13 +220,13 @@ local denops_component
 local function _47_()
   local case_48_ = vim.fn["denops#server#status"]()
   if (case_48_ == "running") then
-    return (icontab.denojs .. space)
+    return icontab.denojs
   else
     local _ = case_48_
     return ""
   end
 end
-denops_component = {provider = _47_, hl = {fg = colors.color4, bg = colors.color2}}
+denops_component = {provider = _47_, hl = {fg = colors.color4}}
 local skkeleton_component
 local function _50_()
   local mode
@@ -322,9 +322,18 @@ local function _65_()
   end
 end
 copilot_component = {condition = _64_, provider = _65_, hl = {fg = colors.hint, bg = colors.color2}}
+local lima_hostname_component
+local function _69_()
+  return (vim.fn.has("mac") ~= 1)
+end
+local function _70_()
+  local hostname = vim.loop.os_gethostname()
+  return (icontab.vm .. hostname)
+end
+lima_hostname_component = {condition = _69_, provider = _70_, hl = {fg = colors["lima-green"]}}
 local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, org_clock_component, git_component, skkeleton_component, spell_component, paste_component, ruler_component}
-local standard_winbar = {cwd_component, align_component, dap_component, align_component, copilot_component, diagnostics_component, lsp_component, denops_component}
-local function _69_(args)
+local standard_winbar = {cwd_component, lima_hostname_component, align_component, dap_component, align_component, copilot_component, diagnostics_component, lsp_component, denops_component}
+local function _71_(args)
   return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
 end
-return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _69_}})
+return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _71_}})

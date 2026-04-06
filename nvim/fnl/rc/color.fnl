@@ -12,6 +12,8 @@
    :color13 :#b8cc52
    :color10 :#36a3d9
    :color8 :#f07178
-   :color9 :#3e4b59})
+   :color9 :#3e4b59
+
+   :lima-green :#a9cf38})
 
 {: colors}

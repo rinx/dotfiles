@@ -133,7 +133,7 @@
                                   (vim.fn.fnamemodify ":~")
                                   (shorten)
                                   (trail))]
-                      (.. icontab.directory space cwd space)))
+                      (.. icontab.directory cwd space)))
         :hl {:fg colors.hint}})
 
 (local ruler-component
@@ -148,8 +148,8 @@
                     (let [clients (-> (vim.lsp.get_clients {:bufnr 0})
                                       (core.count))]
                       (if (>= clients 2)
-                          (.. icontab.compas clients)
-                          icontab.compas)))
+                          (.. icontab.compas clients space)
+                          (.. icontab.compas space))))
         :on_click {:callback (fn []
                                (vim.defer_fn
                                  (fn []
@@ -234,10 +234,9 @@
 (local denops-component
        {:provider (fn []
                     (match (vim.fn.denops#server#status)
-                      :running (.. icontab.denojs space)
+                      :running icontab.denojs
                       _ ""))
-        :hl {:fg colors.color4
-             :bg colors.color2}})
+        :hl {:fg colors.color4}})
 
 (local skkeleton-component
        {:provider (fn []
@@ -322,6 +321,14 @@
         :hl {:fg colors.hint
              :bg colors.color2}})
 
+(local lima-hostname-component
+       {:condition (fn []
+                     (~= (vim.fn.has :mac) 1))
+        :provider (fn []
+                    (let [hostname (vim.loop.os_gethostname)]
+                      (..  icontab.vm hostname)))
+        :hl {:fg colors.lima-green}})
+
 (local default-statusline
        [vi-mode-component
         space-component
@@ -339,6 +346,7 @@
 
 (local standard-winbar
        [cwd-component
+        lima-hostname-component
         align-component
         dap-component
         align-component
