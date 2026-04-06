@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775484393314,
+  "lastUpdate": 1775484921785,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30233,6 +30233,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.99319949999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b3f56706deeea779de1f8b391833a3b84280f792",
+          "message": "feat(lima-nixos): add sandbox manifest used for claude-code runner\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-06T22:59:25+09:00",
+          "tree_id": "326238dca4b51727f5a0f5e027362307d61f5edc",
+          "url": "https://github.com/rinx/dotfiles/commit/b3f56706deeea779de1f8b391833a3b84280f792"
+        },
+        "date": 1775484920166,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.081452300000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.7907649,
             "unit": "ms"
           }
         ]
