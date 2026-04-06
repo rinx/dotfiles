@@ -88,7 +88,7 @@ message: |
 
   ---
 
-  To install extra packages, run the following commands
+  To install extra packages, run the following commands.
 
       limactl shell {{.Name}} -- nix profile add github:rinx/dotfiles#extra-packages
       limactl shell {{.Name}} -- nix profile add github:rinx/dotfiles#k8s-packages

@@ -140,16 +140,19 @@ jobs:
           echo "name=${BRANCH}" >> "$GITHUB_OUTPUT"
       - name: Update images
         run: |
-          yq -i '.images[] |= select(.arch == "aarch64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-aarch64.qcow2"' macos/lima/nixos.yaml
-          yq -i '.images[] |= select(.arch == "aarch64").digest = "sha512:${{ steps.digests.outputs.aarch64 }}"' macos/lima/nixos.yaml
-          yq -i '.images[] |= select(.arch == "x86_64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-x86_64.qcow2"' macos/lima/nixos.yaml
-          yq -i '.images[] |= select(.arch == "x86_64").digest = "sha512:${{ steps.digests.outputs.x86_64 }}"' macos/lima/nixos.yaml
+          for x in nixos sandbox
+          do
+            yq -i '.images[] |= select(.arch == "aarch64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-aarch64.qcow2"' macos/lima/${x}.yaml
+            yq -i '.images[] |= select(.arch == "aarch64").digest = "sha512:${{ steps.digests.outputs.aarch64 }}"' macos/lima/${x}.yaml
+            yq -i '.images[] |= select(.arch == "x86_64").location = "https://github.com/rinx/dotfiles/releases/download/${{ github.ref_name }}/nixos-lima-x86_64.qcow2"' macos/lima/${x}.yaml
+            yq -i '.images[] |= select(.arch == "x86_64").digest = "sha512:${{ steps.digests.outputs.x86_64 }}"' macos/lima/${x}.yaml
+          done
       - name: Commit and Push
         id: commit
         env:
           BRANCH: ${{ steps.create-branch.outputs.name }}
         run: |
-          git add macos/lima/nixos.yaml
+          git add macos/lima
           git commit -m "chore(lima-nixos): update lima-nixos images to ${{ github.ref_name }}"
           git push origin "${BRANCH}"
 

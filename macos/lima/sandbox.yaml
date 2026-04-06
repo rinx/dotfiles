@@ -1,0 +1,47 @@
+# Template using nixos-lima
+# ref: https://github.com/nixos-lima/nixos-lima
+images:
+  - location: "https://github.com/rinx/dotfiles/releases/download/2026.04.04/nixos-lima-aarch64.qcow2"
+    arch: "aarch64"
+    digest: "sha512:9395a10840043add9a032c4f92e30b9639f5636173cdb08309c8bfec7dccb0864c055d040a4f792bae745c572a5f90fefb97ae6e9d46aaa1faa1a071cff8fc95"
+  - location: "https://github.com/rinx/dotfiles/releases/download/2026.04.04/nixos-lima-x86_64.qcow2"
+    arch: "x86_64"
+    digest: "sha512:763eea175bf8923964308704d9a6fb1026aeb924dd13320e9eeab4e8a8c4aa04959737f530a91f38cdc3116c0f907cf751036512816c44de73d22cbb918ede26"
+mounts:
+  - location: "/tmp/lima"
+    writable: true
+    9p:
+      cache: "mmap"
+cpus: 2
+memory: 4GiB
+portForwards:
+  # Tell Lima's port-forwarding to ignore port 68 to prevent interception of host DHCP packets
+  # Apparently this is an issue with NixOS that does not occur on other Linux distros
+  # See: https://github.com/nixos-lima/nixos-lima/issues/50
+  - proto: udp
+    guestPort: 68
+    guestIP: 0.0.0.0
+    ignore: true
+containerd:
+  system: false
+  user: false
+ssh:
+  forwardAgent: false
+user:
+  name: rinx
+  shell: /run/current-system/sw/bin/zsh
+vmType: vz
+message: |
+  To initialize the VM environment, execute `home-manager switch`.
+
+      limactl shell {{.Name}} -- nix run nixpkgs#home-manager -- --flake github:rinx/dotfiles#lima switch
+
+  Login to the VM.
+
+      limactl shell {{.Name}} -- zsh
+
+  ---
+
+  To install claude-code, run the following command.
+
+      limactl shell {{.Name}} -- nix profile add github:sadjow/claude-code-nix
