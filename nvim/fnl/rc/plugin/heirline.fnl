@@ -81,8 +81,7 @@
                     (when self.icon
                       self.icon))
         :hl (fn [self]
-              {:fg self.icon-color
-               :bg colors.color2})})
+              {:fg self.icon-color})})
 (local filename-component
        {:provider (fn [self]
                    (let [filename (vim.fn.fnamemodify self.filename ":.")]
@@ -95,7 +94,6 @@
                                    shortened
                                    (vim.fn.fnamemodify self.filename ":p:t")))))))
         :hl {:fg colors.hint
-             :bg colors.color2
              :bold true}})
 (local file-flags-component
        [{:condition (fn []
@@ -107,8 +105,7 @@
                       (or (not vim.bo.modifiable)
                           vim.bo.readonly))
          :provider (.. space icontab.lock)
-         :hl {:fg colors.hint
-              :bg colors.color2}}])
+         :hl {:fg colors.hint}}])
 (local filename-block
        {:init (fn [self]
                 (set self.filename (vim.api.nvim_buf_get_name 0)))
@@ -138,8 +135,7 @@
 
 (local ruler-component
        {:provider "[%l/%L] "
-        :hl {:fg colors.hint
-             :bg colors.color2}})
+        :hl {:fg colors.hint}})
 
 (local lsp-component
        {:condition conditions.lsp_attached
@@ -195,8 +191,7 @@
                      (or (~= self.status_dict.added 0)
                          (~= self.status_dict.removed 0)
                          (~= self.status_dict.changed 0))))
-        :hl {:fg :purple
-             :bg colors.color2}
+        :hl {:fg :purple}
         1 {:provider (fn [self]
                        (.. icontab.github self.status_dict.head space))
            :hl {:bold true}}
@@ -250,23 +245,20 @@
                                 _ nil)]
                       (when mode
                         (.. icontab.cursor-text mode space))))
-        :hl {:fg colors.color10
-             :bg colors.color2}})
+        :hl {:fg colors.color10}})
 
 (local spell-component
        {:condition (fn []
                      vim.wo.spell)
         :provider (fn []
                     (.. icontab.spellcheck vim.o.spelllang space))
-        :hl {:fg colors.hint
-             :bg colors.color2}})
+        :hl {:fg colors.hint}})
 
 (local paste-component
        {:condition (fn []
                     vim.o.paste)
         :provider (.. icontab.paste space)
-        :hl {:fg colors.hint
-             :bg colors.color2}})
+        :hl {:fg colors.hint}})
 
 (local search-component
        {:condition (fn []
@@ -288,8 +280,7 @@
                         (math.min
                           self.search.total
                           self.search.maxcount))))
-        :hl {:fg colors.hint
-             :bg colors.color2}})
+        :hl {:fg colors.hint}})
 
 (local macrorec-component
        {:condition (fn []
@@ -300,8 +291,7 @@
                         (vim.fn.reg_recording)
                         "]"
                         space))
-        :hl {:fg colors.info
-             :bg colors.color2}
+        :hl {:fg colors.info}
         :update [:RecordingEnter :RecordingLeave]})
 
 (local copilot-component
@@ -318,8 +308,7 @@
                                 (if vim.b.copilot_suggestion_auto_trigger
                                     icontab.copilot-sleep
                                     icontab.copilot-enabled)))))
-        :hl {:fg colors.hint
-             :bg colors.color2}})
+        :hl {:fg colors.hint}})
 
 (local lima-hostname-component
        {:condition (fn []
@@ -332,28 +321,29 @@
 (local default-statusline
        [vi-mode-component
         space-component
-        filename-block
+        cwd-component
+        lima-hostname-component
+        space-component
         align-component
         search-component
         macrorec-component
         align-component
         org-clock-component
-        git-component
         skkeleton-component
         spell-component
         paste-component
-        ruler-component])
+        copilot-component
+        denops-component])
 
 (local standard-winbar
-       [cwd-component
-        lima-hostname-component
+       [filename-block
         align-component
         dap-component
         align-component
-        copilot-component
+        git-component
         diagnostics-component
         lsp-component
-        denops-component])
+        ruler-component])
 
 (heirline.setup
   {:statusline [default-statusline]

@@ -46,7 +46,7 @@ local function _6_(self)
   end
 end
 local function _8_(self)
-  return {fg = self["icon-color"], bg = colors.color2}
+  return {fg = self["icon-color"]}
 end
 file_icon_component = {init = _5_, provider = _6_, hl = _8_}
 local filename_component
@@ -67,7 +67,7 @@ local function _9_(self)
     end
   end
 end
-filename_component = {provider = _9_, hl = {fg = colors.hint, bg = colors.color2, bold = true}}
+filename_component = {provider = _9_, hl = {fg = colors.hint, bold = true}}
 local file_flags_component
 local function _13_()
   return vim.bo.modified
@@ -75,7 +75,7 @@ end
 local function _14_()
   return (not vim.bo.modifiable or vim.bo.readonly)
 end
-file_flags_component = {{condition = _13_, provider = (space .. icontab.circle), hl = {fg = colors.hint, bg = colors.color2}}, {condition = _14_, provider = (space .. icontab.lock), hl = {fg = colors.hint, bg = colors.color2}}}
+file_flags_component = {{condition = _13_, provider = (space .. icontab.circle), hl = {fg = colors.hint, bg = colors.color2}}, {condition = _14_, provider = (space .. icontab.lock), hl = {fg = colors.hint}}}
 local filename_block
 local function _15_(self)
   self.filename = vim.api.nvim_buf_get_name(0)
@@ -106,7 +106,7 @@ local function _16_()
   return (icontab.directory .. cwd .. space)
 end
 cwd_component = {provider = _16_, hl = {fg = colors.hint}}
-local ruler_component = {provider = "[%l/%L] ", hl = {fg = colors.hint, bg = colors.color2}}
+local ruler_component = {provider = "[%l/%L] ", hl = {fg = colors.hint}}
 local lsp_component
 local function _21_()
   local clients = core.count(vim.lsp.get_clients({bufnr = 0}))
@@ -198,7 +198,7 @@ local function _42_(self)
   self.has_changes = ((self.status_dict.added ~= 0) or (self.status_dict.removed ~= 0) or (self.status_dict.changed ~= 0))
   return nil
 end
-git_component = {{provider = _35_, hl = {bold = true}}, {provider = _36_, hl = {fg = "git_add"}}, {provider = _38_, hl = {fg = "git_del"}}, {provider = _40_, hl = {fg = "git_change"}}, condition = conditions.is_git_repo, flexible = true, init = _42_, hl = {fg = "purple", bg = colors.color2}}
+git_component = {{provider = _35_, hl = {bold = true}}, {provider = _36_, hl = {fg = "git_add"}}, {provider = _38_, hl = {fg = "git_del"}}, {provider = _40_, hl = {fg = "git_change"}}, condition = conditions.is_git_repo, flexible = true, init = _42_, hl = {fg = "purple"}}
 local dap_component
 local function _43_()
   local session = dap.session()
@@ -255,7 +255,7 @@ local function _50_()
     return nil
   end
 end
-skkeleton_component = {provider = _50_, hl = {fg = colors.color10, bg = colors.color2}}
+skkeleton_component = {provider = _50_, hl = {fg = colors.color10}}
 local spell_component
 local function _54_()
   return vim.wo.spell
@@ -263,12 +263,12 @@ end
 local function _55_()
   return (icontab.spellcheck .. vim.o.spelllang .. space)
 end
-spell_component = {condition = _54_, provider = _55_, hl = {fg = colors.hint, bg = colors.color2}}
+spell_component = {condition = _54_, provider = _55_, hl = {fg = colors.hint}}
 local paste_component
 local function _56_()
   return vim.o.paste
 end
-paste_component = {condition = _56_, provider = (icontab.paste .. space), hl = {fg = colors.hint, bg = colors.color2}}
+paste_component = {condition = _56_, provider = (icontab.paste .. space), hl = {fg = colors.hint}}
 local search_component
 local function _57_()
   return (vim.v.hlsearch ~= 0)
@@ -291,7 +291,7 @@ local function _60_(self)
     return nil
   end
 end
-search_component = {condition = _57_, init = _58_, provider = _60_, hl = {fg = colors.hint, bg = colors.color2}}
+search_component = {condition = _57_, init = _58_, provider = _60_, hl = {fg = colors.hint}}
 local macrorec_component
 local function _62_()
   return (vim.fn.reg_recording() ~= "")
@@ -299,7 +299,7 @@ end
 local function _63_()
   return (icontab.recording .. "[" .. vim.fn.reg_recording() .. "]" .. space)
 end
-macrorec_component = {condition = _62_, provider = _63_, hl = {fg = colors.info, bg = colors.color2}, update = {"RecordingEnter", "RecordingLeave"}}
+macrorec_component = {condition = _62_, provider = _63_, hl = {fg = colors.info}, update = {"RecordingEnter", "RecordingLeave"}}
 local copilot_component
 local function _64_()
   return (core.get(package.loaded, "copilot") ~= nil)
@@ -321,7 +321,7 @@ local function _65_()
     end
   end
 end
-copilot_component = {condition = _64_, provider = _65_, hl = {fg = colors.hint, bg = colors.color2}}
+copilot_component = {condition = _64_, provider = _65_, hl = {fg = colors.hint}}
 local lima_hostname_component
 local function _69_()
   return (vim.fn.has("mac") ~= 1)
@@ -331,8 +331,8 @@ local function _70_()
   return (icontab.vm .. hostname)
 end
 lima_hostname_component = {condition = _69_, provider = _70_, hl = {fg = colors["lima-green"]}}
-local default_statusline = {vi_mode_component, space_component, filename_block, align_component, search_component, macrorec_component, align_component, org_clock_component, git_component, skkeleton_component, spell_component, paste_component, ruler_component}
-local standard_winbar = {cwd_component, lima_hostname_component, align_component, dap_component, align_component, copilot_component, diagnostics_component, lsp_component, denops_component}
+local default_statusline = {vi_mode_component, space_component, cwd_component, lima_hostname_component, space_component, align_component, search_component, macrorec_component, align_component, org_clock_component, skkeleton_component, spell_component, paste_component, copilot_component, denops_component}
+local standard_winbar = {filename_block, align_component, dap_component, align_component, git_component, diagnostics_component, lsp_component, ruler_component}
 local function _71_(args)
   return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
 end
