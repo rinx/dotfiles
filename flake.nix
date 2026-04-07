@@ -52,6 +52,9 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+    };
   };
 
   outputs =
@@ -225,6 +228,14 @@
             specialArgs = inputs;
             modules = [
               ./nix/hosts/lima/lima.nix
+            ];
+          };
+          sandbox-vm = inputs.nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = inputs;
+            modules = [
+              ./nix/hosts/lima/lima.nix
+              ./nix/hosts/lima/sandbox.nix
             ];
           };
         };

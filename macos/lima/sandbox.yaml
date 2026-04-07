@@ -32,16 +32,11 @@ user:
   shell: /run/current-system/sw/bin/zsh
 vmType: vz
 message: |
-  To initialize the VM environment, execute `home-manager switch`.
+  To initialize the VM environment, execute `nixos-rebuild switch` and `home-manager switch`.
 
+      limactl shell {{.Name}} -- nixos-rebuild switch --flake github:rinx/dotfiles#sandbox-vm --sudo
       limactl shell {{.Name}} -- nix run nixpkgs#home-manager -- --flake github:rinx/dotfiles#lima switch
 
   Login to the VM.
 
       limactl shell {{.Name}} -- zsh
-
-  ---
-
-  To install claude-code, run the following command.
-
-      limactl shell {{.Name}} -- nix profile add github:sadjow/claude-code-nix
