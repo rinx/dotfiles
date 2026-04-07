@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775484921785,
+  "lastUpdate": 1775569926006,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30267,6 +30267,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 103.7907649,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a531e6c2df4000197c1525948125a48cd0022941",
+          "message": "config(nixos-lima): add sandbox-vm settings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-07T22:37:43+09:00",
+          "tree_id": "d56fc50dd29313537bfd09c0a79df4addd3a6247",
+          "url": "https://github.com/rinx/dotfiles/commit/a531e6c2df4000197c1525948125a48cd0022941"
+        },
+        "date": 1775569923633,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.045621899999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 102.20419539999999,
             "unit": "ms"
           }
         ]
