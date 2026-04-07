@@ -6,9 +6,12 @@
 {
   imports = [ ];
 
-  nixpkgs.overlays = [
-    inputs.claude-code.overlays.default
-  ];
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      inputs.claude-code.overlays.default
+    ];
+  };
 
   networking.hostName = "sandbox";
 
