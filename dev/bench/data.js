@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775571848779,
+  "lastUpdate": 1775572983773,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30369,6 +30369,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 102.77710420000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "323ac3784006fc61e4cf857809492d7bbf750202",
+          "message": "config(nvim): update statusline / winbar component orders\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-07T23:27:00+09:00",
+          "tree_id": "fcb208e2548a6314d02967c674ecfc7f9fee7d90",
+          "url": "https://github.com/rinx/dotfiles/commit/323ac3784006fc61e4cf857809492d7bbf750202"
+        },
+        "date": 1775572982045,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.911337300000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 103.78261030000002,
             "unit": "ms"
           }
         ]
