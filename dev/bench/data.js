@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775570759140,
+  "lastUpdate": 1775571848779,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30335,6 +30335,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.1004453,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c03572d8fcd7f18c9f33fc537935118ab6ca60bf",
+          "message": "config(nixos-lima): add ollama to sandbox-vm dependency\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-07T23:07:50+09:00",
+          "tree_id": "1a6e6f7bc26f36bafbcc930a05d5f35f8c25e2aa",
+          "url": "https://github.com/rinx/dotfiles/commit/c03572d8fcd7f18c9f33fc537935118ab6ca60bf"
+        },
+        "date": 1775571846423,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.938482999999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 102.77710420000001,
             "unit": "ms"
           }
         ]
