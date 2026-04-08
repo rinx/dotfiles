@@ -75,7 +75,7 @@ end
 local function _14_()
   return (not vim.bo.modifiable or vim.bo.readonly)
 end
-file_flags_component = {{condition = _13_, provider = (space .. icontab.circle), hl = {fg = colors.hint, bg = colors.color2}}, {condition = _14_, provider = (space .. icontab.lock), hl = {fg = colors.hint}}}
+file_flags_component = {{condition = _13_, provider = (space .. icontab.circle), hl = {fg = colors.hint}}, {condition = _14_, provider = (space .. icontab.lock), hl = {fg = colors.hint}}}
 local filename_block
 local function _15_(self)
   self.filename = vim.api.nvim_buf_get_name(0)
@@ -106,7 +106,7 @@ local function _16_()
   return (icontab.directory .. cwd .. space)
 end
 cwd_component = {provider = _16_, hl = {fg = colors.hint}}
-local ruler_component = {provider = "[%l/%L] ", hl = {fg = colors.hint}}
+local ruler_component = {provider = "[%l/%L]", hl = {fg = colors.hint}}
 local lsp_component
 local function _21_()
   local clients = core.count(vim.lsp.get_clients({bufnr = 0}))
@@ -213,7 +213,7 @@ local function _45_()
   return (_G.orgmode ~= nil)
 end
 local function _46_()
-  return _G.orgmode.statusline()
+  return (_G.orgmode.statusline() .. space)
 end
 org_clock_component = {condition = _45_, provider = _46_, hl = {fg = colors.purple}}
 local denops_component

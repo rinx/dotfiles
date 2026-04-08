@@ -99,8 +99,7 @@
        [{:condition (fn []
                       vim.bo.modified)
          :provider (.. space icontab.circle)
-         :hl {:fg colors.hint
-              :bg colors.color2}}
+         :hl {:fg colors.hint}}
         {:condition (fn []
                       (or (not vim.bo.modifiable)
                           vim.bo.readonly))
@@ -134,7 +133,7 @@
         :hl {:fg colors.hint}})
 
 (local ruler-component
-       {:provider "[%l/%L] "
+       {:provider "[%l/%L]"
         :hl {:fg colors.hint}})
 
 (local lsp-component
@@ -223,7 +222,7 @@
        {:condition (fn []
                      (~= _G.orgmode nil))
         :provider (fn []
-                    (_G.orgmode.statusline))
+                    (.. (_G.orgmode.statusline) space))
         :hl {:fg colors.purple}})
 
 (local denops-component
