@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775744078084,
+  "lastUpdate": 1775744407253,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30675,6 +30675,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.2077316,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9e5a371ce9c3b9bfe0df979837a5a866790e9b7e",
+          "message": "chore(nix): revert rq revision\n\nto investigate the failing on update-nix-pkgs workflow\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-09T23:13:39+09:00",
+          "tree_id": "f9ac9834f4de226438f194e324e32363cfa8b21e",
+          "url": "https://github.com/rinx/dotfiles/commit/9e5a371ce9c3b9bfe0df979837a5a866790e9b7e"
+        },
+        "date": 1775744405498,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.351267,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 108.3406215,
             "unit": "ms"
           }
         ]
