@@ -24,6 +24,13 @@ jobs:
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
           nix_path: nixpkgs=channel:nixos-unstable
+      - name: Setup Cachix
+        uses: cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c # v17
+        with:
+          name: rinx
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community
+          skipPush: true
       - uses: nicknovitski/nix-develop@9be7cfb4b10451d3390a75dc18ad0465bed4932a # v1.2.1
       - name: Run ast-grep with reviewdog
         uses: reviewdog/action-ast-grep@14690d058ff47b2fa9f155d69dbd3e1fb5695bbe # v1.53.5
@@ -48,6 +55,13 @@ jobs:
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
           nix_path: nixpkgs=channel:nixos-unstable
+      - name: Setup Cachix
+        uses: cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c # v17
+        with:
+          name: rinx
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community
+          skipPush: true
       - uses: nicknovitski/nix-develop@9be7cfb4b10451d3390a75dc18ad0465bed4932a # v1.2.1
       - name: Run ast-grep rule tests
         run: |

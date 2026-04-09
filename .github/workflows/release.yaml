@@ -38,6 +38,13 @@ jobs:
           install_options: --no-daemon
           extra_nix_config: |
             system-features = ${{ env.ARCH == 'aarch64' && 'kvm aarch64-linux' || 'kvm' }}
+      - name: Setup Cachix
+        uses: cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c # v17
+        with:
+          name: rinx
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community
+          skipPush: true
       - name: Build ${{ env.ARCH }} image
         run: |
           nix build .#packages.${{ env.ARCH }}-linux.lima-img --out-link result-${{ env.ARCH }}
