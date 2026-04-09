@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775743731354,
+  "lastUpdate": 1775744078084,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30641,6 +30641,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 99.6763697,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "48fd67961c587aa13746d29477ded8e394b9bc2a",
+          "message": "chore(lima-nixos): update lima-nixos images to 2026.04.09\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-09T23:09:57+09:00",
+          "tree_id": "0923d8c21ad4f237d3838894b1b72e54ccc29afb",
+          "url": "https://github.com/rinx/dotfiles/commit/48fd67961c587aa13746d29477ded8e394b9bc2a"
+        },
+        "date": 1775744076374,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 21.569490000000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 97.2077316,
             "unit": "ms"
           }
         ]
