@@ -14,14 +14,26 @@
     self.nixosModules.lima-docker-fix
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
-  # Give users in the `wheel` group additional rights when connecting to the Nix daemon
-  # This simplifies remote deployment to the instance's nix store.
-  nix.settings.trusted-users = [ "@wheel" ];
+    # Give users in the `wheel` group additional rights when connecting to the Nix daemon
+    # This simplifies remote deployment to the instance's nix store.
+    trusted-users = [ "@wheel" ];
+
+    # Use Cachix
+    extra-substituters = [
+      "https://rinx.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "rinx.cachix.org-1:dnKhEzrRDhJmzOKhwwjKc9FsGvY9Bq2MddbtPd8Qsmc="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 
   # Read Lima configuration at boot time and run the Lima guest agent
   services.lima.enable = true;

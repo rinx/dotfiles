@@ -57,6 +57,17 @@
     };
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://rinx.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "rinx.cachix.org-1:dnKhEzrRDhJmzOKhwwjKc9FsGvY9Bq2MddbtPd8Qsmc="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   outputs =
     inputs@{
       self,
