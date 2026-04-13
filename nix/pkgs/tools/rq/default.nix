@@ -5,12 +5,12 @@
 }:
 buildGoModule rec {
   pname = "rq";
-  version = "0.0.16";
+  version = "v0.0.16";
 
   src = fetchFromSourcehut {
     owner = "~charles";
     repo = "rq";
-    rev = "v${version}";
+    rev = "${version}";
     hash = "sha256-MTUuNIw8HD9LV/Q678M1xH7VzKViwMkPlz/LicLMNWY=";
   };
 
