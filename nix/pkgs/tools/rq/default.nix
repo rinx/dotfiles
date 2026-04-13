@@ -5,14 +5,14 @@
 }:
 buildGoModule rec {
   pname = "rq";
-  version = "v0.0.16";
+  version = "873843db7b6010218bcfecd799a4c6690e862c16";
 
   src = fetchFromSourcehut {
     owner = "~charles";
     repo = "rq";
     rev = "${version}";
-    hash = "sha256-MTUuNIw8HD9LV/Q678M1xH7VzKViwMkPlz/LicLMNWY=";
+    hash = "sha256-4koKuZiCboupoTTFbFc/5EO+08RBPow2T+iTOLZyyTc=";
   };
 
-  vendorHash = "sha256-APmEsnfJ07ENzdIebrfNPSxypzTuRpCNhTvNK9n1Gmk=";
+  vendorHash = "sha256-OprZ8ktHLUwN/TibY8FfMJXvScw8G1A2VgtZ+lrHmIo=";
 }
