@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776049170447,
+  "lastUpdate": 1776080049716,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30879,6 +30879,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 111.4694098,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "634312737f4f95beab6336ef4319b6043ff356b2",
+          "message": "chore(deps): update actions/create-github-app-token action to v3.1.1 (#347)\n\n* chore(deps): update actions/create-github-app-token action to v3.1.1\n\n* fix(ci): use client-id instead\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-13T11:29:56Z",
+          "tree_id": "ad0db3bccf7ce956b5d21a31e561213415781929",
+          "url": "https://github.com/rinx/dotfiles/commit/634312737f4f95beab6336ef4319b6043ff356b2"
+        },
+        "date": 1776080048020,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.640844499999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 108.8174205,
             "unit": "ms"
           }
         ]
