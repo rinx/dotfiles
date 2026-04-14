@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776176873449,
+  "lastUpdate": 1776177315217,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31015,6 +31015,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 128.8237718,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "564e6040d6fb1ee26ea352dea6de9fad23925fbd",
+          "message": "chore: move gitlint config file\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-14T23:30:35+09:00",
+          "tree_id": "af02f5604bdf489bdfb1e481ad35ce6546f6240a",
+          "url": "https://github.com/rinx/dotfiles/commit/564e6040d6fb1ee26ea352dea6de9fad23925fbd"
+        },
+        "date": 1776177313138,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.1976187,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 114.19024949999998,
             "unit": "ms"
           }
         ]
