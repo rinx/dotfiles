@@ -1,8 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "Hypersonic.nvim": { "branch": "main", "commit": "734dfbfbe51952f102a9b439d53d4267bb0024cd" },
-  "avante.nvim": { "branch": "main", "commit": "8c84af0f09e5d9058362ac58401a8e7b047d826e" },
-  "blink-cmp-avante": { "branch": "master", "commit": "4f494c6e124acbe31a8f5d58effa0c14aa38a6d5" },
   "blink-cmp-copilot": { "branch": "main", "commit": "439cff78780c033aa23cf061d7315314b347e3c1" },
   "blink-cmp-git": { "branch": "master", "commit": "10783593af764424018a95e75df6ad5a8b66fe07" },
   "blink-emoji.nvim": { "branch": "master", "commit": "066013e4c98a9318408ee3f1ca2dbcb6fa3e4c06" },
@@ -19,7 +17,6 @@
   "img-clip.nvim": { "branch": "main", "commit": "b6ddfb97b5600d99afe3452d707444afda658aca" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "leap.nvim": { "branch": "main", "commit": "b960d5038c5c505c52e56a54490f9bbb1f0e6ef6" },
-  "mcphub.nvim": { "branch": "main", "commit": "7cd5db330f41b7bae02b2d6202218a061c3ebc1f" },
   "mini.nvim": { "branch": "main", "commit": "3923662bf3d6ca49a9503f8d7196ea0450983e6a" },
   "mini.snippets": { "branch": "main", "commit": "c7a5fd5e767dcc732940f59f2a83c64ea7346a3e" },
   "nfnl": { "branch": "main", "commit": "f39a7ec6fe0ace2b2ea108ce04d954549e36c76d" },

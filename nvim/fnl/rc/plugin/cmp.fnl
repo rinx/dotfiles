@@ -15,7 +15,6 @@
                        :ripgrep
                        :emoji
                        :git
-                       :avante
                        :copilot]
              :providers
              {:ripgrep {:module :blink-ripgrep
@@ -37,8 +36,6 @@
                                   :gitcommit
                                   :markdown]
                                  vim.bo.filetype))}
-              :avante {:name :avante
-                       :module :blink-cmp-avante}
               :copilot {:name :copilot
                         :module :blink-cmp-copilot
                         :score_offset 100

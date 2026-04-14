@@ -83,13 +83,6 @@
    ;; copilot
    :zbirenbaum/copilot.lua {:config (mod :copilot)
                             :event [:VeryLazy]}
-   :yetone/avante.nvim {:build :make
-                        :config (mod :avante)
-                        :cmd [:AvanteAsk
-                              :AvanteChat
-                              :AvanteToggle
-                              :MCPHub]
-                        :dependencies [:ravitemer/mcphub.nvim]}
    :lambdalisue/nvim-aibo {:config (mod :aibo)}
 
    ;; lsp
@@ -111,7 +104,6 @@
                                      :mikavilpas/blink-ripgrep.nvim
                                      :moyiz/blink-emoji.nvim
                                      :Kaiser-Yang/blink-cmp-git
-                                     :Kaiser-Yang/blink-cmp-avante
                                      :giuxtaposition/blink-cmp-copilot]
                       :config (mod :cmp)}
 
