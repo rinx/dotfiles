@@ -7,11 +7,6 @@ images:
   - location: "https://github.com/rinx/dotfiles/releases/download/2026.04.09/nixos-lima-x86_64.qcow2"
     arch: "x86_64"
     digest: "sha512:766cdd783fde3a876b5693adf36a2bf1b75865a161ec890ce61e7a97372954a894b739e47544cb7c47c477568a7986b35b6c913c41ce66ee9012e3791dccc911"
-mounts:
-  - location: "/tmp/lima"
-    writable: true
-    9p:
-      cache: "mmap"
 cpus: 2
 memory: 4GiB
 portForwards:
@@ -37,6 +32,14 @@ message: |
       limactl shell {{.Name}} -- nixos-rebuild switch --flake github:rinx/dotfiles#sandbox-vm --sudo
       limactl shell {{.Name}} -- nix run nixpkgs#home-manager -- --flake github:rinx/dotfiles#lima switch
 
+  Restart the VM after initializing.
+
+      limactl restart {{.Name}}
+
   Login to the VM.
 
       limactl shell {{.Name}} -- zsh
+
+  Or use syncing working directory feature.
+
+      limactl shell --sync . {{.Name}} zsh
