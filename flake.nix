@@ -35,14 +35,6 @@
       inputs.nixpkgs.follows = "nixpkgs-droid";
     };
 
-    mcp-hub = {
-      url = "github:ravitemer/mcp-hub";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-    mcp-servers-nix = {
-      url = "github:natsukium/mcp-servers-nix";
-    };
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -127,9 +119,6 @@
               name = "extra-packages";
               paths = import ./nix/pkgs/extra {
                 inherit pkgs system;
-
-                mcp-hub = inputs.mcp-hub;
-                mcp-servers-nix = inputs.mcp-servers-nix;
 
                 falco = falco;
                 rq = rq;
