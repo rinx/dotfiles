@@ -112,7 +112,6 @@
               name = "dev-packages";
               paths = import ./nix/pkgs/dev {
                 inherit pkgs;
-                fennel-ls = fennel-ls;
               };
             };
             extra-packages = pkgs.buildEnv {
@@ -121,6 +120,7 @@
                 inherit pkgs system;
 
                 falco = falco;
+                fennel-ls = fennel-ls;
                 rq = rq;
               };
             };
