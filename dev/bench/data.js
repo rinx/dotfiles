@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776081037132,
+  "lastUpdate": 1776175330970,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -30947,6 +30947,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 118.09698810000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "53353df1320184392979444a8b586d83234e2826",
+          "message": "chore(nix): make dev-pkgs lighter\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-14T22:55:28+09:00",
+          "tree_id": "641b288475064e8b35ae465417b6a095a3abf214",
+          "url": "https://github.com/rinx/dotfiles/commit/53353df1320184392979444a8b586d83234e2826"
+        },
+        "date": 1776175327677,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.6343818,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 101.6837376,
             "unit": "ms"
           }
         ]
