@@ -58,7 +58,8 @@ git-deploy: \
     gitconfig \
     gitignore \
     gitattributes \
-    commit_template
+    commit_template \
+    gitlint
 	@$(call red, "git-deploy")
 
 .PHONY: gitconfig
@@ -84,6 +85,12 @@ commit_template: $(HOME)/.commit_template
 $(HOME)/.commit_template:
 	@$(call cyan, "--\> .commit_template")
 	ln -s $(DOTDIR)/.commit_template $(HOME)/.commit_template
+
+.PHONY: gitlint
+gitlint: $(HOME)/.gitlint
+$(HOME)/.gitlint:
+	@$(call cyan, "--\> .gitlint")
+	ln -s $(DOTDIR)/.gitlint $(HOME)/.gitlint
 
 .PHONY: zsh-deploy
 zsh-deploy: \

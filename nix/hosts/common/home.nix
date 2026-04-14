@@ -33,6 +33,7 @@
     ".gitignore".source = ../../../gitignore;
     ".gitattributes_global".source = ../../../gitattributes_global;
     ".commit_template".source = ../../../.commit_template;
+    ".gitlint".source = ../../../.gitlint;
 
     # Zsh
     ".zshrc".source = ../../../zshrc;

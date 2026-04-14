@@ -187,7 +187,7 @@
              :lintAfterOpen true
              :lintFormats ["%f:%l %m"]}]
            :gitcommit
-           [{:lintCommand "gitlint --config ~/.dotfiles/.gitlint"
+           [{:lintCommand "gitlint --config ~/.gitlint"
              :lintStdin true
              :lintSource "efm/gitlint"
              :lintAfterOpen true
