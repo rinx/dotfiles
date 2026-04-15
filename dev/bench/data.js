@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776263185877,
+  "lastUpdate": 1776265032150,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31083,6 +31083,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 93.93510069999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3ea2d7397eb6a3356b00a66b2c8bf8afcbe1770f",
+          "message": "config(nix): add agents/rules and AGENTS.md to home\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-15T23:52:41+09:00",
+          "tree_id": "eedf44bf026ab93534903d9902f299718fc939e9",
+          "url": "https://github.com/rinx/dotfiles/commit/3ea2d7397eb6a3356b00a66b2c8bf8afcbe1770f"
+        },
+        "date": 1776265030416,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.404949200000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 110.7071535,
             "unit": "ms"
           }
         ]
