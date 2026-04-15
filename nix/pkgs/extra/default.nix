@@ -38,7 +38,6 @@ in
 with pkgs;
 [
   ## tools
-  ast-grep
   awscli2
   conftest
   cue

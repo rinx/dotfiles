@@ -45,6 +45,10 @@
     claude-code = {
       url = "github:sadjow/claude-code-nix";
     };
+
+    agent-skills = {
+      url = "path:./nix/inputs/skills";
+    };
   };
 
   nixConfig = {
@@ -253,6 +257,7 @@
               ];
               extraSpecialArgs = {
                 inherit inputs;
+
                 username = "rinx";
                 additional-packages = [
                   self.outputs.packages."${system}".dev-packages
@@ -260,6 +265,8 @@
                   self.outputs.packages."${system}".k8s-packages
                   self.outputs.packages."${system}".fonts-packages
                 ];
+
+                agent-skills = inputs.agent-skills;
               };
             };
           lima =
@@ -278,10 +285,13 @@
               ];
               extraSpecialArgs = {
                 inherit inputs;
+
                 username = "rinx";
                 additional-packages = [
                   self.outputs.packages."${system}".dev-packages
                 ];
+
+                agent-skills = inputs.agent-skills;
               };
             };
         };

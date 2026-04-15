@@ -32,6 +32,7 @@ in
 with pkgs;
 [
   ## tools
+  ast-grep
   bat
   cmakeMinimal
   comma
