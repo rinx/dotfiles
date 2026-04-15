@@ -253,6 +253,7 @@
               modules = [
                 ./nix/hosts/common/home.nix
                 ./nix/hosts/common/services.nix
+                ./nix/hosts/common/agents.nix
                 ./nix/hosts/darwin/home.nix
               ];
               extraSpecialArgs = {
@@ -280,6 +281,7 @@
               modules = [
                 ./nix/hosts/common/home.nix
                 ./nix/hosts/common/services.nix
+                ./nix/hosts/common/agents.nix
                 ./nix/hosts/lima/home.nix
                 ./nix/hosts/lima/services.nix
               ];

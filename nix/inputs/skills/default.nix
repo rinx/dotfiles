@@ -24,6 +24,10 @@
         path = ast-grep-skill;
         subdir = "ast-grep/skills";
       };
+      local = {
+        path = ./local;
+        subdir = "skills";
+      };
     };
 
     skills.enable = [
@@ -32,6 +36,7 @@
 
     skills.enableAll = [
       "ast-grep"
+      "local"
     ];
 
     targets = {

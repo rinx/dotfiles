@@ -5,10 +5,6 @@
   ...
 }@inputs:
 {
-  imports = [
-    inputs.agent-skills.homeManagerModules.default
-  ];
-
   home.username = inputs.username;
   home.homeDirectory = lib.mkForce "/Users/${config.home.username}";
 
