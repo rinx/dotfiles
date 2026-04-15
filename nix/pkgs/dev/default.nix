@@ -35,7 +35,6 @@ with pkgs;
   ast-grep
   bat
   cmakeMinimal
-  comma
   curl
   delta
   direnv

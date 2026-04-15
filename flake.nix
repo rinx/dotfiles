@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -255,6 +260,7 @@
                 ./nix/hosts/common/services.nix
                 ./nix/hosts/common/agents.nix
                 ./nix/hosts/darwin/home.nix
+                inputs.nix-index-database.homeModules.default
               ];
               extraSpecialArgs = {
                 inherit inputs;
@@ -284,6 +290,7 @@
                 ./nix/hosts/common/agents.nix
                 ./nix/hosts/lima/home.nix
                 ./nix/hosts/lima/services.nix
+                inputs.nix-index-database.homeModules.default
               ];
               extraSpecialArgs = {
                 inherit inputs;

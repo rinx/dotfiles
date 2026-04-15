@@ -16,3 +16,12 @@ Use these tools instead of standard tools.
 ## Code Analysis
 
 Use `ast-grep`. This tool enables to find specific code structures, or perform complex code queries.
+
+## Missing tools
+
+To use missing tools, use nix-community/comma that enables you to use any tools in nixpkgs.
+
+```bash
+# to use cowsay command
+, cowsay neato
+```
