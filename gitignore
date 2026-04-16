@@ -14,4 +14,7 @@ Session.vim
 .direnv
 .envrc
 
+# claude
+.claude/settings.local.json
+
 # vim: set ft=gitignore:
