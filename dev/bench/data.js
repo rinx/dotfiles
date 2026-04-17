@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776365226688,
+  "lastUpdate": 1776389431290,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31219,6 +31219,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 96.94778840000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f375544ad92f3495da8840d24d71385b637a4f18",
+          "message": "chore(deps): update reviewdog/action-ast-grep action to v1.53.6 (#351)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-04-17T10:26:06+09:00",
+          "tree_id": "97c7e0f0dede4e5b545405b70e89182f7d41849d",
+          "url": "https://github.com/rinx/dotfiles/commit/f375544ad92f3495da8840d24d71385b637a4f18"
+        },
+        "date": 1776389429574,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.643548599999995,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 112.8604794,
             "unit": "ms"
           }
         ]
