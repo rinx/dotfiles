@@ -207,6 +207,10 @@
                 ast-grep
                 gitleaks
                 tree-sitter
+
+                gleam
+                beamMinimalPackages.erlang
+                beamMinimalPackages.rebar3
               ];
               shellHook = ''
                 ln -sf ${sgconfig} sgconfig.yml
