@@ -52,7 +52,17 @@
     };
 
     agent-skills = {
-      url = "path:./nix/inputs/skills";
+      url = "github:Kyure-A/agent-skills-nix";
+    };
+
+    anthropic-skills = {
+      url = "github:anthropics/skills";
+      flake = false;
+    };
+
+    ast-grep-skill = {
+      url = "github:ast-grep/agent-skill";
+      flake = false;
     };
   };
 
@@ -274,6 +284,8 @@
                 ];
 
                 agent-skills = inputs.agent-skills;
+                anthropic-skills = inputs.anthropic-skills;
+                ast-grep-skill = inputs.ast-grep-skill;
               };
             };
           lima =
@@ -301,6 +313,8 @@
                 ];
 
                 agent-skills = inputs.agent-skills;
+                anthropic-skills = inputs.anthropic-skills;
+                ast-grep-skill = inputs.ast-grep-skill;
               };
             };
         };

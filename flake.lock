@@ -2,22 +2,6 @@
   "nodes": {
     "agent-skills": {
       "inputs": {
-        "agent-skills": "agent-skills_2",
-        "anthropic-skills": "anthropic-skills",
-        "ast-grep-skill": "ast-grep-skill"
-      },
-      "locked": {
-        "path": "./nix/inputs/skills",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/inputs/skills",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "agent-skills_2": {
-      "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       },
@@ -38,11 +22,11 @@
     "anthropic-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1776112662,
-        "narHash": "sha256-L/zqUOcZu0wE+Uw9shyA0jCFi8Ff0vj/ijj+KOjRkYI=",
+        "lastModified": 1776366777,
+        "narHash": "sha256-BMgH43diojdUrGC6ivk87eEm2W1yWNuh2fpR9JpbUnE=",
         "owner": "anthropics",
         "repo": "skills",
-        "rev": "0f7c287eaf0d4fa511cb871bb55e2a7862251fbb",
+        "rev": "2c7ec5e78b8e5d43ea02e90bb8826f6b9f147b0c",
         "type": "github"
       },
       "original": {
@@ -202,7 +186,6 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "agent-skills",
           "agent-skills",
           "nixpkgs"
         ]
@@ -667,6 +650,8 @@
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
+        "anthropic-skills": "anthropic-skills",
+        "ast-grep-skill": "ast-grep-skill",
         "claude-code": "claude-code",
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",

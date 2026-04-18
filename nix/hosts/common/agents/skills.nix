@@ -25,8 +25,7 @@
         subdir = "ast-grep/skills";
       };
       local = {
-        path = ./local;
-        subdir = "skills";
+        path = ./skills;
       };
     };
 

@@ -6,7 +6,7 @@
 }@inputs:
 {
   imports = [
-    inputs.agent-skills.homeManagerModules.default
+    ./agents/skills.nix
   ];
 
   home.file = {
