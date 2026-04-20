@@ -42,11 +42,22 @@
 
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs = {
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    gleam2nix = {
+      url = "git+https://tangled.org/foxgirl.engineering/gleam2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     claude-code = {
       url = "github:sadjow/claude-code-nix";
     };
@@ -92,6 +103,8 @@
           config.allowUnfree = true;
           overlays = [
             inputs.neovim-nightly.overlays.default
+            inputs.fenix.overlays.default
+            inputs.gleam2nix.overlays.default
           ];
         };
     in
@@ -116,6 +129,7 @@
             falco = pkgs.callPackage ./nix/pkgs/tools/falco { };
             fennel-ls = pkgs.callPackage ./nix/pkgs/tools/fennel-ls { };
             rq = pkgs.callPackage ./nix/pkgs/tools/rq { };
+            xdg-open-sock = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/server { };
 
             default = pkgs.buildEnv {
               name = "basic-packages";
@@ -209,6 +223,7 @@
                 tree-sitter
 
                 gleam
+                gleam2nix
                 beamMinimalPackages.erlang
                 beamMinimalPackages.rebar3
               ];
