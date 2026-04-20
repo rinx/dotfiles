@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776690868670,
+  "lastUpdate": 1776691767479,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31389,6 +31389,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 114.0967831,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4d3839c14c74cacd7892652ef2c8c911a6357fc2",
+          "message": "feat(nix): build xdg-open-sock server\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-20T22:24:24+09:00",
+          "tree_id": "422afc226a2289a9f747b1ab021e2ba18251932c",
+          "url": "https://github.com/rinx/dotfiles/commit/4d3839c14c74cacd7892652ef2c8c911a6357fc2"
+        },
+        "date": 1776691765064,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.281965400000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 115.52381410000001,
             "unit": "ms"
           }
         ]
