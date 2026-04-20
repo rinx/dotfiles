@@ -130,6 +130,7 @@
             fennel-ls = pkgs.callPackage ./nix/pkgs/tools/fennel-ls { };
             rq = pkgs.callPackage ./nix/pkgs/tools/rq { };
             xdg-open-sock = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/server { };
+            xdg-open-sock-client = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/client { };
 
             default = pkgs.buildEnv {
               name = "basic-packages";
@@ -300,6 +301,7 @@
                   self.outputs.packages."${system}".extra-packages
                   self.outputs.packages."${system}".k8s-packages
                   self.outputs.packages."${system}".fonts-packages
+                  self.outputs.packages."${system}".xdg-open-sock
                 ];
 
                 agent-skills = inputs.agent-skills;
@@ -329,6 +331,7 @@
                 username = "rinx";
                 additional-packages = [
                   self.outputs.packages."${system}".dev-packages
+                  self.outputs.packages."${system}".xdg-open-sock-client
                 ];
 
                 agent-skills = inputs.agent-skills;

@@ -46,6 +46,10 @@ portForwards:
   - hostSocket: "{{.Home}}/.gnupg/S.gpg-agent.extra"
     guestSocket: "{{.Home}}/.S.gpg-agent.host"
     reverse: true
+  # # xdg-open-sock
+  # - hostSocket: "/tmp/xdg-open.sock"
+  #   guestSocket: "{{.Home}}/.xdg-open.sock"
+  #   reverse: true
   # docker
   - hostSocket: "{{.Dir}}/sock/docker.sock"
     guestSocket: "/var/run/docker.sock"
