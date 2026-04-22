@@ -318,11 +318,11 @@
         "rev": "bab978942a79b09725a45ea00f700584e7d187c0",
         "revCount": 122,
         "type": "git",
-        "url": "https://tangled.org/foxgirl.engineering/gleam2nix"
+        "url": "https://git.isincredibly.gay/srxl/gleam2nix"
       },
       "original": {
         "type": "git",
-        "url": "https://tangled.org/foxgirl.engineering/gleam2nix"
+        "url": "https://git.isincredibly.gay/srxl/gleam2nix"
       }
     },
     "home-manager": {
