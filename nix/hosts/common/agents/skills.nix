@@ -3,6 +3,7 @@
   agent-skills,
   anthropic-skills,
   ast-grep-skill,
+  rego-skill,
   ...
 }:
 {
@@ -24,6 +25,9 @@
         path = ast-grep-skill;
         subdir = "ast-grep/skills";
       };
+      rego = {
+        path = rego-skill;
+      };
       local = {
         path = ./skills;
       };
@@ -35,6 +39,7 @@
 
     skills.enableAll = [
       "ast-grep"
+      "rego"
       "local"
     ];
 

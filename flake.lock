@@ -789,6 +789,22 @@
         "type": "gitlab"
       }
     },
+    "rego-skill": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768837602,
+        "narHash": "sha256-t46ycxK5JKqAZRkmkl+tNYzo3edqYIHKdC8QbLwgpNs=",
+        "owner": "Void3110",
+        "repo": "rego-skill",
+        "rev": "d840c39bfdb54b18d5688dfbca0e6713248092cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Void3110",
+        "repo": "rego-skill",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
@@ -808,6 +824,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-droid": "nixpkgs-droid",
         "nixpkgs-unstable-droid": "nixpkgs-unstable-droid",
+        "rego-skill": "rego-skill",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix_2"
       }
