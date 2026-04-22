@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776865614705,
+  "lastUpdate": 1776865877931,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31525,6 +31525,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 110.33394510000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f73b3b82e236874c4f2f2dec1a8c32d71f6c086f",
+          "message": "chore(nix): pull gleam2nix from another repository\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-22T22:46:02+09:00",
+          "tree_id": "f5b3d6b43e72a351a7a0934a520cc8ebe0c8bd21",
+          "url": "https://github.com/rinx/dotfiles/commit/f73b3b82e236874c4f2f2dec1a8c32d71f6c086f"
+        },
+        "date": 1776865876210,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 21.547367100000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 115.33940119999997,
             "unit": "ms"
           }
         ]
