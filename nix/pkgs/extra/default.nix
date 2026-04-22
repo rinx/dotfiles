@@ -33,13 +33,14 @@ let
         pkgs.pngpaste
       ]
     else
-      [ ];
+      [
+        pkgs.chromium
+      ];
 in
 with pkgs;
 [
   ## tools
   awscli2
-  chromium
   conftest
   cue
   duckdb
