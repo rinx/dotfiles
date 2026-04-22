@@ -39,10 +39,12 @@ with pkgs;
 [
   ## tools
   awscli2
+  chromium
   conftest
   cue
   duckdb
   lazygit
+  mcat
   pandoc
   pass
   passExtensions.pass-otp
