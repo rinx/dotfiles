@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776693102073,
+  "lastUpdate": 1776864385595,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31457,6 +31457,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 110.7894031,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "11faa129394e90e1105bfdfa66cb1ee3cc8965e3",
+          "message": "config(nix): add mcat to extra-pkgs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-22T22:21:34+09:00",
+          "tree_id": "7b4e0652e46190e263673e26a0a42359400eef08",
+          "url": "https://github.com/rinx/dotfiles/commit/11faa129394e90e1105bfdfa66cb1ee3cc8965e3"
+        },
+        "date": 1776864383624,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.8654769,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 89.83473860000001,
             "unit": "ms"
           }
         ]
