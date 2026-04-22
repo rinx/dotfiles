@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776864385595,
+  "lastUpdate": 1776865614705,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31491,6 +31491,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 89.83473860000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "653f5a9564ab4b68f79397d5f05fef1f7a89773e",
+          "message": "fix(nix): remove chromium from macos extra-pkgs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-22T22:42:30+09:00",
+          "tree_id": "065564b674441ecffc5ec1bad0590e354d43da80",
+          "url": "https://github.com/rinx/dotfiles/commit/653f5a9564ab4b68f79397d5f05fef1f7a89773e"
+        },
+        "date": 1776865612959,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 28.2474694,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 110.33394510000001,
             "unit": "ms"
           }
         ]
