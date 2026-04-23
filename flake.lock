@@ -70,6 +70,22 @@
         "type": "github"
       }
     },
+    "duckdb-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776153634,
+        "narHash": "sha256-OmsODyirf2MzmoDMRx+c8xbkJWq2qOlMhXjKDV7PUv4=",
+        "owner": "duckdb",
+        "repo": "duckdb-skills",
+        "rev": "7feda8e01e22bc0886c86123f3884947e36d8c69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "duckdb",
+        "repo": "duckdb-skills",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -811,6 +827,7 @@
         "anthropic-skills": "anthropic-skills",
         "ast-grep-skill": "ast-grep-skill",
         "claude-code": "claude-code",
+        "duckdb-skills": "duckdb-skills",
         "fenix": "fenix",
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",

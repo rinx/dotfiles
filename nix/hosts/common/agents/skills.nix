@@ -3,6 +3,7 @@
   agent-skills,
   anthropic-skills,
   ast-grep-skill,
+  duckdb-skills,
   rego-skill,
   ...
 }:
@@ -20,10 +21,16 @@
       anthropic = {
         path = anthropic-skills;
         subdir = "skills";
+        idPrefix = "anthropic";
       };
       ast-grep = {
         path = ast-grep-skill;
         subdir = "ast-grep/skills";
+      };
+      duckdb = {
+        path = duckdb-skills;
+        subdir = "skills";
+        idPrefix = "duckdb";
       };
       rego = {
         path = rego-skill;
@@ -34,7 +41,14 @@
     };
 
     skills.enable = [
-      "skill-creator"
+      "anthropic/skill-creator"
+
+      "duckdb/attach-db"
+      "duckdb/convert-file"
+      "duckdb/duckdb-docs"
+      "duckdb/query"
+      "duckdb/read-file"
+      "duckdb/s3-explore"
     ];
 
     skills.enableAll = [

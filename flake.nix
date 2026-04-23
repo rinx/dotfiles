@@ -76,6 +76,11 @@
       flake = false;
     };
 
+    duckdb-skills = {
+      url = "github:duckdb/duckdb-skills";
+      flake = false;
+    };
+
     rego-skill = {
       url = "github:Void3110/rego-skill";
       flake = false;
@@ -312,6 +317,7 @@
                 agent-skills = inputs.agent-skills;
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
+                duckdb-skills = inputs.duckdb-skills;
                 rego-skill = inputs.rego-skill;
               };
             };
@@ -343,6 +349,7 @@
                 agent-skills = inputs.agent-skills;
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
+                duckdb-skills = inputs.duckdb-skills;
                 rego-skill = inputs.rego-skill;
               };
             };
