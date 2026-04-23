@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776952601618,
+  "lastUpdate": 1776954805501,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31627,6 +31627,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 113.76479239999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2782434a3148114b9a10cc3c838520dbaef480b9",
+          "message": "fix(nix): follow fenix on gleam2nix\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-23T23:21:24+09:00",
+          "tree_id": "ddd54f7a9f14ed631c718226ce114e60ae90b5d3",
+          "url": "https://github.com/rinx/dotfiles/commit/2782434a3148114b9a10cc3c838520dbaef480b9"
+        },
+        "date": 1776954803050,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.6404988,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 114.43216670000001,
             "unit": "ms"
           }
         ]
