@@ -7,8 +7,15 @@
 {
   imports = [
     ../common/home.nix
-    ../common/services.nix
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+
+    nix-direnv.enable = true;
+  };
 
   home.username = "nix-on-droid";
   home.homeDirectory = "/data/data/com.termux.nix/files/home";
