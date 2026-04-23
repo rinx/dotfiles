@@ -55,7 +55,10 @@
 
     gleam2nix = {
       url = "git+https://git.isincredibly.gay/srxl/gleam2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        fenix.follows = "fenix";
+      };
     };
 
     claude-code = {
