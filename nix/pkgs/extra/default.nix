@@ -21,7 +21,6 @@ let
 
   custom-pkgs = [
     google-cloud-sdk-with-components
-    inputs.falco
     inputs.fennel-ls
     inputs.rq
     org-search-utils

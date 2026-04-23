@@ -8,8 +8,6 @@ local icon = autoload("rc.icon")
 local colors = color.colors
 local icontab = icon.tab
 view.setup({})
-dap.adapters.vcl = {name = "falco", type = "executable", command = "falco", args = {"dap"}}
-dap.configurations.vcl = {{type = "vcl", name = "Debug VCL by Falco", request = "launch", mainVCL = "${file}", includePaths = {"${workspaceFolder}"}}}
 dap.listeners.before.attach.dap_view_config = view.open
 dap.listeners.before.launch.dap_view_config = view.open
 dap.listeners.before.event_terminated.dap_view_config = view.close

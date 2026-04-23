@@ -136,7 +136,6 @@
             inherit system;
           };
           packages = rec {
-            falco = pkgs.callPackage ./nix/pkgs/tools/falco { };
             fennel-ls = pkgs.callPackage ./nix/pkgs/tools/fennel-ls { };
             rq = pkgs.callPackage ./nix/pkgs/tools/rq { };
             xdg-open-sock = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/server { };
@@ -163,7 +162,6 @@
               paths = import ./nix/pkgs/extra {
                 inherit pkgs system;
 
-                falco = falco;
                 fennel-ls = fennel-ls;
                 rq = rq;
               };

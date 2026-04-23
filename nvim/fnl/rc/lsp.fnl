@@ -207,17 +207,6 @@
              :lintAfterOpen true
              :lintFormats ["%m: %f:%l: %m"
                            "%f:%l: %m"]}]
-           :vcl
-           [{:lintCommand "falco -vv lint ${INPUT} 2>&1"
-             :lintIgnoreExitCode true
-             :lintSource "efm/falco"
-             :lintAfterOpen true
-             :lintFormats ["%E💥 %m"
-                           "%E🔥 [ERROR] %m"
-                           "%W❗️ [WARNING] %m"
-                           "%I🔈 [INFO] %m"
-                           "%Zin %f at line %l, position %c"
-                           "%-G%.%#"]}]
            :yaml.github-actions
            [{:lintCommand "actionlint -no-color -oneline -stdin-filename \"${INPUT}\" -"
              :lintStdin true

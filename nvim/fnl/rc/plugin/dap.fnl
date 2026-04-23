@@ -13,19 +13,6 @@
 (view.setup
   {})
 
-;; vcl
-(set dap.adapters.vcl
-     {:name :falco
-      :type :executable
-      :command :falco
-      :args [:dap]})
-(set dap.configurations.vcl
-     [{:type :vcl
-       :name "Debug VCL by Falco"
-       :request :launch
-       :mainVCL "${file}"
-       :includePaths ["${workspaceFolder}"]}])
-
 ;; automatically open UI
 (set dap.listeners.before.attach.dap_view_config view.open)
 (set dap.listeners.before.launch.dap_view_config view.open)

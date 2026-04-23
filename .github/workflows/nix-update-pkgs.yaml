@@ -10,7 +10,6 @@ jobs:
       fail-fast: false
       matrix:
         pkg:
-          - falco
           - fennel-ls
           - rq
     runs-on: ubuntu-latest
