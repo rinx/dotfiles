@@ -3,6 +3,7 @@
   lib,
   pkgs,
   pkgs-unstable,
+  additional-packages,
   ...
 }:
 {
@@ -11,58 +12,61 @@
   android-integration.termux-reload-settings.enable = true;
   android-integration.termux-setup-storage.enable = true;
 
-  environment.packages = with pkgs-unstable; [
-    babashka
-    bat
-    curl
-    delta
-    deno
-    eza
-    fd
-    fzf
-    gcc
-    gh
-    ghq
-    git
-    gnumake
-    jq
-    neovim-unwrapped
-    nodejs
-    ripgrep
-    tree-sitter
-    vim
-    yq-go
-    zsh
+  environment.packages =
+    with pkgs-unstable;
+    [
+      babashka
+      bat
+      curl
+      delta
+      deno
+      eza
+      fd
+      fzf
+      gcc
+      gh
+      ghq
+      git
+      gnumake
+      jq
+      neovim-unwrapped
+      nodejs
+      ripgrep
+      tree-sitter
+      vim
+      yq-go
+      zsh
 
-    openssh
-    pinentry-curses
-    which
+      openssh
+      pinentry-curses
+      which
 
-    nil
-    nixd
+      nil
+      nixd
 
-    maple-mono.NF-CN
+      maple-mono.NF-CN
 
-    claude-code
-    ollama
+      claude-code
+      ollama
 
-    procps
-    killall
-    diffutils
-    findutils
-    util-linux
-    tzdata
-    hostname
-    gnugrep
-    gnupg
-    gnused
-    gnutar
-    bzip2
-    gzip
-    xz
-    zip
-    unzip
-  ];
+      procps
+      killall
+      diffutils
+      findutils
+      util-linux
+      tzdata
+      hostname
+      gnugrep
+      gnupg
+      gnused
+      gnutar
+      bzip2
+      gzip
+      xz
+      zip
+      unzip
+    ]
+    ++ additional-packages;
 
   environment.etcBackupExtension = ".bak";
 

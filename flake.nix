@@ -375,6 +375,9 @@
                     inputs.neovim-nightly.overlays.default
                   ];
                 };
+                additional-packages = [
+                  self.outputs.packages."${system}".rq
+                ];
               };
             };
         };
