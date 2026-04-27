@@ -140,6 +140,7 @@
           };
           packages = rec {
             fennel-ls = pkgs.callPackage ./nix/pkgs/tools/fennel-ls { };
+            ghtkn = pkgs.callPackage ./nix/pkgs/tools/ghtkn { };
             rq = pkgs.callPackage ./nix/pkgs/tools/rq { };
             xdg-open-sock = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/server { };
             xdg-open-sock-client = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/client { };
