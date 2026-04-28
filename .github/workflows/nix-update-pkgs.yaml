@@ -11,6 +11,7 @@ jobs:
       matrix:
         pkg:
           - fennel-ls
+          - ghtkn
           - rq
     runs-on: ubuntu-latest
     timeout-minutes: 15

@@ -22,6 +22,7 @@ let
   custom-pkgs = [
     google-cloud-sdk-with-components
     inputs.fennel-ls
+    inputs.ghtkn
     inputs.rq
     org-search-utils
   ];
