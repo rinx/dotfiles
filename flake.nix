@@ -134,6 +134,22 @@
           system,
           ...
         }:
+        let
+          sgconfig = (pkgs.formats.yaml { }).generate "sgconfig.yml" {
+            ruleDirs = [ ./.config/rules ];
+            testConfigs = [
+              {
+                testDir = ./.config/rule-tests;
+              }
+            ];
+            customLanguages = {
+              fennel = {
+                libraryPath = "${pkgs.vimPlugins.nvim-treesitter-parsers.fennel}/parser/fennel.so";
+                extensions = [ "fnl" ];
+              };
+            };
+          };
+        in
         {
           _module.args.pkgs = overlayed-pkgs {
             inherit system;
@@ -210,41 +226,24 @@
               };
             };
           };
-          devShells.default =
-            let
-              sgconfig = (pkgs.formats.yaml { }).generate "sgconfig.yml" {
-                ruleDirs = [ "./.config/rules" ];
-                testConfigs = [
-                  {
-                    testDir = "./.config/rule-tests";
-                  }
-                ];
-                customLanguages = {
-                  fennel = {
-                    libraryPath = "${pkgs.vimPlugins.nvim-treesitter-parsers.fennel}/parser/fennel.so";
-                    extensions = [ "fnl" ];
-                  };
-                };
-              };
-            in
-            pkgs.mkShell {
-              inputsFrom = [
-                config.pre-commit.devShell
-              ];
-              packages = with pkgs; [
-                ast-grep
-                gitleaks
-                tree-sitter
+          devShells.default = pkgs.mkShell {
+            inputsFrom = [
+              config.pre-commit.devShell
+            ];
+            packages = with pkgs; [
+              ast-grep
+              gitleaks
+              tree-sitter
 
-                gleam
-                gleam2nix
-                beamMinimalPackages.erlang
-                beamMinimalPackages.rebar3
-              ];
-              shellHook = ''
-                ln -sf ${sgconfig} sgconfig.yml
-              '';
-            };
+              gleam
+              gleam2nix
+              beamMinimalPackages.erlang
+              beamMinimalPackages.rebar3
+            ];
+            shellHook = ''
+              ln -sf ${sgconfig} sgconfig.yml
+            '';
+          };
           treefmt = {
             programs = {
               actionlint.enable = true;
@@ -259,6 +258,8 @@
                   options = [
                     "scan"
                     "--error"
+                    "--config"
+                    "${sgconfig}"
                   ];
                   includes = [
                     "*.fnl"
