@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777384941426,
+  "lastUpdate": 1777385370870,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31831,6 +31831,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 79.6148049,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "86d75ab032e22c6d8d8c9ad28958c3e3ff31df1a",
+          "message": "chore(nix): add ghtkn to extra-packages\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-28T23:03:48+09:00",
+          "tree_id": "937a0acfbda1ac972b6429309cfe89ca9c266615",
+          "url": "https://github.com/rinx/dotfiles/commit/86d75ab032e22c6d8d8c9ad28958c3e3ff31df1a"
+        },
+        "date": 1777385368986,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.1264768,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 88.0900796,
             "unit": "ms"
           }
         ]
