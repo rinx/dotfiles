@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777385370870,
+  "lastUpdate": 1777470747623,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -31865,6 +31865,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 88.0900796,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b3448c2653e7f8c1c5639308bb059531b671e185",
+          "message": "config(nix): add jujutsu to dev-packages\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-04-29T22:47:16+09:00",
+          "tree_id": "640f8b7649879ea0737ef2ac07f154f1aaab37ef",
+          "url": "https://github.com/rinx/dotfiles/commit/b3448c2653e7f8c1c5639308bb059531b671e185"
+        },
+        "date": 1777470745446,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.6244678,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 116.50953279999999,
             "unit": "ms"
           }
         ]
