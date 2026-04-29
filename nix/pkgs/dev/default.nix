@@ -48,6 +48,7 @@ with pkgs;
   gnupg
   imagemagick
   jq
+  jujutsu
   neovim-unwrapped
   nix-direnv
   # open-policy-agent
