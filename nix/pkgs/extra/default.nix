@@ -24,7 +24,9 @@ let
     inputs.fennel-ls
     inputs.ghtkn
     inputs.rq
-    org-search-utils
+    # NOTE: cannot build while python-dlinfo is marked as broken on darwin
+    # https://github.com/NixOS/nixpkgs/blob/ebc08544afa77957cc348ba72dc490ec73b87f68/pkgs/development/python-modules/dlinfo/default.nix#L34
+    # org-search-utils
   ];
 
   os-specific-pkgs =
