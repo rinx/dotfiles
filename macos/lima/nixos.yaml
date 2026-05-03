@@ -46,9 +46,9 @@ portForwards:
   - hostSocket: "{{.Home}}/.gnupg/S.gpg-agent.extra"
     guestSocket: "{{.Home}}/.S.gpg-agent.host"
     reverse: true
-  # # xdg-open-sock
-  # - hostSocket: "/tmp/xdg-open.sock"
-  #   guestSocket: "{{.Home}}/.xdg-open.sock"
+  # # xsr (https://tangled.org/rinx.tngl.sh/xsr)
+  # - hostSocket: "/tmp/xsr.sock"
+  #   guestSocket: "{{.Home}}/.xsr.sock"
   #   reverse: true
   # docker
   - hostSocket: "{{.Dir}}/sock/docker.sock"

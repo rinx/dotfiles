@@ -48,17 +48,9 @@
       };
     };
 
-    fenix = {
-      url = "github:nix-community/fenix";
+    xsr = {
+      url = "git+https://tangled.org/rinx.tngl.sh/xsr";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    gleam2nix = {
-      url = "git+https://git.isincredibly.gay/srxl/gleam2nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        fenix.follows = "fenix";
-      };
     };
 
     claude-code = {
@@ -116,8 +108,6 @@
           config.allowUnfree = true;
           overlays = [
             inputs.neovim-nightly.overlays.default
-            inputs.fenix.overlays.default
-            inputs.gleam2nix.overlays.default
           ];
         };
     in
@@ -158,8 +148,8 @@
             fennel-ls = pkgs.callPackage ./nix/pkgs/tools/fennel-ls { };
             ghtkn = pkgs.callPackage ./nix/pkgs/tools/ghtkn { };
             rq = pkgs.callPackage ./nix/pkgs/tools/rq { };
-            xdg-open-sock = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/server { };
-            xdg-open-sock-client = pkgs.callPackage ./nix/pkgs/tools/xdg-open-sock/client { };
+            xsr = inputs.xsr.packages."${system}".xsr;
+            xsr-client = pkgs.callPackage ./nix/pkgs/tools/xsr-client { };
 
             default = pkgs.buildEnv {
               name = "basic-packages";
@@ -234,11 +224,6 @@
               ast-grep
               gitleaks
               tree-sitter
-
-              gleam
-              gleam2nix
-              beamMinimalPackages.erlang
-              beamMinimalPackages.rebar3
             ];
             shellHook = ''
               ln -sf ${sgconfig} sgconfig.yml
@@ -315,7 +300,7 @@
                   self.outputs.packages."${system}".extra-packages
                   self.outputs.packages."${system}".k8s-packages
                   self.outputs.packages."${system}".fonts-packages
-                  self.outputs.packages."${system}".xdg-open-sock
+                  self.outputs.packages."${system}".xsr
                 ];
 
                 agent-skills = inputs.agent-skills;
@@ -347,7 +332,7 @@
                 username = "rinx";
                 additional-packages = [
                   self.outputs.packages."${system}".dev-packages
-                  self.outputs.packages."${system}".xdg-open-sock-client
+                  self.outputs.packages."${system}".xsr-client
                 ];
 
                 agent-skills = inputs.agent-skills;
