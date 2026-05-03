@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777814247870,
+  "lastUpdate": 1777818140668,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32069,6 +32069,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 112.80905150000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a71d8c312ce9bc9f17bfa2eaef65fe70cdcd0362",
+          "message": "chore(nix): remove xdg-open-sock and add xsr\n\nhttps://tangled.org/rinx.tngl.sh/xsr\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-03T23:17:18+09:00",
+          "tree_id": "2a5faf23e6b3fe539b3df2020afa224395fed6e1",
+          "url": "https://github.com/rinx/dotfiles/commit/a71d8c312ce9bc9f17bfa2eaef65fe70cdcd0362"
+        },
+        "date": 1777818138230,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 54.683625299999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 90.6386369,
             "unit": "ms"
           }
         ]
