@@ -32,10 +32,6 @@
     attributesfile = ~/.gitattributes_global
     pager = delta
 
-[credential]
-    helper = store --file ~/.git-credentials
-    helper = cache --timeout=360000
-
 [delta]
     features = decorations
     line-numbers = true
@@ -125,8 +121,5 @@
 
 [tag]
     sort = version:refname
-
-[url "https://"]
-    insteadOf = git://
 
 # vim: set ft=gitconfig:
