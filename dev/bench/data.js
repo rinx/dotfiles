@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777818140668,
+  "lastUpdate": 1777822285146,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32103,6 +32103,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 90.6386369,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "bb414421006767b20baf8473651e2272ba1f4e30",
+          "message": "Revert \"config(nix): add duckdb skills\"\n\nThis reverts commit 5bc96b25a4aaf995ea5afb0be178c33b34b1f205.",
+          "timestamp": "2026-05-04T00:27:17+09:00",
+          "tree_id": "938cb2c4b6a0f79ceb3f1b0233aa752a4d0ff11b",
+          "url": "https://github.com/rinx/dotfiles/commit/bb414421006767b20baf8473651e2272ba1f4e30"
+        },
+        "date": 1777822282778,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.865907399999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 109.52561400000002,
             "unit": "ms"
           }
         ]
