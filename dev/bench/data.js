@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777855200535,
+  "lastUpdate": 1778071136590,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32171,6 +32171,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 108.68334180000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3011415ceebe4d4d773b8585d62d13e86cadaa87",
+          "message": "feat: add skills for babashka-related works\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-06T21:34:44+09:00",
+          "tree_id": "93ec5840be83a96a7b6453f27d105d893466affc",
+          "url": "https://github.com/rinx/dotfiles/commit/3011415ceebe4d4d773b8585d62d13e86cadaa87"
+        },
+        "date": 1778071134810,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 33.9773254,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 114.30793739999999,
             "unit": "ms"
           }
         ]
