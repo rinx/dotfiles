@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778072130171,
+  "lastUpdate": 1778072291402,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32273,6 +32273,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 106.02838679999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "c1c6554526fb1a55321123a14ea1ce3d924b0e89",
+          "message": "fix(ci): add `--accept-flake-config` flag to nix flake check\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-06T21:53:50+09:00",
+          "tree_id": "218f7e9a467ebb500b46115bfb0da20b2a08e1c8",
+          "url": "https://github.com/rinx/dotfiles/commit/c1c6554526fb1a55321123a14ea1ce3d924b0e89"
+        },
+        "date": 1778072289050,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.9038612,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 90.2266823,
             "unit": "ms"
           }
         ]
