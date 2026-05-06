@@ -50,14 +50,14 @@ jobs:
           nix build
   check:
     name: nix flake check
-    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        system:
-          - aarch64-linux
-          - aarch64-darwin
-          - x86_64-linux
+        os:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
+          - macos-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Generate github token
         id: generate_token
@@ -70,9 +70,14 @@ jobs:
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
           nix_path: nixpkgs=channel:nixos-unstable
+          install_options: ${{ matrix.os != 'macos-latest' && '--no-daemon' || '' }}
       - name: nix flake check
+        env:
+          SYSTEM: ${{ matrix.os == 'macos-latest' && 'aarch64-darwin' || matrix.os == 'ubuntu-latest' && 'x86_64-linux' || 'aarch64-linux' }}
         run: |
-          nix flake check --no-build --system ${{ matrix.system }}
+          nix flake check --no-build --system ${{ env.SYSTEM }}
       - name: nix flake show
+        env:
+          SYSTEM: ${{ matrix.os == 'macos-latest' && 'aarch64-darwin' || matrix.os == 'ubuntu-latest' && 'x86_64-linux' || 'aarch64-linux' }}
         run: |
-          nix flake show --system ${{ matrix.system }}
+          nix flake show --system ${{ env.SYSTEM }}
