@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778071523408,
+  "lastUpdate": 1778072130171,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32239,6 +32239,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 90.40345930000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "2a0ca33956d41ea20f630e0eef1c561b6fd703a5",
+          "message": "fix(ci): fix nix flake check jobs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-06T21:51:04+09:00",
+          "tree_id": "d9ac2476d996f56bdebf2162945fa9c7ed652827",
+          "url": "https://github.com/rinx/dotfiles/commit/2a0ca33956d41ea20f630e0eef1c561b6fd703a5"
+        },
+        "date": 1778072127308,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.132173400000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 106.02838679999999,
             "unit": "ms"
           }
         ]
