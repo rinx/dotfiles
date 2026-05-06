@@ -6,6 +6,8 @@ Python is not installed in this environment.
 Don't use Python (`python` or `python3`).
 Use Babashka (`bb`, Clojure) for scripting or automation.
 
+For writing Babashka scripts, `/babashka-nrepl` skill (a skill for REPL driven development) is very useful.
+
 ## Preferred tools
 
 - Use `fd` instead of `find` for file discovery.
@@ -24,6 +26,7 @@ See `ast-grep` skill for details.
 
 ## Missing tools
 
+We use Nix as a package manager.
 To use missing tools, use nix-community/comma that enables you to use any tools in nixpkgs.
 
 ```bash
