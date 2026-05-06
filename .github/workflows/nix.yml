@@ -75,7 +75,7 @@ jobs:
         env:
           SYSTEM: ${{ matrix.os == 'macos-latest' && 'aarch64-darwin' || matrix.os == 'ubuntu-latest' && 'x86_64-linux' || 'aarch64-linux' }}
         run: |
-          nix flake check --no-build --system ${{ env.SYSTEM }}
+          nix flake check --accept-flake-config --no-build --system ${{ env.SYSTEM }}
       - name: nix flake show
         env:
           SYSTEM: ${{ matrix.os == 'macos-latest' && 'aarch64-darwin' || matrix.os == 'ubuntu-latest' && 'x86_64-linux' || 'aarch64-linux' }}
