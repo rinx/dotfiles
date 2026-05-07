@@ -34,6 +34,9 @@ Clerk notes are created as Clojure code with filenames like `notebooks/*.clj`.
 The basic syntax is Markdown, written in Clojure comment format.
 
 ```clojure
+;; require nextjournal.clerk first.
+(require '[nextjournal.clerk :as clerk])
+
 ;; # Heading 1
 ;;
 ;; Body text here
@@ -47,14 +50,18 @@ Parts written as code are executed and the results are displayed together.
 
 Reference: [Book of Clerk](https://book.clerk.vision/)
 
+## Viewer features
 
-## Vega-Lite
+Clerk has a number of built-in viewers.
+It is encouraged to use these features for effective visualizations.
 
-On Clerk notes, you can draw graphs using Vega-Lite.
+### Vega-Lite and Plotly
+
+### Vega-Lite
+
+You can draw graphs using Vega-Lite.
 
 ```clojure
-(require '[nextjournal.clerk :as clerk])
-
 (clerk/vl {:width 650 :height 400 :data {:url "https://vega.github.io/vega-datasets/data/us-10m.json"
                                          :format {:type "topojson" :feature "counties"}}
            :transform [{:lookup "id" :from {:data {:url "https://vega.github.io/vega-datasets/data/unemployment.tsv"}
@@ -67,6 +74,59 @@ On Clerk notes, you can draw graphs using Vega-Lite.
 In this example, data is fetched from a specified URL, but you can also pass data directly to the `:data` key.
 
 Reference: [Vega-Lite schema](https://vega.github.io/schema/vega-lite/v5.json)
+
+### Plotly
+
+Also you can draw graphs using Plotly.
+
+```clojure
+(clerk/plotly {:data [{:z [[1 2 3] [3 2 1]] :type "surface"}]
+               :layout {:margin {:l 20 :r 0 :b 20 :t 20}
+                        :paper_bgcolor "transparent"
+                        :plot_bgcolor "transparent"}
+               :config {:displayModeBar false
+                        :displayLogo false}})
+```
+
+### Hiccup
+
+You can write HTML elements using `hiccup` style.
+
+```clojure
+(clerk/html [:div "As Clojurians we " [:em "really"] " enjoy hiccup"])
+```
+
+### Tables
+
+You can write table using `clerk/table`.
+
+```clojure
+(clerk/table {"odd numbers" [1 3]
+              "even numbers" [2 4]}) ;; map of seqs
+```
+
+### TeX
+
+You can write TeX.
+
+```clojure
+(clerk/tex "
+\\begin{alignedat}{2}
+  \\nabla\\cdot\\vec{E} = \\frac{\\rho}{\\varepsilon_0} & \\qquad \\text{Gauss' Law} \\\\
+  \\nabla\\cdot\\vec{B} = 0 & \\qquad \\text{Gauss' Law ($\\vec{B}$ Fields)} \\\\
+  \\nabla\\times\\vec{E} = -\\frac{\\partial \\vec{B}}{\\partial t} & \\qquad \\text{Faraday's Law} \\\\
+  \\nabla\\times\\vec{B} = \\mu_0\\vec{J}+\\mu_0\\varepsilon_0\\frac{\\partial\\vec{E}}{\\partial t} & \\qquad \\text{Ampere's Law}
+\\end{alignedat}
+")
+```
+
+### Images
+
+You can embed images using `clerk/image`
+
+```clojure
+(clerk/image "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/The_Sower.jpg/1510px-The_Sower.jpg")
+```
 
 ## Static build of notes
 
