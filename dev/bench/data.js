@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778113168729,
+  "lastUpdate": 1778113182261,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32341,6 +32341,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 105.5189936,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "33e5ecdd5b7b8580b51bbd2e46c94ecef31316e6",
+          "message": "chore(deps): update benchmark-action/github-action-benchmark action to v1.22.1 (#362)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-05-07T09:15:47+09:00",
+          "tree_id": "55fe3bded28f14219cfdb2326fe795d2e9b04329",
+          "url": "https://github.com/rinx/dotfiles/commit/33e5ecdd5b7b8580b51bbd2e46c94ecef31316e6"
+        },
+        "date": 1778113179438,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 24.713792199999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 84.4629153,
             "unit": "ms"
           }
         ]
