@@ -39,10 +39,13 @@ You can send Clojure (Babashka) code to the nREPL server with the following comm
 
 However, this command requires a pre-defined `bb.edn`, so execute it in the directory where this skill exists.
 
-## REPL-driven development
+## REPL-driven development (RDD)
 
 As you write functions, send them to the REPL one by one to verify their behavior.
 It's recommended to verify behavior in the smallest possible units.
+
+On RDD, it is encouraged to run and verify as many functions and code snippets as possible.
+Don't be lazy to eval your code.
 
 ### Example
 
