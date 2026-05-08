@@ -1,6 +1,6 @@
 ---
-name: babashka-clerk
-description: Use Clerk from Babashka. Generate rich reports including Vega-Lite charts.
+name: clerk
+description: Use Clerk from Babashka. Generate rich reports including Vega-Lite/Plotly charts, hiccup, tables, TeX and Images.
 ---
 
 Here, Clerk refers to https://github.com/nextjournal/clerk.
