@@ -43,3 +43,28 @@ However, this command requires a pre-defined `bb.edn`, so execute it in the dire
 
 As you write functions, send them to the REPL one by one to verify their behavior.
 It's recommended to verify behavior in the smallest possible units.
+
+### Example
+
+    $ bb nrepl-eval ${port} '(defn double [x] (* x 1)'
+    clojure.lang.ExceptionInfo: EOF while reading, expected ) to match ( at [1,1] user REPL:1:25
+
+Fix the number of parentheses.
+
+    $ bb nrepl-eval ${port} '(defn double [x] (* x 1))'
+    #'user/double
+
+Then, execute the defined function `double`.
+
+    $ bb nrepl-eval 1667 '(double 3)'
+    3
+
+It is not expected behavior. Fix it.
+
+    $ bb nrepl-eval ${port} '(defn double [x] (* x 2))'
+    #'user/double
+
+Verify the behavior again.
+
+    $ bb nrepl-eval 1667 '(double 3)'
+    6
