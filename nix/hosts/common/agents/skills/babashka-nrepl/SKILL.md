@@ -46,12 +46,12 @@ It's recommended to verify behavior in the smallest possible units.
 
 ### Example
 
-    $ bb nrepl-eval ${port} '(defn double [x] (* x 1)'
+    $ bb nrepl-eval 1667 '(defn double [x] (* x 1)'
     clojure.lang.ExceptionInfo: EOF while reading, expected ) to match ( at [1,1] user REPL:1:25
 
 Fix the number of parentheses.
 
-    $ bb nrepl-eval ${port} '(defn double [x] (* x 1))'
+    $ bb nrepl-eval 1667 '(defn double [x] (* x 1))'
     #'user/double
 
 Then, execute the defined function `double`.
@@ -61,7 +61,7 @@ Then, execute the defined function `double`.
 
 It is not expected behavior. Fix it.
 
-    $ bb nrepl-eval ${port} '(defn double [x] (* x 2))'
+    $ bb nrepl-eval 1667 '(defn double [x] (* x 2))'
     #'user/double
 
 Verify the behavior again.
