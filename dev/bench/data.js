@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778230501785,
+  "lastUpdate": 1778247848241,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32443,6 +32443,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 111.9735626,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "680627e770ea471f8ebad9a98dad92824e8c0e93",
+          "message": "feat: update nrepl skill\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-08T22:38:54+09:00",
+          "tree_id": "3448cea1534541bb81dafac1164cdd2c7165578f",
+          "url": "https://github.com/rinx/dotfiles/commit/680627e770ea471f8ebad9a98dad92824e8c0e93"
+        },
+        "date": 1778247846489,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.620482600000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 109.7670864,
             "unit": "ms"
           }
         ]
