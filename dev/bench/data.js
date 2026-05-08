@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778248187332,
+  "lastUpdate": 1778248444858,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32545,6 +32545,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 108.0117883,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "756d002ec74e25dbfcbad1176d83f11a06e62eb1",
+          "message": "feat: update description for clerk skill\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-08T22:49:23+09:00",
+          "tree_id": "afe993a401dc2d1e94cc320c4f99c8a61695e0ae",
+          "url": "https://github.com/rinx/dotfiles/commit/756d002ec74e25dbfcbad1176d83f11a06e62eb1"
+        },
+        "date": 1778248443005,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.460810499999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 108.75582080000001,
             "unit": "ms"
           }
         ]
