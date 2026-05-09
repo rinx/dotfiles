@@ -309,19 +309,20 @@
                                     icontab.copilot-enabled)))))
         :hl {:fg colors.hint}})
 
-(local lima-hostname-component
-       {:condition (fn []
-                     (~= (vim.fn.has :mac) 1))
-        :provider (fn []
-                    (let [hostname (vim.loop.os_gethostname)]
-                      (..  icontab.vm hostname)))
+(local hostname-component
+       {:provider (fn []
+                    (let [hostname (vim.loop.os_gethostname)
+                          icon (if (= (vim.fn.has :mac) 1)
+                                 icontab.apple
+                                 icontab.vm)]
+                      (..  icon hostname)))
         :hl {:fg colors.lima-green}})
 
 (local default-statusline
        [vi-mode-component
         space-component
         cwd-component
-        lima-hostname-component
+        hostname-component
         space-component
         align-component
         search-component

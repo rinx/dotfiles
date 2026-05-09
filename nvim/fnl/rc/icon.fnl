@@ -149,6 +149,7 @@
    :denojs " "
    :ghost "󰊠 "
    :whale "󰡨 "
+   :apple " "
    :vm " "
    :ruby " "
    :copilot-enabled " "

@@ -322,16 +322,19 @@ local function _65_()
   end
 end
 copilot_component = {condition = _64_, provider = _65_, hl = {fg = colors.hint}}
-local lima_hostname_component
+local hostname_component
 local function _69_()
-  return (vim.fn.has("mac") ~= 1)
-end
-local function _70_()
   local hostname = vim.loop.os_gethostname()
-  return (icontab.vm .. hostname)
+  local icon0
+  if (vim.fn.has("mac") == 1) then
+    icon0 = icontab.apple
+  else
+    icon0 = icontab.vm
+  end
+  return (icon0 .. hostname)
 end
-lima_hostname_component = {condition = _69_, provider = _70_, hl = {fg = colors["lima-green"]}}
-local default_statusline = {vi_mode_component, space_component, cwd_component, lima_hostname_component, space_component, align_component, search_component, macrorec_component, align_component, org_clock_component, skkeleton_component, spell_component, paste_component, copilot_component, denops_component}
+hostname_component = {provider = _69_, hl = {fg = colors["lima-green"]}}
+local default_statusline = {vi_mode_component, space_component, cwd_component, hostname_component, space_component, align_component, search_component, macrorec_component, align_component, org_clock_component, skkeleton_component, spell_component, paste_component, copilot_component, denops_component}
 local standard_winbar = {filename_block, align_component, dap_component, align_component, git_component, diagnostics_component, lsp_component, ruler_component}
 local function _71_(args)
   return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
