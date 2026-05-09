@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778330833951,
+  "lastUpdate": 1778332240301,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32613,6 +32613,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 111.0876787,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8de51affce61b637d44dc47c4f3916dfbef0b7d8",
+          "message": "chore(nix): update xsr\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-09T22:06:17+09:00",
+          "tree_id": "18a5ce32a02119ed1af56912814fd67bcde81ad8",
+          "url": "https://github.com/rinx/dotfiles/commit/8de51affce61b637d44dc47c4f3916dfbef0b7d8"
+        },
+        "date": 1778332238162,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.8075324,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 108.27779230000002,
             "unit": "ms"
           }
         ]
