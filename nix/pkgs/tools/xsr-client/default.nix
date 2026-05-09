@@ -3,5 +3,5 @@
   pkgs,
 }:
 pkgs.writeShellScriptBin "xdg-open" ''
-  echo -n "$1" | nc -U ~/.xsr.sock
+  echo -n "{\"name\": \"open\", \"argument\": \"$1\"}" | nc -U ~/.xsr.sock
 ''
