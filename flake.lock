@@ -1076,11 +1076,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1778331519,
-        "narHash": "sha256-xLuuXvqp72IshodFCXxA0pb797Bxh3yTUwyj8hZ9b7k=",
+        "lastModified": 1778383438,
+        "narHash": "sha256-ymAVJ0tr2hOqnru0VZAiZmqPSa0V1teYlMD+ThHKMgo=",
         "ref": "refs/heads/main",
-        "rev": "c973759e6cf0a54ec5a53bbbecdc3b5be5ffb016",
-        "revCount": 4,
+        "rev": "f45a0e1a57ab8fbd60003ae318c8a66018a36001",
+        "revCount": 5,
         "type": "git",
         "url": "https://tangled.org/rinx.tngl.sh/xsr"
       },
