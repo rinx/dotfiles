@@ -22,7 +22,7 @@ For any code search that requires understanding of syntax or code structure, you
 Adjust the `--lang` flag as needed for the specific programming language.
 Avoid using text-only search tools unless a plain-text search is explicitly requested.
 
-See `ast-grep` skill for details.
+See `/ast-grep` skill for details.
 
 ## Missing tools
 
