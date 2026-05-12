@@ -70,11 +70,6 @@
       url = "github:ast-grep/agent-skill";
       flake = false;
     };
-
-    rego-skill = {
-      url = "github:Void3110/rego-skill";
-      flake = false;
-    };
   };
 
   nixConfig = {
@@ -301,7 +296,6 @@
                 agent-skills = inputs.agent-skills;
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
-                rego-skill = inputs.rego-skill;
               };
             };
           lima =
@@ -332,7 +326,6 @@
                 agent-skills = inputs.agent-skills;
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
-                rego-skill = inputs.rego-skill;
               };
             };
         };
