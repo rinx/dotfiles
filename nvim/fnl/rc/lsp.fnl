@@ -131,24 +131,25 @@
 
 (use
   {:ast_grep {:filetypes
-              [:c
+              [:bash
+               :c
                :cpp
                :css
-               :dart
                :fennel
                :go
                :html
                :java
                :javascript
-               :javascript.jsx
                :javascriptreact
+               :json
                :kotlin
                :lua
+               :nix
                :python
                :rust
                :typescript
-               :typescript.tsx
-               :typescriptreact]}
+               :typescriptreact
+               :yaml]}
    :bashls {:settings
             {:bashIde
              {:shfmt {:caseIndent true}}}}
@@ -168,6 +169,7 @@
    :dockerls {}
    :efm {:filetypes
          [:dockerfile
+          :jjdescription
           :gitcommit
           :proto
           :rego
@@ -187,6 +189,13 @@
              :lintAfterOpen true
              :lintFormats ["%f:%l %m"]}]
            :gitcommit
+           [{:lintCommand "gitlint --config ~/.gitlint"
+             :lintStdin true
+             :lintSource "efm/gitlint"
+             :lintAfterOpen true
+             :lintFormats ["%l: %m: \"%r\""
+                           "%l: %m"]}]
+           :jjdescription
            [{:lintCommand "gitlint --config ~/.gitlint"
              :lintStdin true
              :lintSource "efm/gitlint"
@@ -246,7 +255,25 @@
              :staticcheck true
              :vulncheck :Imports
              :gofumpt true}}}
-   :harper_ls {:cmd (alter-cmd [:harper :--stdio] :harper)}
+   :harper_ls {:cmd (alter-cmd [:harper :--stdio] :harper)
+               :filetypes
+               [:asciidoc
+                :clojure
+                :gitcommit
+                :go
+                :jjdescription
+                :html
+                :markdown
+                :nix
+                ; :org ;; too many linter errors on usual org files
+                :plaintex
+                :plaintext
+                :sh
+                :tex
+                :text
+                :toml
+                :typescript
+                :typst]}
    :helm_ls {:cmd (alter-cmd [:helm_ls :serve] :helm-ls)}
    :jqls {:cmd (alter-cmd [:jq-lsp] :jq-lsp)}
    :jsonls {:settings

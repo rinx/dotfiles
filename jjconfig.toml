@@ -1,0 +1,59 @@
+[user]
+name = "Rintaro Okamura"
+email = "rintaro.okamura@gmail.com"
+
+[colors]
+wip = "yellow"
+todo = "blue"
+mega = "red"
+
+[ui]
+default-command = ["log"]
+editor = "nvim"
+show-cryptographic-signatures = true
+
+[signing]
+behavior = "own"
+backend = "gpg"
+
+[templates]
+commit_trailers = '''
+format_signed_off_by_trailer(self)
+'''
+
+# Ref: https://zerowidth.com/2025/async-zsh-jujutsu-prompt-with-p10k/
+[template-aliases]
+prompt = '''
+separate(" ",
+  format_short_change_id_with_change_offset(self),
+  commit_id.shortest(8),
+  if(empty, label("empty", "(empty)"), ""),
+  if(description == "", label("description placeholder", "(no description)"), ""),
+  if(description.contains("megamerge"), label("mega", "(mega)"), ""),
+  if(description.starts_with("wip"), label("wip", "(wip)"), ""),
+  if(description.starts_with("todo"), label("todo", "(todo)"), ""),
+  if(description.starts_with("mega"), label("mega", "(mega)"), ""),
+  if(conflict, label("conflict", "(conflict)"), "")
+)
+'''
+
+# Ref: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
+[revset-aliases]
+"closest_bookmark(to)" = "heads(::to & bookmarks())"
+"closest_merge(to)" = "heads(::to & merges())"
+
+# Ref: https://github.com/jj-vcs/jj/discussions/4690#discussioncomment-16870293
+# allow for `jj diff` and `jj show` to clear output from terminal after pager closed
+[[--scope]]
+--when.commands = ["diff", "show"]
+
+[--scope.ui]
+# stop using delta as the pager for already-delta-formatted output
+pager = ["less", "-FR"] # seems to be default (?)
+# keep delta as external diff formatter to diffs real temp files/dir and keep syntax highlighting
+diff-formatter = "delta"
+
+# pass jj's computed terminal width via $width
+[merge-tools.delta]
+diff-args = ["--width=$width", "$left", "$right"]
+diff-expected-exit-codes = [0, 1]

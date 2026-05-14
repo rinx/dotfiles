@@ -47,6 +47,7 @@ function plugin-compile() {
 
 plugins=(
     romkatv/powerlevel10k
+    mafredri/zsh-async
     romkatv/zsh-defer
 
     zsh-users/zsh-autosuggestions
@@ -114,6 +115,8 @@ setopt hist_verify             # don't execute immediately upon history expansio
 setopt inc_append_history      # write to the history file immediately, not when the shell exits
 setopt no_share_history        # don't share history between all sessions
 
+autoload -Uz async && async
+
 autoload colors
 colors
 
@@ -134,12 +137,6 @@ edit_current_line() {
 }
 zle -N edit_current_line
 bindkey '^O' edit_current_line
-
-function precmd() {
-    if [ ! -z $TMUX ]; then
-        tmux refresh-client -S
-    fi
-}
 
 export EDITOR=${EDITOR:-nvim}
 export GIT_EDITOR=${GIT_EDITOR:-nvim}

@@ -35,6 +35,9 @@
     ".commit_template".source = ../../../.commit_template;
     ".gitlint".source = ../../../.gitlint;
 
+    # Jujutsu
+    ".jjconfig.toml".source = ../../../jjconfig.toml;
+
     # Zsh
     ".zshrc".source = ../../../zshrc;
     ".config/zsh/rc" = {
