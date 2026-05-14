@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778767131647,
+  "lastUpdate": 1778767904726,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32919,6 +32919,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 119.0447513,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "rintaro okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "rintaro okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "10659c617b88c9ade4ce905702785ad04b3570e4",
+          "message": "chore(nvim): add settings for JJ_EDITOR\n\nand add paginate=never to jjconfig\n\nSigned-off-by: rintaro okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-14T23:06:24+09:00",
+          "tree_id": "9fa3c8b4ce2c5ee4ff6fc889f08d34261cba2978",
+          "url": "https://github.com/rinx/dotfiles/commit/10659c617b88c9ade4ce905702785ad04b3570e4"
+        },
+        "date": 1778767901631,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 33.6703062,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 114.4040667,
             "unit": "ms"
           }
         ]
