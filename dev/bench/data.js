@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778707556053,
+  "lastUpdate": 1778767131647,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32885,6 +32885,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 98.97309700000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "97af3f49f37ccd3d17639efd673d1285563793f1",
+          "message": "feat: add jjconfig.toml and jj-related settings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-14T22:54:08+09:00",
+          "tree_id": "b5d3fafc5b07cbe0fef47d2b5e3460149c32c8db",
+          "url": "https://github.com/rinx/dotfiles/commit/97af3f49f37ccd3d17639efd673d1285563793f1"
+        },
+        "date": 1778767129136,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 36.912759400000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 119.0447513,
             "unit": "ms"
           }
         ]
