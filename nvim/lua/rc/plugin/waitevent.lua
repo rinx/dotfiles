@@ -11,6 +11,16 @@ do
 end
 do
   local waitevent = require("waitevent")
+  local function _2_(ctx, path)
+    vim.cmd.vsplit(path)
+    ctx.lcd()
+    vim.bo.bufhidden = "wipe"
+    return nil
+  end
+  vim.env.JJ_EDITOR = waitevent.editor({open = _2_})
+end
+do
+  local waitevent = require("waitevent")
   vim.env.EDITOR = waitevent.editor({done_events = {}, cancel_events = {}})
 end
 return nil

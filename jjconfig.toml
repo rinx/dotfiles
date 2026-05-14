@@ -10,6 +10,7 @@ mega = "red"
 [ui]
 default-command = ["log"]
 editor = "nvim"
+paginate = "never"
 show-cryptographic-signatures = true
 
 [signing]
