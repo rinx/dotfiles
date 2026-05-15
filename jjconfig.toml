@@ -10,8 +10,27 @@ mega = "red"
 [ui]
 default-command = ["log"]
 editor = "nvim"
+diff-editor = "gitpatch"
 paginate = "never"
 show-cryptographic-signatures = true
+
+# Ref: https://zerowidth.com/2025/jj-tips-and-tricks/#hunk-wise-style
+[merge-tools.gitpatch]
+program = "sh"
+edit-args = ["-c", '''
+  set -eu
+  rm -f "$right/JJ-INSTRUCTIONS"
+  git -C "$left" init -q
+  git -C "$left" add -A
+  git -C "$left" commit -q -m baseline --allow-empty
+  mv "$left/.git" "$right"
+  git -C "$right" add --intent-to-add --ignore-removal .
+  git -C "$right" add -p
+  git -C "$right" diff-index --quiet --cached HEAD && { echo "No changes done, aborting split."; exit 1; }
+  git -C "$right" commit -q -m split
+  git -C "$right" reset -q --hard
+''',
+]
 
 [signing]
 behavior = "own"
