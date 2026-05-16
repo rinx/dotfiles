@@ -194,6 +194,10 @@
           pre-commit = {
             check.enable = true;
             settings = {
+              default_stages = [
+                "pre-commit"
+                "pre-push"
+              ];
               hooks = {
                 check-merge-conflicts.enable = true;
                 check-symlinks.enable = true;
