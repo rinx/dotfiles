@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778933375596,
+  "lastUpdate": 1778933933486,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -32987,6 +32987,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 114.29047240000003,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "rintaro okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "rintaro okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "aee44f27f3c0f6b3696b14ec44ef84494aa79a6e",
+          "message": "Revert \"config(nix): add pre-push checks\"\n\nThis reverts commit 43d5763266af0fb1f2440878d7e4a36b84ff1c78.",
+          "timestamp": "2026-05-16T21:13:44+09:00",
+          "tree_id": "1a00fb05c6627d416e4dac08ad2e4ff1f1be40cc",
+          "url": "https://github.com/rinx/dotfiles/commit/aee44f27f3c0f6b3696b14ec44ef84494aa79a6e"
+        },
+        "date": 1778933931642,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 39.6497588,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 116.6240965,
             "unit": "ms"
           }
         ]
