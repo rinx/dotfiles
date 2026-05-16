@@ -3,15 +3,17 @@
 
 ## TODO: implement sketchybar functions
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget sketchybar',
-    'exec-and-forget borders active_color=0xffe1e3e4 width=3.0'
+  'exec-and-forget sketchybar',
+  'exec-and-forget borders active_color=0xffe1e3e4 width=3.0',
 ]
 
 # Start AeroSpace at login
@@ -60,11 +62,11 @@ preset = 'qwerty'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 12
-inner.vertical =   12
-outer.left =       12
-outer.bottom =     12
-outer.top =        [{ monitor.main = 4}, 36]
-outer.right =      12
+inner.vertical = 12
+outer.left = 12
+outer.bottom = 12
+outer.top = [{ monitor.main = 4 }, 36]
+outer.right = 12
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -187,7 +189,7 @@ alt-b = 'flatten-workspace-tree' # reset layout
 alt-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
-cmd-h = [] # Disable "hide application"
+cmd-h = []     # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode

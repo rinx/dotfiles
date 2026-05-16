@@ -17,7 +17,9 @@ show-cryptographic-signatures = true
 # Ref: https://zerowidth.com/2025/jj-tips-and-tricks/#hunk-wise-style
 [merge-tools.gitpatch]
 program = "sh"
-edit-args = ["-c", '''
+edit-args = [
+  "-c",
+  '''
   set -eu
   rm -f "$right/JJ-INSTRUCTIONS"
   git -C "$left" init -q

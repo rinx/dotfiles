@@ -224,6 +224,7 @@
               actionlint.enable = true;
               nixfmt.enable = true;
               jsonfmt.enable = true;
+              taplo.enable = true;
               yamlfmt.enable = true;
             };
             settings = {
