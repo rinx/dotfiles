@@ -70,8 +70,8 @@
   (lima/setup)
   (kubectx/setup)
   (gcloud/setup)
-  (github-pr/setup)
-  (github/setup)
+  ; (github-pr/setup)
+  ; (github/setup)
   (brew/setup))
 
 (defn -main [& args]
@@ -90,10 +90,10 @@
            :duration-ms 7200000}
     :gcloud {:fn gcloud/update
              :duration-ms 60000}
-    :github {:fn github/update
-             :duration-ms 180000}
-    :github-pr {:fn github-pr/update
-                :duration-ms 180000}
+    ; :github {:fn github/update
+    ;          :duration-ms 180000}
+    ; :github-pr {:fn github-pr/update
+    ;             :duration-ms 180000}
     :kubectx {:fn kubectx/update
               :duration-ms 60000}
     :lima {:fn lima/update
