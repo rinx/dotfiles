@@ -182,7 +182,9 @@
            :hl {:fg :diag_hint}}})
 
 (local git-component
-       {:condition conditions.is_git_repo
+       {:condition (fn []
+                     (and (conditions.is_git_repo)
+                          (not vim.b.jjtrack_summary)))
         :flexible true
         :init (fn [self]
                 (set self.status_dict vim.b.gitsigns_status_dict)
@@ -209,6 +211,19 @@
                          (when (> changed 0)
                            (.. icontab.diff-modified changed space))))
            :hl {:fg :git_change}}})
+
+(local jj-component
+       {:condition conditions.is_git_repo
+        :provider (fn []
+                    (when vim.b.jjtrack_summary
+                      (let [s vim.b.jjtrack_summary
+                            change-id (.. s.change_id_prefix s.change_id_rest)
+                            commit-id (.. s.commit_id_prefix s.commit_id_rest)
+                            empty (if s.empty
+                                    (.. space "(empty)")
+                                    "")]
+                        (.. icontab.jj space change-id space commit-id empty space))))
+        :hl {:fg :purple}})
 
 (local dap-component
        {:condition (fn []
@@ -341,6 +356,7 @@
         dap-component
         align-component
         git-component
+        jj-component
         diagnostics-component
         lsp-component
         ruler-component])

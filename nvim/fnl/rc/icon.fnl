@@ -116,6 +116,7 @@
    :lightbulb-on "󱩎 "
    :lightbulb-on-alt "󰛨 "
    :github " "
+   :jj "[]"
    :beer-fa " "
    :beer-mdi "󰂘"
    :quote-l " "
