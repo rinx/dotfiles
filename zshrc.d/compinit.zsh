@@ -58,6 +58,10 @@ if builtin command -v gh > /dev/null 2>&1 ; then
     source <(gh completion -s zsh)
 fi
 
+if builtin command -v jj > /dev/null 2>&1 ; then
+    source <(jj util completion zsh)
+fi
+
 if builtin command -v helm > /dev/null 2>&1 ; then
     source <(helm completion zsh)
 fi
