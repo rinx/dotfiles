@@ -214,16 +214,41 @@
 
 (local jj-component
        {:condition conditions.is_git_repo
-        :provider (fn []
-                    (when vim.b.jjtrack_summary
-                      (let [s vim.b.jjtrack_summary
-                            change-id (.. s.change_id_prefix s.change_id_rest)
-                            commit-id (.. s.commit_id_prefix s.commit_id_rest)
-                            empty (if s.empty
-                                    (.. space "(empty)")
-                                    "")]
-                        (.. icontab.jj space change-id space commit-id empty space))))
-        :hl {:fg :purple}})
+        :init (fn [self]
+                (when vim.b.jjtrack_summary
+                  (let [s vim.b.jjtrack_summary]
+                    (set self.jj s)
+                    (set self.change-id-prefix s.change_id_prefix)
+                    (set self.change-id-rest s.change_id_rest)
+                    (set self.commit-id-prefix s.commit_id_prefix)
+                    (set self.commit-id-rest s.commit_id_rest)
+                    (set self.is-empty s.empty))))
+        1 {:provider (fn [self]
+                       (when self.jj
+                         (.. icontab.jj space)))
+           :hl {:fg colors.info}}
+        2 {:provider (fn [self]
+                       (when self.change-id-prefix
+                         self.change-id-prefix))
+           :hl {:fg :purple
+                :bold true}}
+        3 {:provider (fn [self]
+                       (when self.change-id-rest
+                         (.. self.change-id-rest space)))
+           :hl {:fg colors.color9}}
+        4 {:provider (fn [self]
+                       (when self.commit-id-prefix
+                         self.commit-id-prefix))
+           :hl {:fg colors.color10
+                :bold true}}
+        5 {:provider (fn [self]
+                       (when self.commit-id-rest
+                         (.. self.commit-id-rest space)))
+           :hl {:fg colors.color9}}
+        6 {:provider (fn [self]
+                       (when self.is-empty
+                         (.. "(empty)" space)))
+           :hl {:fg colors.color13}}})
 
 (local dap-component
        {:condition (fn []
