@@ -398,8 +398,7 @@
                                             :help
                                             :quickfix
                                             :^terminal$]
-                                  :filetype ["^git.*"
-                                             :Trouble
+                                  :filetype [:Trouble
                                              :^dap-repl$
                                              :^dapui_watches$
                                              :^dapui_stacks$

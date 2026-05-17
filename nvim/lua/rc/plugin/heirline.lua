@@ -398,6 +398,6 @@ hostname_component = {provider = _84_, hl = {fg = colors["lima-green"]}}
 local default_statusline = {vi_mode_component, space_component, cwd_component, hostname_component, space_component, align_component, search_component, macrorec_component, align_component, org_clock_component, skkeleton_component, spell_component, paste_component, copilot_component, denops_component}
 local standard_winbar = {filename_block, align_component, dap_component, align_component, git_component, jj_component, diagnostics_component, lsp_component, ruler_component}
 local function _86_(args)
-  return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"^git.*", "Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
+  return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
 end
 return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _86_}})
