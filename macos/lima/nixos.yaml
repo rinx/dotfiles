@@ -1,12 +1,16 @@
 # Template using nixos-lima
 # ref: https://github.com/nixos-lima/nixos-lima
 images:
-  - location: "https://github.com/rinx/dotfiles/releases/download/2026.05.23/nixos-lima-aarch64.qcow2"
+  - location: "https://github.com/rinx/dotfiles/releases/download/2026.05.23/nixos-\
+      lima-aarch64.qcow2"
     arch: "aarch64"
-    digest: "sha512:5e03cc5aac1bbea8ddf1ce729b9ad9247347dae7c97e125ab53f1c0c670a8d1d322f3cb6161fc0f10f30346f32650dd3ca8fcb74fe4118bdcbdc36731aa22a32"
-  - location: "https://github.com/rinx/dotfiles/releases/download/2026.05.23/nixos-lima-x86_64.qcow2"
+    digest: "sha512:5e03cc5aac1bbea8ddf1ce729b9ad9247347dae7c97e125ab53f1c0c670a8d1\
+      d322f3cb6161fc0f10f30346f32650dd3ca8fcb74fe4118bdcbdc36731aa22a32"
+  - location: "https://github.com/rinx/dotfiles/releases/download/2026.05.23/nixos-\
+      lima-x86_64.qcow2"
     arch: "x86_64"
-    digest: "sha512:9cd8b69f02f6c56da6338b20654e04484c128f67acf541f4b2eab92d195de4e614642190a99cbd0e73e11fbd229dbe5d5e6cc940e5a9d15bdef85d521d5d4318"
+    digest: "sha512:9cd8b69f02f6c56da6338b20654e04484c128f67acf541f4b2eab92d195de4e\
+      614642190a99cbd0e73e11fbd229dbe5d5e6cc940e5a9d15bdef85d521d5d4318"
 mounts:
   - location: "~"
     writable: false
@@ -80,8 +84,12 @@ message: |
   Login to the VM.
 
       limactl shell {{.Name}} -- zsh
-      ## or, export host environment variables like
-      # limactl shell {{.Name}} -- GH_TOKEN=$(gh auth token) zsh
+
+  ---
+
+  To install neovim plugins, run the following command.
+
+      limactl shell {{.Name}} -- nvim --headless -c 'Lazy! restore' -c 'qall'
 
   ---
 
