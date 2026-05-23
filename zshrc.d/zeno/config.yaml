@@ -103,6 +103,48 @@ snippets:
     snippet: branch
     context:
       lbuffer: '^git\s+'
+  # jujutsu related snippets
+  - name: jj status
+    keyword: st
+    snippet: status
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj absorb
+    keyword: abs
+    snippet: absorb
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj bookmark
+    keyword: bk
+    snippet: bookmark
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj git push
+    keyword: gp
+    snippet: git push
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj git fetch
+    keyword: gf
+    snippet: git fetch
+    context:
+      lbuffer: '^jj\s+'
+  # Refs: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
+  - name: jj stack
+    keyword: stack
+    snippet: rebase --after 'trunk()' --before 'closest_merge(@)' --revision
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj stage
+    keyword: stage
+    snippet: "rebase --after 'trunk()' --before 'closest_merge(@)' --revision 'closest_merge(@)+:: ~ empty()'"
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj restack
+    keyword: restack
+    snippet: rebase --onto 'trunk()' --source 'roots(trunk()..) & mutable()' --simplify-parents
+    context:
+      lbuffer: '^jj\s+'
   # kitty snippets
   - name: kitty icat
     keyword: icat
