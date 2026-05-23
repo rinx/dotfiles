@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779499647758,
+  "lastUpdate": 1779542723102,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33259,6 +33259,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 97.2667149,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "rintaro okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "rintaro okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "b5727e617c6709c6b788f74f48d833e81ebb375a",
+          "message": "config(nix): use llm-agents.nix instead of claude-code-nix\n\nSigned-off-by: rintaro okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-23T22:18:39+09:00",
+          "tree_id": "72e71f4e3d8064ffa45781d88eaf0dcf66267be2",
+          "url": "https://github.com/rinx/dotfiles/commit/b5727e617c6709c6b788f74f48d833e81ebb375a"
+        },
+        "date": 1779542721254,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.627043800000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 112.231797,
             "unit": "ms"
           }
         ]
