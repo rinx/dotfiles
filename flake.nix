@@ -53,8 +53,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    claude-code = {
-      url = "github:sadjow/claude-code-nix";
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
     };
 
     agent-skills = {
@@ -97,6 +101,7 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [
+            inputs.llm-agents.overlays.default
             inputs.neovim-nightly.overlays.default
           ];
         };

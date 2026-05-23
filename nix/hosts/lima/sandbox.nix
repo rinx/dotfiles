@@ -9,7 +9,7 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      inputs.claude-code.overlays.default
+      inputs.llm-agents.overlays.default
     ];
   };
 
@@ -20,7 +20,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    claude-code
+    llm-agents.claude-code
     ollama
     rsync
   ];

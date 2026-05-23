@@ -70,6 +70,10 @@ with pkgs;
   regal
   tinymist
   zizmor
+
+  ## LLM
+  llm-agents.claude-code
+  ollama
 ]
 ++ custom-pkgs
 ++ os-specific-pkgs
