@@ -33,7 +33,7 @@ jobs:
           skipPush: true
       - uses: nicknovitski/nix-develop@9be7cfb4b10451d3390a75dc18ad0465bed4932a # v1.2.1
       - name: Run ast-grep with reviewdog
-        uses: reviewdog/action-ast-grep@cd7bc6345b414bb0fb6133debaea70cdd71795d6 # v1.54
+        uses: reviewdog/action-ast-grep@502582b9477c1b184b04adfdfd0816d0ce67c4d1 # v1.55
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: info
