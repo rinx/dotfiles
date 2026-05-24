@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779586446457,
+  "lastUpdate": 1779612550032,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33463,6 +33463,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.27596860000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "60810c11e9f7d386afe30e77761bf592a5adca4a",
+          "message": "refacotr(zsh): revise kitten snippets\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-24T15:19:51+09:00",
+          "tree_id": "dc0612d4af529edf75bf7e974cdf8bd2778a2e11",
+          "url": "https://github.com/rinx/dotfiles/commit/60810c11e9f7d386afe30e77761bf592a5adca4a"
+        },
+        "date": 1779612548075,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.4805045,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 109.6659983,
             "unit": "ms"
           }
         ]
