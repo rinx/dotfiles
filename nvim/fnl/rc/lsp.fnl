@@ -308,7 +308,9 @@
                       :jsconfig.json)}
    :yamlls {:settings
             {:yaml
-             {:schemas
+             {:format
+              {:enable false}
+              :schemas
               (let [k8s-prefix (table.concat ["https://raw.githubusercontent.com/"
                                               "yannh/"
                                               "kubernetes-json-schema/"
