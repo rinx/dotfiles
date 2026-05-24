@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779585969881,
+  "lastUpdate": 1779586026145,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33395,6 +33395,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 115.04897559999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "26bb2d4a83832b5d6d3ac7f72470b982a4e9ff88",
+          "message": "chore(lima): fix yaml format\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-24T10:23:16+09:00",
+          "tree_id": "376deffa248381cfaa709a4905cfa7893b1b1b44",
+          "url": "https://github.com/rinx/dotfiles/commit/26bb2d4a83832b5d6d3ac7f72470b982a4e9ff88"
+        },
+        "date": 1779586023965,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.322999499999995,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 110.98988449999999,
             "unit": "ms"
           }
         ]
