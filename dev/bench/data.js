@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779544600093,
+  "lastUpdate": 1779585969881,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33361,6 +33361,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 109.1137874,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "rintaro okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "66698b80393e2fd0e6b2db6184d4b89da0316854",
+          "message": "chore(lima): add nvim plugin install command to usage message\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-24T10:21:25+09:00",
+          "tree_id": "e69962f5364a8ff3a2f15b34a0f4e5d737855e82",
+          "url": "https://github.com/rinx/dotfiles/commit/66698b80393e2fd0e6b2db6184d4b89da0316854"
+        },
+        "date": 1779585967956,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.5860458,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 115.04897559999999,
             "unit": "ms"
           }
         ]
