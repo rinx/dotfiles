@@ -148,7 +148,7 @@ snippets:
   # kitty snippets
   - name: kitty icat
     keyword: icat
-    snippet: kitty +kitten icat
+    snippet: kitten icat
   - name: kitty diff
     keyword: vdiff
-    snippet: kitty +kitten diff
+    snippet: kitten diff
