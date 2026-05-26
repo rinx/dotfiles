@@ -46,7 +46,7 @@ commit_trailers = '''
 format_signed_off_by_trailer(self)
 '''
 git_push_bookmark = '''
-separate('-', reference_issue('Refs'), slugify(description), commit_id.shortest(8))
+separate('-', reference_issue('Refs'), slugify(description), change_id.shortest(8))
 '''
 
 [template-aliases]
