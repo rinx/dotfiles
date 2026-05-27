@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779836812797,
+  "lastUpdate": 1779843809452,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33667,6 +33667,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.8460666,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e68962c253d292626cbb2839f7b47b581a3e73b2",
+          "message": "config(jj): add draft commit template and pr alias\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-05-27T09:56:20+09:00",
+          "tree_id": "017c44522b59f861c1bef4db7b4415d615c0f592",
+          "url": "https://github.com/rinx/dotfiles/commit/e68962c253d292626cbb2839f7b47b581a3e73b2"
+        },
+        "date": 1779843807448,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.4343649,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 102.052148,
             "unit": "ms"
           }
         ]
