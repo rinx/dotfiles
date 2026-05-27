@@ -6,6 +6,7 @@ email = "rintaro.okamura@gmail.com"
 wip = "yellow"
 todo = "blue"
 mega = "red"
+private = "green"
 
 [ui]
 default-command = ["log"]
@@ -88,6 +89,7 @@ separate(" ",
   if(description.starts_with("wip"), label("wip", "(wip)"), ""),
   if(description.starts_with("todo"), label("todo", "(todo)"), ""),
   if(description.starts_with("mega"), label("mega", "(mega)"), ""),
+  if(description.starts_with("private"), label("private", "(private)"), ""),
   if(conflict, label("conflict", "(conflict)"), "")
 )
 '''
@@ -124,6 +126,10 @@ separate(" ",
 
 # Ref: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
 [revset-aliases]
+'wip()' = 'description(glob:"wip*")'
+'todo()' = 'description(glob:"todo*")'
+'private()' = 'description(glob:"private*")'
+
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_merge(to)' = 'heads(::to & merges())'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
