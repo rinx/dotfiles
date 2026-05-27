@@ -36,6 +36,10 @@ message: |
 
       limactl restart {{.Name}}
 
+  To install neovim plugins, run the following command.
+
+      limactl shell {{.Name}} -- nvim --headless -c 'Lazy! restore' -c 'qall'
+
   Login to the VM.
 
       limactl shell {{.Name}} -- zsh
