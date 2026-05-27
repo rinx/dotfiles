@@ -39,14 +39,38 @@ behavior = "own"
 backend = "gpg"
 
 [aliases]
-pre-commit = ["util", "exec", "--", "pre-commit", "run", "--all-files"]
+pre-commit = ['util', 'exec', '--', 'pre-commit', 'run', '--all-files']
+pr = [
+  'util',
+  'exec',
+  '--',
+  'bash',
+  '-c',
+  '''
+gh pr create --draft --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph --ignore-working-copy | cut -d ' ' -f 1)
+''',
+]
 
 [templates]
 commit_trailers = '''
 format_signed_off_by_trailer(self)
 '''
+
 git_push_bookmark = '''
 separate('-', reference_issue('Refs'), slugify(description), change_id.shortest(8))
+'''
+
+# Ref: https://andre.arko.net/2025/09/28/stupid-jj-tricks/
+draft_commit_description = '''
+  concat(
+    coalesce(description, default_commit_description, "\n"),
+    surround(
+      "\nJJ: This commit contains the following changes:\n", "",
+      indent("JJ:     ", diff.stat(72)),
+    ),
+    "\nJJ: ignore-rest\n",
+    diff.git(),
+  )
 '''
 
 [template-aliases]
