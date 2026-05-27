@@ -51,6 +51,8 @@ gh pr create --draft --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --n
 ''',
 ]
 
+tug = ["bookmark", "move", "--from", "heads(::@ & bookmarks())", "--to", "closest_pushable(@)"]
+
 [templates]
 commit_trailers = '''
 format_signed_off_by_trailer(self)
@@ -122,8 +124,9 @@ separate(" ",
 
 # Ref: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
 [revset-aliases]
-"closest_bookmark(to)" = "heads(::to & bookmarks())"
-"closest_merge(to)" = "heads(::to & merges())"
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_merge(to)' = 'heads(::to & merges())'
+'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 
 # Ref: https://github.com/jj-vcs/jj/discussions/4690#discussioncomment-16870293
 # allow for `jj diff` and `jj show` to clear output from terminal after pager closed
