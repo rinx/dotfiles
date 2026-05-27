@@ -9,7 +9,7 @@ mega = "red"
 private = "green"
 
 [ui]
-default-command = ["log"]
+default-command = ["log", "-T", "log_compact"]
 editor = "nvim"
 diff-editor = "gitpatch"
 paginate = "never"
@@ -77,6 +77,35 @@ draft_commit_description = '''
 '''
 
 [template-aliases]
+
+# based on builtin_log_compact
+log_compact = 'log_compact(self)'
+'log_compact(commit)' = '''
+if(commit.root(),
+  format_root_commit(commit),
+  label(
+    separate(" ",
+      if(commit.current_working_copy(), "working_copy"),
+      if(commit.immutable(), "immutable", "mutable"),
+      if(commit.conflict(), "conflicted"),
+    ),
+    concat(
+      format_short_commit_header(commit) ++ "\n",
+      separate(" ",
+        if(commit.empty(), empty_commit_marker),
+        if(commit.description().starts_with("wip"), label("wip", " ")),
+        if(commit.description().starts_with("todo"), label("todo", " ")),
+        if(commit.description().starts_with("mega"), label("mega", " ")),
+        if(commit.description().starts_with("private"), label("private", "󰈉 ")),
+        if(commit.description(),
+          commit.description().first_line(),
+          label(if(commit.empty(), "empty"), description_placeholder),
+        ),
+      ) ++ "\n",
+    ),
+  )
+)
+'''
 
 # for zsh prompt
 # Ref: https://zerowidth.com/2025/async-zsh-jujutsu-prompt-with-p10k/
