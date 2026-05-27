@@ -52,7 +52,14 @@ gh pr create --draft --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --n
 ''',
 ]
 
-tug = ["bookmark", "move", "--from", "heads(::@ & bookmarks())", "--to", "closest_pushable(@)"]
+tug = [
+  "bookmark",
+  "move",
+  "--from",
+  "heads(::@ & bookmarks())",
+  "--to",
+  "closest_pushable(@)",
+]
 
 [templates]
 commit_trailers = '''
