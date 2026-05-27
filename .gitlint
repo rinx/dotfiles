@@ -118,10 +118,13 @@ line-length=120
 # Use 'all' to ignore all rules
 # ignore=T1,body-min-length
 
-# [ignore-body-lines]
+[ignore-body-lines]
 # Ignore certain lines in a commit body that match a regex.
 # E.g. Ignore all lines that start with 'Co-Authored-By'
 # regex=^Co-Authored-By
+
+# ignore JJ git-diff lines
+regex=(^JJ: ignore-rest|^[^ A-Za-z0-9_].*|^\s*$)
 
 # [ignore-by-author-name]
 # Ignore certain rules for commits of which the author name matches a regex
