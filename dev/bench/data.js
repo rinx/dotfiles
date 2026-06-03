@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780429110442,
+  "lastUpdate": 1780515761928,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33837,6 +33837,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.45435019999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "116073707+rinx-app[bot]@users.noreply.github.com",
+            "name": "rinx-app[bot]",
+            "username": "rinx-app[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cd5795aff72c0ca2c5c9c6eb8fde95d5b897030b",
+          "message": "ghtkn: 0.2.5-0 -> 0.2.5-1 (#378)\n\nCo-authored-by: rinx-app[bot] <116073707+rinx-app[bot]@users.noreply.github.com>",
+          "timestamp": "2026-06-03T19:37:53Z",
+          "tree_id": "a63cc7aa2ef1381945c81d22e2af44fff6ec71da",
+          "url": "https://github.com/rinx/dotfiles/commit/cd5795aff72c0ca2c5c9c6eb8fde95d5b897030b"
+        },
+        "date": 1780515759923,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 33.7939816,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 112.10313679999999,
             "unit": "ms"
           }
         ]
