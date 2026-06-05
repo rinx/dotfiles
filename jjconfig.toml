@@ -48,7 +48,7 @@ pr = [
   'bash',
   '-c',
   '''
-gh pr create --draft --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph --ignore-working-copy | cut -d ' ' -f 1)
+gh pr create --draft --head $(jj log -r 'closest_bookmark(@)' -T 'surround("", " ", bookmarks)' --no-graph --ignore-working-copy | cut -d ' ' -f 1)
 ''',
 ]
 
