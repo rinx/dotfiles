@@ -1,3 +1,25 @@
+completions:
+  - name: jj git push --bookmark
+    patterns:
+      - '^jj\s+git\s+push\s+--bookmark $'
+    sourceCommand: jj bookmark list
+    options:
+      --prompt: "'Bookmark>'"
+    callback: "cut -d ':' -f 1"
+  - name: gh pr create --draft -H
+    patterns:
+      - '^gh\s+pr\s+create\s+--draft\s+-H $'
+    sourceCommand: jj bookmark list
+    options:
+      --prompt: "'Bookmark>'"
+    callback: "cut -d ':' -f 1"
+  - name: jj bookmark move
+    patterns:
+      - '^jj\s+bookmark\s+move $'
+    sourceCommand: jj bookmark list
+    options:
+      --prompt: "'Bookmark>'"
+    callback: "cut -d ':' -f 1"
 snippets:
   - name: q -> exit mapping
     keyword: q
