@@ -3,6 +3,7 @@
   agent-skills,
   anthropic-skills,
   ast-grep-skill,
+  google-skills,
   ...
 }:
 {
@@ -24,13 +25,24 @@
         path = ast-grep-skill;
         subdir = "ast-grep/skills";
       };
+      google = {
+        path = google-skills;
+        subdir = "skills/cloud";
+      };
       local = {
         path = ./skills;
       };
     };
 
     skills.enable = [
+      # anthropic
       "skill-creator"
+
+      # google
+      "cloud-run-basics"
+      "gcloud"
+      "gke-basics"
+      "google-cloud-waf-reliability"
     ];
 
     skills.enableAll = [

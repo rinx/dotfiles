@@ -431,6 +431,22 @@
         "url": "https://git.isincredibly.gay/srxl/gleam2nix"
       }
     },
+    "google-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780616104,
+        "narHash": "sha256-+nLAFmTc0+CzUMf0rW8NSitOzZ5gUEjtsSQXLqpaX/I=",
+        "owner": "google",
+        "repo": "skills",
+        "rev": "1c33c2ba4514487dd13d97e4ecaf6d1eb4a3244c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "google",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -928,6 +944,7 @@
         "ast-grep-skill": "ast-grep-skill",
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",
+        "google-skills": "google-skills",
         "home-manager": "home-manager_2",
         "llm-agents": "llm-agents",
         "neovim-nightly": "neovim-nightly",

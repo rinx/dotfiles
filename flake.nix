@@ -74,6 +74,11 @@
       url = "github:ast-grep/agent-skill";
       flake = false;
     };
+
+    google-skills = {
+      url = "github:google/skills";
+      flake = false;
+    };
   };
 
   nixConfig = {
@@ -302,6 +307,7 @@
                 agent-skills = inputs.agent-skills;
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
+                google-skills = inputs.google-skills;
               };
             };
           lima =
@@ -332,6 +338,7 @@
                 agent-skills = inputs.agent-skills;
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
+                google-skills = inputs.google-skills;
               };
             };
         };
