@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780600186874,
+  "lastUpdate": 1780648507228,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33939,6 +33939,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.8866231,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7567cf4bc5c8f58ed1abeb230b3a8b1bac6042ad",
+          "message": "config(zsh): add jj bookmark completion\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-05T17:28:47+09:00",
+          "tree_id": "11dfee4dd2e19225e1a1e263ceccdfb42df321b4",
+          "url": "https://github.com/rinx/dotfiles/commit/7567cf4bc5c8f58ed1abeb230b3a8b1bac6042ad"
+        },
+        "date": 1780648505276,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 73.77554960000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 140.90828900000002,
             "unit": "ms"
           }
         ]
