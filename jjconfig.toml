@@ -83,6 +83,14 @@ draft_commit_description = '''
   )
 '''
 
+revert_description = '''
+concat(
+  "revert: " ++ description.first_line() ++ "\n",
+  "\n",
+  "Revert-of: " ++ commit_id,
+)
+'''
+
 [template-aliases]
 
 # based on builtin_log_compact
