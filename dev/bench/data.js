@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780648507228,
+  "lastUpdate": 1780753761922,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -33973,6 +33973,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 140.90828900000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "bbbe76ae61c82688e5bd0fc518af591680adacb7",
+          "message": "docs(nixos-lima): add install nvim plugins instruction to sandbox template\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-06T11:18:53+09:00",
+          "tree_id": "5be15618b71be90d8fa7dd80442989898369d5d4",
+          "url": "https://github.com/rinx/dotfiles/commit/bbbe76ae61c82688e5bd0fc518af591680adacb7"
+        },
+        "date": 1780753759611,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 35.9790629,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 117.5205726,
             "unit": "ms"
           }
         ]
