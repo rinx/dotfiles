@@ -265,6 +265,7 @@
             specialArgs = inputs;
             modules = [
               ./nix/hosts/lima/lima.nix
+              ./nix/hosts/lima/devenv.nix
             ];
           };
           sandbox-vm = inputs.nixpkgs.lib.nixosSystem {
@@ -324,6 +325,7 @@
                 ./nix/hosts/common/agents.nix
                 ./nix/hosts/lima/home.nix
                 ./nix/hosts/lima/services.nix
+                ./nix/hosts/lima/ghtkn.nix
                 inputs.nix-index-database.homeModules.default
               ];
               extraSpecialArgs = {
@@ -339,6 +341,8 @@
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
                 google-skills = inputs.google-skills;
+
+                ghtkn = self.outputs.packages."${system}".ghtkn;
               };
             };
         };
