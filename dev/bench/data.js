@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781962401884,
+  "lastUpdate": 1781962630387,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34211,6 +34211,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 100.8902052,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "715cf6d1881d596f559018f68580ca65e5f75e10",
+          "message": "nix: remove useless attributes on devenv.nix to fixing build\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-20T22:33:05+09:00",
+          "tree_id": "a200e0fd4d2fca9f0e8e030449b67f399c2de9b0",
+          "url": "https://github.com/rinx/dotfiles/commit/715cf6d1881d596f559018f68580ca65e5f75e10"
+        },
+        "date": 1781962628453,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 35.025037600000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 132.3858368,
             "unit": "ms"
           }
         ]
