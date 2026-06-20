@@ -44,7 +44,7 @@ regex-style-search=true
 
 # Enable community contributed rules
 # See http://jorisroovers.github.io/gitlint/contrib_rules for details
-contrib=contrib-title-conventional-commits,contrib-body-requires-signed-off-by
+contrib=contrib-body-requires-signed-off-by
 
 # Set the extra-path where gitlint will search for user defined rules
 # See http://jorisroovers.github.io/gitlint/user_defined_rules for details
