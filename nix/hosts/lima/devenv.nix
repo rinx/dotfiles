@@ -1,13 +1,8 @@
 {
-  self,
   ...
 }:
 {
-  imports = [
-    self.nixosModules.ghtkn-agent
-  ];
-
-  services.ghtkn-agent.enable = true;
+  imports = [ ];
 
   environment.sessionVariables = {
     GHTKN_BACKEND = "agent";
