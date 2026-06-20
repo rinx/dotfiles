@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781921723860,
+  "lastUpdate": 1781962401884,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34177,6 +34177,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.2080662,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4f7a817516c01ab596055da57e9713538eecf2ec",
+          "message": "nix: remove useless ghtkn input for fixing build\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-20T22:24:16+09:00",
+          "tree_id": "c98d867d4f3284a555def3535eacf54dac6ad290",
+          "url": "https://github.com/rinx/dotfiles/commit/4f7a817516c01ab596055da57e9713538eecf2ec"
+        },
+        "date": 1781962399977,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 30.192400699999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 100.8902052,
             "unit": "ms"
           }
         ]
