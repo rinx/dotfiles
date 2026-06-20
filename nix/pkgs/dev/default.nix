@@ -14,6 +14,20 @@ let
   };
 
   osc52-copy = pkgs.callPackage ../tools/osc52-copy { };
+
+  ghtkn = pkgs.callPackage ../tools/ghtkn { };
+
+  gh-ghtkn-wrapper = pkgs.writeShellScriptBin "gh" ''
+    set -eu
+
+    if [ -z "''${GH_TOKEN:-}" ] && [ -z "''${GITHUB_TOKEN:-}" ]; then
+      GH_TOKEN="$(${ghtkn}/bin/ghtkn get)"
+      export GH_TOKEN
+    fi
+
+    exec ${pkgs.gh}/bin/gh "$@"
+  '';
+
   custom-pkgs = [
     aws-sts-token
     gctx
@@ -41,7 +55,8 @@ with pkgs;
   eza
   fd
   fzf
-  gh
+  gh-ghtkn-wrapper
+  ghtkn
   ghq
   git
   gnumake

@@ -173,7 +173,6 @@
                 inherit pkgs system;
 
                 fennel-ls = fennel-ls;
-                ghtkn = ghtkn;
                 rq = rq;
               };
             };
