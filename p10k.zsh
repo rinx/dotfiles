@@ -15,6 +15,20 @@
 typeset -g _my_jj_display=""
 typeset -g _my_jj_workspace=""
 
+function prompt_ghtkn() {
+  if [[ -z "$GHTKN_APP" ]]; then
+    return
+  fi
+
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    return
+  fi
+
+  if git remote get-url origin 2>/dev/null | grep -q "github.com"; then
+    p10k segment -f 32 -i '' -t "$GHTKN_APP"
+  fi
+}
+
 prompt_my_jj() {
   local workspace
 
@@ -125,6 +139,7 @@ async_register_callback _my_jj_worker _my_jj_callback
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
+    ghtkn                  # GitHub token app (custom)
     status                  # exit code of the last command
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
