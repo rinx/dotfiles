@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781973809559,
+  "lastUpdate": 1782032277368,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34313,6 +34313,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 135.228271,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "70399ef502fb7b173987af2827f5fce7f8691aaa",
+          "message": "zsh: add ghtkn_app prompt\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-21T17:50:30+09:00",
+          "tree_id": "93f4e5dda6182194f307051254cd044b4616e43c",
+          "url": "https://github.com/rinx/dotfiles/commit/70399ef502fb7b173987af2827f5fce7f8691aaa"
+        },
+        "date": 1782032274805,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.389525500000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 123.20116550000003,
             "unit": "ms"
           }
         ]
