@@ -20,6 +20,10 @@ let
   gh-ghtkn-wrapper = pkgs.writeShellScriptBin "gh" ''
     set -eu
 
+    if [ "''${1:-}" = "completion" ]; then
+      exec ${pkgs.gh}/bin/gh "$@"
+    fi
+
     if [ -z "''${GH_TOKEN:-}" ] && [ -z "''${GITHUB_TOKEN:-}" ]; then
       GH_TOKEN="$(${ghtkn}/bin/ghtkn get)"
       export GH_TOKEN
