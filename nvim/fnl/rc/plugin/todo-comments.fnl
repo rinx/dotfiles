@@ -28,4 +28,6 @@
                      :warning [:DiagnosticSignWarn]
                      :info [:DiagnosticSignInfo]
                      :hint [:DiagnosticSignHint]
-                     :default [colors.purple]}})
+                     :default [colors.purple]}
+            :highlight {:pattern ".*<?(KEYWORDS)\\s*[:\\]]"}
+            :search {:pattern "\\b(KEYWORDS)(:|\\])"}})
