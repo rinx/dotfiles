@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782478698746,
+  "lastUpdate": 1782482880228,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34449,6 +34449,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 120.9060612,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "870dc8911390aff0a6bae14f8d7fb114e1233756",
+          "message": "nvim: add todo-comments pattern\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-26T23:03:18+09:00",
+          "tree_id": "02f681f02ce0e6ac2051a50689eb7cd365695bee",
+          "url": "https://github.com/rinx/dotfiles/commit/870dc8911390aff0a6bae14f8d7fb114e1233756"
+        },
+        "date": 1782482877073,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 37.02962630000001,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 115.49813960000002,
             "unit": "ms"
           }
         ]
