@@ -46,11 +46,11 @@
         "nvim/lua/rc/plugin-lock.lua"
       ],
       "matchStrings": [
-        ":(?<packageName>[^:/]+/[^:/]+)\\s+\"(?<currentValue>[a-f0-9]{40})\"",
-        "\\[\"(?<packageName>[^:/]+/[^:/]+)\"\\]\\s*=\\s*\"(?<currentValue>[a-f0-9]{40})\""
+        ":(?<packageName>[^:/]+/[^:/]+)\\s+\"(?<currentDigest>[a-f0-9]{40})\"",
+        "\\[\"(?<packageName>[^:/]+/[^:/]+)\"\\]\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\""
       ],
       "datasourceTemplate": "git-refs",
-      "packageNameTemplate": "https://github.com/{{packageName}}",
+      "packageNameTemplate": "https://github.com/{{packageName}}.git",
       "currentValueTemplate": "main"
     }
   ]
