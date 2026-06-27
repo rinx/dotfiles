@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782482880228,
+  "lastUpdate": 1782562288708,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34483,6 +34483,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 115.49813960000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "476ac31e740fdd50bdb129fd252c01253b324d9b",
+          "message": "nvim: replace lazy-lock with plugin-lock.fnl\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-27T21:00:56+09:00",
+          "tree_id": "14e3849097b6be9d2c43ce023365517fcb6dcd31",
+          "url": "https://github.com/rinx/dotfiles/commit/476ac31e740fdd50bdb129fd252c01253b324d9b"
+        },
+        "date": 1782562286424,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.4314525,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 124.9496868,
             "unit": "ms"
           }
         ]
