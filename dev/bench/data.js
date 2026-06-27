@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782566875903,
+  "lastUpdate": 1782568300394,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34687,6 +34687,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 23.2313542,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "39cf900c0bff32e6d4063784455a22a9c4667371",
+          "message": "nvim: revise lock hash pattern to include tracking branch name\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-27T22:46:54+09:00",
+          "tree_id": "bdea9e0939b7fa6ff3da96ba96a94bb48f42a012",
+          "url": "https://github.com/rinx/dotfiles/commit/39cf900c0bff32e6d4063784455a22a9c4667371"
+        },
+        "date": 1782568298363,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 36.6201138,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 118.13344830000001,
             "unit": "ms"
           }
         ]
