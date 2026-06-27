@@ -13,24 +13,35 @@
   "nix": {
     "enabled": true
   },
+  "packageRules": [
+    {
+      "matchFilePatterns": ["nvim/fnl/rc/plugin-lock.fnl", "nvim/lua/rc/plugin-lock.lua"],
+      "groupName": "Neovim plugins"
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",
       "description": "Neovim plugins on Codeberg",
-      "managerFilePatterns": ["/^nvim/fnl/rc/plugin-lock\\.fnl$/"],
-      "matchStrings": [":codeberg/([a-zA-Z0-9._\\/-]+)\\s+\"([a-f0-9]{40})\""],
+      "managerFilePatterns": ["nvim/fnl/rc/plugin-lock.fnl", "nvim/lua/rc/plugin-lock.lua"],
+      "matchStrings": [
+        ":codeberg/(?<packageName>[a-zA-Z0-9._\\/-]+)\\s+\"(?<currentDigest>[a-f0-9]{40})\"",
+        "\\[\"codeberg/(?<packageName>[a-zA-Z0-9._\\/-]+)\"\\]\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\""
+      ],
       "datasourceTemplate": "git-refs",
-      "packageNameTemplate": "https://codeberg.org/$1.git",
-      "currentValueTemplate": "$2"
+      "packageNameTemplate": "https://codeberg.org/{{packageName}}.git",
+      "currentValueTemplate": "main"
     },
     {
       "customType": "regex",
       "description": "Neovim plugins on GitHub",
-      "managerFilePatterns": ["/^nvim/fnl/rc/plugin-lock\\.fnl$/"],
-      "matchStrings": [":([^:/]+/[^:/]+)\\s+\"([a-f0-9]{40})\""],
+      "managerFilePatterns": ["nvim/fnl/rc/plugin-lock.fnl", "nvim/lua/rc/plugin-lock.lua"],
+      "matchStrings": [
+        ":(?<packageName>[^:/]+/[^:/]+)\\s+\"(?<currentValue>[a-f0-9]{40})\"",
+        "\\[\"(?<packageName>[^:/]+/[^:/]+)\"\\]\\s*=\\s*\"(?<currentValue>[a-f0-9]{40})\""
+      ],
       "datasourceTemplate": "github-digest",
-      "packageNameTemplate": "$1",
-      "currentValueTemplate": "$2"
+      "packageNameTemplate": "{{packageName}}"
     }
   ]
 }
