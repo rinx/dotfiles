@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782562288708,
+  "lastUpdate": 1782566053851,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34517,6 +34517,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 124.9496868,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "394fdba7d7447f17d78f3c5bea7f9f70407ee1d6",
+          "message": "renovate: fix custom managers for neovim plugins\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-27T22:11:40+09:00",
+          "tree_id": "e985ba133f98b44132b8198e5e0125166639d83a",
+          "url": "https://github.com/rinx/dotfiles/commit/394fdba7d7447f17d78f3c5bea7f9f70407ee1d6"
+        },
+        "date": 1782566051739,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.706330499999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 24.580842599999997,
             "unit": "ms"
           }
         ]
