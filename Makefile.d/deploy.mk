@@ -8,7 +8,6 @@ neovim-deploy: \
     nvim-lua \
     nvim-snippets \
     nvim-org \
-    lazy-lock \
     skk-jisyo-large
 	@$(call red, "neovim-deploy has been done")
 
@@ -39,13 +38,6 @@ $(HOME)/.config/nvim/orgmode:
 	@$(call cyan, "--\> nvim/orgmode directory for nvim")
 	mkdir -p $(HOME)/.config/nvim
 	ln -s $(DOTDIR)/nvim/orgmode $(HOME)/.config/nvim/orgmode
-
-.PHONY: lazy-lock
-lazy-lock: $(HOME)/.config/nvim/lazy-lock.json
-$(HOME)/.config/nvim/lazy-lock.json:
-	@$(call cyan, "--\> lazy-lock.json for nvim")
-	mkdir -p $(HOME)/.config/nvim
-	ln -s $(DOTDIR)/nvim/lazy-lock.json $(HOME)/.config/nvim/lazy-lock.json
 
 .PHONY: skk-jisyo-large
 skk-jisyo-large: $(HOME)/.SKK-JISYO.L

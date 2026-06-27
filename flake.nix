@@ -222,6 +222,7 @@
             packages = with pkgs; [
               ast-grep
               gitleaks
+              renovate
               tree-sitter
             ];
             shellHook = ''
@@ -250,9 +251,6 @@
                     "*.fnl"
                   ];
                 };
-                jsonfmt.excludes = [
-                  "nvim/lazy-lock.json"
-                ];
               };
             };
           };

@@ -2,6 +2,7 @@
 (local core (autoload :nfnl.core))
 
 (local lazy (require :lazy))
+(local lock-data (autoload :rc.plugin-lock))
 
 (local icon (autoload :rc.icon))
 (local ui-icons icon.lazy-nvim-ui-icons)
@@ -30,8 +31,14 @@
     (vim.cmd (.. ":" cmd))))
 
 (fn use [pkgs]
-  (let [plugins (icollect [name opts (pairs pkgs)]
-                  (core.assoc opts 1 name))]
+  (let [lock (core.get lock-data :lock)
+        plugins (icollect [name opts (pairs pkgs)]
+                  (let [commit (or (core.get lock name)
+                                   (core.get lock (.. "codeberg/" (string name))))
+                        merged-opts (core.assoc opts 1 name)]
+                      (if commit
+                        (core.assoc merged-opts :commit commit)
+                        merged-opts)))]
     (lazy.setup
       plugins
       {:ui
@@ -98,22 +105,32 @@
                               :event [:BufReadPost :BufAdd :BufNewFile]}
 
    ;; completion
+   :rafamadriz/friendly-snippets {:lazy true}
+   :echasnovski/mini.snippets {:lazy true}
+   :mikavilpas/blink-ripgrep.nvim {:lazy true}
+   :moyiz/blink-emoji.nvim {:lazy true}
+   :Kaiser-Yang/blink-cmp-git {:lazy true}
+   :giuxtaposition/blink-cmp-copilot {:lazy true}
    :saghen/blink.cmp {:event [:InsertEnter
                               :CmdlineEnter]
                       :version :v1.*
-                      :dependencies [:rafamadriz/friendly-snippets
-                                     :echasnovski/mini.snippets
-                                     :mikavilpas/blink-ripgrep.nvim
-                                     :moyiz/blink-emoji.nvim
-                                     :Kaiser-Yang/blink-cmp-git
-                                     :giuxtaposition/blink-cmp-copilot]
+                      :dependencies
+                      [:rafamadriz/friendly-snippets
+                       :echasnovski/mini.snippets
+                       :mikavilpas/blink-ripgrep.nvim
+                       :moyiz/blink-emoji.nvim
+                       :Kaiser-Yang/blink-cmp-git
+                       :giuxtaposition/blink-cmp-copilot]
                       :config (mod :cmp)}
 
    ;; dap
+   :nvim-neotest/nvim-nio {:lazy true}
+   :igorlfs/nvim-dap-view {:lazy true}
    :mfussenegger/nvim-dap {:config (mod :dap)
                            :event [:BufReadPost :BufAdd :BufNewFile]
-                           :dependencies [:nvim-neotest/nvim-nio
-                                          :igorlfs/nvim-dap-view]}
+                           :dependencies
+                           [:nvim-neotest/nvim-nio
+                            :igorlfs/nvim-dap-view]}
    :leoluz/nvim-dap-go {:ft [:go]
                         :config (mod :dap-go)}
    :rinx/nvim-dap-rego {:ft [:rego]
@@ -136,8 +153,9 @@
    :dundalek/parpar.nvim {:ft [:clojure
                                :fennel
                                :hy]
-                          :dependencies [:gpanders/nvim-parinfer
-                                         :julienvincent/nvim-paredit]
+                          :dependencies
+                          [:gpanders/nvim-parinfer
+                           :julienvincent/nvim-paredit]
                           :config (mod :parpar)}
    :Olical/conjure {:ft [:clojure
                          :fennel
@@ -151,8 +169,11 @@
                                      :config (mod :treesitter)}
 
    ;; orgmode
+   :danilshvalov/org-modern.nvim {:lazy true}
+   :chipsenkbeil/org-roam.nvim {:lazy true}
    :nvim-orgmode/orgmode {:config (mod :orgmode)
                           :event [:VeryLazy]
                           :ft [:org]
-                          :dependencies [:danilshvalov/org-modern.nvim
-                                         :chipsenkbeil/org-roam.nvim]}})
+                          :dependencies
+                          [:danilshvalov/org-modern.nvim
+                           :chipsenkbeil/org-roam.nvim]}})
