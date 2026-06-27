@@ -1,5 +1,6 @@
 (local {: autoload} (require :nfnl.module))
 (local core (autoload :nfnl.core))
+(local str (autoload :nfnl.string))
 
 (local lazy (require :lazy))
 (local lock-data (autoload :rc.plugin-lock))
@@ -33,8 +34,10 @@
 (fn use [pkgs]
   (let [lock (core.get lock-data :lock)
         plugins (icollect [name opts (pairs pkgs)]
-                  (let [commit (or (core.get lock name)
-                                   (core.get lock (.. "codeberg/" (string name))))
+                  (let [commit (-> (or (core.get lock name)
+                                       (core.get lock (.. "codeberg/" name)))
+                                   (str.split "@")
+                                   (core.get 2))
                         merged-opts (core.assoc opts 1 name)]
                       (if commit
                         (core.assoc merged-opts :commit commit)

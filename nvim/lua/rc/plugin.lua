@@ -2,6 +2,7 @@
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
+local str = autoload("nfnl.string")
 local lazy = require("lazy")
 local lock_data = autoload("rc.plugin-lock")
 local icon = autoload("rc.icon")
@@ -10,8 +11,8 @@ local rtp_disabled_plugins = {"gzip", "netrwPlugin", "tarPlugin", "tohtml", "tut
 local function config_require_str(name)
   return ("require('rc.plugin." .. name .. "')")
 end
-local function eval(str)
-  return assert(load(str))
+local function eval(str0)
+  return assert(load(str0))
 end
 local function mod(m)
   return eval(config_require_str(m))
@@ -31,7 +32,7 @@ local function use(pkgs)
     for name, opts in pairs(pkgs) do
       local val_28_
       do
-        local commit = (core.get(lock, name) or core.get(lock, ("codeberg/" .. string(name))))
+        local commit = core.get(str.split((core.get(lock, name) or core.get(lock, ("codeberg/" .. name))), "@"), 2)
         local merged_opts = core.assoc(opts, 1, name)
         if commit then
           val_28_ = core.assoc(merged_opts, "commit", commit)

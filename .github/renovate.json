@@ -31,12 +31,11 @@
         "nvim/lua/rc/plugin-lock.lua"
       ],
       "matchStrings": [
-        ":codeberg/(?<packageName>[a-zA-Z0-9._\\/-]+)\\s+\"(?<currentDigest>[a-f0-9]{40})\"",
-        "\\[\"codeberg/(?<packageName>[a-zA-Z0-9._\\/-]+)\"\\]\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\""
+        ":codeberg/(?<packageName>[a-zA-Z0-9._\\/-]+)\\s+\"(?<currentValue>[^@]+)@(?<currentDigest>[a-f0-9]{40})\"",
+        "\\[\"codeberg/(?<packageName>[a-zA-Z0-9._\\/-]+)\"\\]\\s*=\\s*\"(?<currentValue>[^@]+)@(?<currentDigest>[a-f0-9]{40})\""
       ],
       "datasourceTemplate": "git-refs",
-      "packageNameTemplate": "https://codeberg.org/{{packageName}}.git",
-      "currentValueTemplate": "main"
+      "packageNameTemplate": "https://codeberg.org/{{packageName}}.git"
     },
     {
       "customType": "regex",
@@ -46,12 +45,11 @@
         "nvim/lua/rc/plugin-lock.lua"
       ],
       "matchStrings": [
-        ":(?<packageName>[^:/]+/[^:/]+)\\s+\"(?<currentDigest>[a-f0-9]{40})\"",
-        "\\[\"(?<packageName>[^:/]+/[^:/]+)\"\\]\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\""
+        ":(?<packageName>[^:/]+/[^:/]+)\\s+\"(?<currentValue>[^@]+)@(?<currentDigest>[a-f0-9]{40})\"",
+        "\\[\"(?<packageName>[^:/]+/[^:/]+)\"\\]\\s*=\\s*\"(?<currentValue>[^@]+)@(?<currentDigest>[a-f0-9]{40})\""
       ],
       "datasourceTemplate": "git-refs",
-      "packageNameTemplate": "https://github.com/{{packageName}}.git",
-      "currentValueTemplate": "main"
+      "packageNameTemplate": "https://github.com/{{packageName}}.git"
     }
   ]
 }
