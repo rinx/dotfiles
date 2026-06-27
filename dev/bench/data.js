@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782566733599,
+  "lastUpdate": 1782566875903,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34653,6 +34653,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 22.3840603,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "ca0f9f26540cd71e084248995adfae5c9612750c",
+          "message": "renovate: fix github-based neovim plugins matchStrings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-27T22:25:17+09:00",
+          "tree_id": "725cd9a39a51775dd4782fce0cc4f38080617635",
+          "url": "https://github.com/rinx/dotfiles/commit/ca0f9f26540cd71e084248995adfae5c9612750c"
+        },
+        "date": 1782566873882,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.508829999999996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 23.2313542,
             "unit": "ms"
           }
         ]
