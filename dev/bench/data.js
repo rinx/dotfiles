@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782566200826,
+  "lastUpdate": 1782566579573,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34585,6 +34585,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 22.890559400000004,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e87006dc473ad6c79c2c446a23f3d56d2289da1a",
+          "message": "renovate: use git-refs template for github-based neovim plugins\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-27T22:20:47+09:00",
+          "tree_id": "a29a379f2ba035e93993fd372f6776e8f2bb6f57",
+          "url": "https://github.com/rinx/dotfiles/commit/e87006dc473ad6c79c2c446a23f3d56d2289da1a"
+        },
+        "date": 1782566577520,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 26.158801500000003,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 18.460853499999995,
             "unit": "ms"
           }
         ]
