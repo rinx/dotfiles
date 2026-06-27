@@ -40,8 +40,9 @@
         ":(?<packageName>[^:/]+/[^:/]+)\\s+\"(?<currentValue>[a-f0-9]{40})\"",
         "\\[\"(?<packageName>[^:/]+/[^:/]+)\"\\]\\s*=\\s*\"(?<currentValue>[a-f0-9]{40})\""
       ],
-      "datasourceTemplate": "github-digest",
-      "packageNameTemplate": "{{packageName}}"
+      "datasourceTemplate": "git-refs",
+      "packageNameTemplate": "https://github.com/{{packageName}}"
+      "currentValueTemplate": "main"
     }
   ]
 }
