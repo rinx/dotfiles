@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782566053851,
+  "lastUpdate": 1782566200826,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34551,6 +34551,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 24.580842599999997,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1f33c8511f2b8f67b6d1e019d937de2bbd47220a",
+          "message": "renovate: fix invalid package-rules option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-27T22:14:00+09:00",
+          "tree_id": "15c1ffb1b4cfe9bb3d00d3fc66320e8304b83db6",
+          "url": "https://github.com/rinx/dotfiles/commit/1f33c8511f2b8f67b6d1e019d937de2bbd47220a"
+        },
+        "date": 1782566198474,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.9077598,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 22.890559400000004,
             "unit": "ms"
           }
         ]
