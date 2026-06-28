@@ -33,7 +33,7 @@
    :moyiz/blink-emoji.nvim "master@dff709139ad5389fb55ebab026e75278a12b325a"
    :Kaiser-Yang/blink-cmp-git "master@d3f2a9067ab028e779d08e61bf0b054939011316"
    :giuxtaposition/blink-cmp-copilot "main@439cff78780c033aa23cf061d7315314b347e3c1"
-   :saghen/blink.cmp "main@bda905a4bf1b3edfa708b0be193b8c63d8620c96"
+   :saghen/blink.cmp "v1@78336bc89ee5365633bcf754d93df01678b5c08f"
    :nvim-neotest/nvim-nio "master@21f5324bfac14e22ba26553caf69ec76ae8a7662"
    :igorlfs/nvim-dap-view "main@440ec66c2b26470ec97cd4d6667cdd4b51cbc7cb"
    :mfussenegger/nvim-dap "master@9e848e09a697ee95302a3ef2dd43fd6eb709e570"
