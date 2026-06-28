@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782568300394,
+  "lastUpdate": 1782634871085,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -34721,6 +34721,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 118.13344830000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "38ead9554fbb567d31455175ea438da973593ef1",
+          "message": "chore(deps): update neovim plugins (#388)\n\n* chore(deps): update neovim plugins\n\n* nvim: use v1 branch for blink.cmp\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-06-28T08:17:22Z",
+          "tree_id": "5873b102e171b6ca06eae77bc89a07d0cf64e308",
+          "url": "https://github.com/rinx/dotfiles/commit/38ead9554fbb567d31455175ea438da973593ef1"
+        },
+        "date": 1782634868980,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 35.317695300000004,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 92.6436491,
             "unit": "ms"
           }
         ]
