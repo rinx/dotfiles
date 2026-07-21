@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784638299502,
+  "lastUpdate": 1784639503569,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -35469,6 +35469,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 116.2026228,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2a7e6a22d6b87401704675a1dc6d0a0a022c0c15",
+          "message": "chore(deps): lock file maintenance (#407)\n\n* chore(deps): lock file maintenance\n\n* flake.nix: fix llm-agents.nix overlay reference\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-07-21T12:59:16Z",
+          "tree_id": "7b2d40e76409be9c0775de8800871eb85580cbd8",
+          "url": "https://github.com/rinx/dotfiles/commit/2a7e6a22d6b87401704675a1dc6d0a0a022c0c15"
+        },
+        "date": 1784639500673,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 23.0261635,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 86.1206024,
             "unit": "ms"
           }
         ]
