@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784637897248,
+  "lastUpdate": 1784638299502,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -35435,6 +35435,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 134.0528557,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8dbf9122e248f67fffbe4c3e514995f1dee129f1",
+          "message": "nix/droid: add jujutsu to the basic toolset\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-07-21T21:45:37+09:00",
+          "tree_id": "c15df56be07a652dbb3874654f427566e1143f35",
+          "url": "https://github.com/rinx/dotfiles/commit/8dbf9122e248f67fffbe4c3e514995f1dee129f1"
+        },
+        "date": 1784638297628,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 36.71388029999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 116.2026228,
             "unit": "ms"
           }
         ]
