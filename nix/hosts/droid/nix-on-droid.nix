@@ -29,6 +29,7 @@
       git
       gnumake
       jq
+      jujutsu
       neovim-unwrapped
       nodejs
       ripgrep
