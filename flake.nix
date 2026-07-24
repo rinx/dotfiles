@@ -373,6 +373,9 @@
           lima-docker-fix = {
             imports = [ ./nix/hosts/lima/docker-fix.nix ];
           };
+          lima-rosetta-cdi = {
+            imports = [ ./nix/hosts/lima/rosetta.nix ];
+          };
         };
       };
     };

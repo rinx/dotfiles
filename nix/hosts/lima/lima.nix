@@ -12,6 +12,7 @@
     (modulesPath + "/profiles/qemu-guest.nix")
     nixos-lima.nixosModules.lima
     self.nixosModules.lima-docker-fix
+    self.nixosModules.lima-rosetta-cdi
   ];
 
   nix.settings = {
@@ -39,6 +40,7 @@
   services.lima.enable = true;
 
   services.lima-docker-fix.enable = true;
+  services.lima-rosetta-cdi.enable = true;
 
   # ssh
   services.openssh.enable = true;
