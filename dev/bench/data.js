@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784639503569,
+  "lastUpdate": 1784968766699,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -35503,6 +35503,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 86.1206024,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "39d921e0919b3781a65c86895a0556d24867126a",
+          "message": "nix: add rosetta daemon service\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-07-25T17:34:02+09:00",
+          "tree_id": "b47a9347f0b0aed5f2291d628eb6a133bec7ca30",
+          "url": "https://github.com/rinx/dotfiles/commit/39d921e0919b3781a65c86895a0556d24867126a"
+        },
+        "date": 1784968764520,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.8962608,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 118.17345969999997,
             "unit": "ms"
           }
         ]
