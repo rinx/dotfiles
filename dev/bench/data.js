@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784968766699,
+  "lastUpdate": 1784970509861,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -35537,6 +35537,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 118.17345969999997,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "116073707+rinx-app[bot]@users.noreply.github.com",
+            "name": "rinx-app[bot]",
+            "username": "rinx-app[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4e690a6398fc2b94ae0e3f76e982669038e35655",
+          "message": "chore(lima-nixos): update lima-nixos images to 2026.07.25 (#414)\n\nCo-authored-by: rinx-app[bot] <116073707+rinx-app[bot]@users.noreply.github.com>",
+          "timestamp": "2026-07-25T09:04:38Z",
+          "tree_id": "1e0e39a8eca7be692233319ee1814df43a43a721",
+          "url": "https://github.com/rinx/dotfiles/commit/4e690a6398fc2b94ae0e3f76e982669038e35655"
+        },
+        "date": 1784970507634,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 38.33465399999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 117.50752109999999,
             "unit": "ms"
           }
         ]
