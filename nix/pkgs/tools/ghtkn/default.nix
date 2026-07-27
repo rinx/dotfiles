@@ -5,14 +5,14 @@
 }:
 buildGoModule rec {
   pname = "ghtkn";
-  version = "0.3.3";
+  version = "0.3.4-3";
 
   src = fetchFromGitHub {
     owner = "suzuki-shunsuke";
     repo = "ghtkn";
     rev = "v${version}";
-    hash = "sha256-Tcw/JL5U0af6Bf8b2jV5ElhCSMrhGjHfVF1ZqCXnUR4=";
+    hash = "sha256-k1iXWdwfPx5eFIYVBdgrxl2/2WqQYCEwl7VjqGFyqOg=";
   };
 
-  vendorHash = "sha256-rsTESgnUFTRXLOyX2Q/5QQFSnoANJELITI8btISWn7o=";
+  vendorHash = "sha256-EAsp01vgsCiP6PHNUPB3xqKBELQhQgRBmS28aW+y+0Q=";
 }
