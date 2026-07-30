@@ -156,6 +156,11 @@ snippets:
     snippet: git fetch
     context:
       lbuffer: '^jj\s+'
+  - name: jj push
+    keyword: p
+    snippet: push
+    context:
+      lbuffer: '^jj\s+'
   # Refs: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
   - name: jj stack
     keyword: stack

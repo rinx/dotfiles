@@ -41,6 +41,24 @@ backend = "gpg"
 
 [aliases]
 pre-commit = ['util', 'exec', '--', 'pre-commit', 'run', '--all-files']
+
+push = ['util', 'exec', '--', 'bash', '-c', '''
+if type pre-commit >/dev/null 2>&1; then
+    echo "==> Running pre-commit before push..."
+    pre-commit run --all-files
+
+    if [ $? -ne 0 ]; then
+        echo "❌ pre-commit failed. Aborting push."
+        exit 1
+    fi
+else
+    echo "⚠️  pre-commit not found. Skipping checks."
+fi
+
+echo "==> Pushing changes to remote..."
+jj git push $args
+''']
+
 pr = [
   'util',
   'exec',
@@ -48,6 +66,19 @@ pr = [
   'bash',
   '-c',
   '''
+if type pre-commit >/dev/null 2>&1; then
+    echo "==> Running pre-commit..."
+    pre-commit run --all-files
+
+    if [ $? -ne 0 ]; then
+        echo "❌ pre-commit failed. Aborting 'gh pr'."
+        exit 1
+    fi
+else
+    echo "⚠️  pre-commit not found. Skipping checks."
+fi
+
+echo "==> Creating GitHub Pull Request..."
 gh pr create --draft --head $(jj log -r 'closest_bookmark(@)' -T 'surround("", " ", bookmarks)' --no-graph --ignore-working-copy | cut -d ' ' -f 1)
 ''',
 ]
