@@ -141,6 +141,11 @@ snippets:
     snippet: bookmark
     context:
       lbuffer: '^jj\s+'
+  - name: jj bookmark advance
+    keyword: a
+    snippet: advance -t 'closest_pushable(@)'
+    context:
+      lbuffer: '^jj\s+bookmark\s+'
   - name: jj git push
     keyword: gp
     snippet: git push
