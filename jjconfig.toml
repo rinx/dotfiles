@@ -56,8 +56,9 @@ else
 fi
 
 echo "==> Pushing changes to remote..."
-jj git push $args
-''']
+echo "==> jj git push $@"
+jj git push $@
+''', '']
 
 pr = [
   'util',
