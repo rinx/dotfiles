@@ -161,6 +161,16 @@ snippets:
     snippet: push
     context:
       lbuffer: '^jj\s+'
+  - name: jj push --bookmark
+    keyword: pb
+    snippet: push --bookmark
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj push -c
+    keyword: pc
+    snippet: push -c
+    context:
+      lbuffer: '^jj\s+'
   # Refs: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
   - name: jj stack
     keyword: stack
