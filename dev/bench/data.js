@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785849803222,
+  "lastUpdate": 1785849963902,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -35877,6 +35877,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 121.06987559999997,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4d111d8080377470562ec94d27498c57b1a9af97",
+          "message": "jjconfig: fix push target extraction regex\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-04T22:20:50+09:00",
+          "tree_id": "a126187e5883dc99495c2e0ea2099a3a1c660535",
+          "url": "https://github.com/rinx/dotfiles/commit/4d111d8080377470562ec94d27498c57b1a9af97"
+        },
+        "date": 1785849961443,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 35.1796043,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 130.36936970000002,
             "unit": "ms"
           }
         ]
