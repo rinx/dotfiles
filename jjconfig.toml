@@ -62,7 +62,7 @@ else
 fi
 
 echo "==> Checking for forbidden markers in pushable commits..."
-targets=$(echo "$@" | grep -oP '(?<=(-b|--bookmark|-r|--revset)\s)[^ ]+')
+targets=$(echo "$@" | grep -oP '(?<=(-b|--bookmark|-c|--change|-r|--revision)\s)[^ ]+')
 if [ -z "$targets" ]; then
   target_revset="::@"
 else
