@@ -42,7 +42,13 @@ backend = "gpg"
 [aliases]
 pre-commit = ['util', 'exec', '--', 'pre-commit', 'run', '--all-files']
 
-push = ['util', 'exec', '--', 'bash', '-c', '''
+push = [
+  'util',
+  'exec',
+  '--',
+  'bash',
+  '-c',
+  '''
 if type pre-commit >/dev/null 2>&1; then
     echo "==> Running pre-commit before push..."
     pre-commit run --all-files
@@ -55,10 +61,24 @@ else
     echo "⚠️  pre-commit not found. Skipping checks."
 fi
 
+echo "==> Checking for forbidden markers in pushable commits..."
+targets=$(echo "$@" | grep -oP '(?<=(-b|--bookmark|-r|--revset)\s)[^ ]+')
+if [ -z "$targets" ]; then
+  target_revset="::@"
+else
+  target_revset="::(${targets//$'\n'/|})"
+fi
+if [ -n "$(jj log -r "$target_revset & mutable() & (wip() | todo() | private() | mega())" --no-graph -T 'commit_id')" ]; then
+    echo "❌ Commits to be pushed contain wip/todo/private/mega markers. Aborting push."
+    exit 1
+fi
+
 echo "==> Pushing changes to remote..."
 echo "==> jj git push $@"
 jj git push $@
-''', '']
+''',
+  '',
+]
 
 pr = [
   'util',
@@ -196,6 +216,7 @@ separate(" ",
 'wip()' = 'description(glob:"wip*")'
 'todo()' = 'description(glob:"todo*")'
 'private()' = 'description(glob:"private*")'
+'mega()' = 'description(glob:"mega*")'
 
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_merge(to)' = 'heads(::to & merges())'
