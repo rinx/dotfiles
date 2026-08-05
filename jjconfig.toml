@@ -219,7 +219,7 @@ separate(" ",
 'mega()' = 'description(glob:"mega*")'
 
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
-'closest_merge(to)' = 'heads(::to & merges())'
+'closest_merge(to)' = 'heads(::to & (merges() | mega()))'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 
 # Ref: https://github.com/jj-vcs/jj/discussions/4690#discussioncomment-16870293
