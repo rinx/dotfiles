@@ -68,7 +68,7 @@ if [ -z "$targets" ]; then
 else
   target_revset="::(${targets//$'\n'/|})"
 fi
-if [ -n "$(jj log -r "$target_revset & mutable() & (wip() | todo() | private() | mega())" --no-graph -T 'commit_id')" ]; then
+if [ -n "$(jj log -r "$target_revset & mutable() & (wip() | todo() | private() | mega())" --no-graph --ignore-working-copy -T 'commit_id')" ]; then
     echo "❌ Commits to be pushed contain wip/todo/private/mega markers. Aborting push."
     exit 1
 fi
