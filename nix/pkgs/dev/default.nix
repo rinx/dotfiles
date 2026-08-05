@@ -24,12 +24,7 @@ let
       exec ${pkgs.gh}/bin/gh "$@"
     fi
 
-    if [ -z "''${GH_TOKEN:-}" ] && [ -z "''${GITHUB_TOKEN:-}" ]; then
-      GH_TOKEN="$(${ghtkn}/bin/ghtkn get)"
-      export GH_TOKEN
-    fi
-
-    exec ${pkgs.gh}/bin/gh "$@"
+    exec ${ghtkn}/bin/ghtkn exec -e GH_TOKEN -- ${pkgs.gh}/bin/gh "$@"
   '';
 
   custom-pkgs = [
