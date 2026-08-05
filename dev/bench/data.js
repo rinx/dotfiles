@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785930846998,
+  "lastUpdate": 1785931246555,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36081,6 +36081,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 128.55108529999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "bb4359fb862abdc7f911a74468ce09795961ff9a",
+          "message": "jjconfig: add `--ignore-working-copy` flag to `push` alias\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-05T20:55:53+09:00",
+          "tree_id": "ac23ea14c75bc58e4e7704ab24e282db7aae2641",
+          "url": "https://github.com/rinx/dotfiles/commit/bb4359fb862abdc7f911a74468ce09795961ff9a"
+        },
+        "date": 1785931244300,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 39.6846937,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 125.2238422,
             "unit": "ms"
           }
         ]
