@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785927046177,
+  "lastUpdate": 1785929725550,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -35979,6 +35979,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 109.5741093,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "7fa8ac1445878bc790db20bc186e0f927e07dfe1",
+          "message": "nix: update gh-ghtkn-wrapper\n\nto follow the new document for ghtkn v0.3.5:\nhttps://github.com/suzuki-shunsuke/ghtkn/blob/c9131f6fec034cb8dae636e1553582e5e1e5c190/docs/exec.md\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-05T20:28:10+09:00",
+          "tree_id": "f99e9d0927e61facded02206ac5cf8a0fd8f08d9",
+          "url": "https://github.com/rinx/dotfiles/commit/7fa8ac1445878bc790db20bc186e0f927e07dfe1"
+        },
+        "date": 1785929723116,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 36.3846492,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 120.98861830000001,
             "unit": "ms"
           }
         ]
