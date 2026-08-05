@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785929725550,
+  "lastUpdate": 1785930479542,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36013,6 +36013,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 120.98861830000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "fd4e7169b039befbf12597c46439b2374809871f",
+          "message": "nix: remove systems from inputs\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-05T20:42:40+09:00",
+          "tree_id": "464b24c9ba98f01ce0b8a54f50d220a8cf1f7b02",
+          "url": "https://github.com/rinx/dotfiles/commit/fd4e7169b039befbf12597c46439b2374809871f"
+        },
+        "date": 1785930476612,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 39.3255612,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 130.17422159999998,
             "unit": "ms"
           }
         ]
