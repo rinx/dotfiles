@@ -1,7 +1,7 @@
 completions:
-  - name: jj git push --bookmark
+  - name: jj push --bookmark
     patterns:
-      - '^jj\s+git\s+push\s+--bookmark $'
+      - '^jj\s+push\s+--bookmark $'
     sourceCommand: jj bookmark list
     options:
       --prompt: "'Bookmark>'"
@@ -169,6 +169,11 @@ snippets:
   - name: jj push -c
     keyword: pc
     snippet: push -c
+    context:
+      lbuffer: '^jj\s+'
+  - name: jj push -c @-
+    keyword: pp
+    snippet: push -c @-
     context:
       lbuffer: '^jj\s+'
   # Refs: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
