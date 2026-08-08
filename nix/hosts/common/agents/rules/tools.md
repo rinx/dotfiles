@@ -15,6 +15,21 @@ For writing Babashka scripts, `/babashka-nrepl` skill (a skill for REPL driven d
 - Use `eza` instead of `ls` for listing files.
 - Use `eza -T` instead of `tree` for showing directory structures.
 
+## Git
+
+Use `jj` ([jujutsu](https://github.com/jj-vcs/jj)) instead of `git`.
+Don't use `git`.
+
+## `gh`
+
+`gh` is wrapped with [`ghtkn`](https://github.com/suzuki-shunsuke/ghtkn) because of security concerns.
+
+In several environment, there are `gh` and `gh-write` wrapper aliases.
+They have default GitHub App Client IDs.
+
+- `gh`: read-only token
+- `gh-write`: read-and-write token
+
 ## Code Analysis
 
 `ast-grep` is installed in this environment.
