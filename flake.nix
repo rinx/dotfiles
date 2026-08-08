@@ -24,7 +24,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-lima = {
-      url = "github:nixos-lima/nixos-lima";
+      # NOTE: workaround nixos-lima/nixos-lima#121
+      # url = "github:nixos-lima/nixos-lima";
+      url = "github:rinx/nixos-lima/85e4bb668fc806184271df007535c8372bcb1d04";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-generators = {

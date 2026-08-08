@@ -554,16 +554,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1783018601,
-        "narHash": "sha256-vYqhiCrhVox8fRCzgE6KYBWZzgER7Xy5StQm6pLEEEY=",
-        "owner": "nixos-lima",
+        "lastModified": 1786189340,
+        "narHash": "sha256-V8SiNvzyzLNX77Yfi6+FPJeApe4wo6kHhhSVsyuz7fE=",
+        "owner": "rinx",
         "repo": "nixos-lima",
-        "rev": "c73437590c35a4bb836e028150ad69fda4414d56",
+        "rev": "85e4bb668fc806184271df007535c8372bcb1d04",
         "type": "github"
       },
       "original": {
-        "owner": "nixos-lima",
+        "owner": "rinx",
         "repo": "nixos-lima",
+        "rev": "85e4bb668fc806184271df007535c8372bcb1d04",
         "type": "github"
       }
     },
