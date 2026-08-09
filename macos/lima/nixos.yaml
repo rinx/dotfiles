@@ -85,6 +85,10 @@ message: |
 
       limactl shell {{.Name}} -- zsh
 
+  If you use `ghtkn` in the shell, set some environment variables.
+
+      limactl shell {{.Name}} -- GHTKN_BACKEND=agent GHTKN_AGENT_SOCKET={{.Home}}/.ghtkn.sock GHTKN_APP=rinx/noop zsh
+
   ---
 
   To install neovim plugins, run the following command.
@@ -97,6 +101,11 @@ message: |
 
       docker context create lima-{{.Name}} --docker "host=unix://{{.Dir}}/sock/docker.sock"
       docker context use lima-{{.Name}}
+
+  If you use rosetta, restart these services.
+
+      sudo systemctl restart systemd-binfmt.service
+      sudo systemctl restart rosettad.service
 
   ---
 
