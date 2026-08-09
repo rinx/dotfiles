@@ -50,6 +50,10 @@ portForwards:
   # - hostSocket: "/tmp/xsr.sock"
   #   guestSocket: "{{.Home}}/.xsr.sock"
   #   reverse: true
+  # # ghtkn (https://github.com/suzuki-shunsuke/ghtkn)
+  # - hostSocket: "{{.Home}}/.cache/ghtkn/agent.sock"
+  #   guestSocket: "{{.Home}}/.ghtkn.sock"
+  #   reverse: true
   # docker
   - hostSocket: "{{.Dir}}/sock/docker.sock"
     guestSocket: "/var/run/docker.sock"
