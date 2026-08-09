@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786190644490,
+  "lastUpdate": 1786253930029,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36251,6 +36251,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 67.8757881,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "8ef855dddb134019d0fc55124e92c2f512149b5c",
+          "message": "lima: add ghtkn agent socket forwarding\n\nhttps://github.com/suzuki-shunsuke/ghtkn/blob/c9131f6fec034cb8dae636e1553582e5e1e5c190/docs/agent-deployment.md#macos-hosts-mounting-the-socket-doesnt-work\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-09T14:33:06+09:00",
+          "tree_id": "7041fb3acbc4a7f54455d579d4c49908adb635c7",
+          "url": "https://github.com/rinx/dotfiles/commit/8ef855dddb134019d0fc55124e92c2f512149b5c"
+        },
+        "date": 1786253927632,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.739934599999998,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 155.05075190000002,
             "unit": "ms"
           }
         ]
