@@ -59,139 +59,139 @@ snippets:
     keyword: s
     snippet: status --no-column
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+s$'
   - name: git status
     keyword: st
     snippet: status --no-column
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+st$'
   - name: git log
     keyword: l
     snippet: log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+l$'
   - name: git log (details)
     keyword: ll
     snippet: log --graph --stat --abbrev-commit --show-signature
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+ll$'
   - name: git add
     keyword: ad
     snippet: add
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+ad$'
   - name: git commit
     keyword: cm
     snippet: commit --signoff
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+cm$'
   - name: git commit amend with no-edit
     keyword: ca
     snippet: commit --signoff --amend --no-edit
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+ca$'
   - name: git commit amend
     keyword: cae
     snippet: commit --signoff --amend
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+cae$'
   - name: git push
     keyword: ps
     snippet: push
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+ps$'
   - name: git push force
     keyword: psf
     snippet: push --force-with-lease --force-if-includes
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+psf$'
   - name: git pull
     keyword: pl
     snippet: pull
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+pl$'
   - name: git checkout
     keyword: co
     snippet: checkout
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+co$'
   - name: git switch
     keyword: sw
     snippet: switch
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+sw$'
   - name: git branch
     keyword: br
     snippet: branch
     context:
-      lbuffer: '^git\s+'
+      lbuffer: '^git\s+br$'
   # jujutsu related snippets
   - name: jj status
     keyword: st
     snippet: status
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+st$'
   - name: jj absorb
     keyword: abs
     snippet: absorb
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+abs$'
   - name: jj bookmark
     keyword: bk
     snippet: bookmark
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+bk$'
   - name: jj bookmark advance
     keyword: a
     snippet: advance -t 'closest_pushable(@)'
     context:
-      lbuffer: '^jj\s+bookmark\s+'
+      lbuffer: '^jj\s+bookmark\s+a$'
   - name: jj git push
     keyword: gp
     snippet: git push
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+gp$'
   - name: jj git fetch
     keyword: gf
     snippet: git fetch
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+gf$'
   - name: jj push
     keyword: p
     snippet: push
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+p$'
   - name: jj push --bookmark
     keyword: pb
     snippet: push --bookmark
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+pb$'
   - name: jj push -c
     keyword: pc
     snippet: push -c
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+pc$'
   - name: jj push -c @-
     keyword: pp
     snippet: push -c @-
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+pp$'
   # Refs: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
   - name: jj stack
     keyword: stack
     snippet: rebase --after 'trunk()' --before 'closest_merge(@)' --revision
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+stack$'
   - name: jj stage
     keyword: stage
     snippet: "rebase --after 'trunk()' --before 'closest_merge(@)' --revision 'closest_merge(@)+:: ~ empty()'"
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+stage$'
   - name: jj restack
     keyword: restack
     snippet: rebase --onto 'trunk()' --source 'roots(trunk()..) & mutable()' --simplify-parents
     context:
-      lbuffer: '^jj\s+'
+      lbuffer: '^jj\s+restack$'
   # kitty snippets
   - name: kitty icat
     keyword: icat
