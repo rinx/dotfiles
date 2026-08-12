@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786410122372,
+  "lastUpdate": 1786533390348,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36387,6 +36387,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 123.9008225,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "a1757e3fc667bd3ebfb0a88f62663b51d7a0c13e",
+          "message": "zsh: fix snippet patterns\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-12T20:11:09+09:00",
+          "tree_id": "74c83d20887a2742bbf97effbbd3029ea955a50d",
+          "url": "https://github.com/rinx/dotfiles/commit/a1757e3fc667bd3ebfb0a88f62663b51d7a0c13e"
+        },
+        "date": 1786533387416,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 35.7382141,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 118.444842,
             "unit": "ms"
           }
         ]
