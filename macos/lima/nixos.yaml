@@ -87,7 +87,7 @@ message: |
 
   If you use `ghtkn` in the shell, set some environment variables.
 
-      limactl shell {{.Name}} -- GHTKN_BACKEND=agent GHTKN_AGENT_SOCKET={{.Home}}/.ghtkn.sock GHTKN_APP=rinx/noop zsh
+      limactl shell {{.Name}} -- GHTKN_BACKEND=agent GHTKN_AGENT_SOCKET=$HOME/.ghtkn.sock GHTKN_APP=rinx/noop zsh
 
   ---
 
