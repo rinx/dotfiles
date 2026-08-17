@@ -19,9 +19,9 @@ buildPythonPackage rec {
     python = "cp310";
     abi = "abi3";
     platform =
-      if stdenv.isDarwin then
+      if stdenv.hostPlatform.isDarwin then
         if stdenv.isAarch64 then "macosx_11_0_arm64" else "macosx_10_12_x86_64"
-      else if stdenv.isLinux then
+      else if stdenv.hostPlatform.isLinux then
         if stdenv.isAarch64 then
           "manylinux_2_17_aarch64.manylinux2014_aarch64"
         else
@@ -29,12 +29,12 @@ buildPythonPackage rec {
       else
         throw "Unsupported platform";
     sha256 =
-      if stdenv.isDarwin then
+      if stdenv.hostPlatform.isDarwin then
         if stdenv.isAarch64 then
           "sha256-1uNWk0xjs8VKy8l+l3Qs9sp8xORU2aixStcuehj8yrU="
         else
           "sha256-/22b5UNbpZ3hLDZYKRBmthlwIYbdC5Aw1N4x+nwUHwE="
-      else if stdenv.isLinux then
+      else if stdenv.hostPlatform.isLinux then
         if stdenv.isAarch64 then
           "sha256-qavMxmu7b476AXJJxGyh0ShZbOcHtTIhUi6fexSHki4="
         else

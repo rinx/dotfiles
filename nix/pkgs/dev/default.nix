@@ -35,7 +35,7 @@ let
   ];
 
   os-specific-pkgs =
-    if pkgs.stdenv.isDarwin then
+    if pkgs.stdenv.hostPlatform.isDarwin then
       [ ]
     else
       [

@@ -190,7 +190,7 @@
             };
           }
           // (
-            if pkgs.stdenv.isLinux then
+            if pkgs.stdenv.hostPlatform.isLinux then
               {
                 lima-img = inputs.nixos-generators.nixosGenerate {
                   inherit pkgs;
