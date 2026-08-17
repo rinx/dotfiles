@@ -22,7 +22,7 @@
    :HakonHarnes/img-clip.nvim "main@b6ddfb97b5600d99afe3452d707444afda658aca"
    :zbirenbaum/copilot.lua "master@7e6723aabea044519462958ffcea68d7985c5ed0"
    :lambdalisue/nvim-aibo "main@0505c2ef5471d43fb48df5823ede9705b9c9e73e"
-   :neovim/nvim-lspconfig "master@51dbf5359da86721662c87ca10eb73add973737b"
+   :neovim/nvim-lspconfig "master@fbaef6156f9ad65790931ab543ab1dfec57bbec7"
    :b0o/schemastore.nvim "main@7e3f6dd6ef6da93f74974521c81d8d5bff0443c5"
    :kosayoda/nvim-lightbulb "master@b8c08c5f3b1586dfcdd9f34d7d54fe6982e01ac9"
    :folke/trouble.nvim "main@bd67efe408d4816e25e8491cc5ad4088e708a69a"
