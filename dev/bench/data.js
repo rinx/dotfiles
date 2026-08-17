@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786952405742,
+  "lastUpdate": 1786953449291,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36591,6 +36591,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 67.11824200000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "1dccd96a94a759ed4e144e5727a984a116f38aa3",
+          "message": "nix/extra-pkgs: add bpftools and bpftrace\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-17T16:52:32+09:00",
+          "tree_id": "6218934f193093cce82d7066015069b031beab24",
+          "url": "https://github.com/rinx/dotfiles/commit/1dccd96a94a759ed4e144e5727a984a116f38aa3"
+        },
+        "date": 1786953446091,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 40.118926599999995,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 119.01910600000001,
             "unit": "ms"
           }
         ]
