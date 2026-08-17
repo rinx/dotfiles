@@ -42,6 +42,8 @@ with pkgs;
 [
   ## tools
   awscli2
+  bpftools
+  bpftrace
   conftest
   cue
   duckdb
