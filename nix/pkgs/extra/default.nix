@@ -34,16 +34,17 @@ let
         pkgs.pngpaste
       ]
     else
+      with pkgs;
       [
-        pkgs.chromium
+        bpftools
+        bpftrace
+        chromium
       ];
 in
 with pkgs;
 [
   ## tools
   awscli2
-  bpftools
-  bpftrace
   conftest
   cue
   duckdb
