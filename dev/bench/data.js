@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786952324650,
+  "lastUpdate": 1786952405742,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36557,6 +36557,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 114.6130379,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1c4153b65643fc0bee1ecf60a0a5f712dddfe8df",
+          "message": "chore(deps): update https://github.com/neovim/nvim-lspconfig.git digest to fbaef61 (#429)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-08-17T16:36:37+09:00",
+          "tree_id": "5334969789701590e4f32a25503bcabc741d64ea",
+          "url": "https://github.com/rinx/dotfiles/commit/1c4153b65643fc0bee1ecf60a0a5f712dddfe8df"
+        },
+        "date": 1786952403216,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 20.0984841,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 67.11824200000001,
             "unit": "ms"
           }
         ]
