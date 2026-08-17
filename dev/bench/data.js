@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786953449291,
+  "lastUpdate": 1786953880435,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36625,6 +36625,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 119.01910600000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9e5da420dee1edc20eec037e4c228a483b87f84a",
+          "message": "nix/extra-pkgs: remove bpf-related tools from macos\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-17T16:59:56+09:00",
+          "tree_id": "25a5036e9f99e26843c4e14a5f7fe1409ea6d295",
+          "url": "https://github.com/rinx/dotfiles/commit/9e5da420dee1edc20eec037e4c228a483b87f84a"
+        },
+        "date": 1786953878009,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.5602124,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 119.37155539999999,
             "unit": "ms"
           }
         ]
