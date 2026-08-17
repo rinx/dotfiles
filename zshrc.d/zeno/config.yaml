@@ -199,3 +199,7 @@ snippets:
   - name: kitty diff
     keyword: vdiff
     snippet: kitten diff
+  # sad snippets
+  - name: fd-sad
+    keyword: fd-sad
+    snippet: fd . | sad
