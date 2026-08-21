@@ -36,6 +36,7 @@ let
     else
       with pkgs;
       [
+        bcc
         bpftools
         bpftrace
         chromium
