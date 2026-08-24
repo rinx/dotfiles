@@ -52,11 +52,11 @@
 
     targets = {
       agents = {
-        dest = ".agents/skills";
+        dest = "~/.agents/skills";
         structure = "copy-tree";
       };
       claude = {
-        dest = ".claude/skills";
+        dest = "~/.claude/skills";
         structure = "copy-tree";
       };
     };
