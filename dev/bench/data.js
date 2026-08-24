@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787571827135,
+  "lastUpdate": 1787572907061,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36829,6 +36829,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 112.5530849,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3e5c1763a929f7aa3e13aa3f34e610cb787567f7",
+          "message": "macos/sketchybar: disable kubectx and gcloud\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-24T20:56:10+09:00",
+          "tree_id": "b214fb88bdb865e8351aec5ec312bacc4bd38eb0",
+          "url": "https://github.com/rinx/dotfiles/commit/3e5c1763a929f7aa3e13aa3f34e610cb787567f7"
+        },
+        "date": 1787572904721,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 41.9091462,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 119.1507171,
             "unit": "ms"
           }
         ]
