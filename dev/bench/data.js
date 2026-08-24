@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787535583472,
+  "lastUpdate": 1787571066862,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -36727,6 +36727,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 105.37489229999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "e679ea2d6334a9eddb876f52caadb10c56202c4c",
+          "message": "nix: fix agent skills path\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-08-24T20:26:04+09:00",
+          "tree_id": "0d985dc5a8e74dea0d0214aa49c78e7167848928",
+          "url": "https://github.com/rinx/dotfiles/commit/e679ea2d6334a9eddb876f52caadb10c56202c4c"
+        },
+        "date": 1787571063672,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 39.119080700000005,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 132.535507,
             "unit": "ms"
           }
         ]
