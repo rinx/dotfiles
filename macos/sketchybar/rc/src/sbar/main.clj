@@ -68,8 +68,8 @@
   (volume/setup)
   (tailscale/setup)
   (lima/setup)
-  (kubectx/setup)
-  (gcloud/setup)
+  ; (kubectx/setup)
+  ; (gcloud/setup)
   ; (github-pr/setup)
   ; (github/setup)
   (brew/setup))
@@ -88,14 +88,14 @@
               :duration-ms 60000}
     :brew {:fn brew/update
            :duration-ms 7200000}
-    :gcloud {:fn gcloud/update
-             :duration-ms 60000}
+    ; :gcloud {:fn gcloud/update
+    ;          :duration-ms 60000}
     ; :github {:fn github/update
     ;          :duration-ms 180000}
     ; :github-pr {:fn github-pr/update
     ;             :duration-ms 180000}
-    :kubectx {:fn kubectx/update
-              :duration-ms 60000}
+    ; :kubectx {:fn kubectx/update
+    ;           :duration-ms 60000}
     :lima {:fn lima/update
            :duration-ms 300000}
     :tailscale {:fn tailscale/update
