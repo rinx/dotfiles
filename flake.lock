@@ -366,6 +366,21 @@
         "type": "github"
       }
     },
+    "multiverse": {
+      "locked": {
+        "lastModified": 1787665882,
+        "narHash": "sha256-2Gr7w6j2KAoNrw+WALdeHFJjiaJ54b5F61eq+BOHmSw=",
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "rev": "559db45ac446ba2f3ee5f07c1f5476c616ed02fc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "type": "github"
+      }
+    },
     "neovim-nightly": {
       "inputs": {
         "flake-parts": [
@@ -781,6 +796,7 @@
         "google-skills": "google-skills",
         "home-manager": "home-manager_2",
         "llm-agents": "llm-agents",
+        "multiverse": "multiverse",
         "neovim-nightly": "neovim-nightly",
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",

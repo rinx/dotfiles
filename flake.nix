@@ -19,6 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    multiverse = {
+      url = "github:fzakaria/nixpkgs-multiverse";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -143,6 +147,8 @@
               };
             };
           };
+
+          multiverse = inputs.multiverse.multiverse.${system};
         in
         {
           _module.args.pkgs = overlayed-pkgs {
@@ -168,7 +174,7 @@
             dev-packages = pkgs.buildEnv {
               name = "dev-packages";
               paths = import ./nix/pkgs/dev {
-                inherit pkgs;
+                inherit pkgs multiverse;
               };
             };
             extra-packages = pkgs.buildEnv {

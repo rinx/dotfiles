@@ -1,5 +1,6 @@
 {
   pkgs,
+  multiverse,
   ...
 }@inputs:
 let
@@ -77,7 +78,8 @@ with pkgs;
   ## languages
   babashka
   clojure
-  deno
+  # NOTE: use deno 2.9.3 until https://github.com/NixOS/nixpkgs/issues/550181 is resolved
+  (multiverse.version "deno" "2.9.3")
   gcc
   gleam
   go
