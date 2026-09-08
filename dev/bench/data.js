@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788785237548,
+  "lastUpdate": 1788873102075,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37169,6 +37169,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 100.9430617,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9266c84607d4a73ad0dd5938a63f5077c85c5964",
+          "message": "zsh: add k, ktx snippets\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-09-08T22:07:01+09:00",
+          "tree_id": "90773fd08869f3dbd246dfa54d1acafd4446aaa4",
+          "url": "https://github.com/rinx/dotfiles/commit/9266c84607d4a73ad0dd5938a63f5077c85c5964"
+        },
+        "date": 1788873098796,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 39.8429156,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 116.8763872,
             "unit": "ms"
           }
         ]
