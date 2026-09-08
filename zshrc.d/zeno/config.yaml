@@ -203,3 +203,9 @@ snippets:
   - name: fd-sad
     keyword: fd-sad
     snippet: fd . | sad
+  - name: k -> kubectl
+    keyword: k
+    snippet: kubectl
+  - name: ktx -> kubectx
+    keyword: ktx
+    snippet: kubectx
