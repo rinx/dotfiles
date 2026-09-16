@@ -1,6 +1,6 @@
 {:deps {babashka/nrepl-client
         {:git/url "https://github.com/babashka/nrepl-client"
-         :git/sha "519f09cbfcfebf5633368f7f34f4ad993b453f49"}}
+         :git/sha "5158e44cd19b0d62f79fa69944a0117f5f5f5b00"}}
  :tasks {nrepl-eval
          {:requires ([babashka.nrepl-client :as nrepl])
           :task (let [values (:vals (nrepl/eval-expr
