@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788873102075,
+  "lastUpdate": 1789520075695,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37203,6 +37203,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 116.8763872,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3242ef66f75ce3fa56e4fea0b27b36f5454b1cc3",
+          "message": "chore(deps): update babashka/nrepl-client digest to 5158e44 (#442)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-09-16T09:49:53+09:00",
+          "tree_id": "5ad3881b56f9300ee30b3ce4e20f25179256e439",
+          "url": "https://github.com/rinx/dotfiles/commit/3242ef66f75ce3fa56e4fea0b27b36f5454b1cc3"
+        },
+        "date": 1789520073187,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 39.665359900000006,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 127.2317065,
             "unit": "ms"
           }
         ]
