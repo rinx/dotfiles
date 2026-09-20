@@ -58,7 +58,7 @@ with pkgs;
   ## languages
   buf
   protobuf
-  typescript-go
+  typescript
   typst
 
   ## LSP / DAP / Linter / Formatter
