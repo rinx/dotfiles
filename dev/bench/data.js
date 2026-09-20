@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789912126846,
+  "lastUpdate": 1789913657636,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37339,6 +37339,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 108.41010740000002,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "97603d37a21066e04e77a8c448ba963fc7a4b026",
+          "message": "chore(deps): lock file maintenance (#444)\n\n* chore(deps): lock file maintenance\n\n* extra-packages: use `typescript` instead of `typescript-go`\n\nbecause it is renamed\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\n\n---------\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-09-20T14:00:56Z",
+          "tree_id": "9cbe70c749ac1d237ce10322bdee680b56ad7ddb",
+          "url": "https://github.com/rinx/dotfiles/commit/97603d37a21066e04e77a8c448ba963fc7a4b026"
+        },
+        "date": 1789913655300,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 22.665541599999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 67.5646586,
             "unit": "ms"
           }
         ]
