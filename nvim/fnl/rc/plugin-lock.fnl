@@ -5,7 +5,7 @@
    :nvim-lua/plenary.nvim "master@74b06c6c75e4eeb3108ec01852001636d85a932b"
    :nvim-lua/popup.nvim "master@b7404d35d5d3548a82149238289fa71f7f6de4ac"
    :MunifTanjim/nui.nvim "main@10fc361835c856ba4233ef5ea135b919bf3dce97"
-   :echasnovski/mini.nvim "main@4389a4f31f854ce066949ea89c72dc71564f5c20"
+   :echasnovski/mini.nvim "main@81ed10ebe1144b0eb9a7f289ffae000c22772c20"
    :stevearc/dressing.nvim "master@2d7c2db2507fa3c4956142ee607431ddb2828639"
    :EdenEast/nightfox.nvim "main@4dacd3f0185a2227bdf3b6c0975a8f0bf87cac9a"
    :tpope/vim-repeat "master@65846025c15494983dafe5e3b46c8f88ab2e9635"
@@ -20,16 +20,16 @@
    :tomiis4/Hypersonic.nvim "main@734dfbfbe51952f102a9b439d53d4267bb0024cd"
    :notomo/waitevent.nvim "main@472780798d3f9f375c32883611f945825c177900"
    :HakonHarnes/img-clip.nvim "main@99848daf801789dbebe2192b475eb887d375002c"
-   :zbirenbaum/copilot.lua "master@6483be53397611b63259ce08a35108a47d4fc794"
+   :zbirenbaum/copilot.lua "master@c0774241783717b2a26ef4becf08c00bfd05415d"
    :lambdalisue/nvim-aibo "main@0505c2ef5471d43fb48df5823ede9705b9c9e73e"
    :neovim/nvim-lspconfig "master@ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff"
-   :b0o/schemastore.nvim "main@b73cf982d16ff69e528d2ab269482f11c0825f64"
+   :b0o/schemastore.nvim "main@be687d17e4a9443e918c48c3c915b1f2ffd0f718"
    :kosayoda/nvim-lightbulb "master@b8c08c5f3b1586dfcdd9f34d7d54fe6982e01ac9"
    :folke/trouble.nvim "main@bd67efe408d4816e25e8491cc5ad4088e708a69a"
    :folke/todo-comments.nvim "main@31e3c38ce9b29781e4422fc0322eb0a21f4e8668"
    :rafamadriz/friendly-snippets "main@b4d01b0fdf3c9a549961c2f9ffe8dc09be166219"
    :echasnovski/mini.snippets "main@050638170639ceb7bef4e804507cbf209e565b2c"
-   :mikavilpas/blink-ripgrep.nvim "main@a26a3dd6fc57d25a3bc082059941f4a96d3178e3"
+   :mikavilpas/blink-ripgrep.nvim "main@0e27566da4f70e61d0c0f2821bb71ae745e71364"
    :moyiz/blink-emoji.nvim "master@dff709139ad5389fb55ebab026e75278a12b325a"
    :Kaiser-Yang/blink-cmp-git "master@d3f2a9067ab028e779d08e61bf0b054939011316"
    :giuxtaposition/blink-cmp-copilot "main@439cff78780c033aa23cf061d7315314b347e3c1"
@@ -51,6 +51,6 @@
    :nvim-treesitter/nvim-treesitter "main@f603a2f4da48728f80257fb5fbb90145fd1dc173"
    :danilshvalov/org-modern.nvim "main@c024900b7ee78a0274036025569b47001ef3e6aa"
    :chipsenkbeil/org-roam.nvim "main@aa41b86138d337c485b6cdcffa4b45a61d23edf1"
-   :nvim-orgmode/orgmode "master@11f5f903f275544207f643855b9a2ba74de73f5e"})
+   :nvim-orgmode/orgmode "master@d9cd82d732cf4322100cf2c4c57b285c870bd893"})
 
 {: lock}
