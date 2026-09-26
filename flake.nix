@@ -332,7 +332,6 @@
                 ./nix/hosts/common/agents.nix
                 ./nix/hosts/lima/home.nix
                 ./nix/hosts/lima/services.nix
-                ./nix/hosts/lima/ghtkn.nix
                 inputs.nix-index-database.homeModules.default
               ];
               extraSpecialArgs = {
@@ -348,8 +347,6 @@
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
                 google-skills = inputs.google-skills;
-
-                ghtkn = self.outputs.packages."${system}".ghtkn;
               };
             };
         };
