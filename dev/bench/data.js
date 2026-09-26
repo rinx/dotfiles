@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790384235428,
+  "lastUpdate": 1790410013649,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37543,6 +37543,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 90.1913613,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "06c8f71ddd08bd6d9ff1c677d6d58689ed6a546f",
+          "message": "nix/lima: add ollama-serve service\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-09-26T17:01:53+09:00",
+          "tree_id": "a72256d5afa43b617b7619f9dd96ce39b7e6b0ef",
+          "url": "https://github.com/rinx/dotfiles/commit/06c8f71ddd08bd6d9ff1c677d6d58689ed6a546f"
+        },
+        "date": 1790410010742,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.561330199999997,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 83.02803250000001,
             "unit": "ms"
           }
         ]
