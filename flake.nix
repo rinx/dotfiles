@@ -332,6 +332,7 @@
                 ./nix/hosts/common/agents.nix
                 ./nix/hosts/lima/home.nix
                 ./nix/hosts/lima/services.nix
+                ./nix/hosts/lima/ollama.nix
                 inputs.nix-index-database.homeModules.default
               ];
               extraSpecialArgs = {
