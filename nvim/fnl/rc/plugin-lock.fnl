@@ -49,6 +49,6 @@
    :nvim-treesitter/nvim-treesitter "main@910fdf6f49e9dee7e7257c7d11a76b040fdfb9de"
    :danilshvalov/org-modern.nvim "main@c024900b7ee78a0274036025569b47001ef3e6aa"
    :chipsenkbeil/org-roam.nvim "main@aa41b86138d337c485b6cdcffa4b45a61d23edf1"
-   :nvim-orgmode/orgmode "master@d9cd82d732cf4322100cf2c4c57b285c870bd893"})
+   :nvim-orgmode/orgmode "master@3a3d115cedee657afc0a9ef1c24eab26ccfff6f6"})
 
 {: lock}
