@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790816730903,
+  "lastUpdate": 1790857620581,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37713,6 +37713,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 53.450338,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "3fffe99bb2bc7f335ffe479a0dedc5f71464b0e3",
+          "message": "kitty: add cursor_trail option\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-10-01T21:21:30+09:00",
+          "tree_id": "5c9a31337e4f82488daa607c7c6e3ab828c2df1e",
+          "url": "https://github.com/rinx/dotfiles/commit/3fffe99bb2bc7f335ffe479a0dedc5f71464b0e3"
+        },
+        "date": 1790857618200,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 37.7467749,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 94.5590196,
             "unit": "ms"
           }
         ]
