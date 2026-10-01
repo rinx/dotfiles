@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790857620581,
+  "lastUpdate": 1790858554452,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37747,6 +37747,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 94.5590196,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "4caa8fc57528b6c151f76bacae7a28ff9de13f1c",
+          "message": "nvim: remove copilot.lua\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-10-01T21:37:39+09:00",
+          "tree_id": "df1a172bb921ab1a079ef65b0bc40bb77b48db62",
+          "url": "https://github.com/rinx/dotfiles/commit/4caa8fc57528b6c151f76bacae7a28ff9de13f1c"
+        },
+        "date": 1790858552483,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 44.2457175,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 104.70192779999999,
             "unit": "ms"
           }
         ]
