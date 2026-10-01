@@ -64,7 +64,6 @@ with pkgs;
   ## LSP / DAP / Linter / Formatter
   clj-kondo
   clojure-lsp
-  copilot-language-server
   cuelsp
   delve
   gopls
