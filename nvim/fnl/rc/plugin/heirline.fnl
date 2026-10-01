@@ -333,22 +333,6 @@
         :hl {:fg colors.info}
         :update [:RecordingEnter :RecordingLeave]})
 
-(local copilot-component
-       {:condition (fn []
-                     (~= (core.get package.loaded :copilot) nil))
-        :provider (fn []
-                      (let [copilot (require :copilot.client)
-                            api (require :copilot.api)]
-                        (if (or (not (copilot.buf_is_attached (vim.api.nvim_get_current_buf)))
-                                (copilot.is_disabled))
-                            ""
-                            (if (= api.status.data.status :Warning)
-                                icontab.copilot-warning
-                                (if vim.b.copilot_suggestion_auto_trigger
-                                    icontab.copilot-sleep
-                                    icontab.copilot-enabled)))))
-        :hl {:fg colors.hint}})
-
 (local hostname-component
        {:provider (fn []
                     (let [hostname (vim.loop.os_gethostname)
@@ -372,7 +356,6 @@
         skkeleton-component
         spell-component
         paste-component
-        copilot-component
         denops-component])
 
 (local standard-winbar

@@ -361,30 +361,8 @@ local function _78_()
   return (icontab.recording .. "[" .. vim.fn.reg_recording() .. "]" .. space)
 end
 macrorec_component = {condition = _77_, provider = _78_, hl = {fg = colors.info}, update = {"RecordingEnter", "RecordingLeave"}}
-local copilot_component
-local function _79_()
-  return (core.get(package.loaded, "copilot") ~= nil)
-end
-local function _80_()
-  local copilot = require("copilot.client")
-  local api = require("copilot.api")
-  if (not copilot.buf_is_attached(vim.api.nvim_get_current_buf()) or copilot.is_disabled()) then
-    return ""
-  else
-    if (api.status.data.status == "Warning") then
-      return icontab["copilot-warning"]
-    else
-      if vim.b.copilot_suggestion_auto_trigger then
-        return icontab["copilot-sleep"]
-      else
-        return icontab["copilot-enabled"]
-      end
-    end
-  end
-end
-copilot_component = {condition = _79_, provider = _80_, hl = {fg = colors.hint}}
 local hostname_component
-local function _84_()
+local function _79_()
   local hostname = vim.loop.os_gethostname()
   local icon0
   if (vim.fn.has("mac") == 1) then
@@ -394,10 +372,10 @@ local function _84_()
   end
   return (icon0 .. hostname)
 end
-hostname_component = {provider = _84_, hl = {fg = colors["lima-green"]}}
-local default_statusline = {vi_mode_component, space_component, cwd_component, hostname_component, space_component, align_component, search_component, macrorec_component, align_component, org_clock_component, skkeleton_component, spell_component, paste_component, copilot_component, denops_component}
+hostname_component = {provider = _79_, hl = {fg = colors["lima-green"]}}
+local default_statusline = {vi_mode_component, space_component, cwd_component, hostname_component, space_component, align_component, search_component, macrorec_component, align_component, org_clock_component, skkeleton_component, spell_component, paste_component, denops_component}
 local standard_winbar = {filename_block, align_component, dap_component, align_component, git_component, jj_component, diagnostics_component, lsp_component, ruler_component}
-local function _86_(args)
+local function _81_(args)
   return conditions.buffer_matches({buftype = {"acwrite", "nofile", "prompt", "help", "quickfix", "^terminal$"}, filetype = {"Trouble", "^dap-repl$", "^dapui_watches$", "^dapui_stacks$", "^dapui_breakpoints$", "^dapui_scopes$"}})
 end
-return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _86_}})
+return heirline.setup({statusline = {default_statusline}, winbar = {standard_winbar}, opts = {colors = palette, disable_winbar_cb = _81_}})

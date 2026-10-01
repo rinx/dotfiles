@@ -14,8 +14,7 @@
                        :buffer
                        :ripgrep
                        :emoji
-                       :git
-                       :copilot]
+                       :git]
              :providers
              {:ripgrep {:module :blink-ripgrep
                         :name :Ripgrep}
@@ -35,11 +34,7 @@
                                  [:octo
                                   :gitcommit
                                   :markdown]
-                                 vim.bo.filetype))}
-              :copilot {:name :copilot
-                        :module :blink-cmp-copilot
-                        :score_offset 100
-                        :async true}}}
+                                 vim.bo.filetype))}}}
             :completion
             {:documentation {:auto_show true
                              :auto_show_delay_ms 500}

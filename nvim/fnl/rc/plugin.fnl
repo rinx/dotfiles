@@ -91,10 +91,6 @@
    :notomo/waitevent.nvim {:config (mod :waitevent)}
    :HakonHarnes/img-clip.nvim {:config (mod :img-clip)
                                :event [:VeryLazy]}
-
-   ;; copilot
-   :zbirenbaum/copilot.lua {:config (mod :copilot)
-                            :event [:VeryLazy]}
    :lambdalisue/nvim-aibo {:config (mod :aibo)}
 
    ;; lsp
@@ -113,7 +109,6 @@
    :mikavilpas/blink-ripgrep.nvim {:lazy true}
    :moyiz/blink-emoji.nvim {:lazy true}
    :Kaiser-Yang/blink-cmp-git {:lazy true}
-   :giuxtaposition/blink-cmp-copilot {:lazy true}
    :saghen/blink.cmp {:event [:InsertEnter
                               :CmdlineEnter]
                       :version :v1.*
@@ -122,8 +117,7 @@
                        :echasnovski/mini.snippets
                        :mikavilpas/blink-ripgrep.nvim
                        :moyiz/blink-emoji.nvim
-                       :Kaiser-Yang/blink-cmp-git
-                       :giuxtaposition/blink-cmp-copilot]
+                       :Kaiser-Yang/blink-cmp-git]
                       :config (mod :cmp)}
 
    ;; dap
