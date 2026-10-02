@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790858554452,
+  "lastUpdate": 1790909413492,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37781,6 +37781,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 104.70192779999999,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "79ae84e843cda70cccb277a984dcbf769325e2de",
+          "message": "chore(deps): update https://github.com/nvim-orgmode/orgmode.git digest to 3a3d115 (#456)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-10-02T11:45:49+09:00",
+          "tree_id": "ba13bd05d72eec497d55556346a55ebca9f0d168",
+          "url": "https://github.com/rinx/dotfiles/commit/79ae84e843cda70cccb277a984dcbf769325e2de"
+        },
+        "date": 1790909411226,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 29.428987,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.7763628,
             "unit": "ms"
           }
         ]
