@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791116496227,
+  "lastUpdate": 1791296037439,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -37849,6 +37849,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 101.6252691,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e05fdfb77d07d1fd6851dffe1016c71fb0737f96",
+          "message": "chore(deps): update neovim plugins (#458)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-10-06T23:10:01+09:00",
+          "tree_id": "6ff5e7e2b7e7c4e13dc91e9df05c4339e6a5ed97",
+          "url": "https://github.com/rinx/dotfiles/commit/e05fdfb77d07d1fd6851dffe1016c71fb0737f96"
+        },
+        "date": 1791296034294,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 27.506539800000002,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 74.6913442,
             "unit": "ms"
           }
         ]
