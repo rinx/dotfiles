@@ -5,7 +5,7 @@
    :nvim-lua/plenary.nvim "master@74b06c6c75e4eeb3108ec01852001636d85a932b"
    :nvim-lua/popup.nvim "master@b7404d35d5d3548a82149238289fa71f7f6de4ac"
    :MunifTanjim/nui.nvim "main@10fc361835c856ba4233ef5ea135b919bf3dce97"
-   :echasnovski/mini.nvim "main@6f0cd5049f414932ba55a5d6f3282a59d55c71a3"
+   :echasnovski/mini.nvim "main@fa9037326e9996381e34a14b6350e18168618532"
    :stevearc/dressing.nvim "master@2d7c2db2507fa3c4956142ee607431ddb2828639"
    :EdenEast/nightfox.nvim "main@4dacd3f0185a2227bdf3b6c0975a8f0bf87cac9a"
    :tpope/vim-repeat "master@65846025c15494983dafe5e3b46c8f88ab2e9635"
@@ -21,14 +21,14 @@
    :notomo/waitevent.nvim "main@472780798d3f9f375c32883611f945825c177900"
    :HakonHarnes/img-clip.nvim "main@99848daf801789dbebe2192b475eb887d375002c"
    :lambdalisue/nvim-aibo "main@0505c2ef5471d43fb48df5823ede9705b9c9e73e"
-   :neovim/nvim-lspconfig "master@910f0c4d46aa186641518395bc7e6fffb4d23baf"
-   :b0o/schemastore.nvim "main@83b0f1dc1ef1cc736bb4216654b1d173bcaf4ba6"
+   :neovim/nvim-lspconfig "master@33497f4930d40f28a465d38a763a00fc6902c658"
+   :b0o/schemastore.nvim "main@ba1c08d07452528a430d319c53fba46e5884ef11"
    :kosayoda/nvim-lightbulb "master@b8c08c5f3b1586dfcdd9f34d7d54fe6982e01ac9"
    :folke/trouble.nvim "main@bd67efe408d4816e25e8491cc5ad4088e708a69a"
    :folke/todo-comments.nvim "main@31e3c38ce9b29781e4422fc0322eb0a21f4e8668"
    :rafamadriz/friendly-snippets "main@b4d01b0fdf3c9a549961c2f9ffe8dc09be166219"
    :echasnovski/mini.snippets "main@050638170639ceb7bef4e804507cbf209e565b2c"
-   :mikavilpas/blink-ripgrep.nvim "main@a27358501ceeb2534e6f8729ea5cfd22083e19f2"
+   :mikavilpas/blink-ripgrep.nvim "main@50118b93c092391ba577cde90b0fc72a75fbea6d"
    :moyiz/blink-emoji.nvim "master@dff709139ad5389fb55ebab026e75278a12b325a"
    :Kaiser-Yang/blink-cmp-git "master@d3f2a9067ab028e779d08e61bf0b054939011316"
    :saghen/blink.cmp "v1.10.2@78336bc89ee5365633bcf754d93df01678b5c08f"
@@ -49,6 +49,6 @@
    :nvim-treesitter/nvim-treesitter "main@e289100ff98969e118c702199d88b764ce9e7fdf"
    :danilshvalov/org-modern.nvim "main@c024900b7ee78a0274036025569b47001ef3e6aa"
    :chipsenkbeil/org-roam.nvim "main@aa41b86138d337c485b6cdcffa4b45a61d23edf1"
-   :nvim-orgmode/orgmode "master@ac46fc7641dd77bdddfbec4eaeb8eb86b2629b22"})
+   :nvim-orgmode/orgmode "master@13caf06d1db1e098c497e3344e91ce0bdcaba5d0"})
 
 {: lock}
