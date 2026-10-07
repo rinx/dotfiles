@@ -223,6 +223,9 @@ separate(" ",
 'closest_merge(to)' = 'heads(::to & (merges() | mega()))'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 
+[git]
+private-commits = 'local()'
+
 # Ref: https://github.com/jj-vcs/jj/discussions/4690#discussioncomment-16870293
 # allow for `jj diff` and `jj show` to clear output from terminal after pager closed
 [[--scope]]
