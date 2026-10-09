@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791434883398,
+  "lastUpdate": 1791509102291,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38019,6 +38019,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 92.9786403,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2754b938b12c05dc9b68fef3152c425682e06773",
+          "message": "chore(deps): update actions/download-artifact action to v8.0.2 (#462)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-10-09T10:19:29+09:00",
+          "tree_id": "9d0480a00fbb8f5e2be0a77af03fd64a8f592437",
+          "url": "https://github.com/rinx/dotfiles/commit/2754b938b12c05dc9b68fef3152c425682e06773"
+        },
+        "date": 1791509099354,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 25.695339,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 59.713077999999996,
             "unit": "ms"
           }
         ]
