@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791940164483,
+  "lastUpdate": 1791940438049,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38223,6 +38223,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 83.8458061,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f472d8b03c81892ac97a222a990609bca80a8127",
+          "message": "kitty: add tft shader\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-10-14T10:09:51+09:00",
+          "tree_id": "67e4bf173a87ec6e4bf95de1ff52b6b5914e4556",
+          "url": "https://github.com/rinx/dotfiles/commit/f472d8b03c81892ac97a222a990609bca80a8127"
+        },
+        "date": 1791940435471,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 42.8540996,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 77.09924099999999,
             "unit": "ms"
           }
         ]
