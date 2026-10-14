@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791768296865,
+  "lastUpdate": 1791939592715,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38155,6 +38155,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 61.1306226,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "20e2cb680a705c7484317d751475d0ca732cc028",
+          "message": "nix!: remove nix-on-droid and bigme-b7 settings\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-10-14T09:53:45+09:00",
+          "tree_id": "b361b33fd046aeeaeb638cfe34cb2b4dd258e05f",
+          "url": "https://github.com/rinx/dotfiles/commit/20e2cb680a705c7484317d751475d0ca732cc028"
+        },
+        "date": 1791939589873,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 39.65666529999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 105.5050075,
             "unit": "ms"
           }
         ]
