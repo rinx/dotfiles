@@ -37,13 +37,6 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-droid.url = "github:NixOS/nixpkgs/nixos-24.05";
-    # NOTE: workaround nix-community/nix-on-droid#495
-    nixpkgs-unstable-droid.url = "github:NixOS/nixpkgs/88d3861";
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs-droid";
-    };
 
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -348,32 +341,6 @@
                 anthropic-skills = inputs.anthropic-skills;
                 ast-grep-skill = inputs.ast-grep-skill;
                 google-skills = inputs.google-skills;
-              };
-            };
-        };
-        nixOnDroidConfigurations = {
-          bigme-b7 =
-            let
-              system = "aarch64-linux";
-            in
-            inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-              pkgs = import inputs.nixpkgs-droid {
-                inherit system;
-              };
-              modules = [
-                ./nix/hosts/droid/nix-on-droid.nix
-              ];
-              extraSpecialArgs = {
-                pkgs-unstable = import inputs.nixpkgs-unstable-droid {
-                  inherit system;
-                  config.allowUnfree = true;
-                  overlays = [
-                    inputs.neovim-nightly.overlays.default
-                  ];
-                };
-                additional-packages = [
-                  self.outputs.packages."${system}".rq
-                ];
               };
             };
         };
