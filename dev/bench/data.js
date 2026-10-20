@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792371779574,
+  "lastUpdate": 1792471677641,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38359,6 +38359,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.9038411,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "9b18b4fdb569e7138cd3dc817f5e66b8422ba7c3",
+          "message": "lint: fix by adding `--custom-languages` flag\n\nhttps://github.com/rinx/dotfiles/actions/runs/39182569557/job/117838260052\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-10-20T13:42:28+09:00",
+          "tree_id": "82969eaf0093a56a7d17283bdc0d41558810eaf2",
+          "url": "https://github.com/rinx/dotfiles/commit/9b18b4fdb569e7138cd3dc817f5e66b8422ba7c3"
+        },
+        "date": 1792471674507,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 41.6990907,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 87.6915026,
             "unit": "ms"
           }
         ]
