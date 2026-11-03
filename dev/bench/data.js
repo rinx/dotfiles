@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793587611214,
+  "lastUpdate": 1793670306848,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38563,6 +38563,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 81.29642049999998,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b746e3815e65619e3d29b26248e6f10758e4e037",
+          "message": "chore(deps): update natsukium/nix-diff-action action to v1.2.1 (#478)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-11-03T10:40:57+09:00",
+          "tree_id": "0b49ae72f4e0ab55e063b17f47521ac7d78f545c",
+          "url": "https://github.com/rinx/dotfiles/commit/b746e3815e65619e3d29b26248e6f10758e4e037"
+        },
+        "date": 1793670304196,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 36.931499,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.420581,
             "unit": "ms"
           }
         ]
