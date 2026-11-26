@@ -244,6 +244,8 @@
                   options = [
                     "scan"
                     "--error"
+                    "--custom-languages"
+                    "allow"
                     "--config"
                     "${sgconfig}"
                   ];
