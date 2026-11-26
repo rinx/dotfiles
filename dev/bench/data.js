@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795656266909,
+  "lastUpdate": 1795656870310,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38903,6 +38903,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 85.5693878,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "committer": {
+            "email": "rintaro.okamura@gmail.com",
+            "name": "Rintaro Okamura",
+            "username": "rinx"
+          },
+          "distinct": true,
+          "id": "f9f62de87781d6f13270497bf21f9dddc023ac48",
+          "message": "flake.nix: allow custom-languages on ast-grep on hooks\n\nSigned-off-by: Rintaro Okamura <rintaro.okamura@gmail.com>",
+          "timestamp": "2026-11-26T10:30:42+09:00",
+          "tree_id": "b3a599a4b11217b59b9b629e0a72a8b783f86cb4",
+          "url": "https://github.com/rinx/dotfiles/commit/f9f62de87781d6f13270497bf21f9dddc023ac48"
+        },
+        "date": 1795656868391,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 34.68624129999999,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 82.0022184,
             "unit": "ms"
           }
         ]
