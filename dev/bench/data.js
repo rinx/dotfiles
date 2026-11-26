@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795654000848,
+  "lastUpdate": 1795654675011,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38733,6 +38733,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 82.29112330000001,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4090e7a5904ca5c1770fd6ac36f5542e6493ae8f",
+          "message": "chore(deps): update dependency tick/tick to v1.0.3 (#476)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-11-26T00:53:08Z",
+          "tree_id": "a624a361f12db28bdb4602d4c49f2c8d79ca06f1",
+          "url": "https://github.com/rinx/dotfiles/commit/4090e7a5904ca5c1770fd6ac36f5542e6493ae8f"
+        },
+        "date": 1795654673268,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 32.2854021,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 69.74795609999998,
             "unit": "ms"
           }
         ]
