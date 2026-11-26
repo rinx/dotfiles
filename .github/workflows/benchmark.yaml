@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 120
     steps:
       - name: Free disk space
-        uses: wimpysworld/nothing-but-nix@b2574ec1cf1462bee0a34de0fb6ff11ad3c43cb2 # v12
+        uses: wimpysworld/nothing-but-nix@v12
         with:
           hatchet-protocol: 'rampage'
           root-safe-haven: '3072' # Reserve 3GB on the / filesystem
@@ -19,18 +19,18 @@ jobs:
           nix-permission-edict: true
       - name: Generate github token
         id: generate_token
-        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        uses: actions/create-github-app-token@v3.4.0
         with:
           client-id: ${{ secrets.GH_APP_CLIENT_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: cachix/install-nix-action@382a9ed9481c7c1f94f68b72ef105b3417c73877 # v32
+      - uses: actions/checkout@v7.0.1
+      - uses: cachix/install-nix-action@v32.1.0
         with:
           github_access_token: ${{ steps.generate_token.outputs.token }}
           nix_path: nixpkgs=channel:nixos-unstable
           install_options: --no-daemon
       - name: Setup Cachix
-        uses: cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866 # v17
+        uses: cachix/cachix-action@v17
         with:
           name: rinx
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
         run: |
           bb ./.github/scripts/benchmark.clj | tee benchmark-result.json
       - name: Upload benchmark result
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        uses: actions/upload-artifact@v7.0.2
         with:
           path: benchmark-result.json
           archive: false
@@ -80,20 +80,20 @@ jobs:
     needs:
       - benchmark
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
       - name: Generate github token
         id: generate_token
-        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        uses: actions/create-github-app-token@v3.4.0
         with:
           client-id: ${{ secrets.GH_APP_CLIENT_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - name: Download benchmark result
         id: download_result
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        uses: actions/download-artifact@v8.0.2
         with:
           name: benchmark-result.json
       - name: Upload benchmark
-        uses: benchmark-action/github-action-benchmark@4322e5726e6334590d251fc4f92bec0efafc45dc # v1.22.2
+        uses: benchmark-action/github-action-benchmark@v1.22.2
         with:
           tool: customSmallerIsBetter
           output-file-path: benchmark-result.json
