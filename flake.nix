@@ -209,10 +209,7 @@
               hooks = {
                 check-merge-conflicts.enable = true;
                 check-symlinks.enable = true;
-                gitleaks = {
-                  enable = true;
-                  entry = "${pkgs.gitleaks}/bin/gitleaks protect --staged";
-                };
+                gitleaks.enable = true;
                 nixfmt.enable = true;
                 treefmt.enable = true;
               };
