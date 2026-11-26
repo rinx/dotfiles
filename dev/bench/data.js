@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795655652545,
+  "lastUpdate": 1795655938573,
   "repoUrl": "https://github.com/rinx/dotfiles",
   "entries": {
     "Benchmark": [
@@ -38835,6 +38835,40 @@ window.BENCHMARK_DATA = {
           {
             "name": "neovim load time",
             "value": 80.1273319,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "98a306a82efbafa1e952e3a9658f343ebfac29eb",
+          "message": "chore(deps): update cachix/install-nix-action action to v32 (#488)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-11-26T01:15:48Z",
+          "tree_id": "4f58802f04bb33178c0ec01d9f0e4aac54f7092f",
+          "url": "https://github.com/rinx/dotfiles/commit/98a306a82efbafa1e952e3a9658f343ebfac29eb"
+        },
+        "date": 1795655936824,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh load time",
+            "value": 31.7681985,
+            "unit": "ms"
+          },
+          {
+            "name": "neovim load time",
+            "value": 79.8305137,
             "unit": "ms"
           }
         ]
